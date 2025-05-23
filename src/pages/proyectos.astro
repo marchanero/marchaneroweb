@@ -1,0 +1,278 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="Proyectos | Robert Marchanero">
+	<section class="projects-page">
+		<h1>Mis Proyectos</h1>
+		<p class="intro-text">
+			Aquí puedes encontrar algunos de los proyectos en los que he trabajado recientemente.
+			Cada proyecto representa una oportunidad para aprender nuevas tecnologías y resolver problemas interesantes.
+		</p>
+		
+		<div class="projects-grid">
+			<!-- Proyecto 1 -->
+			<div class="project-card">
+				<div class="project-image">
+					<img src="https://via.placeholder.com/600x400" alt="Proyecto 1" />
+				</div>
+				<div class="project-info">
+					<h3>E-commerce de Moda</h3>
+					<div class="project-tags">
+						<span>React</span>
+						<span>Node.js</span>
+						<span>MongoDB</span>
+					</div>
+					<p>
+						Tienda online completa con catálogo de productos, carrito de compras, 
+						sistema de usuarios y panel de administración.
+					</p>
+					<div class="project-links">
+						<a href="#" class="btn btn-sm">Ver demo</a>
+						<a href="#" class="btn btn-outline-sm">Ver código</a>
+					</div>
+				</div>
+			</div>
+			
+			<!-- Proyecto 2 -->
+			<div class="project-card">
+				<div class="project-image">
+					<img src="https://via.placeholder.com/600x400" alt="Proyecto 2" />
+				</div>
+				<div class="project-info">
+					<h3>Aplicación de Gestión de Tareas</h3>
+					<div class="project-tags">
+						<span>Vue.js</span>
+						<span>Firebase</span>
+						<span>TailwindCSS</span>
+					</div>
+					<p>
+						Aplicación para la gestión de tareas con características como listas, recordatorios, 
+						etiquetas y colaboración en equipo.
+					</p>
+					<div class="project-links">
+						<a href="#" class="btn btn-sm">Ver demo</a>
+						<a href="#" class="btn btn-outline-sm">Ver código</a>
+					</div>
+				</div>
+			</div>
+			
+			<!-- Proyecto 3 -->
+			<div class="project-card">
+				<div class="project-image">
+					<img src="https://via.placeholder.com/600x400" alt="Proyecto 3" />
+				</div>
+				<div class="project-info">
+					<h3>Blog Personal</h3>
+					<div class="project-tags">
+						<span>Astro</span>
+						<span>Markdown</span>
+						<span>Netlify CMS</span>
+					</div>
+					<p>
+						Blog minimalista con soporte para contenido en Markdown, 
+						categorías, búsqueda y panel de administración de contenidos.
+					</p>
+					<div class="project-links">
+						<a href="#" class="btn btn-sm">Ver demo</a>
+						<a href="#" class="btn btn-outline-sm">Ver código</a>
+					</div>
+				</div>
+			</div>
+			
+			<!-- Proyecto 4 -->
+			<div class="project-card">
+				<div class="project-image">
+					<img src="https://via.placeholder.com/600x400" alt="Proyecto 4" />
+				</div>
+				<div class="project-info">
+					<h3>Dashboard Analítico</h3>
+					<div class="project-tags">
+						<span>Angular</span>
+						<span>TypeScript</span>
+						<span>Chart.js</span>
+					</div>
+					<p>
+						Panel de control con visualización de datos, gráficos interactivos 
+						y generación de informes personalizados.
+					</p>
+					<div class="project-links">
+						<a href="#" class="btn btn-sm">Ver demo</a>
+						<a href="#" class="btn btn-outline-sm">Ver código</a>
+					</div>
+				</div>
+			</div>
+			
+			<!-- Proyecto 5 -->
+			<div class="project-card">
+				<div class="project-image">
+					<img src="https://via.placeholder.com/600x400" alt="Proyecto 5" />
+				</div>
+				<div class="project-info">
+					<h3>App de Recetas</h3>
+					<div class="project-tags">
+						<span>React Native</span>
+						<span>Expo</span>
+						<span>API Externa</span>
+					</div>
+					<p>
+						Aplicación móvil para buscar, guardar y compartir recetas de cocina
+						con funcionalidad offline y sincronización de favoritos.
+					</p>
+					<div class="project-links">
+						<a href="#" class="btn btn-sm">Ver demo</a>
+						<a href="#" class="btn btn-outline-sm">Ver código</a>
+					</div>
+				</div>
+			</div>
+			
+			<!-- Proyecto 6 -->
+			<div class="project-card">
+				<div class="project-image">
+					<img src="https://via.placeholder.com/600x400" alt="Proyecto 6" />
+				</div>
+				<div class="project-info">
+					<h3>Sitio Web Corporativo</h3>
+					<div class="project-tags">
+						<span>HTML/CSS</span>
+						<span>JavaScript</span>
+						<span>GSAP</span>
+					</div>
+					<p>
+						Sitio web informativo para una empresa con animaciones fluidas,
+						formularios de contacto y optimización SEO.
+					</p>
+					<div class="project-links">
+						<a href="#" class="btn btn-sm">Ver demo</a>
+						<a href="#" class="btn btn-outline-sm">Ver código</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+</Layout>
+
+<style>
+	.projects-page {
+		max-width: 1200px;
+		margin: 0 auto;
+		padding: 2rem 0;
+	}
+	
+	h1 {
+		font-size: 2.5rem;
+		margin-bottom: 1.5rem;
+		color: var(--color-primary);
+	}
+	
+	.intro-text {
+		font-size: 1.1rem;
+		max-width: 800px;
+		margin-bottom: 3rem;
+	}
+	
+	.projects-grid {
+		display: grid;
+		grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+		gap: 2.5rem;
+	}
+	
+	.project-card {
+		background: white;
+		border-radius: 8px;
+		overflow: hidden;
+		box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+		transition: transform 0.3s ease, box-shadow 0.3s ease;
+	}
+	
+	.project-card:hover {
+		transform: translateY(-5px);
+		box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+	}
+	
+	.project-image {
+		height: 200px;
+		overflow: hidden;
+	}
+	
+	.project-image img {
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+		transition: transform 0.5s ease;
+	}
+	
+	.project-card:hover .project-image img {
+		transform: scale(1.05);
+	}
+	
+	.project-info {
+		padding: 1.5rem;
+	}
+	
+	.project-info h3 {
+		font-size: 1.4rem;
+		margin-bottom: 0.8rem;
+		color: var(--color-dark);
+	}
+	
+	.project-tags {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.5rem;
+		margin-bottom: 1rem;
+	}
+	
+	.project-tags span {
+		background-color: rgba(56, 178, 172, 0.1);
+		color: var(--color-secondary);
+		padding: 0.3rem 0.6rem;
+		border-radius: 15px;
+		font-size: 0.8rem;
+		font-weight: 500;
+	}
+	
+	.project-info p {
+		margin-bottom: 1.5rem;
+		color: #4a5568;
+		font-size: 0.95rem;
+	}
+	
+	.project-links {
+		display: flex;
+		gap: 1rem;
+	}
+	
+	.btn {
+		display: inline-block;
+		padding: 0.8rem 1.5rem;
+		border-radius: 5px;
+		text-decoration: none;
+		font-weight: 500;
+		transition: all 0.3s ease;
+	}
+	
+	.btn-sm {
+		padding: 0.5rem 1rem;
+		font-size: 0.9rem;
+		background-color: var(--color-primary);
+		color: white;
+	}
+	
+	.btn-outline-sm {
+		padding: 0.5rem 1rem;
+		font-size: 0.9rem;
+		border: 1px solid var(--color-primary);
+		color: var(--color-primary);
+	}
+	
+	.btn:hover {
+		opacity: 0.9;
+	}
+	
+	@media (max-width: 768px) {
+		.projects-grid {
+			grid-template-columns: 1fr;
+		}
+	}
+</style>

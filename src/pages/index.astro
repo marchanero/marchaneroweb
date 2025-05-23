@@ -1,16 +1,167 @@
 ---
-
+import Layout from '../layouts/Layout.astro';
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+<Layout title="Robert Marchanero | Desarrollador Web">
+	<section class="hero">
+		<div class="hero-content">
+			<h1>Robert Marchanero</h1>
+			<h2>Desarrollador Web</h2>
+			<p class="hero-description">
+				Crear experiencias web modernas, rápidas y accesibles
+			</p>
+			<div class="hero-buttons">
+				<a href="/proyectos" class="btn btn-primary">Ver proyectos</a>
+				<a href="/contacto" class="btn btn-secondary">Contactar</a>
+			</div>
+		</div>
+	</section>
+
+	<section class="about-preview">
+		<h2>Sobre mí</h2>
+		<p>
+			Soy un desarrollador web apasionado por crear sitios web y aplicaciones web 
+			modernas, con especial enfoque en el rendimiento y la experiencia de usuario.
+			Me especializo en tecnologías como Astro, React, y TypeScript.
+		</p>
+		<a href="/sobre-mi" class="btn btn-outline">Conocer más</a>
+	</section>
+
+	<section class="projects-preview">
+		<h2>Proyectos destacados</h2>
+		<div class="project-cards">
+			<div class="project-card">
+				<h3>Proyecto 1</h3>
+				<p>Descripción breve del proyecto y tecnologías utilizadas.</p>
+				<a href="/proyectos/proyecto-1" class="btn btn-sm">Ver detalles</a>
+			</div>
+			<div class="project-card">
+				<h3>Proyecto 2</h3>
+				<p>Descripción breve del proyecto y tecnologías utilizadas.</p>
+				<a href="/proyectos/proyecto-2" class="btn btn-sm">Ver detalles</a>
+			</div>
+			<div class="project-card">
+				<h3>Proyecto 3</h3>
+				<p>Descripción breve del proyecto y tecnologías utilizadas.</p>
+				<a href="/proyectos/proyecto-3" class="btn btn-sm">Ver detalles</a>
+			</div>
+		</div>
+		<div class="text-center">
+			<a href="/proyectos" class="btn btn-outline">Ver todos los proyectos</a>
+		</div>
+	</section>
+</Layout>
+
+<style>
+	.hero {
+		padding: 6rem 0 4rem;
+		text-align: center;
+	}
+
+	.hero h1 {
+		font-size: 3rem;
+		margin-bottom: 0.5rem;
+		color: var(--color-primary);
+	}
+
+	.hero h2 {
+		font-size: 1.8rem;
+		color: var(--color-secondary);
+		margin-bottom: 1.5rem;
+	}
+
+	.hero-description {
+		font-size: 1.2rem;
+		max-width: 600px;
+		margin: 0 auto 2rem;
+	}
+
+	.hero-buttons {
+		display: flex;
+		gap: 1rem;
+		justify-content: center;
+	}
+
+	.btn {
+		display: inline-block;
+		padding: 0.8rem 1.5rem;
+		border-radius: 5px;
+		text-decoration: none;
+		font-weight: 500;
+		transition: all 0.3s ease;
+	}
+
+	.btn-primary {
+		background-color: var(--color-primary);
+		color: white;
+	}
+
+	.btn-secondary {
+		background-color: var(--color-secondary);
+		color: white;
+	}
+
+	.btn-outline {
+		border: 2px solid var(--color-primary);
+		color: var(--color-primary);
+	}
+
+	.btn-sm {
+		padding: 0.5rem 1rem;
+		font-size: 0.9rem;
+	}
+
+	.btn:hover {
+		opacity: 0.9;
+		transform: translateY(-2px);
+	}
+
+	section {
+		margin: 4rem 0;
+	}
+
+	.about-preview, .projects-preview {
+		max-width: 800px;
+		margin: 4rem auto;
+	}
+
+	.project-cards {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+		gap: 2rem;
+		margin: 2rem 0;
+	}
+
+	.project-card {
+		background: white;
+		border-radius: 8px;
+		padding: 1.5rem;
+		box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+		transition: transform 0.3s ease;
+	}
+
+	.project-card:hover {
+		transform: translateY(-5px);
+	}
+
+	.text-center {
+		text-align: center;
+		margin-top: 2rem;
+	}
+
+	@media (max-width: 768px) {
+		.hero h1 {
+			font-size: 2.5rem;
+		}
+
+		.hero-buttons {
+			flex-direction: column;
+			max-width: 200px;
+			margin: 0 auto;
+		}
+
+		.project-cards {
+			grid-template-columns: 1fr;
+		}
+	}
+</style>

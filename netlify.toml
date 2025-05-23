@@ -1,0 +1,40 @@
+[build]
+  command = "npm run build"
+  publish = "dist"
+  ignore = "git diff --quiet $CACHED_COMMIT_REF $COMMIT_REF -- . ':!.github'"
+
+[build.environment]
+  NODE_VERSION = "18"
+
+# Para habilitar el procesamiento de formularios
+[build.processing.html]
+  pretty_urls = true
+
+# Optimizaciones de caché y rendimiento
+[build.processing]
+  skip_processing = false
+
+[build.processing.css]
+  bundle = true
+  minify = true
+
+[build.processing.js]
+  bundle = true
+  minify = true
+
+[build.processing.images]
+  compress = true
+
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options = "DENY"
+    X-XSS-Protection = "1; mode=block"
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    Content-Security-Policy = "default-src 'self'; img-src 'self' https://via.placeholder.com data:; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline'"

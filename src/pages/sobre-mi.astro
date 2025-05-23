@@ -1,0 +1,212 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="Sobre Mí | Robert Marchanero">
+	<section class="about-page">
+		<h1>Sobre Mí</h1>
+		
+		<div class="about-content">
+			<div class="about-text">
+				<p>
+					¡Hola! Soy Robert Marchanero, un desarrollador web apasionado por crear experiencias 
+					digitales atractivas y funcionales. Mi camino en el desarrollo web comenzó hace varios 
+					años y desde entonces he trabajado con diversas tecnologías y frameworks.
+				</p>
+				
+				<p>
+					Me especializo en el desarrollo front-end con un enfoque particular en la creación de 
+					interfaces fluidas y responsivas. Disfruto trabajando con tecnologías modernas como 
+					Astro, React, Vue.js y Angular, combinadas con herramientas como TypeScript y SASS.
+				</p>
+				
+				<h2>Experiencia</h2>
+				<p>
+					A lo largo de mi carrera, he trabajado en diversos proyectos que me han permitido 
+					desarrollar habilidades en:
+				</p>
+				
+				<ul>
+					<li>Desarrollo de aplicaciones web SPA</li>
+					<li>Creación de sitios web estáticos de alta velocidad</li>
+					<li>Implementación de diseños responsive</li>
+					<li>Optimización del rendimiento web</li>
+					<li>Integración con APIs y servicios externos</li>
+				</ul>
+				
+				<h2>Formación</h2>
+				<p>
+					Cuento con una formación en Ingeniería Informática y constantemente me mantengo 
+					actualizado a través de cursos y certificaciones en el ámbito del desarrollo web.
+				</p>
+				
+				<h2>Valores profesionales</h2>
+				<p>
+					Creo firmemente en el trabajo bien hecho, la atención al detalle y el aprendizaje continuo. 
+					Me apasiona encontrar soluciones elegantes a problemas complejos y compartir conocimientos 
+					con la comunidad de desarrolladores.
+				</p>
+			</div>
+			
+			<div class="skills-section">
+				<h2>Habilidades</h2>
+				
+				<div class="skill-category">
+					<h3>Front-end</h3>
+					<div class="skills">
+						<span class="skill-tag">HTML5</span>
+						<span class="skill-tag">CSS3</span>
+						<span class="skill-tag">JavaScript</span>
+						<span class="skill-tag">TypeScript</span>
+						<span class="skill-tag">React</span>
+						<span class="skill-tag">Astro</span>
+						<span class="skill-tag">Vue.js</span>
+						<span class="skill-tag">TailwindCSS</span>
+					</div>
+				</div>
+				
+				<div class="skill-category">
+					<h3>Back-end</h3>
+					<div class="skills">
+						<span class="skill-tag">Node.js</span>
+						<span class="skill-tag">Express</span>
+						<span class="skill-tag">MongoDB</span>
+						<span class="skill-tag">SQL</span>
+					</div>
+				</div>
+				
+				<div class="skill-category">
+					<h3>Herramientas</h3>
+					<div class="skills">
+						<span class="skill-tag">Git</span>
+						<span class="skill-tag">VS Code</span>
+						<span class="skill-tag">Netlify</span>
+						<span class="skill-tag">Vercel</span>
+						<span class="skill-tag">Figma</span>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		<div class="cta-container">
+			<a href="/contacto" class="btn btn-primary">¡Hablemos!</a>
+			<a href="/proyectos" class="btn btn-outline">Ver mis proyectos</a>
+		</div>
+	</section>
+</Layout>
+
+<style>
+	.about-page {
+		max-width: 900px;
+		margin: 0 auto;
+		padding: 2rem 0;
+	}
+	
+	.about-page h1 {
+		font-size: 2.5rem;
+		margin-bottom: 2rem;
+		color: var(--color-primary);
+	}
+	
+	.about-content {
+		display: grid;
+		grid-template-columns: 3fr 2fr;
+		gap: 3rem;
+		margin-bottom: 3rem;
+	}
+	
+	.about-text p {
+		margin-bottom: 1.5rem;
+		font-size: 1.1rem;
+	}
+	
+	.about-text h2 {
+		font-size: 1.8rem;
+		color: var(--color-secondary);
+		margin: 2rem 0 1rem;
+	}
+	
+	.about-text ul {
+		margin-left: 1.5rem;
+		margin-bottom: 1.5rem;
+	}
+	
+	.about-text li {
+		margin-bottom: 0.5rem;
+	}
+	
+	.skills-section {
+		background-color: white;
+		border-radius: 8px;
+		padding: 1.5rem;
+		box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+	}
+	
+	.skill-category {
+		margin-bottom: 1.5rem;
+	}
+	
+	.skill-category h3 {
+		font-size: 1.2rem;
+		margin-bottom: 1rem;
+		color: var(--color-primary);
+	}
+	
+	.skills {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.5rem;
+	}
+	
+	.skill-tag {
+		background-color: rgba(52, 144, 220, 0.1);
+		color: var(--color-primary);
+		padding: 0.4rem 0.8rem;
+		border-radius: 20px;
+		font-size: 0.9rem;
+		font-weight: 500;
+	}
+	
+	.cta-container {
+		display: flex;
+		gap: 1rem;
+		justify-content: center;
+		margin-top: 2rem;
+	}
+	
+	.btn {
+		display: inline-block;
+		padding: 0.8rem 1.5rem;
+		border-radius: 5px;
+		text-decoration: none;
+		font-weight: 500;
+		transition: all 0.3s ease;
+	}
+	
+	.btn-primary {
+		background-color: var(--color-primary);
+		color: white;
+	}
+	
+	.btn-outline {
+		border: 2px solid var(--color-primary);
+		color: var(--color-primary);
+	}
+	
+	.btn:hover {
+		opacity: 0.9;
+		transform: translateY(-2px);
+	}
+	
+	@media (max-width: 768px) {
+		.about-content {
+			grid-template-columns: 1fr;
+		}
+		
+		.cta-container {
+			flex-direction: column;
+			max-width: 250px;
+			margin: 2rem auto;
+		}
+	}
+</style>

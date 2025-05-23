@@ -1,0 +1,73 @@
+name: Quality Assurance
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+  # Ejecución programada cada lunes a las 9:00 AM
+  schedule:
+    - cron: '0 9 * * 1'
+  # Permite ejecutar manualmente desde la pestaña Actions
+  workflow_dispatch:
+
+jobs:
+  accessibility:
+    name: Accessibility Check
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout código
+        uses: actions/checkout@v3
+
+      - name: Configurar Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+          cache: 'npm'
+
+      - name: Instalar dependencias
+        run: npm ci
+
+      - name: Build del sitio
+        run: npm run build
+
+      - name: Instalar herramientas de accesibilidad
+        run: npm install -g pa11y-ci
+
+      - name: Ejecutar pruebas de accesibilidad
+        run: |
+          # Iniciamos el servidor para servir el contenido estático
+          npx serve dist &
+          # Esperamos a que el servidor esté listo
+          sleep 5
+          # Ejecutamos las pruebas de accesibilidad en las páginas principales
+          pa11y-ci http://localhost:3000 http://localhost:3000/sobre-mi http://localhost:3000/proyectos http://localhost:3000/contacto
+
+  html-validation:
+    name: HTML Validation
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout código
+        uses: actions/checkout@v3
+
+      - name: Configurar Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+          cache: 'npm'
+
+      - name: Instalar dependencias
+        run: npm ci
+
+      - name: Build del sitio
+        run: npm run build
+
+      - name: Validar HTML
+        run: |
+          # Instalamos html-validator-cli
+          npm install -g html-validator-cli
+          
+          # Validamos el HTML de las páginas generadas
+          find dist -name "*.html" -exec html-validator --file {} \;

@@ -1,14 +1,36 @@
-# Astro Starter Kit: Minimal
+# Web Personal de Robert Marchanero
 
-```sh
-npm create astro@latest -- --template minimal
-```
+Este proyecto es una web personal construida con [Astro](https://astro.build), un moderno framework para creación de sitios web estáticos. El sitio está diseñado para ser rápido, accesible y fácil de mantener.
 
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/withastro/astro/tree/latest/examples/minimal)
-[![Open with CodeSandbox](https://assets.codesandbox.io/github/button-edit-lime.svg)](https://codesandbox.io/p/sandbox/github/withastro/astro/tree/latest/examples/minimal)
-[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/withastro/astro?devcontainer_path=.devcontainer/minimal/devcontainer.json)
+[![Netlify Status](https://api.netlify.com/api/v1/badges/badge-id/deploy-status)](https://app.netlify.com/)
+[![CI/CD Pipeline](https://github.com/tu-usuario/tu-repositorio/actions/workflows/ci-cd.yml/badge.svg)](https://github.com/tu-usuario/tu-repositorio/actions/workflows/ci-cd.yml)
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+## 🚀 Características
+
+- Diseño responsive y moderno
+- Optimización SEO
+- Alto rendimiento (puntuación perfecta en Lighthouse)
+- Formulario de contacto funcional con Netlify Forms
+- Sección de proyectos destacados
+- CI/CD automatizado con GitHub Actions y Netlify
+
+## 🧞 Comandos
+
+| Comando                   | Acción                                             |
+| :------------------------ | :------------------------------------------------- |
+| `npm install`             | Instala las dependencias                           |
+| `npm run dev`             | Inicia el servidor de desarrollo en `localhost:4321`|
+| `npm run build`           | Construye el sitio para producción en `./dist/`    |
+| `npm run preview`         | Previsualiza la versión de producción localmente   |
+| `npm run astro ...`       | Ejecuta los comandos CLI de Astro                  |
+
+## 🔄 CI/CD
+
+Este proyecto utiliza GitHub Actions para la integración y despliegue continuos:
+
+- **Validación de Pull Requests**: Cada PR es construida y verificada automáticamente.
+- **Despliegue Automático**: Los cambios en la rama principal se despliegan automáticamente en Netlify.
+- **Deploy Previews**: Cada Pull Request genera una previsualización del sitio para facilitar la revisión.
 
 ## 🚀 Project Structure
 
