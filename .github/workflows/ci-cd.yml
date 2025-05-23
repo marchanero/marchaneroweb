@@ -54,8 +54,8 @@ jobs:
       - name: Instalar dependencias
         run: npm ci
 
-      - name: Build del sitio
-        run: npm run build
+      - name: Build del sitio con verificaciones previas
+        run: npm run deploy
 
       - name: Deploy a Netlify
         uses: nwtgck/actions-netlify@v2

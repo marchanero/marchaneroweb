@@ -1,0 +1,75 @@
+name: Deployment Notifications
+
+on:
+  workflow_run:
+    workflows: ["CI/CD Pipeline"]
+    types:
+      - completed
+
+jobs:
+  notify:
+    runs-on: ubuntu-latest
+    if: ${{ github.event.workflow_run.conclusion == 'success' }}
+    
+    steps:
+      - name: Checkout código
+        uses: actions/checkout@v3
+        
+      # Notificación por Slack (opcional - requiere configuración adicional)
+      # - name: Notificar por Slack
+      #   uses: rtCamp/action-slack-notify@v2
+      #   env:
+      #     SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
+      #     SLACK_CHANNEL: deploys
+      #     SLACK_COLOR: ${{ job.status }}
+      #     SLACK_TITLE: Nuevo despliegue en Netlify
+      #     SLACK_MESSAGE: 'Sitio web desplegado correctamente :rocket:'
+      #     SLACK_FOOTER: 'Desde GitHub Actions'
+      
+      # Notificación por correo electrónico
+      - name: Enviar notificación por correo
+        uses: dawidd6/action-send-mail@v3
+        with:
+          server_address: ${{ secrets.MAIL_SERVER }}
+          server_port: ${{ secrets.MAIL_PORT }}
+          username: ${{ secrets.MAIL_USERNAME }}
+          password: ${{ secrets.MAIL_PASSWORD }}
+          subject: Nuevo despliegue del sitio web
+          body: |
+            ¡Se ha realizado un nuevo despliegue en Netlify!
+            
+            Commit: ${{ github.event.workflow_run.head_commit.message }}
+            Autor: ${{ github.event.workflow_run.head_commit.author.name }}
+            
+            Ver sitio: https://robert-marchanero.netlify.app
+            
+            Este es un mensaje automático del sistema de CI/CD.
+          to: tu-email@ejemplo.com
+          from: GitHub Actions <actions@github.com>
+          
+      # Crear una issue en GitHub si se necesita revisión post-despliegue
+      - name: Crear issue para revisión post-despliegue
+        if: ${{ github.event.workflow_run.head_branch == 'main' }}
+        uses: peter-evans/create-issue-from-file@v4
+        with:
+          title: Revisión post-despliegue - ${{ github.event.workflow_run.head_commit.message }}
+          content: |
+            ## Revisión Post-Despliegue
+            
+            Se ha realizado un nuevo despliegue en producción.
+            
+            ### Detalles:
+            
+            - **Commit**: ${{ github.event.workflow_run.head_commit.message }}
+            - **Autor**: ${{ github.event.workflow_run.head_commit.author.name }}
+            - **URL**: https://robert-marchanero.netlify.app
+            
+            ### Checklist de revisión:
+            
+            - [ ] Verificar que todas las páginas se cargan correctamente
+            - [ ] Comprobar que el formulario de contacto funciona
+            - [ ] Revisar la visualización en dispositivos móviles
+            - [ ] Verificar que no hay errores en la consola del navegador
+            
+            Una vez completada la revisión, cierra esta issue.
+          labels: revisión, despliegue

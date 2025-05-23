@@ -32,17 +32,12 @@ jobs:
       - name: Build del sitio
         run: npm run build
 
-      - name: Instalar herramientas de accesibilidad
-        run: npm install -g pa11y-ci
-
       - name: Ejecutar pruebas de accesibilidad
         run: |
-          # Iniciamos el servidor para servir el contenido estático
-          npx serve dist &
-          # Esperamos a que el servidor esté listo
-          sleep 5
-          # Ejecutamos las pruebas de accesibilidad en las páginas principales
-          pa11y-ci http://localhost:3000 http://localhost:3000/sobre-mi http://localhost:3000/proyectos http://localhost:3000/contacto
+          # Instalamos serve si no está disponible
+          npm install --no-save serve
+          # Ejecutamos el script de pruebas de accesibilidad que usa la configuración personalizada
+          npm run test:a11y
 
   html-validation:
     name: HTML Validation
