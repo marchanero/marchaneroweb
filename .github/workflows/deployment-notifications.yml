@@ -15,15 +15,14 @@ jobs:
       - name: Checkout código
         uses: actions/checkout@v4
         
-      # Notificación por Telegram (activado para equipos académicos)
+      # Notificación por Telegram
       - name: Notificar por Telegram
-        if: ${{ secrets.TELEGRAM_TO != '' && secrets.TELEGRAM_TOKEN != '' }}
         uses: appleboy/telegram-action@v0.1.1
         with:
           to: ${{ secrets.TELEGRAM_TO }}
           token: ${{ secrets.TELEGRAM_TOKEN }}
           message: |
-            🚀 *Sitio web académico desplegado correctamente*
+            🚀 *Sitio web desplegado correctamente*
             
             *Dr. Roberto Sánchez Reolid - UCLM*
             
@@ -33,7 +32,12 @@ jobs:
             
             🌐 Ver sitio: https://roberto-sreolid.netlify.app
             
-            _Universidad de Castilla-La Mancha - Grupo de Investigación_
+            📊 *Estado de validaciones*
+            ✅ Tests: Aprobados
+            ✅ Validación web: Aprobada
+            ✅ Estructura de contenido: Correcta
+            
+            _Universidad de Castilla-La Mancha_
           format: markdown
           disable_web_page_preview: true
       
@@ -45,9 +49,9 @@ jobs:
           server_port: ${{ secrets.MAIL_PORT }}
           username: ${{ secrets.MAIL_USERNAME }}
           password: ${{ secrets.MAIL_PASSWORD }}
-          subject: Actualización del sitio web académico - Dr. Roberto Sánchez Reolid
+          subject: Actualización del sitio web - Dr. Roberto Sánchez Reolid
           body: |
-            ¡Se ha realizado un nuevo despliegue del sitio web académico!
+            ¡Se ha realizado un nuevo despliegue del sitio web!
             
             Commit: ${{ github.event.workflow_run.head_commit.message }}
             Autor: ${{ github.event.workflow_run.head_commit.author.name }}
@@ -55,7 +59,7 @@ jobs:
             
             Ver sitio: https://roberto-sreolid.netlify.app
             
-            Todos los tests académicos y de SEO han pasado correctamente.
+            Todos los tests han pasado correctamente.
             
             Este es un mensaje automático del sistema de CI/CD de la UCLM.
           to: roberto.sreolid@uclm.es, webmaster@uclm.es
@@ -70,11 +74,11 @@ jobs:
         if: ${{ github.event.workflow_run.head_branch == 'main' }}
         uses: peter-evans/create-issue-from-file@v4
         with:
-          title: Revisión del sitio web académico - ${{ github.event.workflow_run.head_commit.message }}
+          title: Revisión del sitio web - ${{ github.event.workflow_run.head_commit.message }}
           content: |
-            ## Revisión Post-Despliegue del Sitio Web Académico
+            ## Revisión Post-Despliegue del Sitio Web
 
-            Se ha realizado un nuevo despliegue del sitio web académico del Dr. Roberto Sánchez Reolid.
+            Se ha realizado un nuevo despliegue del sitio web del Dr. Roberto Sánchez Reolid.
             
             ### Detalles:
             
@@ -83,16 +87,15 @@ jobs:
             - **URL**: https://roberto-sreolid.netlify.app
             - **Fecha de despliegue**: ${{ github.event.workflow_run.updated_at }}
             
-            ### Checklist de revisión académica:
+            ### Checklist de revisión:
             
             - [ ] Verificar que todas las páginas se cargan correctamente
-            - [ ] Comprobar que los enlaces a publicaciones académicas funcionan
-            - [ ] Verificar la información de contacto institucional
+            - [ ] Verificar la información de contacto 
             - [ ] Revisar la visualización en dispositivos móviles
-            - [ ] Comprobar los metadatos académicos y SEO
-            - [ ] Verificar que las referencias institucionales sean correctas
+            - [ ] Comprobar los metadatos y SEO
+            - [ ] Verificar que las referencias son correctas
             - [ ] Comprobar que el formulario de contacto funciona
-            - [ ] Verificar que los perfiles de redes académicas están correctamente enlazados
+            - [ ] Verificar que los enlaces externos funcionan correctamente
             - [ ] Revisar que no hay errores en la consola del navegador
             
             ### Indicadores de rendimiento:
@@ -103,5 +106,5 @@ jobs:
             - [ ] Score de Lighthouse > 95 en SEO
             
             Una vez completada la revisión, añade tus comentarios y cierra esta issue.
-          labels: revisión, web-académica, despliegue, UCLM
+          labels: revisión, web, despliegue, UCLM
           assignees: webmaster, roberto-sreolid

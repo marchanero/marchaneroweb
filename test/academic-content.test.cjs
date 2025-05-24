@@ -7,11 +7,46 @@
 const fs = require('fs');
 const path = require('path');
 const { JSDOM } = require('jsdom');
+const { spawnSync } = require('child_process');
+
+// Función para asegurar que existe el directorio dist con archivos generados
+function ensureDistExists() {
+  const distPath = path.join(__dirname, '..', 'dist');
+  
+  if (!fs.existsSync(distPath)) {
+    console.log('El directorio dist no existe. Ejecutando build...');
+    // Ejecutar build del sitio de forma sincrónica
+    const buildResult = spawnSync('npm', ['run', 'build'], {
+      cwd: path.join(__dirname, '..'),
+      stdio: 'inherit',
+      shell: true
+    });
+    
+    if (buildResult.status !== 0) {
+      console.error('Error al ejecutar el build del sitio');
+      throw new Error('Build failed');
+    }
+    
+    console.log('Build completado');
+  }
+  
+  // Verificar que ahora existe el directorio dist
+  if (!fs.existsSync(distPath)) {
+    throw new Error('No se pudo crear el directorio dist');
+  }
+}
 
 describe('Pruebas de contenido académico', () => {
+  // Asegurar que existe el directorio dist antes de todos los tests
+  beforeAll(() => {
+    ensureDistExists();
+  });
+  
   // Test para verificar la página de inicio
   test('La página de inicio muestra la información académica correcta', () => {
     const indexPath = path.join(__dirname, '..', 'dist', 'index.html');
+    expect(fs.existsSync(indexPath)).toBeTruthy();
+    
     const content = fs.readFileSync(indexPath, 'utf8');
     const dom = new JSDOM(content);
     const document = dom.window.document;
