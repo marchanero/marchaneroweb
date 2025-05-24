@@ -1,0 +1,381 @@
+name: Academic Citations Validation
+
+on:
+  # Ejecutar mensualmente
+  schedule:
+    - cron: '0 1 1 * *'  # El primer día de cada mes a la 1:00 AM UTC
+  # Permitir ejecución manual
+  workflow_dispatch:
+    inputs:
+      citation_check:
+        description: 'Verificar citas académicas en bases de datos externas'
+        type: boolean
+        default: false
+
+jobs:
+  validate-citations:
+    name: Validate Academic Citations
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout código
+        uses: actions/checkout@v4
+
+      - name: Configurar Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'npm'
+
+      - name: Instalar dependencias
+        run: npm ci
+
+      - name: Build del sitio
+        run: npm run build
+
+      - name: Extraer citas y referencias
+        run: |
+          mkdir -p citation-results
+          
+          # Escanear HTML para encontrar citas y DOIs
+          echo "Buscando citas y DOIs en el HTML generado..."
+          
+          # Crear script para extraer citas
+          cat > extract-citations.js << 'EOF'
+          const fs = require('fs');
+          const path = require('path');
+          const { JSDOM } = require('jsdom');
+          
+          // Función para extraer citas de un archivo HTML
+          function extractCitations(filePath) {
+            try {
+              const content = fs.readFileSync(filePath, 'utf8');
+              const dom = new JSDOM(content);
+              const document = dom.window.document;
+              
+              // Buscar citas en varios formatos comunes
+              const citations = {
+                bibtex: [],
+                doi: [],
+                plaintext: []
+              };
+              
+              // Buscar DOIs directos (formato 10.xxxx/xxxx)
+              const doiPattern = /10\.\d{4,}\/[^\s"'<>)]+/g;
+              const textContent = content.replace(/<[^>]*>/g, ' ');
+              const doiMatches = textContent.match(doiPattern) || [];
+              
+              doiMatches.forEach(doi => {
+                // Limpiar posibles caracteres no deseados al final
+                const cleanDoi = doi.replace(/[.,;:)"'\]]+$/, '');
+                citations.doi.push(cleanDoi);
+              });
+              
+              // Buscar elementos con citas en formato texto
+              const citationElements = Array.from(document.querySelectorAll('.citation, .reference, cite, blockquote'));
+              
+              citationElements.forEach(element => {
+                // Simplemente añadir el texto como cita en texto plano
+                const text = element.textContent.trim();
+                if (text) {
+                  citations.plaintext.push(text);
+                }
+              });
+              
+              // Buscar elementos BibTeX (normalmente en scripts o comentarios)
+              const bibtexPattern = /@[\w]+{[^@]*}/g;
+              const bibtexMatches = content.match(bibtexPattern) || [];
+              citations.bibtex = bibtexMatches;
+              
+              return {
+                file: filePath,
+                citations
+              };
+            } catch (error) {
+              console.error(`Error procesando ${filePath}:`, error);
+              return {
+                file: filePath,
+                error: error.message,
+                citations: { bibtex: [], doi: [], plaintext: [] }
+              };
+            }
+          }
+          
+          // Función para escanear directorios recursivamente
+          function scanDirectory(dir) {
+            const results = [];
+            
+            const entries = fs.readdirSync(dir, { withFileTypes: true });
+            
+            for (const entry of entries) {
+              const fullPath = path.join(dir, entry.name);
+              
+              if (entry.isDirectory()) {
+                results.push(...scanDirectory(fullPath));
+              } else if (entry.name.endsWith('.html')) {
+                results.push(extractCitations(fullPath));
+              }
+            }
+            
+            return results;
+          }
+          
+          // Escanear el directorio dist
+          const distPath = path.join(__dirname, 'dist');
+          const results = scanDirectory(distPath);
+          
+          // Eliminar duplicados de DOIs
+          const allDois = new Set();
+          results.forEach(result => {
+            result.citations.doi.forEach(doi => allDois.add(doi));
+          });
+          
+          // Generar informe
+          const report = {
+            total: {
+              files: results.length,
+              citations: {
+                bibtex: results.reduce((sum, r) => sum + r.citations.bibtex.length, 0),
+                doi: allDois.size,
+                plaintext: results.reduce((sum, r) => sum + r.citations.plaintext.length, 0)
+              }
+            },
+            uniqueDois: Array.from(allDois),
+            details: results
+          };
+          
+          // Guardar resultados
+          fs.writeFileSync('citation-results/citations.json', JSON.stringify(report, null, 2));
+          
+          // Crear resumen en Markdown
+          let markdown = '# Informe de Citas Académicas\n\n';
+          markdown += `Fecha: ${new Date().toISOString().split('T')[0]}\n\n`;
+          
+          markdown += '## Resumen\n\n';
+          markdown += `- **Archivos analizados:** ${report.total.files}\n`;
+          markdown += `- **DOIs únicos:** ${report.total.citations.doi}\n`;
+          markdown += `- **Citas en formato BibTeX:** ${report.total.citations.bibtex}\n`;
+          markdown += `- **Citas en texto plano:** ${report.total.citations.plaintext}\n\n`;
+          
+          markdown += '## DOIs encontrados\n\n';
+          report.uniqueDois.forEach(doi => {
+            markdown += `- \`${doi}\`\n`;
+          });
+          
+          fs.writeFileSync('citation-results/citations-report.md', markdown);
+          
+          console.log(`Se han encontrado ${report.total.citations.doi} DOIs únicos.`);
+          console.log('Informe generado en citation-results/');
+          EOF
+          
+          # Ejecutar el script de extracción
+          node extract-citations.js
+
+      - name: Guardar resultados de citas
+        uses: actions/upload-artifact@v4
+        with:
+          name: citation-analysis
+          path: citation-results/
+
+      - name: Verificar DOIs con servicios externos
+        if: ${{ github.event.inputs.citation_check == 'true' }}
+        run: |
+          # Crear script para verificar DOIs
+          cat > validate-dois.js << 'EOF'
+          const fs = require('fs');
+          const https = require('https');
+          
+          // Función para hacer petición GET con promesas
+          function httpsGet(url, headers = {}) {
+            return new Promise((resolve, reject) => {
+              const req = https.get(url, { headers }, (res) => {
+                if (res.statusCode !== 200) {
+                  reject(new Error(`Status Code: ${res.statusCode}`));
+                  res.resume();
+                  return;
+                }
+                
+                let data = '';
+                res.on('data', (chunk) => {
+                  data += chunk;
+                });
+                res.on('end', () => {
+                  try {
+                    resolve({ data, statusCode: res.statusCode, headers: res.headers });
+                  } catch (e) {
+                    reject(e);
+                  }
+                });
+              });
+              
+              req.on('error', (e) => {
+                reject(e);
+              });
+              
+              req.end();
+            });
+          }
+          
+          async function validateDoi(doi) {
+            try {
+              // Verificar con la API de DOI
+              const response = await httpsGet(`https://doi.org/${doi}`, {
+                'Accept': 'application/json'
+              });
+              
+              return {
+                doi,
+                valid: true,
+                statusCode: response.statusCode
+              };
+            } catch (error) {
+              return {
+                doi,
+                valid: false,
+                error: error.message
+              };
+            }
+          }
+          
+          async function main() {
+            try {
+              // Leer el archivo de citas
+              const citationsPath = 'citation-results/citations.json';
+              if (!fs.existsSync(citationsPath)) {
+                console.error('No se encontró el archivo de citas');
+                process.exit(1);
+              }
+              
+              const citations = JSON.parse(fs.readFileSync(citationsPath, 'utf8'));
+              const dois = citations.uniqueDois;
+              
+              console.log(`Validando ${dois.length} DOIs...`);
+              
+              // Para evitar muchas peticiones simultáneas, procesamos en lotes
+              const results = [];
+              const batchSize = 5;
+              
+              for (let i = 0; i < dois.length; i += batchSize) {
+                const batch = dois.slice(i, i + batchSize);
+                const batchResults = await Promise.all(batch.map(validateDoi));
+                results.push(...batchResults);
+                
+                // Pequeña pausa para no sobrecargar la API
+                if (i + batchSize < dois.length) {
+                  await new Promise(resolve => setTimeout(resolve, 1000));
+                }
+              }
+              
+              // Generar informe
+              const validDois = results.filter(r => r.valid);
+              const invalidDois = results.filter(r => !r.valid);
+              
+              const report = {
+                summary: {
+                  total: results.length,
+                  valid: validDois.length,
+                  invalid: invalidDois.length
+                },
+                valid: validDois,
+                invalid: invalidDois
+              };
+              
+              fs.writeFileSync('citation-results/doi-validation.json', JSON.stringify(report, null, 2));
+              
+              // Crear resumen en Markdown
+              let markdown = '# Validación de DOIs\n\n';
+              markdown += `Fecha: ${new Date().toISOString().split('T')[0]}\n\n`;
+              
+              markdown += '## Resumen\n\n';
+              markdown += `- **Total DOIs:** ${report.summary.total}\n`;
+              markdown += `- **DOIs válidos:** ${report.summary.valid}\n`;
+              markdown += `- **DOIs inválidos:** ${report.summary.invalid}\n\n`;
+              
+              if (invalidDois.length > 0) {
+                markdown += '## DOIs inválidos\n\n';
+                invalidDois.forEach(doi => {
+                  markdown += `- \`${doi.doi}\` - Error: ${doi.error}\n`;
+                });
+              }
+              
+              fs.writeFileSync('citation-results/doi-validation-report.md', markdown);
+              
+              console.log(`Validación completa: ${validDois.length} válidos, ${invalidDois.length} inválidos`);
+              
+            } catch (error) {
+              console.error('Error durante la validación:', error);
+              process.exit(1);
+            }
+          }
+          
+          main();
+          EOF
+          
+          # Ejecutar el script de validación
+          node validate-dois.js
+
+      - name: Guardar resultados de validación de DOIs
+        if: ${{ github.event.inputs.citation_check == 'true' }}
+        uses: actions/upload-artifact@v4
+        with:
+          name: doi-validation
+          path: citation-results/doi-*.md
+
+      - name: Notificar problemas de citas
+        if: ${{ success() }}
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const fs = require('fs');
+            
+            try {
+              if (fs.existsSync('citation-results/citations.json')) {
+                const citations = JSON.parse(fs.readFileSync('citation-results/citations.json', 'utf8'));
+                
+                if (citations.uniqueDois.length === 0) {
+                  github.rest.issues.create({
+                    owner: context.repo.owner,
+                    repo: context.repo.repo,
+                    title: 'Posible problema con citas académicas',
+                    body: `## Revisión de citas académicas
+                    
+                    No se encontraron DOIs en el sitio web académico. Esto podría indicar un problema con la forma en que se están mostrando las referencias académicas.
+                    
+                    ### Recomendaciones:
+                    
+                    - Verificar que las publicaciones incluyen los DOIs correspondientes
+                    - Asegurar que las citas están correctamente formateadas
+                    - Incluir metadatos Schema.org para publicaciones académicas
+                    
+                    Por favor, revise el contenido académico y asegúrese de que todas las publicaciones incluyen sus respectivos identificadores DOI.
+                    `,
+                    labels: ['citas-academicas', 'revision-necesaria']
+                  });
+                } else if (fs.existsSync('citation-results/doi-validation.json')) {
+                  const validation = JSON.parse(fs.readFileSync('citation-results/doi-validation.json', 'utf8'));
+                  
+                  if (validation.summary.invalid > 0) {
+                    const invalidDois = validation.invalid.map(d => `- \`${d.doi}\`: ${d.error}`).join('\n');
+                    
+                    github.rest.issues.create({
+                      owner: context.repo.owner,
+                      repo: context.repo.repo,
+                      title: `Se encontraron ${validation.summary.invalid} DOIs inválidos`,
+                      body: `## Revisión de DOIs necesaria
+                      
+                      Se han detectado problemas con ${validation.summary.invalid} DOIs académicos en el sitio web.
+                      
+                      ### DOIs con problemas:
+                      
+                      ${invalidDois}
+                      
+                      Por favor, revise y corrija estas referencias académicas para mantener la integridad del sitio web.
+                      `,
+                      labels: ['citas-academicas', 'error-doi']
+                    });
+                  }
+                }
+              }
+            } catch (error) {
+              core.setFailed(`Error al procesar información de citas: ${error.message}`);
+            }

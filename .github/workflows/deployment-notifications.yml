@@ -1,0 +1,107 @@
+name: Deployment Notifications
+
+on:
+  workflow_run:
+    workflows: ["CI/CD Pipeline"]
+    types:
+      - completed
+
+jobs:
+  notify:
+    runs-on: ubuntu-latest
+    if: ${{ github.event.workflow_run.conclusion == 'success' }}
+    
+    steps:
+      - name: Checkout código
+        uses: actions/checkout@v4
+        
+      # Notificación por Telegram (activado para equipos académicos)
+      - name: Notificar por Telegram
+        if: ${{ secrets.TELEGRAM_TO != '' && secrets.TELEGRAM_TOKEN != '' }}
+        uses: appleboy/telegram-action@v0.1.1
+        with:
+          to: ${{ secrets.TELEGRAM_TO }}
+          token: ${{ secrets.TELEGRAM_TOKEN }}
+          message: |
+            🚀 *Sitio web académico desplegado correctamente*
+            
+            *Dr. Roberto Sánchez Reolid - UCLM*
+            
+            📝 Commit: ${{ github.event.workflow_run.head_commit.message }}
+            👨‍💻 Autor: ${{ github.event.workflow_run.head_commit.author.name }}
+            🕒 Fecha: ${{ github.event.workflow_run.updated_at }}
+            
+            🌐 Ver sitio: https://roberto-sreolid.netlify.app
+            
+            _Universidad de Castilla-La Mancha - Grupo de Investigación_
+          format: markdown
+          disable_web_page_preview: true
+      
+      # Notificación por correo electrónico
+      - name: Enviar notificación por correo
+        uses: dawidd6/action-send-mail@v3
+        with:
+          server_address: ${{ secrets.MAIL_SERVER }}
+          server_port: ${{ secrets.MAIL_PORT }}
+          username: ${{ secrets.MAIL_USERNAME }}
+          password: ${{ secrets.MAIL_PASSWORD }}
+          subject: Actualización del sitio web académico - Dr. Roberto Sánchez Reolid
+          body: |
+            ¡Se ha realizado un nuevo despliegue del sitio web académico!
+            
+            Commit: ${{ github.event.workflow_run.head_commit.message }}
+            Autor: ${{ github.event.workflow_run.head_commit.author.name }}
+            Fecha: ${{ github.event.workflow_run.updated_at }}
+            
+            Ver sitio: https://roberto-sreolid.netlify.app
+            
+            Todos los tests académicos y de SEO han pasado correctamente.
+            
+            Este es un mensaje automático del sistema de CI/CD de la UCLM.
+          to: roberto.sreolid@uclm.es, webmaster@uclm.es
+          cc: grupo.investigacion@uclm.es
+          from: Despliegue Web UCLM <noreply@uclm.es>
+          attachments: |
+            CHANGELOG.md
+            README.md
+          
+      # Crear una issue en GitHub si se necesita revisión post-despliegue
+      - name: Crear issue para revisión post-despliegue
+        if: ${{ github.event.workflow_run.head_branch == 'main' }}
+        uses: peter-evans/create-issue-from-file@v4
+        with:
+          title: Revisión del sitio web académico - ${{ github.event.workflow_run.head_commit.message }}
+          content: |
+            ## Revisión Post-Despliegue del Sitio Web Académico
+
+            Se ha realizado un nuevo despliegue del sitio web académico del Dr. Roberto Sánchez Reolid.
+            
+            ### Detalles:
+            
+            - **Commit**: ${{ github.event.workflow_run.head_commit.message }}
+            - **Autor**: ${{ github.event.workflow_run.head_commit.author.name }}
+            - **URL**: https://roberto-sreolid.netlify.app
+            - **Fecha de despliegue**: ${{ github.event.workflow_run.updated_at }}
+            
+            ### Checklist de revisión académica:
+            
+            - [ ] Verificar que todas las páginas se cargan correctamente
+            - [ ] Comprobar que los enlaces a publicaciones académicas funcionan
+            - [ ] Verificar la información de contacto institucional
+            - [ ] Revisar la visualización en dispositivos móviles
+            - [ ] Comprobar los metadatos académicos y SEO
+            - [ ] Verificar que las referencias institucionales sean correctas
+            - [ ] Comprobar que el formulario de contacto funciona
+            - [ ] Verificar que los perfiles de redes académicas están correctamente enlazados
+            - [ ] Revisar que no hay errores en la consola del navegador
+            
+            ### Indicadores de rendimiento:
+            
+            - [ ] Tiempo de carga < 2s
+            - [ ] Score de Lighthouse > 90 en Performance
+            - [ ] Score de Lighthouse > 95 en Accesibilidad
+            - [ ] Score de Lighthouse > 95 en SEO
+            
+            Una vez completada la revisión, añade tus comentarios y cierra esta issue.
+          labels: revisión, web-académica, despliegue, UCLM
+          assignees: webmaster, roberto-sreolid

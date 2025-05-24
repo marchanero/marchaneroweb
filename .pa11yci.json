@@ -1,0 +1,15 @@
+{
+  "defaults": {
+    "chromeLaunchConfig": {
+      "args": ["--no-sandbox", "--disable-setuid-sandbox", "--disable-dev-shm-usage"]
+    },
+    "timeout": 60000,
+    "concurrency": 2
+  },
+  "urls": [
+    "http://localhost:3000",
+    "http://localhost:3000/sobre-mi",
+    "http://localhost:3000/proyectos",
+    "http://localhost:3000/contacto"
+  ]
+}

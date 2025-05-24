@@ -11,10 +11,10 @@ const { JSDOM } = require('jsdom');
 describe('Pruebas de SEO y estructura', () => {
   // Rutas de las páginas principales
   const pages = [
-    { path: '/index.html', title: 'Robert Marchanero | Desarrollador Web' },
-    { path: '/sobre-mi/index.html', title: 'Sobre Mí | Robert Marchanero' },
-    { path: '/proyectos/index.html', title: 'Proyectos | Robert Marchanero' },
-    { path: '/contacto/index.html', title: 'Contacto | Robert Marchanero' }
+    { path: '/index.html', title: 'Roberto Sánchez Reolid | PhD' },
+    { path: '/sobre-mi/index.html', title: 'Sobre Mí | Roberto Sánchez Reolid' },
+    { path: '/proyectos/index.html', title: 'Investigaciones | Roberto Sánchez Reolid' },
+    { path: '/contacto/index.html', title: 'Contacto | Roberto Sánchez Reolid' }
   ];
   
   // Prueba que cada página tenga el título correcto
