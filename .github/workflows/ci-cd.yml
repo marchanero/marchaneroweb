@@ -3,8 +3,6 @@ name: CI/CD Pipeline
 on:
   push:
     branches: [ main ]
-  pull_request:
-    branches: [ main ]
   # Permite ejecutar manualmente desde la pestaña Actions
   workflow_dispatch:
   # Programación para ejecuciones periódicas (cada semana)
@@ -12,8 +10,9 @@ on:
     - cron: '0 8 * * 1' # Cada lunes a las 8:00 AM UTC
 
 jobs:
-  test:
-    name: Test
+  # Paso 1: Verificación inicial de código
+  lint:
+    name: Lint and Analyze
     runs-on: ubuntu-latest
 
     steps:
@@ -29,22 +28,91 @@ jobs:
       - name: Instalar dependencias
         run: npm ci
 
-      - name: Verificar sintaxis y ejecutar tests
+      - name: Verificar sintaxis
         run: |
-          # Comprobamos que el proyecto compila sin errores y pasa las pruebas
-          npm run test:build
+          # Verificamos que el proyecto compila sin errores
+          npm run build
+          
+  # Paso 2: Ejecución de tests
+  test:
+    name: Run Tests
+    needs: lint
+    runs-on: ubuntu-latest
 
-      - name: Verificar contenido académico
+    steps:
+      - name: Checkout código
+        uses: actions/checkout@v4
+
+      - name: Configurar Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'npm'
+
+      - name: Instalar dependencias
+        run: npm ci
+        
+      - name: Ejecutar tests completos
+        run: npm run test:build
+        
+      - name: Verificar contenido específico
         run: |
-          # Verificamos específicamente los tests académicos
+          # Verificamos tests específicos
+          npx jest --config=jest.config.cjs test/pages.test.cjs
+          npx jest --config=jest.config.cjs test/seo.test.cjs
           npx jest --config=jest.config.cjs test/academic-content.test.cjs
-
-  build-and-deploy:
-    name: Build y Deploy
+          
+  # Paso 3: Build y optimización para producción
+  build:
+    name: Build for Production
     needs: test
     runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout código
+        uses: actions/checkout@v4
+
+      - name: Configurar Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'npm'
+
+      - name: Instalar dependencias
+        run: npm ci
+        
+      - name: Build para producción
+        run: npm run build
+        
+      - name: Optimizar assets
+        run: |
+          # Instalar herramientas necesarias
+          npm install --no-save html-minifier-terser
+          
+          # Optimizar HTML, CSS, y JavaScript
+          find ./dist -type f -name "*.html" -exec npx html-minifier-terser --collapse-whitespace --remove-comments --remove-optional-tags --remove-redundant-attributes --remove-script-type-attributes --remove-tag-whitespace --use-short-doctype -o {} {} \;
+          
+          # Comprimir para CDN
+          find ./dist -type f -name "*.js" -exec gzip -9 -k {} \;
+          find ./dist -type f -name "*.css" -exec gzip -9 -k {} \;
+          find ./dist -type f -name "*.html" -exec gzip -9 -k {} \;
+          
+          echo "Assets optimizados para producción"
+      
+      - name: Subir artefacto de build
+        uses: actions/upload-artifact@v4
+        with:
+          name: production-build
+          path: ./dist
+          retention-days: 1
+
+  # Paso 4: Despliegue a producción
+  deploy:
+    name: Deploy to Production
+    needs: build
+    runs-on: ubuntu-latest
     # Solo ejecutamos el despliegue cuando se trata de la rama principal
-    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    if: github.event_name == 'push' || github.event_name == 'workflow_dispatch'
 
     steps:
       - name: Checkout código

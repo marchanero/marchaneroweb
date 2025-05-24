@@ -6,8 +6,9 @@ on:
     types: [opened, synchronize, reopened, ready_for_review]
 
 jobs:
-  validate:
-    name: Validate PR
+  # Paso 1: Validación básica del código
+  lint-and-build:
+    name: Lint and Build
     runs-on: ubuntu-latest
     # No ejecutar en PRs marcados como draft
     if: github.event.pull_request.draft == false
@@ -25,31 +26,84 @@ jobs:
       - name: Instalar dependencias
         run: npm ci
 
-      - name: Ejecutar tests
-        run: npm run test
-
       - name: Verificar build
         run: npm run build
         
-      - name: Verificar contenido académico
-        run: |
-          npx jest --config=jest.config.cjs test/academic-content.test.cjs
-          npx jest --config=jest.config.cjs test/advanced-seo.test.cjs
+  # Paso 2: Tests funcionales
+  test:
+    name: Run Tests
+    runs-on: ubuntu-latest
+    needs: lint-and-build
+    
+    steps:
+      - name: Checkout código
+        uses: actions/checkout@v4
 
+      - name: Configurar Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'npm'
+
+      - name: Instalar dependencias
+        run: npm ci
+        
+      - name: Ejecutar tests completos
+        run: npm run test:build
+        
+      - name: Verificar contenido específico
+        run: |
+          # Estos tests ya se ejecutaron como parte de test:build, pero los ejecutamos
+          # por separado para tener un informe más específico
+          npx jest --config=jest.config.cjs test/pages.test.cjs
+          npx jest --config=jest.config.cjs test/seo.test.cjs
+
+  # Paso 3: Generar preview de despliegue
+  deploy-preview:
+    name: Deploy Preview
+    runs-on: ubuntu-latest
+    needs: test
+    
+    steps:
+      - name: Checkout código
+        uses: actions/checkout@v4
+
+      - name: Configurar Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'npm'
+
+      - name: Instalar dependencias
+        run: npm ci
+        
+      - name: Build
+        run: npm run build
+      
       - name: Deploy Preview
         uses: nwtgck/actions-netlify@v2
         with:
           publish-dir: './dist'
           github-token: ${{ secrets.GITHUB_TOKEN }}
-          deploy-message: "Vista previa académica desde PR #${{ github.event.number }}"
+          deploy-message: "Vista previa desde PR #${{ github.event.number }}"
           enable-pull-request-comment: true
           enable-commit-comment: false
           overwrites-pull-request-comment: true
-          alias: preview-academico-${{ github.event.number }}
+          alias: preview-web-${{ github.event.number }}
         env:
           NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
           NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
         timeout-minutes: 5
+        
+  # Paso 4: Notificación de resultados
+  notify-results:
+    name: Notify Results
+    runs-on: ubuntu-latest
+    needs: deploy-preview
+    
+    steps:
+      - name: Checkout código
+        uses: actions/checkout@v4
         
       - name: Comentario con resumen de cambios
         uses: actions/github-script@v7
@@ -63,16 +117,21 @@ jobs:
                 repo: context.repo.repo,
                 body: `## Validación completa ✅
                 
-                La vista previa del sitio web académico está disponible para su revisión.
+                La vista previa del sitio web está disponible para su revisión.
+                
+                ### Proceso completado secuencialmente:
+                1. ✓ Build verificado
+                2. ✓ Tests ejecutados correctamente
+                3. ✓ Preview generado y desplegado
                 
                 ### Tests completados:
-                - ✓ Contenido académico
-                - ✓ Metadatos SEO académicos
+                - ✓ Contenido de páginas
+                - ✓ Metadatos SEO
                 - ✓ Construcción completa del sitio
                 
                 Por favor revisar especialmente:
                 - Referencias institucionales
-                - Publicaciones académicas
+                - Estructura de navegación
                 - Información de contacto
                 
                 Gracias por contribuir al sitio web del Dr. Roberto Sánchez Reolid.`

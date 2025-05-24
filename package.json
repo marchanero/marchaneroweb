@@ -19,14 +19,17 @@
     "pre-deploy:a11y": "npm run build && node scripts/pre-deploy-check.js --with-a11y",
     "deploy": "npm run pre-deploy && npm run build",
     "deploy:a11y": "npm run pre-deploy:a11y && npm run build",
-    "generate:sitemap": "astro build && node scripts/generate-sitemap.js",
     "test:academic": "jest --config=jest.config.cjs test/academic-content.test.cjs",
     "test:seo": "jest --config=jest.config.cjs test/advanced-seo.test.cjs",
+    "test:pages": "jest --config=jest.config.cjs test/pages.test.cjs test/seo.test.cjs",
+    "test:all-fixed": "jest --config=jest.config.cjs test/academic-content.test.cjs test/advanced-seo.test.cjs test/pages.test.cjs test/seo.test.cjs",
     "check:performance": "npx lighthouse-ci http://localhost:4321 --config=./.github/lighthouse-config.json",
-    "check:citations": "node scripts/validate-citations.js"
+    "verify:telegram": "node scripts/verify-telegram-config.js",
+    "import:env:netlify": "node scripts/import-env-to-netlify.js"
   },
   "dependencies": {
-    "astro": "^5.8.0"
+    "astro": "^5.8.0",
+    "dotenv": "^16.5.0"
   },
   "devDependencies": {
     "@babel/preset-env": "^7.27.2",
