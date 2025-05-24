@@ -4,7 +4,7 @@ interface Props {
 	description?: string;
 }
 
-const { title, description = "Web personal de Robert Marchanero" } = Astro.props;
+const { title, description = "Web personal de Roberto Sánchez Reolid | Investigador en UCLM" } = Astro.props;
 ---
 
 <!doctype html>
@@ -16,16 +16,24 @@ const { title, description = "Web personal de Robert Marchanero" } = Astro.props
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="generator" content={Astro.generator} />
 		<title>{title}</title>
+		<!-- SEO y Social Media -->
+		<meta name="author" content="Roberto Sánchez Reolid" />
+		<meta name="keywords" content="Roberto Sánchez Reolid, investigación, UCLM, Universidad Castilla-La Mancha, inteligencia artificial, computación cuántica, sistemas distribuidos" />
+		<meta property="og:title" content={title} />
+		<meta property="og:description" content={description} />
+		<meta property="og:type" content="website" />
+		<meta property="og:locale" content="es_ES" />
+		<meta name="twitter:card" content="summary_large_image" />
 	</head>
 	<body>
 		<header class="header">
 			<div class="container">
 				<nav class="nav">
-					<a href="/" class="logo">Robert Marchanero</a>
+					<a href="/" class="logo">Dr. Roberto Sánchez Reolid</a>
 					<ul class="nav-links">
 						<li><a href="/">Inicio</a></li>
 						<li><a href="/sobre-mi">Sobre mí</a></li>
-						<li><a href="/proyectos">Proyectos</a></li>
+						<li><a href="/proyectos">Investigaciones</a></li>
 						<li><a href="/contacto">Contacto</a></li>
 					</ul>
 				</nav>
@@ -36,17 +44,21 @@ const { title, description = "Web personal de Robert Marchanero" } = Astro.props
 		</main>
 		<footer class="footer">
 			<div class="container">
-				<p>&copy; {new Date().getFullYear()} Robert Marchanero. Todos los derechos reservados.</p>
+				<div class="footer-content">
+					<p>&copy; {new Date().getFullYear()} Dr. Roberto Sánchez Reolid. Todos los derechos reservados.</p>
+					<p class="institutional">Universidad de Castilla-La Mancha</p>
+				</div>
 			</div>
 		</footer>
 
 		<style is:global>
 			:root {
-				--color-primary: #3490dc;
-				--color-secondary: #38b2ac;
+				--color-primary: #1e4b7d;
+				--color-secondary: #2c6e6b;
 				--color-dark: #1a202c;
 				--color-light: #f7fafc;
 				--color-gray: #a0aec0;
+				--color-accent: #8a2846;
 				--font-sans: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
 			}
 			
@@ -86,7 +98,7 @@ const { title, description = "Web personal de Robert Marchanero" } = Astro.props
 			}
 			
 			.logo {
-				font-size: 1.5rem;
+				font-size: 1.3rem;
 				font-weight: bold;
 				color: var(--color-primary);
 				text-decoration: none;
@@ -115,6 +127,17 @@ const { title, description = "Web personal de Robert Marchanero" } = Astro.props
 				text-align: center;
 				padding: 2rem 0;
 				margin-top: 4rem;
+			}
+			
+			.footer-content {
+				display: flex;
+				flex-direction: column;
+				gap: 0.5rem;
+			}
+			
+			.institutional {
+				color: var(--color-gray);
+				font-size: 0.9rem;
 			}
 
 			h1, h2, h3, h4, h5, h6 {
