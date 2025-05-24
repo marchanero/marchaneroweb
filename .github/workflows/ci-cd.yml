@@ -7,6 +7,9 @@ on:
     branches: [ main ]
   # Permite ejecutar manualmente desde la pestaña Actions
   workflow_dispatch:
+  # Programación para ejecuciones periódicas (cada semana)
+  schedule:
+    - cron: '0 8 * * 1' # Cada lunes a las 8:00 AM UTC
 
 jobs:
   test:
@@ -15,24 +18,26 @@ jobs:
 
     steps:
       - name: Checkout código
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Configurar Node.js
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4
         with:
-          node-version: 18
+          node-version: 20
           cache: 'npm'
 
       - name: Instalar dependencias
         run: npm ci
 
-      - name: Verificar sintáxis y ejecutar tests
+      - name: Verificar sintaxis y ejecutar tests
         run: |
-          # Si tienes ESLint instalado, puedes descomentar esta línea
-          # npm run lint
-          
           # Comprobamos que el proyecto compila sin errores y pasa las pruebas
           npm run test:build
+
+      - name: Verificar contenido académico
+        run: |
+          # Verificamos específicamente los tests académicos
+          npx jest --config=jest.config.cjs test/academic-content.test.cjs
 
   build-and-deploy:
     name: Build y Deploy
@@ -43,12 +48,12 @@ jobs:
 
     steps:
       - name: Checkout código
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Configurar Node.js
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4
         with:
-          node-version: 18
+          node-version: 20
           cache: 'npm'
 
       - name: Instalar dependencias
@@ -57,16 +62,73 @@ jobs:
       - name: Build del sitio con verificaciones previas
         run: npm run deploy
 
+      - name: Verificar metadatos SEO académicos
+        run: |
+          npx jest --config=jest.config.cjs test/advanced-seo.test.cjs
+
+      - name: Optimizar assets para mejorar rendimiento
+        run: |
+          # Instalar herramientas de optimización si no están disponibles
+          npm install --no-save terser clean-css-cli html-minifier-terser
+          
+          # Optimizar JavaScript
+          find ./dist -type f -name "*.js" -exec npx terser {} -o {} \;
+          
+          # Optimizar CSS
+          find ./dist -type f -name "*.css" -exec npx cleancss -o {} {} \;
+          
+          # Optimizar HTML
+          find ./dist -type f -name "*.html" -exec npx html-minifier-terser --collapse-whitespace --remove-comments --remove-optional-tags --remove-redundant-attributes --remove-script-type-attributes --remove-tag-whitespace --use-short-doctype -o {} {} \;
+          
+          # Comprimir para CDN
+          find ./dist -type f -name "*.js" -exec gzip -9 -k {} \;
+          find ./dist -type f -name "*.css" -exec gzip -9 -k {} \;
+          find ./dist -type f -name "*.html" -exec gzip -9 -k {} \;
+          
+          echo "Assets optimizados y comprimidos para mejor rendimiento"
+
+      - name: Generar sitemap.xml
+        run: |
+          echo '<?xml version="1.0" encoding="UTF-8"?>' > ./dist/sitemap.xml
+          echo '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">' >> ./dist/sitemap.xml
+          
+          # Página principal
+          echo '  <url>' >> ./dist/sitemap.xml
+          echo '    <loc>https://roberto-sreolid.netlify.app/</loc>' >> ./dist/sitemap.xml
+          echo '    <lastmod>'$(date +%Y-%m-%d)'</lastmod>' >> ./dist/sitemap.xml
+          echo '    <priority>1.00</priority>' >> ./dist/sitemap.xml
+          echo '  </url>' >> ./dist/sitemap.xml
+          
+          # Otras páginas
+          for page in sobre-mi proyectos contacto; do
+            echo '  <url>' >> ./dist/sitemap.xml
+            echo '    <loc>https://roberto-sreolid.netlify.app/'$page'/</loc>' >> ./dist/sitemap.xml
+            echo '    <lastmod>'$(date +%Y-%m-%d)'</lastmod>' >> ./dist/sitemap.xml
+            echo '    <priority>0.80</priority>' >> ./dist/sitemap.xml
+            echo '  </url>' >> ./dist/sitemap.xml
+          done
+          
+          echo '</urlset>' >> ./dist/sitemap.xml
+          echo "Sitemap generado en ./dist/sitemap.xml"
+          
+      - name: Generar robots.txt académico
+        run: |
+          echo "User-agent: *" > ./dist/robots.txt
+          echo "Allow: /" >> ./dist/robots.txt
+          echo "Sitemap: https://roberto-sreolid.netlify.app/sitemap.xml" >> ./dist/robots.txt
+          echo "Robots.txt generado en ./dist/robots.txt"
+
       - name: Deploy a Netlify
         uses: nwtgck/actions-netlify@v2
         with:
           publish-dir: './dist'
           production-branch: main
           github-token: ${{ secrets.GITHUB_TOKEN }}
-          deploy-message: "Deploy desde GitHub Actions"
+          deploy-message: "Deploy académico desde GitHub Actions"
           enable-pull-request-comment: true
           enable-commit-comment: true
           overwrites-pull-request-comment: true
+          functions-dir: './netlify/functions' # Opcional si tienes funciones serverless
         env:
           NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
           NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}

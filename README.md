@@ -1,6 +1,6 @@
-# Web Personal de Robert Marchanero
+# Web Personal del Dr. Roberto Sánchez Reolid
 
-Este proyecto es una web personal construida con [Astro](https://astro.build), un moderno framework para creación de sitios web estáticos. El sitio está diseñado para ser rápido, accesible y fácil de mantener.
+Este proyecto es un sitio web académico construido con [Astro](https://astro.build), un moderno framework para creación de sitios web estáticos. El sitio está diseñado para presentar el perfil de investigador, publicaciones y áreas de especialización del Dr. Roberto Sánchez Reolid, investigador en la Universidad de Castilla-La Mancha.
 
 [![Netlify Status](https://api.netlify.com/api/v1/badges/badge-id/deploy-status)](https://app.netlify.com/)
 [![CI/CD Pipeline](https://github.com/tu-usuario/tu-repositorio/actions/workflows/ci-cd.yml/badge.svg)](https://github.com/tu-usuario/tu-repositorio/actions/workflows/ci-cd.yml)

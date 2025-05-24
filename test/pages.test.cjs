@@ -34,9 +34,10 @@ describe('Pruebas de generación de páginas', () => {
       expect(content.length).toBeGreaterThan(0);
       
       // Verificamos que tiene la estructura básica de un HTML
-      expect(content).toContain('<!doctype html>');
-      expect(content).toContain('<html');
-      expect(content).toContain('</html>');
+      const contentLower = content.toLowerCase();
+      expect(contentLower).toContain('<!doctype html>');
+      expect(contentLower).toContain('<html');
+      expect(contentLower).toContain('</html>');
     });
   });
   

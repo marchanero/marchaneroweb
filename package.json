@@ -1,24 +1,29 @@
 {
-  "name": "robert-marchanero-web",
+  "name": "roberto-sanchez-reolid-web",
   "type": "module",
   "version": "1.0.0",
-  "description": "Sitio web personal de Robert Marchanero",
-  "author": "Robert Marchanero",
+  "description": "Sitio web académico del Dr. Roberto Sánchez Reolid",
+  "author": "Roberto Sánchez Reolid",
   "scripts": {
     "dev": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
     "astro": "astro",
-    "test": "jest",
-    "test:build": "npm run build && jest",
-    "test:ci": "jest --ci",
+    "test": "jest --config=jest.config.cjs",
+    "test:build": "npm run build && jest --config=jest.config.cjs",
+    "test:ci": "jest --config=jest.config.cjs --ci",
     "test:a11y": "npx serve dist -s & sleep 5 && npx pa11y-ci --config .pa11yci.json; kill $!",
     "check:chromium": "node scripts/check-chromium.js",
     "check:a11y": "npm run build && npm run test:a11y",
     "pre-deploy": "node scripts/pre-deploy-check.js",
     "pre-deploy:a11y": "npm run build && node scripts/pre-deploy-check.js --with-a11y",
     "deploy": "npm run pre-deploy && npm run build",
-    "deploy:a11y": "npm run pre-deploy:a11y && npm run build"
+    "deploy:a11y": "npm run pre-deploy:a11y && npm run build",
+    "generate:sitemap": "astro build && node scripts/generate-sitemap.js",
+    "test:academic": "jest --config=jest.config.cjs test/academic-content.test.cjs",
+    "test:seo": "jest --config=jest.config.cjs test/advanced-seo.test.cjs",
+    "check:performance": "npx lighthouse-ci http://localhost:4321 --config=./.github/lighthouse-config.json",
+    "check:citations": "node scripts/validate-citations.js"
   },
   "dependencies": {
     "astro": "^5.8.0"

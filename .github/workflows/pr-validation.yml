@@ -3,39 +3,80 @@ name: Pull Request Validation
 on:
   pull_request:
     branches: [ main ]
+    types: [opened, synchronize, reopened, ready_for_review]
 
 jobs:
   validate:
     name: Validate PR
     runs-on: ubuntu-latest
+    # No ejecutar en PRs marcados como draft
+    if: github.event.pull_request.draft == false
 
     steps:
       - name: Checkout código
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Configurar Node.js
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4
         with:
-          node-version: 18
+          node-version: 20
           cache: 'npm'
 
       - name: Instalar dependencias
         run: npm ci
 
+      - name: Ejecutar tests
+        run: npm run test
+
       - name: Verificar build
         run: npm run build
+        
+      - name: Verificar contenido académico
+        run: |
+          npx jest --config=jest.config.cjs test/academic-content.test.cjs
+          npx jest --config=jest.config.cjs test/advanced-seo.test.cjs
 
       - name: Deploy Preview
         uses: nwtgck/actions-netlify@v2
         with:
           publish-dir: './dist'
           github-token: ${{ secrets.GITHUB_TOKEN }}
-          deploy-message: "Deploy Preview desde PR #${{ github.event.number }}"
+          deploy-message: "Vista previa académica desde PR #${{ github.event.number }}"
           enable-pull-request-comment: true
           enable-commit-comment: false
           overwrites-pull-request-comment: true
-          alias: deploy-preview-${{ github.event.number }}
+          alias: preview-academico-${{ github.event.number }}
         env:
           NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
           NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
         timeout-minutes: 5
+        
+      - name: Comentario con resumen de cambios
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const fs = require('fs');
+            try {
+              github.rest.issues.createComment({
+                issue_number: context.issue.number,
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                body: `## Validación completa ✅
+                
+                La vista previa del sitio web académico está disponible para su revisión.
+                
+                ### Tests completados:
+                - ✓ Contenido académico
+                - ✓ Metadatos SEO académicos
+                - ✓ Construcción completa del sitio
+                
+                Por favor revisar especialmente:
+                - Referencias institucionales
+                - Publicaciones académicas
+                - Información de contacto
+                
+                Gracias por contribuir al sitio web del Dr. Roberto Sánchez Reolid.`
+              });
+            } catch (error) {
+              core.setFailed(`Error en el comentario: ${error.message}`);
+            }

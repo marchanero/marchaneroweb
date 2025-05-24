@@ -5,9 +5,9 @@ on:
     branches: [ main ]
   pull_request:
     branches: [ main ]
-  # Ejecución programada cada lunes a las 9:00 AM
+  # Ejecución programada dos veces por semana (lunes y jueves)
   schedule:
-    - cron: '0 9 * * 1'
+    - cron: '0 9 * * 1,4'
   # Permite ejecutar manualmente desde la pestaña Actions
   workflow_dispatch:
 
@@ -18,12 +18,12 @@ jobs:
 
     steps:
       - name: Checkout código
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Configurar Node.js
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4
         with:
-          node-version: 18
+          node-version: 20
           cache: 'npm'
 
       - name: Instalar dependencias
@@ -38,6 +38,28 @@ jobs:
           npm install --no-save serve
           # Ejecutamos el script de pruebas de accesibilidad que usa la configuración personalizada
           npm run test:a11y
+          
+      - name: Generar reporte de accesibilidad
+        if: always()
+        run: |
+          echo "## Reporte de accesibilidad" > accessibility-report.md
+          echo "Fecha: $(date)" >> accessibility-report.md
+          echo "### Resultados:" >> accessibility-report.md
+          
+          if [ -f ".pa11yci-results.json" ]; then
+            echo "✅ Pruebas de accesibilidad completadas. Ver detalles en los artifacts." >> accessibility-report.md
+          else
+            echo "❌ Pruebas de accesibilidad fallidas o no generaron resultados." >> accessibility-report.md
+          fi
+          
+      - name: Guardar reporte de accesibilidad
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: accessibility-reports
+          path: |
+            accessibility-report.md
+            .pa11yci-results.json
 
   html-validation:
     name: HTML Validation
@@ -45,12 +67,12 @@ jobs:
 
     steps:
       - name: Checkout código
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Configurar Node.js
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4
         with:
-          node-version: 18
+          node-version: 20
           cache: 'npm'
 
       - name: Instalar dependencias
@@ -65,4 +87,50 @@ jobs:
           npm install -g html-validator-cli
           
           # Validamos el HTML de las páginas generadas
-          find dist -name "*.html" -exec html-validator --file {} \;
+          mkdir -p validation-results
+          find dist -name "*.html" -exec sh -c 'html-validator --file "$1" > validation-results/$(basename "$1").validation.txt 2>&1 || echo "Error validating $1"' sh {} \;
+          
+      - name: Guardar resultados de validación HTML
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: html-validation-results
+          path: validation-results/
+          
+  schema-validation:
+    name: Academic Schema.org Validation
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout código
+        uses: actions/checkout@v4
+        
+      - name: Configurar Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'npm'
+          
+      - name: Instalar dependencias
+        run: npm ci
+        
+      - name: Build del sitio
+        run: npm run build
+        
+      - name: Instalar herramientas para Schema.org
+        run: |
+          npm install -g schema-validator structured-data-testing-tool
+          
+      - name: Validar Schema.org
+        run: |
+          mkdir -p schema-results
+          
+          # Extraer y validar esquemas JSON-LD
+          find dist -name "*.html" -exec sh -c 'echo "Validating $1" && structured-data-testing-tool --file "$1" --schemas=jsonld > schema-results/$(basename "$1").schema.txt 2>&1 || echo "Error with $1"' sh {} \;
+          
+      - name: Guardar resultados de validación Schema.org
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: schema-validation-results
+          path: schema-results/

@@ -25,20 +25,20 @@ const getEnvironment = () => {
 const config = {
   // Valores por defecto (development)
   baseUrl: 'http://localhost:4321',
-  siteTitle: 'Robert Marchanero - Desarrollador Web',
+  siteTitle: 'Dr. Roberto Sánchez Reolid - Investigador UCLM',
   apiTimeout: 5000,
   
   // Valores para staging
   [ENV.staging]: {
-    baseUrl: 'https://staging-robert-marchanero.netlify.app',
-    siteTitle: '[Staging] Robert Marchanero - Desarrollador Web',
+    baseUrl: 'https://staging-roberto-sreolid.netlify.app',
+    siteTitle: '[Staging] Dr. Roberto Sánchez Reolid - Investigador UCLM',
     apiTimeout: 10000,
   },
   
   // Valores para producción
   [ENV.production]: {
-    baseUrl: 'https://robert-marchanero.netlify.app',
-    siteTitle: 'Robert Marchanero - Desarrollador Web',
+    baseUrl: 'https://roberto-sreolid.netlify.app',
+    siteTitle: 'Dr. Roberto Sánchez Reolid - Investigador UCLM',
     apiTimeout: 10000,
   },
 };
