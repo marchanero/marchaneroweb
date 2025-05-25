@@ -3,14 +3,14 @@ name: Deploy to Netlify
 on:
   push:
     branches: [ main ]
-  pull_request:
-    branches: [ main ]
-    types: [opened, synchronize, reopened, ready_for_review]
-  # Permite ejecutar manualmente desde la pestaña Actions
+  # No ejecutar en pull_request a main directamente, se gestionará por el workflow de tests
+  # pull_request:
+  #   branches: [ main ]
+  #   types: [opened, synchronize, reopened, ready_for_review]
   workflow_dispatch:
 
 jobs:
-  # FASE 1: VALIDACIÓN Y CONSTRUCCIÓN
+  # FASE 1: VALIDACIÓN Y CONSTRUCCIÓN (Solo para la rama main)
   # =================================
   
   # Paso 1: Validación inicial del código

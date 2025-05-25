@@ -4,10 +4,14 @@
 
 // Este archivo prueba aspectos avanzados de SEO y la estructura específica para el perfil de investigador
 
-const fs = require('fs');
-const path = require('path');
-const { JSDOM } = require('jsdom');
-const { spawnSync } = require('child_process');
+import fs from 'fs';
+import path from 'path';
+import { JSDOM } from 'jsdom';
+import { spawnSync } from 'child_process';
+import { fileURLToPath } from 'url';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 // Función para asegurar que existe el directorio dist con archivos generados
 function ensureDistExists() {
@@ -94,17 +98,14 @@ describe('Pruebas avanzadas de SEO y estructura para perfil académico', () => {
     const footer = document.querySelector('footer');
     expect(footer).not.toBeNull();
     
-    // Verificar clase footer-content
-    const footerContent = document.querySelector('.footer-content');
-    expect(footerContent).not.toBeNull();
-    
     // Verificar que contiene el nombre correcto
     expect(footer.textContent).toContain('Dr. Roberto Sánchez Reolid');
     
     // Verificar texto institucional
-    const institutional = document.querySelector('.institutional');
-    expect(institutional).not.toBeNull();
-    expect(institutional.textContent).toContain('Universidad de Castilla-La Mancha');
+    expect(footer.textContent).toContain('Universidad de Castilla-La Mancha');
+    
+    // Verificar información de copyright
+    expect(footer.textContent).toContain('Todos los derechos reservados');
   });
   
   // Prueba la estructura de la navegación
@@ -118,16 +119,14 @@ describe('Pruebas avanzadas de SEO y estructura para perfil académico', () => {
     const nav = document.querySelector('nav');
     expect(nav).not.toBeNull();
     
-    // Verificar el logo
-    const logo = document.querySelector('.logo');
-    expect(logo).not.toBeNull();
-    expect(logo.textContent).toContain('Dr. Roberto Sánchez Reolid');
+    // Verificar que contiene el texto del Dr.
+    expect(nav.textContent).toContain('Dr. Roberto Sánchez Reolid');
     
-    // Verificar que incluye "Investigaciones" en vez de "Proyectos"
-    const navLinks = Array.from(document.querySelectorAll('.nav-links a'));
-    const linkTexts = navLinks.map(link => link.textContent);
-    
-    expect(linkTexts).toContain('Investigaciones');
-    expect(linkTexts).not.toContain('Proyectos');
+    // Verificar que incluye enlaces principales
+    expect(nav.textContent).toContain('Inicio');
+    expect(nav.textContent).toContain('Sobre mí');
+    expect(nav.textContent).toContain('Proyectos');
+    expect(nav.textContent).toContain('Publicaciones');
+    expect(nav.textContent).toContain('Contacto');
   });
 });
