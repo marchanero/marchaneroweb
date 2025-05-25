@@ -18,6 +18,9 @@ jobs:
     name: Run Tests
     runs-on: ubuntu-latest
     if: github.event_name != 'pull_request' || github.event.pull_request.draft == false
+    outputs:
+      test_status: ${{ steps.run_tests.outputs.test_status }}
+      test_command: ${{ steps.run_tests.outputs.test_command }}
 
     steps:
       - name: Checkout code
@@ -48,28 +51,37 @@ jobs:
           # Intentar el script de test más completo primero
           if npm run test:build --if-present; then
             echo "test_command=test:build" >> $GITHUB_OUTPUT
+            echo "test_status=success" >> $GITHUB_OUTPUT
             npm run test:build
           elif npm run test:all-fixed --if-present; then
             echo "test_command=test:all-fixed" >> $GITHUB_OUTPUT
+            echo "test_status=success" >> $GITHUB_OUTPUT
             npm run test:all-fixed
           elif npm test --if-present; then
             echo "test_command=test" >> $GITHUB_OUTPUT
+            echo "test_status=success" >> $GITHUB_OUTPUT
             npm test
           else
             echo "No suitable test script found."
+            echo "test_status=failure" >> $GITHUB_OUTPUT
             exit 1
           fi
         continue-on-error: true # Continuar para el paso de crear issue/PR
+
+      - name: Set test failure status
+        if: failure()
+        run: |
+          echo "test_status=failure" >> $GITHUB_OUTPUT
 
   create_pull_request:
     name: Create Pull Request
     needs: test
     runs-on: ubuntu-latest
     if: >
-      needs.test.outputs.status == 'success' &&
+      needs.test.outputs.test_status == 'success' &&
       github.event_name == 'push' &&
       github.ref != 'refs/heads/main' &&
-      github.ref != 'refs/heads/develop'
+      (github.ref == 'refs/heads/develop' || startsWith(github.ref, 'refs/heads/feature/') || startsWith(github.ref, 'refs/heads/fix/') || startsWith(github.ref, 'refs/heads/hotfix/'))
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
@@ -116,7 +128,7 @@ jobs:
     name: Create Issue on Failure
     needs: test
     runs-on: ubuntu-latest
-    if: needs.test.outputs.status == 'failure' && github.event_name == 'push' && github.ref != 'refs/heads/main'
+    if: needs.test.outputs.test_status == 'failure' && github.event_name == 'push' && github.ref != 'refs/heads/main'
     steps:
       - name: Create Issue
         uses: peter-evans/create-issue-from-file@v5
