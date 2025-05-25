@@ -14,14 +14,14 @@ import path from 'path';
 
 // Importamos las variables necesarias para los workflows
 const ENV_VARS = [
-  'TELEGRAM_TO',
-  'TELEGRAM_TOKEN',
-  'MAIL_SERVER',
-  'MAIL_PORT',
-  'MAIL_USERNAME',
-  'MAIL_PASSWORD',
-  'NETLIFY_AUTH_TOKEN',
-  'NETLIFY_SITE_ID'
+  // 'TELEGRAM_TO',
+  // 'TELEGRAM_TOKEN',
+  // 'MAIL_SERVER',
+  // 'MAIL_PORT',
+  // 'MAIL_USERNAME',
+  // 'MAIL_PASSWORD',
+  // 'NETLIFY_AUTH_TOKEN',
+  // 'NETLIFY_SITE_ID'
 ];
 
 // Función para cargar variables de entorno
