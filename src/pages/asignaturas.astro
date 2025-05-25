@@ -4,150 +4,91 @@ import Layout from '../layouts/Layout.astro';
 // Datos de asignaturas
 const asignaturas = [
   {
-    id: 'sistemas-informacion',
-    codigo: 'SI4001',
+    id: 'sistemas-informacion-grado-primero',
+    codigo: 'SI1001', // Código de ejemplo
     titulo: 'Sistemas de Información',
     grado: 'Grado en Ingeniería Informática',
-    curso: '3º',
-    cuatrimestre: '1º',
-    creditos: 6,
-    academicYear: '2024-2025',
-    descripcion: 'Estudio de los sistemas de información empresariales, su diseño, implementación y gestión. Análisis de requisitos, modelado de procesos y datos, así como la integración de sistemas en entornos organizacionales.',
-    competencias: [
-      'Capacidad para comprender y evaluar los requisitos de sistemas de información',
-      'Diseño e implementación de soluciones basadas en tecnologías de la información',
-      'Integración de sistemas heterogéneos en entornos empresariales'
-    ],
-    temario: [
-      'Fundamentos de los sistemas de información',
-      'Modelado de procesos de negocio',
-      'Arquitectura de sistemas de información',
-      'Gestión de datos e información',
-      'Seguridad en sistemas de información',
-      'Tendencias actuales en SI'
-    ],
-    imagen: 'https://via.placeholder.com/400x300',
-    horario: 'Lunes y Miércoles de 16:00 a 18:00',
-    aula: 'Aula 2.4',
-    enlaceMateriales: 'https://campus.uclm.es/course/view.php?id=SI4001',
-    destacada: true
-  },
-  {
-    id: 'arquitectura-empresarial',
-    codigo: 'AE5001',
-    titulo: 'Arquitectura Empresarial',
-    grado: 'Máster en Ingeniería Informática',
     curso: '1º',
-    cuatrimestre: '2º',
-    creditos: 4.5,
+    cuatrimestre: '1º', // Asumido
+    creditos: 6, // Asumido
     academicYear: '2024-2025',
-    descripcion: 'Diseño y gestión de arquitecturas empresariales alineadas con los objetivos estratégicos de las organizaciones. Frameworks de arquitectura empresarial, gobierno de TI y estrategias de implementación.',
+    descripcion: 'Introducción a los sistemas de información en el contexto de la Ingeniería Informática. Se imparte en la Facultad de Ciencias Sociales y Tecnologías de la Información del Campus de Talavera.',
     competencias: [
-      'Diseño de arquitecturas empresariales efectivas y escalables',
-      'Aplicación de marcos de referencia como TOGAF, Zachman y ArchiMate',
-      'Evaluación y mejora continua de la arquitectura organizacional'
+      'Comprender el papel de los sistemas de información en las organizaciones.',
+      'Analizar requisitos para el desarrollo de sistemas de información.',
+      'Conocer las tecnologías fundamentales de los sistemas de información.'
     ],
     temario: [
-      'Fundamentos de arquitectura empresarial',
-      'Marcos de referencia y metodologías',
-      'Arquitectura de negocio',
-      'Arquitectura de aplicaciones',
-      'Arquitectura de datos',
-      'Arquitectura tecnológica',
-      'Gobierno y gestión del cambio'
+      'Introducción a los Sistemas de Información',
+      'Hardware y Software en los SI',
+      'Bases de Datos y Gestión de la Información',
+      'Redes y Telecomunicaciones',
+      'Desarrollo de Sistemas de Información',
+      'SI en la Empresa y la Sociedad'
     ],
     imagen: 'https://via.placeholder.com/400x300',
-    horario: 'Martes de 16:00 a 20:00',
-    aula: 'Seminario 3.1',
-    enlaceMateriales: 'https://campus.uclm.es/course/view.php?id=AE5001',
+    horario: 'Por definir',
+    aula: 'Por definir',
+    enlaceMateriales: 'https://campus.uclm.es/course/view.php?id=SI1001', // Enlace de ejemplo
     destacada: true
   },
   {
-    id: 'transformacion-digital',
-    codigo: 'TD4003',
+    id: 'arquitectura-empresarial-grado-cuarto',
+    codigo: 'AE4001', // Código de ejemplo
+    titulo: 'Arquitectura Empresarial',
+    grado: 'Grado en Ingeniería Informática',
+    curso: '4º',
+    cuatrimestre: '1º', // Asumido
+    creditos: 6, // Asumido
+    academicYear: '2024-2025',
+    descripcion: 'Estudio de los principios y prácticas de la arquitectura empresarial para alinear las TI con los objetivos de negocio. Se imparte en la Facultad de Ciencias Sociales y Tecnologías de la Información del Campus de Talavera.',
+    competencias: [
+      'Comprender los marcos de trabajo de arquitectura empresarial (ej. TOGAF).',
+      'Diseñar y evaluar arquitecturas empresariales.',
+      'Gestionar la transformación del negocio a través de la arquitectura.'
+    ],
+    temario: [
+      'Introducción a la Arquitectura Empresarial',
+      'Marcos de Referencia (TOGAF, Zachman)',
+      'Arquitectura de Negocio',
+      'Arquitectura de Sistemas de Información (Datos, Aplicaciones, Tecnología)',
+      'Gobernanza de la Arquitectura Empresarial',
+      'Implantación y Casos Prácticos'
+    ],
+    imagen: 'https://via.placeholder.com/400x300',
+    horario: 'Por definir',
+    aula: 'Por definir',
+    enlaceMateriales: 'https://campus.uclm.es/course/view.php?id=AE4001', // Enlace de ejemplo
+    destacada: true
+  },
+  {
+    id: 'transformacion-digital-empresa-grado-cuarto',
+    codigo: 'TD4003', // Manteniendo código si es el mismo
     titulo: 'Transformación Digital de la Empresa',
     grado: 'Grado en Ingeniería Informática',
     curso: '4º',
-    cuatrimestre: '1º',
-    creditos: 6,
+    cuatrimestre: '1º', // Asumido
+    creditos: 6, // Asumido
     academicYear: '2024-2025',
-    descripcion: 'Análisis y aplicación de estrategias para la transformación digital de organizaciones. Estudio de tecnologías disruptivas, modelos de negocio digitales y gestión del cambio en entornos empresariales.',
+    descripcion: 'Análisis y aplicación de estrategias para la transformación digital de organizaciones. Estudio de tecnologías disruptivas, modelos de negocio digitales y gestión del cambio en entornos empresariales. Se imparte en la Facultad de Ciencias Sociales y Tecnologías de la Información del Campus de Talavera.',
     competencias: [
-      'Desarrollo de estrategias de transformación digital alineadas con objetivos de negocio',
-      'Evaluación e implementación de tecnologías emergentes en contextos empresariales',
-      'Gestión del cambio organizacional en procesos de digitalización'
+      'Desarrollar estrategias de transformación digital.',
+      'Evaluar el impacto de las tecnologías emergentes en la empresa.',
+      'Liderar procesos de cambio organizacional hacia la digitalización.'
     ],
     temario: [
-      'Fundamentos de la transformación digital',
-      'Tecnologías disruptivas para la empresa',
-      'Modelos de negocio digitales',
-      'Experiencia de cliente y usuario',
-      'Gestión del cambio y cultura digital',
-      'Casos de éxito y tendencias futuras'
+      'Fundamentos de la Transformación Digital',
+      'Tecnologías Clave (Cloud, Big Data, IA, IoT)',
+      'Nuevos Modelos de Negocio Digitales',
+      'Cultura Digital y Gestión del Cambio',
+      'Innovación y Estrategia Digital',
+      'Casos de Estudio y Aplicaciones Prácticas'
     ],
     imagen: 'https://via.placeholder.com/400x300',
-    horario: 'Jueves de 16:00 a 20:00',
-    aula: 'Aula 3.5',
-    enlaceMateriales: 'https://campus.uclm.es/course/view.php?id=TD4003',
+    horario: 'Por definir',
+    aula: 'Por definir',
+    enlaceMateriales: 'https://campus.uclm.es/course/view.php?id=TD4003', // Manteniendo enlace si el código es el mismo
     destacada: true
-  },
-  {
-    id: 'master-ia-avanzada',
-    codigo: 'MIA5001',
-    titulo: 'Inteligencia Artificial Avanzada',
-    grado: 'Máster en Ingeniería Informática',
-    curso: '1º',
-    cuatrimestre: '1º',
-    creditos: 4.5,
-    academicYear: '2023-2024',
-    descripcion: 'Estudio de técnicas avanzadas de inteligencia artificial con aplicaciones en problemas reales. Métodos avanzados de aprendizaje profundo, procesamiento del lenguaje natural y visión artificial.',
-    competencias: [
-      'Capacidad para identificar y analizar problemas complejos',
-      'Aplicación de técnicas avanzadas de IA a casos de uso reales',
-      'Evaluación crítica de sistemas basados en IA'
-    ],
-    temario: [
-      'Aprendizaje profundo avanzado',
-      'Modelos generativos',
-      'Procesamiento del lenguaje natural',
-      'Visión artificial',
-      'Sistemas multiagente',
-      'Ética y responsabilidad en IA'
-    ],
-    imagen: 'https://via.placeholder.com/400x300',
-    horario: 'Viernes de 16:00 a 20:00',
-    aula: 'Seminario 3.2',
-    enlaceMateriales: 'https://campus.uclm.es/course/view.php?id=34567',
-    destacada: true
-  },
-  {
-    id: 'procesamiento-datos',
-    codigo: 'PD3003',
-    titulo: 'Procesamiento y Análisis de Grandes Volúmenes de Datos',
-    grado: 'Grado en Ingeniería Informática',
-    curso: '4º',
-    cuatrimestre: '1º',
-    creditos: 6,
-    academicYear: '2023-2024',
-    descripcion: 'Técnicas y herramientas para el procesamiento, almacenamiento, análisis y visualización de grandes volúmenes de datos. Big Data, frameworks distribuidos y computación paralela.',
-    competencias: [
-      'Capacidad para aplicar metodologías de análisis de grandes conjuntos de datos',
-      'Conocimiento de tecnologías Big Data',
-      'Habilidad para seleccionar las técnicas adecuadas para cada problema'
-    ],
-    temario: [
-      'Introducción al Big Data',
-      'Modelos de datos y almacenamiento',
-      'Procesamiento batch y streaming',
-      'Frameworks de computación distribuida',
-      'Visualización de datos',
-      'Casos de estudio y aplicaciones'
-    ],
-    imagen: 'https://via.placeholder.com/400x300',
-    horario: 'Lunes y Miércoles de 15:00 a 17:00',
-    aula: 'Laboratorio 2.1',
-    enlaceMateriales: 'https://campus.uclm.es/course/view.php?id=45678',
-    destacada: false
   }
 ];
 
