@@ -1,0 +1,152 @@
+name: Run Tests and Create PR/Issue
+
+on:
+  push:
+    branches:
+      - develop
+      - 'feature/**'
+      - 'fix/**'
+      - 'hotfix/**'
+  pull_request:
+    branches:
+      - main
+      - develop
+    types: [opened, synchronize, reopened, ready_for_review]
+
+jobs:
+  test:
+    name: Run Tests
+    runs-on: ubuntu-latest
+    if: github.event_name != 'pull_request' || github.event.pull_request.draft == false
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Load environment variables
+        run: |
+          if [ -f "./scripts/load-env-vars.js" ]; then
+            node ./scripts/load-env-vars.js
+          else
+            echo "Environment variable loading script not found, continuing..."
+          fi
+        env:
+          CI_CONTEXT: 'true' # Puedes usar esta variable en tu script si es necesario
+
+      - name: Run tests
+        id: run_tests
+        run: |
+          # Intentar el script de test más completo primero
+          if npm run test:build --if-present; then
+            echo "test_command=test:build" >> $GITHUB_OUTPUT
+            npm run test:build
+          elif npm run test:all-fixed --if-present; then
+            echo "test_command=test:all-fixed" >> $GITHUB_OUTPUT
+            npm run test:all-fixed
+          elif npm test --if-present; then
+            echo "test_command=test" >> $GITHUB_OUTPUT
+            npm test
+          else
+            echo "No suitable test script found."
+            exit 1
+          fi
+        continue-on-error: true # Continuar para el paso de crear issue/PR
+
+  create_pull_request:
+    name: Create Pull Request
+    needs: test
+    runs-on: ubuntu-latest
+    if: >
+      needs.test.outputs.status == 'success' &&
+      github.event_name == 'push' &&
+      github.ref != 'refs/heads/main' &&
+      github.ref != 'refs/heads/develop' # No crear PR de develop a develop
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.ref }}
+
+      - name: Create Pull Request to main
+        uses: peter-evans/create-pull-request@v6
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          commit-message: 'Automated PR: Merge ${{ github.ref_name }} into main after successful tests'
+          title: 'Merge ${{ github.ref_name }} into main'
+          body: |
+            Automated PR created after successful tests on branch `${{ github.ref_name }}`.
+            Test command executed: `${{ needs.test.outputs.test_command }}`
+            Workflow run: [${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}]
+          branch: ${{ github.ref_name }} # La rama desde la que se hace el PR
+          base: main # La rama destino
+          labels: automated-pr, needs-review
+          draft: false
+          update-existing: true
+
+      - name: Create Pull Request to develop (if branch is not develop itself)
+        if: github.ref != 'refs/heads/develop' # Solo si la rama actual no es develop
+        uses: peter-evans/create-pull-request@v6
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          commit-message: 'Automated PR: Merge ${{ github.ref_name }} into develop after successful tests'
+          title: 'Merge ${{ github.ref_name }} into develop'
+          body: |
+            Automated PR created after successful tests on branch `${{ github.ref_name }}`.
+            Test command executed: `${{ needs.test.outputs.test_command }}`
+            Workflow run: [${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}]
+          branch: ${{ github.ref_name }}
+          base: develop
+          labels: automated-pr, needs-review
+          draft: false
+          update-existing: true
+          # Evitar error si la PR a develop ya existe y es la misma que a main
+          ignore-already-exists-for-same-commit: true
+
+
+  create_issue_on_failure:
+    name: Create Issue on Failure
+    needs: test
+    runs-on: ubuntu-latest
+    if: needs.test.outputs.status == 'failure' && github.event_name == 'push' && github.ref != 'refs/heads/main'
+    steps:
+      - name: Create Issue
+        uses: peter-evans/create-issue-from-file@v5
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          title: 'Test Failure on branch: ${{ github.ref_name }}'
+          content-filepath: .github/ISSUE_TEMPLATE/test-failure-template.md # Necesitarás crear este archivo
+          labels: bug, automated-issue, needs-attention
+          assignees: ${{ github.actor }}
+        env:
+          BRANCH_NAME: ${{ github.ref_name }}
+          WORKFLOW_RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+          TEST_COMMAND: ${{ needs.test.outputs.test_command }}
+          # Puedes añadir más variables de entorno si las usas en tu plantilla de issue
+
+# Nota: Necesitarás crear el archivo .github/ISSUE_TEMPLATE/test-failure-template.md
+# Ejemplo de test-failure-template.md:
+# ---
+# name: Test Failure Report
+# about: Automated issue for test failures.
+# title: 'Test Failure on branch: ${BRANCH_NAME}'
+# labels: bug, automated-issue
+# assignees: ''
+# ---
+#
+# ### 🚨 Test Failure Notification 🚨
+#
+# Tests failed on branch **${BRANCH_NAME}**.
+#
+# - **Test Command Executed**: `${TEST_COMMAND}`
+# - **Workflow Run**: [View Workflow Log](${WORKFLOW_RUN_URL})
+#
+# Please investigate the failures and address them.
