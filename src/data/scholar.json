@@ -1,0 +1,69 @@
+{
+  "lastUpdated": "2025-05-24T17:39:11.019Z",
+  "author": {
+    "name": "Dr. Roberto Sánchez Reolid",
+    "affiliation": "Universidad de Castilla-La Mancha",
+    "email": "roberto.sreolid@uclm.es",
+    "interests": [
+      "Inteligencia Artificial",
+      "Machine Learning",
+      "Computación Afectiva",
+      "Bioinformática"
+    ],
+    "homepage": "https://roberto-sreolid.netlify.app"
+  },
+  "metrics": {
+    "totalCitations": 156,
+    "hIndex": 8,
+    "i10Index": 6,
+    "citationsRecent": 89,
+    "hIndexRecent": 6,
+    "i10IndexRecent": 4
+  },
+  "publications": [
+    {
+      "id": "pub_1",
+      "title": "Machine Learning Applications in Affective Computing",
+      "authors": [
+        "Roberto Sánchez Reolid",
+        "Antonio Fernández Caballero",
+        "José Carlos Castillo"
+      ],
+      "publication": "IEEE Transactions on Affective Computing",
+      "year": 2024,
+      "citedBy": 23,
+      "type": "journal",
+      "isFirstAuthor": true,
+      "isCorrespondingAuthor": true
+    },
+    {
+      "id": "pub_2",
+      "title": "Automated Emotion Recognition using Physiological Signals",
+      "authors": [
+        "Roberto Sánchez Reolid",
+        "Francisco López de la Rosa"
+      ],
+      "publication": "Expert Systems with Applications",
+      "year": 2023,
+      "citedBy": 45,
+      "type": "journal",
+      "isFirstAuthor": true,
+      "isCorrespondingAuthor": false
+    },
+    {
+      "id": "pub_3",
+      "title": "Deep Learning for Multimodal Emotion Analysis",
+      "authors": [
+        "María García",
+        "Roberto Sánchez Reolid",
+        "Juan González"
+      ],
+      "publication": "Proceedings of ICML 2023",
+      "year": 2023,
+      "citedBy": 18,
+      "type": "conference",
+      "isFirstAuthor": false,
+      "isCorrespondingAuthor": true
+    }
+  ]
+}

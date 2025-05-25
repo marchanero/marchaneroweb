@@ -14,9 +14,9 @@
 - ✅ Configuración de variables de entorno para notificaciones
 
 ### 3. Workflows de GitHub Actions Implementados/Mejorados
-- ✅ `deployment-notifications.yml`: Sistema de notificaciones mejorado
-- ✅ `pr-validation.yml`: Validación de Pull Requests mejorada
-- ✅ `quality-assurance.yml`: Pruebas de accesibilidad y validación HTML
+- ✅ `unified-pipeline.yml`: Nuevo workflow unificado que integra todo el proceso CI/CD
+- ✅ Implementación de pipeline secuencial con 5 fases claras y coordinadas
+- ✅ Sistema mejorado de dependencias entre jobs para evitar problemas de sincronización
 
 ### 4. Scripts de Utilidad Creados/Mejorados
 - ✅ `scripts/verify-telegram-config.js`: Verificación de configuración de Telegram
@@ -56,7 +56,8 @@ npm run import:env:netlify
 
 1. **Configuración de los secretos de Telegram**: Ejecutar `npm run verify:telegram` y seguir las instrucciones
 2. **Configuración de las variables en Netlify**: Ejecutar `npm run import:env:netlify` después de configurar el archivo `.env`
-3. **Ejecución manual de workflows**: Probar los workflows desde la interfaz de GitHub Actions
+3. **Ejecución manual del workflow unificado**: Probar el nuevo workflow `unified-pipeline.yml` desde la interfaz de GitHub Actions
+4. **Revisión del reporte de calidad**: Verificar los artefactos generados en la sección "quality-report"
 
 ## Comentarios Adicionales
 
@@ -64,6 +65,8 @@ npm run import:env:netlify
 - Todos los tests ahora son robustos frente a la falta del directorio `dist`
 - El sistema de gestión de variables de entorno garantiza la seguridad de los secretos
 - La configuración es más ligera y se centra en las funcionalidades esenciales
+- El nuevo workflow unificado (`unified-pipeline.yml`) reemplaza los workflows fragmentados anteriores, solucionando problemas de sincronización
+- Documentación detallada del workflow en `docs/WORKFLOW-UNIFICADO.md`
 
 ---
 Fecha de implementación: 24 de mayo de 2025

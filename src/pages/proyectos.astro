@@ -1,54 +1,134 @@
 ---
 import Layout from '../layouts/Layout.astro';
+
+// Datos de proyectos
+const proyectos = [
+  {
+    id: 'ia-educacion',
+    titulo: 'Inteligencia Artificial Aplicada a la Educación',
+    imagen: 'https://via.placeholder.com/600x400',
+    altImagen: 'Investigación sobre Inteligencia Artificial en Educación',
+    etiquetas: ['Machine Learning', 'Educational Tech', 'Data Analysis'],
+    descripcion: 'Investigación sobre sistemas de tutoría inteligente que adaptan el contenido educativo a las necesidades individuales de los estudiantes.',
+    fechaInicio: '2022',
+    fechaFin: 'Actualidad',
+    financiacion: 'Ministerio de Ciencia e Innovación (PID2021-XXXXX)',
+    url: '/proyectos/ia-educacion',
+    pdf: '#',
+    destacado: true
+  },
+  {
+    id: 'computacion-cuantica',
+    titulo: 'Algoritmos Cuánticos para Optimización',
+    imagen: 'https://via.placeholder.com/600x400',
+    altImagen: 'Investigación sobre Computación Cuántica',
+    etiquetas: ['Quantum Computing', 'Algorithms', 'Optimization'],
+    descripcion: 'Investigación sobre el uso de algoritmos cuánticos para resolver problemas de optimización combinatoria de manera más eficiente que los algoritmos clásicos.',
+    fechaInicio: '2021',
+    fechaFin: '2024',
+    financiacion: 'European Research Council (ERC-XXXXX)',
+    url: '/proyectos/computacion-cuantica',
+    pdf: '#',
+    destacado: true
+  },
+  {
+    id: 'sistemas-distribuidos',
+    titulo: 'Arquitecturas Eficientes para Sistemas Distribuidos',
+    imagen: 'https://via.placeholder.com/600x400',
+    altImagen: 'Sistemas Distribuidos Energéticamente Eficientes',
+    etiquetas: ['Distributed Systems', 'Energy Efficiency', 'Cloud Computing'],
+    descripcion: 'Desarrollo de nuevas arquitecturas para sistemas distribuidos con mayor eficiencia energética y rendimiento optimizado.',
+    fechaInicio: '2020',
+    fechaFin: '2023',
+    financiacion: 'Junta de Comunidades de Castilla-La Mancha (JCCM-XXXXX)',
+    url: '/proyectos/sistemas-distribuidos',
+    pdf: '#',
+    destacado: true
+  }
+];
+
+// Ordenar proyectos: primero los destacados, luego por fecha de inicio (más recientes primero)
+const proyectosOrdenados = [...proyectos].sort((a, b) => {
+  if (a.destacado && !b.destacado) return -1;
+  if (!a.destacado && b.destacado) return 1;
+  return parseInt(b.fechaInicio) - parseInt(a.fechaInicio);
+});
 ---
 
-<Layout title="Investigaciones | Roberto Sánchez Reolid">
-	<section class="projects-page">
-		<h1>Mis Investigaciones</h1>
-		<p class="intro-text">
-			Aquí puedes explorar algunas de mis principales líneas de investigación y publicaciones académicas.
-			Cada proyecto representa una contribución al conocimiento científico en el campo de la informática y la tecnología.
-		</p>
-		
-		<div class="projects-grid">
-			<!-- Investigación 1 -->
-			<div class="project-card">
-				<div class="project-image">
-					<img src="https://via.placeholder.com/600x400" alt="Investigación sobre Inteligencia Artificial en Educación" />
-				</div>
-				<div class="project-info">
-					<h3>Inteligencia Artificial Aplicada a la Educación</h3>
-					<div class="project-tags">
-						<span>Machine Learning</span>
-						<span>Educational Tech</span>
-						<span>Data Analysis</span>
-					</div>
-					<p>
-						Investigación sobre sistemas de tutoría inteligente que adaptan el contenido 
-						educativo a las necesidades individuales de los estudiantes.
-					</p>
-					<div class="project-links">
-						<a href="#" class="btn btn-sm">Ver publicación</a>
-						<a href="#" class="btn btn-outline-sm">Descargar PDF</a>
-					</div>
-				</div>
-			</div>
+<Layout title="Proyectos de Investigación | Roberto Sánchez Reolid">
+	<main class="py-12 px-4">
+		<div class="max-w-5xl mx-auto">
+			<header class="mb-12 text-center">
+				<h1 class="text-4xl font-bold text-gray-900 dark:text-white mb-6">Líneas de Investigación</h1>
+				<p class="text-lg text-gray-700 dark:text-gray-300 max-w-3xl mx-auto">
+					Aquí puedes explorar mis principales líneas de investigación y proyectos académicos.
+					Cada proyecto representa una contribución al conocimiento científico en el campo de la informática y la tecnología.
+				</p>
+			</header>
 			
-			<!-- Investigación 2 -->
-			<div class="project-card">
-				<div class="project-image">
-					<img src="https://via.placeholder.com/600x400" alt="Investigación sobre Computación Cuántica" />
-				</div>
-				<div class="project-info">
-					<h3>Algoritmos Cuánticos para Optimización</h3>
-					<div class="project-tags">
-						<span>Quantum Computing</span>
-						<span>Algorithms</span>
-						<span>Optimization</span>
-					</div>
-					<p>
-						Investigación sobre el uso de algoritmos cuánticos para resolver problemas 
-						de optimización combinatoria de manera más eficiente que los algoritmos clásicos.
+			<div class="space-y-12">
+				{proyectosOrdenados.map((proyecto) => (
+					<article id={proyecto.id} class="bg-white dark:bg-gray-800 rounded-xl overflow-hidden shadow-lg transition-transform hover:shadow-xl flex flex-col md:flex-row">
+						<div class="md:w-2/5">
+							<img 
+								src={proyecto.imagen} 
+								alt={proyecto.altImagen}
+								class="w-full h-64 md:h-full object-cover"
+							/>
+						</div>
+						<div class="p-6 md:w-3/5">
+							<div class="flex items-center gap-2 mb-3">
+								<span class="text-sm font-medium text-blue-600 dark:text-blue-400">{proyecto.fechaInicio} - {proyecto.fechaFin}</span>
+								{proyecto.destacado && (
+									<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-yellow-100 dark:bg-yellow-900 text-yellow-800 dark:text-yellow-300">
+										Destacado
+									</span>
+								)}
+							</div>
+							
+							<h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-4">
+								{proyecto.titulo}
+							</h2>
+							
+							<div class="flex flex-wrap gap-2 mb-4">
+								{proyecto.etiquetas.map((etiqueta) => (
+									<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-300">
+										{etiqueta}
+									</span>
+								))}
+							</div>
+							
+							<p class="text-gray-700 dark:text-gray-300 mb-6">
+								{proyecto.descripcion}
+							</p>
+							
+							<div class="mt-auto">
+								<p class="text-sm text-gray-600 dark:text-gray-400 mb-4">
+									<strong>Financiación:</strong> {proyecto.financiacion}
+								</p>
+								
+								<div class="flex flex-wrap gap-4">
+									<a 
+										href={proyecto.url} 
+										class="btn btn-primary"
+									>
+										Ver detalles
+									</a>
+									{proyecto.pdf && (
+										<a 
+											href={proyecto.pdf} 
+											class="btn btn-outline"
+											target="_blank" 
+											rel="noopener noreferrer"
+										>
+											Descargar informe
+										</a>
+									)}
+								</div>
+							</div>
+						</div>
+					</article>
+				))}
 					</p>
 					<div class="project-links">
 						<a href="#" class="btn btn-sm">Ver publicación</a>

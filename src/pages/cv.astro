@@ -1,0 +1,330 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const title = "Currículum - Dr. Roberto Sánchez Reolid";
+const description = "Currículum vitae académico y profesional del Dr. Roberto Sánchez Reolid, con formación, experiencia docente e investigadora";
+
+// Datos del CV (en producción podrían venir de un CMS o archivo JSON)
+const educacion = [
+  {
+    titulo: "Doctorado en Informática",
+    institucion: "Universidad de Castilla-La Mancha",
+    periodo: "2015 - 2019",
+    descripcion: "Tesis: 'Modelos de aprendizaje automático para la detección de emociones mediante señales fisiológicas'."
+  },
+  {
+    titulo: "Máster en Tecnologías de la Información",
+    institucion: "Universidad de Castilla-La Mancha",
+    periodo: "2013 - 2015",
+    descripcion: "Especialización en Inteligencia Artificial y Computación Avanzada."
+  },
+  {
+    titulo: "Ingeniería Informática",
+    institucion: "Universidad de Castilla-La Mancha",
+    periodo: "2008 - 2013",
+    descripcion: "Premio Extraordinario Fin de Carrera."
+  }
+];
+
+const experienciaDocente = [
+  {
+    puesto: "Profesor Ayudante Doctor",
+    departamento: "Departamento de Sistemas Informáticos",
+    universidad: "Universidad de Castilla-La Mancha",
+    periodo: "2021 - Actualidad",
+    asignaturas: [
+      "Inteligencia Artificial",
+      "Aprendizaje Automático",
+      "Sistemas Inteligentes"
+    ]
+  },
+  {
+    puesto: "Profesor Asociado",
+    departamento: "Departamento de Sistemas Informáticos",
+    universidad: "Universidad de Castilla-La Mancha",
+    periodo: "2019 - 2021",
+    asignaturas: [
+      "Fundamentos de Programación",
+      "Estructuras de Datos",
+      "Seminarios de IA Aplicada"
+    ]
+  }
+];
+
+const experienciaInvestigadora = [
+  {
+    puesto: "Investigador Principal",
+    proyecto: "Sistemas de reconocimiento emocional para entornos educativos",
+    entidad: "Ministerio de Ciencia e Innovación",
+    periodo: "2022 - Actualidad",
+    codigo: "TIN2022-12345",
+    descripcion: "Desarrollo de sistemas basados en IA para la detección de estados emocionales en el aula."
+  },
+  {
+    puesto: "Investigador",
+    proyecto: "Computación afectiva para mejora de interfaces hombre-máquina",
+    entidad: "Junta de Comunidades de Castilla-La Mancha",
+    periodo: "2020 - 2022",
+    codigo: "SBPLY/19/180501/000238",
+    descripcion: "Análisis de señales fisiológicas para reconocimiento emocional."
+  }
+];
+
+const estancias = [
+  {
+    centro: "Massachusetts Institute of Technology (MIT)",
+    departamento: "Computer Science and Artificial Intelligence Laboratory",
+    pais: "Estados Unidos",
+    periodo: "Enero - Julio 2018",
+    descripcion: "Investigación en reconocimiento de patrones emocionales mediante redes neuronales profundas."
+  },
+  {
+    centro: "Universidad de Cambridge",
+    departamento: "Department of Computer Science and Technology",
+    pais: "Reino Unido",
+    periodo: "Septiembre - Diciembre 2016",
+    descripcion: "Investigación en algoritmos de aprendizaje por refuerzo para interfaces adaptativas."
+  }
+];
+
+const reconocimientos = [
+  {
+    titulo: "Premio Joven Investigador en IA",
+    entidad: "Sociedad Española de Inteligencia Artificial",
+    anio: 2023
+  },
+  {
+    titulo: "Sexenio de Investigación",
+    entidad: "ANECA",
+    anio: 2021
+  },
+  {
+    titulo: "Mejor Artículo",
+    entidad: "International Conference on Affective Computing",
+    anio: 2020
+  }
+];
+---
+
+<Layout title={title} description={description}>
+  <div class="bg-gradient-to-b from-blue-50 to-white dark:from-gray-900 dark:to-gray-900 pb-12">
+    <header class="py-16 bg-gradient-to-r from-blue-600 to-indigo-700 dark:from-blue-800 dark:to-indigo-900">
+      <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-white">
+        <h1 class="text-4xl md:text-5xl font-bold mb-6">Currículum Vitae</h1>
+        <div class="flex flex-wrap gap-4 items-center">
+          <a href="/files/CV_RobertoSanchezReolid.pdf" class="bg-white text-blue-700 hover:bg-blue-50 px-4 py-2 rounded-lg font-medium flex items-center space-x-2 transition-colors">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M9 19l3 3m0 0l3-3m-3 3V10"></path>
+            </svg>
+            <span>Descargar CV completo</span>
+          </a>
+          <div class="flex space-x-4">
+            <a href="https://orcid.org" target="_blank" rel="noopener noreferrer" class="bg-white/20 hover:bg-white/30 p-2 rounded-lg transition-colors" title="ORCID">
+              <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20z"/>
+                <path d="M12 7v10M9 7v10"/>
+                <path d="M15 7v10"/>
+              </svg>
+            </a>
+            <a href="https://scholar.google.com" target="_blank" rel="noopener noreferrer" class="bg-white/20 hover:bg-white/30 p-2 rounded-lg transition-colors" title="Google Scholar">
+              <svg class="w-6 h-6" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+                <line x1="3" y1="9" x2="21" y2="9"></line>
+                <path d="M8 21V9"></path>
+                <path d="M12 21v-6"></path>
+                <path d="M16 15v6"></path>
+              </svg>
+            </a>
+          </div>
+        </div>
+      </div>
+    </header>
+    
+    <main class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+      <!-- Sección de Datos Personales -->
+      <section class="mb-12">
+        <div class="bg-white dark:bg-gray-800 rounded-lg p-6 shadow-md">
+          <h2 class="text-2xl font-bold text-blue-700 dark:text-blue-400 mb-4 flex items-center">
+            <svg class="w-6 h-6 mr-2" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+              <circle cx="12" cy="7" r="4"></circle>
+            </svg>
+            Datos Personales
+          </h2>
+          
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div>
+              <p class="mb-2"><span class="font-semibold text-gray-700 dark:text-gray-300">Nombre:</span> Dr. Roberto Sánchez Reolid</p>
+              <p class="mb-2"><span class="font-semibold text-gray-700 dark:text-gray-300">Posición:</span> Profesor Ayudante Doctor</p>
+              <p class="mb-2"><span class="font-semibold text-gray-700 dark:text-gray-300">Departamento:</span> Sistemas Informáticos</p>
+              <p class="mb-2"><span class="font-semibold text-gray-700 dark:text-gray-300">Universidad:</span> Universidad de Castilla-La Mancha</p>
+            </div>
+            <div>
+              <p class="mb-2"><span class="font-semibold text-gray-700 dark:text-gray-300">Email:</span> roberto.sreolid@uclm.es</p>
+              <p class="mb-2"><span class="font-semibold text-gray-700 dark:text-gray-300">Web:</span> <a href="https://roberto-sreolid.netlify.app" class="text-blue-600 dark:text-blue-400 hover:underline">roberto-sreolid.netlify.app</a></p>
+              <p class="mb-2"><span class="font-semibold text-gray-700 dark:text-gray-300">Líneas de investigación:</span> Inteligencia Artificial, Computación Afectiva, Machine Learning</p>
+            </div>
+          </div>
+        </div>
+      </section>
+    
+      <!-- Sección de Formación Académica -->
+      <section class="mb-12">
+        <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-6 flex items-center">
+          <svg class="w-6 h-6 mr-2" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M22 10v6M2 10l10-5 10 5-10 5z"></path>
+            <path d="M6 12v5c3 3 9 3 12 0v-5"></path>
+          </svg>
+          Formación Académica
+        </h2>
+        
+        <div class="space-y-6">
+          {educacion.map((item) => (
+            <div class="bg-white dark:bg-gray-800 rounded-lg p-6 shadow-md hover:shadow-lg transition-shadow duration-300">
+              <div class="flex flex-wrap justify-between">
+                <h3 class="text-xl font-semibold text-gray-900 dark:text-white">{item.titulo}</h3>
+                <span class="text-blue-600 dark:text-blue-400 font-medium">{item.periodo}</span>
+              </div>
+              <p class="text-lg text-gray-600 dark:text-gray-300 mt-1">{item.institucion}</p>
+              <p class="mt-2 text-gray-700 dark:text-gray-400">{item.descripcion}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+      
+      <!-- Sección de Experiencia Docente -->
+      <section class="mb-12">
+        <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-6 flex items-center">
+          <svg class="w-6 h-6 mr-2" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M12 20v-6M6 20V10M18 20V4"></path>
+          </svg>
+          Experiencia Docente
+        </h2>
+        
+        <div class="space-y-6">
+          {experienciaDocente.map((item) => (
+            <div class="bg-white dark:bg-gray-800 rounded-lg p-6 shadow-md hover:shadow-lg transition-shadow duration-300">
+              <div class="flex flex-wrap justify-between">
+                <h3 class="text-xl font-semibold text-gray-900 dark:text-white">{item.puesto}</h3>
+                <span class="text-blue-600 dark:text-blue-400 font-medium">{item.periodo}</span>
+              </div>
+              <p class="text-lg text-gray-600 dark:text-gray-300 mt-1">{item.departamento}, {item.universidad}</p>
+              
+              <div class="mt-4">
+                <p class="font-medium text-gray-700 dark:text-gray-300 mb-2">Asignaturas impartidas:</p>
+                <ul class="list-disc list-inside space-y-1 text-gray-700 dark:text-gray-400">
+                  {item.asignaturas.map((asignatura) => (
+                    <li>{asignatura}</li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+      
+      <!-- Sección de Experiencia Investigadora -->
+      <section class="mb-12">
+        <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-6 flex items-center">
+          <svg class="w-6 h-6 mr-2" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path>
+            <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path>
+          </svg>
+          Experiencia Investigadora
+        </h2>
+        
+        <div class="space-y-6">
+          {experienciaInvestigadora.map((item) => (
+            <div class="bg-white dark:bg-gray-800 rounded-lg p-6 shadow-md hover:shadow-lg transition-shadow duration-300">
+              <div class="flex flex-wrap justify-between">
+                <h3 class="text-xl font-semibold text-gray-900 dark:text-white">{item.puesto}</h3>
+                <span class="text-blue-600 dark:text-blue-400 font-medium">{item.periodo}</span>
+              </div>
+              <p class="text-lg text-gray-600 dark:text-gray-300 mt-1">{item.proyecto}</p>
+              <p class="text-gray-700 dark:text-gray-400 mt-2">{item.descripcion}</p>
+              
+              <div class="mt-4 flex flex-wrap gap-2">
+                <span class="inline-flex items-center rounded-md bg-blue-50 dark:bg-blue-900 px-2 py-1 text-xs font-medium text-blue-700 dark:text-blue-300">
+                  {item.entidad}
+                </span>
+                <span class="inline-flex items-center rounded-md bg-gray-50 dark:bg-gray-700 px-2 py-1 text-xs font-medium text-gray-600 dark:text-gray-300">
+                  Código: {item.codigo}
+                </span>
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+      
+      <!-- Sección de Estancias Internacionales -->
+      <section class="mb-12">
+        <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-6 flex items-center">
+          <svg class="w-6 h-6 mr-2" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="10"></circle>
+            <path d="M2 12h20"></path>
+            <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
+          </svg>
+          Estancias Internacionales
+        </h2>
+        
+        <div class="space-y-6">
+          {estancias.map((item) => (
+            <div class="bg-white dark:bg-gray-800 rounded-lg p-6 shadow-md hover:shadow-lg transition-shadow duration-300">
+              <div class="flex flex-wrap justify-between">
+                <h3 class="text-xl font-semibold text-gray-900 dark:text-white">{item.centro}</h3>
+                <span class="text-blue-600 dark:text-blue-400 font-medium">{item.periodo}</span>
+              </div>
+              <p class="text-lg text-gray-600 dark:text-gray-300 mt-1">{item.departamento}, {item.pais}</p>
+              <p class="mt-2 text-gray-700 dark:text-gray-400">{item.descripcion}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+      
+      <!-- Sección de Reconocimientos y Premios -->
+      <section class="mb-12">
+        <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-6 flex items-center">
+          <svg class="w-6 h-6 mr-2" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="8" r="7"></circle>
+            <polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"></polyline>
+          </svg>
+          Reconocimientos y Premios
+        </h2>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {reconocimientos.map((item) => (
+            <div class="bg-white dark:bg-gray-800 rounded-lg p-6 shadow-md hover:shadow-lg transition-shadow duration-300">
+              <div class="text-yellow-500 mb-3">
+                <svg class="w-8 h-8" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+                </svg>
+              </div>
+              <h3 class="text-lg font-semibold text-gray-900 dark:text-white">{item.titulo}</h3>
+              <p class="text-gray-700 dark:text-gray-300 mt-2">{item.entidad}</p>
+              <p class="mt-1 text-blue-600 dark:text-blue-400 font-medium">{item.anio}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+      
+      <!-- Sección de Enlaces CV -->
+      <section class="text-center bg-gradient-to-r from-blue-50 to-indigo-50 dark:from-gray-800 dark:to-gray-700 rounded-xl p-8">
+        <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-6">Enlaces a CV oficiales</h2>
+        <div class="flex flex-wrap justify-center gap-4">
+          <a href="#" class="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg font-medium transition-colors duration-200 flex items-center">
+            <span>CV ANECA</span>
+          </a>
+          <a href="#" class="bg-indigo-600 hover:bg-indigo-700 text-white px-6 py-3 rounded-lg font-medium transition-colors duration-200 flex items-center">
+            <span>CV FECYT</span>
+          </a>
+          <a href="/files/CV_RobertoSanchezReolid.pdf" class="bg-purple-600 hover:bg-purple-700 text-white px-6 py-3 rounded-lg font-medium transition-colors duration-200 flex items-center">
+            <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M9 19l3 3m0 0l3-3m-3 3V10"></path>
+            </svg>
+            <span>CV Completo (PDF)</span>
+          </a>
+        </div>
+      </section>
+    </main>
+  </div>
+</Layout>

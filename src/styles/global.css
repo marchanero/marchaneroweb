@@ -1,0 +1,72 @@
+/* 
+   Base de Tailwind CSS para el sitio web del Dr. Roberto Sánchez Reolid 
+*/
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Clases personalizadas adicionales */
+@layer components {
+  .btn {
+    @apply px-4 py-2 rounded-md transition-colors duration-200 font-medium;
+  }
+  .btn-primary {
+    @apply bg-blue-600 hover:bg-blue-700 text-white dark:bg-blue-700 dark:hover:bg-blue-800;
+  }
+  .btn-secondary {
+    @apply bg-gray-200 hover:bg-gray-300 text-gray-800 dark:bg-gray-700 dark:hover:bg-gray-600 dark:text-gray-200;
+  }
+  .btn-outline {
+    @apply border border-blue-600 text-blue-600 hover:bg-blue-50 dark:border-blue-500 dark:text-blue-400 dark:hover:bg-blue-900/30;
+  }
+  .btn-sm {
+    @apply px-3 py-1 text-sm;
+  }
+  
+  /* Animaciones para mejorar la experiencia de usuario */
+  .fade-in {
+    @apply animate-fade-in;
+  }
+  .slide-up {
+    @apply animate-slide-up;
+  }
+}
+
+/* Ajustes para el contenido académico y científico */
+@layer base {
+  /* Mejorar legibilidad del texto */
+  p {
+    @apply leading-relaxed;
+  }
+  
+  /* Tablas para datos científicos */
+  table {
+    @apply w-full border-collapse my-4;
+  }
+  thead {
+    @apply bg-gray-100 dark:bg-gray-800;
+  }
+  th {
+    @apply p-2 text-left font-semibold border dark:border-gray-700;
+  }
+  td {
+    @apply p-2 border dark:border-gray-700;
+  }
+  
+  /* Citas y blockquotes para referencias académicas */
+  blockquote {
+    @apply border-l-4 border-blue-600 dark:border-blue-500 pl-4 py-2 my-4 bg-gray-50 dark:bg-gray-800 italic;
+  }
+  
+  /* Codigo y sintaxis para publicaciones técnicas */
+  code {
+    @apply bg-gray-100 dark:bg-gray-800 px-1 py-0.5 rounded text-sm;
+  }
+  pre {
+    @apply bg-gray-100 dark:bg-gray-800 p-4 rounded-lg my-4 overflow-auto;
+  }
+  pre code {
+    @apply bg-transparent p-0 text-sm;
+  }
+}

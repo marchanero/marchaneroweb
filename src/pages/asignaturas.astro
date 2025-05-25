@@ -1,0 +1,546 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+// Datos de asignaturas
+const asignaturas = [
+  {
+    id: 'sistemas-informacion',
+    codigo: 'SI4001',
+    titulo: 'Sistemas de Información',
+    grado: 'Grado en Ingeniería Informática',
+    curso: '3º',
+    cuatrimestre: '1º',
+    creditos: 6,
+    academicYear: '2024-2025',
+    descripcion: 'Estudio de los sistemas de información empresariales, su diseño, implementación y gestión. Análisis de requisitos, modelado de procesos y datos, así como la integración de sistemas en entornos organizacionales.',
+    competencias: [
+      'Capacidad para comprender y evaluar los requisitos de sistemas de información',
+      'Diseño e implementación de soluciones basadas en tecnologías de la información',
+      'Integración de sistemas heterogéneos en entornos empresariales'
+    ],
+    temario: [
+      'Fundamentos de los sistemas de información',
+      'Modelado de procesos de negocio',
+      'Arquitectura de sistemas de información',
+      'Gestión de datos e información',
+      'Seguridad en sistemas de información',
+      'Tendencias actuales en SI'
+    ],
+    imagen: 'https://via.placeholder.com/400x300',
+    horario: 'Lunes y Miércoles de 16:00 a 18:00',
+    aula: 'Aula 2.4',
+    enlaceMateriales: 'https://campus.uclm.es/course/view.php?id=SI4001',
+    destacada: true
+  },
+  {
+    id: 'arquitectura-empresarial',
+    codigo: 'AE5001',
+    titulo: 'Arquitectura Empresarial',
+    grado: 'Máster en Ingeniería Informática',
+    curso: '1º',
+    cuatrimestre: '2º',
+    creditos: 4.5,
+    academicYear: '2024-2025',
+    descripcion: 'Diseño y gestión de arquitecturas empresariales alineadas con los objetivos estratégicos de las organizaciones. Frameworks de arquitectura empresarial, gobierno de TI y estrategias de implementación.',
+    competencias: [
+      'Diseño de arquitecturas empresariales efectivas y escalables',
+      'Aplicación de marcos de referencia como TOGAF, Zachman y ArchiMate',
+      'Evaluación y mejora continua de la arquitectura organizacional'
+    ],
+    temario: [
+      'Fundamentos de arquitectura empresarial',
+      'Marcos de referencia y metodologías',
+      'Arquitectura de negocio',
+      'Arquitectura de aplicaciones',
+      'Arquitectura de datos',
+      'Arquitectura tecnológica',
+      'Gobierno y gestión del cambio'
+    ],
+    imagen: 'https://via.placeholder.com/400x300',
+    horario: 'Martes de 16:00 a 20:00',
+    aula: 'Seminario 3.1',
+    enlaceMateriales: 'https://campus.uclm.es/course/view.php?id=AE5001',
+    destacada: true
+  },
+  {
+    id: 'transformacion-digital',
+    codigo: 'TD4003',
+    titulo: 'Transformación Digital de la Empresa',
+    grado: 'Grado en Ingeniería Informática',
+    curso: '4º',
+    cuatrimestre: '1º',
+    creditos: 6,
+    academicYear: '2024-2025',
+    descripcion: 'Análisis y aplicación de estrategias para la transformación digital de organizaciones. Estudio de tecnologías disruptivas, modelos de negocio digitales y gestión del cambio en entornos empresariales.',
+    competencias: [
+      'Desarrollo de estrategias de transformación digital alineadas con objetivos de negocio',
+      'Evaluación e implementación de tecnologías emergentes en contextos empresariales',
+      'Gestión del cambio organizacional en procesos de digitalización'
+    ],
+    temario: [
+      'Fundamentos de la transformación digital',
+      'Tecnologías disruptivas para la empresa',
+      'Modelos de negocio digitales',
+      'Experiencia de cliente y usuario',
+      'Gestión del cambio y cultura digital',
+      'Casos de éxito y tendencias futuras'
+    ],
+    imagen: 'https://via.placeholder.com/400x300',
+    horario: 'Jueves de 16:00 a 20:00',
+    aula: 'Aula 3.5',
+    enlaceMateriales: 'https://campus.uclm.es/course/view.php?id=TD4003',
+    destacada: true
+  },
+  {
+    id: 'master-ia-avanzada',
+    codigo: 'MIA5001',
+    titulo: 'Inteligencia Artificial Avanzada',
+    grado: 'Máster en Ingeniería Informática',
+    curso: '1º',
+    cuatrimestre: '1º',
+    creditos: 4.5,
+    academicYear: '2023-2024',
+    descripcion: 'Estudio de técnicas avanzadas de inteligencia artificial con aplicaciones en problemas reales. Métodos avanzados de aprendizaje profundo, procesamiento del lenguaje natural y visión artificial.',
+    competencias: [
+      'Capacidad para identificar y analizar problemas complejos',
+      'Aplicación de técnicas avanzadas de IA a casos de uso reales',
+      'Evaluación crítica de sistemas basados en IA'
+    ],
+    temario: [
+      'Aprendizaje profundo avanzado',
+      'Modelos generativos',
+      'Procesamiento del lenguaje natural',
+      'Visión artificial',
+      'Sistemas multiagente',
+      'Ética y responsabilidad en IA'
+    ],
+    imagen: 'https://via.placeholder.com/400x300',
+    horario: 'Viernes de 16:00 a 20:00',
+    aula: 'Seminario 3.2',
+    enlaceMateriales: 'https://campus.uclm.es/course/view.php?id=34567',
+    destacada: true
+  },
+  {
+    id: 'procesamiento-datos',
+    codigo: 'PD3003',
+    titulo: 'Procesamiento y Análisis de Grandes Volúmenes de Datos',
+    grado: 'Grado en Ingeniería Informática',
+    curso: '4º',
+    cuatrimestre: '1º',
+    creditos: 6,
+    academicYear: '2023-2024',
+    descripcion: 'Técnicas y herramientas para el procesamiento, almacenamiento, análisis y visualización de grandes volúmenes de datos. Big Data, frameworks distribuidos y computación paralela.',
+    competencias: [
+      'Capacidad para aplicar metodologías de análisis de grandes conjuntos de datos',
+      'Conocimiento de tecnologías Big Data',
+      'Habilidad para seleccionar las técnicas adecuadas para cada problema'
+    ],
+    temario: [
+      'Introducción al Big Data',
+      'Modelos de datos y almacenamiento',
+      'Procesamiento batch y streaming',
+      'Frameworks de computación distribuida',
+      'Visualización de datos',
+      'Casos de estudio y aplicaciones'
+    ],
+    imagen: 'https://via.placeholder.com/400x300',
+    horario: 'Lunes y Miércoles de 15:00 a 17:00',
+    aula: 'Laboratorio 2.1',
+    enlaceMateriales: 'https://campus.uclm.es/course/view.php?id=45678',
+    destacada: false
+  }
+];
+
+// Filtrado y ordenación de asignaturas
+const asignaturasPorNivel = {
+  grado: asignaturas.filter(a => a.grado.includes('Grado')),
+  master: asignaturas.filter(a => a.grado.includes('Máster')),
+  doctorado: asignaturas.filter(a => a.grado.includes('Doctorado'))
+};
+
+// Obtenemos los años académicos únicos
+const aniosAcademicos = [...new Set(asignaturas.map(a => a.academicYear))];
+---
+
+<Layout title="Docencia | Roberto Sánchez Reolid">
+	<main class="py-12 px-4">
+		<div class="max-w-5xl mx-auto">
+			<header class="mb-12 text-center">
+				<h1 class="text-4xl font-bold text-gray-900 dark:text-white mb-6">Docencia</h1>
+				<p class="text-lg text-gray-700 dark:text-gray-300 max-w-3xl mx-auto">
+					Asignaturas impartidas en la Universidad de Castilla-La Mancha en distintos grados y posgrados.
+					Mi labor docente se centra en materias relacionadas con la programación, la inteligencia artificial y el análisis de datos.
+				</p>
+			</header>
+			
+			<!-- Filtros para la búsqueda de asignaturas -->
+			<div class="bg-white dark:bg-gray-800 rounded-xl shadow-md p-6 mb-8">
+				<h2 class="text-xl font-semibold text-gray-900 dark:text-white mb-4">Filtrar asignaturas</h2>
+				
+				<div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+					<!-- Filtro por nivel académico -->
+					<div>
+						<label for="nivel" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Nivel académico</label>
+						<select id="nivel" class="w-full px-4 py-2 rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-500">
+							<option value="todos">Todos los niveles</option>
+							<option value="grado">Grado</option>
+							<option value="master">Máster</option>
+							<option value="doctorado">Doctorado</option>
+						</select>
+					</div>
+					
+					<!-- Filtro por año académico -->
+					<div>
+						<label for="anioAcademico" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Año académico</label>
+						<select id="anioAcademico" class="w-full px-4 py-2 rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-500">
+							<option value="todos">Todos los años</option>
+							{aniosAcademicos.map(anio => (
+								<option value={anio}>{anio}</option>
+							))}
+						</select>
+					</div>
+					
+					<!-- Búsqueda por nombre -->
+					<div>
+						<label for="busqueda" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Búsqueda</label>
+						<input type="text" id="busqueda" placeholder="Buscar por nombre o código..." class="w-full px-4 py-2 rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-500">
+					</div>
+				</div>
+			</div>
+			
+			<!-- Lista de asignaturas -->
+			<div id="todas-asignaturas">
+				<h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-6">Todas las asignaturas</h2>
+				
+				<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+					{asignaturas.map(asignatura => (
+						<article class="bg-white dark:bg-gray-800 rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300">
+							<div class="relative">
+								<img 
+									src={asignatura.imagen} 
+									alt={`Imagen de la asignatura ${asignatura.titulo}`} 
+									class="w-full h-48 object-cover"
+								/>
+								<div class="absolute top-0 right-0 bg-blue-600 dark:bg-blue-500 text-white px-3 py-1 m-2 rounded-lg text-sm font-medium">
+									{asignatura.creditos} ECTS
+								</div>
+							</div>
+							
+							<div class="p-6">
+								<div class="flex items-center mb-2">
+									<span class="inline-block bg-gray-200 dark:bg-gray-700 rounded-full px-3 py-1 text-xs font-semibold text-gray-700 dark:text-gray-300 mr-2">
+										{asignatura.grado}
+									</span>
+									<span class="inline-block bg-blue-100 dark:bg-blue-900 rounded-full px-3 py-1 text-xs font-semibold text-blue-800 dark:text-blue-200">
+										{asignatura.curso}° curso
+									</span>
+								</div>
+								
+								<h3 class="text-xl font-bold text-gray-900 dark:text-white mb-2">
+									{asignatura.titulo}
+								</h3>
+								
+								<p class="text-gray-500 dark:text-gray-400 text-sm mb-4">
+									{asignatura.codigo} · {asignatura.cuatrimestre}° cuatrimestre
+								</p>
+								
+								<p class="text-gray-700 dark:text-gray-300 text-sm mb-4 line-clamp-3">
+									{asignatura.descripcion}
+								</p>
+								
+								<div class="flex flex-wrap items-center justify-between mt-4">
+									<div class="flex items-center text-gray-600 dark:text-gray-400 text-sm">
+										<svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+											<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+										</svg>
+										<span>{asignatura.horario}</span>
+									</div>
+									
+									<a href={asignatura.enlaceMateriales} target="_blank" rel="noopener noreferrer" class="text-blue-600 dark:text-blue-400 text-sm hover:underline">
+										Materiales
+										<span class="ml-1">→</span>
+									</a>
+								</div>
+							</div>
+						</article>
+					))}
+				</div>
+			</div>
+			
+			<!-- Secciones por nivel académico -->
+			<div id="asignaturas-grado" class="mt-16 hidden">
+				<h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-6">Grado</h2>
+				
+				<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+					{asignaturasPorNivel.grado.map(asignatura => (
+						<article class="bg-white dark:bg-gray-800 rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300">
+							<!-- El contenido es igual al de arriba -->
+							<div class="relative">
+								<img 
+									src={asignatura.imagen} 
+									alt={`Imagen de la asignatura ${asignatura.titulo}`} 
+									class="w-full h-48 object-cover"
+								/>
+								<div class="absolute top-0 right-0 bg-blue-600 dark:bg-blue-500 text-white px-3 py-1 m-2 rounded-lg text-sm font-medium">
+									{asignatura.creditos} ECTS
+								</div>
+							</div>
+							
+							<div class="p-6">
+								<h3 class="text-xl font-bold text-gray-900 dark:text-white mb-2">
+									{asignatura.titulo}
+								</h3>
+								
+								<p class="text-gray-500 dark:text-gray-400 text-sm mb-4">
+									{asignatura.codigo} · {asignatura.cuatrimestre}° cuatrimestre
+								</p>
+								
+								<p class="text-gray-700 dark:text-gray-300 text-sm mb-4 line-clamp-3">
+									{asignatura.descripcion}
+								</p>
+							</div>
+						</article>
+					))}
+				</div>
+			</div>
+			
+			<!-- Sección de máster -->
+			<div id="asignaturas-master" class="mt-16 hidden">
+				<h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-6">Máster</h2>
+				
+				<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+					{asignaturasPorNivel.master.map(asignatura => (
+						<!-- Estructura similar a las anteriores -->
+						<article class="bg-white dark:bg-gray-800 rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300">
+							<div class="relative">
+								<img 
+									src={asignatura.imagen} 
+									alt={`Imagen de la asignatura ${asignatura.titulo}`} 
+									class="w-full h-48 object-cover"
+								/>
+								<div class="absolute top-0 right-0 bg-blue-600 dark:bg-blue-500 text-white px-3 py-1 m-2 rounded-lg text-sm font-medium">
+									{asignatura.creditos} ECTS
+								</div>
+							</div>
+							
+							<div class="p-6">
+								<h3 class="text-xl font-bold text-gray-900 dark:text-white mb-2">
+									{asignatura.titulo}
+								</h3>
+								
+								<p class="text-gray-700 dark:text-gray-300 text-sm mb-4 line-clamp-3">
+									{asignatura.descripcion}
+								</p>
+							</div>
+						</article>
+					))}
+				</div>
+			</div>
+			
+			<!-- JavaScript para la funcionalidad de filtrado -->
+			<script>
+				// Obtener referencias a los elementos de filtrado
+				const selectNivel = document.getElementById('nivel');
+				const selectAnio = document.getElementById('anioAcademico');
+				const inputBusqueda = document.getElementById('busqueda');
+				
+				// Obtener referencias a las secciones
+				const seccionTodas = document.getElementById('todas-asignaturas');
+				const seccionGrado = document.getElementById('asignaturas-grado');
+				const seccionMaster = document.getElementById('asignaturas-master');
+				
+				// Función para manejar el cambio de nivel
+				selectNivel.addEventListener('change', function() {
+					const nivel = this.value;
+					
+					// Mostrar/ocultar secciones según el nivel seleccionado
+					if (nivel === 'todos') {
+						seccionTodas.classList.remove('hidden');
+						seccionGrado.classList.add('hidden');
+						seccionMaster.classList.add('hidden');
+					} else if (nivel === 'grado') {
+						seccionTodas.classList.add('hidden');
+						seccionGrado.classList.remove('hidden');
+						seccionMaster.classList.add('hidden');
+					} else if (nivel === 'master') {
+						seccionTodas.classList.add('hidden');
+						seccionGrado.classList.add('hidden');
+						seccionMaster.classList.remove('hidden');
+					}
+				});
+				
+				// Función para filtrar por búsqueda (implementación básica)
+				inputBusqueda.addEventListener('input', function() {
+					const busqueda = this.value.toLowerCase();
+					const tarjetas = document.querySelectorAll('#todas-asignaturas article');
+					
+					tarjetas.forEach(tarjeta => {
+						const titulo = tarjeta.querySelector('h3').textContent.toLowerCase();
+						const codigo = tarjeta.querySelector('p').textContent.toLowerCase();
+						
+						if (titulo.includes(busqueda) || codigo.includes(busqueda)) {
+							tarjeta.style.display = '';
+						} else {
+							tarjeta.style.display = 'none';
+						}
+					});
+				});
+			</script>
+			
+			<!-- Sección de materiales complementarios -->
+			<section class="mt-20">
+				<h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-6">Materiales complementarios</h2>
+				
+				<div class="bg-white dark:bg-gray-800 rounded-xl shadow-md p-6">
+					<p class="text-gray-700 dark:text-gray-300 mb-6">
+						Además de las asignaturas oficiales, pongo a disposición de los estudiantes materiales complementarios
+						y recursos adicionales que pueden ser útiles para profundizar en los temas tratados en clase.
+					</p>
+					
+					<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+						<a href="#" class="flex items-center p-4 bg-gray-50 dark:bg-gray-700 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-600 transition-colors">
+							<div class="flex-shrink-0 bg-blue-100 dark:bg-blue-900 p-3 rounded-full mr-4">
+								<svg class="w-6 h-6 text-blue-600 dark:text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+									<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
+								</svg>
+							</div>
+							<div>
+								<h3 class="font-medium text-gray-900 dark:text-white">Guías de estudio</h3>
+								<p class="text-sm text-gray-600 dark:text-gray-400">Material complementario para preparar exámenes</p>
+							</div>
+						</a>
+						
+						<a href="#" class="flex items-center p-4 bg-gray-50 dark:bg-gray-700 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-600 transition-colors">
+							<div class="flex-shrink-0 bg-green-100 dark:bg-green-900 p-3 rounded-full mr-4">
+								<svg class="w-6 h-6 text-green-600 dark:text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+									<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+								</svg>
+							</div>
+							<div>
+								<h3 class="font-medium text-gray-900 dark:text-white">Proyectos de ejemplo</h3>
+								<p class="text-sm text-gray-600 dark:text-gray-400">Ejemplos prácticos para inspirar tus propios proyectos</p>
+							</div>
+						</a>
+						
+						<a href="#" class="flex items-center p-4 bg-gray-50 dark:bg-gray-700 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-600 transition-colors">
+							<div class="flex-shrink-0 bg-purple-100 dark:bg-purple-900 p-3 rounded-full mr-4">
+								<svg class="w-6 h-6 text-purple-600 dark:text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+									<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"></path>
+								</svg>
+							</div>
+							<div>
+								<h3 class="font-medium text-gray-900 dark:text-white">Videotutoriales</h3>
+								<p class="text-sm text-gray-600 dark:text-gray-400">Explicaciones paso a paso en formato vídeo</p>
+							</div>
+						</a>
+						
+						<a href="#" class="flex items-center p-4 bg-gray-50 dark:bg-gray-700 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-600 transition-colors">
+							<div class="flex-shrink-0 bg-yellow-100 dark:bg-yellow-900 p-3 rounded-full mr-4">
+								<svg class="w-6 h-6 text-yellow-600 dark:text-yellow-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+									<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"></path>
+								</svg>
+							</div>
+							<div>
+								<h3 class="font-medium text-gray-900 dark:text-white">Notebooks y ejercicios</h3>
+								<p class="text-sm text-gray-600 dark:text-gray-400">Cuadernos interactivos y ejercicios prácticos</p>
+							</div>
+						</a>
+					</div>
+				</div>
+			</section>
+			
+			<!-- Sección de tutoría y atención al estudiante -->
+			<section class="mt-16">
+				<h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-6">Tutoría y atención al estudiante</h2>
+				
+				<div class="bg-white dark:bg-gray-800 rounded-xl shadow-md p-8">
+					<div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+						<div>
+							<h3 class="text-xl font-semibold text-gray-900 dark:text-white mb-4">Horario de tutorías</h3>
+							
+							<div class="space-y-4">
+								<div class="flex items-start">
+									<div class="flex-shrink-0 h-10 w-10 rounded-full bg-blue-100 dark:bg-blue-900 flex items-center justify-center mr-4">
+										<svg class="h-5 w-5 text-blue-600 dark:text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+											<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+										</svg>
+									</div>
+									<div>
+										<h4 class="font-medium text-gray-900 dark:text-white">Primer cuatrimestre</h4>
+										<p class="text-gray-600 dark:text-gray-400">Lunes y miércoles de 12:00 a 14:00</p>
+									</div>
+								</div>
+								
+								<div class="flex items-start">
+									<div class="flex-shrink-0 h-10 w-10 rounded-full bg-blue-100 dark:bg-blue-900 flex items-center justify-center mr-4">
+										<svg class="h-5 w-5 text-blue-600 dark:text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+											<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+										</svg>
+									</div>
+									<div>
+										<h4 class="font-medium text-gray-900 dark:text-white">Segundo cuatrimestre</h4>
+										<p class="text-gray-600 dark:text-gray-400">Martes y jueves de 10:00 a 12:00</p>
+									</div>
+								</div>
+								
+								<div class="flex items-start">
+									<div class="flex-shrink-0 h-10 w-10 rounded-full bg-blue-100 dark:bg-blue-900 flex items-center justify-center mr-4">
+										<svg class="h-5 w-5 text-blue-600 dark:text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+											<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
+											<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
+										</svg>
+									</div>
+									<div>
+										<h4 class="font-medium text-gray-900 dark:text-white">Ubicación</h4>
+										<p class="text-gray-600 dark:text-gray-400">Despacho 2.13, Edificio Politécnico</p>
+									</div>
+								</div>
+							</div>
+						</div>
+						
+						<div>
+							<h3 class="text-xl font-semibold text-gray-900 dark:text-white mb-4">Solicitar tutoría</h3>
+							
+							<p class="text-gray-700 dark:text-gray-300 mb-4">
+								Puedes concertar una tutoría personalizada mediante el siguiente formulario.
+								Indícame el motivo de la consulta y tu disponibilidad horaria.
+							</p>
+							
+							<a href="/contacto?asunto=tutoria" class="btn btn-primary inline-flex items-center">
+								Solicitar tutoría
+								<svg class="ml-2 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+									<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+								</svg>
+							</a>
+						</div>
+					</div>
+				</div>
+			</section>
+		</div>
+	</main>
+</Layout>
+
+<style>
+	.btn {
+		@apply inline-block py-2 px-6 rounded-lg font-medium transition-colors duration-200;
+	}
+	
+	.btn-primary {
+		@apply bg-blue-600 hover:bg-blue-700 text-white dark:bg-blue-500 dark:hover:bg-blue-600;
+	}
+	
+	.btn-secondary {
+		@apply bg-gray-800 hover:bg-gray-900 text-white dark:bg-gray-700 dark:hover:bg-gray-600;
+	}
+	
+	.btn-outline {
+		@apply border-2 border-gray-800 text-gray-800 hover:bg-gray-800 hover:text-white dark:border-gray-200 dark:text-gray-200 dark:hover:bg-gray-700;
+	}
+	
+	.line-clamp-3 {
+		display: -webkit-box;
+		-webkit-line-clamp: 3;
+		-webkit-box-orient: vertical;
+		overflow: hidden;
+	}
+</style>
