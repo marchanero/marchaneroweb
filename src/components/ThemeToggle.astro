@@ -1,0 +1,121 @@
+---
+// Componente para el toggle del modo oscuro
+interface Props {
+  class?: string;
+}
+
+const { class: className = '' } = Astro.props;
+---
+
+<button
+  id="theme-toggle"
+  class={`theme-toggle ${className}`}
+  aria-label="Cambiar tema"
+  title="Cambiar entre modo claro y oscuro"
+>
+  <!-- Icono de sol (modo claro) -->
+  <svg class="sun-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="12" cy="12" r="5"></circle>
+    <line x1="12" y1="1" x2="12" y2="3"></line>
+    <line x1="12" y1="21" x2="12" y2="23"></line>
+    <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+    <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+    <line x1="1" y1="12" x2="3" y2="12"></line>
+    <line x1="21" y1="12" x2="23" y2="12"></line>
+    <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+    <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+  </svg>
+  
+  <!-- Icono de luna (modo oscuro) -->
+  <svg class="moon-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+  </svg>
+</button>
+
+<style>
+  .theme-toggle {
+    @apply relative p-2 rounded-lg border border-gray-300 dark:border-gray-600 
+           bg-white dark:bg-gray-800 hover:bg-gray-50 dark:hover:bg-gray-700
+           text-gray-700 dark:text-gray-300 transition-all duration-200 
+           focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2
+           dark:focus:ring-offset-gray-900;
+  }
+  
+  .theme-toggle svg {
+    @apply transition-all duration-200;
+  }
+  
+  /* Mostrar sol en modo claro, ocultar luna */
+  html:not(.dark) .theme-toggle .sun-icon {
+    @apply block;
+  }
+  
+  html:not(.dark) .theme-toggle .moon-icon {
+    @apply hidden;
+  }
+  
+  /* Mostrar luna en modo oscuro, ocultar sol */
+  html.dark .theme-toggle .sun-icon {
+    @apply hidden;
+  }
+  
+  html.dark .theme-toggle .moon-icon {
+    @apply block;
+  }
+</style>
+
+<script>
+  // Script para manejar el toggle del tema
+  function initThemeToggle() {
+    const toggle = document.getElementById('theme-toggle');
+    const html = document.documentElement;
+    
+    // Función para obtener el tema guardado o el preferido del sistema
+    function getTheme() {
+      if (typeof localStorage !== 'undefined' && localStorage.getItem('theme')) {
+        return localStorage.getItem('theme');
+      }
+      if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        return 'dark';
+      }
+      return 'light';
+    }
+    
+    // Función para aplicar el tema
+    function applyTheme(theme) {
+      if (theme === 'dark') {
+        html.classList.add('dark');
+      } else {
+        html.classList.remove('dark');
+      }
+      localStorage.setItem('theme', theme);
+    }
+    
+    // Función para cambiar el tema
+    function toggleTheme() {
+      const currentTheme = html.classList.contains('dark') ? 'dark' : 'light';
+      const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+      applyTheme(newTheme);
+    }
+    
+    // Aplicar tema inicial
+    applyTheme(getTheme());
+    
+    // Event listener para el botón
+    toggle?.addEventListener('click', toggleTheme);
+    
+    // Escuchar cambios en las preferencias del sistema
+    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
+      if (!localStorage.getItem('theme')) {
+        applyTheme(e.matches ? 'dark' : 'light');
+      }
+    });
+  }
+  
+  // Inicializar cuando el DOM esté listo
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initThemeToggle);
+  } else {
+    initThemeToggle();
+  }
+</script>
