@@ -18,7 +18,7 @@ export default {
     // Mock para archivos estáticos si es necesario (ej. imágenes, css)
     '\\.(jpg|jpeg|png|gif|webp|svg|css|scss|sass|less)$' : '<rootDir>/test/__mocks__/fileMock.js',
   },
-  // setupFilesAfterEnv: ['<rootDir>/jest.setup.js'], // Si tienes un archivo de setup
+  setupFilesAfterEnv: ['<rootDir>/jest.setup.js'], // Setup para polyfills
   globals: {
     'ts-jest': {
       tsconfig: 'tsconfig.json',

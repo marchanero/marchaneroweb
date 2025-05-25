@@ -4,10 +4,14 @@
 
 // Este archivo prueba aspectos avanzados de SEO y la estructura específica para el perfil de investigador
 
-const fs = require('fs');
-const path = require('path');
-const { JSDOM } = require('jsdom');
-const { spawnSync } = require('child_process');
+import fs from 'fs';
+import path from 'path';
+import { JSDOM } from 'jsdom';
+import { spawnSync } from 'child_process';
+import { fileURLToPath } from 'url';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 // Función para asegurar que existe el directorio dist con archivos generados
 function ensureDistExists() {
