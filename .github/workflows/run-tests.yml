@@ -88,40 +88,70 @@ jobs:
         with:
           ref: ${{ github.ref }}
 
+      - name: Setup labels
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          # Crear labels personalizados si no existen
+          gh label create "automated-pr" --description "Pull request created automatically by workflow" --color "0366d6" 2>/dev/null || echo "Label automated-pr already exists or couldn't be created"
+          gh label create "needs-review" --description "Requires review" --color "fbca04" 2>/dev/null || echo "Label needs-review already exists or couldn't be created"
+
       - name: Create Pull Request to main
-        uses: peter-evans/create-pull-request@v6
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-          commit-message: 'Automated PR: Merge ${{ github.ref_name }} into main after successful tests'
-          title: 'Merge ${{ github.ref_name }} into main'
-          body: |
-            Automated PR created after successful tests on branch `${{ github.ref_name }}`.
-            Test command executed: `${{ needs.test.outputs.test_command }}`
-            Workflow run: [${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}]
-          branch: ${{ github.ref_name }} # La rama desde la que se hace el PR
-          base: main # La rama destino
-          labels: automated-pr, needs-review
-          draft: false
-          update-existing: true
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          # Verificar si ya existe un PR abierto desde esta rama hacia main
+          existing_pr=$(gh pr list --head "${{ github.ref_name }}" --base main --json number --jq '.[0].number // empty')
+          
+          if [ -z "$existing_pr" ]; then
+            # Crear nuevo PR (usar solo labels básicos para evitar errores)
+            gh pr create \
+              --title "Merge ${{ github.ref_name }} into main" \
+              --body "Automated PR created after successful tests on branch \`${{ github.ref_name }}\`.
+
+            Test command executed: \`${{ needs.test.outputs.test_command }}\`
+            Workflow run: [${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}]" \
+              --base main \
+              --head "${{ github.ref_name }}" \
+              --label "enhancement"
+            
+            echo "✅ Created new PR to main"
+            
+            # Intentar agregar labels personalizados después
+            pr_number=$(gh pr list --head "${{ github.ref_name }}" --base main --json number --jq '.[0].number')
+            gh pr edit "$pr_number" --add-label "automated-pr,needs-review" 2>/dev/null || echo "Could not add custom labels"
+          else
+            echo "ℹ️ PR #$existing_pr already exists for ${{ github.ref_name }} -> main"
+          fi
 
       - name: Create Pull Request to develop (if branch is not develop itself)
-        if: github.ref != 'refs/heads/develop' # Solo si la rama actual no es develop
-        uses: peter-evans/create-pull-request@v6
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-          commit-message: 'Automated PR: Merge ${{ github.ref_name }} into develop after successful tests'
-          title: 'Merge ${{ github.ref_name }} into develop'
-          body: |
-            Automated PR created after successful tests on branch `${{ github.ref_name }}`.
-            Test command executed: `${{ needs.test.outputs.test_command }}`
-            Workflow run: [${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}]
-          branch: ${{ github.ref_name }}
-          base: develop
-          labels: automated-pr, needs-review
-          draft: false
-          update-existing: true
-          # Evitar error si la PR a develop ya existe y es la misma que a main
-          ignore-already-exists-for-same-commit: true
+        if: github.ref != 'refs/heads/develop'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          # Verificar si ya existe un PR abierto desde esta rama hacia develop
+          existing_pr=$(gh pr list --head "${{ github.ref_name }}" --base develop --json number --jq '.[0].number // empty')
+          
+          if [ -z "$existing_pr" ]; then
+            # Crear nuevo PR (usar label básico primero)
+            gh pr create \
+              --title "Merge ${{ github.ref_name }} into develop" \
+              --body "Automated PR created after successful tests on branch \`${{ github.ref_name }}\`.
+
+            Test command executed: \`${{ needs.test.outputs.test_command }}\`
+            Workflow run: [${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}]" \
+              --base develop \
+              --head "${{ github.ref_name }}" \
+              --label "enhancement"
+            
+            echo "✅ Created new PR to develop"
+            
+            # Intentar agregar labels personalizados después
+            pr_number=$(gh pr list --head "${{ github.ref_name }}" --base develop --json number --jq '.[0].number')
+            gh pr edit "$pr_number" --add-label "automated-pr,needs-review" 2>/dev/null || echo "Could not add custom labels"
+          else
+            echo "ℹ️ PR #$existing_pr already exists for ${{ github.ref_name }} -> develop"
+          fi
 
 
   create_issue_on_failure:
@@ -130,35 +160,33 @@ jobs:
     runs-on: ubuntu-latest
     if: needs.test.outputs.test_status == 'failure' && github.event_name == 'push' && github.ref != 'refs/heads/main'
     steps:
-      - name: Create Issue
-        uses: peter-evans/create-issue-from-file@v5
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-          title: 'Test Failure on branch: ${{ github.ref_name }}'
-          content-filepath: .github/ISSUE_TEMPLATE/test-failure-template.md # Necesitarás crear este archivo
-          labels: bug, automated-issue, needs-attention
-          assignees: ${{ github.actor }}
+      - name: Setup labels for issues
         env:
-          BRANCH_NAME: ${{ github.ref_name }}
-          WORKFLOW_RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
-          TEST_COMMAND: ${{ needs.test.outputs.test_command }}
-          # Puedes añadir más variables de entorno si las usas en tu plantilla de issue
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          # Crear labels si no existen
+          gh label create "automated-issue" --description "Issue created automatically by workflow" --color "0366d6" 2>/dev/null || echo "Label automated-issue already exists"
+          gh label create "needs-attention" --description "Requires immediate attention" --color "d93f0b" 2>/dev/null || echo "Label needs-attention already exists"
 
-# Nota: Necesitarás crear el archivo .github/ISSUE_TEMPLATE/test-failure-template.md
-# Ejemplo de test-failure-template.md:
-# ---
-# name: Test Failure Report
-# about: Automated issue for test failures.
-# title: 'Test Failure on branch: ${BRANCH_NAME}'
-# labels: bug, automated-issue
-# assignees: ''
-# ---
-#
-# ### 🚨 Test Failure Notification 🚨
-#
-# Tests failed on branch **${BRANCH_NAME}**.
-#
-# - **Test Command Executed**: `${TEST_COMMAND}`
-# - **Workflow Run**: [View Workflow Log](${WORKFLOW_RUN_URL})
-#
-# Please investigate the failures and address them.
+      - name: Create Issue
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          # Crear issue por fallo en tests (usar labels básicos primero)
+          issue_number=$(gh issue create \
+            --title "🚨 Test Failure on branch: ${{ github.ref_name }}" \
+            --body "### 🚨 Test Failure Notification 🚨
+
+          Tests failed on branch **${{ github.ref_name }}**.
+
+          - **Test Command Executed**: \`${{ needs.test.outputs.test_command }}\`
+          - **Workflow Run**: [View Workflow Log](${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }})
+
+          Please investigate the failures and address them." \
+            --label "bug" \
+            --assignee "${{ github.actor }}" | sed 's/.*\/\([0-9]*\)/\1/')
+          
+          echo "✅ Created issue #$issue_number for test failure"
+          
+          # Intentar agregar labels personalizados después
+          gh issue edit "$issue_number" --add-label "automated-issue,needs-attention" 2>/dev/null || echo "Could not add custom labels to issue"
