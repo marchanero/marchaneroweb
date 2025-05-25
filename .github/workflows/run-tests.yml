@@ -69,7 +69,7 @@ jobs:
       needs.test.outputs.status == 'success' &&
       github.event_name == 'push' &&
       github.ref != 'refs/heads/main' &&
-      github.ref != 'refs/heads/develop' # No crear PR de develop a develop
+      github.ref != 'refs/heads/develop'
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
