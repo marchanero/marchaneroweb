@@ -6,9 +6,11 @@
  * dependiendo del entorno en el que se ejecute.
  */
 
-require('dotenv').config();
-const fs = require('fs');
-const path = require('path');
+import dotenv from 'dotenv';
+dotenv.config();
+
+import fs from 'fs';
+import path from 'path';
 
 // Importamos las variables necesarias para los workflows
 const ENV_VARS = [
