@@ -1,0 +1,133 @@
+---
+// Componente para mostrar métricas bibliométricas actualizadas
+import scholarData from '../data/scholar.json';
+import paginationData from '../data/scholar-pagination.json';
+
+interface Props {
+  showDetails?: boolean;
+  compact?: boolean;
+}
+
+const { showDetails = false, compact = false } = Astro.props;
+
+// Función para formatear números grandes
+function formatNumber(num: number): string {
+  if (num >= 1000) {
+    return (num / 1000).toFixed(1) + 'k';
+  }
+  return num.toString();
+}
+
+// Obtener año actual para cálculos
+const currentYear = new Date().getFullYear();
+const recentYears = 5; // Últimos 5 años
+
+// Calcular métricas recientes
+const recentCitations = scholarData.author.citationChart
+  .filter(item => item.year >= currentYear - recentYears)
+  .reduce((sum, item) => sum + item.citations, 0);
+
+// Obtener datos temporales
+const publicationsByYear = paginationData.temporalAnalysis.publicationsByYear;
+const citationsByYear = paginationData.temporalAnalysis.citationsByYear;
+
+// Calcular métricas de productividad
+const avgPublicationsPerYear = Math.round(scholarData.publications.length / paginationData.temporalAnalysis.careerSpan);
+const avgCitationsPerPaper = Math.round(scholarData.author.statistics.totalCitations / scholarData.publications.length);
+---
+
+<div class={`${compact ? 'p-4' : 'p-6'} bg-white dark:bg-gray-800 rounded-xl shadow-lg`}>
+  <h3 class={`${compact ? 'text-lg' : 'text-xl'} font-bold text-gray-900 dark:text-white mb-4 flex items-center`}>
+    📊 Métricas Bibliométricas
+    <span class="ml-2 text-xs bg-green-100 dark:bg-green-900 text-green-800 dark:text-green-200 px-2 py-1 rounded-full">
+      Actualizado
+    </span>
+  </h3>
+  
+  <!-- Métricas principales -->
+  <div class={`grid ${compact ? 'grid-cols-2 gap-3' : 'grid-cols-1 md:grid-cols-3 gap-4'} mb-4`}>
+    <div class="text-center">
+      <div class={`${compact ? 'text-2xl' : 'text-3xl'} font-bold text-blue-600 dark:text-blue-400`}>
+        {formatNumber(scholarData.author.statistics.totalCitations)}
+      </div>
+      <div class="text-sm text-gray-600 dark:text-gray-400">Citas Totales</div>
+      {showDetails && (
+        <div class="text-xs text-gray-500 dark:text-gray-500 mt-1">
+          {recentCitations} últimos {recentYears} años
+        </div>
+      )}
+    </div>
+    
+    <div class="text-center">
+      <div class={`${compact ? 'text-2xl' : 'text-3xl'} font-bold text-green-600 dark:text-green-400`}>
+        {scholarData.author.statistics.hIndex}
+      </div>
+      <div class="text-sm text-gray-600 dark:text-gray-400">Índice h</div>
+    </div>
+    
+    <div class="text-center">
+      <div class={`${compact ? 'text-2xl' : 'text-3xl'} font-bold text-purple-600 dark:text-purple-400`}>
+        {scholarData.author.statistics.i10Index}
+      </div>
+      <div class="text-sm text-gray-600 dark:text-gray-400">Índice i10</div>
+    </div>
+    
+    {!compact && (
+      <>
+        <div class="text-center">
+          <div class="text-3xl font-bold text-orange-600 dark:text-orange-400">
+            {scholarData.publications.length}
+          </div>
+          <div class="text-sm text-gray-600 dark:text-gray-400">Publicaciones</div>
+        </div>
+        
+        <div class="text-center">
+          <div class="text-3xl font-bold text-red-600 dark:text-red-400">
+            {avgCitationsPerPaper}
+          </div>
+          <div class="text-sm text-gray-600 dark:text-gray-400">Citas/Artículo</div>
+        </div>
+        
+        <div class="text-center">
+          <div class="text-3xl font-bold text-indigo-600 dark:text-indigo-400">
+            {avgPublicationsPerYear}
+          </div>
+          <div class="text-sm text-gray-600 dark:text-gray-400">Artículos/Año</div>
+        </div>
+      </>
+    )}
+  </div>
+  
+  {showDetails && (
+    <div class="border-t dark:border-gray-700 pt-4">
+      <div class="grid grid-cols-2 gap-4 text-sm">
+        <div>
+          <h4 class="font-semibold text-gray-900 dark:text-white mb-2">Actividad Reciente</h4>
+          <ul class="space-y-1 text-gray-600 dark:text-gray-400">
+            <li>Span carrera: {paginationData.temporalAnalysis.careerSpan} años</li>
+            <li>Años activos: {paginationData.temporalAnalysis.activeYears}</li>
+            <li>Pico de publicaciones: {Math.max(...Object.values(publicationsByYear))} ({Object.keys(publicationsByYear).find(year => publicationsByYear[year] === Math.max(...Object.values(publicationsByYear)))})</li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="font-semibold text-gray-900 dark:text-white mb-2">Impacto</h4>
+          <ul class="space-y-1 text-gray-600 dark:text-gray-400">
+            <li>Pico de citas: {Math.max(...Object.values(citationsByYear))} ({Object.keys(citationsByYear).find(year => citationsByYear[year] === Math.max(...Object.values(citationsByYear)))})</li>
+            <li>Media citas/año: {Math.round(scholarData.author.statistics.totalCitations / paginationData.temporalAnalysis.careerSpan)}</li>
+            <li>Tendencia: {scholarData.author.citationChart.slice(-3).reduce((sum, item) => sum + item.citations, 0) > scholarData.author.citationChart.slice(-6, -3).reduce((sum, item) => sum + item.citations, 0) ? '📈 Creciente' : '📊 Estable'}</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  )}
+  
+  <div class="mt-4 text-xs text-gray-500 dark:text-gray-400 text-center">
+    Última actualización: {new Date(scholarData.lastUpdated).toLocaleDateString('es-ES', {
+      year: 'numeric',
+      month: 'long',
+      day: 'numeric',
+      hour: '2-digit',
+      minute: '2-digit'
+    })}
+  </div>
+</div>

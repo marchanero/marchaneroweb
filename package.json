@@ -20,11 +20,19 @@
     "deploy": "npm run pre-deploy && npm run build",
     "deploy:a11y": "npm run pre-deploy:a11y && npm run build",
     "test:pages": "NODE_OPTIONS=--experimental-vm-modules jest --config=jest.config.js test/pages.test.js test/seo.test.js",
+    "test:integration": "node scripts/test-integration.js",
     "check:performance": "npx lighthouse-ci http://localhost:4321 --config=./.github/lighthouse-config.json",
     "verify:telegram": "node scripts/verify-telegram-config.js",
     "import:env:netlify": "node scripts/import-env-to-netlify.js",
     "update:scholar": "node scripts/fetch-scholar.js",
-    "scholar:example": "node scripts/fetch-scholar.js --example"
+    "scholar:example": "node scripts/fetch-scholar.js --example",
+    "scholar:scrape": "node scripts/scrape-scholar-advanced.js",
+    "scholar:verify": "node scripts/verify-complete-system.js",
+    "scholar:test": "node scripts/test-integration.js",
+    "scholar:summary": "node scripts/generate-executive-summary.js",
+    "scholar:analyze": "node scripts/analyze-pagination.js",
+    "scholar:setup": "node scripts/setup-env-vars.js",
+    "scholar:complete": "node scripts/integration-completion.js"
   },
   "dependencies": {
     "dotenv": "^16.5.0",

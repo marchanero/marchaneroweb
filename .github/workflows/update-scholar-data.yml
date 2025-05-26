@@ -1,0 +1,82 @@
+name: Update Scholar Data
+
+on:
+  # Ejecutar automáticamente todos los días a las 6:00 AM UTC
+  schedule:
+    - cron: '0 6 * * *'
+  
+  # Permitir ejecución manual
+  workflow_dispatch:
+    inputs:
+      force_update:
+        description: 'Force update even if no changes detected'
+        required: false
+        default: false
+        type: boolean
+
+jobs:
+  update-scholar-data:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+      with:
+        token: ${{ secrets.GITHUB_TOKEN }}
+        
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '18'
+        cache: 'npm'
+        
+    - name: Install dependencies
+      run: npm ci
+      
+    - name: Create data directory if it doesn't exist
+      run: mkdir -p src/data
+      
+    - name: Run Scholar scraper
+      env:
+        SERPAPI_API_KEY: ${{ secrets.SERPAPI_API_KEY }}
+      run: |
+        cd scripts
+        node scrape-scholar-advanced.js
+        
+    - name: Check for changes
+      id: check_changes
+      run: |
+        git diff --quiet src/data/ || echo "changes=true" >> $GITHUB_OUTPUT
+        
+    - name: Commit and push changes
+      if: steps.check_changes.outputs.changes == 'true' || github.event.inputs.force_update == 'true'
+      run: |
+        git config --local user.email "action@github.com"
+        git config --local user.name "GitHub Action"
+        git add src/data/
+        git commit -m "Auto-update Scholar data - $(date '+%Y-%m-%d %H:%M:%S')" || exit 0
+        git push
+        
+    - name: Trigger Netlify Deploy
+      if: steps.check_changes.outputs.changes == 'true' || github.event.inputs.force_update == 'true'
+      env:
+        NETLIFY_HOOK_URL: ${{ secrets.NETLIFY_HOOK_URL }}
+      run: |
+        if [ -n "$NETLIFY_HOOK_URL" ]; then
+          curl -X POST -d {} "$NETLIFY_HOOK_URL"
+          echo "Netlify deploy triggered successfully"
+        else
+          echo "NETLIFY_HOOK_URL not configured, skipping Netlify deployment"
+        fi
+        
+    - name: Create summary
+      if: always()
+      run: |
+        echo "## Scholar Data Update Summary" >> $GITHUB_STEP_SUMMARY
+        echo "- **Execution Time:** $(date)" >> $GITHUB_STEP_SUMMARY
+        echo "- **Repository:** ${{ github.repository }}" >> $GITHUB_STEP_SUMMARY
+        if [ "${{ steps.check_changes.outputs.changes }}" == "true" ]; then
+          echo "- **Status:** ✅ Data updated successfully" >> $GITHUB_STEP_SUMMARY
+        else
+          echo "- **Status:** ℹ️ No changes detected" >> $GITHUB_STEP_SUMMARY
+        fi

@@ -1,0 +1,210 @@
+{
+  "metadata": {
+    "generatedAt": "2025-05-25T11:20:26.090Z",
+    "reportVersion": "1.0.0",
+    "dataSource": "Google Scholar",
+    "reportType": "Executive Summary",
+    "period": "Complete Academic Career"
+  },
+  "authorProfile": {
+    "name": "Roberto Sánchez-Reolid",
+    "affiliation": "Assistant professor on Universidad de Castilla-La Mancha",
+    "interests": [
+      {
+        "title": "Neural Networks",
+        "link": "https://scholar.google.com/citations?view_op=search_authors&hl=en&mauthors=label:neural_networks",
+        "serpapi_link": "https://serpapi.com/search.json?engine=google_scholar_profiles&hl=en&mauthors=label%3Aneural_networks"
+      },
+      {
+        "title": "Artificial Inteligence",
+        "link": "https://scholar.google.com/citations?view_op=search_authors&hl=en&mauthors=label:artificial_inteligence",
+        "serpapi_link": "https://serpapi.com/search.json?engine=google_scholar_profiles&hl=en&mauthors=label%3Aartificial_inteligence"
+      },
+      {
+        "title": "Sensors",
+        "link": "https://scholar.google.com/citations?view_op=search_authors&hl=en&mauthors=label:sensors",
+        "serpapi_link": "https://serpapi.com/search.json?engine=google_scholar_profiles&hl=en&mauthors=label%3Asensors"
+      },
+      {
+        "title": "Physiological Signal Processing",
+        "link": "https://scholar.google.com/citations?view_op=search_authors&hl=en&mauthors=label:physiological_signal_processing",
+        "serpapi_link": "https://serpapi.com/search.json?engine=google_scholar_profiles&hl=en&mauthors=label%3Aphysiological_signal_processing"
+      }
+    ],
+    "scholarId": "PCALePwAAAAJ"
+  },
+  "keyMetrics": {
+    "totalPublications": 20,
+    "totalCitations": 553,
+    "hIndex": 13,
+    "i10Index": 16,
+    "averageCitationsPerPaper": 27.65,
+    "publicationsWithCitations": 0,
+    "publicationsWithoutCitations": 20,
+    "citationRate": 0
+  },
+  "performanceHighlights": {
+    "topAchievements": [
+      "20 publicaciones académicas",
+      "553 citas totales",
+      "Índice h de 13",
+      "16 publicaciones con 10+ citas",
+      "0 colaboradores únicos"
+    ],
+    "impactSummary": {
+      "citationRate": "0% de publicaciones citadas",
+      "averageImpact": "27.65 citas por publicación",
+      "recentActivity": "0 publicaciones en 2025"
+    }
+  },
+  "productivityAnalysis": {
+    "publicationsByYear": {
+      "2018": 1,
+      "2019": 3,
+      "2020": 4,
+      "2021": 2,
+      "2022": 7,
+      "2023": 2,
+      "2024": 1
+    },
+    "recentYearsAnalysis": [
+      {
+        "year": 2021,
+        "publications": 2,
+        "citations": 0
+      },
+      {
+        "year": 2022,
+        "publications": 7,
+        "citations": 0
+      },
+      {
+        "year": 2023,
+        "publications": 2,
+        "citations": 0
+      },
+      {
+        "year": 2024,
+        "publications": 1,
+        "citations": 0
+      },
+      {
+        "year": 2025,
+        "publications": 0,
+        "citations": 0
+      }
+    ],
+    "productivityTrend": "Decreciente",
+    "trendValue": -2,
+    "mostProductiveYear": "2022",
+    "averagePerYear": 2.4
+  },
+  "researchImpact": {
+    "topPublications": [],
+    "impactDistribution": {
+      "Sin citas": 20,
+      "1-5 citas": 0,
+      "6-10 citas": 0,
+      "11-25 citas": 0,
+      "26-50 citas": 0,
+      "Más de 50 citas": 0
+    },
+    "impactCategories": {
+      "highImpact": 0,
+      "mediumImpact": 0,
+      "emergingImpact": 0,
+      "noImpactYet": 20
+    },
+    "recentHighImpact": []
+  },
+  "collaborationProfile": {
+    "totalUniqueCollaborators": 0,
+    "singleAuthorPublications": 0,
+    "multiAuthorPublications": 0,
+    "collaborationRate": 0,
+    "topCollaborators": [],
+    "publisherDistribution": {},
+    "averageAuthorsPerPaper": 63.75
+  },
+  "publicationStrategy": {
+    "topVenues": [
+      {
+        "venue": "Springer",
+        "publications": 2,
+        "totalCitations": 0,
+        "averageCitations": 0
+      },
+      {
+        "venue": "Expert Systems with Applications 206",
+        "publications": 1,
+        "totalCitations": 0,
+        "averageCitations": 0
+      },
+      {
+        "venue": "Electronics 7 (12)",
+        "publications": 1,
+        "totalCitations": 0,
+        "averageCitations": 0
+      },
+      {
+        "venue": "Applied Sciences 11 (20)",
+        "publications": 1,
+        "totalCitations": 0,
+        "averageCitations": 0
+      },
+      {
+        "venue": "International Journal of Neural Systems 30",
+        "publications": 1,
+        "totalCitations": 0,
+        "averageCitations": 0
+      }
+    ],
+    "publisherDistribution": {},
+    "venueRecommendations": []
+  },
+  "strategicRecommendations": [
+    {
+      "category": "Productividad",
+      "priority": "Alta",
+      "recommendation": "Considerar incrementar la tasa de publicación para mantener la visibilidad académica",
+      "reasoning": "La tendencia de publicaciones ha disminuido en 2 en los últimos años"
+    },
+    {
+      "category": "Colaboración",
+      "priority": "Media",
+      "recommendation": "Fomentar más colaboraciones para aumentar la red académica",
+      "reasoning": "Solo el 0% de las publicaciones son colaborativas"
+    },
+    {
+      "category": "Impacto",
+      "priority": "Media",
+      "recommendation": "Enfocar esfuerzos en publicaciones de mayor impacto",
+      "reasoning": "El 100% de las publicaciones aún no han recibido citas"
+    },
+    {
+      "category": "Diversificación",
+      "priority": "Baja",
+      "recommendation": "Explorar nuevas revistas y conferencias para ampliar el alcance",
+      "reasoning": "Las publicaciones están concentradas en 19 venues"
+    },
+    {
+      "category": "Fortalezas",
+      "priority": "Informativo",
+      "recommendation": "Mantener el alto estándar de calidad en las publicaciones",
+      "reasoning": "El índice h de 13 indica un impacto académico sólido"
+    }
+  ],
+  "benchmarkComparison": {
+    "careerStage": "Assistant Professor",
+    "expectedHIndex": "10-15",
+    "expectedCitations": "300-800",
+    "performance": "Sobre la media",
+    "competitiveAdvantages": []
+  },
+  "paginationSummary": {
+    "totalPages": 0,
+    "articlesPerPage": 20,
+    "dataCompleteness": "100%",
+    "lastUpdate": "2025-05-25T11:19:49.418Z"
+  }
+}

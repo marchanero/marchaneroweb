@@ -1,6 +1,7 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import RecentPublications from '../components/RecentPublications.astro';
+import ScholarMetrics from '../components/ScholarMetrics.astro';
 // Importar datos de publicaciones
 import scholarData from '../data/scholar.json';
 import { Image } from 'astro:assets';
@@ -52,22 +53,9 @@ const recentPublications = scholarData.publications.slice(0, 3);
 				y metodologías para resolver problemas complejos con aplicaciones prácticas.
 			</p>
 			
-			<div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10">
-				<div class="bg-white dark:bg-gray-800 rounded-xl shadow-lg p-6 text-center transform hover:scale-105 transition-transform duration-300">
-					<strong class="block text-4xl font-bold text-blue-600 dark:text-blue-400 mb-2">{scholarData.metrics.totalCitations}</strong>
-					<span class="text-gray-600 dark:text-gray-400">Citas totales</span>
-				</div>
-				<div class="bg-white dark:bg-gray-800 rounded-xl shadow-lg p-6 text-center transform hover:scale-105 transition-transform duration-300">
-					<strong class="block text-4xl font-bold text-blue-600 dark:text-blue-400 mb-2">{scholarData.metrics.hIndex}</strong>
-					<span class="text-gray-600 dark:text-gray-400">Índice h</span>
-				</div>
-				<div class="bg-white dark:bg-gray-800 rounded-xl shadow-lg p-6 text-center transform hover:scale-105 transition-transform duration-300">
-					<strong class="block text-4xl font-bold text-blue-600 dark:text-blue-400 mb-2">{scholarData.publications.length}</strong>
-					<span class="text-gray-600 dark:text-gray-400">Publicaciones</span>
-				</div>
-			</div>
+			<ScholarMetrics compact={true} />
 			
-			<div class="text-center">
+			<div class="text-center mt-8">
 				<a href="/sobre-mi" class="btn btn-outline">Conocer más</a>
 			</div>
 		</div>

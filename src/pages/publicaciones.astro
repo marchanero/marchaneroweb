@@ -1,6 +1,7 @@
 ---
 // Importar layout y datos de Google Scholar
 import Layout from '../layouts/Layout.astro';
+import ScholarMetrics from '../components/ScholarMetrics.astro';
 import scholarData from '../data/scholar.json';
 
 // Configuración de la página
@@ -14,6 +15,19 @@ function formatDate(dateString) {
     month: 'long',
     day: 'numeric'
   });
+}
+
+// Función para determinar tipo de publicación basado en el venue
+function getPublicationType(publication) {
+  const venue = publication.publication.toLowerCase();
+  if (venue.includes('journal') || venue.includes('ieee') || venue.includes('acm')) {
+    return 'journal';
+  } else if (venue.includes('conference') || venue.includes('proceedings')) {
+    return 'conference';
+  } else if (venue.includes('book')) {
+    return 'book';
+  }
+  return 'article';
 }
 
 // Función para obtener icono según tipo de publicación
@@ -47,6 +61,9 @@ function getPublicationColor(type) {
       return 'text-gray-600 dark:text-gray-400';
   }
 }
+
+// Obtener años únicos para el filtro
+const uniqueYears = [...new Set(scholarData.publications.map(pub => pub.year).filter(Boolean))].sort((a, b) => parseInt(b) - parseInt(a));
 ---
 
 <Layout title={title} description={description}>
@@ -70,46 +87,7 @@ function getPublicationColor(type) {
       
       <!-- Métricas bibliométricas -->
       <section class="mb-12">
-        <div class="bg-gray-50 dark:bg-gray-800 rounded-xl p-8 shadow-lg">
-          <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-6 flex items-center">
-            📊 Métricas Bibliométricas
-          </h2>
-          
-          <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <!-- Total de citas -->
-            <div class="bg-white dark:bg-gray-700 rounded-lg p-6 text-center shadow-md">
-              <div class="text-3xl font-bold text-blue-600 dark:text-blue-400 mb-2">
-                {scholarData.metrics.totalCitations}
-              </div>
-              <div class="text-gray-600 dark:text-gray-300 font-medium">Total de Citas</div>
-              <div class="text-sm text-gray-500 dark:text-gray-400 mt-1">
-                ({scholarData.metrics.citationsRecent} desde 2019)
-              </div>
-            </div>
-            
-            <!-- Índice h -->
-            <div class="bg-white dark:bg-gray-700 rounded-lg p-6 text-center shadow-md">
-              <div class="text-3xl font-bold text-green-600 dark:text-green-400 mb-2">
-                {scholarData.metrics.hIndex}
-              </div>
-              <div class="text-gray-600 dark:text-gray-300 font-medium">Índice h</div>
-              <div class="text-sm text-gray-500 dark:text-gray-400 mt-1">
-                ({scholarData.metrics.hIndexRecent} desde 2019)
-              </div>
-            </div>
-            
-            <!-- Índice i10 -->
-            <div class="bg-white dark:bg-gray-700 rounded-lg p-6 text-center shadow-md">
-              <div class="text-3xl font-bold text-purple-600 dark:text-purple-400 mb-2">
-                {scholarData.metrics.i10Index}
-              </div>
-              <div class="text-gray-600 dark:text-gray-300 font-medium">Índice i10</div>
-              <div class="text-sm text-gray-500 dark:text-gray-400 mt-1">
-                ({scholarData.metrics.i10IndexRecent} desde 2019)
-              </div>
-            </div>
-          </div>
-        </div>
+        <ScholarMetrics showDetails={true} />
       </section>
 
       <!-- Información del perfil -->
@@ -126,7 +104,7 @@ function getPublicationColor(type) {
               <div class="flex flex-wrap gap-2">
                 {scholarData.author.interests.map((interest) => (
                   <span class="bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 px-3 py-1 rounded-full text-sm font-medium">
-                    {interest}
+                    {interest.title}
                   </span>
                 ))}
               </div>
@@ -157,128 +135,99 @@ function getPublicationColor(type) {
               class="px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:ring-2 focus:ring-blue-500"
             >
               <option value="">Todos los años</option>
-              {[...new Set(scholarData.publications.map(pub => pub.year).filter(Boolean))].sort((a, b) => b - a).map(year => (
+              {uniqueYears.map(year => (
                 <option value={year}>{year}</option>
               ))}
-            </select>
-            
-            <select 
-              id="typeFilter" 
-              class="px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:ring-2 focus:ring-blue-500"
-            >
-              <option value="">Todos los tipos</option>
-              <option value="journal">Revistas</option>
-              <option value="conference">Conferencias</option>
-              <option value="book">Libros</option>
-              <option value="thesis">Tesis</option>
             </select>
           </div>
         </div>
 
         <div class="space-y-6" id="publicationsList">
-          {scholarData.publications.map((publication) => (
-            <article 
-              class="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg hover:shadow-xl transition-shadow duration-300 publication-item"
-              data-year={publication.year}
-              data-type={publication.type}
-            >
-              <div class="flex flex-col lg:flex-row lg:items-start lg:justify-between">
-                <div class="flex-1">
-                  <!-- Título -->
-                  <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-3 leading-tight">
-                    {publication.link ? (
+          {scholarData.publications.map((publication, index) => {
+            const pubType = getPublicationType(publication);
+            return (
+              <article 
+                class="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg hover:shadow-xl transition-shadow duration-300 publication-item"
+                data-year={publication.year}
+                data-type={pubType}
+              >
+                <div class="flex flex-col lg:flex-row lg:items-start lg:justify-between">
+                  <div class="flex-1">
+                    <!-- Título -->
+                    <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-3 leading-tight">
+                      {publication.link ? (
+                        <a 
+                          href={publication.link} 
+                          target="_blank" 
+                          rel="noopener noreferrer"
+                          class="text-blue-600 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-300 transition-colors duration-200"
+                        >
+                          {publication.title}
+                        </a>
+                      ) : (
+                        publication.title
+                      )}
+                    </h3>
+                    
+                    <!-- Autores -->
+                    <div class="mb-3">
+                      <p class="text-gray-700 dark:text-gray-300">
+                        {publication.authors}
+                      </p>
+                    </div>
+                    
+                    <!-- Información de la publicación -->
+                    <div class="flex flex-wrap items-center gap-4 mb-3">
+                      <span class={`inline-flex items-center px-3 py-1 rounded-full text-sm font-medium ${getPublicationColor(pubType)} bg-gray-100 dark:bg-gray-700`}>
+                        {getPublicationIcon(pubType)} {pubType === 'journal' ? 'Revista' : pubType === 'conference' ? 'Conferencia' : pubType === 'book' ? 'Libro' : 'Artículo'}
+                      </span>
+                      
+                      {publication.year && (
+                        <span class="text-gray-600 dark:text-gray-400 font-medium">
+                          📅 {publication.year}
+                        </span>
+                      )}
+                      
+                      {publication.cited_by && publication.cited_by.value > 0 && (
+                        <span class="text-gray-600 dark:text-gray-400">
+                          📝 {publication.cited_by.value} citas
+                        </span>
+                      )}
+                    </div>
+                    
+                    <!-- Publicación/Venue -->
+                    <p class="text-gray-600 dark:text-gray-400 italic mb-3">
+                      {publication.publication}
+                    </p>
+                  </div>
+                  
+                  <!-- Enlaces de acción -->
+                  <div class="mt-4 lg:mt-0 lg:ml-6 flex flex-col gap-2">
+                    {publication.link && (
                       <a 
                         href={publication.link} 
                         target="_blank" 
                         rel="noopener noreferrer"
-                        class="text-blue-600 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-300 transition-colors duration-200"
+                        class="inline-flex items-center justify-center px-4 py-2 bg-blue-600 hover:bg-blue-700 dark:bg-blue-700 dark:hover:bg-blue-600 text-white text-sm font-medium rounded-lg transition-colors duration-200"
                       >
-                        {publication.title}
+                        🔗 Ver publicación
                       </a>
-                    ) : (
-                      publication.title
                     )}
-                  </h3>
-                  
-                  <!-- Autores -->
-                  <div class="mb-3">
-                    <p class="text-gray-700 dark:text-gray-300">
-                      {publication.authors.map((author, index) => (
-                        <span>
-                          <span class={author.includes('Roberto Sánchez') ? 'font-bold text-blue-600 dark:text-blue-400' : ''}>
-                            {author}
-                          </span>
-                          {index < publication.authors.length - 1 && ', '}
-                        </span>
-                      ))}
-                    </p>
-                  </div>
-                  
-                  <!-- Información de la publicación -->
-                  <div class="flex flex-wrap items-center gap-4 mb-3">
-                    <span class={`inline-flex items-center px-3 py-1 rounded-full text-sm font-medium ${getPublicationColor(publication.type)} bg-gray-100 dark:bg-gray-700`}>
-                      {getPublicationIcon(publication.type)} {publication.type === 'journal' ? 'Revista' : publication.type === 'conference' ? 'Conferencia' : publication.type === 'book' ? 'Libro' : 'Tesis'}
-                    </span>
-                    
-                    {publication.year && (
-                      <span class="text-gray-600 dark:text-gray-400 font-medium">
-                        📅 {publication.year}
-                      </span>
-                    )}
-                    
-                    {publication.citedBy > 0 && (
-                      <span class="text-gray-600 dark:text-gray-400">
-                        📝 {publication.citedBy} citas
-                      </span>
-                    )}
-                  </div>
-                  
-                  <!-- Publicación/Venue -->
-                  <p class="text-gray-600 dark:text-gray-400 italic mb-3">
-                    {publication.publication}
-                  </p>
-                  
-                  <!-- Badges adicionales -->
-                  <div class="flex flex-wrap gap-2">
-                    {publication.isFirstAuthor && (
-                      <span class="bg-green-100 dark:bg-green-900 text-green-800 dark:text-green-200 px-2 py-1 rounded text-xs font-medium">
-                        Primer Autor
-                      </span>
-                    )}
-                    {publication.isCorrespondingAuthor && (
-                      <span class="bg-purple-100 dark:bg-purple-900 text-purple-800 dark:text-purple-200 px-2 py-1 rounded text-xs font-medium">
-                        Autor Correspondiente
-                      </span>
+                    {publication.cited_by && publication.cited_by.link && (
+                      <a 
+                        href={publication.cited_by.link} 
+                        target="_blank" 
+                        rel="noopener noreferrer"
+                        class="inline-flex items-center justify-center px-4 py-2 bg-gray-600 hover:bg-gray-700 dark:bg-gray-700 dark:hover:bg-gray-600 text-white text-sm font-medium rounded-lg transition-colors duration-200"
+                      >
+                        📊 Ver citas
+                      </a>
                     )}
                   </div>
                 </div>
-                
-                <!-- Enlaces de acción -->
-                <div class="mt-4 lg:mt-0 lg:ml-6 flex flex-col gap-2">
-                  {publication.link && (
-                    <a 
-                      href={publication.link} 
-                      target="_blank" 
-                      rel="noopener noreferrer"
-                      class="inline-flex items-center justify-center px-4 py-2 bg-blue-600 hover:bg-blue-700 dark:bg-blue-700 dark:hover:bg-blue-600 text-white text-sm font-medium rounded-lg transition-colors duration-200"
-                    >
-                      🔗 Ver publicación
-                    </a>
-                  )}
-                  {publication.citedByLink && (
-                    <a 
-                      href={publication.citedByLink} 
-                      target="_blank" 
-                      rel="noopener noreferrer"
-                      class="inline-flex items-center justify-center px-4 py-2 bg-gray-600 hover:bg-gray-700 dark:bg-gray-700 dark:hover:bg-gray-600 text-white text-sm font-medium rounded-lg transition-colors duration-200"
-                    >
-                      📊 Ver citas
-                    </a>
-                  )}
-                </div>
-              </div>
-            </article>
-          ))}
+              </article>
+            );
+          })}
         </div>
       </section>
 
@@ -324,21 +273,17 @@ function getPublicationColor(type) {
   // Funcionalidad de filtros
   document.addEventListener('DOMContentLoaded', function() {
     const yearFilter = document.getElementById('yearFilter');
-    const typeFilter = document.getElementById('typeFilter');
     const publicationItems = document.querySelectorAll('.publication-item');
 
     function filterPublications() {
       const selectedYear = yearFilter.value;
-      const selectedType = typeFilter.value;
 
       publicationItems.forEach(item => {
         const itemYear = item.dataset.year;
-        const itemType = item.dataset.type;
         
         const yearMatch = !selectedYear || itemYear === selectedYear;
-        const typeMatch = !selectedType || itemType === selectedType;
         
-        if (yearMatch && typeMatch) {
+        if (yearMatch) {
           item.style.display = 'block';
         } else {
           item.style.display = 'none';
@@ -347,7 +292,6 @@ function getPublicationColor(type) {
     }
 
     yearFilter.addEventListener('change', filterPublications);
-    typeFilter.addEventListener('change', filterPublications);
   });
 </script>
 

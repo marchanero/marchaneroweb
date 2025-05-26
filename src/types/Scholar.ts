@@ -1,39 +1,44 @@
 // Definición de tipos para datos de Scholar
 
+export interface ScholarInterest {
+  title: string;
+  link: string;
+  serpapi_link: string;
+}
+
 export interface ScholarAuthor {
   name: string;
   affiliation: string;
   email: string;
-  interests: string[];
-  homepage?: string;
-}
-
-export interface ScholarMetrics {
-  totalCitations: number;
-  hIndex: number;
-  i10Index: number;
-  citationsRecent: number;
-  hIndexRecent: number;
-  i10IndexRecent: number;
+  interests: ScholarInterest[];
+  statistics: {
+    totalCitations: number;
+    hIndex: number;
+    i10Index: number;
+  };
+  citationChart: {
+    year: number;
+    citations: number;
+  }[];
 }
 
 export interface Publication {
-  id: string;
   title: string;
-  authors: string[];
+  link: string;
+  citation_id: string;
+  authors: string;
   publication: string;
-  year: number | null;
-  citedBy: number;
-  link?: string;
-  citedByLink?: string;
-  type: 'journal' | 'conference' | 'book' | 'thesis' | 'article';
-  isFirstAuthor: boolean;
-  isCorrespondingAuthor: boolean;
+  cited_by: {
+    value: number;
+    link: string;
+    serpapi_link: string;
+    cites_id: string;
+  };
+  year: string;
 }
 
 export interface ScholarData {
   lastUpdated: string;
   author: ScholarAuthor;
-  metrics: ScholarMetrics;
   publications: Publication[];
 }

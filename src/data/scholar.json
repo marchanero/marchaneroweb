@@ -1,69 +1,362 @@
 {
-  "lastUpdated": "2025-05-24T17:39:11.019Z",
+  "lastUpdated": "2025-05-26T12:54:09.366Z",
   "author": {
-    "name": "Dr. Roberto Sánchez Reolid",
-    "affiliation": "Universidad de Castilla-La Mancha",
-    "email": "roberto.sreolid@uclm.es",
+    "name": "Roberto Sánchez-Reolid",
+    "affiliation": "Assistant professor on Universidad de Castilla-La Mancha",
+    "email": "Verified email at uclm.es",
     "interests": [
-      "Inteligencia Artificial",
-      "Machine Learning",
-      "Computación Afectiva",
-      "Bioinformática"
+      {
+        "title": "Neural Networks",
+        "link": "https://scholar.google.com/citations?view_op=search_authors&hl=en&mauthors=label:neural_networks",
+        "serpapi_link": "https://serpapi.com/search.json?engine=google_scholar_profiles&hl=en&mauthors=label%3Aneural_networks"
+      },
+      {
+        "title": "Artificial Inteligence",
+        "link": "https://scholar.google.com/citations?view_op=search_authors&hl=en&mauthors=label:artificial_inteligence",
+        "serpapi_link": "https://serpapi.com/search.json?engine=google_scholar_profiles&hl=en&mauthors=label%3Aartificial_inteligence"
+      },
+      {
+        "title": "Sensors",
+        "link": "https://scholar.google.com/citations?view_op=search_authors&hl=en&mauthors=label:sensors",
+        "serpapi_link": "https://serpapi.com/search.json?engine=google_scholar_profiles&hl=en&mauthors=label%3Asensors"
+      },
+      {
+        "title": "Physiological Signal Processing",
+        "link": "https://scholar.google.com/citations?view_op=search_authors&hl=en&mauthors=label:physiological_signal_processing",
+        "serpapi_link": "https://serpapi.com/search.json?engine=google_scholar_profiles&hl=en&mauthors=label%3Aphysiological_signal_processing"
+      }
     ],
-    "homepage": "https://roberto-sreolid.netlify.app"
-  },
-  "metrics": {
-    "totalCitations": 156,
-    "hIndex": 8,
-    "i10Index": 6,
-    "citationsRecent": 89,
-    "hIndexRecent": 6,
-    "i10IndexRecent": 4
+    "statistics": {
+      "totalCitations": 555,
+      "hIndex": 13,
+      "i10Index": 16
+    },
+    "citationChart": [
+      {
+        "year": 2019,
+        "citations": 11
+      },
+      {
+        "year": 2020,
+        "citations": 24
+      },
+      {
+        "year": 2021,
+        "citations": 34
+      },
+      {
+        "year": 2022,
+        "citations": 98
+      },
+      {
+        "year": 2023,
+        "citations": 132
+      },
+      {
+        "year": 2024,
+        "citations": 176
+      },
+      {
+        "year": 2025,
+        "citations": 76
+      }
+    ],
+    "profileUrl": "https://scholar.google.com/citations?user=PCALePwAAAAJ",
+    "scholarId": "PCALePwAAAAJ"
   },
   "publications": [
     {
-      "id": "pub_1",
-      "title": "Machine Learning Applications in Affective Computing",
-      "authors": [
-        "Roberto Sánchez Reolid",
-        "Antonio Fernández Caballero",
-        "José Carlos Castillo"
-      ],
-      "publication": "IEEE Transactions on Affective Computing",
-      "year": 2024,
-      "citedBy": 23,
-      "type": "journal",
-      "isFirstAuthor": true,
-      "isCorrespondingAuthor": true
+      "title": "Geometric transformation-based data augmentation on defect classification of segmented images of semiconductor materials using a ResNet50 convolutional neural network",
+      "link": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=PCALePwAAAAJ&pagesize=100&citation_for_view=PCALePwAAAAJ:_kc_bZDykSQC",
+      "citation_id": "PCALePwAAAAJ:_kc_bZDykSQC",
+      "authors": "FL de la Rosa, JL Gómez-Sirvent, R Sánchez-Reolid, R Morales, ...",
+      "publication": "Expert Systems with Applications 206, 117731, 2022",
+      "cited_by": {
+        "value": 70,
+        "link": "https://scholar.google.com/scholar?oi=bibs&hl=en&cites=15620631313306549090",
+        "serpapi_link": "https://serpapi.com/search.json?cites=15620631313306549090&engine=google_scholar&hl=en",
+        "cites_id": "15620631313306549090"
+      },
+      "year": "2022"
     },
     {
-      "id": "pub_2",
-      "title": "Automated Emotion Recognition using Physiological Signals",
-      "authors": [
-        "Roberto Sánchez Reolid",
-        "Francisco López de la Rosa"
-      ],
-      "publication": "Expert Systems with Applications",
-      "year": 2023,
-      "citedBy": 45,
-      "type": "journal",
-      "isFirstAuthor": true,
-      "isCorrespondingAuthor": false
+      "title": "Artificial Neural Networks to Assess Emotional States from Brain-Computer Interface",
+      "link": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=PCALePwAAAAJ&pagesize=100&citation_for_view=PCALePwAAAAJ:u5HHmVD_uO8C",
+      "citation_id": "PCALePwAAAAJ:u5HHmVD_uO8C",
+      "authors": "R Sánchez-Reolid, A García, M Vicente-Querol, L Fernández-Aguilar, ...",
+      "publication": "Electronics 7 (12), 384, 2018",
+      "cited_by": {
+        "value": 63,
+        "link": "https://scholar.google.com/scholar?oi=bibs&hl=en&cites=16788273922182433471",
+        "serpapi_link": "https://serpapi.com/search.json?cites=16788273922182433471&engine=google_scholar&hl=en",
+        "cites_id": "16788273922182433471"
+      },
+      "year": "2018"
     },
     {
-      "id": "pub_3",
-      "title": "Deep Learning for Multimodal Emotion Analysis",
-      "authors": [
-        "María García",
-        "Roberto Sánchez Reolid",
-        "Juan González"
-      ],
-      "publication": "Proceedings of ICML 2023",
-      "year": 2023,
-      "citedBy": 18,
-      "type": "conference",
-      "isFirstAuthor": false,
-      "isCorrespondingAuthor": true
+      "title": "A review on machine and deep learning for semiconductor defect classification in scanning electron microscope images",
+      "link": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=PCALePwAAAAJ&pagesize=100&citation_for_view=PCALePwAAAAJ:kNdYIx-mwKoC",
+      "citation_id": "PCALePwAAAAJ:kNdYIx-mwKoC",
+      "authors": "F López de la Rosa, R Sánchez-Reolid, JL Gómez-Sirvent, R Morales, ...",
+      "publication": "Applied Sciences 11 (20), 9508, 2021",
+      "cited_by": {
+        "value": 60,
+        "link": "https://scholar.google.com/scholar?oi=bibs&hl=en&cites=4485305786774461650",
+        "serpapi_link": "https://serpapi.com/search.json?cites=4485305786774461650&engine=google_scholar&hl=en",
+        "cites_id": "4485305786774461650"
+      },
+      "year": "2021"
+    },
+    {
+      "title": "Deep support vector machines for the identification of stress condition from electrodermal activity",
+      "link": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=PCALePwAAAAJ&pagesize=100&citation_for_view=PCALePwAAAAJ:Y0pCki6q_DkC",
+      "citation_id": "PCALePwAAAAJ:Y0pCki6q_DkC",
+      "authors": "R Sánchez-Reolid, A Martínez-Rodrigo, MT López, ...",
+      "publication": "International Journal of Neural Systems 30, 1-13, 2020",
+      "cited_by": {
+        "value": 46,
+        "link": "https://scholar.google.com/scholar?oi=bibs&hl=en&cites=13333015477496612136",
+        "serpapi_link": "https://serpapi.com/search.json?cites=13333015477496612136&engine=google_scholar&hl=en",
+        "cites_id": "13333015477496612136"
+      },
+      "year": "2020"
+    },
+    {
+      "title": "One-dimensional convolutional neural networks for low/high arousal classification from electrodermal activity",
+      "link": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=PCALePwAAAAJ&pagesize=100&citation_for_view=PCALePwAAAAJ:3fE2CSJIrl8C",
+      "citation_id": "PCALePwAAAAJ:3fE2CSJIrl8C",
+      "authors": "R Sánchez-Reolid, FL de la Rosa, MT López, A Fernández-Caballero",
+      "publication": "Biomedical Signal Processing and Control 71, 103203, 2022",
+      "cited_by": {
+        "value": 42,
+        "link": "https://scholar.google.com/scholar?oi=bibs&hl=en&cites=2059831707917929488",
+        "serpapi_link": "https://serpapi.com/search.json?cites=2059831707917929488&engine=google_scholar&hl=en",
+        "cites_id": "2059831707917929488"
+      },
+      "year": "2022"
+    },
+    {
+      "title": "Optimal feature selection for defect classification in semiconductor wafers",
+      "link": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=PCALePwAAAAJ&pagesize=100&citation_for_view=PCALePwAAAAJ:Zph67rFs4hoC",
+      "citation_id": "PCALePwAAAAJ:Zph67rFs4hoC",
+      "authors": "JL Gómez-Sirvent, FL de la Rosa, R Sánchez-Reolid, ...",
+      "publication": "IEEE transactions on semiconductor manufacturing 35 (2), 324-331, 2022",
+      "cited_by": {
+        "value": 36,
+        "link": "https://scholar.google.com/scholar?oi=bibs&hl=en&cites=3041118640241756035",
+        "serpapi_link": "https://serpapi.com/search.json?cites=3041118640241756035&engine=google_scholar&hl=en",
+        "cites_id": "3041118640241756035"
+      },
+      "year": "2022"
+    },
+    {
+      "title": "Arousal Detection in Elderly People from Electrodermal Activity using Musical Stimuli",
+      "link": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=PCALePwAAAAJ&pagesize=100&citation_for_view=PCALePwAAAAJ:_FxGoFyzp5QC",
+      "citation_id": "PCALePwAAAAJ:_FxGoFyzp5QC",
+      "authors": "A Bartolomé-Tomás, R Sánchez-Reolid, A Fernández-Sotos, ...",
+      "publication": "Sensors, 2020",
+      "cited_by": {
+        "value": 27,
+        "link": "https://scholar.google.com/scholar?oi=bibs&hl=en&cites=5277051289196934267",
+        "serpapi_link": "https://serpapi.com/search.json?cites=5277051289196934267&engine=google_scholar&hl=en",
+        "cites_id": "5277051289196934267"
+      },
+      "year": "2020"
+    },
+    {
+      "title": "Defect detection and classification on semiconductor wafers using two-stage geometric transformation-based data augmentation and SqueezeNet lightweight convolutional neural network",
+      "link": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=PCALePwAAAAJ&pagesize=100&citation_for_view=PCALePwAAAAJ:hFOr9nPyWt4C",
+      "citation_id": "PCALePwAAAAJ:hFOr9nPyWt4C",
+      "authors": "FL de la Rosa, JL Gómez-Sirvent, R Morales, R Sánchez-Reolid, ...",
+      "publication": "Computers & Industrial Engineering 183, 109549, 2023",
+      "cited_by": {
+        "value": 24,
+        "link": "https://scholar.google.com/scholar?oi=bibs&hl=en&cites=1095520988981170505",
+        "serpapi_link": "https://serpapi.com/search.json?cites=1095520988981170505&engine=google_scholar&hl=en",
+        "cites_id": "1095520988981170505"
+      },
+      "year": "2023"
+    },
+    {
+      "title": "Machine learning techniques for arousal classification from electrodermal activity: A systematic review",
+      "link": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=PCALePwAAAAJ&pagesize=100&citation_for_view=PCALePwAAAAJ:dhFuZR0502QC",
+      "citation_id": "PCALePwAAAAJ:dhFuZR0502QC",
+      "authors": "R Sánchez-Reolid, F López de la Rosa, D Sánchez-Reolid, MT López, ...",
+      "publication": "Sensors 22 (22), 8886, 2022",
+      "cited_by": {
+        "value": 21,
+        "link": "https://scholar.google.com/scholar?oi=bibs&hl=en&cites=13609103185694218187",
+        "serpapi_link": "https://serpapi.com/search.json?cites=13609103185694218187&engine=google_scholar&hl=en",
+        "cites_id": "13609103185694218187"
+      },
+      "year": "2022"
+    },
+    {
+      "title": "Machine learning for stress detection from electrodermal activity: A scoping review",
+      "link": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=PCALePwAAAAJ&pagesize=100&citation_for_view=PCALePwAAAAJ:LkGwnXOMwfcC",
+      "citation_id": "PCALePwAAAAJ:LkGwnXOMwfcC",
+      "authors": "R Sánchez-Reolid, MT López, A Fernández-Caballero",
+      "publication": "Preprints, 2020",
+      "cited_by": {
+        "value": 20,
+        "link": "https://scholar.google.com/scholar?oi=bibs&hl=en&cites=2219798727825377273",
+        "serpapi_link": "https://serpapi.com/search.json?cites=2219798727825377273&engine=google_scholar&hl=en",
+        "cites_id": "2219798727825377273"
+      },
+      "year": "2020"
+    },
+    {
+      "title": "Emotion classification from EEG with a low-cost BCI versus a high-end equipment",
+      "link": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=PCALePwAAAAJ&pagesize=100&citation_for_view=PCALePwAAAAJ:M3ejUd6NZC8C",
+      "citation_id": "PCALePwAAAAJ:M3ejUd6NZC8C",
+      "authors": "R Sánchez-Reolid, MC Martínez-Sáez, B García-Martínez, ...",
+      "publication": "International journal of neural systems 32 (10), 2250041, 2022",
+      "cited_by": {
+        "value": 17,
+        "link": "https://scholar.google.com/scholar?oi=bibs&hl=en&cites=3685228035292091442",
+        "serpapi_link": "https://serpapi.com/search.json?cites=3685228035292091442&engine=google_scholar&hl=en",
+        "cites_id": "3685228035292091442"
+      },
+      "year": "2022"
+    },
+    {
+      "title": "A deep residual neural network for semiconductor defect classification in imbalanced scanning electron microscope datasets",
+      "link": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=PCALePwAAAAJ&pagesize=100&citation_for_view=PCALePwAAAAJ:9ZlFYXVOiuMC",
+      "citation_id": "PCALePwAAAAJ:9ZlFYXVOiuMC",
+      "authors": "FL de la Rosa, JL Gómez-Sirvent, R Morales, R Sánchez-Reolid, ...",
+      "publication": "Applied Soft Computing 131, 109743, 2022",
+      "cited_by": {
+        "value": 14,
+        "link": "https://scholar.google.com/scholar?oi=bibs&hl=en&cites=4946338693445561389",
+        "serpapi_link": "https://serpapi.com/search.json?cites=4946338693445561389&engine=google_scholar&hl=en",
+        "cites_id": "4946338693445561389"
+      },
+      "year": "2022"
+    },
+    {
+      "title": "Stress identification from electrodermal activity by support vector machines",
+      "link": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=PCALePwAAAAJ&pagesize=100&citation_for_view=PCALePwAAAAJ:u-x6o8ySG0sC",
+      "citation_id": "PCALePwAAAAJ:u-x6o8ySG0sC",
+      "authors": "R Sánchez-Reolid, A Martínez-Rodrigo, A Fernández-Caballero",
+      "publication": "Understanding the Brain Function and Emotions: 8th International Work …, 2019",
+      "cited_by": {
+        "value": 13,
+        "link": "https://scholar.google.com/scholar?oi=bibs&hl=en&cites=352660594049292708",
+        "serpapi_link": "https://serpapi.com/search.json?cites=352660594049292708&engine=google_scholar&hl=en",
+        "cites_id": "352660594049292708"
+      },
+      "year": "2019"
+    },
+    {
+      "title": "Understanding the Brain Function and Emotions: 8th International Work-Conference on the Interplay Between Natural and Artificial Computation, IWINAC 2019, Almería, Spain, June …",
+      "link": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=PCALePwAAAAJ&pagesize=100&citation_for_view=PCALePwAAAAJ:roLk4NBRz8UC",
+      "citation_id": "PCALePwAAAAJ:roLk4NBRz8UC",
+      "authors": "JMF Vicente, JR Álvarez-Sánchez, F De la Paz López, JT Moreo, H Adeli",
+      "publication": "Springer, 2019",
+      "cited_by": {
+        "value": 12,
+        "link": "https://scholar.google.com/scholar?oi=bibs&hl=en&cites=4439799875550357044",
+        "serpapi_link": "https://serpapi.com/search.json?cites=4439799875550357044&engine=google_scholar&hl=en",
+        "cites_id": "4439799875550357044"
+      },
+      "year": "2019"
+    },
+    {
+      "title": "Defect classification on semiconductor wafers using Fisher vector and visual vocabularies coding",
+      "link": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=PCALePwAAAAJ&pagesize=100&citation_for_view=PCALePwAAAAJ:4DMP91E08xMC",
+      "citation_id": "PCALePwAAAAJ:4DMP91E08xMC",
+      "authors": "JL Gómez-Sirvent, FL de la Rosa, R Sánchez-Reolid, R Morales, ...",
+      "publication": "Measurement 202, 111872, 2022",
+      "cited_by": {
+        "value": 10,
+        "link": "https://scholar.google.com/scholar?oi=bibs&hl=en&cites=12565850885855773560",
+        "serpapi_link": "https://serpapi.com/search.json?cites=12565850885855773560&engine=google_scholar&hl=en",
+        "cites_id": "12565850885855773560"
+      },
+      "year": "2022"
+    },
+    {
+      "title": "From Bioinspired Systems and Biomedical Applications to Machine Learning: 8th International Work-Conference on the Interplay Between Natural and Artificial Computation, IWINAC …",
+      "link": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=PCALePwAAAAJ&pagesize=100&citation_for_view=PCALePwAAAAJ:W7OEmFMy1HYC",
+      "citation_id": "PCALePwAAAAJ:W7OEmFMy1HYC",
+      "authors": "JMF Vicente, JR Álvarez-Sánchez, F De la Paz López, JT Moreo, H Adeli",
+      "publication": "Springer, 2019",
+      "cited_by": {
+        "value": 10,
+        "link": "https://scholar.google.com/scholar?oi=bibs&hl=en&cites=348292223032586203",
+        "serpapi_link": "https://serpapi.com/search.json?cites=348292223032586203&engine=google_scholar&hl=en",
+        "cites_id": "348292223032586203"
+      },
+      "year": "2019"
+    },
+    {
+      "title": "Effectiveness of the level of personal relevance of visual autobiographical stimuli in the induction of positive emotions in young and older adults: pilot study protocol for a …",
+      "link": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=PCALePwAAAAJ&pagesize=100&citation_for_view=PCALePwAAAAJ:eQOLeE2rZwMC",
+      "citation_id": "PCALePwAAAAJ:eQOLeE2rZwMC",
+      "authors": "D Fernández, L Ros, R Sánchez-Reolid, JJ Ricarte, JM Latorre",
+      "publication": "Trials 21, 1-16, 2020",
+      "cited_by": {
+        "value": 8,
+        "link": "https://scholar.google.com/scholar?oi=bibs&hl=en&cites=10995399757381066961",
+        "serpapi_link": "https://serpapi.com/search.json?cites=10995399757381066961&engine=google_scholar&hl=en",
+        "cites_id": "10995399757381066961"
+      },
+      "year": "2020"
+    },
+    {
+      "title": "Pre-occupancy evaluation of a virtual music school classroom: Influence of color and type of lighting on music performers",
+      "link": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=PCALePwAAAAJ&pagesize=100&citation_for_view=PCALePwAAAAJ:j3f4tGmQtD8C",
+      "citation_id": "PCALePwAAAAJ:j3f4tGmQtD8C",
+      "authors": "JLG Sirvent, D Fernández-Sotos, R Sánchez-Reolid, F de la Rosa López, ...",
+      "publication": "Building and Environment 246, 110989, 2023",
+      "cited_by": {
+        "value": 7,
+        "link": "https://scholar.google.com/scholar?oi=bibs&hl=en&cites=10258129208146541189",
+        "serpapi_link": "https://serpapi.com/search.json?cites=10258129208146541189&engine=google_scholar&hl=en",
+        "cites_id": "10258129208146541189"
+      },
+      "year": "2023"
+    },
+    {
+      "title": "Co-design of avatars to embody auditory hallucinations of patients with schizophrenia: A study on patients’ feeling of satisfaction and psychiatrists’ intention to adopt the …",
+      "link": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=PCALePwAAAAJ&pagesize=100&citation_for_view=PCALePwAAAAJ:hqOjcs7Dif8C",
+      "citation_id": "PCALePwAAAAJ:hqOjcs7Dif8C",
+      "authors": "AS García, P Fernández-Sotos, MA Vicente-Querol, R Sánchez-Reolid, ...",
+      "publication": "Virtual Reality, 1-16, 2021",
+      "cited_by": {
+        "value": 7,
+        "link": "https://scholar.google.com/scholar?oi=bibs&hl=en&cites=9897482911459794263",
+        "serpapi_link": "https://serpapi.com/search.json?cites=9897482911459794263&engine=google_scholar&hl=en",
+        "cites_id": "9897482911459794263"
+      },
+      "year": "2021"
+    },
+    {
+      "title": "Inter-hospital Moderate and Advanced Alzheimer's Disease Detection Through Convolutional Neural Networks",
+      "link": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=PCALePwAAAAJ&pagesize=100&citation_for_view=PCALePwAAAAJ:TFP_iSt0sucC",
+      "citation_id": "PCALePwAAAAJ:TFP_iSt0sucC",
+      "authors": "C Roncero-Parra, A Parreño-Torres, R Sánchez-Reolid, J Mateo-Sotos, ...",
+      "publication": "Heliyon, 2024",
+      "cited_by": {
+        "value": 6,
+        "link": "https://scholar.google.com/scholar?oi=bibs&hl=en&cites=6529929337580907042",
+        "serpapi_link": "https://serpapi.com/search.json?cites=6529929337580907042&engine=google_scholar&hl=en",
+        "cites_id": "6529929337580907042"
+      },
+      "year": "2024"
     }
-  ]
+  ],
+  "metrics": {
+    "totalCitations": 555,
+    "hIndex": 13,
+    "i10Index": 16,
+    "citationsRecent": 0,
+    "hIndexRecent": 0,
+    "i10IndexRecent": 0
+  },
+  "summary": {
+    "totalPublications": 47,
+    "totalCitations": 555,
+    "averageCitationsPerPublication": 11.81
+  }
 }
