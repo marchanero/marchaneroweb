@@ -1,5 +1,5 @@
 {
-  "timestamp": "2025-05-26T12:48:18.463Z",
+  "timestamp": "2025-05-26T12:49:39.371Z",
   "summary": {
     "scriptsHealth": "5/5",
     "dataFilesHealth": "4/4",
@@ -13,25 +13,25 @@
       "scrape-scholar.js": {
         "exists": true,
         "size": 15057,
-        "lastModified": "2025-05-25T11:12:17.294Z",
+        "lastModified": "2025-05-26T12:49:32.240Z",
         "status": "OK"
       },
       "scrape-scholar-advanced.js": {
         "exists": true,
         "size": 25202,
-        "lastModified": "2025-05-25T11:37:17.505Z",
+        "lastModified": "2025-05-26T12:49:32.240Z",
         "status": "OK"
       },
       "analyze-pagination.js": {
         "exists": true,
         "size": 16475,
-        "lastModified": "2025-05-25T11:12:17.323Z",
+        "lastModified": "2025-05-26T12:49:32.231Z",
         "status": "OK"
       },
       "generate-executive-summary.js": {
         "exists": true,
         "size": 18863,
-        "lastModified": "2025-05-25T11:12:17.323Z",
+        "lastModified": "2025-05-26T12:49:32.240Z",
         "status": "OK"
       },
       "fetch-scholar.js": {
@@ -45,7 +45,7 @@
       "scholar.json": {
         "exists": true,
         "size": 19066,
-        "lastModified": "2025-05-25T11:36:19.926Z",
+        "lastModified": "2025-05-26T12:49:00.412Z",
         "recordCount": 20,
         "dataQuality": {
           "score": 100,
@@ -57,7 +57,7 @@
       "scholar-detailed.json": {
         "exists": true,
         "size": 188282,
-        "lastModified": "2025-05-25T11:36:19.936Z",
+        "lastModified": "2025-05-26T12:49:00.403Z",
         "recordCount": 20,
         "dataQuality": {
           "score": 100,
@@ -69,7 +69,7 @@
       "scholar-pagination.json": {
         "exists": true,
         "size": 4102,
-        "lastModified": "2025-05-25T11:36:19.936Z",
+        "lastModified": "2025-05-26T12:49:00.403Z",
         "recordCount": 9,
         "dataQuality": {
           "score": 0,
@@ -86,7 +86,7 @@
       "scholar-executive-summary.json": {
         "exists": true,
         "size": 6251,
-        "lastModified": "2025-05-25T11:20:26.074Z",
+        "lastModified": "2025-05-26T12:49:00.403Z",
         "recordCount": 11,
         "dataQuality": {
           "score": 0,

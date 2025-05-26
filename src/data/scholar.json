@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2025-05-25T11:36:19.935Z",
+  "lastUpdated": "2025-05-26T12:54:09.366Z",
   "author": {
     "name": "Roberto Sánchez-Reolid",
     "affiliation": "Assistant professor on Universidad de Castilla-La Mancha",
@@ -27,7 +27,7 @@
       }
     ],
     "statistics": {
-      "totalCitations": 553,
+      "totalCitations": 555,
       "hIndex": 13,
       "i10Index": 16
     },
@@ -58,7 +58,7 @@
       },
       {
         "year": 2025,
-        "citations": 74
+        "citations": 76
       }
     ],
     "profileUrl": "https://scholar.google.com/citations?user=PCALePwAAAAJ",
@@ -72,7 +72,7 @@
       "authors": "FL de la Rosa, JL Gómez-Sirvent, R Sánchez-Reolid, R Morales, ...",
       "publication": "Expert Systems with Applications 206, 117731, 2022",
       "cited_by": {
-        "value": 69,
+        "value": 70,
         "link": "https://scholar.google.com/scholar?oi=bibs&hl=en&cites=15620631313306549090",
         "serpapi_link": "https://serpapi.com/search.json?cites=15620631313306549090&engine=google_scholar&hl=en",
         "cites_id": "15620631313306549090"
@@ -170,7 +170,7 @@
       "authors": "FL de la Rosa, JL Gómez-Sirvent, R Morales, R Sánchez-Reolid, ...",
       "publication": "Computers & Industrial Engineering 183, 109549, 2023",
       "cited_by": {
-        "value": 23,
+        "value": 24,
         "link": "https://scholar.google.com/scholar?oi=bibs&hl=en&cites=1095520988981170505",
         "serpapi_link": "https://serpapi.com/search.json?cites=1095520988981170505&engine=google_scholar&hl=en",
         "cites_id": "1095520988981170505"
@@ -347,7 +347,7 @@
     }
   ],
   "metrics": {
-    "totalCitations": 553,
+    "totalCitations": 555,
     "hIndex": 13,
     "i10Index": 16,
     "citationsRecent": 0,
@@ -356,7 +356,7 @@
   },
   "summary": {
     "totalPublications": 47,
-    "totalCitations": 553,
-    "averageCitationsPerPublication": 11.77
+    "totalCitations": 555,
+    "averageCitationsPerPublication": 11.81
   }
 }
