@@ -1,5 +1,5 @@
 ---
-// Componente para mostrar métricas bibliométricas actualizadas
+// Componente para mostrar métricas bibliométricas dinámicas y adaptativas
 import scholarData from '../data/scholar.json';
 
 interface Props {
@@ -9,12 +9,35 @@ interface Props {
 
 const { showDetails = false, compact = false } = Astro.props;
 
-// Función para formatear números grandes
+// Función para formatear números grandes con mejor escalado
 function formatNumber(num: number): string {
+  if (num >= 1000000) {
+    return (num / 1000000).toFixed(1) + 'M';
+  }
   if (num >= 1000) {
     return (num / 1000).toFixed(1) + 'k';
   }
   return num.toString();
+}
+
+// Función para detectar tendencias de crecimiento
+function calculateGrowthTrend(data: number[]): { trend: 'up' | 'down' | 'stable', percentage: number } {
+  if (data.length < 2) return { trend: 'stable', percentage: 0 };
+  
+  const recent = data.slice(-3); // Últimos 3 años
+  const earlier = data.slice(0, -3).length > 0 ? data.slice(0, -3) : [0];
+  
+  const recentAvg = recent.reduce((a, b) => a + b, 0) / recent.length;
+  const earlierAvg = earlier.reduce((a, b) => a + b, 0) / earlier.length;
+  
+  if (earlierAvg === 0 && recentAvg > 0) return { trend: 'up', percentage: 100 };
+  if (earlierAvg === 0) return { trend: 'stable', percentage: 0 };
+  
+  const percentage = ((recentAvg - earlierAvg) / earlierAvg) * 100;
+  
+  if (percentage > 10) return { trend: 'up', percentage: Math.round(percentage) };
+  if (percentage < -10) return { trend: 'down', percentage: Math.round(Math.abs(percentage)) };
+  return { trend: 'stable', percentage: Math.round(Math.abs(percentage)) };
 }
 
 // Calcular métricas usando los datos disponibles
@@ -39,19 +62,19 @@ scholarData.publications.forEach(pub => {
   }
 });
 
-// Preparar datos para la gráfica de progreso
+// Preparar datos para la gráfica de progreso con escalado dinámico
 const yearRange = Array.from({length: careerSpan}, (_, i) => minYear + i);
 const yearData = yearRange.map(year => ({
   year,
   publications: publicationsByYear[year.toString()] || 0
 }));
 
-const maxPublications = Math.max(...Object.values(publicationsByYear));
+const maxPublications = Math.max(...Object.values(publicationsByYear), 1);
 const peakPublicationYear = Object.keys(publicationsByYear).find(year => 
   publicationsByYear[year] === maxPublications
 );
 
-// Calcular citas acumuladas por año aproximadamente
+// Calcular citas por año con datos reales
 const citationsByYear: Record<string, number> = {};
 scholarData.publications.forEach(pub => {
   if (pub.year && pub.citedBy) {
@@ -66,6 +89,29 @@ const citationData = yearRange.map(year => ({
 }));
 
 const maxCitations = Math.max(...Object.values(citationsByYear), 1);
+
+// Calcular tendencias de crecimiento
+const publicationTrend = calculateGrowthTrend(yearData.map(d => d.publications));
+const citationTrend = calculateGrowthTrend(citationData.map(d => d.citations));
+
+// Determinar el nivel de actividad para escalar dinámicamente
+const activityLevel = (() => {
+  const totalPubs = scholarData.publications.length;
+  const totalCites = scholarData.metrics.totalCitations;
+  
+  if (totalPubs >= 100 && totalCites >= 1000) return 'alta';
+  if (totalPubs >= 50 && totalCites >= 500) return 'media-alta';
+  if (totalPubs >= 20 && totalCites >= 100) return 'media';
+  return 'emergente';
+})();
+
+// Configuración dinámica de escalas basada en el nivel de actividad
+const chartConfig = {
+  'alta': { minBarHeight: 12, maxBarHeight: 80, gridLines: 5 },
+  'media-alta': { minBarHeight: 10, maxBarHeight: 70, gridLines: 4 },
+  'media': { minBarHeight: 8, maxBarHeight: 60, gridLines: 3 },
+  'emergente': { minBarHeight: 6, maxBarHeight: 50, gridLines: 3 }
+}[activityLevel];
 ---
 
 <div class={`${compact ? 'p-4' : 'p-6'} bg-white dark:bg-gray-800 rounded-xl shadow-lg`}>
@@ -76,16 +122,36 @@ const maxCitations = Math.max(...Object.values(citationsByYear), 1);
     </span>
   </h3>
   
-  <!-- Métricas principales -->
+  <!-- Métricas principales con indicadores de tendencia -->
   <div class={`grid ${compact ? 'grid-cols-2 gap-3' : 'grid-cols-1 md:grid-cols-3 gap-4'} mb-4`}>
-    <div class="text-center">
-      <div class={`${compact ? 'text-2xl' : 'text-3xl'} font-bold text-blue-600 dark:text-blue-400`}>
+    <div class="text-center relative">
+      <div class={`${compact ? 'text-2xl' : 'text-3xl'} font-bold text-blue-600 dark:text-blue-400 flex items-center justify-center`}>
         {formatNumber(scholarData.metrics.totalCitations)}
+        {citationTrend.trend === 'up' && (
+          <span class="ml-2 text-green-500 text-lg" title={`Crecimiento del ${citationTrend.percentage}%`}>
+            ↗️
+          </span>
+        )}
+        {citationTrend.trend === 'down' && (
+          <span class="ml-2 text-red-500 text-lg" title={`Descenso del ${citationTrend.percentage}%`}>
+            ↘️
+          </span>
+        )}
+        {citationTrend.trend === 'stable' && (
+          <span class="ml-2 text-gray-500 text-lg" title="Tendencia estable">
+            ➡️
+          </span>
+        )}
       </div>
       <div class="text-sm text-gray-600 dark:text-gray-400">Citas Totales</div>
       {showDetails && (
         <div class="text-xs text-gray-500 dark:text-gray-500 mt-1">
           {scholarData.metrics.citationsRecent} últimos 5 años
+          {citationTrend.trend !== 'stable' && (
+            <span class={`ml-1 ${citationTrend.trend === 'up' ? 'text-green-600' : 'text-red-600'}`}>
+              ({citationTrend.trend === 'up' ? '+' : '-'}{citationTrend.percentage}%)
+            </span>
+          )}
         </div>
       )}
     </div>
@@ -116,11 +182,28 @@ const maxCitations = Math.max(...Object.values(citationsByYear), 1);
     
     {!compact && (
       <>
-        <div class="text-center">
-          <div class="text-3xl font-bold text-orange-600 dark:text-orange-400">
+        <div class="text-center relative">
+          <div class={`text-3xl font-bold text-orange-600 dark:text-orange-400 flex items-center justify-center`}>
             {scholarData.publications.length}
+            {publicationTrend.trend === 'up' && (
+              <span class="ml-2 text-green-500 text-lg" title={`Crecimiento del ${publicationTrend.percentage}%`}>
+                ↗️
+              </span>
+            )}
+            {publicationTrend.trend === 'down' && (
+              <span class="ml-2 text-red-500 text-lg" title={`Descenso del ${publicationTrend.percentage}%`}>
+                ↘️
+              </span>
+            )}
           </div>
           <div class="text-sm text-gray-600 dark:text-gray-400">Publicaciones</div>
+          <div class="text-xs text-gray-500 dark:text-gray-400 mt-1">
+            Nivel: <span class={`font-semibold ${
+              activityLevel === 'alta' ? 'text-red-600' : 
+              activityLevel === 'media-alta' ? 'text-orange-600' :
+              activityLevel === 'media' ? 'text-yellow-600' : 'text-green-600'
+            }`}>{activityLevel}</span>
+          </div>
         </div>
         
         <div class="text-center">
@@ -163,69 +246,225 @@ const maxCitations = Math.max(...Object.values(citationsByYear), 1);
     </div>
   )}
   
-  <!-- Gráfica de progreso por años -->
+  <!-- Gráficas dinámicas y adaptativas -->
   {!compact && (
     <div class="mt-6 p-4 bg-gray-50 dark:bg-gray-700 rounded-lg">
-      <h4 class="text-lg font-semibold text-gray-900 dark:text-white mb-4 flex items-center">
-        📈 Evolución Temporal
-        <span class="ml-2 text-xs bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 px-2 py-1 rounded-full">
-          {minYear} - {maxYear}
-        </span>
+      <h4 class="text-lg font-semibold text-gray-900 dark:text-white mb-4 flex items-center justify-between">
+        <div class="flex items-center">
+          📈 Evolución Temporal
+          <span class="ml-2 text-xs bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 px-2 py-1 rounded-full">
+            {minYear} - {maxYear}
+          </span>
+        </div>
+        <div class="text-xs text-gray-500 dark:text-gray-400">
+          Perfil: <span class={`font-semibold ${
+            activityLevel === 'alta' ? 'text-red-600' : 
+            activityLevel === 'media-alta' ? 'text-orange-600' :
+            activityLevel === 'media' ? 'text-yellow-600' : 'text-green-600'
+          }`}>{activityLevel}</span>
+        </div>
       </h4>
       
-      <!-- Gráfica de barras de publicaciones -->
+      <!-- Gráfica adaptativa de publicaciones -->
       <div class="mb-6">
-        <h5 class="text-sm font-medium text-gray-700 dark:text-gray-300 mb-3">
-          📚 Publicaciones por Año
+        <h5 class="text-sm font-medium text-gray-700 dark:text-gray-300 mb-3 flex items-center justify-between">
+          <span>📚 Publicaciones por Año</span>
+          {publicationTrend.trend !== 'stable' && (
+            <span class={`text-xs px-2 py-1 rounded-full ${
+              publicationTrend.trend === 'up' 
+                ? 'bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200' 
+                : 'bg-red-100 text-red-800 dark:bg-red-900 dark:text-red-200'
+            }`}>
+              {publicationTrend.trend === 'up' ? '↗️ ' : '↘️ '}
+              {publicationTrend.trend === 'up' ? '+' : '-'}{publicationTrend.percentage}%
+            </span>
+          )}
         </h5>
-        <div class="flex items-end space-x-1 h-24 bg-white dark:bg-gray-800 rounded p-2">
+        
+        <div class={`flex items-end space-x-1 bg-white dark:bg-gray-800 rounded p-2 relative`} 
+             style={`height: ${chartConfig.maxBarHeight}px`}>
+          <!-- Líneas de rejilla dinámicas -->
+          {Array.from({length: chartConfig.gridLines}, (_, i) => (
+            <div 
+              class="absolute w-full border-t border-gray-200 dark:border-gray-600 opacity-30"
+              style={`bottom: ${(i + 1) * (chartConfig.maxBarHeight / (chartConfig.gridLines + 1))}px`}
+            />
+          ))}
+          
           {yearData.map(({ year, publications }) => {
-            const height = maxPublications > 0 ? (publications / maxPublications) * 100 : 0;
+            const height = maxPublications > 0 
+              ? Math.max(
+                  (publications / maxPublications) * (chartConfig.maxBarHeight - 16), 
+                  publications > 0 ? chartConfig.minBarHeight : 2
+                )
+              : 2;
+            
+            const isRecentYear = year >= maxYear - 2;
+            const isPeakYear = publications === maxPublications && publications > 0;
+            
             return (
-              <div class="flex-1 flex flex-col items-center">
+              <div class="flex-1 flex flex-col items-center relative">
                 <div 
-                  class="w-full bg-blue-500 hover:bg-blue-600 transition-colors duration-200 rounded-t"
-                  style={`height: ${height}%; min-height: ${publications > 0 ? '8px' : '2px'}`}
-                  title={`${year}: ${publications} publicaciones`}
+                  class={`w-full transition-all duration-300 rounded-t cursor-pointer transform hover:scale-105 ${
+                    isPeakYear 
+                      ? 'bg-gradient-to-t from-blue-600 to-blue-400 shadow-lg' 
+                      : isRecentYear 
+                        ? 'bg-gradient-to-t from-blue-500 to-blue-300'
+                        : 'bg-blue-500 hover:bg-blue-600'
+                  }`}
+                  style={`height: ${height}px`}
+                  title={`${year}: ${publications} publicaciones${isPeakYear ? ' (máximo)' : ''}${isRecentYear ? ' (reciente)' : ''}`}
                 >
+                  {isPeakYear && (
+                    <div class="absolute -top-6 left-1/2 transform -translate-x-1/2 text-xs bg-yellow-400 text-yellow-900 px-1 rounded">
+                      ★
+                    </div>
+                  )}
                 </div>
-                <span class="text-xs text-gray-600 dark:text-gray-400 mt-1 transform -rotate-45">
+                <span class={`text-xs mt-1 transform -rotate-45 ${
+                  isRecentYear ? 'text-blue-600 dark:text-blue-400 font-semibold' : 'text-gray-600 dark:text-gray-400'
+                }`}>
                   {year}
                 </span>
               </div>
             );
           })}
         </div>
-        <div class="text-xs text-gray-500 dark:text-gray-400 mt-2 text-center">
-          Máximo: {maxPublications} publicaciones en {peakPublicationYear}
+        
+        <div class="text-xs text-gray-500 dark:text-gray-400 mt-2 text-center flex justify-between">
+          <span>Máximo: {maxPublications} en {peakPublicationYear}</span>
+          <span>Total: {scholarData.publications.length} publicaciones</span>
         </div>
       </div>
       
-      <!-- Gráfica de citas por año -->
+      <!-- Gráfica adaptativa de citas -->
       <div>
-        <h5 class="text-sm font-medium text-gray-700 dark:text-gray-300 mb-3">
-          📊 Citas por Año de Publicación
+        <h5 class="text-sm font-medium text-gray-700 dark:text-gray-300 mb-3 flex items-center justify-between">
+          <span>📊 Citas por Año de Publicación</span>
+          {citationTrend.trend !== 'stable' && (
+            <span class={`text-xs px-2 py-1 rounded-full ${
+              citationTrend.trend === 'up' 
+                ? 'bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200' 
+                : 'bg-red-100 text-red-800 dark:bg-red-900 dark:text-red-200'
+            }`}>
+              {citationTrend.trend === 'up' ? '↗️ ' : '↘️ '}
+              {citationTrend.trend === 'up' ? '+' : '-'}{citationTrend.percentage}%
+            </span>
+          )}
         </h5>
-        <div class="flex items-end space-x-1 h-24 bg-white dark:bg-gray-800 rounded p-2">
+        
+        <div class={`flex items-end space-x-1 bg-white dark:bg-gray-800 rounded p-2 relative`} 
+             style={`height: ${chartConfig.maxBarHeight}px`}>
+          <!-- Líneas de rejilla dinámicas -->
+          {Array.from({length: chartConfig.gridLines}, (_, i) => (
+            <div 
+              class="absolute w-full border-t border-gray-200 dark:border-gray-600 opacity-30"
+              style={`bottom: ${(i + 1) * (chartConfig.maxBarHeight / (chartConfig.gridLines + 1))}px`}
+            />
+          ))}
+          
           {citationData.map(({ year, citations }) => {
-            const height = maxCitations > 0 ? (citations / maxCitations) * 100 : 0;
+            const height = maxCitations > 0 
+              ? Math.max(
+                  (citations / maxCitations) * (chartConfig.maxBarHeight - 16), 
+                  citations > 0 ? chartConfig.minBarHeight : 2
+                )
+              : 2;
+            
+            const isRecentYear = year >= maxYear - 2;
+            const isPeakYear = citations === maxCitations && citations > 0;
+            const isHighCitation = citations > avgCitationsPerPaper * 2;
+            
             return (
-              <div class="flex-1 flex flex-col items-center">
+              <div class="flex-1 flex flex-col items-center relative">
                 <div 
-                  class="w-full bg-green-500 hover:bg-green-600 transition-colors duration-200 rounded-t"
-                  style={`height: ${height}%; min-height: ${citations > 0 ? '8px' : '2px'}`}
-                  title={`${year}: ${citations} citas`}
+                  class={`w-full transition-all duration-300 rounded-t cursor-pointer transform hover:scale-105 ${
+                    isPeakYear 
+                      ? 'bg-gradient-to-t from-green-600 to-green-400 shadow-lg' 
+                      : isHighCitation
+                        ? 'bg-gradient-to-t from-green-500 to-green-300'
+                        : isRecentYear 
+                          ? 'bg-gradient-to-t from-green-400 to-green-200'
+                          : 'bg-green-500 hover:bg-green-600'
+                  }`}
+                  style={`height: ${height}px`}
+                  title={`${year}: ${formatNumber(citations)} citas${isPeakYear ? ' (máximo)' : ''}${isHighCitation ? ' (alto impacto)' : ''}`}
                 >
+                  {isPeakYear && (
+                    <div class="absolute -top-6 left-1/2 transform -translate-x-1/2 text-xs bg-yellow-400 text-yellow-900 px-1 rounded">
+                      ★
+                    </div>
+                  )}
+                  {isHighCitation && !isPeakYear && (
+                    <div class="absolute -top-4 left-1/2 transform -translate-x-1/2 text-xs text-green-600">
+                      ⬆
+                    </div>
+                  )}
                 </div>
-                <span class="text-xs text-gray-600 dark:text-gray-400 mt-1 transform -rotate-45">
+                <span class={`text-xs mt-1 transform -rotate-45 ${
+                  isPeakYear || isHighCitation ? 'text-green-600 dark:text-green-400 font-semibold' 
+                  : isRecentYear ? 'text-green-500 dark:text-green-300' 
+                  : 'text-gray-600 dark:text-gray-400'
+                }`}>
                   {year}
                 </span>
               </div>
             );
           })}
         </div>
-        <div class="text-xs text-gray-500 dark:text-gray-400 mt-2 text-center">
-          Total citas: {scholarData.metrics.totalCitations} | Promedio: {avgCitationsPerPaper} por artículo
+        
+        <div class="text-xs text-gray-500 dark:text-gray-400 mt-2 text-center flex justify-between">
+          <span>Total: {formatNumber(scholarData.metrics.totalCitations)} citas</span>
+          <span>Promedio: {avgCitationsPerPaper} por artículo</span>
+        </div>
+      </div>
+      
+      <!-- Indicadores de rendimiento dinámicos -->
+      <div class="mt-4 p-3 bg-white dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-600">
+        <h6 class="text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">🎯 Indicadores de Rendimiento</h6>
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-3 text-xs">
+          <div class="text-center">
+            <div class={`text-lg font-bold ${
+              publicationTrend.trend === 'up' ? 'text-green-600' : 
+              publicationTrend.trend === 'down' ? 'text-red-600' : 'text-gray-600'
+            }`}>
+              {publicationTrend.trend === 'up' ? '📈' : publicationTrend.trend === 'down' ? '📉' : '➡️'}
+            </div>
+            <div class="text-gray-600 dark:text-gray-400">Producción</div>
+          </div>
+          <div class="text-center">
+            <div class={`text-lg font-bold ${
+              citationTrend.trend === 'up' ? 'text-green-600' : 
+              citationTrend.trend === 'down' ? 'text-red-600' : 'text-gray-600'
+            }`}>
+              {citationTrend.trend === 'up' ? '🚀' : citationTrend.trend === 'down' ? '📉' : '🔄'}
+            </div>
+            <div class="text-gray-600 dark:text-gray-400">Impacto</div>
+          </div>
+          <div class="text-center">
+            <div class={`text-lg font-bold ${
+              activityLevel === 'alta' ? 'text-red-600' : 
+              activityLevel === 'media-alta' ? 'text-orange-600' :
+              activityLevel === 'media' ? 'text-yellow-600' : 'text-green-600'
+            }`}>
+              {activityLevel === 'alta' ? '🔥' : 
+               activityLevel === 'media-alta' ? '⚡' :
+               activityLevel === 'media' ? '📊' : '🌱'}
+            </div>
+            <div class="text-gray-600 dark:text-gray-400">Actividad</div>
+          </div>
+          <div class="text-center">
+            <div class={`text-lg font-bold ${
+              avgCitationsPerPaper >= 20 ? 'text-purple-600' :
+              avgCitationsPerPaper >= 10 ? 'text-blue-600' :
+              avgCitationsPerPaper >= 5 ? 'text-green-600' : 'text-gray-600'
+            }`}>
+              {avgCitationsPerPaper >= 20 ? '💎' :
+               avgCitationsPerPaper >= 10 ? '🏆' :
+               avgCitationsPerPaper >= 5 ? '🎯' : '📋'}
+            </div>
+            <div class="text-gray-600 dark:text-gray-400">Calidad</div>
+          </div>
         </div>
       </div>
     </div>
