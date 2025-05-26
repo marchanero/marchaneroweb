@@ -1,11 +1,9 @@
 {
+  "lastUpdated": "2025-05-26T14:13:56.519Z",
+  "requestsUsed": 1,
   "totalPublications": 47,
-  "publicationsWithDetails": 47,
-  "paginationMetadata": {
-    "itemsPerPage": 100,
-    "totalPages": 1,
-    "lastPageItems": 47
-  },
+  "publicationsCovered": 47,
+  "coveragePercentage": 100,
   "temporalAnalysis": {
     "publicationsByYear": {
       "2018": 1,
@@ -14,8 +12,7 @@
       "2021": 3,
       "2022": 12,
       "2023": 11,
-      "2024": 8,
-      "2025": 2
+      "2024": 8
     },
     "citationsByYear": {
       "2018": 63,
@@ -24,121 +21,17 @@
       "2021": 67,
       "2022": 226,
       "2023": 39,
-      "2024": 13,
-      "2025": 8
+      "2024": 13
     },
-    "careerSpan": 8,
-    "activeYears": 8,
-    "averagePublicationsPerYear": 5.88,
-    "productivityTrend": "increasing"
+    "careerSpan": 7,
+    "activeYears": 7,
+    "firstPublication": 2018,
+    "lastPublication": 2024
   },
-  "venueAnalysis": {
-    "totalVenues": 45,
-    "topVenues": [
-      {
-        "venue": "Springer, 2019",
-        "publications": 2,
-        "totalCitations": 22,
-        "averageCitations": 11
-      },
-      {
-        "venue": "International Work-Conference on the Interplay Between Natural and …, 2024",
-        "publications": 2,
-        "totalCitations": 3,
-        "averageCitations": 2
-      },
-      {
-        "venue": "Expert Systems with Applications 206, 117731, 2022",
-        "publications": 1,
-        "totalCitations": 70,
-        "averageCitations": 70
-      },
-      {
-        "venue": "Electronics 7 (12), 384, 2018",
-        "publications": 1,
-        "totalCitations": 63,
-        "averageCitations": 63
-      },
-      {
-        "venue": "Applied Sciences 11 (20), 9508, 2021",
-        "publications": 1,
-        "totalCitations": 60,
-        "averageCitations": 60
-      },
-      {
-        "venue": "International Journal of Neural Systems 30, 1-13, 2020",
-        "publications": 1,
-        "totalCitations": 46,
-        "averageCitations": 46
-      },
-      {
-        "venue": "Biomedical Signal Processing and Control 71, 103203, 2022",
-        "publications": 1,
-        "totalCitations": 42,
-        "averageCitations": 42
-      },
-      {
-        "venue": "IEEE transactions on semiconductor manufacturing 35 (2), 324-331, 2022",
-        "publications": 1,
-        "totalCitations": 36,
-        "averageCitations": 36
-      },
-      {
-        "venue": "Sensors, 2020",
-        "publications": 1,
-        "totalCitations": 27,
-        "averageCitations": 27
-      },
-      {
-        "venue": "Computers & Industrial Engineering 183, 109549, 2023",
-        "publications": 1,
-        "totalCitations": 24,
-        "averageCitations": 24
-      }
-    ]
-  },
-  "collaborationMetrics": {
-    "totalWorks": 47,
-    "soloWorks": 5,
-    "collaborativeWorks": 41,
-    "collaborationRate": 87,
-    "averageAuthorsPerPaper": 4.04,
-    "maxAuthorsOnPaper": 6,
-    "minAuthorsOnPaper": 0
-  },
-  "impactMetrics": {
-    "totalCitations": 555,
-    "averageCitationsPerPaper": 11.81,
-    "hIndex": 13,
-    "i10Index": 16,
-    "mostCitedPaper": {
-      "citations": 70,
-      "paper": {
-        "title": "Geometric transformation-based data augmentation on defect classification of segmented images of semiconductor materials using a ResNet50 convolutional neural network",
-        "link": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=PCALePwAAAAJ&pagesize=100&citation_for_view=PCALePwAAAAJ:_kc_bZDykSQC",
-        "citation_id": "PCALePwAAAAJ:_kc_bZDykSQC",
-        "authors": "FL de la Rosa, JL Gómez-Sirvent, R Sánchez-Reolid, R Morales, ...",
-        "publication": "Expert Systems with Applications 206, 117731, 2022",
-        "cited_by": {
-          "value": 70,
-          "link": "https://scholar.google.com/scholar?oi=bibs&hl=en&cites=15620631313306549090",
-          "serpapi_link": "https://serpapi.com/search.json?cites=15620631313306549090&engine=google_scholar&hl=en",
-          "cites_id": "15620631313306549090"
-        },
-        "year": "2022"
-      }
-    },
-    "citationDistribution": {
-      "papers0Citations": 13,
-      "papers1to10Citations": 20,
-      "papers11to50Citations": 11,
-      "papers50PlusCitations": 3
-    }
-  },
-  "qualityMetrics": {
-    "highImpactPapers": 3,
-    "mediumImpactPapers": 13,
-    "recentHighImpact": 9
-  },
-  "generatedAt": "2025-05-26T12:54:09.366Z"
+  "optimization": {
+    "method": "ultra-optimized-serpapi",
+    "requestsSaved": 57,
+    "efficiencyGain": "98%",
+    "monthlyCapacity": 100
+  }
 }
