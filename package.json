@@ -20,6 +20,7 @@
     "deploy": "npm run pre-deploy && npm run build",
     "deploy:a11y": "npm run pre-deploy:a11y && npm run build",
     "test:pages": "NODE_OPTIONS=--experimental-vm-modules jest --config=jest.config.js test/pages.test.js test/seo.test.js",
+    "test:integration": "node scripts/test-integration.js",
     "check:performance": "npx lighthouse-ci http://localhost:4321 --config=./.github/lighthouse-config.json",
     "verify:telegram": "node scripts/verify-telegram-config.js",
     "import:env:netlify": "node scripts/import-env-to-netlify.js",
