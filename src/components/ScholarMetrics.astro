@@ -39,10 +39,33 @@ scholarData.publications.forEach(pub => {
   }
 });
 
+// Preparar datos para la gráfica de progreso
+const yearRange = Array.from({length: careerSpan}, (_, i) => minYear + i);
+const yearData = yearRange.map(year => ({
+  year,
+  publications: publicationsByYear[year.toString()] || 0
+}));
+
 const maxPublications = Math.max(...Object.values(publicationsByYear));
 const peakPublicationYear = Object.keys(publicationsByYear).find(year => 
   publicationsByYear[year] === maxPublications
 );
+
+// Calcular citas acumuladas por año aproximadamente
+const citationsByYear: Record<string, number> = {};
+scholarData.publications.forEach(pub => {
+  if (pub.year && pub.cited_by?.value) {
+    const year = pub.year.toString();
+    citationsByYear[year] = (citationsByYear[year] || 0) + pub.cited_by.value;
+  }
+});
+
+const citationData = yearRange.map(year => ({
+  year,
+  citations: citationsByYear[year.toString()] || 0
+}));
+
+const maxCitations = Math.max(...Object.values(citationsByYear), 1);
 ---
 
 <div class={`${compact ? 'p-4' : 'p-6'} bg-white dark:bg-gray-800 rounded-xl shadow-lg`}>
@@ -116,6 +139,97 @@ const peakPublicationYear = Object.keys(publicationsByYear).find(year =>
       </>
     )}
   </div>
+  
+  {showDetails && (
+    <div class="border-t dark:border-gray-700 pt-4">
+      <div class="grid grid-cols-2 gap-4 text-sm">
+        <div>
+          <h4 class="font-semibold text-gray-900 dark:text-white mb-2">Actividad</h4>
+          <ul class="space-y-1 text-gray-600 dark:text-gray-400">
+            <li>Carrera activa: {careerSpan} años ({minYear}-{maxYear})</li>
+            <li>Años con publicaciones: {Object.keys(publicationsByYear).length}</li>
+            <li>Pico de publicaciones: {maxPublications} ({peakPublicationYear})</li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="font-semibold text-gray-900 dark:text-white mb-2">Productividad</h4>
+          <ul class="space-y-1 text-gray-600 dark:text-gray-400">
+            <li>Promedio: {avgPublicationsPerYear} pub/año</li>
+            <li>Impacto: {avgCitationsPerPaper} citas/artículo</li>
+            <li>Rango años: {minYear} - {maxYear}</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  )}
+  
+  <!-- Gráfica de progreso por años -->
+  {!compact && (
+    <div class="mt-6 p-4 bg-gray-50 dark:bg-gray-700 rounded-lg">
+      <h4 class="text-lg font-semibold text-gray-900 dark:text-white mb-4 flex items-center">
+        📈 Evolución Temporal
+        <span class="ml-2 text-xs bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 px-2 py-1 rounded-full">
+          {minYear} - {maxYear}
+        </span>
+      </h4>
+      
+      <!-- Gráfica de barras de publicaciones -->
+      <div class="mb-6">
+        <h5 class="text-sm font-medium text-gray-700 dark:text-gray-300 mb-3">
+          📚 Publicaciones por Año
+        </h5>
+        <div class="flex items-end space-x-1 h-24 bg-white dark:bg-gray-800 rounded p-2">
+          {yearData.map(({ year, publications }) => {
+            const height = maxPublications > 0 ? (publications / maxPublications) * 100 : 0;
+            return (
+              <div class="flex-1 flex flex-col items-center">
+                <div 
+                  class="w-full bg-blue-500 hover:bg-blue-600 transition-colors duration-200 rounded-t"
+                  style={`height: ${height}%; min-height: ${publications > 0 ? '8px' : '2px'}`}
+                  title={`${year}: ${publications} publicaciones`}
+                >
+                </div>
+                <span class="text-xs text-gray-600 dark:text-gray-400 mt-1 transform -rotate-45">
+                  {year}
+                </span>
+              </div>
+            );
+          })}
+        </div>
+        <div class="text-xs text-gray-500 dark:text-gray-400 mt-2 text-center">
+          Máximo: {maxPublications} publicaciones en {peakPublicationYear}
+        </div>
+      </div>
+      
+      <!-- Gráfica de citas por año -->
+      <div>
+        <h5 class="text-sm font-medium text-gray-700 dark:text-gray-300 mb-3">
+          📊 Citas por Año de Publicación
+        </h5>
+        <div class="flex items-end space-x-1 h-24 bg-white dark:bg-gray-800 rounded p-2">
+          {citationData.map(({ year, citations }) => {
+            const height = maxCitations > 0 ? (citations / maxCitations) * 100 : 0;
+            return (
+              <div class="flex-1 flex flex-col items-center">
+                <div 
+                  class="w-full bg-green-500 hover:bg-green-600 transition-colors duration-200 rounded-t"
+                  style={`height: ${height}%; min-height: ${citations > 0 ? '8px' : '2px'}`}
+                  title={`${year}: ${citations} citas`}
+                >
+                </div>
+                <span class="text-xs text-gray-600 dark:text-gray-400 mt-1 transform -rotate-45">
+                  {year}
+                </span>
+              </div>
+            );
+          })}
+        </div>
+        <div class="text-xs text-gray-500 dark:text-gray-400 mt-2 text-center">
+          Total citas: {scholarData.metrics.totalCitations} | Promedio: {avgCitationsPerPaper} por artículo
+        </div>
+      </div>
+    </div>
+  )}
   
   {showDetails && (
     <div class="border-t dark:border-gray-700 pt-4">
