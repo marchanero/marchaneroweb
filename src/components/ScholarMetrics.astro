@@ -54,9 +54,9 @@ const peakPublicationYear = Object.keys(publicationsByYear).find(year =>
 // Calcular citas acumuladas por año aproximadamente
 const citationsByYear: Record<string, number> = {};
 scholarData.publications.forEach(pub => {
-  if (pub.year && pub.cited_by?.value) {
+  if (pub.year && pub.citedBy) {
     const year = pub.year.toString();
-    citationsByYear[year] = (citationsByYear[year] || 0) + pub.cited_by.value;
+    citationsByYear[year] = (citationsByYear[year] || 0) + pub.citedBy;
   }
 });
 
