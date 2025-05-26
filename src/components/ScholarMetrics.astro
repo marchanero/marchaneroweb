@@ -246,10 +246,10 @@ const chartConfig = {
     </div>
   )}
   
-  <!-- Gráficas dinámicas y adaptativas -->
+  <!-- Gráficas dinámicas y adaptativas con diseño responsivo -->
   {!compact && (
-    <div class="mt-6 p-4 bg-gray-50 dark:bg-gray-700 rounded-lg">
-      <h4 class="text-lg font-semibold text-gray-900 dark:text-white mb-4 flex items-center justify-between">
+    <div class="mt-6 p-3 sm:p-4 bg-gray-50 dark:bg-gray-700 rounded-lg overflow-hidden">
+      <h4 class="text-base sm:text-lg font-semibold text-gray-900 dark:text-white mb-4 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
         <div class="flex items-center">
           📈 Evolución Temporal
           <span class="ml-2 text-xs bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 px-2 py-1 rounded-full">
@@ -267,10 +267,10 @@ const chartConfig = {
       
       <!-- Gráfica adaptativa de publicaciones -->
       <div class="mb-6">
-        <h5 class="text-sm font-medium text-gray-700 dark:text-gray-300 mb-3 flex items-center justify-between">
+        <h5 class="text-sm font-medium text-gray-700 dark:text-gray-300 mb-3 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
           <span>📚 Publicaciones por Año</span>
           {publicationTrend.trend !== 'stable' && (
-            <span class={`text-xs px-2 py-1 rounded-full ${
+            <span class={`text-xs px-2 py-1 rounded-full self-start sm:self-center ${
               publicationTrend.trend === 'up' 
                 ? 'bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200' 
                 : 'bg-red-100 text-red-800 dark:bg-red-900 dark:text-red-200'
@@ -281,57 +281,60 @@ const chartConfig = {
           )}
         </h5>
         
-        <div class={`flex items-end space-x-1 bg-white dark:bg-gray-800 rounded p-2 relative`} 
-             style={`height: ${chartConfig.maxBarHeight}px`}>
-          <!-- Líneas de rejilla dinámicas -->
-          {Array.from({length: chartConfig.gridLines}, (_, i) => (
-            <div 
-              class="absolute w-full border-t border-gray-200 dark:border-gray-600 opacity-30"
-              style={`bottom: ${(i + 1) * (chartConfig.maxBarHeight / (chartConfig.gridLines + 1))}px`}
-            />
-          ))}
-          
-          {yearData.map(({ year, publications }) => {
-            const height = maxPublications > 0 
-              ? Math.max(
-                  (publications / maxPublications) * (chartConfig.maxBarHeight - 16), 
-                  publications > 0 ? chartConfig.minBarHeight : 2
-                )
-              : 2;
+        <!-- Contenedor de gráfico responsivo -->
+        <div class="w-full overflow-hidden">
+          <div class="flex items-end gap-1 h-16 sm:h-20 md:h-24 bg-white dark:bg-gray-800 rounded p-2 relative min-w-0">
+            <!-- Líneas de rejilla dinámicas -->
+            {Array.from({length: Math.min(chartConfig.gridLines, 3)}, (_, i) => (
+              <div 
+                class="absolute w-full border-t border-gray-200 dark:border-gray-600 opacity-30 pointer-events-none"
+                style={`bottom: ${(i + 1) * 25}%`}
+              />
+            ))}
             
-            const isRecentYear = year >= maxYear - 2;
-            const isPeakYear = publications === maxPublications && publications > 0;
-            
-            return (
-              <div class="flex-1 flex flex-col items-center relative">
-                <div 
-                  class={`w-full transition-all duration-300 rounded-t cursor-pointer transform hover:scale-105 ${
-                    isPeakYear 
-                      ? 'bg-gradient-to-t from-blue-600 to-blue-400 shadow-lg' 
-                      : isRecentYear 
-                        ? 'bg-gradient-to-t from-blue-500 to-blue-300'
-                        : 'bg-blue-500 hover:bg-blue-600'
-                  }`}
-                  style={`height: ${height}px`}
-                  title={`${year}: ${publications} publicaciones${isPeakYear ? ' (máximo)' : ''}${isRecentYear ? ' (reciente)' : ''}`}
-                >
-                  {isPeakYear && (
-                    <div class="absolute -top-6 left-1/2 transform -translate-x-1/2 text-xs bg-yellow-400 text-yellow-900 px-1 rounded">
-                      ★
-                    </div>
-                  )}
+            {yearData.map(({ year, publications }, index) => {
+              const maxHeight = 48; // Altura máxima fija en px para móvil
+              const height = maxPublications > 0 
+                ? Math.max(
+                    Math.min((publications / maxPublications) * maxHeight, maxHeight), 
+                    publications > 0 ? 4 : 1
+                  )
+                : 1;
+              
+              const isRecentYear = year >= maxYear - 2;
+              const isPeakYear = publications === maxPublications && publications > 0;
+              
+              return (
+                <div class="flex-1 flex flex-col items-center min-w-0 relative group">
+                  <div 
+                    class={`w-full transition-all duration-300 rounded-t cursor-pointer ${
+                      isPeakYear 
+                        ? 'bg-gradient-to-t from-blue-600 to-blue-400 shadow-sm' 
+                        : isRecentYear 
+                          ? 'bg-gradient-to-t from-blue-500 to-blue-300'
+                          : 'bg-blue-500 hover:bg-blue-600'
+                    } relative`}
+                    style={`height: ${height}px; max-height: ${maxHeight}px`}
+                    title={`${year}: ${publications} publicaciones${isPeakYear ? ' (máximo)' : ''}${isRecentYear ? ' (reciente)' : ''}`}
+                  >
+                    {isPeakYear && (
+                      <div class="absolute -top-5 left-1/2 transform -translate-x-1/2 text-xs bg-yellow-400 text-yellow-900 px-1 rounded opacity-0 group-hover:opacity-100 transition-opacity">
+                        ★
+                      </div>
+                    )}
+                  </div>
+                  <span class={`text-xs mt-1 truncate w-full text-center ${
+                    isRecentYear ? 'text-blue-600 dark:text-blue-400 font-semibold' : 'text-gray-600 dark:text-gray-400'
+                  }`} style="font-size: 10px;">
+                    {year.toString().slice(-2)}
+                  </span>
                 </div>
-                <span class={`text-xs mt-1 transform -rotate-45 ${
-                  isRecentYear ? 'text-blue-600 dark:text-blue-400 font-semibold' : 'text-gray-600 dark:text-gray-400'
-                }`}>
-                  {year}
-                </span>
-              </div>
-            );
-          })}
+              );
+            })}
+          </div>
         </div>
         
-        <div class="text-xs text-gray-500 dark:text-gray-400 mt-2 text-center flex justify-between">
+        <div class="text-xs text-gray-500 dark:text-gray-400 mt-2 flex flex-col sm:flex-row sm:justify-between gap-1">
           <span>Máximo: {maxPublications} en {peakPublicationYear}</span>
           <span>Total: {scholarData.publications.length} publicaciones</span>
         </div>
@@ -339,10 +342,10 @@ const chartConfig = {
       
       <!-- Gráfica adaptativa de citas -->
       <div>
-        <h5 class="text-sm font-medium text-gray-700 dark:text-gray-300 mb-3 flex items-center justify-between">
+        <h5 class="text-sm font-medium text-gray-700 dark:text-gray-300 mb-3 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
           <span>📊 Citas por Año de Publicación</span>
           {citationTrend.trend !== 'stable' && (
-            <span class={`text-xs px-2 py-1 rounded-full ${
+            <span class={`text-xs px-2 py-1 rounded-full self-start sm:self-center ${
               citationTrend.trend === 'up' 
                 ? 'bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200' 
                 : 'bg-red-100 text-red-800 dark:bg-red-900 dark:text-red-200'
@@ -353,76 +356,79 @@ const chartConfig = {
           )}
         </h5>
         
-        <div class={`flex items-end space-x-1 bg-white dark:bg-gray-800 rounded p-2 relative`} 
-             style={`height: ${chartConfig.maxBarHeight}px`}>
-          <!-- Líneas de rejilla dinámicas -->
-          {Array.from({length: chartConfig.gridLines}, (_, i) => (
-            <div 
-              class="absolute w-full border-t border-gray-200 dark:border-gray-600 opacity-30"
-              style={`bottom: ${(i + 1) * (chartConfig.maxBarHeight / (chartConfig.gridLines + 1))}px`}
-            />
-          ))}
-          
-          {citationData.map(({ year, citations }) => {
-            const height = maxCitations > 0 
-              ? Math.max(
-                  (citations / maxCitations) * (chartConfig.maxBarHeight - 16), 
-                  citations > 0 ? chartConfig.minBarHeight : 2
-                )
-              : 2;
+        <!-- Contenedor de gráfico responsivo -->
+        <div class="w-full overflow-hidden">
+          <div class="flex items-end gap-1 h-16 sm:h-20 md:h-24 bg-white dark:bg-gray-800 rounded p-2 relative min-w-0">
+            <!-- Líneas de rejilla dinámicas -->
+            {Array.from({length: Math.min(chartConfig.gridLines, 3)}, (_, i) => (
+              <div 
+                class="absolute w-full border-t border-gray-200 dark:border-gray-600 opacity-30 pointer-events-none"
+                style={`bottom: ${(i + 1) * 25}%`}
+              />
+            ))}
             
-            const isRecentYear = year >= maxYear - 2;
-            const isPeakYear = citations === maxCitations && citations > 0;
-            const isHighCitation = citations > avgCitationsPerPaper * 2;
-            
-            return (
-              <div class="flex-1 flex flex-col items-center relative">
-                <div 
-                  class={`w-full transition-all duration-300 rounded-t cursor-pointer transform hover:scale-105 ${
-                    isPeakYear 
-                      ? 'bg-gradient-to-t from-green-600 to-green-400 shadow-lg' 
-                      : isHighCitation
-                        ? 'bg-gradient-to-t from-green-500 to-green-300'
-                        : isRecentYear 
-                          ? 'bg-gradient-to-t from-green-400 to-green-200'
-                          : 'bg-green-500 hover:bg-green-600'
-                  }`}
-                  style={`height: ${height}px`}
-                  title={`${year}: ${formatNumber(citations)} citas${isPeakYear ? ' (máximo)' : ''}${isHighCitation ? ' (alto impacto)' : ''}`}
-                >
-                  {isPeakYear && (
-                    <div class="absolute -top-6 left-1/2 transform -translate-x-1/2 text-xs bg-yellow-400 text-yellow-900 px-1 rounded">
-                      ★
-                    </div>
-                  )}
-                  {isHighCitation && !isPeakYear && (
-                    <div class="absolute -top-4 left-1/2 transform -translate-x-1/2 text-xs text-green-600">
-                      ⬆
-                    </div>
-                  )}
+            {citationData.map(({ year, citations }, index) => {
+              const maxHeight = 48; // Altura máxima fija en px para móvil
+              const height = maxCitations > 0 
+                ? Math.max(
+                    Math.min((citations / maxCitations) * maxHeight, maxHeight), 
+                    citations > 0 ? 4 : 1
+                  )
+                : 1;
+              
+              const isRecentYear = year >= maxYear - 2;
+              const isPeakYear = citations === maxCitations && citations > 0;
+              const isHighCitation = citations > avgCitationsPerPaper * 2;
+              
+              return (
+                <div class="flex-1 flex flex-col items-center min-w-0 relative group">
+                  <div 
+                    class={`w-full transition-all duration-300 rounded-t cursor-pointer ${
+                      isPeakYear 
+                        ? 'bg-gradient-to-t from-green-600 to-green-400 shadow-sm' 
+                        : isHighCitation
+                          ? 'bg-gradient-to-t from-green-500 to-green-300'
+                          : isRecentYear 
+                            ? 'bg-gradient-to-t from-green-400 to-green-200'
+                            : 'bg-green-500 hover:bg-green-600'
+                    } relative`}
+                    style={`height: ${height}px; max-height: ${maxHeight}px`}
+                    title={`${year}: ${formatNumber(citations)} citas${isPeakYear ? ' (máximo)' : ''}${isHighCitation ? ' (alto impacto)' : ''}`}
+                  >
+                    {isPeakYear && (
+                      <div class="absolute -top-5 left-1/2 transform -translate-x-1/2 text-xs bg-yellow-400 text-yellow-900 px-1 rounded opacity-0 group-hover:opacity-100 transition-opacity">
+                        ★
+                      </div>
+                    )}
+                    {isHighCitation && !isPeakYear && (
+                      <div class="absolute -top-3 left-1/2 transform -translate-x-1/2 text-xs text-green-600 opacity-0 group-hover:opacity-100 transition-opacity">
+                        ⬆
+                      </div>
+                    )}
+                  </div>
+                  <span class={`text-xs mt-1 truncate w-full text-center ${
+                    isPeakYear || isHighCitation ? 'text-green-600 dark:text-green-400 font-semibold' 
+                    : isRecentYear ? 'text-green-500 dark:text-green-300' 
+                    : 'text-gray-600 dark:text-gray-400'
+                  }`} style="font-size: 10px;">
+                    {year.toString().slice(-2)}
+                  </span>
                 </div>
-                <span class={`text-xs mt-1 transform -rotate-45 ${
-                  isPeakYear || isHighCitation ? 'text-green-600 dark:text-green-400 font-semibold' 
-                  : isRecentYear ? 'text-green-500 dark:text-green-300' 
-                  : 'text-gray-600 dark:text-gray-400'
-                }`}>
-                  {year}
-                </span>
-              </div>
-            );
-          })}
+              );
+            })}
+          </div>
         </div>
         
-        <div class="text-xs text-gray-500 dark:text-gray-400 mt-2 text-center flex justify-between">
+        <div class="text-xs text-gray-500 dark:text-gray-400 mt-2 flex flex-col sm:flex-row sm:justify-between gap-1">
           <span>Total: {formatNumber(scholarData.metrics.totalCitations)} citas</span>
           <span>Promedio: {avgCitationsPerPaper} por artículo</span>
         </div>
       </div>
       
-      <!-- Indicadores de rendimiento dinámicos -->
+      <!-- Indicadores de rendimiento dinámicos responsivos -->
       <div class="mt-4 p-3 bg-white dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-600">
-        <h6 class="text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">🎯 Indicadores de Rendimiento</h6>
-        <div class="grid grid-cols-2 md:grid-cols-4 gap-3 text-xs">
+        <h6 class="text-sm font-medium text-gray-700 dark:text-gray-300 mb-3">🎯 Indicadores de Rendimiento</h6>
+        <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 text-xs">
           <div class="text-center">
             <div class={`text-lg font-bold ${
               publicationTrend.trend === 'up' ? 'text-green-600' : 
