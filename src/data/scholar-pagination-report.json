@@ -1,0 +1,20 @@
+{
+  "lastUpdated": "2025-05-26T14:29:09.129Z",
+  "paginationMethod": "robust-serpapi-v3",
+  "execution": {
+    "requestsUsed": 1,
+    "pagesProcessed": 0,
+    "publicationsObtained": 47,
+    "completeness": "complete"
+  },
+  "optimization": {
+    "method": "ultra-optimized-robust-pagination",
+    "requestsSaved": 57,
+    "efficiencyGain": "98%",
+    "monthlyCapacity": 100
+  },
+  "nextExecution": {
+    "recommended": false,
+    "reason": "Todos los datos han sido obtenidos"
+  }
+}
