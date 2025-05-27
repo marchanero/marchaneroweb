@@ -54,45 +54,77 @@ const currentPath = Astro.url.pathname;
 			}
 		</script>
 	</head>
-	<body class="bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100 min-h-screen flex flex-col transition-colors duration-300">
-		<header class="bg-white dark:bg-gray-900 border-b border-gray-200 dark:border-gray-700 sticky top-0 z-50">
+	<body class="bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100 min-h-screen flex flex-col transition-all duration-500 ease-in-out">
+		<header class="bg-white/80 dark:bg-gray-900/80 backdrop-blur-md border-b border-gray-200/60 dark:border-gray-700/60 sticky top-0 z-50 transition-all duration-300">
 			<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 				<nav class="flex items-center justify-between py-4">
-					<a href="/" class="text-xl font-bold text-blue-700 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-300 transition-colors duration-200">
-						Dr. Roberto Sánchez Reolid
+					<a href="/" class="text-xl font-bold text-blue-700 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-300 transition-all duration-300 hover:scale-105 transform">
+						<span class="bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 bg-clip-text text-transparent">
+							Dr. Roberto Sánchez Reolid
+						</span>
 					</a>
 					
 					<!-- Navegación para pantallas medianas y grandes -->
 					<div class="hidden md:flex items-center space-x-1">
-						<ul class="flex space-x-4">
+						<ul class="flex space-x-2">
 							<li>
-								<a href="/" class={`py-2 px-3 rounded-lg ${currentPath === "/" ? "font-medium text-blue-600 dark:text-blue-400" : "text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800"} transition-colors duration-200`}>
-									Inicio
+								<a href="/" class={`py-2 px-4 rounded-lg transition-all duration-300 transform hover:scale-105 ${currentPath === "/" ? "font-medium text-blue-600 dark:text-blue-400 bg-blue-50 dark:bg-blue-900/20" : "text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 hover:text-blue-600 dark:hover:text-blue-400"}`}>
+									<span class="flex items-center gap-2">
+										<svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+											<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path>
+										</svg>
+										Inicio
+									</span>
 								</a>
 							</li>
 							<li>
-								<a href="/sobre-mi" class={`py-2 px-3 rounded-lg ${currentPath.includes("/sobre-mi") ? "font-medium text-blue-600 dark:text-blue-400" : "text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800"} transition-colors duration-200`}>
-									Sobre mí
+								<a href="/sobre-mi" class={`py-2 px-4 rounded-lg transition-all duration-300 transform hover:scale-105 ${currentPath.includes("/sobre-mi") ? "font-medium text-blue-600 dark:text-blue-400 bg-blue-50 dark:bg-blue-900/20" : "text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 hover:text-blue-600 dark:hover:text-blue-400"}`}>
+									<span class="flex items-center gap-2">
+										<svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+											<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path>
+										</svg>
+										Sobre mí
+									</span>
 								</a>
 							</li>
 							<li>
-								<a href="/cv" class={`py-2 px-3 rounded-lg ${currentPath.includes("/cv") ? "font-medium text-blue-600 dark:text-blue-400" : "text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800"} transition-colors duration-200`}>
-									CV
+								<a href="/cv" class={`py-2 px-4 rounded-lg transition-all duration-300 transform hover:scale-105 ${currentPath.includes("/cv") ? "font-medium text-blue-600 dark:text-blue-400 bg-blue-50 dark:bg-blue-900/20" : "text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 hover:text-blue-600 dark:hover:text-blue-400"}`}>
+									<span class="flex items-center gap-2">
+										<svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+											<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+										</svg>
+										CV
+									</span>
 								</a>
 							</li>
 							<li>
-								<a href="/publicaciones" class={`py-2 px-3 rounded-lg ${currentPath.includes("/publicaciones") ? "font-medium text-blue-600 dark:text-blue-400" : "text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800"} transition-colors duration-200`}>
-									Publicaciones
+								<a href="/publicaciones" class={`py-2 px-4 rounded-lg transition-all duration-300 transform hover:scale-105 ${currentPath.includes("/publicaciones") ? "font-medium text-blue-600 dark:text-blue-400 bg-blue-50 dark:bg-blue-900/20" : "text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 hover:text-blue-600 dark:hover:text-blue-400"}`}>
+									<span class="flex items-center gap-2">
+										<svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+											<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.746 0 3.332.477 4.5 1.253v13C19.832 18.477 18.246 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
+										</svg>
+										Publicaciones
+									</span>
 								</a>
 							</li>
 							<li>
-								<a href="/proyectos" class={`py-2 px-3 rounded-lg ${currentPath.includes("/proyectos") ? "font-medium text-blue-600 dark:text-blue-400" : "text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800"} transition-colors duration-200`}>
-									Proyectos
+								<a href="/proyectos" class={`py-2 px-4 rounded-lg transition-all duration-300 transform hover:scale-105 ${currentPath.includes("/proyectos") ? "font-medium text-blue-600 dark:text-blue-400 bg-blue-50 dark:bg-blue-900/20" : "text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 hover:text-blue-600 dark:hover:text-blue-400"}`}>
+									<span class="flex items-center gap-2">
+										<svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+											<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path>
+										</svg>
+										Proyectos
+									</span>
 								</a>
 							</li>
 							<li>
-								<a href="/contacto" class={`py-2 px-3 rounded-lg ${currentPath.includes("/contacto") ? "font-medium text-blue-600 dark:text-blue-400" : "text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800"} transition-colors duration-200`}>
-									Contacto
+								<a href="/contacto" class={`py-2 px-4 rounded-lg transition-all duration-300 transform hover:scale-105 ${currentPath.includes("/contacto") ? "font-medium text-blue-600 dark:text-blue-400 bg-blue-50 dark:bg-blue-900/20" : "text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 hover:text-blue-600 dark:hover:text-blue-400"}`}>
+									<span class="flex items-center gap-2">
+										<svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+											<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+										</svg>
+										Contacto
+									</span>
 								</a>
 							</li>
 						</ul>
@@ -106,8 +138,8 @@ const currentPath = Astro.url.pathname;
 					<!-- Menú móvil (hamburguesa) -->
 					<div class="md:hidden flex items-center space-x-4">
 						<ThemeToggle class="mr-2" />
-						<button id="mobile-menu-button" aria-label="Menú" class="p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors">
-							<svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+						<button id="mobile-menu-button" aria-label="Menú" class="p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-all duration-300 transform hover:scale-105">
+							<svg class="w-6 h-6 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
 								<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
 							</svg>
 						</button>
@@ -115,13 +147,45 @@ const currentPath = Astro.url.pathname;
 				</nav>
 				
 				<!-- Menú móvil desplegable -->
-				<div id="mobile-menu" class="hidden md:hidden py-2 border-t border-gray-200 dark:border-gray-700">
-					<a href="/" class={`block px-4 py-2 ${currentPath === "/" ? "font-medium text-blue-600 dark:text-blue-400" : "text-gray-700 dark:text-gray-300"} hover:bg-gray-100 dark:hover:bg-gray-800`}>Inicio</a>
-					<a href="/sobre-mi" class={`block px-4 py-2 ${currentPath.includes("/sobre-mi") ? "font-medium text-blue-600 dark:text-blue-400" : "text-gray-700 dark:text-gray-300"} hover:bg-gray-100 dark:hover:bg-gray-800`}>Sobre mí</a>
-					<a href="/cv" class={`block px-4 py-2 ${currentPath.includes("/cv") ? "font-medium text-blue-600 dark:text-blue-400" : "text-gray-700 dark:text-gray-300"} hover:bg-gray-100 dark:hover:bg-gray-800`}>CV</a>
-					<a href="/publicaciones" class={`block px-4 py-2 ${currentPath.includes("/publicaciones") ? "font-medium text-blue-600 dark:text-blue-400" : "text-gray-700 dark:text-gray-300"} hover:bg-gray-100 dark:hover:bg-gray-800`}>Publicaciones</a>
-					<a href="/proyectos" class={`block px-4 py-2 ${currentPath.includes("/proyectos") ? "font-medium text-blue-600 dark:text-blue-400" : "text-gray-700 dark:text-gray-300"} hover:bg-gray-100 dark:hover:bg-gray-800`}>Proyectos</a>
-					<a href="/contacto" class={`block px-4 py-2 ${currentPath.includes("/contacto") ? "font-medium text-blue-600 dark:text-blue-400" : "text-gray-700 dark:text-gray-300"} hover:bg-gray-100 dark:hover:bg-gray-800`}>Contacto</a>
+				<div id="mobile-menu" class="hidden md:hidden py-2 border-t border-gray-200/60 dark:border-gray-700/60 backdrop-blur-md">
+					<div class="space-y-1">
+						<a href="/" class={`flex items-center gap-3 px-4 py-3 rounded-lg transition-all duration-300 ${currentPath === "/" ? "font-medium text-blue-600 dark:text-blue-400 bg-blue-50 dark:bg-blue-900/20" : "text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800"}`}>
+							<svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+								<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path>
+							</svg>
+							Inicio
+						</a>
+						<a href="/sobre-mi" class={`flex items-center gap-3 px-4 py-3 rounded-lg transition-all duration-300 ${currentPath.includes("/sobre-mi") ? "font-medium text-blue-600 dark:text-blue-400 bg-blue-50 dark:bg-blue-900/20" : "text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800"}`}>
+							<svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+								<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path>
+							</svg>
+							Sobre mí
+						</a>
+						<a href="/cv" class={`flex items-center gap-3 px-4 py-3 rounded-lg transition-all duration-300 ${currentPath.includes("/cv") ? "font-medium text-blue-600 dark:text-blue-400 bg-blue-50 dark:bg-blue-900/20" : "text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800"}`}>
+							<svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+								<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+							</svg>
+							CV
+						</a>
+						<a href="/publicaciones" class={`flex items-center gap-3 px-4 py-3 rounded-lg transition-all duration-300 ${currentPath.includes("/publicaciones") ? "font-medium text-blue-600 dark:text-blue-400 bg-blue-50 dark:bg-blue-900/20" : "text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800"}`}>
+							<svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+								<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.746 0 3.332.477 4.5 1.253v13C19.832 18.477 18.246 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
+							</svg>
+							Publicaciones
+						</a>
+						<a href="/proyectos" class={`flex items-center gap-3 px-4 py-3 rounded-lg transition-all duration-300 ${currentPath.includes("/proyectos") ? "font-medium text-blue-600 dark:text-blue-400 bg-blue-50 dark:bg-blue-900/20" : "text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800"}`}>
+							<svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+								<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path>
+							</svg>
+							Proyectos
+						</a>
+						<a href="/contacto" class={`flex items-center gap-3 px-4 py-3 rounded-lg transition-all duration-300 ${currentPath.includes("/contacto") ? "font-medium text-blue-600 dark:text-blue-400 bg-blue-50 dark:bg-blue-900/20" : "text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800"}`}>
+							<svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+								<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+							</svg>
+							Contacto
+						</a>
+					</div>
 				</div>
 			</div>
 		</header>
@@ -130,41 +194,75 @@ const currentPath = Astro.url.pathname;
 			<slot />
 		</main>
 		
-		<footer class="mt-auto bg-gray-100 dark:bg-gray-800 border-t border-gray-200 dark:border-gray-700">
+		<footer class="mt-auto bg-gradient-to-r from-gray-100 via-gray-200 to-gray-100 dark:from-gray-800 dark:via-gray-900 dark:to-gray-800 border-t border-gray-200/60 dark:border-gray-700/60">
 			<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-				<div class="flex flex-col md:flex-row justify-between items-center">
-					<p class="text-gray-700 dark:text-gray-300 mb-4 md:mb-0">
-						&copy; {new Date().getFullYear()} Dr. Roberto Sánchez Reolid. Todos los derechos reservados.
-					</p>
+				<div class="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
+					<div class="text-center md:text-left">
+						<p class="text-gray-700 dark:text-gray-300 font-medium">
+							&copy; {new Date().getFullYear()} Dr. Roberto Sánchez Reolid
+						</p>
+						<p class="text-gray-600 dark:text-gray-400 text-sm mt-1">
+							Todos los derechos reservados
+						</p>
+					</div>
 					
-					<div class="flex items-center space-x-4">
-						<p class="text-gray-600 dark:text-gray-400">Universidad de Castilla-La Mancha</p>
+					<div class="flex flex-col md:flex-row items-center space-y-3 md:space-y-0 md:space-x-6">
+						<div class="flex items-center space-x-2 text-gray-600 dark:text-gray-400">
+							<svg class="w-5 h-5 text-blue-600 dark:text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+								<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path>
+							</svg>
+							<span class="text-sm font-medium">Universidad de Castilla-La Mancha</span>
+						</div>
 						
 						<!-- Enlaces a redes académicas -->
-						<div class="flex space-x-3">
-							<a href="https://scholar.google.com" target="_blank" rel="noopener noreferrer" class="text-gray-500 hover:text-blue-600 dark:text-gray-400 dark:hover:text-blue-400" title="Google Scholar">
-								<svg class="w-5 h-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-									<rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
-									<line x1="3" y1="9" x2="21" y2="9"></line>
-									<path d="M8 21V9"></path>
-									<path d="M12 21v-6"></path>
-									<path d="M16 15v6"></path>
+						<div class="flex space-x-4">
+							<a href="https://scholar.google.com" target="_blank" rel="noopener noreferrer" 
+							   class="text-gray-500 hover:text-blue-600 dark:text-gray-400 dark:hover:text-blue-400 transition-all duration-300 transform hover:scale-110" 
+							   title="Google Scholar">
+								<svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+									<path d="M12 24a7 7 0 1 1 0-14 7 7 0 0 1 0 14zm0-24L0 9.5l4.838 3.94A8 8 0 0 1 12 9a8 8 0 0 1 7.162 4.44L24 9.5 12 0z"/>
 								</svg>
 							</a>
-							<a href="https://orcid.org" target="_blank" rel="noopener noreferrer" class="text-gray-500 hover:text-green-600 dark:text-gray-400 dark:hover:text-green-400" title="ORCID">
-								<svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-									<path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20z"/>
-									<path d="M12 7v10M9 7v10"/>
-									<path d="M15 7v10"/>
+							<a href="https://orcid.org" target="_blank" rel="noopener noreferrer" 
+							   class="text-gray-500 hover:text-green-600 dark:text-gray-400 dark:hover:text-green-400 transition-all duration-300 transform hover:scale-110" 
+							   title="ORCID">
+								<svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+									<path d="M12 0C5.372 0 0 5.372 0 12s5.372 12 12 12 12-5.372 12-12S18.628 0 12 0zM7.369 4.378c.525 0 .947.431.947.947 0 .525-.422.947-.947.947A.95.95 0 0 1 6.422 5.325c0-.516.422-.947.947-.947zm-.722 3.038h1.444v10.041H6.647V7.416zm3.562 0h3.9c3.712 0 5.344 2.653 5.344 5.025 0 2.578-2.016 5.016-5.325 5.016h-3.919V7.416zm1.444 1.303v7.444h2.297c2.359 0 3.588-1.444 3.588-3.722 0-2.016-1.091-3.722-3.588-3.722h-2.297z"/>
 								</svg>
 							</a>
-							<a href="https://www.researchgate.net" target="_blank" rel="noopener noreferrer" class="text-gray-500 hover:text-blue-600 dark:text-gray-400 dark:hover:text-blue-400" title="ResearchGate">
-								<svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-									<path d="M12 2L2 7l10 5 10-5-10-5z"></path>
-									<path d="M2 17l10 5 10-5"></path>
-									<path d="M2 12l10 5 10-5"></path>
+							<a href="https://www.researchgate.net" target="_blank" rel="noopener noreferrer" 
+							   class="text-gray-500 hover:text-teal-600 dark:text-gray-400 dark:hover:text-teal-400 transition-all duration-300 transform hover:scale-110" 
+							   title="ResearchGate">
+								<svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+									<path d="M19.586 0c-.818 0-1.508.19-2.073.565-.563.377-.97.936-1.213 1.68a3.193 3.193 0 0 0-.112.437 8.365 8.365 0 0 0-.078.53 9.284 9.284 0 0 0-.05.727c-.01.282-.013.621-.013 1.016a31.121 31.121 0 0 0 .014 1.017 9.289 9.289 0 0 0 .05.727 7.946 7.946 0 0 0 .078.53 3.995 3.995 0 0 0 .112.437c.244.744.65 1.303 1.213 1.68.565.375 1.255.565 2.073.565.818 0 1.508-.19 2.073-.565.563-.377.97-.936 1.213-1.68a3.193 3.193 0 0 0 .112-.437 8.365 8.365 0 0 0 .078-.53 9.284 9.284 0 0 0 .05-.727c.01-.282.013-.621.013-1.016a31.121 31.121 0 0 0-.014-1.017 9.289 9.289 0 0 0-.05-.727 7.946 7.946 0 0 0-.078-.53 3.995 3.995 0 0 0-.112-.437c-.244-.744-.65-1.303-1.213-1.68C21.094.19 20.404 0 19.586 0z"/>
 								</svg>
 							</a>
+							<a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" 
+							   class="text-gray-500 hover:text-blue-700 dark:text-gray-400 dark:hover:text-blue-400 transition-all duration-300 transform hover:scale-110" 
+							   title="LinkedIn">
+								<svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+									<path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+								</svg>
+							</a>
+						</div>
+					</div>
+				</div>
+				
+				<!-- Línea divisoria sutil -->
+				<div class="mt-6 pt-6 border-t border-gray-200/50 dark:border-gray-700/50">
+					<div class="flex flex-col md:flex-row justify-between items-center text-sm text-gray-500 dark:text-gray-500 space-y-2 md:space-y-0">
+						<div class="flex items-center space-x-4">
+							<span>Desarrollado con Astro</span>
+							<span>•</span>
+							<span>Diseño responsivo</span>
+							<span>•</span>
+							<span>Modo oscuro</span>
+						</div>
+						<div class="flex items-center space-x-2">
+							<svg class="w-4 h-4 text-red-500" fill="currentColor" viewBox="0 0 20 20">
+								<path fill-rule="evenodd" d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z" clip-rule="evenodd"></path>
+							</svg>
+							<span>Hecho en España</span>
 						</div>
 					</div>
 				</div>
@@ -195,6 +293,174 @@ const currentPath = Astro.url.pathname;
 				line-height: 1.6;
 			}
 			
+			/* Animaciones modernas */
+			@keyframes fadeInUp {
+				from {
+					opacity: 0;
+					transform: translateY(30px);
+				}
+				to {
+					opacity: 1;
+					transform: translateY(0);
+				}
+			}
+			
+			@keyframes fadeInLeft {
+				from {
+					opacity: 0;
+					transform: translateX(-30px);
+				}
+				to {
+					opacity: 1;
+					transform: translateX(0);
+				}
+			}
+			
+			@keyframes fadeInRight {
+				from {
+					opacity: 0;
+					transform: translateX(30px);
+				}
+				to {
+					opacity: 1;
+					transform: translateX(0);
+				}
+			}
+			
+			@keyframes float {
+				0%, 100% {
+					transform: translateY(0px);
+				}
+				50% {
+					transform: translateY(-10px);
+				}
+			}
+			
+			@keyframes shimmer {
+				0% {
+					background-position: -1000px 0;
+				}
+				100% {
+					background-position: 1000px 0;
+				}
+			}
+			
+			@keyframes pulse {
+				0%, 100% {
+					opacity: 1;
+				}
+				50% {
+					opacity: 0.5;
+				}
+			}
+			
+			@keyframes slideDown {
+				from {
+					opacity: 0;
+					transform: translateY(-10px);
+				}
+				to {
+					opacity: 1;
+					transform: translateY(0);
+				}
+			}
+			
+			/* Clases de animación */
+			.animate-fade-in-up {
+				animation: fadeInUp 0.6s ease-out forwards;
+			}
+			
+			.animate-fade-in-left {
+				animation: fadeInLeft 0.6s ease-out forwards;
+			}
+			
+			.animate-fade-in-right {
+				animation: fadeInRight 0.6s ease-out forwards;
+			}
+			
+			.animate-float {
+				animation: float 3s ease-in-out infinite;
+			}
+			
+			.animate-pulse {
+				animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+			}
+			
+			.animate-slide-down {
+				animation: slideDown 0.3s ease-out forwards;
+			}
+			
+			/* Delays para animaciones escalonadas */
+			.animate-delay-100 { animation-delay: 0.1s; }
+			.animate-delay-200 { animation-delay: 0.2s; }
+			.animate-delay-300 { animation-delay: 0.3s; }
+			.animate-delay-400 { animation-delay: 0.4s; }
+			.animate-delay-500 { animation-delay: 0.5s; }
+			.animate-delay-600 { animation-delay: 0.6s; }
+			.animate-delay-700 { animation-delay: 0.7s; }
+			.animate-delay-800 { animation-delay: 0.8s; }
+			
+			/* Efectos especiales para el header */
+			.header-glass {
+				backdrop-filter: blur(10px);
+				-webkit-backdrop-filter: blur(10px);
+			}
+			
+			/* Scrollbar personalizada */
+			::-webkit-scrollbar {
+				width: 8px;
+			}
+			
+			::-webkit-scrollbar-track {
+				background: theme('colors.gray.100');
+			}
+			
+			::-webkit-scrollbar-thumb {
+				background: theme('colors.gray.400');
+				border-radius: 4px;
+			}
+			
+			::-webkit-scrollbar-thumb:hover {
+				background: theme('colors.gray.500');
+			}
+			
+			.dark ::-webkit-scrollbar-track {
+				background: theme('colors.gray.800');
+			}
+			
+			.dark ::-webkit-scrollbar-thumb {
+				background: theme('colors.gray.600');
+			}
+			
+			.dark ::-webkit-scrollbar-thumb:hover {
+				background: theme('colors.gray.500');
+			}
+			
+			/* Smooth transitions para elementos interactivos */
+			a, button {
+				transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+			}
+			
+			/* Efectos de focus mejorados */
+			.focus-enhanced:focus {
+				outline: none;
+				box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.5);
+				transform: scale(1.02);
+			}
+			
+			/* Efectos de hover para cards */
+			.card-hover:hover {
+				transform: translateY(-4px);
+				box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 
+				           0 10px 10px -5px rgba(0, 0, 0, 0.04);
+			}
+			
+			.dark .card-hover:hover {
+				box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.3), 
+				           0 10px 10px -5px rgba(0, 0, 0, 0.2);
+			}
+			
+			/* Clases de utilidad */
 			.container {
 				width: 90%;
 				max-width: 1200px;
@@ -202,69 +468,33 @@ const currentPath = Astro.url.pathname;
 				padding: 0 20px;
 			}
 			
-			.header {
-				background-color: white;
-				box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-				padding: 1rem 0;
-				position: sticky;
-				top: 0;
-				z-index: 100;
+			.text-gradient {
+				background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+				-webkit-background-clip: text;
+				-webkit-text-fill-color: transparent;
+				background-clip: text;
 			}
 			
-			.nav {
-				display: flex;
-				justify-content: space-between;
-				align-items: center;
+			.gradient-border {
+				background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+				padding: 1px;
+				border-radius: 0.5rem;
 			}
 			
-			/* Tailwind CSS se encarga del resto de los estilos */
-			
-			.logo {
-				font-size: 1.3rem;
-				font-weight: bold;
-				color: var(--color-primary);
-				text-decoration: none;
+			.gradient-border > * {
+				background: white;
+				border-radius: calc(0.5rem - 1px);
 			}
 			
-			.nav-links {
-				display: flex;
-				list-style: none;
-				gap: 2rem;
+			.dark .gradient-border > * {
+				background: theme('colors.gray.900');
 			}
 			
-			.nav-links a {
-				text-decoration: none;
-				color: var(--color-dark);
-				font-weight: 500;
-				transition: color 0.3s ease;
-			}
-			
-			.nav-links a:hover {
-				color: var(--color-primary);
-			}
-			
-			.footer {
-				background-color: var(--color-dark);
-				color: white;
-				text-align: center;
-				padding: 2rem 0;
-				margin-top: 4rem;
-			}
-			
-			.footer-content {
-				display: flex;
-				flex-direction: column;
-				gap: 0.5rem;
-			}
-			
-			.institutional {
-				color: var(--color-gray);
-				font-size: 0.9rem;
-			}
-
+			/* Mejoras tipográficas */
 			h1, h2, h3, h4, h5, h6 {
 				line-height: 1.2;
 				margin-bottom: 1rem;
+				font-weight: 700;
 			}
 
 			h1 {
@@ -280,6 +510,7 @@ const currentPath = Astro.url.pathname;
 				height: auto;
 			}
 
+			/* Responsive design mejorado */
 			@media (max-width: 768px) {
 				.nav {
 					flex-direction: column;
@@ -290,19 +521,175 @@ const currentPath = Astro.url.pathname;
 					width: 100%;
 					justify-content: space-between;
 				}
+				
+				h1 {
+					font-size: 2rem;
+				}
+				
+				.container {
+					width: 95%;
+					padding: 0 15px;
+				}
+			}
+			
+			/* Animación para el menú móvil */
+			#mobile-menu.hidden {
+				opacity: 0;
+				transform: translateY(-10px);
+				transition: all 0.3s ease-out;
+			}
+			
+			#mobile-menu:not(.hidden) {
+				opacity: 1;
+				transform: translateY(0);
+				transition: all 0.3s ease-out;
+			}
+			
+			/* Efectos para reducir el movimiento para usuarios sensibles */
+			@media (prefers-reduced-motion: reduce) {
+				*,
+				*::before,
+				*::after {
+					animation-duration: 0.01ms !important;
+					animation-iteration-count: 1 !important;
+					transition-duration: 0.01ms !important;
+				}
 			}
 		</style>
-		<!-- Script para el menú móvil -->
+		<!-- Script para el menú móvil y efectos -->
 		<script>
 			document.addEventListener('DOMContentLoaded', () => {
 				const mobileMenuButton = document.getElementById('mobile-menu-button');
 				const mobileMenu = document.getElementById('mobile-menu');
 				
 				if (mobileMenuButton && mobileMenu) {
+					let isOpen = false;
+					
 					mobileMenuButton.addEventListener('click', () => {
-						mobileMenu.classList.toggle('hidden');
+						isOpen = !isOpen;
+						
+						if (isOpen) {
+							// Mostrar menú con animación
+							mobileMenu.classList.remove('hidden');
+							mobileMenu.classList.add('animate-slide-down');
+							
+							// Rotar el icono de hamburguesa
+							const icon = mobileMenuButton.querySelector('svg');
+							if (icon) {
+								icon.style.transform = 'rotate(90deg)';
+							}
+						} else {
+							// Ocultar menú
+							mobileMenu.classList.add('hidden');
+							mobileMenu.classList.remove('animate-slide-down');
+							
+							// Restaurar el icono
+							const icon = mobileMenuButton.querySelector('svg');
+							if (icon) {
+								icon.style.transform = 'rotate(0deg)';
+							}
+						}
+					});
+					
+					// Cerrar menú al hacer clic en un enlace
+					const mobileLinks = mobileMenu.querySelectorAll('a');
+					mobileLinks.forEach(link => {
+						link.addEventListener('click', () => {
+							isOpen = false;
+							mobileMenu.classList.add('hidden');
+							mobileMenu.classList.remove('animate-slide-down');
+							
+							const icon = mobileMenuButton.querySelector('svg');
+							if (icon) {
+								icon.style.transform = 'rotate(0deg)';
+							}
+						});
+					});
+					
+					// Cerrar menú al redimensionar ventana
+					window.addEventListener('resize', () => {
+						if (window.innerWidth >= 768 && isOpen) {
+							isOpen = false;
+							mobileMenu.classList.add('hidden');
+							mobileMenu.classList.remove('animate-slide-down');
+							
+							const icon = mobileMenuButton.querySelector('svg');
+							if (icon) {
+								icon.style.transform = 'rotate(0deg)';
+							}
+						}
 					});
 				}
+				
+				// Aplicar animaciones a elementos cuando entran en viewport
+				const observerOptions = {
+					threshold: 0.1,
+					rootMargin: '0px 0px -50px 0px'
+				};
+				
+				const observer = new IntersectionObserver((entries) => {
+					entries.forEach(entry => {
+						if (entry.isIntersecting) {
+							entry.target.classList.add('animate-fade-in-up');
+							observer.unobserve(entry.target);
+						}
+					});
+				}, observerOptions);
+				
+				// Observar elementos con clase 'fade-in-on-scroll'
+				const fadeElements = document.querySelectorAll('.fade-in-on-scroll');
+				fadeElements.forEach(el => {
+					observer.observe(el);
+				});
+				
+				// Smooth scrolling para enlaces internos
+				const internalLinks = document.querySelectorAll('a[href^="#"]');
+				internalLinks.forEach(link => {
+					link.addEventListener('click', (e) => {
+						e.preventDefault();
+						const href = link.getAttribute('href');
+						if (href) {
+							const targetId = href.substring(1);
+							const targetElement = document.getElementById(targetId);
+							
+							if (targetElement) {
+								targetElement.scrollIntoView({
+									behavior: 'smooth',
+									block: 'start'
+								});
+							}
+						}
+					});
+				});
+				
+				// Añadir efecto de parallax sutil al header
+				let ticking = false;
+				
+				function updateHeader() {
+					const scrolled = window.pageYOffset;
+					const header = document.querySelector('header');
+					
+					if (header) {
+						const opacity = Math.max(0.8, 1 - scrolled / 300);
+						header.style.background = `rgba(255, 255, 255, ${opacity})`;
+						
+						// En modo oscuro
+						if (document.documentElement.classList.contains('dark')) {
+							header.style.background = `rgba(17, 24, 39, ${opacity})`;
+						}
+					}
+					
+					ticking = false;
+				}
+				
+				function requestHeaderUpdate() {
+					if (!ticking) {
+						requestAnimationFrame(updateHeader);
+						ticking = true;
+					}
+				}
+				
+				window.addEventListener('scroll', requestHeaderUpdate);
 			});
 		</script>
 	</body>
