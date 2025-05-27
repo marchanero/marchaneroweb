@@ -13,54 +13,109 @@ const { class: className = '' } = Astro.props;
   aria-label="Cambiar tema"
   title="Cambiar entre modo claro y oscuro"
 >
-  <!-- Icono de sol (modo claro) -->
-  <svg class="sun-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-    <circle cx="12" cy="12" r="5"></circle>
-    <line x1="12" y1="1" x2="12" y2="3"></line>
-    <line x1="12" y1="21" x2="12" y2="23"></line>
-    <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
-    <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
-    <line x1="1" y1="12" x2="3" y2="12"></line>
-    <line x1="21" y1="12" x2="23" y2="12"></line>
-    <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
-    <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
-  </svg>
-  
-  <!-- Icono de luna (modo oscuro) -->
-  <svg class="moon-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-    <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
-  </svg>
+  <div class="relative w-5 h-5">
+    <!-- Icono de sol (modo claro) -->
+    <svg class="sun-icon absolute inset-0 w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="12" cy="12" r="5"></circle>
+      <line x1="12" y1="1" x2="12" y2="3"></line>
+      <line x1="12" y1="21" x2="12" y2="23"></line>
+      <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+      <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+      <line x1="1" y1="12" x2="3" y2="12"></line>
+      <line x1="21" y1="12" x2="23" y2="12"></line>
+      <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+      <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+    </svg>
+    
+    <!-- Icono de luna (modo oscuro) -->
+    <svg class="moon-icon absolute inset-0 w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+    </svg>
+  </div>
 </button>
 
 <style>
   .theme-toggle {
-    @apply relative p-2 rounded-lg border border-gray-300 dark:border-gray-600 
-           bg-white dark:bg-gray-800 hover:bg-gray-50 dark:hover:bg-gray-700
-           text-gray-700 dark:text-gray-300 transition-all duration-200 
-           focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2
-           dark:focus:ring-offset-gray-900;
+    @apply relative p-2.5 rounded-xl border border-gray-300/60 dark:border-gray-600/60 
+           bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm
+           hover:bg-gray-50 dark:hover:bg-gray-700/80
+           text-gray-700 dark:text-gray-300 
+           transition-all duration-300 ease-in-out
+           focus:outline-none focus:ring-2 focus:ring-blue-500/50 focus:ring-offset-2
+           dark:focus:ring-offset-gray-900
+           transform hover:scale-105 active:scale-95
+           shadow-sm hover:shadow-md;
+  }
+  
+  .theme-toggle::before {
+    content: '';
+    @apply absolute inset-0 rounded-xl bg-gradient-to-r from-blue-500/10 to-purple-500/10 
+           opacity-0 transition-opacity duration-300;
+  }
+  
+  .theme-toggle:hover::before {
+    @apply opacity-100;
   }
   
   .theme-toggle svg {
-    @apply transition-all duration-200;
+    @apply transition-all duration-500 ease-in-out;
+  }
+  
+  /* Animaciones para los iconos */
+  .sun-icon {
+    @apply transform transition-all duration-500 ease-in-out;
+  }
+  
+  .moon-icon {
+    @apply transform transition-all duration-500 ease-in-out;
   }
   
   /* Mostrar sol en modo claro, ocultar luna */
   html:not(.dark) .theme-toggle .sun-icon {
-    @apply block;
+    @apply opacity-100 rotate-0 scale-100;
   }
   
   html:not(.dark) .theme-toggle .moon-icon {
-    @apply hidden;
+    @apply opacity-0 rotate-180 scale-50;
   }
   
   /* Mostrar luna en modo oscuro, ocultar sol */
   html.dark .theme-toggle .sun-icon {
-    @apply hidden;
+    @apply opacity-0 -rotate-180 scale-50;
   }
   
   html.dark .theme-toggle .moon-icon {
-    @apply block;
+    @apply opacity-100 rotate-0 scale-100;
+  }
+  
+  /* Efectos adicionales */
+  .theme-toggle:hover .sun-icon {
+    @apply text-yellow-500;
+    filter: drop-shadow(0 0 6px rgba(251, 191, 36, 0.3));
+  }
+  
+  .theme-toggle:hover .moon-icon {
+    @apply text-blue-400;
+    filter: drop-shadow(0 0 6px rgba(96, 165, 250, 0.3));
+  }
+  
+  /* Efecto de rotación en hover */
+  .theme-toggle:hover svg {
+    @apply rotate-12;
+  }
+  
+  /* Animación de pulsación para indicar interactividad */
+  @keyframes pulse-gentle {
+    0%, 100% {
+      transform: scale(1);
+    }
+    50% {
+      transform: scale(1.05);
+    }
+  }
+  
+  .theme-toggle:active {
+    animation: pulse-gentle 0.2s ease-in-out;
   }
 </style>
 
@@ -71,9 +126,9 @@ const { class: className = '' } = Astro.props;
     const html = document.documentElement;
     
     // Función para obtener el tema guardado o el preferido del sistema
-    function getTheme() {
+    function getTheme(): string {
       if (typeof localStorage !== 'undefined' && localStorage.getItem('theme')) {
-        return localStorage.getItem('theme');
+        return localStorage.getItem('theme')!;
       }
       if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
         return 'dark';
@@ -82,7 +137,7 @@ const { class: className = '' } = Astro.props;
     }
     
     // Función para aplicar el tema
-    function applyTheme(theme) {
+    function applyTheme(theme: string) {
       if (theme === 'dark') {
         html.classList.add('dark');
       } else {

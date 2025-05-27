@@ -68,17 +68,45 @@ const uniqueYears = [...new Set(scholarData.publications.map(pub => pub.year).fi
 
 <Layout title={title} description={description}>
   <main class="min-h-screen bg-white dark:bg-gray-900 transition-colors duration-300">
-    <!-- Header de publicaciones -->
-    <header class="bg-gradient-to-r from-blue-600 to-indigo-700 dark:from-blue-800 dark:to-indigo-900 text-white py-16">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <h1 class="text-4xl md:text-5xl font-bold mb-4">
-          📚 Publicaciones Científicas
-        </h1>
-        <p class="text-xl text-blue-100 dark:text-blue-200 max-w-3xl">
-          Investigación en Inteligencia Artificial, Machine Learning y Computación Afectiva
-        </p>
-        <div class="mt-6 text-sm text-blue-200 dark:text-blue-300">
-          Última actualización: {formatDate(scholarData.lastUpdated)}
+    <!-- Header de publicaciones mejorado -->
+    <header class="relative bg-gradient-to-br from-blue-600 via-indigo-700 to-purple-800 dark:from-blue-800 dark:via-indigo-900 dark:to-purple-900 text-white py-20 overflow-hidden hero-gradient floating-particles">
+      <!-- Fondo animado -->
+      <div class="absolute inset-0 bg-gradient-to-br from-blue-50/10 via-indigo-50/10 to-purple-50/10"></div>
+      
+      <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="animate-fade-in-up">
+          <h1 class="text-5xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-white via-blue-100 to-purple-100 bg-clip-text text-transparent">
+            📚 Publicaciones Científicas
+          </h1>
+          <p class="text-xl md:text-2xl text-blue-100 dark:text-blue-200 max-w-3xl leading-relaxed mb-6">
+            Investigación en <span class="font-semibold text-white">Inteligencia Artificial</span>, 
+            <span class="font-semibold text-white">Machine Learning</span> y 
+            <span class="font-semibold text-white">Computación Afectiva</span>
+          </p>
+          
+          <!-- Estadísticas rápidas en el header -->
+          <div class="animate-fade-in-up animate-delay-200 grid grid-cols-2 md:grid-cols-4 gap-4 max-w-2xl mt-8">
+            <div class="stats-card rounded-2xl p-4 text-center">
+              <div class="text-2xl font-bold text-white">{scholarData.metrics.totalCitations}</div>
+              <div class="text-sm text-blue-200">Total Citas</div>
+            </div>
+            <div class="stats-card rounded-2xl p-4 text-center">
+              <div class="text-2xl font-bold text-white">{scholarData.publications.length}</div>
+              <div class="text-sm text-blue-200">Publicaciones</div>
+            </div>
+            <div class="stats-card rounded-2xl p-4 text-center">
+              <div class="text-2xl font-bold text-white">{scholarData.metrics.hIndex}</div>
+              <div class="text-sm text-blue-200">h-index</div>
+            </div>
+            <div class="stats-card rounded-2xl p-4 text-center">
+              <div class="text-2xl font-bold text-white">{scholarData.metrics.i10Index}</div>
+              <div class="text-sm text-blue-200">i10-index</div>
+            </div>
+          </div>
+          
+          <div class="mt-6 text-sm text-blue-200 dark:text-blue-300 animate-fade-in-up animate-delay-300">
+            📅 Última actualización: {formatDate(scholarData.lastUpdated)}
+          </div>
         </div>
       </div>
     </header>
@@ -86,13 +114,13 @@ const uniqueYears = [...new Set(scholarData.publications.map(pub => pub.year).fi
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
       
       <!-- Métricas bibliométricas -->
-      <section class="mb-12">
+      <section class="mb-12 animate-fade-in-up">
         <ScholarMetrics showDetails={true} />
       </section>
 
       <!-- Información del perfil -->
-      <section class="mb-12">
-        <div class="bg-white dark:bg-gray-800 rounded-xl p-8 shadow-lg">
+      <section class="mb-12 animate-fade-in-up animate-delay-100">
+        <div class="bg-white dark:bg-gray-800 rounded-xl p-8 shadow-lg card-hover">
           <div class="flex flex-col md:flex-row md:items-center md:justify-between">
             <div>
               <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-2">
@@ -122,17 +150,17 @@ const uniqueYears = [...new Set(scholarData.publications.map(pub => pub.year).fi
       </section>
 
       <!-- Lista de publicaciones -->
-      <section>
+      <section class="animate-fade-in-up animate-delay-200">
         <div class="flex items-center justify-between mb-8">
           <h2 class="text-3xl font-bold text-gray-900 dark:text-white">
             Publicaciones ({scholarData.publications.length})
           </h2>
           
-          <!-- Filtros -->
+          <!-- Filtros mejorados -->
           <div class="flex gap-4">
             <select 
               id="yearFilter" 
-              class="px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:ring-2 focus:ring-blue-500"
+              class="px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:ring-2 focus:ring-blue-500 transition-all duration-200 hover:border-blue-400"
             >
               <option value="">Todos los años</option>
               {uniqueYears.map(year => (
@@ -147,7 +175,8 @@ const uniqueYears = [...new Set(scholarData.publications.map(pub => pub.year).fi
             const pubType = getPublicationType(publication);
             return (
               <article 
-                class="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg hover:shadow-xl transition-shadow duration-300 publication-item"
+                class={`bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg card-hover publication-item animate-fade-in-up`}
+                style={`animation-delay: ${index * 0.1}s`}
                 data-year={publication.year}
                 data-type={pubType}
               >
@@ -188,9 +217,9 @@ const uniqueYears = [...new Set(scholarData.publications.map(pub => pub.year).fi
                         </span>
                       )}
                       
-                      {publication.cited_by && publication.cited_by.value > 0 && (
+                      {publication.citedBy && publication.citedBy > 0 && (
                         <span class="text-gray-600 dark:text-gray-400">
-                          📝 {publication.cited_by.value} citas
+                          📝 {publication.citedBy} citas
                         </span>
                       )}
                     </div>
@@ -213,9 +242,9 @@ const uniqueYears = [...new Set(scholarData.publications.map(pub => pub.year).fi
                         🔗 Ver publicación
                       </a>
                     )}
-                    {publication.cited_by && publication.cited_by.link && (
+                    {publication.citedByLink && (
                       <a 
-                        href={publication.cited_by.link} 
+                        href={publication.citedByLink} 
                         target="_blank" 
                         rel="noopener noreferrer"
                         class="inline-flex items-center justify-center px-4 py-2 bg-gray-600 hover:bg-gray-700 dark:bg-gray-700 dark:hover:bg-gray-600 text-white text-sm font-medium rounded-lg transition-colors duration-200"
@@ -231,18 +260,19 @@ const uniqueYears = [...new Set(scholarData.publications.map(pub => pub.year).fi
         </div>
       </section>
 
-      <!-- Enlaces adicionales -->
-      <section class="mt-12 text-center">
-        <div class="bg-gradient-to-r from-blue-50 to-indigo-50 dark:from-gray-800 dark:to-gray-700 rounded-xl p-8">
-          <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-4">
-            📋 Perfiles Académicos
+      <!-- Enlaces adicionales mejorados -->
+      <section class="mt-12 text-center animate-fade-in-up animate-delay-300">
+        <div class="bg-gradient-to-r from-blue-50 to-indigo-50 dark:from-gray-800 dark:to-gray-700 rounded-xl p-8 card-hover">
+          <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-6 flex items-center justify-center space-x-2">
+            <span>📋</span>
+            <span>Perfiles Académicos</span>
           </h3>
           <div class="flex flex-wrap justify-center gap-4">
             <a 
               href="https://scholar.google.com" 
               target="_blank" 
               rel="noopener noreferrer"
-              class="inline-flex items-center px-6 py-3 bg-red-600 hover:bg-red-700 text-white font-medium rounded-lg transition-colors duration-200"
+              class="btn-enhanced inline-flex items-center px-6 py-3 bg-red-600 hover:bg-red-700 text-white font-medium rounded-lg transition-all duration-200 transform hover:scale-105"
             >
               🎓 Google Scholar
             </a>
@@ -250,7 +280,7 @@ const uniqueYears = [...new Set(scholarData.publications.map(pub => pub.year).fi
               href="https://orcid.org" 
               target="_blank" 
               rel="noopener noreferrer"
-              class="inline-flex items-center px-6 py-3 bg-green-600 hover:bg-green-700 text-white font-medium rounded-lg transition-colors duration-200"
+              class="btn-enhanced inline-flex items-center px-6 py-3 bg-green-600 hover:bg-green-700 text-white font-medium rounded-lg transition-all duration-200 transform hover:scale-105"
             >
               🆔 ORCID
             </a>
@@ -258,7 +288,7 @@ const uniqueYears = [...new Set(scholarData.publications.map(pub => pub.year).fi
               href="https://researchgate.net" 
               target="_blank" 
               rel="noopener noreferrer"
-              class="inline-flex items-center px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white font-medium rounded-lg transition-colors duration-200"
+              class="btn-enhanced inline-flex items-center px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white font-medium rounded-lg transition-all duration-200 transform hover:scale-105"
             >
               🔬 ResearchGate
             </a>
@@ -270,39 +300,227 @@ const uniqueYears = [...new Set(scholarData.publications.map(pub => pub.year).fi
 </Layout>
 
 <script>
-  // Funcionalidad de filtros
+  // Funcionalidad de filtros mejorada
   document.addEventListener('DOMContentLoaded', function() {
-    const yearFilter = document.getElementById('yearFilter');
-    const publicationItems = document.querySelectorAll('.publication-item');
+    const yearFilter = document.getElementById('yearFilter') as HTMLSelectElement;
+    const publicationItems = document.querySelectorAll('.publication-item') as NodeListOf<HTMLElement>;
 
     function filterPublications() {
+      if (!yearFilter) return;
+      
       const selectedYear = yearFilter.value;
 
-      publicationItems.forEach(item => {
+      publicationItems.forEach((item: HTMLElement) => {
         const itemYear = item.dataset.year;
         
         const yearMatch = !selectedYear || itemYear === selectedYear;
         
         if (yearMatch) {
           item.style.display = 'block';
+          item.classList.add('animate-fade-in-up');
         } else {
           item.style.display = 'none';
+          item.classList.remove('animate-fade-in-up');
         }
       });
     }
 
-    yearFilter.addEventListener('change', filterPublications);
+    if (yearFilter) {
+      yearFilter.addEventListener('change', filterPublications);
+    }
   });
 </script>
 
 <style>
-  /* Transiciones suaves para el filtrado */
-  .publication-item {
-    transition: opacity 0.3s ease, transform 0.3s ease;
-  }
-  
-  .publication-item[style*="display: none"] {
-    opacity: 0;
-    transform: translateY(-10px);
-  }
+	/* Animaciones y efectos personalizados */
+	@keyframes fadeInUp {
+		from {
+			opacity: 0;
+			transform: translateY(30px);
+		}
+		to {
+			opacity: 1;
+			transform: translateY(0);
+		}
+	}
+	
+	@keyframes fadeInLeft {
+		from {
+			opacity: 0;
+			transform: translateX(-30px);
+		}
+		to {
+			opacity: 1;
+			transform: translateX(0);
+		}
+	}
+	
+	@keyframes fadeInRight {
+		from {
+			opacity: 0;
+			transform: translateX(30px);
+		}
+		to {
+			opacity: 1;
+			transform: translateX(0);
+		}
+	}
+	
+	@keyframes shimmer {
+		0% {
+			background-position: -200px 0;
+		}
+		100% {
+			background-position: calc(200px + 100%) 0;
+		}
+	}
+	
+	@keyframes float {
+		0%, 100% {
+			transform: translateY(0px);
+		}
+		50% {
+			transform: translateY(-10px);
+		}
+	}
+	
+	/* Clases de utilidad para animaciones */
+	.animate-fade-in-up {
+		animation: fadeInUp 0.6s ease-out forwards;
+	}
+	
+	.animate-fade-in-left {
+		animation: fadeInLeft 0.6s ease-out forwards;
+	}
+	
+	.animate-fade-in-right {
+		animation: fadeInRight 0.6s ease-out forwards;
+	}
+	
+	.animate-delay-100 {
+		animation-delay: 0.1s;
+	}
+	
+	.animate-delay-200 {
+		animation-delay: 0.2s;
+	}
+	
+	.animate-delay-300 {
+		animation-delay: 0.3s;
+	}
+	
+	/* Efectos especiales */
+	.hero-gradient {
+		background: linear-gradient(135deg, 
+			rgba(59, 130, 246, 0.1) 0%, 
+			rgba(147, 51, 234, 0.1) 50%, 
+			rgba(236, 72, 153, 0.1) 100%);
+	}
+	
+	.card-hover {
+		transition: all 0.3s ease;
+		position: relative;
+		overflow: hidden;
+	}
+	
+	.card-hover::before {
+		content: '';
+		position: absolute;
+		top: 0;
+		left: -100%;
+		width: 100%;
+		height: 100%;
+		background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
+		transition: left 0.5s ease;
+	}
+	
+	.card-hover:hover::before {
+		left: 100%;
+	}
+	
+	.card-hover:hover {
+		transform: translateY(-5px);
+		box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+	}
+	
+	.btn-enhanced {
+		background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+		background-size: 200% 200%;
+		animation: shimmer 2s infinite;
+		transition: all 0.3s ease;
+		position: relative;
+		overflow: hidden;
+	}
+	
+	.btn-enhanced:hover {
+		background-position: right center;
+		transform: translateY(-2px);
+		box-shadow: 0 10px 20px rgba(59, 130, 246, 0.3);
+	}
+	
+	.publication-badge {
+		animation: float 3s ease-in-out infinite;
+	}
+	
+	.stats-card {
+		background: linear-gradient(135deg, rgba(255,255,255,0.1), rgba(255,255,255,0.05));
+		backdrop-filter: blur(10px);
+		border: 1px solid rgba(255,255,255,0.2);
+		transition: all 0.3s ease;
+	}
+	
+	.stats-card:hover {
+		transform: scale(1.05);
+		background: linear-gradient(135deg, rgba(255,255,255,0.15), rgba(255,255,255,0.1));
+	}
+	
+	/* Transiciones suaves para el filtrado mejoradas */
+	.publication-item {
+		transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+		transform-origin: center;
+	}
+	
+	.publication-item[style*="display: none"] {
+		opacity: 0;
+		transform: scale(0.8) translateY(-20px);
+	}
+	
+	.publication-item:not([style*="display: none"]) {
+		opacity: 1;
+		transform: scale(1) translateY(0);
+	}
+	
+	/* Efectos de partículas */
+	.floating-particles::before {
+		content: '';
+		position: absolute;
+		top: 20%;
+		left: 10%;
+		width: 4px;
+		height: 4px;
+		background: linear-gradient(45deg, #3b82f6, #8b5cf6);
+		border-radius: 50%;
+		animation: float 6s ease-in-out infinite;
+	}
+	
+	.floating-particles::after {
+		content: '';
+		position: absolute;
+		top: 60%;
+		right: 15%;
+		width: 6px;
+		height: 6px;
+		background: linear-gradient(45deg, #ec4899, #f59e0b);
+		border-radius: 50%;
+		animation: float 8s ease-in-out infinite reverse;
+	}
+	
+	/* Accesibilidad */
+	@media (prefers-reduced-motion: reduce) {
+		* {
+			animation-duration: 0.01ms !important;
+			animation-iteration-count: 1 !important;
+			transition-duration: 0.01ms !important;
+		}
+	}
 </style>
