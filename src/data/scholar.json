@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2025-05-31T06:18:41.233Z",
+  "lastUpdated": "2025-06-01T06:19:36.684Z",
   "scrapingMethod": "ultra-optimized-v3-robust-pagination",
   "paginationInfo": {
     "totalPages": 0,
@@ -39,7 +39,7 @@
     "scholarId": "PCALePwAAAAJ"
   },
   "metrics": {
-    "totalCitations": 556,
+    "totalCitations": 558,
     "hIndex": 13,
     "i10Index": 16,
     "citationsRecent": 0,
@@ -464,7 +464,7 @@
       ],
       "publication": "Expert Systems with Applications 206, 117731, 2022",
       "year": 2022,
-      "citedBy": 70,
+      "citedBy": 71,
       "link": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=PCALePwAAAAJ&pagesize=100&sortby=pubdate&citation_for_view=PCALePwAAAAJ:_kc_bZDykSQC",
       "citedByLink": "https://scholar.google.com/scholar?oi=bibs&hl=en&cites=15620631313306549090",
       "citationId": "PCALePwAAAAJ:_kc_bZDykSQC",
@@ -616,7 +616,7 @@
       ],
       "publication": "Biomedical Signal Processing and Control 71, 103203, 2022",
       "year": 2022,
-      "citedBy": 43,
+      "citedBy": 44,
       "link": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=PCALePwAAAAJ&pagesize=100&sortby=pubdate&citation_for_view=PCALePwAAAAJ:3fE2CSJIrl8C",
       "citedByLink": "https://scholar.google.com/scholar?oi=bibs&hl=en&cites=2059831707917929488",
       "citationId": "PCALePwAAAAJ:3fE2CSJIrl8C",
