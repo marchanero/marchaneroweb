@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2025-06-05T06:21:23.191Z",
+  "lastUpdated": "2025-06-06T06:21:28.814Z",
   "scrapingMethod": "ultra-optimized-v3-robust-pagination",
   "paginationInfo": {
     "totalPages": 0,
@@ -39,7 +39,7 @@
     "scholarId": "PCALePwAAAAJ"
   },
   "metrics": {
-    "totalCitations": 559,
+    "totalCitations": 560,
     "hIndex": 13,
     "i10Index": 16,
     "citationsRecent": 0,
@@ -770,7 +770,7 @@
       ],
       "publication": "International Journal of Neural Systems 30, 1-13, 2020",
       "year": 2020,
-      "citedBy": 46,
+      "citedBy": 47,
       "link": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=PCALePwAAAAJ&pagesize=100&sortby=pubdate&citation_for_view=PCALePwAAAAJ:Y0pCki6q_DkC",
       "citedByLink": "https://scholar.google.com/scholar?oi=bibs&hl=en&cites=13333015477496612136",
       "citationId": "PCALePwAAAAJ:Y0pCki6q_DkC",
@@ -968,7 +968,7 @@
     "citationsByYear": {
       "2018": 63,
       "2019": 38,
-      "2020": 101,
+      "2020": 102,
       "2021": 67,
       "2022": 229,
       "2023": 40,
@@ -981,7 +981,7 @@
   },
   "summary": {
     "totalPublications": 47,
-    "totalCitations": 559,
+    "totalCitations": 560,
     "hIndex": 13,
     "i10Index": 16,
     "avgCitationsPerPaper": 12,
