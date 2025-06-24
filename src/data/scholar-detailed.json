@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2025-06-23T06:22:46.379Z",
+  "lastUpdated": "2025-06-24T06:22:06.066Z",
   "scrapingMethod": "ultra-optimized-v3-robust-pagination",
   "paginationInfo": {
     "totalPages": 0,
@@ -39,7 +39,7 @@
     "scholarId": "PCALePwAAAAJ"
   },
   "metrics": {
-    "totalCitations": 571,
+    "totalCitations": 573,
     "hIndex": 13,
     "i10Index": 16,
     "citationsRecent": 0,
@@ -77,8 +77,9 @@
       ],
       "publication": "International Journal of Human–Computer Interaction, 1-20, 2024",
       "year": 2024,
-      "citedBy": 0,
+      "citedBy": 1,
       "link": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=PCALePwAAAAJ&pagesize=100&sortby=pubdate&citation_for_view=PCALePwAAAAJ:blknAaTinKkC",
+      "citedByLink": "https://scholar.google.com/scholar?oi=bibs&hl=en&cites=18012033131855912112",
       "citationId": "PCALePwAAAAJ:blknAaTinKkC",
       "type": "journal",
       "isFirstAuthor": false,
@@ -616,7 +617,7 @@
       ],
       "publication": "Biomedical Signal Processing and Control 71, 103203, 2022",
       "year": 2022,
-      "citedBy": 46,
+      "citedBy": 47,
       "link": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=PCALePwAAAAJ&pagesize=100&sortby=pubdate&citation_for_view=PCALePwAAAAJ:3fE2CSJIrl8C",
       "citedByLink": "https://scholar.google.com/scholar?oi=bibs&hl=en&cites=2059831707917929488",
       "citationId": "PCALePwAAAAJ:3fE2CSJIrl8C",
@@ -970,9 +971,9 @@
       "2019": 38,
       "2020": 103,
       "2021": 67,
-      "2022": 234,
+      "2022": 235,
       "2023": 43,
-      "2024": 15
+      "2024": 16
     },
     "careerSpan": 7,
     "activeYears": 7,
@@ -981,11 +982,11 @@
   },
   "summary": {
     "totalPublications": 47,
-    "totalCitations": 571,
+    "totalCitations": 573,
     "hIndex": 13,
     "i10Index": 16,
     "avgCitationsPerPaper": 12,
-    "publicationsWithCitations": 34,
+    "publicationsWithCitations": 35,
     "mostCitedPaper": {
       "id": "pub_23",
       "title": "Geometric transformation-based data augmentation on defect classification of segmented images of semiconductor materials using a ResNet50 convolutional neural network",
