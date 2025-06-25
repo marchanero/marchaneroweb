@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2025-06-24T06:22:06.066Z",
+  "lastUpdated": "2025-06-25T06:22:02.098Z",
   "scrapingMethod": "ultra-optimized-v3-robust-pagination",
   "paginationInfo": {
     "totalPages": 0,
@@ -39,7 +39,7 @@
     "scholarId": "PCALePwAAAAJ"
   },
   "metrics": {
-    "totalCitations": 573,
+    "totalCitations": 576,
     "hIndex": 13,
     "i10Index": 16,
     "citationsRecent": 0,
@@ -273,7 +273,7 @@
       ],
       "publication": "Computers & Industrial Engineering 183, 109549, 2023",
       "year": 2023,
-      "citedBy": 26,
+      "citedBy": 28,
       "link": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=PCALePwAAAAJ&pagesize=100&sortby=pubdate&citation_for_view=PCALePwAAAAJ:hFOr9nPyWt4C",
       "citedByLink": "https://scholar.google.com/scholar?oi=bibs&hl=en&cites=1095520988981170505",
       "citationId": "PCALePwAAAAJ:hFOr9nPyWt4C",
@@ -617,7 +617,7 @@
       ],
       "publication": "Biomedical Signal Processing and Control 71, 103203, 2022",
       "year": 2022,
-      "citedBy": 47,
+      "citedBy": 48,
       "link": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=PCALePwAAAAJ&pagesize=100&sortby=pubdate&citation_for_view=PCALePwAAAAJ:3fE2CSJIrl8C",
       "citedByLink": "https://scholar.google.com/scholar?oi=bibs&hl=en&cites=2059831707917929488",
       "citationId": "PCALePwAAAAJ:3fE2CSJIrl8C",
@@ -971,8 +971,8 @@
       "2019": 38,
       "2020": 103,
       "2021": 67,
-      "2022": 235,
-      "2023": 43,
+      "2022": 236,
+      "2023": 45,
       "2024": 16
     },
     "careerSpan": 7,
@@ -982,7 +982,7 @@
   },
   "summary": {
     "totalPublications": 47,
-    "totalCitations": 573,
+    "totalCitations": 576,
     "hIndex": 13,
     "i10Index": 16,
     "avgCitationsPerPaper": 12,
