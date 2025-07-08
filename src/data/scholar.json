@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2025-07-07T06:22:55.497Z",
+  "lastUpdated": "2025-07-08T06:21:41.770Z",
   "scrapingMethod": "ultra-optimized-v3-robust-pagination",
   "paginationInfo": {
     "totalPages": 0,
@@ -39,7 +39,7 @@
     "scholarId": "PCALePwAAAAJ"
   },
   "metrics": {
-    "totalCitations": 584,
+    "totalCitations": 585,
     "hIndex": 13,
     "i10Index": 17,
     "citationsRecent": 0,
@@ -714,7 +714,7 @@
       ],
       "publication": "Preprints, 2020",
       "year": 2020,
-      "citedBy": 21,
+      "citedBy": 22,
       "link": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=PCALePwAAAAJ&pagesize=100&sortby=pubdate&citation_for_view=PCALePwAAAAJ:LkGwnXOMwfcC",
       "citedByLink": "https://scholar.google.com/scholar?oi=bibs&hl=en&cites=2219798727825377273",
       "citationId": "PCALePwAAAAJ:LkGwnXOMwfcC",
