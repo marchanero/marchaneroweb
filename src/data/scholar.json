@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2025-07-12T06:20:03.103Z",
+  "lastUpdated": "2025-07-13T06:20:51.380Z",
   "scrapingMethod": "ultra-optimized-v3-robust-pagination",
   "paginationInfo": {
     "totalPages": 0,
@@ -39,9 +39,9 @@
     "scholarId": "PCALePwAAAAJ"
   },
   "metrics": {
-    "totalCitations": 585,
+    "totalCitations": 575,
     "hIndex": 13,
-    "i10Index": 17,
+    "i10Index": 16,
     "citationsRecent": 0,
     "hIndexRecent": 0,
     "i10IndexRecent": 0
@@ -148,7 +148,7 @@
       ],
       "publication": "Building Research & Information, 1--16, 2024",
       "year": 2024,
-      "citedBy": 1,
+      "citedBy": 2,
       "link": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=PCALePwAAAAJ&pagesize=100&sortby=pubdate&citation_for_view=PCALePwAAAAJ:isC4tDSrTZIC",
       "citedByLink": "https://scholar.google.com/scholar?oi=bibs&hl=en&cites=883551334465790092",
       "citationId": "PCALePwAAAAJ:isC4tDSrTZIC",
@@ -266,7 +266,7 @@
       ],
       "publication": "Journal of Alzheimer’s Disease 95 (4), 1667-1683, 2023",
       "year": 2023,
-      "citedBy": 2,
+      "citedBy": 3,
       "link": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=PCALePwAAAAJ&pagesize=100&sortby=pubdate&citation_for_view=PCALePwAAAAJ:bEWYMUwI8FkC",
       "citedByLink": "https://scholar.google.com/scholar?oi=bibs&hl=en&cites=13313809152373635215",
       "citationId": "PCALePwAAAAJ:bEWYMUwI8FkC",
@@ -336,6 +336,26 @@
     },
     {
       "id": "pub_16",
+      "title": "Co-design of avatars to embody auditory hallucinations of patients with schizophrenia: A study on patients’ feeling of satisfaction and psychiatrists’ intention to adopt the …",
+      "authors": [
+        "AS García",
+        "P Fernández-Sotos",
+        "MA Vicente-Querol",
+        "R Sánchez-Reolid",
+        "..."
+      ],
+      "publication": "Virtual Reality 27 (1), 217-232, 2023",
+      "year": 2023,
+      "citedBy": 7,
+      "link": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=PCALePwAAAAJ&pagesize=100&sortby=pubdate&citation_for_view=PCALePwAAAAJ:hqOjcs7Dif8C",
+      "citedByLink": "https://scholar.google.com/scholar?oi=bibs&hl=en&cites=11181385404077964469",
+      "citationId": "PCALePwAAAAJ:hqOjcs7Dif8C",
+      "type": "article",
+      "isFirstAuthor": false,
+      "isCorrespondingAuthor": false
+    },
+    {
+      "id": "pub_17",
       "title": "Co-design of avatars to embody auditory hallucinations of patients with schizophrenia",
       "authors": [
         "P Fernández Sotos",
@@ -353,7 +373,7 @@
       "isCorrespondingAuthor": false
     },
     {
-      "id": "pub_17",
+      "id": "pub_18",
       "title": "Intelligent environments controlled by physiological, perceptual and behavioural responses to emotional experiences",
       "authors": [
         "R Sánchez Reolid"
@@ -368,7 +388,7 @@
       "isCorrespondingAuthor": false
     },
     {
-      "id": "pub_18",
+      "id": "pub_19",
       "title": "A Framework for Managing the Experimental Evaluation of Ambient Assisted Living Systems",
       "authors": [
         "P González"
@@ -383,7 +403,7 @@
       "isCorrespondingAuthor": false
     },
     {
-      "id": "pub_19",
+      "id": "pub_20",
       "title": "Inter-hospital Moderate and Advanced Alzheimer’s Disease Detection Through Convolutional Neural Networks",
       "authors": [],
       "publication": "Publicación no especificada",
@@ -396,7 +416,7 @@
       "isCorrespondingAuthor": false
     },
     {
-      "id": "pub_20",
+      "id": "pub_21",
       "title": "Electroencephalographic Signal Processing from Brain-Computer-Interface Following Image-Based Emotion Induction",
       "authors": [
         "AL Borja"
@@ -411,39 +431,23 @@
       "isCorrespondingAuthor": false
     },
     {
-      "id": "pub_21",
+      "id": "pub_22",
       "title": "A deep residual neural network for semiconductor defect classification in imbalanced scanning electron microscope datasets",
       "authors": [
         "FL de la Rosa",
-        "JL Gómez-Sirvent",
+        "JL Gomez-Sirvent",
         "R Morales",
-        "R Sánchez-Reolid",
+        "R Sanchez-Reolid",
         "..."
       ],
       "publication": "Applied Soft Computing 131, 109743, 2022",
       "year": 2022,
-      "citedBy": 14,
+      "citedBy": 13,
       "link": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=PCALePwAAAAJ&pagesize=100&sortby=pubdate&citation_for_view=PCALePwAAAAJ:9ZlFYXVOiuMC",
       "citedByLink": "https://scholar.google.com/scholar?oi=bibs&hl=en&cites=4946338693445561389",
       "citationId": "PCALePwAAAAJ:9ZlFYXVOiuMC",
       "type": "article",
       "isFirstAuthor": false,
-      "isCorrespondingAuthor": false
-    },
-    {
-      "id": "pub_22",
-      "title": "López de la Rosa F., Sánchez-Reolid D., López MT, Fernández-Caballero A",
-      "authors": [
-        "R Sánchez-Reolid"
-      ],
-      "publication": "Machine Learning Techniques for Arousal Classification from Electrodermal …, 2022",
-      "year": 2022,
-      "citedBy": 5,
-      "link": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=PCALePwAAAAJ&pagesize=100&sortby=pubdate&citation_for_view=PCALePwAAAAJ:BqipwSGYUEgC",
-      "citedByLink": "https://scholar.google.com/scholar?oi=bibs&hl=en&cites=12473849766804691489",
-      "citationId": "PCALePwAAAAJ:BqipwSGYUEgC",
-      "type": "article",
-      "isFirstAuthor": true,
       "isCorrespondingAuthor": false
     },
     {
@@ -458,7 +462,7 @@
       ],
       "publication": "Sensors 22 (22), 8886, 2022",
       "year": 2022,
-      "citedBy": 21,
+      "citedBy": 22,
       "link": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=PCALePwAAAAJ&pagesize=100&sortby=pubdate&citation_for_view=PCALePwAAAAJ:dhFuZR0502QC",
       "citedByLink": "https://scholar.google.com/scholar?oi=bibs&hl=en&cites=13609103185694218187",
       "citationId": "PCALePwAAAAJ:dhFuZR0502QC",
@@ -497,7 +501,7 @@
       ],
       "publication": "International journal of neural systems 32 (10), 2250041, 2022",
       "year": 2022,
-      "citedBy": 19,
+      "citedBy": 17,
       "link": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=PCALePwAAAAJ&pagesize=100&sortby=pubdate&citation_for_view=PCALePwAAAAJ:M3ejUd6NZC8C",
       "citedByLink": "https://scholar.google.com/scholar?oi=bibs&hl=en&cites=3685228035292091442",
       "citationId": "PCALePwAAAAJ:M3ejUd6NZC8C",
@@ -555,7 +559,7 @@
       ],
       "publication": "International Symposium on Ambient Intelligence, 13-23, 2022",
       "year": 2022,
-      "citedBy": 4,
+      "citedBy": 3,
       "link": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=PCALePwAAAAJ&pagesize=100&sortby=pubdate&citation_for_view=PCALePwAAAAJ:7PzlFSSx8tAC",
       "citedByLink": "https://scholar.google.com/scholar?oi=bibs&hl=en&cites=13356121356385112746",
       "citationId": "PCALePwAAAAJ:7PzlFSSx8tAC",
@@ -591,9 +595,9 @@
         "R Sánchez-Reolid",
         "..."
       ],
-      "publication": "IEEE transactions on semiconductor manufacturing 35 (2), 324-331, 2022",
+      "publication": "IEEE Transactions on Semiconductor Manufacturing 35 (2), 324-331, 2022",
       "year": 2022,
-      "citedBy": 38,
+      "citedBy": 37,
       "link": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=PCALePwAAAAJ&pagesize=100&sortby=pubdate&citation_for_view=PCALePwAAAAJ:Zph67rFs4hoC",
       "citedByLink": "https://scholar.google.com/scholar?oi=bibs&hl=en&cites=3041118640241756035",
       "citationId": "PCALePwAAAAJ:Zph67rFs4hoC",
@@ -621,6 +625,22 @@
     },
     {
       "id": "pub_32",
+      "title": "López de la Rosa F., Sánchez-Reolid D., López MT and Fernández-Caballero A",
+      "authors": [
+        "R Sánchez-Reolid"
+      ],
+      "publication": "Machine Learning Techniques for Arousal Classification from Electrodermal …, 2022",
+      "year": 2022,
+      "citedBy": 5,
+      "link": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=PCALePwAAAAJ&pagesize=100&sortby=pubdate&citation_for_view=PCALePwAAAAJ:BqipwSGYUEgC",
+      "citedByLink": "https://scholar.google.com/scholar?oi=bibs&hl=en&cites=12473849766804691489",
+      "citationId": "PCALePwAAAAJ:BqipwSGYUEgC",
+      "type": "article",
+      "isFirstAuthor": true,
+      "isCorrespondingAuthor": false
+    },
+    {
+      "id": "pub_33",
       "title": "One-dimensional convolutional neural networks for low/high arousal classification from electrodermal activity",
       "authors": [
         "R Sánchez-Reolid",
@@ -630,7 +650,7 @@
       ],
       "publication": "Biomedical Signal Processing and Control 71, 103203, 2022",
       "year": 2022,
-      "citedBy": 49,
+      "citedBy": 50,
       "link": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=PCALePwAAAAJ&pagesize=100&sortby=pubdate&citation_for_view=PCALePwAAAAJ:3fE2CSJIrl8C",
       "citedByLink": "https://scholar.google.com/scholar?oi=bibs&hl=en&cites=2059831707917929488",
       "citationId": "PCALePwAAAAJ:3fE2CSJIrl8C",
@@ -639,41 +659,21 @@
       "isCorrespondingAuthor": false
     },
     {
-      "id": "pub_33",
+      "id": "pub_34",
       "title": "A review on machine and deep learning for semiconductor defect classification in scanning electron microscope images",
       "authors": [
-        "F López de la Rosa",
-        "R Sánchez-Reolid",
-        "JL Gómez-Sirvent",
+        "F Lopez de la Rosa",
+        "R Sanchez-Reolid",
+        "JL Gomez-Sirvent",
         "R Morales",
         "..."
       ],
       "publication": "Applied Sciences 11 (20), 9508, 2021",
       "year": 2021,
-      "citedBy": 61,
+      "citedBy": 59,
       "link": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=PCALePwAAAAJ&pagesize=100&sortby=pubdate&citation_for_view=PCALePwAAAAJ:kNdYIx-mwKoC",
       "citedByLink": "https://scholar.google.com/scholar?oi=bibs&hl=en&cites=4485305786774461650",
       "citationId": "PCALePwAAAAJ:kNdYIx-mwKoC",
-      "type": "article",
-      "isFirstAuthor": false,
-      "isCorrespondingAuthor": false
-    },
-    {
-      "id": "pub_34",
-      "title": "Co-design of avatars to embody auditory hallucinations of patients with schizophrenia: A study on patients’ feeling of satisfaction and psychiatrists’ intention to adopt the …",
-      "authors": [
-        "AS García",
-        "P Fernández-Sotos",
-        "MA Vicente-Querol",
-        "R Sánchez-Reolid",
-        "..."
-      ],
-      "publication": "Virtual Reality, 1-16, 2021",
-      "year": 2021,
-      "citedBy": 7,
-      "link": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=PCALePwAAAAJ&pagesize=100&sortby=pubdate&citation_for_view=PCALePwAAAAJ:hqOjcs7Dif8C",
-      "citedByLink": "https://scholar.google.com/scholar?oi=bibs&hl=en&cites=9897482911459794263",
-      "citationId": "PCALePwAAAAJ:hqOjcs7Dif8C",
       "type": "article",
       "isFirstAuthor": false,
       "isCorrespondingAuthor": false
@@ -699,26 +699,6 @@
     },
     {
       "id": "pub_36",
-      "title": "Effectiveness of the level of personal relevance of visual autobiographical stimuli in the induction of positive emotions in young and older adults: pilot study protocol for a …",
-      "authors": [
-        "D Fernández",
-        "L Ros",
-        "R Sánchez-Reolid",
-        "JJ Ricarte",
-        "JM Latorre"
-      ],
-      "publication": "Trials 21, 1-16, 2020",
-      "year": 2020,
-      "citedBy": 8,
-      "link": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=PCALePwAAAAJ&pagesize=100&sortby=pubdate&citation_for_view=PCALePwAAAAJ:eQOLeE2rZwMC",
-      "citedByLink": "https://scholar.google.com/scholar?oi=bibs&hl=en&cites=10995399757381066961",
-      "citationId": "PCALePwAAAAJ:eQOLeE2rZwMC",
-      "type": "article",
-      "isFirstAuthor": false,
-      "isCorrespondingAuthor": false
-    },
-    {
-      "id": "pub_37",
       "title": "Machine learning for stress detection from electrodermal activity: A scoping review",
       "authors": [
         "R Sánchez-Reolid",
@@ -736,7 +716,7 @@
       "isCorrespondingAuthor": false
     },
     {
-      "id": "pub_38",
+      "id": "pub_37",
       "title": "Arousal Detection in Elderly People from Electrodermal Activity using Musical Stimuli",
       "authors": [
         "A Bartolomé-Tomás",
@@ -750,6 +730,26 @@
       "link": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=PCALePwAAAAJ&pagesize=100&sortby=pubdate&citation_for_view=PCALePwAAAAJ:_FxGoFyzp5QC",
       "citedByLink": "https://scholar.google.com/scholar?oi=bibs&hl=en&cites=5277051289196934267",
       "citationId": "PCALePwAAAAJ:_FxGoFyzp5QC",
+      "type": "article",
+      "isFirstAuthor": false,
+      "isCorrespondingAuthor": false
+    },
+    {
+      "id": "pub_38",
+      "title": "Effectiveness of the level of personal relevance of visual autobiographical stimuli in the induction of positive emotions in young and older adults: pilot study protocol for a …",
+      "authors": [
+        "D Fernández",
+        "L Ros",
+        "R Sánchez-Reolid",
+        "JJ Ricarte",
+        "JM Latorre"
+      ],
+      "publication": "Trials 21 (1), 663, 2020",
+      "year": 2020,
+      "citedBy": 8,
+      "link": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=PCALePwAAAAJ&pagesize=100&sortby=pubdate&citation_for_view=PCALePwAAAAJ:eQOLeE2rZwMC",
+      "citedByLink": "https://scholar.google.com/scholar?oi=bibs&hl=en&cites=10995399757381066961",
+      "citationId": "PCALePwAAAAJ:eQOLeE2rZwMC",
       "type": "article",
       "isFirstAuthor": false,
       "isCorrespondingAuthor": false
@@ -784,7 +784,7 @@
       ],
       "publication": "International Journal of Neural Systems 30, 1-13, 2020",
       "year": 2020,
-      "citedBy": 47,
+      "citedBy": 46,
       "link": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=PCALePwAAAAJ&pagesize=100&sortby=pubdate&citation_for_view=PCALePwAAAAJ:Y0pCki6q_DkC",
       "citedByLink": "https://scholar.google.com/scholar?oi=bibs&hl=en&cites=13333015477496612136",
       "citationId": "PCALePwAAAAJ:Y0pCki6q_DkC",
@@ -813,25 +813,43 @@
     },
     {
       "id": "pub_42",
-      "title": "Memory Retrieval in Ageing Adults through Traditional Music Genres-An Experiment Based on Electroencephalography Signals.",
+      "title": "Memory retrieval in ageing adults through traditional music genres—an experiment based on electroencephalography signals",
       "authors": [
         "A Bartolomé-Tomás",
         "R Sánchez-Reolid",
         "B García-Martinez",
         "..."
       ],
-      "publication": "UCAmI, 33, 2019",
+      "publication": "Proceedings 31 (1), 33, 2019",
       "year": 2019,
       "citedBy": 3,
       "link": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=PCALePwAAAAJ&pagesize=100&sortby=pubdate&citation_for_view=PCALePwAAAAJ:2osOgNQ5qMEC",
       "citedByLink": "https://scholar.google.com/scholar?oi=bibs&hl=en&cites=9972837259494860605",
       "citationId": "PCALePwAAAAJ:2osOgNQ5qMEC",
-      "type": "article",
+      "type": "conference",
       "isFirstAuthor": false,
       "isCorrespondingAuthor": false
     },
     {
       "id": "pub_43",
+      "title": "Stress identification from electrodermal activity by support vector machines",
+      "authors": [
+        "R Sánchez-Reolid",
+        "A Martínez-Rodrigo",
+        "A Fernández-Caballero"
+      ],
+      "publication": "International Work-Conference on the Interplay Between Natural and …, 2019",
+      "year": 2019,
+      "citedBy": 13,
+      "link": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=PCALePwAAAAJ&pagesize=100&sortby=pubdate&citation_for_view=PCALePwAAAAJ:u-x6o8ySG0sC",
+      "citedByLink": "https://scholar.google.com/scholar?oi=bibs&hl=en&cites=352660594049292708",
+      "citationId": "PCALePwAAAAJ:u-x6o8ySG0sC",
+      "type": "conference",
+      "isFirstAuthor": true,
+      "isCorrespondingAuthor": false
+    },
+    {
+      "id": "pub_44",
       "title": "Understanding the Brain Function and Emotions: 8th International Work-Conference on the Interplay Between Natural and Artificial Computation, IWINAC 2019, Almería, Spain, June …",
       "authors": [
         "JMF Vicente",
@@ -842,7 +860,7 @@
       ],
       "publication": "Springer, 2019",
       "year": 2019,
-      "citedBy": 12,
+      "citedBy": 9,
       "link": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=PCALePwAAAAJ&pagesize=100&sortby=pubdate&citation_for_view=PCALePwAAAAJ:roLk4NBRz8UC",
       "citedByLink": "https://scholar.google.com/scholar?oi=bibs&hl=en&cites=4439799875550357044",
       "citationId": "PCALePwAAAAJ:roLk4NBRz8UC",
@@ -851,7 +869,7 @@
       "isCorrespondingAuthor": false
     },
     {
-      "id": "pub_44",
+      "id": "pub_45",
       "title": "From Bioinspired Systems and Biomedical Applications to Machine Learning: 8th International Work-Conference on the Interplay Between Natural and Artificial Computation, IWINAC …",
       "authors": [
         "JMF Vicente",
@@ -871,24 +889,6 @@
       "isCorrespondingAuthor": false
     },
     {
-      "id": "pub_45",
-      "title": "Stress identification from electrodermal activity by support vector machines",
-      "authors": [
-        "R Sánchez-Reolid",
-        "A Martínez-Rodrigo",
-        "A Fernández-Caballero"
-      ],
-      "publication": "Understanding the Brain Function and Emotions: 8th International Work …, 2019",
-      "year": 2019,
-      "citedBy": 13,
-      "link": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=PCALePwAAAAJ&pagesize=100&sortby=pubdate&citation_for_view=PCALePwAAAAJ:u-x6o8ySG0sC",
-      "citedByLink": "https://scholar.google.com/scholar?oi=bibs&hl=en&cites=352660594049292708",
-      "citationId": "PCALePwAAAAJ:u-x6o8ySG0sC",
-      "type": "article",
-      "isFirstAuthor": true,
-      "isCorrespondingAuthor": false
-    },
-    {
       "id": "pub_46",
       "title": "Artificial Neural Networks to Assess Emotional States from Brain-Computer Interface",
       "authors": [
@@ -900,7 +900,7 @@
       ],
       "publication": "Electronics 7 (12), 384, 2018",
       "year": 2018,
-      "citedBy": 63,
+      "citedBy": 60,
       "link": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=PCALePwAAAAJ&pagesize=100&sortby=pubdate&citation_for_view=PCALePwAAAAJ:u5HHmVD_uO8C",
       "citedByLink": "https://scholar.google.com/scholar?oi=bibs&hl=en&cites=16788273922182433471",
       "citationId": "PCALePwAAAAJ:u5HHmVD_uO8C",
