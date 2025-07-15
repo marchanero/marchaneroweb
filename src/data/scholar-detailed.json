@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2025-07-14T06:23:38.649Z",
+  "lastUpdated": "2025-07-15T06:23:07.229Z",
   "scrapingMethod": "ultra-optimized-v3-robust-pagination",
   "paginationInfo": {
     "totalPages": 0,
@@ -39,7 +39,7 @@
     "scholarId": "PCALePwAAAAJ"
   },
   "metrics": {
-    "totalCitations": 575,
+    "totalCitations": 576,
     "hIndex": 13,
     "i10Index": 16,
     "citationsRecent": 0,
@@ -49,6 +49,24 @@
   "publications": [
     {
       "id": "pub_1",
+      "title": "Small Language Models for Speech Emotion Recognition in Text and Audio Modalities",
+      "authors": [
+        "JL Gómez-Sirvent",
+        "F López de la Rosa",
+        "D Sánchez-Reolid",
+        "..."
+      ],
+      "publication": "Applied Sciences 15 (14), 7730, 2025",
+      "year": 2025,
+      "citedBy": 0,
+      "link": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=PCALePwAAAAJ&pagesize=100&sortby=pubdate&citation_for_view=PCALePwAAAAJ:RYcK_YlVTxYC",
+      "citationId": "PCALePwAAAAJ:RYcK_YlVTxYC",
+      "type": "article",
+      "isFirstAuthor": false,
+      "isCorrespondingAuthor": false
+    },
+    {
+      "id": "pub_2",
       "title": "Small Language Models for Speech Emotion Recognition in Text and Audio Modalities",
       "authors": [],
       "publication": "Publicación no especificada",
@@ -61,7 +79,7 @@
       "isCorrespondingAuthor": false
     },
     {
-      "id": "pub_2",
+      "id": "pub_3",
       "title": "EEG and fNIRS Signal-Based Emotion Identification by Means of Machine Learning Algorithms During Visual Stimuli Exposure",
       "authors": [
         "D Sánchez-Reolid",
@@ -80,7 +98,7 @@
       "isCorrespondingAuthor": false
     },
     {
-      "id": "pub_3",
+      "id": "pub_4",
       "title": "Musical Instruments in Extended Reality: A Systematic Review",
       "authors": [
         "JL Gómez-Sirvent",
@@ -99,7 +117,7 @@
       "isCorrespondingAuthor": false
     },
     {
-      "id": "pub_4",
+      "id": "pub_5",
       "title": "Improved surface defect classification from a simple convolutional neural network by image preprocessing and data augmentation",
       "authors": [
         "FL de la Rosa",
@@ -119,7 +137,7 @@
       "isCorrespondingAuthor": false
     },
     {
-      "id": "pub_5",
+      "id": "pub_6",
       "title": "Binary Classification Methods for Movement Analysis from Functional Near-Infrared Spectroscopy Signals",
       "authors": [
         "D Sánchez-Reolid",
@@ -138,7 +156,7 @@
       "isCorrespondingAuthor": false
     },
     {
-      "id": "pub_6",
+      "id": "pub_7",
       "title": "Exploring the impact of windows on musicians’ experience: a neuroarchitecture perspective",
       "authors": [
         "JL Gómez-Sirvent",
@@ -157,7 +175,7 @@
       "isCorrespondingAuthor": false
     },
     {
-      "id": "pub_7",
+      "id": "pub_8",
       "title": "Inter-hospital Moderate and Advanced Alzheimer's Disease Detection Through Convolutional Neural Networks",
       "authors": [
         "C Roncero-Parra",
@@ -177,7 +195,7 @@
       "isCorrespondingAuthor": false
     },
     {
-      "id": "pub_8",
+      "id": "pub_9",
       "title": "Differences in emotion recognition between non-immersive vs. immersive virtual reality: preliminary findings in schizophrenia and bipolar disorder",
       "authors": [
         "M Scala",
@@ -196,7 +214,7 @@
       "isCorrespondingAuthor": false
     },
     {
-      "id": "pub_9",
+      "id": "pub_10",
       "title": "Detection of auditory hallucinations from electroencephalographic brain–computer interface signals",
       "authors": [
         "B García-Martínez",
@@ -216,7 +234,7 @@
       "isCorrespondingAuthor": false
     },
     {
-      "id": "pub_10",
+      "id": "pub_11",
       "title": "Pre-occupancy evaluation of a virtual music school classroom: Influence of color and type of lighting on music performers",
       "authors": [
         "JLG Sirvent",
@@ -236,7 +254,7 @@
       "isCorrespondingAuthor": false
     },
     {
-      "id": "pub_11",
+      "id": "pub_12",
       "title": "A framework for managing the experimental evaluation of ambient assisted living systems",
       "authors": [
         "J Jiménez-Ruescas",
@@ -256,7 +274,7 @@
       "isCorrespondingAuthor": false
     },
     {
-      "id": "pub_12",
+      "id": "pub_13",
       "title": "Inter-hospital advanced and mild Alzheimer’s disease classification based on electroencephalogram measurements via classical machine learning algorithms",
       "authors": [
         "A Parreño Torres",
@@ -275,7 +293,7 @@
       "isCorrespondingAuthor": false
     },
     {
-      "id": "pub_13",
+      "id": "pub_14",
       "title": "Defect detection and classification on semiconductor wafers using two-stage geometric transformation-based data augmentation and SqueezeNet lightweight convolutional neural network",
       "authors": [
         "FL de la Rosa",
@@ -295,7 +313,7 @@
       "isCorrespondingAuthor": false
     },
     {
-      "id": "pub_14",
+      "id": "pub_15",
       "title": "Pleasure and displeasure identification from fNIRS signals",
       "authors": [
         "D Sánchez-Reolid",
@@ -314,7 +332,7 @@
       "isCorrespondingAuthor": false
     },
     {
-      "id": "pub_15",
+      "id": "pub_16",
       "title": "Generic Architecture for Multisource Physiological Signal Acquisition, Processing and Classification Based on Microservices",
       "authors": [
         "R Sánchez-Reolid",
@@ -335,7 +353,7 @@
       "isCorrespondingAuthor": false
     },
     {
-      "id": "pub_16",
+      "id": "pub_17",
       "title": "Co-design of avatars to embody auditory hallucinations of patients with schizophrenia: A study on patients’ feeling of satisfaction and psychiatrists’ intention to adopt the …",
       "authors": [
         "AS García",
@@ -355,7 +373,7 @@
       "isCorrespondingAuthor": false
     },
     {
-      "id": "pub_17",
+      "id": "pub_18",
       "title": "Co-design of avatars to embody auditory hallucinations of patients with schizophrenia",
       "authors": [
         "P Fernández Sotos",
@@ -373,7 +391,7 @@
       "isCorrespondingAuthor": false
     },
     {
-      "id": "pub_18",
+      "id": "pub_19",
       "title": "Intelligent environments controlled by physiological, perceptual and behavioural responses to emotional experiences",
       "authors": [
         "R Sánchez Reolid"
@@ -388,7 +406,7 @@
       "isCorrespondingAuthor": false
     },
     {
-      "id": "pub_19",
+      "id": "pub_20",
       "title": "A Framework for Managing the Experimental Evaluation of Ambient Assisted Living Systems",
       "authors": [
         "P González"
@@ -403,7 +421,7 @@
       "isCorrespondingAuthor": false
     },
     {
-      "id": "pub_20",
+      "id": "pub_21",
       "title": "Inter-hospital Moderate and Advanced Alzheimer’s Disease Detection Through Convolutional Neural Networks",
       "authors": [],
       "publication": "Publicación no especificada",
@@ -411,21 +429,6 @@
       "citedBy": 0,
       "link": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=PCALePwAAAAJ&pagesize=100&sortby=pubdate&citation_for_view=PCALePwAAAAJ:_Qo2XoVZTnwC",
       "citationId": "PCALePwAAAAJ:_Qo2XoVZTnwC",
-      "type": "article",
-      "isFirstAuthor": false,
-      "isCorrespondingAuthor": false
-    },
-    {
-      "id": "pub_21",
-      "title": "Electroencephalographic Signal Processing from Brain-Computer-Interface Following Image-Based Emotion Induction",
-      "authors": [
-        "AL Borja"
-      ],
-      "publication": "Ambient Intelligence—Software and Applications—13th International …, 2023",
-      "year": 2023,
-      "citedBy": 0,
-      "link": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=PCALePwAAAAJ&pagesize=100&sortby=pubdate&citation_for_view=PCALePwAAAAJ:hC7cP41nSMkC",
-      "citationId": "PCALePwAAAAJ:hC7cP41nSMkC",
       "type": "article",
       "isFirstAuthor": false,
       "isCorrespondingAuthor": false
@@ -541,9 +544,9 @@
       "publication": "International Symposium on Ambient Intelligence, 239-248, 2022",
       "year": 2022,
       "citedBy": 1,
-      "link": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=PCALePwAAAAJ&pagesize=100&sortby=pubdate&citation_for_view=PCALePwAAAAJ:L8Ckcad2t8MC",
+      "link": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=PCALePwAAAAJ&pagesize=100&sortby=pubdate&citation_for_view=PCALePwAAAAJ:hC7cP41nSMkC",
       "citedByLink": "https://scholar.google.com/scholar?oi=bibs&hl=en&cites=10941249739579948499",
-      "citationId": "PCALePwAAAAJ:L8Ckcad2t8MC",
+      "citationId": "PCALePwAAAAJ:hC7cP41nSMkC",
       "type": "article",
       "isFirstAuthor": false,
       "isCorrespondingAuthor": false
@@ -578,7 +581,7 @@
       ],
       "publication": "Electronics, 2022",
       "year": 2022,
-      "citedBy": 6,
+      "citedBy": 7,
       "link": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=PCALePwAAAAJ&pagesize=100&sortby=pubdate&citation_for_view=PCALePwAAAAJ:ULOm3_A8WrAC",
       "citedByLink": "https://scholar.google.com/scholar?oi=bibs&hl=en&cites=5209992572254485614",
       "citationId": "PCALePwAAAAJ:ULOm3_A8WrAC",
@@ -976,16 +979,16 @@
       "2020": 5,
       "2021": 2,
       "2022": 12,
-      "2023": 12,
+      "2023": 11,
       "2024": 8,
-      "2025": 1
+      "2025": 2
     },
     "citationsByYear": {
       "2018": 60,
       "2019": 35,
       "2020": 104,
       "2021": 59,
-      "2022": 236,
+      "2022": 237,
       "2023": 54,
       "2024": 19,
       "2025": 0
@@ -997,7 +1000,7 @@
   },
   "summary": {
     "totalPublications": 48,
-    "totalCitations": 575,
+    "totalCitations": 576,
     "hIndex": 13,
     "i10Index": 16,
     "avgCitationsPerPaper": 12,
