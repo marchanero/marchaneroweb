@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2025-07-17T06:22:26.093Z",
+  "lastUpdated": "2025-07-18T06:22:53.520Z",
   "scrapingMethod": "ultra-optimized-v3-robust-pagination",
   "paginationInfo": {
     "totalPages": 0,
@@ -39,7 +39,7 @@
     "scholarId": "PCALePwAAAAJ"
   },
   "metrics": {
-    "totalCitations": 577,
+    "totalCitations": 578,
     "hIndex": 13,
     "i10Index": 16,
     "citationsRecent": 0,
@@ -173,7 +173,7 @@
       ],
       "publication": "Heliyon, 2024",
       "year": 2024,
-      "citedBy": 10,
+      "citedBy": 11,
       "link": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=PCALePwAAAAJ&pagesize=100&sortby=pubdate&citation_for_view=PCALePwAAAAJ:TFP_iSt0sucC",
       "citedByLink": "https://scholar.google.com/scholar?oi=bibs&hl=en&cites=6529929337580907042",
       "citationId": "PCALePwAAAAJ:TFP_iSt0sucC",
@@ -452,7 +452,7 @@
       ],
       "publication": "Sensors 22 (22), 8886, 2022",
       "year": 2022,
-      "citedBy": 22,
+      "citedBy": 21,
       "link": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=PCALePwAAAAJ&pagesize=100&sortby=pubdate&citation_for_view=PCALePwAAAAJ:dhFuZR0502QC",
       "citedByLink": "https://scholar.google.com/scholar?oi=bibs&hl=en&cites=13609103185694218187",
       "citationId": "PCALePwAAAAJ:dhFuZR0502QC",
@@ -472,7 +472,7 @@
       ],
       "publication": "Expert Systems with Applications 206, 117731, 2022",
       "year": 2022,
-      "citedBy": 73,
+      "citedBy": 74,
       "link": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=PCALePwAAAAJ&pagesize=100&sortby=pubdate&citation_for_view=PCALePwAAAAJ:_kc_bZDykSQC",
       "citedByLink": "https://scholar.google.com/scholar?oi=bibs&hl=en&cites=15620631313306549090",
       "citationId": "PCALePwAAAAJ:_kc_bZDykSQC",
