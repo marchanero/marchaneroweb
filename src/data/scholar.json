@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2025-07-31T06:23:37.374Z",
+  "lastUpdated": "2025-08-01T06:25:16.503Z",
   "scrapingMethod": "ultra-optimized-v3-robust-pagination",
   "paginationInfo": {
     "totalPages": 0,
@@ -39,9 +39,9 @@
     "scholarId": "PCALePwAAAAJ"
   },
   "metrics": {
-    "totalCitations": 582,
+    "totalCitations": 584,
     "hIndex": 13,
-    "i10Index": 16,
+    "i10Index": 17,
     "citationsRecent": 0,
     "hIndexRecent": 0,
     "i10IndexRecent": 0
@@ -232,7 +232,7 @@
       ],
       "publication": "Building and Environment 246, 110989, 2023",
       "year": 2023,
-      "citedBy": 9,
+      "citedBy": 10,
       "link": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=PCALePwAAAAJ&pagesize=100&sortby=pubdate&citation_for_view=PCALePwAAAAJ:j3f4tGmQtD8C",
       "citedByLink": "https://scholar.google.com/scholar?oi=bibs&hl=en&cites=10258129208146541189",
       "citationId": "PCALePwAAAAJ:j3f4tGmQtD8C",
@@ -271,7 +271,7 @@
       ],
       "publication": "Journal of Alzheimer’s Disease 95 (4), 1667-1683, 2023",
       "year": 2023,
-      "citedBy": 3,
+      "citedBy": 4,
       "link": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=PCALePwAAAAJ&pagesize=100&sortby=pubdate&citation_for_view=PCALePwAAAAJ:bEWYMUwI8FkC",
       "citedByLink": "https://scholar.google.com/scholar?oi=bibs&hl=en&cites=13313809152373635215",
       "citationId": "PCALePwAAAAJ:bEWYMUwI8FkC",
