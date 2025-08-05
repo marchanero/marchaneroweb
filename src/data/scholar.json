@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2025-08-04T06:29:26.661Z",
+  "lastUpdated": "2025-08-05T06:25:15.463Z",
   "scrapingMethod": "ultra-optimized-v3-robust-pagination",
   "paginationInfo": {
     "totalPages": 0,
@@ -39,7 +39,7 @@
     "scholarId": "PCALePwAAAAJ"
   },
   "metrics": {
-    "totalCitations": 585,
+    "totalCitations": 587,
     "hIndex": 13,
     "i10Index": 17,
     "citationsRecent": 0,
@@ -193,8 +193,9 @@
       ],
       "publication": "International Clinical Psychopharmacology Decision, 2024",
       "year": 2024,
-      "citedBy": 0,
+      "citedBy": 1,
       "link": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=PCALePwAAAAJ&pagesize=100&sortby=pubdate&citation_for_view=PCALePwAAAAJ:JV2RwH3_ST0C",
+      "citedByLink": "https://scholar.google.com/scholar?oi=bibs&hl=en&cites=14691130935049618203",
       "citationId": "PCALePwAAAAJ:JV2RwH3_ST0C",
       "type": "article",
       "isFirstAuthor": false,
@@ -697,7 +698,7 @@
       ],
       "publication": "Preprints, 2020",
       "year": 2020,
-      "citedBy": 22,
+      "citedBy": 23,
       "link": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=PCALePwAAAAJ&pagesize=100&sortby=pubdate&citation_for_view=PCALePwAAAAJ:LkGwnXOMwfcC",
       "citedByLink": "https://scholar.google.com/scholar?oi=bibs&hl=en&cites=2219798727825377273",
       "citationId": "PCALePwAAAAJ:LkGwnXOMwfcC",
