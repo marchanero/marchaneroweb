@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2025-08-17T06:20:50.966Z",
+  "lastUpdated": "2025-08-18T06:24:32.860Z",
   "scrapingMethod": "ultra-optimized-v3-robust-pagination",
   "paginationInfo": {
     "totalPages": 0,
@@ -39,7 +39,7 @@
     "scholarId": "PCALePwAAAAJ"
   },
   "metrics": {
-    "totalCitations": 593,
+    "totalCitations": 596,
     "hIndex": 13,
     "i10Index": 17,
     "citationsRecent": 0,
@@ -77,8 +77,9 @@
       ],
       "publication": "Electronics 13 (23), 4797, 2024",
       "year": 2024,
-      "citedBy": 0,
+      "citedBy": 1,
       "link": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=PCALePwAAAAJ&pagesize=100&sortby=pubdate&citation_for_view=PCALePwAAAAJ:hMod-77fHWUC",
+      "citedByLink": "https://scholar.google.com/scholar?oi=bibs&hl=en&cites=12036340440394209408",
       "citationId": "PCALePwAAAAJ:hMod-77fHWUC",
       "type": "article",
       "isFirstAuthor": false,
@@ -492,7 +493,7 @@
       ],
       "publication": "International journal of neural systems 32 (10), 2250041, 2022",
       "year": 2022,
-      "citedBy": 18,
+      "citedBy": 19,
       "link": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=PCALePwAAAAJ&pagesize=100&sortby=pubdate&citation_for_view=PCALePwAAAAJ:M3ejUd6NZC8C",
       "citedByLink": "https://scholar.google.com/scholar?oi=bibs&hl=en&cites=3685228035292091442",
       "citationId": "PCALePwAAAAJ:M3ejUd6NZC8C",
@@ -531,7 +532,7 @@
       ],
       "publication": "International Symposium on Ambient Intelligence, 239-248, 2022",
       "year": 2022,
-      "citedBy": 1,
+      "citedBy": 2,
       "link": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=PCALePwAAAAJ&pagesize=100&sortby=pubdate&citation_for_view=PCALePwAAAAJ:hC7cP41nSMkC",
       "citedByLink": "https://scholar.google.com/scholar?oi=bibs&hl=en&cites=10941249739579948499",
       "citationId": "PCALePwAAAAJ:hC7cP41nSMkC",
