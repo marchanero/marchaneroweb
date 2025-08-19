@@ -43,8 +43,8 @@ jobs:
         
       - name: Verificar configuración de Telegram
         run: |
-          if [ -f "./scripts/verify-telegram-config.js" ]; then
-            node ./scripts/verify-telegram-config.js || true
+          if [ -f "./scripts/verify-telegram-config-simple.js" ]; then
+            node ./scripts/verify-telegram-config-simple.js
           else
             echo "Script de verificación de Telegram no encontrado, continuando..."
           fi
