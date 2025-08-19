@@ -80,7 +80,7 @@ function loadEnvVars() {
 const result = loadEnvVars();
 
 // Salir con código de error si faltan variables críticas
-const CRITICAL_VARS = ['TELEGRAM_TO', 'TELEGRAM_TOKEN', 'NETLIFY_AUTH_TOKEN', 'NETLIFY_SITE_ID'];
+const CRITICAL_VARS = ['NETLIFY_AUTH_TOKEN', 'NETLIFY_SITE_ID'];
 const missingCritical = result.missingVars.filter(v => CRITICAL_VARS.includes(v));
 
 if (missingCritical.length > 0) {
