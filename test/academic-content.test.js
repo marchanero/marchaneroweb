@@ -63,7 +63,7 @@ describe('Pruebas de contenido académico', () => {
     // Verificar subtítulo
     const h2 = document.querySelector('h2');
     expect(h2).not.toBeNull();
-    expect(h2.textContent.trim()).toBe('Investigador PhD');
+    expect(h2.textContent.trim()).toBe('Sobre mi investigación');
     
     // Verificar que contiene la referencia a la universidad
     expect(content).toContain('Universidad de Castilla-La Mancha');
@@ -93,7 +93,7 @@ describe('Pruebas de contenido académico', () => {
     // Verificar título principal
     const h1 = document.querySelector('h1');
     expect(h1).not.toBeNull();
-    expect(h1.textContent).toBe('Líneas de Investigación');
+    expect(h1.textContent.trim()).toBe('🚀 Proyectos de Investigación');
     
     // Verificar que existe contenido sobre líneas de investigación
     expect(content).toContain('líneas de investigación');

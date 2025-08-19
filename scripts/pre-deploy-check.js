@@ -6,9 +6,9 @@
  * el sitio está listo para ser desplegado.
  */
 
-const fs = require('fs');
-const path = require('path');
-const chalk = require('chalk'); // Necesitarás instalar chalk: npm i chalk
+import fs from 'fs';
+import path from 'path';
+import chalk from 'chalk';
 
 // Directorios y archivos esenciales que deben existir
 const requiredFiles = [
@@ -156,7 +156,7 @@ async function checkAccessibility() {
 
     // Intentamos importar el script de verificación de accesibilidad
     try {
-      const runA11yTests = require('./a11y-check');
+      const { default: runA11yTests } = await import('./a11y-check.js');
       const success = await runA11yTests();
       return success;
     } catch (err) {
