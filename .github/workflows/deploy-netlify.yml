@@ -411,96 +411,100 @@ jobs:
           fi
       
       # Notificación para despliegue exitoso a producción
-      - name: Notificar por Telegram (Deploy Producción)
-        if: needs.deploy-production.result == 'success'
-        uses: appleboy/telegram-action@v0.1.1
-        with:
-          to: ${{ secrets.TELEGRAM_TO }}
-          token: ${{ secrets.TELEGRAM_TOKEN }}
-          message: |
-            🚀 *Sitio web desplegado correctamente*
-            
-            *Dr. Roberto Sánchez Reolid - UCLM*
-            
-            📝 Commit: ${{ github.event.head_commit.message }}
-            👨‍💻 Autor: ${{ github.event.head_commit.author.name }}
-            🕒 Fecha: ${{ github.event.head_commit.timestamp }}
-            
-            🌐 Ver sitio: https://roberto-sreolid.netlify.app
-            
-            📊 *Estado de validaciones*
-            ✅ Tests: Aprobados
-            ✅ Build: Completado
-            ✅ Deploy: Exitoso
-            
-            _Universidad de Castilla-La Mancha_
-          format: markdown
-          disable_web_page_preview: true
+      # TEMPORALMENTE DESHABILITADO - Variables de notificación comentadas en .env
+      # - name: Notificar por Telegram (Deploy Producción)
+      #   if: needs.deploy-production.result == 'success'
+      #   uses: appleboy/telegram-action@v0.1.1
+      #   with:
+      #     to: ${{ secrets.TELEGRAM_TO }}
+      #     token: ${{ secrets.TELEGRAM_TOKEN }}
+      #     message: |
+      #       🚀 *Sitio web desplegado correctamente*
+      #       
+      #       *Dr. Roberto Sánchez Reolid - UCLM*
+      #       
+      #       📝 Commit: ${{ github.event.head_commit.message }}
+      #       👨‍💻 Autor: ${{ github.event.head_commit.author.name }}
+      #       🕒 Fecha: ${{ github.event.head_commit.timestamp }}
+      #       
+      #       🌐 Ver sitio: https://roberto-sreolid.netlify.app
+      #       
+      #       📊 *Estado de validaciones*
+      #       ✅ Tests: Aprobados
+      #       ✅ Build: Completado
+      #       ✅ Deploy: Exitoso
+      #       
+      #       _Universidad de Castilla-La Mancha_
+      #     format: markdown
+      #     disable_web_page_preview: true
           
       # Notificación para vista previa
-      - name: Notificar por Telegram (Preview)
-        if: needs.deploy-preview.result == 'success'
-        uses: appleboy/telegram-action@v0.1.1
-        with:
-          to: ${{ secrets.TELEGRAM_TO }}
-          token: ${{ secrets.TELEGRAM_TOKEN }}
-          message: |
-            🔍 *Vista previa generada*
-            
-            *Dr. Roberto Sánchez Reolid - UCLM*
-            
-            📌 PR #${{ github.event.pull_request.number }}: ${{ github.event.pull_request.title }}
-            👨‍💻 Autor: ${{ github.event.pull_request.user.login }}
-            
-            🌐 Ver vista previa: https://preview-web-${{ github.event.pull_request.number }}--roberto-sreolid.netlify.app
-            
-            _Universidad de Castilla-La Mancha_
-          format: markdown
-          disable_web_page_preview: true
-      
+      # TEMPORALMENTE DESHABILITADO - Variables de notificación comentadas en .env
+      # - name: Notificar por Telegram (Preview)
+      #   if: needs.deploy-preview.result == 'success'
+      #   uses: appleboy/telegram-action@v0.1.1
+      #   with:
+      #     to: ${{ secrets.TELEGRAM_TO }}
+      #     token: ${{ secrets.TELEGRAM_TOKEN }}
+      #     message: |
+      #       🔍 *Vista previa generada*
+      #       
+      #       *Dr. Roberto Sánchez Reolid - UCLM*
+      #       
+      #       📌 PR #${{ github.event.pull_request.number }}: ${{ github.event.pull_request.title }}
+      #       👨‍💻 Autor: ${{ github.event.pull_request.user.login }}
+      #       
+      #       🌐 Ver vista previa: https://preview-web-${{ github.event.pull_request.number }}--roberto-sreolid.netlify.app
+      #       
+      #       _Universidad de Castilla-La Mancha_
+      #     format: markdown
+      #     disable_web_page_preview: true
+
       # Notificación para fallos
-      - name: Notificar fallos por Telegram
-        if: failure() || needs.deploy-preview.result == 'failure' || needs.deploy-production.result == 'failure'
-        uses: appleboy/telegram-action@v0.1.1
-        with:
-          to: ${{ secrets.TELEGRAM_TO }}
-          token: ${{ secrets.TELEGRAM_TOKEN }}
-          message: |
-            ❌ *Error en el despliegue*
-            
-            *Dr. Roberto Sánchez Reolid - UCLM*
-            
-            ${{ github.event_name == 'pull_request' && format('📌 PR #{0}: {1}', github.event.pull_request.number, github.event.pull_request.title) || format('📝 Commit: {0}', github.event.head_commit.message) }}
-            
-            ⚠️ Ver detalles del error en GitHub Actions:
-            https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}
-            
-            _Universidad de Castilla-La Mancha_
-          format: markdown
-          disable_web_page_preview: true
+      # TEMPORALMENTE DESHABILITADO - Variables de notificación comentadas en .env
+      # - name: Notificar fallos por Telegram
+      #   if: failure() || needs.deploy-preview.result == 'failure' || needs.deploy-production.result == 'failure'
+      #   uses: appleboy/telegram-action@v0.1.1
+      #   with:
+      #     to: ${{ secrets.TELEGRAM_TO }}
+      #     token: ${{ secrets.TELEGRAM_TOKEN }}
+      #     message: |
+      #       ❌ *Error en el despliegue*
+      #       
+      #       *Dr. Roberto Sánchez Reolid - UCLM*
+      #       
+      #       ${{ github.event_name == 'pull_request' && format('📌 PR #{0}: {1}', github.event.pull_request.number, github.event.pull_request.title) || format('📝 Commit: {0}', github.event.head_commit.message) }}
+      #       
+      #       ⚠️ Ver detalles del error en GitHub Actions:
+      #       https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}
+      #       
+      #       _Universidad de Castilla-La Mancha_
+      #     format: markdown
+      #     disable_web_page_preview: true
       
       # Notificación por correo electrónico (solo para producción exitosa)
-      - name: Enviar notificación por correo
-        if: needs.deploy-production.result == 'success' && secrets.MAIL_SERVER != ''
-        uses: dawidd6/action-send-mail@v3
-        with:
-          server_address: ${{ secrets.MAIL_SERVER }}
-          server_port: ${{ secrets.MAIL_PORT }}
-          username: ${{ secrets.MAIL_USERNAME }}
-          password: ${{ secrets.MAIL_PASSWORD }}
-          subject: Actualización del sitio web - Dr. Roberto Sánchez Reolid
-          body: |
-            ¡Se ha realizado un nuevo despliegue del sitio web!
-            
-            Commit: ${{ github.event.head_commit.message }}
-            Autor: ${{ github.event.head_commit.author.name }}
-            Fecha: ${{ github.event.head_commit.timestamp }}
-            
-            Ver sitio: https://roberto-sreolid.netlify.app
-            
-            Todos los tests han pasado correctamente.
-            
-            Este es un mensaje automático del sistema de CI/CD.
-            Universidad de Castilla-La Mancha
-          to: roberto.sreolid@uclm.es
-          from: Despliegue Web UCLM <noreply@uclm.es>
+      # TEMPORALMENTE DESHABILITADO - Variables de notificación comentadas en .env
+      # - name: Enviar notificación por correo
+      #   if: needs.deploy-production.result == 'success' && secrets.MAIL_SERVER != ''
+      #   uses: dawidd6/action-send-mail@v3
+      #   with:
+      #     server_address: ${{ secrets.MAIL_SERVER }}
+      #     server_port: ${{ secrets.MAIL_PORT }}
+      #     username: ${{ secrets.MAIL_USERNAME }}
+      #     password: ${{ secrets.MAIL_PASSWORD }}
+      #     subject: Actualización del sitio web - Dr. Roberto Sánchez Reolid
+      #     body: |
+      #       ¡Se ha realizado un nuevo despliegue del sitio web!
+      #       
+      #       Commit: ${{ github.event.head_commit.message }}
+      #       Autor: ${{ github.event.head_commit.author.name }}
+      #       Fecha: ${{ github.event.head_commit.timestamp }}
+      #       
+      #       Ver sitio: https://roberto-sreolid.netlify.app
+      #       
+      #       Todos los tests han pasado correctamente.
+      #       
+      #       Este es un mensaje automático del sistema de CI/CD.
+      #       Universidad de Castilla-La Mancha
+      #     to: roberto.sreolid@uclm.es
+      #     from: Despliegue Web UCLM <noreply@uclm.es>
