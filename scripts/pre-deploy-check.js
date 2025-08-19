@@ -6,9 +6,26 @@
  * el sitio está listo para ser desplegado.
  */
 
-const fs = require('fs');
-const path = require('path');
-const chalk = require('chalk'); // Necesitarás instalar chalk: npm i chalk
+import fs from 'fs';
+import path from 'path';
+import { fileURLToPath } from 'url';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
+// Directorio raíz del proyecto (un nivel arriba de scripts/)
+const projectRoot = path.dirname(__dirname);
+
+// Función para colorear texto (reemplazo simple de chalk)
+const chalk = {
+  blue: (text) => `\x1b[34m${text}\x1b[0m`,
+  green: (text) => `\x1b[32m${text}\x1b[0m`,
+  red: (text) => `\x1b[31m${text}\x1b[0m`,
+  yellow: (text) => `\x1b[33m${text}\x1b[0m`,
+  bold: (text) => `\x1b[1m${text}\x1b[0m`,
+  boldGreen: (text) => `\x1b[1m\x1b[32m${text}\x1b[0m`,
+  boldRed: (text) => `\x1b[1m\x1b[31m${text}\x1b[0m`
+};
 
 // Directorios y archivos esenciales que deben existir
 const requiredFiles = [
@@ -26,7 +43,7 @@ function checkRequiredFiles() {
   const missingFiles = [];
   
   for (const file of requiredFiles) {
-    const filePath = path.join(process.cwd(), file);
+    const filePath = path.join(projectRoot, file);
     
     if (!fs.existsSync(filePath)) {
       missingFiles.push(file);
@@ -47,7 +64,7 @@ function checkRequiredFiles() {
 function checkPagesRoutes() {
   console.log(chalk.blue('✓ Verificando rutas de páginas...'));
   
-  const pagesDir = path.join(process.cwd(), 'src/pages');
+  const pagesDir = path.join(projectRoot, 'src/pages');
   
   if (!fs.existsSync(pagesDir)) {
     console.log(chalk.red('✗ Directorio de páginas no encontrado'));
@@ -103,7 +120,7 @@ function checkContentUrls() {
   const problematicUrls = [];
   
   for (const file of contentFiles) {
-    const filePath = path.join(process.cwd(), file);
+    const filePath = path.join(projectRoot, file);
     
     if (fs.existsSync(filePath)) {
       const content = fs.readFileSync(filePath, 'utf8');
@@ -148,7 +165,7 @@ async function checkAccessibility() {
   
   try {
     // Verificamos si existe el build directory
-    if (!fs.existsSync(path.join(process.cwd(), 'dist'))) {
+    if (!fs.existsSync(path.join(projectRoot, 'dist'))) {
       console.log(chalk.yellow('⚠ No se encontró el directorio dist, no se pueden ejecutar pruebas de accesibilidad.'));
       console.log(chalk.yellow('  Ejecute primero "npm run build" para generar el sitio.'));
       return true; // No bloqueamos el despliegue
@@ -156,7 +173,7 @@ async function checkAccessibility() {
 
     // Intentamos importar el script de verificación de accesibilidad
     try {
-      const runA11yTests = require('./a11y-check');
+      const { default: runA11yTests } = await import('./a11y-check.js');
       const success = await runA11yTests();
       return success;
     } catch (err) {
@@ -191,10 +208,10 @@ async function runChecks() {
   const success = results.every(result => result);
   
   if (success) {
-    console.log(chalk.bold.green('\n✅ El sitio está listo para ser desplegado!\n'));
+    console.log(chalk.boldGreen('\n✅ El sitio está listo para ser desplegado!\n'));
     process.exit(0);
   } else {
-    console.log(chalk.bold.red('\n❌ Se encontraron problemas que deben ser resueltos antes del despliegue.\n'));
+    console.log(chalk.boldRed('\n❌ Se encontraron problemas que deben ser resueltos antes del despliegue.\n'));
     process.exit(1);
   }
 }
