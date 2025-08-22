@@ -1,0 +1,14 @@
+[
+  {
+    "id": "ia-educacion",
+    "file": "proyecto-ia-educacion.md"
+  },
+  {
+    "id": "sistemas-distribuidos", 
+    "file": "proyecto-sistemas-distribuidos.md"
+  },
+  {
+    "id": "big-data-salud",
+    "file": "proyecto-big-data-salud.md"
+  }
+]
