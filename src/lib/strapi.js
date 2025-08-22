@@ -2,8 +2,8 @@
 import axios from 'axios';
 
 // URL base de tu instancia de Strapi Cloud (reemplaza con tu URL real)
-const STRAPI_URL = process.env.PUBLIC_STRAPI_URL || 'https://tu-proyecto-strapi.strapiapp.com';
-const STRAPI_TOKEN = process.env.STRAPI_API_TOKEN;
+const STRAPI_URL = process.env.PUBLIC_STRAPI_URL || import.meta.env.PUBLIC_STRAPI_URL || 'https://creative-happiness-dc6aff0a15.strapiapp.com';
+const STRAPI_TOKEN = process.env.STRAPI_API_TOKEN || import.meta.env.STRAPI_API_TOKEN || '3b9de32bc6bd6e6116e175729a37851e4dff8cdcea4239dcc3cca1f0e33132a4e20cdb4c655968c5d29894d45656f8ddbb412f5b4f87c8225d33925a9e965b4baaf0a5538ed03a46e6918791877b38442719e5bc34a66a08c8aacd2012a3c63e68b2bf2225b24eeb3c556d774d8f3ca0e35b3f6cbffc1223e2db4e6f6d256d60';
 
 // Cliente de Axios configurado para Strapi
 const strapiClient = axios.create({
