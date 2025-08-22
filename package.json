@@ -28,7 +28,10 @@
     "scholar:scrape": "node scripts/scrape-scholar-ultra-optimized.js",
     "scholar:verify": "node scripts/verify-complete-system.js",
     "scholar:summary": "node scripts/generate-executive-summary.js",
-    "scholar:setup": "node scripts/setup-env-vars.js"
+    "scholar:setup": "node scripts/setup-env-vars.js",
+    "strapi:test": "echo 'Testing Strapi Cloud connection...' && curl -H 'Authorization: Bearer $STRAPI_API_TOKEN' $PUBLIC_STRAPI_URL/api/articles || echo 'Error: Configure STRAPI_API_TOKEN and PUBLIC_STRAPI_URL'",
+    "strapi:build": "npm run build && echo 'Build completed with Strapi integration'",
+    "strapi:dev": "echo 'Starting development server with Strapi integration...' && npm run dev"
   },
   "dependencies": {
     "@strapi/strapi": "^5.23.0",
