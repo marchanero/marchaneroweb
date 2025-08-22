@@ -303,61 +303,61 @@ const presupuestoTotal = proyectos.reduce((sum, p) => {
 <Layout title="Proyectos de Investigación - Dr. Roberto Sánchez Reolid">
 	<main class="min-h-screen bg-white dark:bg-gray-900 transition-colors duration-300">
 		<!-- Header mejorado -->
-		<header class="relative bg-gradient-to-br from-purple-600 via-blue-700 to-indigo-800 dark:from-purple-800 dark:via-blue-900 dark:to-indigo-900 text-white py-20 overflow-hidden hero-gradient floating-particles">
+		<header class="relative bg-gradient-to-br from-purple-600 via-blue-700 to-indigo-800 dark:from-purple-800 dark:via-blue-900 dark:to-indigo-900 text-white py-8 sm:py-12 lg:py-20 overflow-hidden hero-gradient floating-particles">
 			<!-- Fondo animado -->
 			<div class="absolute inset-0 bg-gradient-to-br from-purple-50/10 via-blue-50/10 to-indigo-50/10"></div>
 			
 			<div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 				<div class="animate-fade-in-up">
-					<h1 class="text-5xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-white via-purple-100 to-blue-100 bg-clip-text text-transparent">
+					<h1 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-4 sm:mb-6 bg-gradient-to-r from-white via-purple-100 to-blue-100 bg-clip-text text-transparent">
 						🚀 Proyectos de Investigación
 					</h1>
-					<p class="text-xl md:text-2xl text-purple-100 dark:text-purple-200 max-w-3xl leading-relaxed mb-6">
+					<p class="text-lg sm:text-xl md:text-2xl text-purple-100 dark:text-purple-200 max-w-3xl leading-relaxed mb-4 sm:mb-6">
 						Desarrollando tecnologías innovadoras para resolver los desafíos del futuro en 
 						<span class="font-semibold text-white">IA</span> y 
 						<span class="font-semibold text-white">Sistemas Distribuidos</span>
 					</p>
 					
 					<!-- Estadísticas del portafolio -->
-					<div class="animate-fade-in-up animate-delay-200 grid grid-cols-2 md:grid-cols-4 gap-4 max-w-2xl mt-8">
-						<div class="stats-card rounded-2xl p-4 text-center">
-							<div class="text-2xl font-bold text-white">{totalProyectos}</div>
-							<div class="text-sm text-purple-200">Total Proyectos</div>
+					<div class="animate-fade-in-up animate-delay-200 grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4 max-w-2xl mt-6 sm:mt-8">
+						<div class="stats-card rounded-2xl p-3 sm:p-4 text-center">
+							<div class="text-lg sm:text-2xl font-bold text-white">{totalProyectos}</div>
+							<div class="text-xs sm:text-sm text-purple-200">Total Proyectos</div>
 						</div>
-						<div class="stats-card rounded-2xl p-4 text-center">
-							<div class="text-2xl font-bold text-white">{proyectosActivos}</div>
-							<div class="text-sm text-purple-200">En Curso</div>
+						<div class="stats-card rounded-2xl p-3 sm:p-4 text-center">
+							<div class="text-lg sm:text-2xl font-bold text-white">{proyectosActivos}</div>
+							<div class="text-xs sm:text-sm text-purple-200">En Curso</div>
 						</div>
-						<div class="stats-card rounded-2xl p-4 text-center">
-							<div class="text-2xl font-bold text-white">{proyectosFinalizados}</div>
-							<div class="text-sm text-purple-200">Finalizados</div>
+						<div class="stats-card rounded-2xl p-3 sm:p-4 text-center">
+							<div class="text-lg sm:text-2xl font-bold text-white">{proyectosFinalizados}</div>
+							<div class="text-xs sm:text-sm text-purple-200">Finalizados</div>
 						</div>
-						<div class="stats-card rounded-2xl p-4 text-center">
-							<div class="text-2xl font-bold text-white">{(presupuestoTotal / 1000).toFixed(0)}k€</div>
-							<div class="text-sm text-purple-200">Financiación</div>
+						<div class="stats-card rounded-2xl p-3 sm:p-4 text-center">
+							<div class="text-lg sm:text-2xl font-bold text-white">{(presupuestoTotal / 1000).toFixed(0)}k€</div>
+							<div class="text-xs sm:text-sm text-purple-200">Financiación</div>
 						</div>
 					</div>
 				</div>
 			</div>
 		</header>
 
-		<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+		<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12 lg:py-16">
 			
 			<!-- Proyectos destacados -->
-			<section class="mb-16">
+			<section class="mb-8 sm:mb-12 lg:mb-16">
 				<div class="animate-fade-in-up">
-					<h2 class="text-3xl font-bold text-gray-900 dark:text-white mb-2 flex items-center space-x-3">
+					<h2 class="text-2xl sm:text-3xl font-bold text-gray-900 dark:text-white mb-2 flex items-center space-x-3">
 						<span>⭐</span>
 						<span>Proyectos Destacados</span>
 					</h2>
-					<p class="text-gray-600 dark:text-gray-400 mb-8">Investigaciones principales con mayor impacto e innovación</p>
+					<p class="text-sm sm:text-base text-gray-600 dark:text-gray-400 mb-6 sm:mb-8">Investigaciones principales con mayor impacto e innovación</p>
 				</div>
 				
-				<div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+				<div class="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8">
 					{proyectosOrdenados.filter(p => p.destacado).map((proyecto, index) => (
 						<article class={`card-hover bg-white dark:bg-gray-800 rounded-2xl shadow-xl overflow-hidden animate-fade-in-up`} style={`animation-delay: ${index * 0.2}s`}>
 							<!-- Imagen del proyecto -->
-							<div class="relative h-48 overflow-hidden">
+							<div class="relative h-40 sm:h-48 overflow-hidden">
 								<img 
 									src={proyecto.imagen} 
 									alt={proyecto.altImagen}
@@ -365,56 +365,56 @@ const presupuestoTotal = proyectos.reduce((sum, p) => {
 								/>
 								<div class="project-image-overlay absolute inset-0 flex items-center justify-center">
 									<div class="text-white text-center">
-										<div class="text-3xl mb-2">🔍</div>
-										<p class="font-semibold">Ver detalles</p>
+										<div class="text-2xl sm:text-3xl mb-2">🔍</div>
+										<p class="font-semibold text-sm sm:text-base">Ver detalles</p>
 									</div>
 								</div>
 								{proyecto.estado === 'En curso' && (
-									<div class="absolute top-4 right-4 bg-green-500 text-white px-3 py-1 rounded-full text-sm font-medium project-badge">
+									<div class="absolute top-2 sm:top-4 right-2 sm:right-4 bg-green-500 text-white px-2 sm:px-3 py-1 rounded-full text-xs sm:text-sm font-medium project-badge">
 										🟢 En curso
 									</div>
 								)}
 								{proyecto.estado === 'Finalizado' && (
-									<div class="absolute top-4 right-4 bg-blue-500 text-white px-3 py-1 rounded-full text-sm font-medium">
+									<div class="absolute top-2 sm:top-4 right-2 sm:right-4 bg-blue-500 text-white px-2 sm:px-3 py-1 rounded-full text-xs sm:text-sm font-medium">
 										✅ Finalizado
 									</div>
 								)}
 							</div>
 							
 							<!-- Contenido del proyecto -->
-							<div class="p-6">
-								<div class="flex flex-wrap gap-2 mb-4">
+							<div class="p-4 sm:p-6">
+								<div class="flex flex-wrap gap-1 sm:gap-2 mb-3 sm:mb-4">
 									{proyecto.etiquetas.map(etiqueta => (
-										<span class="bg-gradient-to-r from-blue-100 to-purple-100 dark:from-blue-900 dark:to-purple-900 text-blue-800 dark:text-blue-200 px-3 py-1 rounded-full text-sm font-medium">
+										<span class="bg-gradient-to-r from-blue-100 to-purple-100 dark:from-blue-900 dark:to-purple-900 text-blue-800 dark:text-blue-200 px-2 sm:px-3 py-1 rounded-full text-xs sm:text-sm font-medium">
 											{etiqueta}
 										</span>
 									))}
 								</div>
 								
-								<h3 class="text-xl font-bold text-gray-900 dark:text-white mb-3">
+								<h3 class="text-lg sm:text-xl font-bold text-gray-900 dark:text-white mb-2 sm:mb-3">
 									{proyecto.titulo}
 								</h3>
 								
-								<p class="text-gray-700 dark:text-gray-300 mb-4 leading-relaxed">
+								<p class="text-sm sm:text-base text-gray-700 dark:text-gray-300 mb-3 sm:mb-4 leading-relaxed">
 									{proyecto.descripcion}
 								</p>
 								
 								<!-- Progreso -->
-								<div class="mb-4">
-									<div class="flex justify-between items-center mb-2">
-										<span class="text-sm font-medium text-gray-700 dark:text-gray-300">Progreso</span>
-										<span class="text-sm font-bold text-blue-600 dark:text-blue-400">{proyecto.progreso}%</span>
+								<div class="mb-3 sm:mb-4">
+									<div class="flex justify-between items-center mb-1 sm:mb-2">
+										<span class="text-xs sm:text-sm font-medium text-gray-700 dark:text-gray-300">Progreso</span>
+										<span class="text-xs sm:text-sm font-bold text-blue-600 dark:text-blue-400">{proyecto.progreso}%</span>
 									</div>
-									<div class="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2.5">
+									<div class="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2 sm:h-2.5">
 										<div 
-											class="bg-gradient-to-r from-blue-500 to-purple-600 h-2.5 rounded-full progress-bar"
+											class="bg-gradient-to-r from-blue-500 to-purple-600 h-2 sm:h-2.5 rounded-full progress-bar"
 											style={`--progress-width: ${proyecto.progreso}%`}
 										></div>
 									</div>
 								</div>
 								
 								<!-- Información adicional -->
-								<div class="space-y-2 mb-6 text-sm">
+								<div class="space-y-1 sm:space-y-2 mb-4 sm:mb-6 text-xs sm:text-sm">
 									<div class="flex justify-between">
 										<span class="text-gray-600 dark:text-gray-400">Período:</span>
 										<span class="font-medium text-gray-900 dark:text-white">{proyecto.fechaInicio} - {proyecto.fechaFin}</span>
@@ -426,10 +426,10 @@ const presupuestoTotal = proyectos.reduce((sum, p) => {
 								</div>
 								
 								<!-- Botones de acción -->
-								<div class="flex flex-wrap gap-3">
+								<div class="flex flex-wrap gap-2 sm:gap-3">
 									<a 
 										href={proyecto.url} 
-										class="btn-enhanced flex-1 text-center py-2 px-4 text-white font-medium rounded-lg transition-all duration-200"
+										class="btn-enhanced flex-1 text-center py-2 px-3 sm:px-4 text-white font-medium rounded-lg transition-all duration-200 text-sm"
 									>
 										Ver detalles completos
 									</a>
@@ -438,7 +438,7 @@ const presupuestoTotal = proyectos.reduce((sum, p) => {
 											href={proyecto.github} 
 											target="_blank" 
 											rel="noopener noreferrer"
-											class="bg-gray-800 hover:bg-gray-700 text-white py-2 px-4 rounded-lg transition-colors duration-200 flex items-center space-x-2"
+											class="bg-gray-800 hover:bg-gray-700 text-white py-2 px-3 sm:px-4 rounded-lg transition-colors duration-200 flex items-center space-x-1 sm:space-x-2 text-sm"
 										>
 											<span>💻</span>
 											<span>Código</span>
@@ -453,16 +453,16 @@ const presupuestoTotal = proyectos.reduce((sum, p) => {
 
 			<!-- Todos los proyectos -->
 			<section class="animate-fade-in-up animate-delay-300">
-				<h2 class="text-3xl font-bold text-gray-900 dark:text-white mb-8 flex items-center space-x-3">
+				<h2 class="text-2xl sm:text-3xl font-bold text-gray-900 dark:text-white mb-6 sm:mb-8 flex items-center space-x-3">
 					<span>📋</span>
 					<span>Portafolio Completo</span>
 				</h2>
 				
-				<div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
+				<div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4 sm:gap-6">
 					{proyectosOrdenados.map((proyecto, index) => (
 						<article class={`card-hover bg-white dark:bg-gray-800 rounded-xl shadow-lg overflow-hidden animate-fade-in-up`} style={`animation-delay: ${index * 0.1}s`}>
 							<!-- Imagen compacta -->
-							<div class="relative h-32 overflow-hidden">
+							<div class="relative h-28 sm:h-32 overflow-hidden">
 								<img 
 									src={proyecto.imagen} 
 									alt={proyecto.altImagen}
@@ -470,35 +470,35 @@ const presupuestoTotal = proyectos.reduce((sum, p) => {
 								/>
 								<div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
 								<div class="absolute bottom-2 left-2 right-2">
-									<h3 class="text-white font-bold text-sm line-clamp-2">
+									<h3 class="text-white font-bold text-xs sm:text-sm line-clamp-2">
 										{proyecto.titulo}
 									</h3>
 								</div>
 							</div>
 							
 							<!-- Contenido compacto -->
-							<div class="p-4">
-								<div class="flex flex-wrap gap-1 mb-3">
+							<div class="p-3 sm:p-4">
+								<div class="flex flex-wrap gap-1 mb-2 sm:mb-3">
 									{proyecto.etiquetas.slice(0, 2).map(etiqueta => (
-										<span class="bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 px-2 py-1 rounded text-xs">
+										<span class="bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 px-1.5 sm:px-2 py-0.5 sm:py-1 rounded text-xs">
 											{etiqueta}
 										</span>
 									))}
 									{proyecto.etiquetas.length > 2 && (
-										<span class="bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-400 px-2 py-1 rounded text-xs">
+										<span class="bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-400 px-1.5 sm:px-2 py-0.5 sm:py-1 rounded text-xs">
 											+{proyecto.etiquetas.length - 2}
 										</span>
 									)}
 								</div>
 								
-								<p class="text-gray-600 dark:text-gray-400 text-sm mb-4 line-clamp-3">
+								<p class="text-gray-600 dark:text-gray-400 text-xs sm:text-sm mb-3 sm:mb-4 line-clamp-3">
 									{proyecto.descripcion}
 								</p>
 								
 								<!-- Información clave -->
-								<div class="flex justify-between items-center mb-4 text-xs text-gray-500 dark:text-gray-400">
-									<span>{proyecto.fechaInicio} - {proyecto.fechaFin}</span>
-									<span class={`px-2 py-1 rounded-full ${proyecto.estado === 'En curso' ? 'bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200' : 'bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200'}`}>
+								<div class="flex justify-between items-center mb-3 sm:mb-4 text-xs text-gray-500 dark:text-gray-400">
+									<span class="text-xs">{proyecto.fechaInicio} - {proyecto.fechaFin}</span>
+									<span class={`px-1.5 sm:px-2 py-0.5 sm:py-1 rounded-full text-xs ${proyecto.estado === 'En curso' ? 'bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200' : 'bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200'}`}>
 										{proyecto.estado}
 									</span>
 								</div>
@@ -506,7 +506,7 @@ const presupuestoTotal = proyectos.reduce((sum, p) => {
 								<!-- Botón de acción -->
 								<a 
 									href={proyecto.url} 
-									class="w-full bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-white py-2 px-4 rounded-lg text-center text-sm font-medium transition-all duration-200 block"
+									class="w-full bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-white py-2 px-3 sm:px-4 rounded-lg text-center text-xs sm:text-sm font-medium transition-all duration-200 block"
 								>
 									Ver proyecto
 								</a>
@@ -517,25 +517,25 @@ const presupuestoTotal = proyectos.reduce((sum, p) => {
 			</section>
 
 			<!-- Call to action -->
-			<section class="mt-16 text-center animate-fade-in-up animate-delay-400">
-				<div class="bg-gradient-to-r from-blue-50 to-purple-50 dark:from-gray-800 dark:to-gray-700 rounded-2xl p-8 card-hover">
-					<h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-4">
+			<section class="mt-8 sm:mt-12 lg:mt-16 text-center animate-fade-in-up animate-delay-400">
+				<div class="bg-gradient-to-r from-blue-50 to-purple-50 dark:from-gray-800 dark:to-gray-700 rounded-2xl p-6 sm:p-8 card-hover">
+					<h3 class="text-xl sm:text-2xl font-bold text-gray-900 dark:text-white mb-3 sm:mb-4">
 						¿Interesado en colaborar?
 					</h3>
-					<p class="text-gray-600 dark:text-gray-400 mb-6 max-w-2xl mx-auto">
+					<p class="text-sm sm:text-base text-gray-600 dark:text-gray-400 mb-4 sm:mb-6 max-w-2xl mx-auto">
 						Si tienes ideas para proyectos innovadores o quieres formar parte de nuestro equipo de investigación, 
 						no dudes en ponerte en contacto conmigo.
 					</p>
-					<div class="flex flex-wrap justify-center gap-4">
+					<div class="flex flex-wrap justify-center gap-3 sm:gap-4">
 						<a 
 							href="/contacto" 
-							class="btn-enhanced px-6 py-3 text-white font-medium rounded-lg transition-all duration-200"
+							class="btn-enhanced px-4 sm:px-6 py-2 sm:py-3 text-white font-medium rounded-lg transition-all duration-200 text-sm sm:text-base"
 						>
 							💬 Contactar
 						</a>
 						<a 
 							href="/publicaciones" 
-							class="bg-white dark:bg-gray-800 border-2 border-blue-500 text-blue-600 dark:text-blue-400 hover:bg-blue-50 dark:hover:bg-gray-700 px-6 py-3 font-medium rounded-lg transition-all duration-200"
+							class="bg-white dark:bg-gray-800 border-2 border-blue-500 text-blue-600 dark:text-blue-400 hover:bg-blue-50 dark:hover:bg-gray-700 px-4 sm:px-6 py-2 sm:py-3 font-medium rounded-lg transition-all duration-200 text-sm sm:text-base"
 						>
 							📚 Ver Publicaciones
 						</a>
