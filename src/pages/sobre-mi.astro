@@ -8,15 +8,38 @@ const aboutMePath = path.resolve('./content/about-me/about-me.md');
 const { data: aboutMeData, content: aboutMeContent } = matter.read(aboutMePath);
 ---
 
+<style>
+	.prose {
+		max-width: 65ch;
+	}
+	
+	.prose h1, .prose h2, .prose h3 {
+		color: #1f2937;
+	}
+	
+	.dark .prose h1, .dark .prose h2, .dark .prose h3 {
+		color: #f9fafb;
+	}
+	
+	.prose p {
+		color: #4b5563;
+		line-height: 1.7;
+	}
+	
+	.dark .prose p {
+		color: #d1d5db;
+	}
+</style>
+
 <Layout title={aboutMeData.title}>
 	<main class="min-h-screen bg-white dark:bg-gray-900 transition-colors duration-300">
 		<section class="max-w-4xl mx-auto py-12 px-4">
-			<h1 class="text-3xl sm:text-4xl md:text-5xl font-bold mb-6 text-center">
+			<h1 class="text-3xl sm:text-4xl md:text-5xl font-bold mb-6 text-center text-gray-900 dark:text-white">
 				{aboutMeData.title}
 			</h1>
-			<p class="text-lg text-center mb-8">{aboutMeData.summary}</p>
-			<div class="prose mx-auto">
-				{aboutMeContent}
+			<p class="text-lg text-center mb-8 text-gray-600 dark:text-gray-300">{aboutMeData.summary}</p>
+			<div class="prose mx-auto dark:prose-invert">
+				<div set:html={aboutMeContent}></div>
 			</div>
 		</section>
 	</main>
