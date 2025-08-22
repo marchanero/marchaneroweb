@@ -1,26 +1,11 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import RecentPublications from '../components/RecentPublications.astro';
-import ScholarMetrics from '../components/ScholarMetrics.astro';
-import scholarData from '../data/scholar.json';
-import { Image } from 'astro:assets';
-import profileImage from '../assets/robert_ghibli.jpg';
+import fs from 'fs';
+import path from 'path';
+import matter from 'gray-matter';
 
-// Obtener las 3 publicaciones más recientes y convertir al formato esperado
-const recentPublications = scholarData.publications.slice(0, 3).map(pub => ({
-	title: pub.title,
-	link: pub.link,
-	citation_id: pub.citationId || '',
-	authors: Array.isArray(pub.authors) ? pub.authors.join(', ') : pub.authors || '',
-	publication: pub.publication || '',
-	cited_by: {
-		value: pub.citedBy || 0,
-		link: pub.citedByLink || '',
-		serpapi_link: '',
-		cites_id: ''
-	},
-	year: (pub.year || 0).toString()
-}));
+const indexPath = path.resolve('./content/index.md');
+const { data: indexData, content: indexContent } = matter.read(indexPath);
 ---
 
 <style>
@@ -179,93 +164,19 @@ const recentPublications = scholarData.publications.slice(0, 3).map(pub => ({
 	}
 	
 	/* Partículas secundarias para secciones adicionales */
-	.floating-particles-subtle::before {
-		content: '';
-		position: absolute;
-		top: 30%;
-		left: 20%;
-		width: 3px;
-		height: 3px;
-		background: linear-gradient(45deg, #10b981, #3b82f6);
-		border-radius: 50%;
-		animation: floatSubtle 10s ease-in-out infinite;
-		opacity: 0.3;
-		z-index: 1;
-	}
-	
-	.floating-particles-subtle::after {
-		content: '';
-		position: absolute;
-		top: 70%;
-		right: 25%;
-		width: 2px;
-		height: 2px;
-		background: linear-gradient(45deg, #8b5cf6, #ec4899);
-		border-radius: 50%;
-		animation: floatSubtle 12s ease-in-out infinite reverse;
-		opacity: 0.4;
-		z-index: 1;
-	}
-	
-	@keyframes float {
-		0%, 100% {
-			transform: translateY(0px) rotate(0deg);
-		}
-		33% {
-			transform: translateY(-20px) rotate(120deg);
-		}
-		66% {
-			transform: translateY(10px) rotate(240deg);
-		}
-	}
-	
-	@keyframes floatSubtle {
-		0%, 100% {
-			transform: translateY(0px) translateX(0px) rotate(0deg);
-		}
-		25% {
-			transform: translateY(-10px) translateX(5px) rotate(90deg);
-		}
-		50% {
-			transform: translateY(5px) translateX(-3px) rotate(180deg);
-		}
-		75% {
-			transform: translateY(-5px) translateX(8px) rotate(270deg);
-		}
-	}
-	
-	/* Partículas para modo oscuro */
-	.dark .floating-particles::before,
-	.dark .floating-particles::after {
-		opacity: 0.4;
-	}
-	
-	.dark .floating-particles-subtle::before,
-	.dark .floating-particles-subtle::after {
-		opacity: 0.2;
-	}
-	
-	/* Accesibilidad */
-	@media (prefers-reduced-motion: reduce) {
-		* {
-			animation-duration: 0.01ms !important;
-			animation-iteration-count: 1 !important;
-			transition-duration: 0.01ms !important;
-		}
-	}
-</style>
-
-<Layout title="Dr. Roberto Sánchez Reolid - Investigador en IA y Computación">
-	<!-- Hero Section mejorado -->
-	<section class="relative min-h-screen hero-gradient floating-particles overflow-hidden">
-		<!-- Fondo animado -->
-		<div class="absolute inset-0 bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50 dark:from-gray-900 dark:via-blue-900 dark:to-purple-900"></div>
-		
-		<div class="relative max-w-6xl mx-auto px-4 py-8 sm:py-12 lg:py-20 flex flex-col lg:flex-row items-center min-h-screen">
-			<!-- Imagen de perfil mejorada -->
-			<div class="lg:w-1/3 mb-8 sm:mb-12 lg:mb-0 animate-fade-in-left">
-				<div class="relative">
-					<div class="relative w-64 sm:w-80 h-80 sm:h-[480px] mx-auto overflow-hidden rounded-3xl profile-glow">
+	<Layout title={indexData.title}>
+		<main class="min-h-screen bg-white dark:bg-gray-900 transition-colors duration-300">
+			<section class="max-w-4xl mx-auto py-12 px-4">
+				<h1 class="text-3xl sm:text-4xl md:text-5xl font-bold mb-6 text-center">
+					{indexData.title}
+				</h1>
+				<p class="text-lg text-center mb-8">{indexData.summary}</p>
+				<div class="prose mx-auto">
+					{indexContent}
+				</div>
+			</section>
+		</main>
+	</Layout>
 						<Image 
 							src={profileImage} 
 							alt="Dr. Roberto Sánchez Reolid"

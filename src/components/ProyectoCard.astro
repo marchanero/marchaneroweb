@@ -1,0 +1,18 @@
+---
+const { proyecto } = Astro.props;
+---
+<article class="proyecto-card">
+  <h2>{proyecto.title}</h2>
+  <p><strong>Estado:</strong> {proyecto.estado}</p>
+  <p><strong>Resumen:</strong> {proyecto.summary}</p>
+  {proyecto.etiquetas && Array.isArray(proyecto.etiquetas) && (
+    <ul>
+      {proyecto.etiquetas.map((tag: string) => <li>{tag}</li>)}
+    </ul>
+  )}
+  {proyecto.descripcion && (
+    <div class="proyecto-descripcion">
+      {proyecto.descripcion}
+    </div>
+  )}
+</article>

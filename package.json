@@ -31,7 +31,10 @@
     "scholar:setup": "node scripts/setup-env-vars.js"
   },
   "dependencies": {
+    "@astrojs/markdown-remark": "^6.3.6",
+    "@astrojs/mdx": "^4.3.4",
     "dotenv": "^16.5.0",
+    "gray-matter": "^4.0.3",
     "js-yaml": "^4.1.0",
     "serpapi": "^2.1.0"
   },

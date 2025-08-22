@@ -1,13 +1,26 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import fs from 'fs';
+import path from 'path';
+import matter from 'gray-matter';
+
+const aboutMePath = path.resolve('./content/about-me/about-me.md');
+const { data: aboutMeData, content: aboutMeContent } = matter.read(aboutMePath);
 ---
 
-<Layout title="Sobre Mí | Roberto Sánchez Reolid">
-	<!-- Header Section -->
-	<header class="relative bg-gradient-to-br from-blue-600 via-indigo-700 to-purple-800 text-white py-8 sm:py-12 lg:py-20 px-4 floating-particles">
-		<div class="max-w-4xl mx-auto text-center">
-			<h1 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-4 sm:mb-6 animate-fade-in-up">
-				Sobre Mí
+<Layout title={aboutMeData.title}>
+	<main class="min-h-screen bg-white dark:bg-gray-900 transition-colors duration-300">
+		<section class="max-w-4xl mx-auto py-12 px-4">
+			<h1 class="text-3xl sm:text-4xl md:text-5xl font-bold mb-6 text-center">
+				{aboutMeData.title}
+			</h1>
+			<p class="text-lg text-center mb-8">{aboutMeData.summary}</p>
+			<div class="prose mx-auto">
+				{aboutMeContent}
+			</div>
+		</section>
+	</main>
+</Layout>
 			</h1>
 			<p class="text-lg sm:text-xl md:text-2xl text-blue-100 max-w-3xl mx-auto animate-fade-in-up animate-delay-200">
 				Investigador, Profesor y Apasionado por la Tecnología

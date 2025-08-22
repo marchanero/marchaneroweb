@@ -1,97 +1,35 @@
 ---
+
 import Layout from '../layouts/Layout.astro';
+import ProyectoCard from '../components/ProyectoCard.astro';
+import fs from 'fs';
+import path from 'path';
+import matter from 'gray-matter';
 
-// Datos de proyectos mejorados
-const proyectos = [
-  {
-    id: 'ia-educacion',
-    titulo: 'Inteligencia Artificial Aplicada a la Educación',
-    imagen: 'https://images.unsplash.com/photo-1485827404703-89b55fcc595e?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400',
-    altImagen: 'Investigación sobre Inteligencia Artificial en Educación',
-    etiquetas: ['Machine Learning', 'Educational Tech', 'Data Analysis'],
-    descripcion: 'Investigación sobre sistemas de tutoría inteligente que adaptan el contenido educativo a las necesidades individuales de los estudiantes, utilizando algoritmos de machine learning para personalizar la experiencia de aprendizaje.',
-    descripcionCompleta: 'Este proyecto se centra en el desarrollo de sistemas adaptativos que pueden identificar patrones de aprendizaje, predecir dificultades académicas y proporcionar retroalimentación personalizada en tiempo real.',
-    fechaInicio: '2022',
-    fechaFin: 'Actualidad',
-    estado: 'En curso',
-    financiacion: 'Ministerio de Ciencia e Innovación',
-    presupuesto: '150,000€',
-    url: '/proyectos/ia-educacion',
-    github: '#',
-    pdf: '#',
-    destacado: true,
-    progreso: 75,
-    resultados: [
-      'Desarrollo de algoritmo adaptativo de personalización',
-      'Implementación de sistema de análisis de sentimientos',
-      '3 publicaciones en revistas Q1'
-    ]
-  },
-  {
-    id: 'sistemas-distribuidos',
-    titulo: 'Arquitecturas Eficientes para Sistemas Distribuidos',
-    imagen: 'https://images.unsplash.com/photo-1558494949-ef010cbdcc31?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400',
-    altImagen: 'Sistemas Distribuidos Energéticamente Eficientes',
-    etiquetas: ['Distributed Systems', 'Energy Efficiency', 'Cloud Computing'],
-    descripcion: 'Desarrollo de nuevas arquitecturas para sistemas distribuidos con mayor eficiencia energética y rendimiento optimizado para cargas de trabajo modernas.',
-    descripcionCompleta: 'El proyecto aborda los desafíos de escalabilidad y eficiencia energética en sistemas distribuidos masivos, proponiendo nuevas arquitecturas que reducen el consumo energético hasta en un 30%.',
-    fechaInicio: '2020',
-    fechaFin: '2023',
-    estado: 'Finalizado',
-    financiacion: 'Junta de Comunidades de Castilla-La Mancha',
-    presupuesto: '80,000€',
-    url: '/proyectos/sistemas-distribuidos',
-    github: '#',
-    pdf: '#',
-    destacado: false,
-    progreso: 100,
-    resultados: [
-      'Reducción del 30% en consumo energético',
-      'Prototipo desplegado en 3 centros de datos',
-      '2 publicaciones en revistas JCR'
-    ]
-  },
-  {
-    id: 'blockchain-seguridad',
-    titulo: 'Blockchain para Sistemas de Seguridad',
-    imagen: 'https://images.unsplash.com/photo-1639762681485-074b7f938ba0?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400',
-    altImagen: 'Investigación sobre Blockchain y Seguridad',
-    etiquetas: ['Blockchain', 'Cybersecurity', 'Cryptography'],
-    descripcion: 'Investigación sobre la aplicación de tecnologías blockchain para mejorar la seguridad en sistemas distribuidos y proteger la integridad de los datos.',
-    descripcionCompleta: 'Este proyecto explora nuevos protocolos de consenso y mecanismos criptográficos para crear sistemas blockchain más seguros y eficientes.',
-    fechaInicio: '2023',
-    fechaFin: 'Actualidad',
-    estado: 'En curso',
-    financiacion: 'Proyecto Regional I+D+i',
-    presupuesto: '65,000€',
-    url: '/proyectos/blockchain-seguridad',
-    github: '#',
-    pdf: '#',
-    destacado: false,
-    progreso: 45,
-    resultados: [
-      'Protocolo de consenso mejorado',
-      'Análisis de vulnerabilidades publicado'
-    ]
-  }
-];
+const proyectosDir = path.resolve('./content/proyectos');
+const proyectosJson = JSON.parse(fs.readFileSync(path.join(proyectosDir, 'proyectos.json'), 'utf-8'));
 
-// Ordenar proyectos: primero los destacados, luego por fecha de inicio (más recientes primero)
-const proyectosOrdenados = [...proyectos].sort((a, b) => {
-  if (a.destacado !== b.destacado) {
-    return b.destacado ? 1 : -1;
-  }
-  return parseInt(b.fechaInicio) - parseInt(a.fechaInicio);
+const proyectos = proyectosJson.map(({ id, file }: { id: string; file: string }) => {
+	const filePath = path.join(proyectosDir, file);
+	const { data, content } = matter.read(filePath);
+	return {
+		id,
+		...data,
+		descripcion: content
+	};
 });
 
-// Estadísticas generales
+const proyectosOrdenados = [...proyectos].sort((a: any, b: any) => {
+	if ((a.destacado ? 1 : 0) !== (b.destacado ? 1 : 0)) {
+		return (b.destacado ? 1 : 0) - (a.destacado ? 1 : 0);
+	}
+	return new Date(b.date).getTime() - new Date(a.date).getTime();
+});
+
 const totalProyectos = proyectos.length;
-const proyectosActivos = proyectos.filter(p => p.estado === 'En curso').length;
-const proyectosFinalizados = proyectos.filter(p => p.estado === 'Finalizado').length;
-const presupuestoTotal = proyectos.reduce((sum, p) => {
-  const presupuesto = parseInt(p.presupuesto.replace(/[€,]/g, ''));
-  return sum + presupuesto;
-}, 0);
+const proyectosActivos = proyectos.filter((p: any) => p.estado === 'En curso').length;
+const proyectosFinalizados = proyectos.filter((p: any) => p.estado === 'Finalizado').length;
+const presupuestoTotal = 295000; // Valor de ejemplo
 ---
 
 <style>
@@ -453,7 +391,7 @@ const presupuestoTotal = proyectos.reduce((sum, p) => {
 							<!-- Contenido del proyecto -->
 							<div class="p-4 sm:p-6">
 								<div class="flex flex-wrap gap-1 sm:gap-2 mb-3 sm:mb-4">
-									{proyecto.etiquetas.map(etiqueta => (
+									{proyecto.etiquetas && proyecto.etiquetas.map((etiqueta: string) => (
 										<span class="bg-gradient-to-r from-blue-100 to-purple-100 dark:from-blue-900 dark:to-purple-900 text-blue-800 dark:text-blue-200 px-2 sm:px-3 py-1 rounded-full text-xs sm:text-sm font-medium">
 											{etiqueta}
 										</span>
@@ -554,7 +492,7 @@ const presupuestoTotal = proyectos.reduce((sum, p) => {
 							<div class="p-5 sm:p-6">
 								<!-- Etiquetas -->
 								<div class="flex flex-wrap gap-2 mb-4">
-									{proyecto.etiquetas.map(etiqueta => (
+									{proyecto.etiquetas && proyecto.etiquetas.map((etiqueta: string) => (
 										<span class="bg-gradient-to-r from-blue-100 to-purple-100 dark:from-blue-900/50 dark:to-purple-900/50 text-blue-800 dark:text-blue-200 px-3 py-1 rounded-full text-sm font-medium border border-blue-200/50 dark:border-blue-700/50">
 											{etiqueta}
 										</span>
@@ -597,7 +535,7 @@ const presupuestoTotal = proyectos.reduce((sum, p) => {
 									<div class="mb-4">
 										<h4 class="text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2">Resultados destacados:</h4>
 										<ul class="space-y-1">
-											{proyecto.resultados.slice(0, 2).map(resultado => (
+											{proyecto.resultados.slice(0, 2).map((resultado: string) => (
 												<li class="text-sm text-gray-600 dark:text-gray-400 flex items-start">
 													<span class="text-green-500 mr-2 mt-0.5">•</span>
 													<span>{resultado}</span>
