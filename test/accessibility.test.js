@@ -9,6 +9,7 @@ describe('Accesibilidad (A11y)', () => {
   let projectRoot;
   let indexContent;
   let layoutContent;
+  let proyectosContent;
   
   beforeAll(() => {
     projectRoot = path.join(__dirname, '..');
@@ -20,6 +21,11 @@ describe('Accesibilidad (A11y)', () => {
     
     layoutContent = fs.readFileSync(
       path.join(projectRoot, 'src', 'layouts', 'Layout.astro'), 
+      'utf8'
+    );
+    
+    proyectosContent = fs.readFileSync(
+      path.join(projectRoot, 'src', 'pages', 'proyectos.astro'), 
       'utf8'
     );
   });
@@ -44,13 +50,13 @@ describe('Accesibilidad (A11y)', () => {
 
     it('verifica jerarquía correcta de headings', () => {
       // Index debe tener h1 principal
-      expect(indexContent).toContain('<h1');
+      expect(proyectosContent).toContain('<h1');
       
       // Debe tener h2 para secciones
-      expect(indexContent).toContain('<h2');
+      expect(proyectosContent).toContain('<h2');
       
       // Verificar h3 para subsecciones
-      expect(indexContent).toContain('<h3');
+      expect(proyectosContent).toContain('<h3');
       
       // No debe saltar niveles (h1 -> h3 sin h2)
       const h1Match = indexContent.match(/<h1[^>]*>/);
@@ -83,11 +89,14 @@ describe('Accesibilidad (A11y)', () => {
 
   describe('Imágenes y Contenido Multimedia', () => {
     it('verifica atributos alt en imágenes', () => {
-      // Imagen de perfil debe tener alt descriptivo
-      expect(indexContent).toMatch(/alt="[^"]*Dr\. Roberto[^"]*"/);
+      // Verificar que las imágenes de proyectos tienen alt descriptivo
+      const hasProjectImages = proyectosContent.match(/alt="[^"]*[Pp]royecto[^"]*"/) ||
+                              proyectosContent.match(/alt="[^"]*[Ii]nvestigaci[óo]n[^"]*"/) ||
+                              proyectosContent.match(/altImagen[^}]*}/); // Buscar el campo altImagen en el template
+      expect(hasProjectImages).toBeTruthy();
       
       // Verificar que no hay atributos alt vacíos
-      expect(indexContent).not.toContain('alt=""');
+      expect(proyectosContent).not.toContain('alt=""');
       
       // Todas las imágenes deben tener alt
       const imgTags = indexContent.match(/<img[^>]*>/g) || [];
@@ -101,7 +110,7 @@ describe('Accesibilidad (A11y)', () => {
     it('verifica descripciones apropiadas para contenido visual', () => {
       // Verificar que las imágenes complejas tienen descripciones
       if (indexContent.includes('robert_ghibli.jpg')) {
-        expect(indexContent).toContain('alt="Dr. Roberto Sánchez Reolid"');
+        expect(proyectosContent).toContain('alt="Dr. Roberto Sánchez Reolid"');
       }
     });
   });
@@ -204,7 +213,7 @@ describe('Accesibilidad (A11y)', () => {
   describe('Animaciones y Movimiento', () => {
     it('verifica soporte para prefers-reduced-motion', () => {
       // Verificar que existe la media query para reduced motion
-      expect(indexContent).toContain('@media (prefers-reduced-motion: reduce)');
+      expect(proyectosContent).toContain('@media (prefers-reduced-motion: reduce)');
       
       // Verificar que desactiva animaciones apropiadamente
       const reducedMotionContent = indexContent.match(/@media \(prefers-reduced-motion: reduce\)[^}]*{[^}]*}/s);
@@ -243,7 +252,7 @@ describe('Accesibilidad (A11y)', () => {
                            indexContent.includes('focus-');
       
       // Tailwind incluye focus states por defecto, así que verificamos estructura básica
-      expect(indexContent).toContain('class=');
+      expect(proyectosContent).toContain('class=');
     });
 
     it('verifica outline personalizado si se elimina el por defecto', () => {

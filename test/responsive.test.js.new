@@ -1,10 +1,7 @@
 // test/responsive.test.js
-import fs from 'fs';
-import path from 'path';
-import { fileURLToPath } from 'url';
+const fs = require('fs');
+const path = require('path');
 
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
 const projectRoot = path.join(__dirname, '..');
 
 // Leer archivos de páginas
@@ -80,7 +77,6 @@ describe('Responsive Design', () => {
       const hasFlexJustify = proyectosContent.includes('justify-center md:justify-between') ||
                             proyectosContent.includes('justify-start md:justify-center') ||
                             proyectosContent.includes('justify-center lg:justify-start') ||
-                            proyectosContent.includes('justify-center') ||
                             proyectosContent.match(/justify-\w+\s+(md|lg):justify-\w+/);
       expect(hasFlexJustify).toBeTruthy();
     });
@@ -109,12 +105,8 @@ describe('Responsive Design', () => {
       // Padding vertical responsive
       expect(proyectosContent).toMatch(/py-\d+\s+sm:py-\d+/);
       
-      // Márgenes responsive - más flexible
-      const hasResponsiveMargins = proyectosContent.match(/m[xy]?-\d+\s+(sm|md|lg):m[xy]?-\d+/) ||
-                                  proyectosContent.includes('mb-6 sm:mb-8') ||
-                                  proyectosContent.includes('mt-6 sm:mt-8') ||
-                                  proyectosContent.includes('mb-8 sm:mb-12');
-      expect(hasResponsiveMargins).toBeTruthy();
+      // Márgenes responsive
+      expect(proyectosContent).toMatch(/m[xy]?-\d+\s+(sm|md|lg):m[xy]?-\d+/);
     });
   });
 
@@ -220,10 +212,7 @@ describe('Responsive Design', () => {
       
       // Verificar si hay media queries adicionales en páginas complejas
       [sobreMiContent, proyectosContent].forEach(content => {
-        const hasReducedMotion = content.includes('@media (prefers-reduced-motion') ||
-                                content.includes('@media (prefers-color-scheme') ||
-                                content.includes('@media') ||
-                                content.includes('prefers-reduced-motion');
+        const hasReducedMotion = content.includes('@media (prefers-reduced-motion');
         expect(hasReducedMotion).toBeTruthy();
       });
     });
