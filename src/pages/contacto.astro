@@ -173,7 +173,7 @@ import Layout from '../layouts/Layout.astro';
 		</div>
 	</header>
 
-	<main class="relative py-16 px-4 bg-gray-50 dark:bg-gray-900">
+	<main class="relative py-16 px-4 bg-gray-50 dark:bg-gray-900 floating-particles-subtle">
 		<div class="max-w-5xl mx-auto">
 			<div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
 				<!-- Columna izquierda: Información de contacto -->
@@ -559,6 +559,61 @@ import Layout from '../layouts/Layout.astro';
 		left: 80%;
 		animation-delay: -10s;
 		background: linear-gradient(45deg, #8b5cf6, #ec4899);
+	}
+	
+	/* Partículas sutiles para secciones adicionales */
+	.floating-particles-subtle {
+		position: relative;
+		overflow: hidden;
+	}
+	
+	.floating-particles-subtle::before {
+		content: '';
+		position: absolute;
+		top: 30%;
+		left: 20%;
+		width: 3px;
+		height: 3px;
+		background: linear-gradient(45deg, #10b981, #3b82f6);
+		border-radius: 50%;
+		animation: floatSubtle 10s ease-in-out infinite;
+		opacity: 0.3;
+		z-index: 1;
+	}
+	
+	.floating-particles-subtle::after {
+		content: '';
+		position: absolute;
+		top: 70%;
+		right: 25%;
+		width: 2px;
+		height: 2px;
+		background: linear-gradient(45deg, #8b5cf6, #ec4899);
+		border-radius: 50%;
+		animation: floatSubtle 12s ease-in-out infinite reverse;
+		opacity: 0.4;
+		z-index: 1;
+	}
+	
+	@keyframes floatSubtle {
+		0%, 100% {
+			transform: translateY(0px) translateX(0px) rotate(0deg);
+		}
+		25% {
+			transform: translateY(-10px) translateX(5px) rotate(90deg);
+		}
+		50% {
+			transform: translateY(5px) translateX(-3px) rotate(180deg);
+		}
+		75% {
+			transform: translateY(-5px) translateX(8px) rotate(270deg);
+		}
+	}
+	
+	/* Partículas para modo oscuro */
+	.dark .floating-particles-subtle::before,
+	.dark .floating-particles-subtle::after {
+		opacity: 0.2;
 	}
 
 	/* Gradiente de fondo del hero */
