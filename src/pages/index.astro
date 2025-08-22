@@ -398,29 +398,108 @@ const recentPublications = scholarData.publications.slice(0, 3).map(pub => ({
 
 	<!-- Investigaciones destacadas -->
 	<section class="relative py-8 sm:py-12 lg:py-16 bg-gray-50 dark:bg-gray-900 px-4 floating-particles-subtle">
-		<div class="max-w-4xl mx-auto">
+		<div class="max-w-6xl mx-auto">
 			<h2 class="text-2xl sm:text-3xl font-bold text-gray-900 dark:text-white mb-6 sm:mb-8 text-center">Investigaciones destacadas</h2>
 			
-			<div class="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6 mb-8 sm:mb-10">
-				<div class="bg-white dark:bg-gray-800 rounded-xl shadow-lg p-4 sm:p-6 border-t-4 border-blue-600 dark:border-blue-500 flex flex-col h-full card-hover">
-					<h3 class="text-lg sm:text-xl font-semibold text-gray-800 dark:text-white mb-3 sm:mb-4">Inteligencia Artificial Aplicada</h3>
-					<p class="text-sm sm:text-base text-gray-600 dark:text-gray-300 mb-4 sm:mb-6 flex-grow">Investigación sobre aplicaciones de la IA en entornos educativos y su impacto en el aprendizaje personalizado.</p>
-					<div class="mt-auto">
-						<a href="/proyectos/ia-educacion" class="btn btn-sm btn-primary w-full text-center text-sm">Ver detalles</a>
+			<div class="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 mb-8 sm:mb-10">
+				<div class="bg-white dark:bg-gray-800 rounded-2xl shadow-xl overflow-hidden card-hover border border-gray-200/50 dark:border-gray-700/50">
+					<!-- Imagen/Visual -->
+					<div class="relative h-48 bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center">
+						<div class="text-white text-6xl">🤖</div>
+						<div class="absolute inset-0 bg-black/20"></div>
+						<div class="absolute top-4 right-4 bg-white/20 backdrop-blur-sm rounded-full px-3 py-1">
+							<span class="text-white text-sm font-medium">En curso</span>
+						</div>
+					</div>
+					
+					<!-- Contenido -->
+					<div class="p-6">
+						<div class="flex items-center gap-2 mb-3">
+							<span class="bg-blue-100 dark:bg-blue-900/50 text-blue-700 dark:text-blue-300 px-3 py-1 rounded-full text-sm font-medium">IA</span>
+							<span class="bg-green-100 dark:bg-green-900/50 text-green-700 dark:text-green-300 px-3 py-1 rounded-full text-sm font-medium">Educación</span>
+						</div>
+						
+						<h3 class="text-xl font-bold text-gray-900 dark:text-white mb-3">Inteligencia Artificial Aplicada</h3>
+						<p class="text-gray-700 dark:text-gray-300 mb-4 leading-relaxed">
+							Investigación sobre aplicaciones de la IA en entornos educativos y su impacto en el aprendizaje personalizado. 
+							Desarrollo de sistemas de tutoría inteligente que adaptan el contenido educativo.
+						</p>
+						
+						<!-- Información adicional -->
+						<div class="flex items-center justify-between text-sm text-gray-600 dark:text-gray-400 mb-4">
+							<span>📅 2022 - Actualidad</span>
+							<span>💰 150,000€</span>
+						</div>
+						
+						<!-- Barra de progreso -->
+						<div class="mb-4">
+							<div class="flex items-center justify-between text-sm mb-1">
+								<span class="text-gray-700 dark:text-gray-300">Progreso</span>
+								<span class="text-blue-600 dark:text-blue-400 font-semibold">75%</span>
+							</div>
+							<div class="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2">
+								<div class="bg-gradient-to-r from-blue-500 to-purple-600 h-2 rounded-full transition-all duration-1000" style="width: 75%"></div>
+							</div>
+						</div>
+						
+						<a href="/proyectos/ia-educacion" class="w-full bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-white py-3 px-4 rounded-lg text-center font-medium transition-all duration-200 block transform hover:scale-105">
+							Ver detalles completos
+						</a>
 					</div>
 				</div>
 				
-				<div class="bg-white dark:bg-gray-800 rounded-xl shadow-lg p-4 sm:p-6 border-t-4 border-blue-600 dark:border-blue-500 flex flex-col h-full card-hover">
-					<h3 class="text-lg sm:text-xl font-semibold text-gray-800 dark:text-white mb-3 sm:mb-4">Sistemas Distribuidos</h3>
-					<p class="text-sm sm:text-base text-gray-600 dark:text-gray-300 mb-4 sm:mb-6 flex-grow">Desarrollo de nuevas arquitecturas para sistemas distribuidos con mayor eficiencia energética.</p>
-					<div class="mt-auto">
-						<a href="/proyectos/sistemas-distribuidos" class="btn btn-sm btn-primary w-full text-center text-sm">Ver detalles</a>
+				<div class="bg-white dark:bg-gray-800 rounded-2xl shadow-xl overflow-hidden card-hover border border-gray-200/50 dark:border-gray-700/50">
+					<!-- Imagen/Visual -->
+					<div class="relative h-48 bg-gradient-to-br from-emerald-500 to-teal-600 flex items-center justify-center">
+						<div class="text-white text-6xl">⚡</div>
+						<div class="absolute inset-0 bg-black/20"></div>
+						<div class="absolute top-4 right-4 bg-white/20 backdrop-blur-sm rounded-full px-3 py-1">
+							<span class="text-white text-sm font-medium">Finalizado</span>
+						</div>
+					</div>
+					
+					<!-- Contenido -->
+					<div class="p-6">
+						<div class="flex items-center gap-2 mb-3">
+							<span class="bg-emerald-100 dark:bg-emerald-900/50 text-emerald-700 dark:text-emerald-300 px-3 py-1 rounded-full text-sm font-medium">Sistemas</span>
+							<span class="bg-orange-100 dark:bg-orange-900/50 text-orange-700 dark:text-orange-300 px-3 py-1 rounded-full text-sm font-medium">Eficiencia</span>
+						</div>
+						
+						<h3 class="text-xl font-bold text-gray-900 dark:text-white mb-3">Sistemas Distribuidos Eficientes</h3>
+						<p class="text-gray-700 dark:text-gray-300 mb-4 leading-relaxed">
+							Desarrollo de nuevas arquitecturas para sistemas distribuidos con mayor eficiencia energética y rendimiento optimizado.
+							Reducción del 30% en consumo energético.
+						</p>
+						
+						<!-- Información adicional -->
+						<div class="flex items-center justify-between text-sm text-gray-600 dark:text-gray-400 mb-4">
+							<span>📅 2020 - 2023</span>
+							<span>💰 80,000€</span>
+						</div>
+						
+						<!-- Barra de progreso -->
+						<div class="mb-4">
+							<div class="flex items-center justify-between text-sm mb-1">
+								<span class="text-gray-700 dark:text-gray-300">Progreso</span>
+								<span class="text-emerald-600 dark:text-emerald-400 font-semibold">100%</span>
+							</div>
+							<div class="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2">
+								<div class="bg-gradient-to-r from-emerald-500 to-teal-600 h-2 rounded-full transition-all duration-1000" style="width: 100%"></div>
+							</div>
+						</div>
+						
+						<a href="/proyectos/sistemas-distribuidos" class="w-full bg-gradient-to-r from-emerald-500 to-teal-600 hover:from-emerald-600 hover:to-teal-700 text-white py-3 px-4 rounded-lg text-center font-medium transition-all duration-200 block transform hover:scale-105">
+							Ver detalles completos
+						</a>
 					</div>
 				</div>
 			</div>
 			
 			<div class="text-center">
-				<a href="/proyectos" class="btn btn-outline">Ver todas las investigaciones</a>
+				<a href="/proyectos" class="bg-white dark:bg-gray-800 border-2 border-blue-500 dark:border-blue-400 text-blue-600 dark:text-blue-400 hover:bg-blue-50 dark:hover:bg-gray-700 px-6 py-3 rounded-lg font-medium transition-all duration-200 inline-flex items-center space-x-2 transform hover:scale-105">
+					<span>Ver todas las investigaciones</span>
+					<span>→</span>
+				</a>
 			</div>
 		</div>
 	</section>

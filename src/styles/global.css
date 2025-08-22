@@ -33,6 +33,34 @@
   .slide-up {
     @apply animate-slide-up;
   }
+  
+  /* Card mejorado con mejor soporte para modo oscuro */
+  .card-hover {
+    @apply transition-all duration-300 ease-in-out;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  }
+  
+  .card-hover:hover {
+    @apply transform -translate-y-2;
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  }
+  
+  .dark .card-hover {
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3), 0 2px 4px -1px rgba(0, 0, 0, 0.2);
+  }
+  
+  .dark .card-hover:hover {
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.4), 0 10px 10px -5px rgba(0, 0, 0, 0.3);
+  }
+  
+  /* Gradientes mejorados */
+  .gradient-text {
+    @apply bg-gradient-to-r from-blue-600 via-purple-600 to-blue-800 bg-clip-text text-transparent;
+  }
+  
+  .dark .gradient-text {
+    @apply bg-gradient-to-r from-blue-400 via-purple-400 to-blue-300 bg-clip-text text-transparent;
+  }
 }
 
 /* Ajustes para el contenido académico y científico */
