@@ -1,5 +1,5 @@
 ---
-// Componente para carga perezosa de imágenes
+// Componente avanzado para carga perezosa de imágenes con múltiples optimizaciones
 interface Props {
   src: string;
   alt: string;
@@ -7,6 +7,15 @@ interface Props {
   width?: number;
   height?: number;
   loading?: 'lazy' | 'eager';
+  placeholder?: 'blur' | 'skeleton' | 'color' | 'none';
+  placeholderColor?: string;
+  fallbackSrc?: string;
+  sizes?: string;
+  quality?: number;
+  progressive?: boolean;
+  blurDataURL?: string;
+  objectFit?: 'cover' | 'contain' | 'fill' | 'scale-down' | 'none';
+  priority?: boolean;
 }
 
 const { 
@@ -15,33 +24,482 @@ const {
   class: className = '', 
   width, 
   height,
-  loading = 'lazy'
+  loading = 'lazy',
+  placeholder = 'skeleton',
+  placeholderColor = '#f3f4f6',
+  fallbackSrc = '/images/placeholder.svg',
+  sizes,
+  quality = 80,
+  progressive = true,
+  blurDataURL,
+  objectFit = 'cover',
+  priority = false
 } = Astro.props;
+
+// Generar diferentes formatos de imagen para soporte moderno
+const getOptimizedSources = (originalSrc: string) => {
+  const baseName = originalSrc.split('.').slice(0, -1).join('.');
+  const extension = originalSrc.split('.').pop();
+  
+  return {
+    avif: `${baseName}.avif`,
+    webp: `${baseName}.webp`,
+    original: originalSrc
+  };
+};
+
+const sources = getOptimizedSources(src);
+
+// Generar placeholder blur si no se proporciona
+const defaultBlurDataURL = "data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAiIGhlaWdodD0iMTAiIHZpZXdCb3g9IjAgMCAxMCAxMCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHJlY3Qgd2lkdGg9IjEwIiBoZWlnaHQ9IjEwIiBmaWxsPSIjRjNGNEY2Ii8+Cjwvc3ZnPgo=";
+
+// ID único para el componente
+const componentId = `lazy-img-${Math.random().toString(36).substr(2, 9)}`;
 ---
 
-<img 
-  src={src}
-  alt={alt}
-  class={className}
-  width={width}
-  height={height}
-  loading={loading}
-  decoding="async"
-  style="view-transition-name: main-image;"
-/>
+<div 
+  class={`lazy-image-container ${className} ${placeholder === 'skeleton' ? 'skeleton-loading' : ''}`}
+  data-component-id={componentId}
+  style={width && height ? `aspect-ratio: ${width}/${height};` : ''}
+>
+  <!-- Placeholder -->
+  {placeholder === 'blur' && (
+    <div 
+      class="placeholder blur-placeholder"
+      style={`background-image: url(${blurDataURL || defaultBlurDataURL}); background-color: ${placeholderColor};`}
+    >
+    </div>
+  )}
+  
+  {placeholder === 'skeleton' && (
+    <div class="placeholder skeleton-placeholder" style={`background-color: ${placeholderColor};`}>
+      <div class="skeleton-shimmer"></div>
+    </div>
+  )}
+  
+  {placeholder === 'color' && (
+    <div 
+      class="placeholder color-placeholder" 
+      style={`background-color: ${placeholderColor};`}
+    >
+      <svg class="placeholder-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1">
+        <rect x="3" y="3" width="18" height="18" rx="2" ry="2"/>
+        <circle cx="8.5" cy="8.5" r="1.5"/>
+        <polyline points="21,15 16,10 5,21"/>
+      </svg>
+    </div>
+  )}
+  
+  <!-- Imagen principal con soporte para formatos modernos -->
+  <picture class="main-picture">
+    <!-- AVIF - formato más moderno -->
+    <source 
+      srcset={sources.avif} 
+      type="image/avif"
+      sizes={sizes}
+    />
+    
+    <!-- WebP - buen soporte y compresión -->
+    <source 
+      srcset={sources.webp} 
+      type="image/webp"
+      sizes={sizes}
+    />
+    
+    <!-- Imagen original como fallback -->
+    <img 
+      class={`main-image ${progressive ? 'progressive' : ''}`}
+      src={src}
+      alt={alt}
+      width={width}
+      height={height}
+      loading={priority ? 'eager' : loading}
+      decoding={progressive ? 'async' : 'sync'}
+      style={`object-fit: ${objectFit}; view-transition-name: main-image-${componentId};`}
+      sizes={sizes}
+      data-fallback={fallbackSrc}
+    />
+  </picture>
+  
+  <!-- Overlay de loading -->
+  <div class="loading-overlay">
+    <div class="loading-spinner">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <circle cx="12" cy="12" r="10" stroke-dasharray="62.83" stroke-dashoffset="62.83">
+          <animateTransform
+            attributeName="transform"
+            type="rotate"
+            values="0 12 12;360 12 12"
+            dur="1s"
+            repeatCount="indefinite"
+          />
+          <animate
+            attributeName="stroke-dashoffset"
+            values="62.83;31.42;62.83"
+            dur="1.5s"
+            repeatCount="indefinite"
+          />
+        </circle>
+      </svg>
+    </div>
+  </div>
+  
+  <!-- Mensaje de error -->
+  <div class="error-state" style="display: none;">
+    <div class="error-content">
+      <svg class="error-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <circle cx="12" cy="12" r="10"/>
+        <line x1="15" y1="9" x2="9" y2="15"/>
+        <line x1="9" y1="9" x2="15" y2="15"/>
+      </svg>
+      <span class="error-text">Error al cargar imagen</span>
+    </div>
+  </div>
+</div>
 
 <style>
-  img {
+  .lazy-image-container {
+    @apply relative overflow-hidden bg-gray-100 dark:bg-gray-800;
+    min-height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .placeholder {
+    @apply absolute inset-0 flex items-center justify-center;
+    z-index: 1;
+  }
+  
+  .blur-placeholder {
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    filter: blur(8px);
+    transform: scale(1.1);
+  }
+  
+  .skeleton-placeholder {
+    @apply w-full h-full;
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .skeleton-shimmer {
+    @apply absolute inset-0;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      rgba(255, 255, 255, 0.4),
+      transparent
+    );
+    animation: shimmer 1.5s infinite;
+    transform: translateX(-100%);
+  }
+  
+  .dark .skeleton-shimmer {
+    background: linear-gradient(
+      90deg,
+      transparent,
+      rgba(255, 255, 255, 0.1),
+      transparent
+    );
+  }
+  
+  .color-placeholder {
+    @apply w-full h-full flex items-center justify-center;
+  }
+  
+  .placeholder-icon {
+    @apply w-8 h-8 text-gray-400 dark:text-gray-600;
+    opacity: 0.5;
+  }
+  
+  .main-picture {
+    @apply relative z-10 w-full h-full;
+    opacity: 0;
+    transition: opacity 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  
+  .main-image {
+    @apply w-full h-full;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  
+  .progressive {
+    image-rendering: -webkit-optimize-contrast;
+    image-rendering: crisp-edges;
+  }
+  
+  .loading-overlay {
+    @apply absolute inset-0 flex items-center justify-center;
+    background: rgba(0, 0, 0, 0.1);
+    z-index: 5;
+    opacity: 1;
     transition: opacity 0.3s ease;
   }
   
-  img[loading="lazy"] {
-    opacity: 0;
-    animation: fadeIn 0.3s ease-in-out forwards;
+  .loading-spinner {
+    @apply w-6 h-6 text-blue-500;
   }
   
-  @keyframes fadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
+  .error-state {
+    @apply absolute inset-0 flex items-center justify-center;
+    background: rgba(239, 68, 68, 0.1);
+    z-index: 15;
+  }
+  
+  .error-content {
+    @apply flex flex-col items-center space-y-2 text-red-500;
+  }
+  
+  .error-icon {
+    @apply w-8 h-8;
+  }
+  
+  .error-text {
+    @apply text-sm font-medium;
+  }
+  
+  /* Estados de carga */
+  .lazy-image-container.loading .loading-overlay {
+    opacity: 1;
+  }
+  
+  .lazy-image-container.loaded .main-picture {
+    opacity: 1;
+  }
+  
+  .lazy-image-container.loaded .placeholder {
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+  
+  .lazy-image-container.loaded .loading-overlay {
+    opacity: 0;
+    pointer-events: none;
+  }
+  
+  .lazy-image-container.error .main-picture,
+  .lazy-image-container.error .placeholder,
+  .lazy-image-container.error .loading-overlay {
+    opacity: 0;
+  }
+  
+  .lazy-image-container.error .error-state {
+    display: flex !important;
+  }
+  
+  /* Animaciones */
+  @keyframes shimmer {
+    0% {
+      transform: translateX(-100%);
+    }
+    100% {
+      transform: translateX(200%);
+    }
+  }
+  
+  @keyframes fadeInScale {
+    0% {
+      opacity: 0;
+      transform: scale(0.95);
+    }
+    100% {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+  
+  .main-image.animate-in {
+    animation: fadeInScale 0.5s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+  }
+  
+  /* Efectos hover */
+  .lazy-image-container:hover .main-image {
+    transform: scale(1.02);
+  }
+  
+  /* Responsive */
+  @media (max-width: 768px) {
+    .lazy-image-container {
+      min-height: 80px;
+    }
+    
+    .placeholder-icon {
+      @apply w-6 h-6;
+    }
+    
+    .loading-spinner {
+      @apply w-5 h-5;
+    }
+  }
+  
+  /* Mejoras de accesibilidad */
+  @media (prefers-reduced-motion: reduce) {
+    .main-picture,
+    .placeholder,
+    .loading-overlay,
+    .main-image {
+      transition: none !important;
+      animation: none !important;
+    }
+    
+    .skeleton-shimmer {
+      animation: none !important;
+      opacity: 0.3;
+    }
+    
+    .lazy-image-container:hover .main-image {
+      transform: none;
+    }
+  }
+  
+  /* Modo alto contraste */
+  @media (prefers-contrast: high) {
+    .placeholder {
+      border: 2px solid currentColor;
+    }
+    
+    .skeleton-placeholder {
+      background: transparent;
+      border: 2px dashed currentColor;
+    }
   }
 </style>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const containers = document.querySelectorAll('.lazy-image-container');
+  
+  containers.forEach(container => {
+    const img = container.querySelector('.main-image');
+    const componentId = container.getAttribute('data-component-id');
+    
+    if (!img) return;
+    
+    // Estado inicial
+    container.classList.add('loading');
+    
+    // Intersection Observer para lazy loading
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            loadImage(img, container);
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      {
+        rootMargin: '50px',
+        threshold: 0.1
+      }
+    );
+    
+    // Si no es lazy o es priority, cargar inmediatamente
+    if (img.loading === 'eager' || container.closest('[data-priority="true"]')) {
+      loadImage(img, container);
+    } else {
+      observer.observe(container);
+    }
+    
+    function loadImage(imgElement, containerElement) {
+      let imageLoaded = false;
+      let fallbackUsed = false;
+      
+      // Timeout para fallback
+      const timeout = setTimeout(() => {
+        if (!imageLoaded && !fallbackUsed) {
+          useFallback();
+        }
+      }, 10000); // 10 segundos timeout
+      
+      function onImageLoad() {
+        if (imageLoaded) return;
+        imageLoaded = true;
+        clearTimeout(timeout);
+        
+        containerElement.classList.remove('loading');
+        containerElement.classList.add('loaded');
+        imgElement.classList.add('animate-in');
+        
+        // Dispatch evento personalizado
+        containerElement.dispatchEvent(new CustomEvent('imageLoaded', {
+          detail: { src: imgElement.src, componentId }
+        }));
+      }
+      
+      function onImageError() {
+        if (imageLoaded) return;
+        clearTimeout(timeout);
+        
+        if (!fallbackUsed) {
+          useFallback();
+        } else {
+          showError();
+        }
+      }
+      
+      function useFallback() {
+        fallbackUsed = true;
+        const fallbackSrc = imgElement.getAttribute('data-fallback');
+        
+        if (fallbackSrc && fallbackSrc !== imgElement.src) {
+          imgElement.src = fallbackSrc;
+          
+          // Retry con fallback
+          imgElement.onload = onImageLoad;
+          imgElement.onerror = onImageError;
+        } else {
+          showError();
+        }
+      }
+      
+      function showError() {
+        containerElement.classList.remove('loading');
+        containerElement.classList.add('error');
+        
+        containerElement.dispatchEvent(new CustomEvent('imageError', {
+          detail: { src: imgElement.src, componentId }
+        }));
+      }
+      
+      // Configurar event listeners
+      imgElement.onload = onImageLoad;
+      imgElement.onerror = onImageError;
+      
+      // Si la imagen ya está en caché
+      if (imgElement.complete && imgElement.naturalWidth > 0) {
+        onImageLoad();
+      }
+    }
+  });
+});
+
+// Funciones de utilidad globales
+window.lazyImageUtils = {
+  // Recargar imagen manualmente
+  reloadImage(componentId) {
+    const container = document.querySelector(`[data-component-id="${componentId}"]`);
+    if (container) {
+      const img = container.querySelector('.main-image');
+      if (img) {
+        container.classList.remove('loaded', 'error');
+        container.classList.add('loading');
+        img.src = img.src; // Forzar recarga
+      }
+    }
+  },
+  
+  // Precargar imagen
+  preloadImage(src) {
+    return new Promise((resolve, reject) => {
+      const img = new Image();
+      img.onload = () => resolve(img);
+      img.onerror = reject;
+      img.src = src;
+    });
+  }
+};
+</script>

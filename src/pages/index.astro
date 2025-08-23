@@ -97,6 +97,10 @@ const recentPublications = scholarData.publications.slice(0, 3).map(pub => ({
 		animation-delay: 0.2s;
 	}
 	
+	.animate-delay-250 {
+		animation-delay: 0.25s;
+	}
+	
 	.animate-delay-300 {
 		animation-delay: 0.3s;
 	}
@@ -257,13 +261,13 @@ const recentPublications = scholarData.publications.slice(0, 3).map(pub => ({
 
 <Layout title="Dr. Roberto Sánchez Reolid - Investigador en IA y Computación">
 	<!-- Hero Section mejorado -->
-	<section class="relative min-h-screen hero-gradient floating-particles overflow-hidden">
+	<section class="relative hero-gradient floating-particles overflow-hidden">
 		<!-- Fondo animado -->
 		<div class="absolute inset-0 bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50 dark:from-gray-900 dark:via-blue-900 dark:to-purple-900"></div>
 		
-		<div class="relative max-w-6xl mx-auto px-4 py-8 sm:py-12 lg:py-20 flex flex-col lg:flex-row items-center min-h-screen">
+		<div class="relative max-w-6xl mx-auto px-4 py-4 sm:py-6 lg:py-8 flex flex-col lg:flex-row items-center min-h-[70vh]">
 			<!-- Imagen de perfil mejorada -->
-			<div class="lg:w-1/3 mb-8 sm:mb-12 lg:mb-0 animate-fade-in-left">
+			<div class="lg:w-1/3 mb-4 sm:mb-6 lg:mb-0 animate-fade-in-left">
 				<div class="relative">
 					<div class="relative w-64 sm:w-80 h-80 sm:h-[480px] mx-auto overflow-hidden rounded-3xl profile-glow">
 						<Image 
@@ -283,13 +287,13 @@ const recentPublications = scholarData.publications.slice(0, 3).map(pub => ({
 			</div>
 			
 			<!-- Contenido principal mejorado -->
-			<div class="lg:w-2/3 text-center lg:text-left space-y-4 sm:space-y-6">
+			<div class="lg:w-2/3 text-center lg:text-left space-y-2 sm:space-y-3">
 				<div class="animate-fade-in-right">
-					<h1 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold bg-gradient-to-r from-gray-900 via-blue-800 to-purple-800 dark:from-white dark:via-blue-200 dark:to-purple-200 bg-clip-text text-transparent mb-3 sm:mb-4 leading-tight">
+					<h1 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold bg-gradient-to-r from-gray-900 via-blue-800 to-purple-800 dark:from-white dark:via-blue-200 dark:to-purple-200 bg-clip-text text-transparent mb-2 sm:mb-3 leading-tight">
 						Roberto Sánchez Reolid
 					</h1>
 					
-					<div class="flex items-center justify-center lg:justify-start space-x-3 sm:space-x-4 mb-4 sm:mb-6">
+					<div class="flex items-center justify-center lg:justify-start space-x-3 sm:space-x-4 mb-2 sm:mb-3">
 						<div class="h-1 w-8 sm:w-12 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full animate-pulse"></div>
 						<p class="text-lg sm:text-xl md:text-2xl text-gray-600 dark:text-gray-300 font-light">
 							Doctor en Informática
@@ -297,7 +301,7 @@ const recentPublications = scholarData.publications.slice(0, 3).map(pub => ({
 						<div class="h-1 w-8 sm:w-12 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full animate-pulse"></div>
 					</div>
 					
-					<p class="text-base sm:text-lg text-gray-700 dark:text-gray-300 max-w-2xl leading-relaxed mb-6 sm:mb-8">
+					<p class="text-base sm:text-lg text-gray-700 dark:text-gray-300 max-w-2xl leading-relaxed mb-3 sm:mb-4">
 						Investigador especializado en <span class="font-semibold text-blue-600 dark:text-blue-400">Inteligencia Artificial</span> y 
 						<span class="font-semibold text-emerald-600 dark:text-emerald-400">Sistemas Distribuidos</span> en la Universidad de Castilla-La Mancha.
 					</p>
@@ -317,6 +321,13 @@ const recentPublications = scholarData.publications.slice(0, 3).map(pub => ({
 							<span class="transform transition-transform group-hover:scale-110">📧</span>
 						</span>
 					</a>
+				</div>
+				
+				<!-- Título para las estadísticas -->
+				<div class="animate-fade-in-up animate-delay-250 text-center lg:text-left mt-4 sm:mt-5">
+					<h3 class="text-lg sm:text-xl font-semibold text-gray-800 dark:text-gray-200 mb-3 sm:mb-4 mt-2 sm:mt-3">
+						📊 Métricas de Investigación
+					</h3>
 				</div>
 				
 				<!-- Estadísticas rápidas -->
@@ -343,15 +354,15 @@ const recentPublications = scholarData.publications.slice(0, 3).map(pub => ({
 	</section>
 
 	<!-- Sección "Sobre mí" rediseñada -->
-	<section class="relative py-8 sm:py-12 lg:py-16 bg-white dark:bg-gray-800 px-4 floating-particles-subtle">
+	<section class="relative py-4 sm:py-6 lg:py-8 bg-white dark:bg-gray-800 px-4 floating-particles-subtle">
 		<div class="max-w-6xl mx-auto">
-			<div class="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12 items-center">
+			<div class="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 items-center">
 				<div class="animate-fade-in-left">
 					<div class="bg-gradient-to-br from-blue-50 to-purple-50 dark:from-gray-700 dark:to-gray-800 rounded-3xl p-6 sm:p-8 shadow-xl border border-white/20">
-						<h2 class="text-2xl sm:text-3xl font-bold text-gray-900 dark:text-white mb-4 sm:mb-6">
+						<h2 class="text-2xl sm:text-3xl font-bold text-gray-900 dark:text-white mb-3 sm:mb-4">
 							Sobre mi investigación
 						</h2>
-						<p class="text-gray-700 dark:text-gray-300 text-base sm:text-lg leading-relaxed mb-4 sm:mb-6">
+						<p class="text-gray-700 dark:text-gray-300 text-base sm:text-lg leading-relaxed mb-3 sm:mb-4">
 							Mi trabajo se centra en el desarrollo de tecnologías innovadoras
 							y metodologías para resolver problemas complejos con aplicaciones prácticas.
 						</p>
@@ -368,7 +379,7 @@ const recentPublications = scholarData.publications.slice(0, 3).map(pub => ({
 						</div>
 					</div>
 					
-					<div class="text-center lg:text-left mt-6 sm:mt-8">
+					<div class="text-center lg:text-left mt-4 sm:mt-5">
 						<a href="/sobre-mi" class="btn btn-outline btn-enhanced group inline-flex items-center space-x-2">
 							<span>🔍 Conocer más</span>
 							<span class="transform transition-transform group-hover:translate-x-1">→</span>
@@ -385,7 +396,7 @@ const recentPublications = scholarData.publications.slice(0, 3).map(pub => ({
 	</section>
 
 	<!-- Publicaciones recientes -->
-	<section class="relative py-8 sm:py-12 lg:py-16 px-4 floating-particles-subtle">
+	<section class="relative py-4 sm:py-6 lg:py-8 px-4 floating-particles-subtle">
 		<div class="max-w-4xl mx-auto">
 			<RecentPublications 
 				publications={recentPublications} 
@@ -397,11 +408,11 @@ const recentPublications = scholarData.publications.slice(0, 3).map(pub => ({
 	</section>
 
 	<!-- Investigaciones destacadas -->
-	<section class="relative py-8 sm:py-12 lg:py-16 bg-gray-50 dark:bg-gray-900 px-4 floating-particles-subtle">
+	<section class="relative py-4 sm:py-6 lg:py-8 bg-gray-50 dark:bg-gray-900 px-4 floating-particles-subtle">
 		<div class="max-w-6xl mx-auto">
-			<h2 class="text-2xl sm:text-3xl font-bold text-gray-900 dark:text-white mb-6 sm:mb-8 text-center">Investigaciones destacadas</h2>
+			<h2 class="text-2xl sm:text-3xl font-bold text-gray-900 dark:text-white mb-4 sm:mb-6 text-center">Investigaciones destacadas</h2>
 			
-			<div class="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 mb-8 sm:mb-10">
+			<div class="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6 mb-6 sm:mb-8">
 				<div class="bg-white dark:bg-gray-800 rounded-2xl shadow-xl overflow-hidden card-hover border border-gray-200/50 dark:border-gray-700/50">
 					<!-- Imagen/Visual -->
 					<div class="relative h-48 bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center">
