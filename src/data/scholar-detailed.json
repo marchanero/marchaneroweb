@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2025-08-22T06:21:23.731Z",
+  "lastUpdated": "2025-08-23T06:18:40.724Z",
   "scrapingMethod": "ultra-optimized-v3-robust-pagination",
   "paginationInfo": {
     "totalPages": 0,
@@ -39,7 +39,7 @@
     "scholarId": "PCALePwAAAAJ"
   },
   "metrics": {
-    "totalCitations": 596,
+    "totalCitations": 598,
     "hIndex": 13,
     "i10Index": 17,
     "citationsRecent": 0,
@@ -96,7 +96,7 @@
       ],
       "publication": "International Journal of Human–Computer Interaction, 1-20, 2024",
       "year": 2024,
-      "citedBy": 1,
+      "citedBy": 2,
       "link": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=PCALePwAAAAJ&pagesize=100&sortby=pubdate&citation_for_view=PCALePwAAAAJ:blknAaTinKkC",
       "citedByLink": "https://scholar.google.com/scholar?oi=bibs&hl=en&cites=18012033131855912112",
       "citationId": "PCALePwAAAAJ:blknAaTinKkC",
@@ -892,7 +892,7 @@
       ],
       "publication": "Electronics 7 (12), 384, 2018",
       "year": 2018,
-      "citedBy": 60,
+      "citedBy": 61,
       "link": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=PCALePwAAAAJ&pagesize=100&sortby=pubdate&citation_for_view=PCALePwAAAAJ:u5HHmVD_uO8C",
       "citedByLink": "https://scholar.google.com/scholar?oi=bibs&hl=en&cites=16788273922182433471",
       "citationId": "PCALePwAAAAJ:u5HHmVD_uO8C",
@@ -973,13 +973,13 @@
       "2025": 1
     },
     "citationsByYear": {
-      "2018": 60,
+      "2018": 61,
       "2019": 35,
       "2020": 106,
       "2021": 61,
       "2022": 245,
       "2023": 59,
-      "2024": 22,
+      "2024": 23,
       "2025": 0
     },
     "careerSpan": 8,
@@ -989,7 +989,7 @@
   },
   "summary": {
     "totalPublications": 47,
-    "totalCitations": 596,
+    "totalCitations": 598,
     "hIndex": 13,
     "i10Index": 17,
     "avgCitationsPerPaper": 13,
