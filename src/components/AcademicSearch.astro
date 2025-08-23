@@ -1,0 +1,596 @@
+---
+// Componente de búsqueda académica avanzada
+interface Props {
+  placeholder?: string;
+  categories?: string[];
+  showFilters?: boolean;
+}
+
+const { 
+  placeholder = "Buscar publicaciones, proyectos...",
+  categories = ['publications', 'projects', 'cv'],
+  showFilters = true
+} = Astro.props;
+---
+
+<div class="search-container">
+  <div class="search-box">
+    <div class="search-input-wrapper">
+      <svg class="search-icon" width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <circle cx="11" cy="11" r="8"></circle>
+        <path d="m21 21-4.35-4.35"></path>
+      </svg>
+      
+      <input 
+        type="text" 
+        id="academic-search" 
+        class="search-input"
+        placeholder={placeholder}
+        aria-label="Búsqueda académica"
+        autocomplete="off"
+      />
+      
+      <button class="clear-search" id="clear-search" aria-label="Limpiar búsqueda" style="display: none;">
+        <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <line x1="18" y1="6" x2="6" y2="18"></line>
+          <line x1="6" y1="6" x2="18" y2="18"></line>
+        </svg>
+      </button>
+    </div>
+    
+    {showFilters && (
+      <div class="search-filters">
+        <label class="filter-label">
+          <input type="radio" name="search-category" value="all" checked />
+          <span>Todo</span>
+        </label>
+        {categories.map(category => (
+          <label class="filter-label">
+            <input type="radio" name="search-category" value={category} />
+            <span>{category === 'publications' ? 'Publicaciones' : 
+                   category === 'projects' ? 'Proyectos' : 
+                   category === 'cv' ? 'CV' : category}</span>
+          </label>
+        ))}
+      </div>
+    )}
+  </div>
+  
+  <div class="search-results" id="search-results" style="display: none;">
+    <div class="results-header">
+      <span class="results-count">Resultados: <span id="results-number">0</span></span>
+      <button class="close-results" id="close-results" aria-label="Cerrar resultados">
+        <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <line x1="18" y1="6" x2="6" y2="18"></line>
+          <line x1="6" y1="6" x2="18" y2="18"></line>
+        </svg>
+      </button>
+    </div>
+    
+    <div class="results-list" id="results-list">
+      <!-- Resultados dinámicos aquí -->
+    </div>
+    
+    <div class="no-results" id="no-results" style="display: none;">
+      <div class="no-results-content">
+        <svg width="48" height="48" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <circle cx="11" cy="11" r="8"></circle>
+          <path d="m21 21-4.35-4.35"></path>
+        </svg>
+        <h3>No se encontraron resultados</h3>
+        <p>Intenta con otros términos de búsqueda o revisa los filtros.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const searchInput = document.getElementById('academic-search');
+  const clearButton = document.getElementById('clear-search');
+  const resultsContainer = document.getElementById('search-results');
+  const resultsList = document.getElementById('results-list');
+  const resultsNumber = document.getElementById('results-number');
+  const noResults = document.getElementById('no-results');
+  const closeResults = document.getElementById('close-results');
+  const categoryFilters = document.querySelectorAll('input[name="search-category"]');
+  
+  let searchData = [];
+  let currentQuery = '';
+  let currentCategory = 'all';
+  
+  // Cargar datos de búsqueda
+  async function loadSearchData() {
+    try {
+      // Simular carga de datos (en un proyecto real, estos vendrían de tu CMS o API)
+      const [publications, projects] = await Promise.all([
+        // En una implementación real, estas serían llamadas a tu API
+        fetch('/api/search/publications').catch(() => ({ json: () => [] })),
+        fetch('/api/search/projects').catch(() => ({ json: () => [] }))
+      ]);
+      
+      // Datos de ejemplo (reemplazar con datos reales)
+      const exampleData = [
+        {
+          type: 'publications',
+          title: 'Inteligencia Artificial en Sistemas Educativos',
+          description: 'Investigación sobre aplicaciones de IA en educación personalizada.',
+          url: '/publicaciones#ai-education',
+          category: 'IA',
+          year: '2023'
+        },
+        {
+          type: 'projects',
+          title: 'Sistema de Monitorización Distribuida',
+          description: 'Desarrollo de arquitectura para sistemas distribuidos eficientes.',
+          url: '/proyectos/sistemas-distribuidos',
+          category: 'Sistemas',
+          year: '2022'
+        },
+        {
+          type: 'cv',
+          title: 'Experiencia en Universidad de Castilla-La Mancha',
+          description: 'Investigador principal en proyectos de IA y sistemas distribuidos.',
+          url: '/cv#experiencia',
+          category: 'Experiencia',
+          year: '2020-presente'
+        }
+      ];
+      
+      searchData = exampleData;
+    } catch (error) {
+      console.error('Error loading search data:', error);
+      searchData = [];
+    }
+  }
+  
+  // Función de búsqueda
+  function performSearch(query, category = 'all') {
+    if (!query.trim()) {
+      hideResults();
+      return;
+    }
+    
+    const lowerQuery = query.toLowerCase();
+    let results = searchData.filter(item => {
+      const matchesQuery = 
+        item.title.toLowerCase().includes(lowerQuery) ||
+        item.description.toLowerCase().includes(lowerQuery) ||
+        item.category.toLowerCase().includes(lowerQuery);
+      
+      const matchesCategory = category === 'all' || item.type === category;
+      
+      return matchesQuery && matchesCategory;
+    });
+    
+    displayResults(results, query);
+  }
+  
+  // Mostrar resultados
+  function displayResults(results, query) {
+    if (results.length === 0) {
+      showNoResults();
+      return;
+    }
+    
+    resultsNumber.textContent = results.length;
+    
+    const resultsHTML = results.map(result => `
+      <div class="result-item" data-type="${result.type}">
+        <div class="result-header">
+          <h4 class="result-title">
+            <a href="${result.url}" class="result-link">${highlightQuery(result.title, query)}</a>
+          </h4>
+          <span class="result-badge ${result.type}">${result.type === 'publications' ? '📚' : result.type === 'projects' ? '🔬' : '📄'}</span>
+        </div>
+        <p class="result-description">${highlightQuery(result.description, query)}</p>
+        <div class="result-meta">
+          <span class="result-category">${result.category}</span>
+          <span class="result-year">${result.year}</span>
+        </div>
+      </div>
+    `).join('');
+    
+    resultsList.innerHTML = resultsHTML;
+    showResults();
+  }
+  
+  // Resaltar términos de búsqueda
+  function highlightQuery(text, query) {
+    if (!query.trim()) return text;
+    
+    const regex = new RegExp(`(${query.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')})`, 'gi');
+    return text.replace(regex, '<mark>$1</mark>');
+  }
+  
+  // Mostrar resultados
+  function showResults() {
+    resultsContainer.style.display = 'block';
+    noResults.style.display = 'none';
+    document.body.style.overflow = 'hidden';
+  }
+  
+  // Mostrar "sin resultados"
+  function showNoResults() {
+    resultsContainer.style.display = 'block';
+    noResults.style.display = 'block';
+    resultsNumber.textContent = '0';
+    resultsList.innerHTML = '';
+    document.body.style.overflow = 'hidden';
+  }
+  
+  // Ocultar resultados
+  function hideResults() {
+    resultsContainer.style.display = 'none';
+    document.body.style.overflow = '';
+  }
+  
+  // Event listeners
+  searchInput.addEventListener('input', (e) => {
+    currentQuery = e.target.value;
+    
+    if (currentQuery.trim()) {
+      clearButton.style.display = 'block';
+      performSearch(currentQuery, currentCategory);
+    } else {
+      clearButton.style.display = 'none';
+      hideResults();
+    }
+  });
+  
+  clearButton.addEventListener('click', () => {
+    searchInput.value = '';
+    clearButton.style.display = 'none';
+    hideResults();
+    searchInput.focus();
+  });
+  
+  closeResults.addEventListener('click', hideResults);
+  
+  categoryFilters.forEach(filter => {
+    filter.addEventListener('change', (e) => {
+      currentCategory = e.target.value;
+      if (currentQuery.trim()) {
+        performSearch(currentQuery, currentCategory);
+      }
+    });
+  });
+  
+  // Cerrar con Escape
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+      hideResults();
+    }
+  });
+  
+  // Cerrar al hacer clic fuera
+  resultsContainer.addEventListener('click', (e) => {
+    if (e.target === resultsContainer) {
+      hideResults();
+    }
+  });
+  
+  // Cargar datos al inicializar
+  loadSearchData();
+});
+</script>
+
+<style>
+  .search-container {
+    position: relative;
+    max-width: 600px;
+    margin: 0 auto;
+  }
+  
+  .search-box {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    border-radius: 1rem;
+    padding: 1.5rem;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    border: 1px solid rgba(229, 231, 235, 0.5);
+  }
+  
+  .dark .search-box {
+    background: rgba(31, 41, 55, 0.95);
+    border-color: rgba(75, 85, 99, 0.5);
+  }
+  
+  .search-input-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+  }
+  
+  .search-icon {
+    position: absolute;
+    left: 1rem;
+    color: rgb(107, 114, 128);
+    z-index: 2;
+  }
+  
+  .search-input {
+    width: 100%;
+    padding: 1rem 1rem 1rem 3rem;
+    border: 2px solid rgba(229, 231, 235, 0.5);
+    border-radius: 0.75rem;
+    font-size: 1rem;
+    background: rgba(255, 255, 255, 0.8);
+    transition: all 0.3s ease;
+    outline: none;
+  }
+  
+  .search-input:focus {
+    border-color: rgb(59, 130, 246);
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+    background: white;
+  }
+  
+  .dark .search-input {
+    background: rgba(55, 65, 81, 0.8);
+    border-color: rgba(75, 85, 99, 0.5);
+    color: white;
+  }
+  
+  .dark .search-input:focus {
+    background: rgb(55, 65, 81);
+    border-color: rgb(59, 130, 246);
+  }
+  
+  .clear-search {
+    position: absolute;
+    right: 1rem;
+    padding: 0.5rem;
+    background: none;
+    border: none;
+    color: rgb(107, 114, 128);
+    cursor: pointer;
+    border-radius: 0.25rem;
+    transition: all 0.2s ease;
+    z-index: 2;
+  }
+  
+  .clear-search:hover {
+    color: rgb(239, 68, 68);
+    background: rgba(239, 68, 68, 0.1);
+  }
+  
+  .search-filters {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1rem;
+    flex-wrap: wrap;
+  }
+  
+  .filter-label {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    cursor: pointer;
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
+    background: rgba(243, 244, 246, 0.5);
+    border: 1px solid transparent;
+    transition: all 0.2s ease;
+    font-size: 0.875rem;
+    font-weight: 500;
+  }
+  
+  .filter-label:hover {
+    background: rgba(59, 130, 246, 0.1);
+    border-color: rgba(59, 130, 246, 0.3);
+  }
+  
+  .filter-label input[type="radio"] {
+    margin: 0;
+  }
+  
+  .filter-label:has(input:checked) {
+    background: rgba(59, 130, 246, 0.2);
+    border-color: rgba(59, 130, 246, 0.5);
+    color: rgb(59, 130, 246);
+  }
+  
+  .dark .filter-label {
+    background: rgba(75, 85, 99, 0.3);
+    color: rgb(229, 231, 235);
+  }
+  
+  .dark .filter-label:hover {
+    background: rgba(59, 130, 246, 0.2);
+  }
+  
+  .search-results {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(4px);
+    z-index: 1000;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    padding: 2rem;
+    overflow-y: auto;
+  }
+  
+  .results-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 1.5rem;
+    border-bottom: 1px solid rgba(229, 231, 235, 0.5);
+    background: rgba(249, 250, 251, 0.8);
+    backdrop-filter: blur(10px);
+  }
+  
+  .dark .results-header {
+    background: rgba(31, 41, 55, 0.8);
+    border-color: rgba(75, 85, 99, 0.5);
+  }
+  
+  .results-count {
+    font-weight: 600;
+    color: rgb(55, 65, 81);
+  }
+  
+  .dark .results-count {
+    color: rgb(229, 231, 235);
+  }
+  
+  .close-results {
+    padding: 0.5rem;
+    background: none;
+    border: none;
+    color: rgb(107, 114, 128);
+    cursor: pointer;
+    border-radius: 0.25rem;
+    transition: all 0.2s ease;
+  }
+  
+  .close-results:hover {
+    color: rgb(239, 68, 68);
+    background: rgba(239, 68, 68, 0.1);
+  }
+  
+  .results-list {
+    max-height: 60vh;
+    overflow-y: auto;
+    padding: 1rem;
+  }
+  
+  .result-item {
+    padding: 1.5rem;
+    border-bottom: 1px solid rgba(229, 231, 235, 0.3);
+    transition: all 0.2s ease;
+  }
+  
+  .result-item:hover {
+    background: rgba(59, 130, 246, 0.05);
+  }
+  
+  .result-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 0.5rem;
+  }
+  
+  .result-title {
+    margin: 0;
+    font-size: 1.125rem;
+    font-weight: 600;
+  }
+  
+  .result-link {
+    color: rgb(59, 130, 246);
+    text-decoration: none;
+  }
+  
+  .result-link:hover {
+    text-decoration: underline;
+  }
+  
+  .result-badge {
+    padding: 0.25rem 0.75rem;
+    border-radius: 9999px;
+    font-size: 0.875rem;
+    font-weight: 500;
+    background: rgba(59, 130, 246, 0.1);
+    color: rgb(59, 130, 246);
+  }
+  
+  .result-badge.projects {
+    background: rgba(16, 185, 129, 0.1);
+    color: rgb(16, 185, 129);
+  }
+  
+  .result-badge.cv {
+    background: rgba(139, 92, 246, 0.1);
+    color: rgb(139, 92, 246);
+  }
+  
+  .result-description {
+    margin: 0.5rem 0;
+    color: rgb(107, 114, 128);
+    line-height: 1.6;
+  }
+  
+  .dark .result-description {
+    color: rgb(156, 163, 175);
+  }
+  
+  .result-meta {
+    display: flex;
+    gap: 1rem;
+    font-size: 0.875rem;
+    color: rgb(107, 114, 128);
+  }
+  
+  .dark .result-meta {
+    color: rgb(156, 163, 175);
+  }
+  
+  .no-results {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 300px;
+    padding: 2rem;
+  }
+  
+  .no-results-content {
+    text-align: center;
+    color: rgb(107, 114, 128);
+  }
+  
+  .no-results-content svg {
+    margin: 0 auto 1rem;
+    opacity: 0.5;
+  }
+  
+  .no-results-content h3 {
+    margin: 0 0 0.5rem 0;
+    font-size: 1.25rem;
+    font-weight: 600;
+  }
+  
+  .no-results-content p {
+    margin: 0;
+    opacity: 0.8;
+  }
+  
+  mark {
+    background: rgba(255, 235, 59, 0.3);
+    color: inherit;
+    padding: 0.1em 0.2em;
+    border-radius: 0.25rem;
+  }
+  
+  .dark mark {
+    background: rgba(255, 235, 59, 0.2);
+  }
+  
+  @media (max-width: 768px) {
+    .search-results {
+      padding: 1rem;
+    }
+    
+    .search-filters {
+      gap: 0.5rem;
+    }
+    
+    .filter-label {
+      padding: 0.375rem 0.75rem;
+      font-size: 0.8125rem;
+    }
+    
+    .result-header {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 0.5rem;
+    }
+  }
+</style>

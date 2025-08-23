@@ -1,0 +1,47 @@
+---
+// Componente para carga perezosa de imágenes
+interface Props {
+  src: string;
+  alt: string;
+  class?: string;
+  width?: number;
+  height?: number;
+  loading?: 'lazy' | 'eager';
+}
+
+const { 
+  src, 
+  alt, 
+  class: className = '', 
+  width, 
+  height,
+  loading = 'lazy'
+} = Astro.props;
+---
+
+<img 
+  src={src}
+  alt={alt}
+  class={className}
+  width={width}
+  height={height}
+  loading={loading}
+  decoding="async"
+  style="view-transition-name: main-image;"
+/>
+
+<style>
+  img {
+    transition: opacity 0.3s ease;
+  }
+  
+  img[loading="lazy"] {
+    opacity: 0;
+    animation: fadeIn 0.3s ease-in-out forwards;
+  }
+  
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+</style>

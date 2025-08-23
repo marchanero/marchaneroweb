@@ -1,0 +1,964 @@
+---
+// Sistema de comentarios académicos integrado
+interface Props {
+  postId: string;
+  postTitle: string;
+  postType?: 'publication' | 'project' | 'post';
+  allowAnonymous?: boolean;
+}
+
+const { 
+  postId, 
+  postTitle, 
+  postType = 'post',
+  allowAnonymous = false 
+} = Astro.props;
+
+// En producción, esto sería una llamada a tu API/CMS
+const commentsApiUrl = `/api/comments/${postId}`;
+---
+
+<div class="academic-comments" id="academic-comments" data-post-id={postId}>
+  <div class="comments-header">
+    <h3 class="comments-title">
+      {postType === 'publication' ? '💬 Discusión académica' :
+       postType === 'project' ? '🔬 Comentarios de investigación' :
+       '💭 Comentarios'}
+    </h3>
+    <div class="comments-stats">
+      <span id="comments-count">0</span> comentarios
+    </div>
+  </div>
+  
+  <!-- Formulario de comentario -->
+  <form class="comment-form" id="comment-form">
+    <div class="form-header">
+      <h4>Añadir comentario</h4>
+      <div class="author-toggle">
+        <label class="toggle-label">
+          <input type="checkbox" id="anonymous-toggle" />
+          <span class="toggle-text">Comentar como anónimo</span>
+        </label>
+      </div>
+    </div>
+    
+    <div class="form-fields" id="author-fields">
+      <div class="field-group">
+        <input 
+          type="text" 
+          id="author-name" 
+          placeholder="Nombre completo"
+          required
+          class="form-input"
+        />
+        <input 
+          type="email" 
+          id="author-email" 
+          placeholder="Email (no se mostrará públicamente)"
+          required
+          class="form-input"
+        />
+      </div>
+      <div class="field-group">
+        <input 
+          type="text" 
+          id="author-affiliation" 
+          placeholder="Institución/Universidad (opcional)"
+          class="form-input"
+        />
+        <input 
+          type="url" 
+          id="author-website" 
+          placeholder="Sitio web o perfil académico (opcional)"
+          class="form-input"
+        />
+      </div>
+    </div>
+    
+    <div class="comment-input-wrapper">
+      <textarea 
+        id="comment-text" 
+        placeholder="Escribe tu comentario académico aquí... Puedes usar markdown para formatear."
+        rows="4"
+        class="comment-textarea"
+        required
+      ></textarea>
+      
+      <div class="formatting-help">
+        <button type="button" class="format-btn" data-format="**bold**">B</button>
+        <button type="button" class="format-btn" data-format="_italic_">I</button>
+        <button type="button" class="format-btn" data-format="`code`">Code</button>
+        <button type="button" class="format-btn" data-format="[link](url)">Link</button>
+        <span class="char-count">
+          <span id="char-current">0</span> / 1000
+        </span>
+      </div>
+    </div>
+    
+    <div class="form-actions">
+      <div class="guidelines-link">
+        <a href="#" class="text-link" onclick="toggleGuidelines(event)">
+          📖 Ver pautas para comentarios académicos
+        </a>
+      </div>
+      <div class="submit-actions">
+        <button type="button" class="btn btn-outline" id="preview-btn">Vista previa</button>
+        <button type="submit" class="btn btn-primary">Publicar comentario</button>
+      </div>
+    </div>
+  </form>
+  
+  <!-- Pautas para comentarios -->
+  <div class="comment-guidelines" id="comment-guidelines" style="display: none;">
+    <div class="guidelines-content">
+      <h4>Pautas para comentarios académicos</h4>
+      <ul>
+        <li><strong>Mantén un tono respetuoso y académico</strong> - Los comentarios deben contribuir constructivamente a la discusión.</li>
+        <li><strong>Cita fuentes cuando sea apropiado</strong> - Respalda tus afirmaciones con referencias académicas.</li>
+        <li><strong>Evita contenido off-topic</strong> - Mantente en el tema de la publicación o proyecto.</li>
+        <li><strong>No spam ni autopromoción</strong> - Los comentarios promocionales serán eliminados.</li>
+        <li><strong>Usa formateo markdown</strong> - Para mejorar la legibilidad de tus comentarios.</li>
+      </ul>
+    </div>
+  </div>
+  
+  <!-- Vista previa -->
+  <div class="comment-preview" id="comment-preview" style="display: none;">
+    <div class="preview-header">
+      <h4>Vista previa</h4>
+      <button type="button" class="close-preview" onclick="closePreview()">✕</button>
+    </div>
+    <div class="preview-content" id="preview-content"></div>
+  </div>
+  
+  <!-- Lista de comentarios -->
+  <div class="comments-list" id="comments-list">
+    <div class="loading-comments" id="loading-comments">
+      <div class="loading-spinner"></div>
+      <span>Cargando comentarios...</span>
+    </div>
+    
+    <div class="no-comments" id="no-comments" style="display: none;">
+      <div class="no-comments-content">
+        <svg width="48" height="48" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"></path>
+        </svg>
+        <h4>No hay comentarios aún</h4>
+        <p>Sé el primero en comentar esta {postType === 'publication' ? 'publicación' : postType === 'project' ? 'investigación' : 'entrada'}.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const commentsContainer = document.getElementById('academic-comments');
+  const postId = commentsContainer?.dataset.postId;
+  const commentForm = document.getElementById('comment-form');
+  const anonymousToggle = document.getElementById('anonymous-toggle');
+  const authorFields = document.getElementById('author-fields');
+  const commentText = document.getElementById('comment-text');
+  const charCurrent = document.getElementById('char-current');
+  const commentsCount = document.getElementById('comments-count');
+  const commentsList = document.getElementById('comments-list');
+  const loadingComments = document.getElementById('loading-comments');
+  const noComments = document.getElementById('no-comments');
+  const previewBtn = document.getElementById('preview-btn');
+  const previewContainer = document.getElementById('comment-preview');
+  const previewContent = document.getElementById('preview-content');
+  
+  let comments = [];
+  
+  // Cargar comentarios
+  async function loadComments() {
+    try {
+      // Simulación de carga de comentarios (reemplazar con API real)
+      await new Promise(resolve => setTimeout(resolve, 1000));
+      
+      // Datos de ejemplo
+      comments = [
+        {
+          id: '1',
+          author: 'Dr. María González',
+          affiliation: 'Universidad Complutense de Madrid',
+          website: 'https://scholar.google.com/citations?user=example',
+          comment: 'Excelente trabajo. Me gustaría conocer más detalles sobre la **metodología** utilizada en la validación de los resultados.',
+          date: '2024-01-15T10:30:00Z',
+          isAnonymous: false
+        },
+        {
+          id: '2',
+          author: 'Investigador Anónimo',
+          affiliation: null,
+          website: null,
+          comment: 'Interesante enfoque. ¿Han considerado aplicar este método a _sistemas distribuidos_ de mayor escala?',
+          date: '2024-01-16T14:20:00Z',
+          isAnonymous: true
+        }
+      ];
+      
+      displayComments();
+    } catch (error) {
+      console.error('Error loading comments:', error);
+      showNoComments();
+    }
+  }
+  
+  // Mostrar comentarios
+  function displayComments() {
+    if (loadingComments) loadingComments.style.display = 'none';
+    
+    if (comments.length === 0) {
+      showNoComments();
+      return;
+    }
+    
+    if (commentsCount) commentsCount.textContent = comments.length.toString();
+    if (noComments) noComments.style.display = 'none';
+    
+    const commentsHTML = comments.map(comment => `
+      <div class="comment-item" data-comment-id="${comment.id}">
+        <div class="comment-header">
+          <div class="comment-author">
+            ${comment.isAnonymous ? 
+              '<span class="author-name anonymous">👤 Usuario Anónimo</span>' :
+              `<span class="author-name">${comment.author}</span>`
+            }
+            ${comment.affiliation && !comment.isAnonymous ? 
+              `<span class="author-affiliation">${comment.affiliation}</span>` : ''
+            }
+            ${comment.website && !comment.isAnonymous ? 
+              `<a href="${comment.website}" class="author-link" target="_blank" rel="noopener">🔗</a>` : ''
+            }
+          </div>
+          <div class="comment-date">
+            ${formatDate(comment.date)}
+          </div>
+        </div>
+        <div class="comment-body">
+          ${parseMarkdown(comment.comment)}
+        </div>
+        <div class="comment-actions">
+          <button class="action-btn reply-btn" data-comment-id="${comment.id}">
+            💬 Responder
+          </button>
+          <button class="action-btn like-btn" data-comment-id="${comment.id}">
+            👍 Útil
+          </button>
+        </div>
+      </div>
+    `).join('');
+    
+    if (commentsList) commentsList.innerHTML = commentsHTML;
+  }
+  
+  // Mostrar "sin comentarios"
+  function showNoComments() {
+    if (loadingComments) loadingComments.style.display = 'none';
+    if (noComments) noComments.style.display = 'block';
+    if (commentsCount) commentsCount.textContent = '0';
+  }
+  
+  // Parser básico de Markdown
+  function parseMarkdown(text) {
+    return text
+      .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
+      .replace(/_(.*?)_/g, '<em>$1</em>')
+      .replace(/`(.*?)`/g, '<code>$1</code>')
+      .replace(/\[(.*?)\]\((.*?)\)/g, '<a href="$2" target="_blank" rel="noopener">$1</a>')
+      .replace(/\n/g, '<br>');
+  }
+  
+  // Formatear fecha
+  function formatDate(dateString) {
+    const date = new Date(dateString);
+    return date.toLocaleDateString('es-ES', {
+      year: 'numeric',
+      month: 'long',
+      day: 'numeric',
+      hour: '2-digit',
+      minute: '2-digit'
+    });
+  }
+  
+  // Toggle campos de autor
+  if (anonymousToggle && authorFields) {
+    anonymousToggle.addEventListener('change', (e) => {
+      if (e.target.checked) {
+        authorFields.style.display = 'none';
+      } else {
+        authorFields.style.display = 'block';
+      }
+    });
+  }
+  
+  // Contador de caracteres
+  if (commentText && charCurrent) {
+    commentText.addEventListener('input', () => {
+      const length = commentText.value.length;
+      charCurrent.textContent = length.toString();
+      
+      if (length > 900) {
+        charCurrent.style.color = '#ef4444';
+      } else if (length > 800) {
+        charCurrent.style.color = '#f59e0b';
+      } else {
+        charCurrent.style.color = '#6b7280';
+      }
+    });
+  }
+  
+  // Botones de formato
+  const formatBtns = document.querySelectorAll('.format-btn');
+  formatBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      if (!commentText) return;
+      
+      const format = btn.dataset.format;
+      const start = commentText.selectionStart;
+      const end = commentText.selectionEnd;
+      const selectedText = commentText.value.substring(start, end);
+      
+      let formattedText;
+      if (format === '**bold**') {
+        formattedText = `**${selectedText || 'texto en negrita'}**`;
+      } else if (format === '_italic_') {
+        formattedText = `_${selectedText || 'texto en cursiva'}_`;
+      } else if (format === '`code`') {
+        formattedText = `\`${selectedText || 'código'}\``;
+      } else if (format === '[link](url)') {
+        formattedText = `[${selectedText || 'texto del enlace'}](url)`;
+      }
+      
+      if (formattedText) {
+        const newValue = 
+          commentText.value.substring(0, start) + 
+          formattedText + 
+          commentText.value.substring(end);
+        
+        commentText.value = newValue;
+        commentText.focus();
+        
+        // Actualizar contador
+        if (charCurrent) {
+          charCurrent.textContent = newValue.length.toString();
+        }
+      }
+    });
+  });
+  
+  // Vista previa
+  if (previewBtn && previewContainer && previewContent && commentText) {
+    previewBtn.addEventListener('click', () => {
+      const text = commentText.value.trim();
+      if (!text) return;
+      
+      previewContent.innerHTML = parseMarkdown(text);
+      previewContainer.style.display = 'block';
+    });
+  }
+  
+  // Envío del formulario
+  if (commentForm) {
+    commentForm.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      
+      const formData = new FormData(commentForm);
+      const isAnonymous = anonymousToggle?.checked || false;
+      
+      const commentData = {
+        postId,
+        comment: commentText?.value?.trim(),
+        isAnonymous,
+        author: isAnonymous ? null : document.getElementById('author-name')?.value,
+        email: isAnonymous ? null : document.getElementById('author-email')?.value,
+        affiliation: isAnonymous ? null : document.getElementById('author-affiliation')?.value,
+        website: isAnonymous ? null : document.getElementById('author-website')?.value
+      };
+      
+      try {
+        // Aquí iría la llamada a tu API
+        console.log('Enviando comentario:', commentData);
+        
+        // Simulación de envío exitoso
+        await new Promise(resolve => setTimeout(resolve, 1000));
+        
+        // Añadir comentario a la lista local (en producción vendría de la API)
+        const newComment = {
+          id: Date.now().toString(),
+          author: commentData.author || 'Usuario Anónimo',
+          affiliation: commentData.affiliation,
+          website: commentData.website,
+          comment: commentData.comment,
+          date: new Date().toISOString(),
+          isAnonymous: commentData.isAnonymous
+        };
+        
+        comments.unshift(newComment);
+        displayComments();
+        
+        // Limpiar formulario
+        commentForm.reset();
+        if (charCurrent) charCurrent.textContent = '0';
+        
+        // Mostrar mensaje de éxito
+        showSuccessMessage('Comentario publicado correctamente');
+        
+      } catch (error) {
+        console.error('Error submitting comment:', error);
+        showErrorMessage('Error al publicar el comentario. Inténtalo de nuevo.');
+      }
+    });
+  }
+  
+  // Funciones auxiliares
+  function showSuccessMessage(message) {
+    const alert = document.createElement('div');
+    alert.className = 'alert alert-success';
+    alert.textContent = message;
+    commentsContainer?.prepend(alert);
+    
+    setTimeout(() => alert.remove(), 5000);
+  }
+  
+  function showErrorMessage(message) {
+    const alert = document.createElement('div');
+    alert.className = 'alert alert-error';
+    alert.textContent = message;
+    commentsContainer?.prepend(alert);
+    
+    setTimeout(() => alert.remove(), 5000);
+  }
+  
+  // Inicializar
+  loadComments();
+});
+
+// Funciones globales para el HTML
+function toggleGuidelines(e) {
+  e.preventDefault();
+  const guidelines = document.getElementById('comment-guidelines');
+  if (guidelines) {
+    guidelines.style.display = guidelines.style.display === 'none' ? 'block' : 'none';
+  }
+}
+
+function closePreview() {
+  const preview = document.getElementById('comment-preview');
+  if (preview) {
+    preview.style.display = 'none';
+  }
+}
+</script>
+
+<style>
+  .academic-comments {
+    max-width: 800px;
+    margin: 2rem 0;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  }
+  
+  .comments-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+    padding-bottom: 1rem;
+    border-bottom: 2px solid rgba(229, 231, 235, 0.5);
+  }
+  
+  .comments-title {
+    margin: 0;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: rgb(31, 41, 55);
+  }
+  
+  .dark .comments-title {
+    color: rgb(243, 244, 246);
+  }
+  
+  .comments-stats {
+    font-size: 0.875rem;
+    color: rgb(107, 114, 128);
+    font-weight: 500;
+  }
+  
+  .comment-form {
+    background: rgba(249, 250, 251, 0.8);
+    backdrop-filter: blur(10px);
+    border-radius: 1rem;
+    padding: 2rem;
+    margin-bottom: 2rem;
+    border: 1px solid rgba(229, 231, 235, 0.5);
+  }
+  
+  .dark .comment-form {
+    background: rgba(31, 41, 55, 0.8);
+    border-color: rgba(75, 85, 99, 0.5);
+  }
+  
+  .form-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+  }
+  
+  .form-header h4 {
+    margin: 0;
+    font-size: 1.125rem;
+    font-weight: 600;
+    color: rgb(31, 41, 55);
+  }
+  
+  .dark .form-header h4 {
+    color: rgb(243, 244, 246);
+  }
+  
+  .toggle-label {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    cursor: pointer;
+    font-size: 0.875rem;
+    color: rgb(107, 114, 128);
+  }
+  
+  .form-fields {
+    margin-bottom: 1.5rem;
+  }
+  
+  .field-group {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    margin-bottom: 1rem;
+  }
+  
+  .form-input {
+    padding: 0.75rem 1rem;
+    border: 1px solid rgba(209, 213, 219, 0.5);
+    border-radius: 0.5rem;
+    background: rgba(255, 255, 255, 0.8);
+    font-size: 0.875rem;
+    transition: all 0.2s ease;
+  }
+  
+  .form-input:focus {
+    outline: none;
+    border-color: rgb(59, 130, 246);
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+    background: white;
+  }
+  
+  .dark .form-input {
+    background: rgba(55, 65, 81, 0.8);
+    border-color: rgba(75, 85, 99, 0.5);
+    color: white;
+  }
+  
+  .dark .form-input:focus {
+    background: rgb(55, 65, 81);
+  }
+  
+  .comment-textarea {
+    width: 100%;
+    padding: 1rem;
+    border: 1px solid rgba(209, 213, 219, 0.5);
+    border-radius: 0.75rem;
+    background: rgba(255, 255, 255, 0.9);
+    font-size: 0.9375rem;
+    line-height: 1.6;
+    resize: vertical;
+    min-height: 120px;
+    transition: all 0.2s ease;
+  }
+  
+  .comment-textarea:focus {
+    outline: none;
+    border-color: rgb(59, 130, 246);
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+    background: white;
+  }
+  
+  .dark .comment-textarea {
+    background: rgba(55, 65, 81, 0.9);
+    border-color: rgba(75, 85, 99, 0.5);
+    color: white;
+  }
+  
+  .formatting-help {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 0.75rem;
+    padding-top: 0.75rem;
+    border-top: 1px solid rgba(229, 231, 235, 0.3);
+  }
+  
+  .format-btn {
+    padding: 0.375rem 0.75rem;
+    border: 1px solid rgba(209, 213, 219, 0.5);
+    border-radius: 0.375rem;
+    background: rgba(255, 255, 255, 0.8);
+    font-size: 0.75rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    margin-right: 0.5rem;
+  }
+  
+  .format-btn:hover {
+    background: rgba(59, 130, 246, 0.1);
+    border-color: rgba(59, 130, 246, 0.3);
+    color: rgb(59, 130, 246);
+  }
+  
+  .char-count {
+    font-size: 0.8125rem;
+    color: rgb(107, 114, 128);
+    font-weight: 500;
+  }
+  
+  .form-actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 1.5rem;
+  }
+  
+  .guidelines-link .text-link {
+    color: rgb(59, 130, 246);
+    text-decoration: none;
+    font-size: 0.875rem;
+  }
+  
+  .guidelines-link .text-link:hover {
+    text-decoration: underline;
+  }
+  
+  .submit-actions {
+    display: flex;
+    gap: 1rem;
+  }
+  
+  .comment-guidelines {
+    background: rgba(239, 246, 255, 0.8);
+    border: 1px solid rgba(59, 130, 246, 0.2);
+    border-radius: 0.75rem;
+    padding: 1.5rem;
+    margin: 1rem 0;
+  }
+  
+  .dark .comment-guidelines {
+    background: rgba(30, 58, 138, 0.2);
+    border-color: rgba(59, 130, 246, 0.3);
+  }
+  
+  .guidelines-content h4 {
+    margin: 0 0 1rem 0;
+    color: rgb(30, 58, 138);
+    font-size: 1rem;
+  }
+  
+  .dark .guidelines-content h4 {
+    color: rgb(147, 197, 253);
+  }
+  
+  .guidelines-content ul {
+    margin: 0;
+    padding-left: 1.25rem;
+    list-style-type: disc;
+  }
+  
+  .guidelines-content li {
+    margin-bottom: 0.5rem;
+    color: rgb(55, 65, 81);
+    line-height: 1.5;
+  }
+  
+  .dark .guidelines-content li {
+    color: rgb(209, 213, 219);
+  }
+  
+  .comment-preview {
+    background: rgba(255, 255, 255, 0.9);
+    border: 2px solid rgba(59, 130, 246, 0.3);
+    border-radius: 0.75rem;
+    padding: 1.5rem;
+    margin: 1rem 0;
+  }
+  
+  .dark .comment-preview {
+    background: rgba(31, 41, 55, 0.9);
+    border-color: rgba(59, 130, 246, 0.5);
+  }
+  
+  .preview-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 1px solid rgba(229, 231, 235, 0.3);
+  }
+  
+  .preview-header h4 {
+    margin: 0;
+    color: rgb(59, 130, 246);
+    font-size: 1rem;
+  }
+  
+  .close-preview {
+    background: none;
+    border: none;
+    color: rgb(107, 114, 128);
+    cursor: pointer;
+    font-size: 1.25rem;
+    padding: 0.25rem;
+  }
+  
+  .close-preview:hover {
+    color: rgb(239, 68, 68);
+  }
+  
+  .preview-content {
+    color: rgb(55, 65, 81);
+    line-height: 1.6;
+  }
+  
+  .dark .preview-content {
+    color: rgb(209, 213, 219);
+  }
+  
+  .comments-list {
+    margin-top: 2rem;
+  }
+  
+  .loading-comments {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    padding: 2rem;
+    color: rgb(107, 114, 128);
+  }
+  
+  .loading-spinner {
+    width: 24px;
+    height: 24px;
+    border: 2px solid rgba(59, 130, 246, 0.3);
+    border-top: 2px solid rgb(59, 130, 246);
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+  }
+  
+  @keyframes spin {
+    to { transform: rotate(360deg); }
+  }
+  
+  .no-comments {
+    text-align: center;
+    padding: 3rem 2rem;
+    color: rgb(107, 114, 128);
+  }
+  
+  .no-comments-content svg {
+    margin: 0 auto 1rem;
+    opacity: 0.5;
+  }
+  
+  .no-comments-content h4 {
+    margin: 0 0 0.5rem 0;
+    font-size: 1.25rem;
+    font-weight: 600;
+  }
+  
+  .no-comments-content p {
+    margin: 0;
+    opacity: 0.8;
+  }
+  
+  .comment-item {
+    background: rgba(255, 255, 255, 0.6);
+    backdrop-filter: blur(5px);
+    border: 1px solid rgba(229, 231, 235, 0.3);
+    border-radius: 1rem;
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+    transition: all 0.2s ease;
+  }
+  
+  .comment-item:hover {
+    background: rgba(255, 255, 255, 0.8);
+    transform: translateY(-2px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  }
+  
+  .dark .comment-item {
+    background: rgba(31, 41, 55, 0.6);
+    border-color: rgba(75, 85, 99, 0.3);
+  }
+  
+  .dark .comment-item:hover {
+    background: rgba(31, 41, 55, 0.8);
+  }
+  
+  .comment-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 1rem;
+  }
+  
+  .comment-author {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+  
+  .author-name {
+    font-weight: 600;
+    color: rgb(31, 41, 55);
+  }
+  
+  .author-name.anonymous {
+    color: rgb(107, 114, 128);
+    font-style: italic;
+  }
+  
+  .dark .author-name {
+    color: rgb(243, 244, 246);
+  }
+  
+  .author-affiliation {
+    font-size: 0.8125rem;
+    color: rgb(107, 114, 128);
+  }
+  
+  .author-link {
+    color: rgb(59, 130, 246);
+    text-decoration: none;
+    font-size: 0.875rem;
+  }
+  
+  .comment-date {
+    font-size: 0.8125rem;
+    color: rgb(107, 114, 128);
+  }
+  
+  .comment-body {
+    color: rgb(55, 65, 81);
+    line-height: 1.7;
+    margin-bottom: 1rem;
+  }
+  
+  .dark .comment-body {
+    color: rgb(209, 213, 219);
+  }
+  
+  .comment-body strong {
+    font-weight: 600;
+    color: rgb(31, 41, 55);
+  }
+  
+  .dark .comment-body strong {
+    color: rgb(243, 244, 246);
+  }
+  
+  .comment-body code {
+    background: rgba(229, 231, 235, 0.5);
+    padding: 0.125rem 0.375rem;
+    border-radius: 0.25rem;
+    font-size: 0.875rem;
+    font-family: 'SF Mono', Monaco, 'Cascadia Code', monospace;
+  }
+  
+  .dark .comment-body code {
+    background: rgba(75, 85, 99, 0.5);
+  }
+  
+  .comment-actions {
+    display: flex;
+    gap: 1rem;
+  }
+  
+  .action-btn {
+    background: none;
+    border: 1px solid rgba(229, 231, 235, 0.5);
+    border-radius: 0.5rem;
+    padding: 0.5rem 1rem;
+    font-size: 0.8125rem;
+    color: rgb(107, 114, 128);
+    cursor: pointer;
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    gap: 0.375rem;
+  }
+  
+  .action-btn:hover {
+    background: rgba(59, 130, 246, 0.1);
+    border-color: rgba(59, 130, 246, 0.3);
+    color: rgb(59, 130, 246);
+  }
+  
+  .alert {
+    padding: 1rem 1.5rem;
+    border-radius: 0.75rem;
+    margin-bottom: 1rem;
+    font-weight: 500;
+  }
+  
+  .alert-success {
+    background: rgba(16, 185, 129, 0.1);
+    border: 1px solid rgba(16, 185, 129, 0.3);
+    color: rgb(6, 120, 85);
+  }
+  
+  .alert-error {
+    background: rgba(239, 68, 68, 0.1);
+    border: 1px solid rgba(239, 68, 68, 0.3);
+    color: rgb(185, 28, 28);
+  }
+  
+  /* Responsive */
+  @media (max-width: 768px) {
+    .academic-comments {
+      margin: 1rem 0;
+    }
+    
+    .comment-form {
+      padding: 1.5rem;
+    }
+    
+    .field-group {
+      grid-template-columns: 1fr;
+    }
+    
+    .form-actions {
+      flex-direction: column;
+      gap: 1rem;
+      align-items: stretch;
+    }
+    
+    .submit-actions {
+      justify-content: stretch;
+    }
+    
+    .submit-actions .btn {
+      flex: 1;
+    }
+    
+    .comment-header {
+      flex-direction: column;
+      gap: 0.5rem;
+      align-items: flex-start;
+    }
+    
+    .comment-actions {
+      flex-wrap: wrap;
+    }
+  }
+</style>

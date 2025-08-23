@@ -1,0 +1,48 @@
+---
+// Componente para Schema.org markup para investigador académico
+interface Props {
+  name: string;
+  jobTitle: string;
+  affiliation: string;
+  email?: string;
+  url?: string;
+  citations?: number;
+  hIndex?: number;
+  publications?: Array<{
+    title: string;
+    datePublished: string;
+    citation?: string;
+  }>;
+}
+
+const props = Astro.props;
+
+const schemaData = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": props.name,
+  "jobTitle": props.jobTitle,
+  "worksFor": {
+    "@type": "Organization",
+    "name": props.affiliation
+  },
+  "url": props.url || Astro.site?.href,
+  "email": props.email,
+  "sameAs": [
+    "https://scholar.google.com",
+    "https://orcid.org",
+    "https://www.researchgate.net"
+  ]
+};
+
+if (props.publications && props.publications.length > 0) {
+  schemaData["@type"] = ["Person", "ScholarlyArticle"];
+  schemaData["scholar"] = {
+    "@type": "PropertyValue",
+    "name": "citations",
+    "value": props.citations || 0
+  };
+}
+---
+
+<script type="application/ld+json" set:html={JSON.stringify(schemaData)} />
