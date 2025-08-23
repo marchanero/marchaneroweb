@@ -111,8 +111,8 @@ describe('Responsive Design', () => {
       // Grid de proyectos destacados
       expect(indexContent).toContain('grid-cols-1 md:grid-cols-2');
       
-      // Grid principal en sobre-mi
-      expect(indexContent).toContain('grid-cols-1 lg:grid-cols-2');
+      // Grid principal en sobre-mi (actualizado para 3 columnas)
+      expect(indexContent).toContain('grid-cols-1 lg:grid-cols-3');
       
       // Verificar en páginas de proyectos
       expect(proyectosContent).toMatch(/grid-cols-\d+\s+(md|lg):grid-cols-\d+/);
