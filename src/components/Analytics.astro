@@ -1,0 +1,94 @@
+---
+// Componente para analytics académico (sin cookies invasivas)
+interface Props {
+  trackingId?: string;
+  enableGoogleAnalytics?: boolean;
+  enablePlausible?: boolean;
+  plausibleDomain?: string;
+}
+
+const { 
+  trackingId,
+  enableGoogleAnalytics = false,
+  enablePlausible = true,
+  plausibleDomain = Astro.url.hostname
+} = Astro.props;
+
+// Solo para entornos de producción
+const isProduction = import.meta.env.PROD;
+---
+
+{isProduction && enablePlausible && (
+  <script 
+    defer 
+    data-domain={plausibleDomain}
+    src="https://plausible.io/js/script.js"
+  ></script>
+)}
+
+{isProduction && enableGoogleAnalytics && trackingId && (
+  <Fragment>
+    <script async src={`https://www.googletagmanager.com/gtag/js?id=${trackingId}`}></script>
+    <script define:vars={{ trackingId }}>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', trackingId, {
+        anonymize_ip: true,
+        cookie_flags: 'SameSite=None;Secure'
+      });
+    </script>
+  </Fragment>
+)}
+
+<script>
+// Analytics básico sin cookies para métricas académicas
+if (typeof window !== 'undefined') {
+  // Tracking de eventos académicos específicos
+  const trackAcademicEvent = (action, category = 'academic') => {
+    if (window.gtag) {
+      window.gtag('event', action, {
+        event_category: category,
+        event_label: window.location.pathname
+      });
+    }
+    
+    // También para Plausible si está disponible
+    if (window.plausible) {
+      window.plausible(action, {
+        props: { category: category, page: window.location.pathname }
+      });
+    }
+  };
+  
+  // Eventos académicos específicos
+  document.addEventListener('click', (e) => {
+    const target = e.target.closest('a');
+    if (target) {
+      // Track clicks en publicaciones
+      if (target.href.includes('scholar.google') || target.href.includes('doi.org')) {
+        trackAcademicEvent('publication_click', 'research');
+      }
+      
+      // Track clicks en proyectos
+      if (target.href.includes('/proyectos/') || target.pathname.includes('/proyectos/')) {
+        trackAcademicEvent('project_view', 'research');
+      }
+      
+      // Track descargas de CV
+      if (target.href.includes('.pdf') && target.href.toLowerCase().includes('cv')) {
+        trackAcademicEvent('cv_download', 'contact');
+      }
+    }
+  });
+  
+  // Track tiempo en página para contenido académico
+  let startTime = Date.now();
+  window.addEventListener('beforeunload', () => {
+    const timeSpent = Math.round((Date.now() - startTime) / 1000);
+    if (timeSpent > 30) { // Solo si pasó más de 30 segundos
+      trackAcademicEvent('engaged_reading', 'engagement');
+    }
+  });
+}
+</script>
