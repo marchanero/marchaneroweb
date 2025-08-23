@@ -166,6 +166,37 @@ describe('Componentes', () => {
     }
   });
 
+  it('verifica el sistema de partículas dinámico mejorado', () => {
+    const projectRoot = path.join(__dirname, '..');
+    const indexPath = path.join(projectRoot, 'src', 'pages', 'index.astro');
+    
+    const content = fs.readFileSync(indexPath, 'utf8');
+    
+    // Verificar sistema híbrido CSS + JavaScript
+    expect(content).toContain('.floating-particles');
+    expect(content).toContain('createParticles');
+    expect(content).toContain('floating-particles');
+    
+    // Verificar múltiples animaciones
+    expect(content).toContain('float1');
+    expect(content).toContain('float2');
+    expect(content).toContain('float3');
+    expect(content).toContain('float4');
+    expect(content).toContain('float5');
+    
+    // Verificar sistema de colores múltiples (6 colores principales)
+    expect(content).toContain('#3b82f6');
+    expect(content).toContain('#8b5cf6');
+    expect(content).toContain('#ec4899');
+    expect(content).toContain('#10b981');
+    expect(content).toContain('#f59e0b');
+    expect(content).toContain('#06b6d4'); // Cyan
+    
+    // Verificar efectos interactivos
+    expect(content).toContain('setInterval(createParticles');
+    expect(content).toContain('hover');
+  });
+
   it('verifica archivos de documentación de mejoras', () => {
     const projectRoot = path.join(__dirname, '..');
     

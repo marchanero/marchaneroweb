@@ -29,51 +29,91 @@ describe('Animaciones y Efectos CSS', () => {
     );
   });
 
-  describe('Sistema de Partículas', () => {
+  describe('Sistema de Partículas Mejorado', () => {
     it('verifica que existen las clases de partículas principales', () => {
-      expect(indexContent).toContain('floating-particles');
-      expect(indexContent).toContain('floating-particles-subtle');
+      // Verificar clases CSS básicas para las partículas
+      expect(indexContent).toContain('.floating-particles');
+      expect(indexContent).toContain('.particle');
       
-      // Verificar keyframes para partículas
-      expect(indexContent).toContain('@keyframes float');
-      expect(indexContent).toContain('@keyframes floatSubtle');
-    });
-
-    it('verifica la implementación de partículas en todas las páginas', () => {
-      // Index page
+      // Verificar que existe el sistema CSS de partículas de respaldo
       expect(indexContent).toContain('floating-particles::before');
       expect(indexContent).toContain('floating-particles::after');
       
-      // Proyectos page
-      expect(proyectosContent).toContain('floating-particles');
-      expect(proyectosContent).toContain('floating-particles-subtle');
+      // Verificar keyframes múltiples para partículas
+      expect(indexContent).toContain('@keyframes float1');
+      expect(indexContent).toContain('@keyframes float2');
+      expect(indexContent).toContain('@keyframes float3');
+      expect(indexContent).toContain('@keyframes float4');
+      expect(indexContent).toContain('@keyframes float5');
+    });
+
+    it('verifica el sistema híbrido CSS + JavaScript', () => {
+      // Verificar partículas CSS de respaldo
+      expect(indexContent).toContain('floating-particles::before');
+      expect(indexContent).toContain('floating-particles::after');
       
-      // Publicaciones page
-      expect(publicacionesContent).toContain('floating-particles');
-      expect(publicacionesContent).toContain('floating-particles-subtle');
+      // Verificar función JavaScript para partículas dinámicas
+      expect(indexContent).toContain('function createParticles');
+      expect(indexContent).toContain('container.appendChild(particle)');
+      expect(indexContent).toContain('Math.random');
+    });
+
+    it('verifica múltiples colores y tamaños de partículas', () => {
+      // Verificar 6 colores diferentes en formato class
+      expect(indexContent).toContain('.particle.type-blue');
+      expect(indexContent).toContain('.particle.type-purple');
+      expect(indexContent).toContain('.particle.type-orange');
+      expect(indexContent).toContain('.particle.type-green');
+      expect(indexContent).toContain('.particle.type-pink');
+      expect(indexContent).toContain('.particle.type-cyan');
+      
+      // Verificar 4 tamaños diferentes
+      expect(indexContent).toContain('.particle.size-xs');
+      expect(indexContent).toContain('.particle.size-small');
+      expect(indexContent).toContain('.particle.size-medium');
+      expect(indexContent).toContain('.particle.size-large');
     });
 
     it('verifica que las partículas tienen configuración para modo oscuro', () => {
-      expect(indexContent).toContain('.dark .floating-particles::before');
-      expect(indexContent).toContain('.dark .floating-particles::after');
-      expect(indexContent).toContain('.dark .floating-particles-subtle::before');
-      expect(indexContent).toContain('.dark .floating-particles-subtle::after');
+      // Verificar partículas CSS de fallback para modo oscuro
+      expect(indexContent).toContain('.dark .particle');
+      
+      // Verificar opacidad específica para modo oscuro
+      expect(indexContent).toContain('opacity: 0.7');
     });
 
-    it('verifica que las partículas tienen diferentes tamaños', () => {
-      expect(indexContent).toContain('width: 4px');
-      expect(indexContent).toContain('height: 4px');
-      expect(indexContent).toContain('width: 3px');
-      expect(indexContent).toContain('height: 3px');
-      expect(indexContent).toContain('width: 2px');
-      expect(indexContent).toContain('height: 2px');
+    it('verifica efectos de interacción avanzados', () => {
+      // Verificar función createParticles
+      expect(indexContent).toContain('createParticles');
+      
+      // Verificar auto-regeneración cada 30 segundos (no 10)
+      expect(indexContent).toContain('setInterval(createParticles, 30000)');
+      
+      // Verificar que hay entre 3-15 partículas por sección
+      expect(indexContent).toContain('Math.floor(Math.random() * (maxParticles - minParticles + 1))');
+      
+      // Verificar evento de hover
+      expect(indexContent).toContain('mouseenter');
     });
 
-    it('verifica que las partículas tienen gradientes coloridos', () => {
-      expect(indexContent).toContain('linear-gradient(45deg, #3b82f6, #8b5cf6)');
-      expect(indexContent).toContain('linear-gradient(45deg, #ec4899, #f59e0b)');
-      expect(indexContent).toContain('linear-gradient(45deg, #10b981, #3b82f6)');
-      expect(indexContent).toContain('linear-gradient(45deg, #8b5cf6, #ec4899)');
+    it('verifica múltiples animaciones de movimiento', () => {
+      const animations = [
+        '@keyframes float1',
+        '@keyframes float2', 
+        '@keyframes float3',
+        '@keyframes float4',
+        '@keyframes float5'
+      ];
+
+      animations.forEach(animation => {
+        expect(indexContent).toContain(animation);
+      });
+      
+      // Verificar diferentes transformaciones
+      expect(indexContent).toContain('translateX');
+      expect(indexContent).toContain('translateY');
+      expect(indexContent).toContain('scale');
+      expect(indexContent).toContain('rotate');
     });
   });
 
