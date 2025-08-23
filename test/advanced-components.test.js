@@ -23,8 +23,9 @@ describe('Componentes Avanzados y Mejoras', () => {
         
         // Verificar props esperadas
         expect(content).toContain('interface Props');
-        expect(content).toContain('loading');
-        expect(content).toContain('decoding="async"');
+  expect(content).toContain('loading');
+  // aceptar varias formas: decoding="async" o decoding={... 'async' ...}
+  expect(content).toMatch(/decoding\s*=\s*(?:"async"|\{[^}]*'async'[^}]*\}|\{[^}]*\"async\"[^}]*\})/);
         expect(content).toContain('view-transition-name');
         
         // Verificar animaciones CSS
