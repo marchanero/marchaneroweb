@@ -82,11 +82,16 @@ jobs:
       github.event_name == 'push' &&
       github.ref != 'refs/heads/main' &&
       (github.ref == 'refs/heads/develop' || startsWith(github.ref, 'refs/heads/feature/') || startsWith(github.ref, 'refs/heads/fix/') || startsWith(github.ref, 'refs/heads/hotfix/'))
+    permissions:
+      contents: read
+      pull-requests: write
+      issues: write
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
         with:
           ref: ${{ github.ref }}
+          fetch-depth: 0
 
       - name: Setup labels
         env:
@@ -96,59 +101,117 @@ jobs:
           gh label create "automated-pr" --description "Pull request created automatically by workflow" --color "0366d6" 2>/dev/null || echo "Label automated-pr already exists or couldn't be created"
           gh label create "needs-review" --description "Requires review" --color "fbca04" 2>/dev/null || echo "Label needs-review already exists or couldn't be created"
 
+      - name: Check for changes between branches
+        id: check_changes
+        run: |
+          # Verificar si hay commits únicos en la rama actual comparado con main
+          git fetch origin main:main 2>/dev/null || git fetch origin main
+          commits_ahead=$(git rev-list --count main.."${{ github.ref_name }}" 2>/dev/null || echo "0")
+          commits_behind=$(git rev-list --count "${{ github.ref_name }}"..main 2>/dev/null || echo "0")
+          
+          echo "commits_ahead=$commits_ahead" >> $GITHUB_OUTPUT
+          echo "commits_behind=$commits_behind" >> $GITHUB_OUTPUT
+          
+          echo "Branch ${{ github.ref_name }} is $commits_ahead commits ahead and $commits_behind commits behind main"
+          
+          if [ "$commits_ahead" -eq "0" ]; then
+            echo "has_changes=false" >> $GITHUB_OUTPUT
+            echo "No unique commits to create PR"
+          else
+            echo "has_changes=true" >> $GITHUB_OUTPUT
+            echo "Found $commits_ahead unique commits"
+          fi
+
       - name: Create Pull Request to main
+        if: steps.check_changes.outputs.has_changes == 'true'
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           # Verificar si ya existe un PR abierto desde esta rama hacia main
-          existing_pr=$(gh pr list --head "${{ github.ref_name }}" --base main --json number --jq '.[0].number // empty')
+          existing_pr=$(gh pr list --head "${{ github.ref_name }}" --base main --state open --json number --jq '.[0].number // empty' 2>/dev/null || echo "")
           
           if [ -z "$existing_pr" ]; then
-            # Crear nuevo PR (usar solo labels básicos para evitar errores)
-            gh pr create \
-              --title "Merge ${{ github.ref_name }} into main" \
-              --body "Automated PR created after successful tests on branch \`${{ github.ref_name }}\`.
+            echo "Creating new PR from ${{ github.ref_name }} to main..."
+            
+            # Crear nuevo PR con manejo de errores mejorado
+            if pr_url=$(gh pr create \
+              --title "🚀 Merge ${{ github.ref_name }} into main" \
+              --body "**Automated PR created after successful tests** ✅
 
-            Test command executed: \`${{ needs.test.outputs.test_command }}\`
-            Workflow run: [${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}]" \
+            **Branch:** \`${{ github.ref_name }}\`
+            **Test Command:** \`${{ needs.test.outputs.test_command }}\`
+            **Commits Ahead:** ${{ steps.check_changes.outputs.commits_ahead }}
+
+            **Workflow:** [View Run](${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }})
+
+            ---
+            _This PR was automatically created by the CI workflow after tests passed successfully._" \
               --base main \
               --head "${{ github.ref_name }}" \
-              --label "enhancement"
-            
-            echo "✅ Created new PR to main"
-            
-            # Intentar agregar labels personalizados después
-            pr_number=$(gh pr list --head "${{ github.ref_name }}" --base main --json number --jq '.[0].number')
-            gh pr edit "$pr_number" --add-label "automated-pr,needs-review" 2>/dev/null || echo "Could not add custom labels"
+              --label "enhancement,automated-pr" 2>&1); then
+              
+              echo "✅ Successfully created PR: $pr_url"
+              
+              # Extraer número de PR e intentar agregar más labels
+              pr_number=$(echo "$pr_url" | sed 's/.*\/\([0-9]*\)$/\1/')
+              if [ -n "$pr_number" ]; then
+                gh pr edit "$pr_number" --add-label "needs-review" 2>/dev/null || echo "Could not add additional labels"
+              fi
+            else
+              echo "❌ Failed to create PR. Error: $pr_url"
+              # Verificar si el error es por falta de cambios
+              if echo "$pr_url" | grep -q "No commits between"; then
+                echo "No commits between branches - this is expected if changes were already merged"
+                exit 0
+              else
+                echo "Unexpected error creating PR"
+                exit 1
+              fi
+            fi
           else
             echo "ℹ️ PR #$existing_pr already exists for ${{ github.ref_name }} -> main"
           fi
 
       - name: Create Pull Request to develop (if branch is not develop itself)
-        if: github.ref != 'refs/heads/develop'
+        if: github.ref != 'refs/heads/develop' && steps.check_changes.outputs.has_changes == 'true'
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           # Verificar si ya existe un PR abierto desde esta rama hacia develop
-          existing_pr=$(gh pr list --head "${{ github.ref_name }}" --base develop --json number --jq '.[0].number // empty')
+          existing_pr=$(gh pr list --head "${{ github.ref_name }}" --base develop --state open --json number --jq '.[0].number // empty' 2>/dev/null || echo "")
           
           if [ -z "$existing_pr" ]; then
-            # Crear nuevo PR (usar label básico primero)
-            gh pr create \
-              --title "Merge ${{ github.ref_name }} into develop" \
-              --body "Automated PR created after successful tests on branch \`${{ github.ref_name }}\`.
+            echo "Creating new PR from ${{ github.ref_name }} to develop..."
+            
+            # Crear nuevo PR con manejo de errores mejorado
+            if pr_url=$(gh pr create \
+              --title "🔄 Merge ${{ github.ref_name }} into develop" \
+              --body "**Automated PR created after successful tests** ✅
 
-            Test command executed: \`${{ needs.test.outputs.test_command }}\`
-            Workflow run: [${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}]" \
+            **Branch:** \`${{ github.ref_name }}\`
+            **Test Command:** \`${{ needs.test.outputs.test_command }}\`
+            **Commits Ahead:** ${{ steps.check_changes.outputs.commits_ahead }}
+
+            **Workflow:** [View Run](${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }})
+
+            ---
+            _This PR was automatically created by the CI workflow after tests passed successfully._" \
               --base develop \
               --head "${{ github.ref_name }}" \
-              --label "enhancement"
-            
-            echo "✅ Created new PR to develop"
-            
-            # Intentar agregar labels personalizados después
-            pr_number=$(gh pr list --head "${{ github.ref_name }}" --base develop --json number --jq '.[0].number')
-            gh pr edit "$pr_number" --add-label "automated-pr,needs-review" 2>/dev/null || echo "Could not add custom labels"
+              --label "enhancement,automated-pr" 2>&1); then
+              
+              echo "✅ Successfully created PR to develop: $pr_url"
+              
+              # Extraer número de PR e intentar agregar más labels
+              pr_number=$(echo "$pr_url" | sed 's/.*\/\([0-9]*\)$/\1/')
+              if [ -n "$pr_number" ]; then
+                gh pr edit "$pr_number" --add-label "needs-review" 2>/dev/null || echo "Could not add additional labels"
+              fi
+            else
+              echo "❌ Failed to create PR to develop. Error: $pr_url"
+              # No fallar el job si no se puede crear PR a develop
+              echo "Continuing despite develop PR creation failure"
+            fi
           else
             echo "ℹ️ PR #$existing_pr already exists for ${{ github.ref_name }} -> develop"
           fi
@@ -159,6 +222,9 @@ jobs:
     needs: test
     runs-on: ubuntu-latest
     if: needs.test.outputs.test_status == 'failure' && github.event_name == 'push' && github.ref != 'refs/heads/main'
+    permissions:
+      contents: read
+      issues: write
     steps:
       - name: Setup labels for issues
         env:
@@ -172,21 +238,39 @@ jobs:
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          # Crear issue por fallo en tests (usar labels básicos primero)
-          issue_number=$(gh issue create \
+          # Crear issue por fallo en tests con manejo de errores mejorado
+          if issue_url=$(gh issue create \
             --title "🚨 Test Failure on branch: ${{ github.ref_name }}" \
-            --body "### 🚨 Test Failure Notification 🚨
+            --body "### 🚨 Test Failure Notification
 
-          Tests failed on branch **${{ github.ref_name }}**.
+          Tests failed on branch **${{ github.ref_name }}** 
 
+          **Details:**
           - **Test Command Executed**: \`${{ needs.test.outputs.test_command }}\`
-          - **Workflow Run**: [View Workflow Log](${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }})
+          - **Branch**: \`${{ github.ref_name }}\`
+          - **Triggered by**: @${{ github.actor }}
 
-          Please investigate the failures and address them." \
-            --label "bug" \
-            --assignee "${{ github.actor }}" | sed 's/.*\/\([0-9]*\)/\1/')
-          
-          echo "✅ Created issue #$issue_number for test failure"
-          
-          # Intentar agregar labels personalizados después
-          gh issue edit "$issue_number" --add-label "automated-issue,needs-attention" 2>/dev/null || echo "Could not add custom labels to issue"
+          **Workflow Run**: [View Detailed Logs](${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }})
+
+          ---
+          **Next Steps:**
+          1. Check the workflow logs for specific test failures
+          2. Fix the failing tests on your branch
+          3. Push new commits to trigger re-testing
+          4. This issue will be automatically closed when tests pass
+
+          _This issue was automatically created by the CI workflow._" \
+            --label "bug,automated-issue" \
+            --assignee "${{ github.actor }}" 2>&1); then
+            
+            echo "✅ Successfully created issue: $issue_url"
+            
+            # Extraer número de issue e intentar agregar más labels
+            issue_number=$(echo "$issue_url" | sed 's/.*\/\([0-9]*\)$/\1/')
+            if [ -n "$issue_number" ]; then
+              gh issue edit "$issue_number" --add-label "needs-attention" 2>/dev/null || echo "Could not add additional labels"
+            fi
+          else
+            echo "❌ Failed to create issue. Error: $issue_url"
+            echo "Continuing despite issue creation failure"
+          fi
