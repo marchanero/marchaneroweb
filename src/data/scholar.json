@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2025-09-02T06:21:37.817Z",
+  "lastUpdated": "2025-09-03T06:19:52.505Z",
   "scrapingMethod": "ultra-optimized-v3-robust-pagination",
   "paginationInfo": {
     "totalPages": 0,
@@ -49,6 +49,25 @@
   "publications": [
     {
       "id": "pub_1",
+      "title": "Musical Instruments in Extended Reality: A Systematic Review",
+      "authors": [
+        "JL Gómez-Sirvent",
+        "F Lopez de la Rosa",
+        "R Sánchez-Reolid",
+        "..."
+      ],
+      "publication": "International Journal of Human–Computer Interaction 41 (16), 10143-10162, 2025",
+      "year": 2025,
+      "citedBy": 2,
+      "link": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=PCALePwAAAAJ&pagesize=100&sortby=pubdate&citation_for_view=PCALePwAAAAJ:blknAaTinKkC",
+      "citedByLink": "https://scholar.google.com/scholar?oi=bibs&hl=en&cites=18012033131855912112",
+      "citationId": "PCALePwAAAAJ:blknAaTinKkC",
+      "type": "journal",
+      "isFirstAuthor": false,
+      "isCorrespondingAuthor": false
+    },
+    {
+      "id": "pub_2",
       "title": "Small Language Models for Speech Emotion Recognition in Text and Audio Modalities",
       "authors": [
         "JL Gómez-Sirvent",
@@ -66,7 +85,7 @@
       "isCorrespondingAuthor": false
     },
     {
-      "id": "pub_2",
+      "id": "pub_3",
       "title": "EEG and fNIRS Signal-Based Emotion Identification by Means of Machine Learning Algorithms During Visual Stimuli Exposure",
       "authors": [
         "D Sánchez-Reolid",
@@ -82,25 +101,6 @@
       "citedByLink": "https://scholar.google.com/scholar?oi=bibs&hl=en&cites=12036340440394209408",
       "citationId": "PCALePwAAAAJ:hMod-77fHWUC",
       "type": "article",
-      "isFirstAuthor": false,
-      "isCorrespondingAuthor": false
-    },
-    {
-      "id": "pub_3",
-      "title": "Musical Instruments in Extended Reality: A Systematic Review",
-      "authors": [
-        "JL Gómez-Sirvent",
-        "F López de la Rosa",
-        "R Sánchez-Reolid",
-        "..."
-      ],
-      "publication": "International Journal of Human–Computer Interaction, 1-20, 2024",
-      "year": 2024,
-      "citedBy": 2,
-      "link": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=PCALePwAAAAJ&pagesize=100&sortby=pubdate&citation_for_view=PCALePwAAAAJ:blknAaTinKkC",
-      "citedByLink": "https://scholar.google.com/scholar?oi=bibs&hl=en&cites=18012033131855912112",
-      "citationId": "PCALePwAAAAJ:blknAaTinKkC",
-      "type": "journal",
       "isFirstAuthor": false,
       "isCorrespondingAuthor": false
     },
