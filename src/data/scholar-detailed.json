@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2025-09-15T06:21:50.885Z",
+  "lastUpdated": "2025-09-16T06:20:50.924Z",
   "scrapingMethod": "ultra-optimized-v3-robust-pagination",
   "paginationInfo": {
     "totalPages": 0,
@@ -39,7 +39,7 @@
     "scholarId": "PCALePwAAAAJ"
   },
   "metrics": {
-    "totalCitations": 606,
+    "totalCitations": 608,
     "hIndex": 13,
     "i10Index": 17,
     "citationsRecent": 0,
@@ -642,7 +642,7 @@
       ],
       "publication": "Biomedical Signal Processing and Control 71, 103203, 2022",
       "year": 2022,
-      "citedBy": 53,
+      "citedBy": 54,
       "link": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=PCALePwAAAAJ&pagesize=100&sortby=pubdate&citation_for_view=PCALePwAAAAJ:3fE2CSJIrl8C",
       "citedByLink": "https://scholar.google.com/scholar?oi=bibs&hl=en&cites=2059831707917929488",
       "citationId": "PCALePwAAAAJ:3fE2CSJIrl8C",
@@ -662,7 +662,7 @@
       ],
       "publication": "Applied Sciences 11 (20), 9508, 2021",
       "year": 2021,
-      "citedBy": 62,
+      "citedBy": 63,
       "link": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=PCALePwAAAAJ&pagesize=100&sortby=pubdate&citation_for_view=PCALePwAAAAJ:kNdYIx-mwKoC",
       "citedByLink": "https://scholar.google.com/scholar?oi=bibs&hl=en&cites=4485305786774461650",
       "citationId": "PCALePwAAAAJ:kNdYIx-mwKoC",
@@ -976,8 +976,8 @@
       "2018": 61,
       "2019": 35,
       "2020": 106,
-      "2021": 62,
-      "2022": 252,
+      "2021": 63,
+      "2022": 253,
       "2023": 59,
       "2024": 21,
       "2025": 2
@@ -989,7 +989,7 @@
   },
   "summary": {
     "totalPublications": 47,
-    "totalCitations": 606,
+    "totalCitations": 608,
     "hIndex": 13,
     "i10Index": 17,
     "avgCitationsPerPaper": 13,
