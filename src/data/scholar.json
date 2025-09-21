@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2025-09-20T06:18:21.416Z",
+  "lastUpdated": "2025-09-21T06:19:12.716Z",
   "scrapingMethod": "ultra-optimized-v3-robust-pagination",
   "paginationInfo": {
     "totalPages": 0,
@@ -39,7 +39,7 @@
     "scholarId": "PCALePwAAAAJ"
   },
   "metrics": {
-    "totalCitations": 609,
+    "totalCitations": 610,
     "hIndex": 13,
     "i10Index": 17,
     "citationsRecent": 0,
@@ -589,7 +589,7 @@
       ],
       "publication": "IEEE Transactions on Semiconductor Manufacturing 35 (2), 324-331, 2022",
       "year": 2022,
-      "citedBy": 39,
+      "citedBy": 40,
       "link": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=PCALePwAAAAJ&pagesize=100&sortby=pubdate&citation_for_view=PCALePwAAAAJ:Zph67rFs4hoC",
       "citedByLink": "https://scholar.google.com/scholar?oi=bibs&hl=en&cites=3041118640241756035",
       "citationId": "PCALePwAAAAJ:Zph67rFs4hoC",
