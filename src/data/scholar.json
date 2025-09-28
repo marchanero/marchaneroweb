@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2025-09-27T06:17:59.584Z",
+  "lastUpdated": "2025-09-28T06:19:00.231Z",
   "scrapingMethod": "ultra-optimized-v3-robust-pagination",
   "paginationInfo": {
     "totalPages": 0,
@@ -39,7 +39,7 @@
     "scholarId": "PCALePwAAAAJ"
   },
   "metrics": {
-    "totalCitations": 611,
+    "totalCitations": 612,
     "hIndex": 13,
     "i10Index": 17,
     "citationsRecent": 0,
@@ -77,8 +77,9 @@
       ],
       "publication": "Applied Sciences 15 (14), 7730, 2025",
       "year": 2025,
-      "citedBy": 0,
+      "citedBy": 1,
       "link": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=PCALePwAAAAJ&pagesize=100&sortby=pubdate&citation_for_view=PCALePwAAAAJ:RYcK_YlVTxYC",
+      "citedByLink": "https://scholar.google.com/scholar?oi=bibs&hl=en&cites=14501834267374468220",
       "citationId": "PCALePwAAAAJ:RYcK_YlVTxYC",
       "type": "article",
       "isFirstAuthor": false,
