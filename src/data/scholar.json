@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2025-10-01T06:21:15.160Z",
+  "lastUpdated": "2025-10-02T06:20:52.805Z",
   "scrapingMethod": "ultra-optimized-v3-robust-pagination",
   "paginationInfo": {
     "totalPages": 0,
@@ -39,7 +39,7 @@
     "scholarId": "PCALePwAAAAJ"
   },
   "metrics": {
-    "totalCitations": 612,
+    "totalCitations": 615,
     "hIndex": 13,
     "i10Index": 17,
     "citationsRecent": 0,
@@ -294,7 +294,7 @@
       ],
       "publication": "Computers & Industrial Engineering 183, 109549, 2023",
       "year": 2023,
-      "citedBy": 32,
+      "citedBy": 33,
       "link": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=PCALePwAAAAJ&pagesize=100&sortby=pubdate&citation_for_view=PCALePwAAAAJ:hFOr9nPyWt4C",
       "citedByLink": "https://scholar.google.com/scholar?oi=bibs&hl=en&cites=1095520988981170505",
       "citationId": "PCALePwAAAAJ:hFOr9nPyWt4C",
@@ -514,7 +514,7 @@
       ],
       "publication": "Measurement 202, 111872, 2022",
       "year": 2022,
-      "citedBy": 10,
+      "citedBy": 11,
       "link": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=PCALePwAAAAJ&pagesize=100&sortby=pubdate&citation_for_view=PCALePwAAAAJ:4DMP91E08xMC",
       "citedByLink": "https://scholar.google.com/scholar?oi=bibs&hl=en&cites=12565850885855773560",
       "citationId": "PCALePwAAAAJ:4DMP91E08xMC",
@@ -663,7 +663,7 @@
       ],
       "publication": "Applied Sciences 11 (20), 9508, 2021",
       "year": 2021,
-      "citedBy": 63,
+      "citedBy": 64,
       "link": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=PCALePwAAAAJ&pagesize=100&sortby=pubdate&citation_for_view=PCALePwAAAAJ:kNdYIx-mwKoC",
       "citedByLink": "https://scholar.google.com/scholar?oi=bibs&hl=en&cites=4485305786774461650",
       "citationId": "PCALePwAAAAJ:kNdYIx-mwKoC",
