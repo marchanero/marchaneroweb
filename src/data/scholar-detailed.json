@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2025-10-02T06:20:52.805Z",
+  "lastUpdated": "2025-10-03T06:19:59.955Z",
   "scrapingMethod": "ultra-optimized-v3-robust-pagination",
   "paginationInfo": {
     "totalPages": 0,
@@ -39,7 +39,7 @@
     "scholarId": "PCALePwAAAAJ"
   },
   "metrics": {
-    "totalCitations": 615,
+    "totalCitations": 617,
     "hIndex": 13,
     "i10Index": 17,
     "citationsRecent": 0,
@@ -294,7 +294,7 @@
       ],
       "publication": "Computers & Industrial Engineering 183, 109549, 2023",
       "year": 2023,
-      "citedBy": 33,
+      "citedBy": 34,
       "link": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=PCALePwAAAAJ&pagesize=100&sortby=pubdate&citation_for_view=PCALePwAAAAJ:hFOr9nPyWt4C",
       "citedByLink": "https://scholar.google.com/scholar?oi=bibs&hl=en&cites=1095520988981170505",
       "citationId": "PCALePwAAAAJ:hFOr9nPyWt4C",
@@ -354,7 +354,7 @@
       ],
       "publication": "Virtual Reality 27 (1), 217-232, 2023",
       "year": 2023,
-      "citedBy": 7,
+      "citedBy": 8,
       "link": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=PCALePwAAAAJ&pagesize=100&sortby=pubdate&citation_for_view=PCALePwAAAAJ:hqOjcs7Dif8C",
       "citedByLink": "https://scholar.google.com/scholar?oi=bibs&hl=en&cites=11181385404077964469",
       "citationId": "PCALePwAAAAJ:hqOjcs7Dif8C",
@@ -979,7 +979,7 @@
       "2020": 107,
       "2021": 64,
       "2022": 255,
-      "2023": 60,
+      "2023": 62,
       "2024": 21,
       "2025": 3
     },
@@ -990,7 +990,7 @@
   },
   "summary": {
     "totalPublications": 47,
-    "totalCitations": 615,
+    "totalCitations": 617,
     "hIndex": 13,
     "i10Index": 17,
     "avgCitationsPerPaper": 13,
