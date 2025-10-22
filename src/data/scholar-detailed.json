@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2025-10-21T06:21:29.276Z",
+  "lastUpdated": "2025-10-22T06:22:31.242Z",
   "scrapingMethod": "ultra-optimized-v3-robust-pagination",
   "paginationInfo": {
     "totalPages": 0,
@@ -39,7 +39,7 @@
     "scholarId": "PCALePwAAAAJ"
   },
   "metrics": {
-    "totalCitations": 627,
+    "totalCitations": 628,
     "hIndex": 13,
     "i10Index": 18,
     "citationsRecent": 0,
@@ -737,7 +737,7 @@
       ],
       "publication": "Sensors, 2020",
       "year": 2020,
-      "citedBy": 29,
+      "citedBy": 30,
       "link": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=PCALePwAAAAJ&pagesize=100&sortby=pubdate&citation_for_view=PCALePwAAAAJ:_FxGoFyzp5QC",
       "citedByLink": "https://scholar.google.com/scholar?oi=bibs&hl=en&cites=5277051289196934267",
       "citationId": "PCALePwAAAAJ:_FxGoFyzp5QC",
@@ -994,7 +994,7 @@
     "citationsByYear": {
       "2018": 62,
       "2019": 35,
-      "2020": 109,
+      "2020": 110,
       "2021": 64,
       "2022": 260,
       "2023": 64,
@@ -1008,7 +1008,7 @@
   },
   "summary": {
     "totalPublications": 48,
-    "totalCitations": 627,
+    "totalCitations": 628,
     "hIndex": 13,
     "i10Index": 18,
     "avgCitationsPerPaper": 13,
