@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2025-10-23T06:21:34.338Z",
+  "lastUpdated": "2025-10-24T06:20:54.362Z",
   "scrapingMethod": "ultra-optimized-v3-robust-pagination",
   "paginationInfo": {
     "totalPages": 0,
@@ -39,7 +39,7 @@
     "scholarId": "PCALePwAAAAJ"
   },
   "metrics": {
-    "totalCitations": 628,
+    "totalCitations": 629,
     "hIndex": 13,
     "i10Index": 18,
     "citationsRecent": 0,
@@ -757,7 +757,7 @@
       ],
       "publication": "Trials 21 (1), 663, 2020",
       "year": 2020,
-      "citedBy": 8,
+      "citedBy": 9,
       "link": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=PCALePwAAAAJ&pagesize=100&sortby=pubdate&citation_for_view=PCALePwAAAAJ:eQOLeE2rZwMC",
       "citedByLink": "https://scholar.google.com/scholar?oi=bibs&hl=en&cites=10995399757381066961",
       "citationId": "PCALePwAAAAJ:eQOLeE2rZwMC",
@@ -994,7 +994,7 @@
     "citationsByYear": {
       "2018": 62,
       "2019": 35,
-      "2020": 110,
+      "2020": 111,
       "2021": 64,
       "2022": 260,
       "2023": 64,
@@ -1008,7 +1008,7 @@
   },
   "summary": {
     "totalPublications": 48,
-    "totalCitations": 628,
+    "totalCitations": 629,
     "hIndex": 13,
     "i10Index": 18,
     "avgCitationsPerPaper": 13,
