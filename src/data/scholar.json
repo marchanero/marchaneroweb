@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2025-11-03T06:22:47.881Z",
+  "lastUpdated": "2025-11-04T06:22:30.156Z",
   "scrapingMethod": "ultra-optimized-v3-robust-pagination",
   "paginationInfo": {
     "totalPages": 0,
@@ -39,7 +39,7 @@
     "scholarId": "PCALePwAAAAJ"
   },
   "metrics": {
-    "totalCitations": 632,
+    "totalCitations": 634,
     "hIndex": 13,
     "i10Index": 18,
     "citationsRecent": 0,
@@ -718,7 +718,7 @@
       ],
       "publication": "Preprints, 2020",
       "year": 2020,
-      "citedBy": 24,
+      "citedBy": 25,
       "link": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=PCALePwAAAAJ&pagesize=100&sortby=pubdate&citation_for_view=PCALePwAAAAJ:LkGwnXOMwfcC",
       "citedByLink": "https://scholar.google.com/scholar?oi=bibs&hl=en&cites=2219798727825377273",
       "citationId": "PCALePwAAAAJ:LkGwnXOMwfcC",
@@ -927,7 +927,7 @@
       ],
       "publication": "Biomed Signal Process Control 71, 103203, 0",
       "year": null,
-      "citedBy": 5,
+      "citedBy": 6,
       "link": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=PCALePwAAAAJ&pagesize=100&sortby=pubdate&citation_for_view=PCALePwAAAAJ:GnPB-g6toBAC",
       "citedByLink": "https://scholar.google.com/scholar?oi=bibs&hl=en&cites=40396567857792415",
       "citationId": "PCALePwAAAAJ:GnPB-g6toBAC",
