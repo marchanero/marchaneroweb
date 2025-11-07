@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2025-11-06T06:22:28.358Z",
+  "lastUpdated": "2025-11-07T06:22:20.635Z",
   "scrapingMethod": "ultra-optimized-v3-robust-pagination",
   "paginationInfo": {
     "totalPages": 0,
@@ -39,7 +39,7 @@
     "scholarId": "PCALePwAAAAJ"
   },
   "metrics": {
-    "totalCitations": 634,
+    "totalCitations": 635,
     "hIndex": 13,
     "i10Index": 18,
     "citationsRecent": 0,
@@ -493,7 +493,7 @@
       ],
       "publication": "Expert Systems with Applications 206, 117731, 2022",
       "year": 2022,
-      "citedBy": 77,
+      "citedBy": 78,
       "link": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=PCALePwAAAAJ&pagesize=100&sortby=pubdate&citation_for_view=PCALePwAAAAJ:_kc_bZDykSQC",
       "citedByLink": "https://scholar.google.com/scholar?oi=bibs&hl=en&cites=15620631313306549090",
       "citationId": "PCALePwAAAAJ:_kc_bZDykSQC",
