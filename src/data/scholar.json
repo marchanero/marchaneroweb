@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2025-11-17T06:23:04.872Z",
+  "lastUpdated": "2025-11-18T06:22:01.184Z",
   "scrapingMethod": "ultra-optimized-v3-robust-pagination",
   "paginationInfo": {
     "totalPages": 0,
@@ -39,7 +39,7 @@
     "scholarId": "PCALePwAAAAJ"
   },
   "metrics": {
-    "totalCitations": 639,
+    "totalCitations": 640,
     "hIndex": 13,
     "i10Index": 18,
     "citationsRecent": 0,
@@ -68,7 +68,7 @@
     },
     {
       "id": "pub_2",
-      "title": "Small Language Models for Speech Emotion Recognition in Text and Audio Modalities",
+      "title": "Small language models for speech emotion recognition in text and audio modalities",
       "authors": [
         "JL Gómez-Sirvent",
         "F López de la Rosa",
@@ -77,7 +77,7 @@
       ],
       "publication": "Applied Sciences 15 (14), 7730, 2025",
       "year": 2025,
-      "citedBy": 1,
+      "citedBy": 2,
       "link": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=PCALePwAAAAJ&pagesize=100&sortby=pubdate&citation_for_view=PCALePwAAAAJ:RYcK_YlVTxYC",
       "citedByLink": "https://scholar.google.com/scholar?oi=bibs&hl=en&cites=14501834267374468220",
       "citationId": "PCALePwAAAAJ:RYcK_YlVTxYC",
