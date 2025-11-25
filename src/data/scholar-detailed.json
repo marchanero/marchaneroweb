@@ -1,11 +1,11 @@
 {
-  "lastUpdated": "2025-11-24T06:23:19.977Z",
+  "lastUpdated": "2025-11-25T06:23:09.694Z",
   "scrapingMethod": "ultra-optimized-v3-robust-pagination",
   "paginationInfo": {
     "totalPages": 0,
     "totalRequests": 1,
     "maxRequestsUsed": 5,
-    "totalPublications": 48,
+    "totalPublications": 49,
     "publicationsPerPage": 100,
     "completeness": "complete",
     "notes": "Todos los datos disponibles han sido obtenidos."
@@ -39,7 +39,7 @@
     "scholarId": "PCALePwAAAAJ"
   },
   "metrics": {
-    "totalCitations": 641,
+    "totalCitations": 642,
     "hIndex": 13,
     "i10Index": 18,
     "citationsRecent": 0,
@@ -49,6 +49,24 @@
   "publications": [
     {
       "id": "pub_1",
+      "title": "EEG Signal Processing Pipelines in the Study of Neurophysiological Characteristics of Gifted Primary School Children: A Scoping Review",
+      "authors": [
+        "E García-Pérez",
+        "R Sánchez-Reolid",
+        "A L. Borja",
+        "JC Pastor Vicedo"
+      ],
+      "publication": "Publicación no especificada",
+      "year": 2025,
+      "citedBy": 0,
+      "link": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=PCALePwAAAAJ&pagesize=100&sortby=pubdate&citation_for_view=PCALePwAAAAJ:vV6vV6tmYwMC",
+      "citationId": "PCALePwAAAAJ:vV6vV6tmYwMC",
+      "type": "article",
+      "isFirstAuthor": false,
+      "isCorrespondingAuthor": false
+    },
+    {
+      "id": "pub_2",
       "title": "Musical Instruments in Extended Reality: A Systematic Review",
       "authors": [
         "JL Gómez-Sirvent",
@@ -67,7 +85,7 @@
       "isCorrespondingAuthor": false
     },
     {
-      "id": "pub_2",
+      "id": "pub_3",
       "title": "Small language models for speech emotion recognition in text and audio modalities",
       "authors": [
         "JL Gómez-Sirvent",
@@ -86,7 +104,7 @@
       "isCorrespondingAuthor": false
     },
     {
-      "id": "pub_3",
+      "id": "pub_4",
       "title": "Expression Recognition in Faces Partially Occluded by Head-Mounted Displays",
       "authors": [
         "JL Gómez-Sirvent",
@@ -104,7 +122,7 @@
       "isCorrespondingAuthor": false
     },
     {
-      "id": "pub_4",
+      "id": "pub_5",
       "title": "EEG and fNIRS Signal-Based Emotion Identification by Means of Machine Learning Algorithms During Visual Stimuli Exposure",
       "authors": [
         "D Sánchez-Reolid",
@@ -124,7 +142,7 @@
       "isCorrespondingAuthor": false
     },
     {
-      "id": "pub_5",
+      "id": "pub_6",
       "title": "Improved surface defect classification from a simple convolutional neural network by image preprocessing and data augmentation",
       "authors": [
         "FL de la Rosa",
@@ -144,7 +162,7 @@
       "isCorrespondingAuthor": false
     },
     {
-      "id": "pub_6",
+      "id": "pub_7",
       "title": "Binary Classification Methods for Movement Analysis from Functional Near-Infrared Spectroscopy Signals",
       "authors": [
         "D Sánchez-Reolid",
@@ -163,7 +181,7 @@
       "isCorrespondingAuthor": false
     },
     {
-      "id": "pub_7",
+      "id": "pub_8",
       "title": "Exploring the impact of windows on musicians’ experience: a neuroarchitecture perspective",
       "authors": [
         "JL Gómez-Sirvent",
@@ -182,7 +200,7 @@
       "isCorrespondingAuthor": false
     },
     {
-      "id": "pub_8",
+      "id": "pub_9",
       "title": "Inter-hospital Moderate and Advanced Alzheimer's Disease Detection Through Convolutional Neural Networks",
       "authors": [
         "C Roncero-Parra",
@@ -202,7 +220,7 @@
       "isCorrespondingAuthor": false
     },
     {
-      "id": "pub_9",
+      "id": "pub_10",
       "title": "Differences in emotion recognition between non-immersive vs. immersive virtual reality: preliminary findings in schizophrenia and bipolar disorder",
       "authors": [
         "M Scala",
@@ -222,7 +240,7 @@
       "isCorrespondingAuthor": false
     },
     {
-      "id": "pub_10",
+      "id": "pub_11",
       "title": "Detection of auditory hallucinations from electroencephalographic brain–computer interface signals",
       "authors": [
         "B García-Martínez",
@@ -242,7 +260,7 @@
       "isCorrespondingAuthor": false
     },
     {
-      "id": "pub_11",
+      "id": "pub_12",
       "title": "Pre-occupancy evaluation of a virtual music school classroom: Influence of color and type of lighting on music performers",
       "authors": [
         "JLG Sirvent",
@@ -262,7 +280,7 @@
       "isCorrespondingAuthor": false
     },
     {
-      "id": "pub_12",
+      "id": "pub_13",
       "title": "A framework for managing the experimental evaluation of ambient assisted living systems",
       "authors": [
         "J Jiménez-Ruescas",
@@ -282,7 +300,7 @@
       "isCorrespondingAuthor": false
     },
     {
-      "id": "pub_13",
+      "id": "pub_14",
       "title": "Inter-hospital advanced and mild Alzheimer’s disease classification based on electroencephalogram measurements via classical machine learning algorithms",
       "authors": [
         "A Parreño Torres",
@@ -301,7 +319,7 @@
       "isCorrespondingAuthor": false
     },
     {
-      "id": "pub_14",
+      "id": "pub_15",
       "title": "Defect detection and classification on semiconductor wafers using two-stage geometric transformation-based data augmentation and SqueezeNet lightweight convolutional neural network",
       "authors": [
         "FL de la Rosa",
@@ -321,7 +339,7 @@
       "isCorrespondingAuthor": false
     },
     {
-      "id": "pub_15",
+      "id": "pub_16",
       "title": "Pleasure and displeasure identification from fNIRS signals",
       "authors": [
         "D Sánchez-Reolid",
@@ -340,7 +358,7 @@
       "isCorrespondingAuthor": false
     },
     {
-      "id": "pub_16",
+      "id": "pub_17",
       "title": "Generic Architecture for Multisource Physiological Signal Acquisition, Processing and Classification Based on Microservices",
       "authors": [
         "R Sánchez-Reolid",
@@ -361,7 +379,7 @@
       "isCorrespondingAuthor": false
     },
     {
-      "id": "pub_17",
+      "id": "pub_18",
       "title": "Co-design of avatars to embody auditory hallucinations of patients with schizophrenia: A study on patients’ feeling of satisfaction and psychiatrists’ intention to adopt the …",
       "authors": [
         "AS García",
@@ -372,7 +390,7 @@
       ],
       "publication": "Virtual Reality 27 (1), 217-232, 2023",
       "year": 2023,
-      "citedBy": 8,
+      "citedBy": 9,
       "link": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=PCALePwAAAAJ&pagesize=100&sortby=pubdate&citation_for_view=PCALePwAAAAJ:hqOjcs7Dif8C",
       "citedByLink": "https://scholar.google.com/scholar?oi=bibs&hl=en&cites=11181385404077964469",
       "citationId": "PCALePwAAAAJ:hqOjcs7Dif8C",
@@ -381,7 +399,7 @@
       "isCorrespondingAuthor": false
     },
     {
-      "id": "pub_18",
+      "id": "pub_19",
       "title": "Co-design of avatars to embody auditory hallucinations of patients with schizophrenia",
       "authors": [
         "P Fernández Sotos",
@@ -399,7 +417,7 @@
       "isCorrespondingAuthor": false
     },
     {
-      "id": "pub_19",
+      "id": "pub_20",
       "title": "Intelligent environments controlled by physiological, perceptual and behavioural responses to emotional experiences",
       "authors": [
         "R Sánchez Reolid"
@@ -414,7 +432,7 @@
       "isCorrespondingAuthor": false
     },
     {
-      "id": "pub_20",
+      "id": "pub_21",
       "title": "A Framework for Managing the Experimental Evaluation of Ambient Assisted Living Systems",
       "authors": [
         "P González"
@@ -429,7 +447,7 @@
       "isCorrespondingAuthor": false
     },
     {
-      "id": "pub_21",
+      "id": "pub_22",
       "title": "Inter-hospital Moderate and Advanced Alzheimer’s Disease Detection Through Convolutional Neural Networks",
       "authors": [],
       "publication": "Publicación no especificada",
@@ -442,7 +460,7 @@
       "isCorrespondingAuthor": false
     },
     {
-      "id": "pub_22",
+      "id": "pub_23",
       "title": "A deep residual neural network for semiconductor defect classification in imbalanced scanning electron microscope datasets",
       "authors": [
         "FL de la Rosa",
@@ -462,7 +480,7 @@
       "isCorrespondingAuthor": false
     },
     {
-      "id": "pub_23",
+      "id": "pub_24",
       "title": "Machine learning techniques for arousal classification from electrodermal activity: A systematic review",
       "authors": [
         "R Sánchez-Reolid",
@@ -482,7 +500,7 @@
       "isCorrespondingAuthor": false
     },
     {
-      "id": "pub_24",
+      "id": "pub_25",
       "title": "Geometric transformation-based data augmentation on defect classification of segmented images of semiconductor materials using a ResNet50 convolutional neural network",
       "authors": [
         "FL de la Rosa",
@@ -502,7 +520,7 @@
       "isCorrespondingAuthor": false
     },
     {
-      "id": "pub_25",
+      "id": "pub_26",
       "title": "Emotion classification from EEG with a low-cost BCI versus a high-end equipment",
       "authors": [
         "R Sánchez-Reolid",
@@ -521,7 +539,7 @@
       "isCorrespondingAuthor": false
     },
     {
-      "id": "pub_26",
+      "id": "pub_27",
       "title": "Defect classification on semiconductor wafers using Fisher vector and visual vocabularies coding",
       "authors": [
         "JL Gómez-Sirvent",
@@ -541,7 +559,7 @@
       "isCorrespondingAuthor": false
     },
     {
-      "id": "pub_27",
+      "id": "pub_28",
       "title": "Electroencephalographic signal processing from brain-computer-interface following image-based emotion induction",
       "authors": [
         "E García-Pérez",
@@ -560,7 +578,7 @@
       "isCorrespondingAuthor": false
     },
     {
-      "id": "pub_28",
+      "id": "pub_29",
       "title": "Acquisition and synchronisation of multi-source physiological data using microservices and event-driven architecture",
       "authors": [
         "R Sánchez-Reolid",
@@ -579,7 +597,7 @@
       "isCorrespondingAuthor": false
     },
     {
-      "id": "pub_29",
+      "id": "pub_30",
       "title": "Physical Exercise Effects on University Students’ Attention: An EEG Analysis Approach",
       "authors": [
         "OR Contreras-Jordán",
@@ -598,7 +616,7 @@
       "isCorrespondingAuthor": false
     },
     {
-      "id": "pub_30",
+      "id": "pub_31",
       "title": "Optimal feature selection for defect classification in semiconductor wafers",
       "authors": [
         "JL Gómez-Sirvent",
@@ -617,7 +635,7 @@
       "isCorrespondingAuthor": false
     },
     {
-      "id": "pub_31",
+      "id": "pub_32",
       "title": "Physical exercise effects on university students’ attention: An EEG analysis approach",
       "authors": [
         "R Sánchez Reolid",
@@ -635,7 +653,7 @@
       "isCorrespondingAuthor": false
     },
     {
-      "id": "pub_32",
+      "id": "pub_33",
       "title": "López de la Rosa F., Sánchez-Reolid D., López MT and Fernández-Caballero A",
       "authors": [
         "R Sánchez-Reolid"
@@ -651,7 +669,7 @@
       "isCorrespondingAuthor": false
     },
     {
-      "id": "pub_33",
+      "id": "pub_34",
       "title": "One-dimensional convolutional neural networks for low/high arousal classification from electrodermal activity",
       "authors": [
         "R Sánchez-Reolid",
@@ -670,7 +688,7 @@
       "isCorrespondingAuthor": false
     },
     {
-      "id": "pub_34",
+      "id": "pub_35",
       "title": "A review on machine and deep learning for semiconductor defect classification in scanning electron microscope images",
       "authors": [
         "F Lopez de la Rosa",
@@ -690,7 +708,7 @@
       "isCorrespondingAuthor": false
     },
     {
-      "id": "pub_35",
+      "id": "pub_36",
       "title": "Feature and Time Series Extraction in Artificial Neural Networks for Arousal Detection from Electrodermal Activity",
       "authors": [
         "R Sánchez-Reolid",
@@ -709,7 +727,7 @@
       "isCorrespondingAuthor": false
     },
     {
-      "id": "pub_36",
+      "id": "pub_37",
       "title": "Machine learning for stress detection from electrodermal activity: A scoping review",
       "authors": [
         "R Sánchez-Reolid",
@@ -727,7 +745,7 @@
       "isCorrespondingAuthor": false
     },
     {
-      "id": "pub_37",
+      "id": "pub_38",
       "title": "Arousal Detection in Elderly People from Electrodermal Activity using Musical Stimuli",
       "authors": [
         "A Bartolomé-Tomás",
@@ -746,7 +764,7 @@
       "isCorrespondingAuthor": false
     },
     {
-      "id": "pub_38",
+      "id": "pub_39",
       "title": "Effectiveness of the level of personal relevance of visual autobiographical stimuli in the induction of positive emotions in young and older adults: pilot study protocol for a …",
       "authors": [
         "D Fernández",
@@ -766,7 +784,7 @@
       "isCorrespondingAuthor": false
     },
     {
-      "id": "pub_39",
+      "id": "pub_40",
       "title": "Effectiveness of the level of personal relevance of visual autobiographical stimuli in the induction of positive emotions in young and older adults: Study protocol for a …",
       "authors": [
         "D Fernández Pérez",
@@ -785,7 +803,7 @@
       "isCorrespondingAuthor": false
     },
     {
-      "id": "pub_40",
+      "id": "pub_41",
       "title": "Deep support vector machines for the identification of stress condition from electrodermal activity",
       "authors": [
         "R Sánchez-Reolid",
@@ -804,7 +822,7 @@
       "isCorrespondingAuthor": false
     },
     {
-      "id": "pub_41",
+      "id": "pub_42",
       "title": "Distributed Architecture for Acquisition and Processing of Physiological Signals",
       "authors": [
         "R Sánchez-Reolid",
@@ -823,7 +841,7 @@
       "isCorrespondingAuthor": false
     },
     {
-      "id": "pub_42",
+      "id": "pub_43",
       "title": "Memory retrieval in ageing adults through traditional music genres—an experiment based on electroencephalography signals",
       "authors": [
         "A Bartolomé-Tomás",
@@ -842,7 +860,7 @@
       "isCorrespondingAuthor": false
     },
     {
-      "id": "pub_43",
+      "id": "pub_44",
       "title": "Stress identification from electrodermal activity by support vector machines",
       "authors": [
         "R Sánchez-Reolid",
@@ -860,7 +878,7 @@
       "isCorrespondingAuthor": false
     },
     {
-      "id": "pub_44",
+      "id": "pub_45",
       "title": "Understanding the Brain Function and Emotions: 8th International Work-Conference on the Interplay Between Natural and Artificial Computation, IWINAC 2019, Almería, Spain, June …",
       "authors": [
         "JMF Vicente",
@@ -880,7 +898,7 @@
       "isCorrespondingAuthor": false
     },
     {
-      "id": "pub_45",
+      "id": "pub_46",
       "title": "From Bioinspired Systems and Biomedical Applications to Machine Learning: 8th International Work-Conference on the Interplay Between Natural and Artificial Computation, IWINAC …",
       "authors": [
         "JMF Vicente",
@@ -900,7 +918,7 @@
       "isCorrespondingAuthor": false
     },
     {
-      "id": "pub_46",
+      "id": "pub_47",
       "title": "Artificial Neural Networks to Assess Emotional States from Brain-Computer Interface",
       "authors": [
         "R Sánchez-Reolid",
@@ -920,7 +938,7 @@
       "isCorrespondingAuthor": false
     },
     {
-      "id": "pub_47",
+      "id": "pub_48",
       "title": "López de la Rosa F, López MT, Fernández-Caballero A (2022) One-dimensional convolutional neural networks for low/high arousal classification from electrodermal activity",
       "authors": [
         "R Sánchez-Reolid"
@@ -936,7 +954,7 @@
       "isCorrespondingAuthor": false
     },
     {
-      "id": "pub_48",
+      "id": "pub_49",
       "title": "Machine learning for stress detection from electrodermal activity: A scoping review, 2020",
       "authors": [
         "R Sánchez-Reolid",
@@ -957,12 +975,12 @@
   "paginationAnalysis": {
     "efficiency": {
       "requestsUsed": 1,
-      "publicationsPerRequest": 48,
-      "efficiency": 48
+      "publicationsPerRequest": 49,
+      "efficiency": 49
     },
     "coverage": {
-      "estimatedTotal": 48,
-      "obtainedTotal": 48,
+      "estimatedTotal": 49,
+      "obtainedTotal": 49,
       "coveragePercentage": 100
     },
     "recommendations": [
@@ -989,7 +1007,7 @@
       "2022": 12,
       "2023": 11,
       "2024": 7,
-      "2025": 3
+      "2025": 4
     },
     "citationsByYear": {
       "2018": 62,
@@ -997,7 +1015,7 @@
       "2020": 114,
       "2021": 66,
       "2022": 262,
-      "2023": 65,
+      "2023": 66,
       "2024": 24,
       "2025": 4
     },
@@ -1007,14 +1025,14 @@
     "lastPublication": 2025
   },
   "summary": {
-    "totalPublications": 48,
-    "totalCitations": 641,
+    "totalPublications": 49,
+    "totalCitations": 642,
     "hIndex": 13,
     "i10Index": 18,
     "avgCitationsPerPaper": 13,
     "publicationsWithCitations": 38,
     "mostCitedPaper": {
-      "id": "pub_24",
+      "id": "pub_25",
       "title": "Geometric transformation-based data augmentation on defect classification of segmented images of semiconductor materials using a ResNet50 convolutional neural network",
       "authors": [
         "FL de la Rosa",
