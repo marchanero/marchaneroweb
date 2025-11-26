@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2025-11-25T06:23:09.694Z",
+  "lastUpdated": "2025-11-26T06:23:27.975Z",
   "scrapingMethod": "ultra-optimized-v3-robust-pagination",
   "paginationInfo": {
     "totalPages": 0,
@@ -39,7 +39,7 @@
     "scholarId": "PCALePwAAAAJ"
   },
   "metrics": {
-    "totalCitations": 642,
+    "totalCitations": 643,
     "hIndex": 13,
     "i10Index": 18,
     "citationsRecent": 0,
@@ -251,7 +251,7 @@
       ],
       "publication": "Cognitive Systems Research 83, 101176, 2024",
       "year": 2024,
-      "citedBy": 3,
+      "citedBy": 4,
       "link": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=PCALePwAAAAJ&pagesize=100&sortby=pubdate&citation_for_view=PCALePwAAAAJ:R3hNpaxXUhUC",
       "citedByLink": "https://scholar.google.com/scholar?oi=bibs&hl=en&cites=3852858802541177583",
       "citationId": "PCALePwAAAAJ:R3hNpaxXUhUC",
@@ -390,7 +390,7 @@
       ],
       "publication": "Virtual Reality 27 (1), 217-232, 2023",
       "year": 2023,
-      "citedBy": 9,
+      "citedBy": 8,
       "link": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=PCALePwAAAAJ&pagesize=100&sortby=pubdate&citation_for_view=PCALePwAAAAJ:hqOjcs7Dif8C",
       "citedByLink": "https://scholar.google.com/scholar?oi=bibs&hl=en&cites=11181385404077964469",
       "citationId": "PCALePwAAAAJ:hqOjcs7Dif8C",
@@ -491,7 +491,7 @@
       ],
       "publication": "Sensors 22 (22), 8886, 2022",
       "year": 2022,
-      "citedBy": 23,
+      "citedBy": 24,
       "link": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=PCALePwAAAAJ&pagesize=100&sortby=pubdate&citation_for_view=PCALePwAAAAJ:dhFuZR0502QC",
       "citedByLink": "https://scholar.google.com/scholar?oi=bibs&hl=en&cites=13609103185694218187",
       "citationId": "PCALePwAAAAJ:dhFuZR0502QC",
