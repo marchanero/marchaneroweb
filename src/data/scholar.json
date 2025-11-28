@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2025-11-27T06:24:09.196Z",
+  "lastUpdated": "2025-11-28T06:23:30.875Z",
   "scrapingMethod": "ultra-optimized-v3-robust-pagination",
   "paginationInfo": {
     "totalPages": 0,
@@ -39,7 +39,7 @@
     "scholarId": "PCALePwAAAAJ"
   },
   "metrics": {
-    "totalCitations": 643,
+    "totalCitations": 645,
     "hIndex": 13,
     "i10Index": 18,
     "citationsRecent": 0,
@@ -211,7 +211,7 @@
       ],
       "publication": "Heliyon, 2024",
       "year": 2024,
-      "citedBy": 12,
+      "citedBy": 13,
       "link": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=PCALePwAAAAJ&pagesize=100&sortby=pubdate&citation_for_view=PCALePwAAAAJ:TFP_iSt0sucC",
       "citedByLink": "https://scholar.google.com/scholar?oi=bibs&hl=en&cites=6529929337580907042",
       "citationId": "PCALePwAAAAJ:TFP_iSt0sucC",
@@ -607,7 +607,7 @@
       ],
       "publication": "Electronics, 2022",
       "year": 2022,
-      "citedBy": 10,
+      "citedBy": 11,
       "link": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=PCALePwAAAAJ&pagesize=100&sortby=pubdate&citation_for_view=PCALePwAAAAJ:ULOm3_A8WrAC",
       "citedByLink": "https://scholar.google.com/scholar?oi=bibs&hl=en&cites=5209992572254485614",
       "citationId": "PCALePwAAAAJ:ULOm3_A8WrAC",
