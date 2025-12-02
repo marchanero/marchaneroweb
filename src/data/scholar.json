@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2025-12-01T06:25:07.377Z",
+  "lastUpdated": "2025-12-02T06:24:33.428Z",
   "scrapingMethod": "ultra-optimized-v3-robust-pagination",
   "paginationInfo": {
     "totalPages": 0,
@@ -39,7 +39,7 @@
     "scholarId": "PCALePwAAAAJ"
   },
   "metrics": {
-    "totalCitations": 648,
+    "totalCitations": 649,
     "hIndex": 13,
     "i10Index": 18,
     "citationsRecent": 0,
@@ -945,7 +945,7 @@
       ],
       "publication": "Biomed Signal Process Control 71, 103203, 0",
       "year": null,
-      "citedBy": 6,
+      "citedBy": 7,
       "link": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=PCALePwAAAAJ&pagesize=100&sortby=pubdate&citation_for_view=PCALePwAAAAJ:GnPB-g6toBAC",
       "citedByLink": "https://scholar.google.com/scholar?oi=bibs&hl=en&cites=40396567857792415",
       "citationId": "PCALePwAAAAJ:GnPB-g6toBAC",
