@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2025-12-04T06:23:44.893Z",
+  "lastUpdated": "2025-12-05T06:24:09.604Z",
   "scrapingMethod": "ultra-optimized-v3-robust-pagination",
   "paginationInfo": {
     "totalPages": 0,
@@ -39,7 +39,7 @@
     "scholarId": "PCALePwAAAAJ"
   },
   "metrics": {
-    "totalCitations": 651,
+    "totalCitations": 655,
     "hIndex": 13,
     "i10Index": 18,
     "citationsRecent": 0,
@@ -67,7 +67,7 @@
     },
     {
       "id": "pub_2",
-      "title": "Musical Instruments in Extended Reality: A Systematic Review",
+      "title": "Musical instruments in extended reality: A systematic review",
       "authors": [
         "JL Gómez-Sirvent",
         "F Lopez de la Rosa",
@@ -76,7 +76,7 @@
       ],
       "publication": "International Journal of Human–Computer Interaction 41 (16), 10143-10162, 2025",
       "year": 2025,
-      "citedBy": 2,
+      "citedBy": 4,
       "link": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=PCALePwAAAAJ&pagesize=100&sortby=pubdate&citation_for_view=PCALePwAAAAJ:blknAaTinKkC",
       "citedByLink": "https://scholar.google.com/scholar?oi=bibs&hl=en&cites=18012033131855912112",
       "citationId": "PCALePwAAAAJ:blknAaTinKkC",
@@ -191,7 +191,7 @@
       ],
       "publication": "Building Research & Information, 1--16, 2024",
       "year": 2024,
-      "citedBy": 4,
+      "citedBy": 5,
       "link": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=PCALePwAAAAJ&pagesize=100&sortby=pubdate&citation_for_view=PCALePwAAAAJ:isC4tDSrTZIC",
       "citedByLink": "https://scholar.google.com/scholar?oi=bibs&hl=en&cites=883551334465790092",
       "citationId": "PCALePwAAAAJ:isC4tDSrTZIC",
@@ -699,7 +699,7 @@
       ],
       "publication": "Applied Sciences 11 (20), 9508, 2021",
       "year": 2021,
-      "citedBy": 67,
+      "citedBy": 68,
       "link": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=PCALePwAAAAJ&pagesize=100&sortby=pubdate&citation_for_view=PCALePwAAAAJ:kNdYIx-mwKoC",
       "citedByLink": "https://scholar.google.com/scholar?oi=bibs&hl=en&cites=4485305786774461650",
       "citationId": "PCALePwAAAAJ:kNdYIx-mwKoC",
