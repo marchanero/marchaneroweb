@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2025-12-07T06:20:42.455Z",
+  "lastUpdated": "2025-12-08T06:26:15.386Z",
   "scrapingMethod": "ultra-optimized-v3-robust-pagination",
   "paginationInfo": {
     "totalPages": 0,
@@ -39,7 +39,7 @@
     "scholarId": "PCALePwAAAAJ"
   },
   "metrics": {
-    "totalCitations": 655,
+    "totalCitations": 656,
     "hIndex": 13,
     "i10Index": 18,
     "citationsRecent": 0,
@@ -511,7 +511,7 @@
       ],
       "publication": "Expert Systems with Applications 206, 117731, 2022",
       "year": 2022,
-      "citedBy": 80,
+      "citedBy": 81,
       "link": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=PCALePwAAAAJ&pagesize=100&sortby=pubdate&citation_for_view=PCALePwAAAAJ:_kc_bZDykSQC",
       "citedByLink": "https://scholar.google.com/scholar?oi=bibs&hl=en&cites=15620631313306549090",
       "citationId": "PCALePwAAAAJ:_kc_bZDykSQC",
@@ -1014,7 +1014,7 @@
       "2019": 35,
       "2020": 115,
       "2021": 68,
-      "2022": 265,
+      "2022": 266,
       "2023": 66,
       "2024": 28,
       "2025": 6
@@ -1026,7 +1026,7 @@
   },
   "summary": {
     "totalPublications": 49,
-    "totalCitations": 655,
+    "totalCitations": 656,
     "hIndex": 13,
     "i10Index": 18,
     "avgCitationsPerPaper": 13,
@@ -1043,7 +1043,7 @@
       ],
       "publication": "Expert Systems with Applications 206, 117731, 2022",
       "year": 2022,
-      "citedBy": 80,
+      "citedBy": 81,
       "link": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=PCALePwAAAAJ&pagesize=100&sortby=pubdate&citation_for_view=PCALePwAAAAJ:_kc_bZDykSQC",
       "citedByLink": "https://scholar.google.com/scholar?oi=bibs&hl=en&cites=15620631313306549090",
       "citationId": "PCALePwAAAAJ:_kc_bZDykSQC",
