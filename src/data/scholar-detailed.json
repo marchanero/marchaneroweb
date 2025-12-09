@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2025-12-08T06:26:15.386Z",
+  "lastUpdated": "2025-12-09T06:24:14.273Z",
   "scrapingMethod": "ultra-optimized-v3-robust-pagination",
   "paginationInfo": {
     "totalPages": 0,
@@ -39,7 +39,7 @@
     "scholarId": "PCALePwAAAAJ"
   },
   "metrics": {
-    "totalCitations": 656,
+    "totalCitations": 658,
     "hIndex": 13,
     "i10Index": 18,
     "citationsRecent": 0,
@@ -330,7 +330,7 @@
       ],
       "publication": "Computers & Industrial Engineering 183, 109549, 2023",
       "year": 2023,
-      "citedBy": 35,
+      "citedBy": 36,
       "link": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=PCALePwAAAAJ&pagesize=100&sortby=pubdate&citation_for_view=PCALePwAAAAJ:hFOr9nPyWt4C",
       "citedByLink": "https://scholar.google.com/scholar?oi=bibs&hl=en&cites=1095520988981170505",
       "citationId": "PCALePwAAAAJ:hFOr9nPyWt4C",
@@ -491,7 +491,7 @@
       ],
       "publication": "Sensors 22 (22), 8886, 2022",
       "year": 2022,
-      "citedBy": 25,
+      "citedBy": 26,
       "link": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=PCALePwAAAAJ&pagesize=100&sortby=pubdate&citation_for_view=PCALePwAAAAJ:dhFuZR0502QC",
       "citedByLink": "https://scholar.google.com/scholar?oi=bibs&hl=en&cites=13609103185694218187",
       "citationId": "PCALePwAAAAJ:dhFuZR0502QC",
@@ -1014,8 +1014,8 @@
       "2019": 35,
       "2020": 115,
       "2021": 68,
-      "2022": 266,
-      "2023": 66,
+      "2022": 267,
+      "2023": 67,
       "2024": 28,
       "2025": 6
     },
@@ -1026,7 +1026,7 @@
   },
   "summary": {
     "totalPublications": 49,
-    "totalCitations": 656,
+    "totalCitations": 658,
     "hIndex": 13,
     "i10Index": 18,
     "avgCitationsPerPaper": 13,
