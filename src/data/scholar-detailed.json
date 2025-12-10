@@ -1,11 +1,11 @@
 {
-  "lastUpdated": "2025-12-09T06:24:14.273Z",
+  "lastUpdated": "2025-12-10T06:24:37.479Z",
   "scrapingMethod": "ultra-optimized-v3-robust-pagination",
   "paginationInfo": {
     "totalPages": 0,
     "totalRequests": 1,
     "maxRequestsUsed": 5,
-    "totalPublications": 49,
+    "totalPublications": 50,
     "publicationsPerPage": 100,
     "completeness": "complete",
     "notes": "Todos los datos disponibles han sido obtenidos."
@@ -511,7 +511,7 @@
       ],
       "publication": "Expert Systems with Applications 206, 117731, 2022",
       "year": 2022,
-      "citedBy": 81,
+      "citedBy": 79,
       "link": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=PCALePwAAAAJ&pagesize=100&sortby=pubdate&citation_for_view=PCALePwAAAAJ:_kc_bZDykSQC",
       "citedByLink": "https://scholar.google.com/scholar?oi=bibs&hl=en&cites=15620631313306549090",
       "citationId": "PCALePwAAAAJ:_kc_bZDykSQC",
@@ -636,6 +636,25 @@
     },
     {
       "id": "pub_32",
+      "title": "Geometric transformation-based data augmentation on defect classification of segmented images of semiconductor materials using a ResNet50 convolutional neural network",
+      "authors": [
+        "F Lopez de la Rosa",
+        "R Sánchez Reolid",
+        "JL Gómez Sirvent",
+        "..."
+      ],
+      "publication": "PERGAMON-ELSEVIER, 2022",
+      "year": 2022,
+      "citedBy": 2,
+      "link": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=PCALePwAAAAJ&pagesize=100&sortby=pubdate&citation_for_view=PCALePwAAAAJ:35N4QoGY0k4C",
+      "citedByLink": "https://scholar.google.com/scholar?oi=bibs&hl=en&cites=5684627761340277450",
+      "citationId": "PCALePwAAAAJ:35N4QoGY0k4C",
+      "type": "article",
+      "isFirstAuthor": false,
+      "isCorrespondingAuthor": false
+    },
+    {
+      "id": "pub_33",
       "title": "Physical exercise effects on university students’ attention: An EEG analysis approach",
       "authors": [
         "R Sánchez Reolid",
@@ -653,7 +672,7 @@
       "isCorrespondingAuthor": false
     },
     {
-      "id": "pub_33",
+      "id": "pub_34",
       "title": "López de la Rosa F., Sánchez-Reolid D., López MT and Fernández-Caballero A",
       "authors": [
         "R Sánchez-Reolid"
@@ -669,7 +688,7 @@
       "isCorrespondingAuthor": false
     },
     {
-      "id": "pub_34",
+      "id": "pub_35",
       "title": "One-dimensional convolutional neural networks for low/high arousal classification from electrodermal activity",
       "authors": [
         "R Sánchez-Reolid",
@@ -688,7 +707,7 @@
       "isCorrespondingAuthor": false
     },
     {
-      "id": "pub_35",
+      "id": "pub_36",
       "title": "A review on machine and deep learning for semiconductor defect classification in scanning electron microscope images",
       "authors": [
         "F Lopez de la Rosa",
@@ -708,7 +727,7 @@
       "isCorrespondingAuthor": false
     },
     {
-      "id": "pub_36",
+      "id": "pub_37",
       "title": "Feature and Time Series Extraction in Artificial Neural Networks for Arousal Detection from Electrodermal Activity",
       "authors": [
         "R Sánchez-Reolid",
@@ -727,7 +746,7 @@
       "isCorrespondingAuthor": false
     },
     {
-      "id": "pub_37",
+      "id": "pub_38",
       "title": "Machine learning for stress detection from electrodermal activity: A scoping review",
       "authors": [
         "R Sánchez-Reolid",
@@ -745,7 +764,7 @@
       "isCorrespondingAuthor": false
     },
     {
-      "id": "pub_38",
+      "id": "pub_39",
       "title": "Arousal Detection in Elderly People from Electrodermal Activity using Musical Stimuli",
       "authors": [
         "A Bartolomé-Tomás",
@@ -764,7 +783,7 @@
       "isCorrespondingAuthor": false
     },
     {
-      "id": "pub_39",
+      "id": "pub_40",
       "title": "Effectiveness of the level of personal relevance of visual autobiographical stimuli in the induction of positive emotions in young and older adults: pilot study protocol for a …",
       "authors": [
         "D Fernández",
@@ -784,7 +803,7 @@
       "isCorrespondingAuthor": false
     },
     {
-      "id": "pub_40",
+      "id": "pub_41",
       "title": "Effectiveness of the level of personal relevance of visual autobiographical stimuli in the induction of positive emotions in young and older adults: Study protocol for a …",
       "authors": [
         "D Fernández Pérez",
@@ -803,7 +822,7 @@
       "isCorrespondingAuthor": false
     },
     {
-      "id": "pub_41",
+      "id": "pub_42",
       "title": "Deep support vector machines for the identification of stress condition from electrodermal activity",
       "authors": [
         "R Sánchez-Reolid",
@@ -822,7 +841,7 @@
       "isCorrespondingAuthor": false
     },
     {
-      "id": "pub_42",
+      "id": "pub_43",
       "title": "Distributed Architecture for Acquisition and Processing of Physiological Signals",
       "authors": [
         "R Sánchez-Reolid",
@@ -841,7 +860,7 @@
       "isCorrespondingAuthor": false
     },
     {
-      "id": "pub_43",
+      "id": "pub_44",
       "title": "Memory retrieval in ageing adults through traditional music genres—an experiment based on electroencephalography signals",
       "authors": [
         "A Bartolomé-Tomás",
@@ -860,7 +879,7 @@
       "isCorrespondingAuthor": false
     },
     {
-      "id": "pub_44",
+      "id": "pub_45",
       "title": "Stress identification from electrodermal activity by support vector machines",
       "authors": [
         "R Sánchez-Reolid",
@@ -878,7 +897,7 @@
       "isCorrespondingAuthor": false
     },
     {
-      "id": "pub_45",
+      "id": "pub_46",
       "title": "Understanding the Brain Function and Emotions: 8th International Work-Conference on the Interplay Between Natural and Artificial Computation, IWINAC 2019, Almería, Spain, June …",
       "authors": [
         "JMF Vicente",
@@ -898,7 +917,7 @@
       "isCorrespondingAuthor": false
     },
     {
-      "id": "pub_46",
+      "id": "pub_47",
       "title": "From Bioinspired Systems and Biomedical Applications to Machine Learning: 8th International Work-Conference on the Interplay Between Natural and Artificial Computation, IWINAC …",
       "authors": [
         "JMF Vicente",
@@ -918,7 +937,7 @@
       "isCorrespondingAuthor": false
     },
     {
-      "id": "pub_47",
+      "id": "pub_48",
       "title": "Artificial Neural Networks to Assess Emotional States from Brain-Computer Interface",
       "authors": [
         "R Sánchez-Reolid",
@@ -938,7 +957,7 @@
       "isCorrespondingAuthor": false
     },
     {
-      "id": "pub_48",
+      "id": "pub_49",
       "title": "López de la Rosa F, López MT, Fernández-Caballero A (2022) One-dimensional convolutional neural networks for low/high arousal classification from electrodermal activity",
       "authors": [
         "R Sánchez-Reolid"
@@ -954,7 +973,7 @@
       "isCorrespondingAuthor": false
     },
     {
-      "id": "pub_49",
+      "id": "pub_50",
       "title": "Machine learning for stress detection from electrodermal activity: A scoping review, 2020",
       "authors": [
         "R Sánchez-Reolid",
@@ -975,12 +994,12 @@
   "paginationAnalysis": {
     "efficiency": {
       "requestsUsed": 1,
-      "publicationsPerRequest": 49,
-      "efficiency": 49
+      "publicationsPerRequest": 50,
+      "efficiency": 50
     },
     "coverage": {
-      "estimatedTotal": 49,
-      "obtainedTotal": 49,
+      "estimatedTotal": 50,
+      "obtainedTotal": 50,
       "coveragePercentage": 100
     },
     "recommendations": [
@@ -1004,7 +1023,7 @@
       "2019": 5,
       "2020": 5,
       "2021": 2,
-      "2022": 12,
+      "2022": 13,
       "2023": 11,
       "2024": 7,
       "2025": 4
@@ -1025,12 +1044,12 @@
     "lastPublication": 2025
   },
   "summary": {
-    "totalPublications": 49,
+    "totalPublications": 50,
     "totalCitations": 658,
     "hIndex": 13,
     "i10Index": 18,
     "avgCitationsPerPaper": 13,
-    "publicationsWithCitations": 38,
+    "publicationsWithCitations": 39,
     "mostCitedPaper": {
       "id": "pub_25",
       "title": "Geometric transformation-based data augmentation on defect classification of segmented images of semiconductor materials using a ResNet50 convolutional neural network",
@@ -1043,7 +1062,7 @@
       ],
       "publication": "Expert Systems with Applications 206, 117731, 2022",
       "year": 2022,
-      "citedBy": 81,
+      "citedBy": 79,
       "link": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=PCALePwAAAAJ&pagesize=100&sortby=pubdate&citation_for_view=PCALePwAAAAJ:_kc_bZDykSQC",
       "citedByLink": "https://scholar.google.com/scholar?oi=bibs&hl=en&cites=15620631313306549090",
       "citationId": "PCALePwAAAAJ:_kc_bZDykSQC",
