@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2025-12-14T06:21:56.101Z",
+  "lastUpdated": "2025-12-15T06:26:52.359Z",
   "scrapingMethod": "ultra-optimized-v3-robust-pagination",
   "paginationInfo": {
     "totalPages": 0,
@@ -39,7 +39,7 @@
     "scholarId": "PCALePwAAAAJ"
   },
   "metrics": {
-    "totalCitations": 662,
+    "totalCitations": 666,
     "hIndex": 13,
     "i10Index": 18,
     "citationsRecent": 0,
@@ -511,7 +511,7 @@
       ],
       "publication": "Expert Systems with Applications 206, 117731, 2022",
       "year": 2022,
-      "citedBy": 82,
+      "citedBy": 85,
       "link": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=PCALePwAAAAJ&pagesize=100&sortby=pubdate&citation_for_view=PCALePwAAAAJ:_kc_bZDykSQC",
       "citedByLink": "https://scholar.google.com/scholar?oi=bibs&hl=en&cites=15620631313306549090",
       "citationId": "PCALePwAAAAJ:_kc_bZDykSQC",
@@ -660,7 +660,7 @@
       ],
       "publication": "Machine Learning Techniques for Arousal Classification from Electrodermal …, 2022",
       "year": 2022,
-      "citedBy": 5,
+      "citedBy": 6,
       "link": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=PCALePwAAAAJ&pagesize=100&sortby=pubdate&citation_for_view=PCALePwAAAAJ:BqipwSGYUEgC",
       "citedByLink": "https://scholar.google.com/scholar?oi=bibs&hl=en&cites=12473849766804691489",
       "citationId": "PCALePwAAAAJ:BqipwSGYUEgC",
