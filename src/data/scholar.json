@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2025-12-15T06:26:52.359Z",
+  "lastUpdated": "2025-12-16T06:24:49.043Z",
   "scrapingMethod": "ultra-optimized-v3-robust-pagination",
   "paginationInfo": {
     "totalPages": 0,
@@ -39,7 +39,7 @@
     "scholarId": "PCALePwAAAAJ"
   },
   "metrics": {
-    "totalCitations": 666,
+    "totalCitations": 669,
     "hIndex": 13,
     "i10Index": 18,
     "citationsRecent": 0,
@@ -511,7 +511,7 @@
       ],
       "publication": "Expert Systems with Applications 206, 117731, 2022",
       "year": 2022,
-      "citedBy": 85,
+      "citedBy": 86,
       "link": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=PCALePwAAAAJ&pagesize=100&sortby=pubdate&citation_for_view=PCALePwAAAAJ:_kc_bZDykSQC",
       "citedByLink": "https://scholar.google.com/scholar?oi=bibs&hl=en&cites=15620631313306549090",
       "citationId": "PCALePwAAAAJ:_kc_bZDykSQC",
@@ -607,7 +607,7 @@
       ],
       "publication": "Electronics, 2022",
       "year": 2022,
-      "citedBy": 11,
+      "citedBy": 12,
       "link": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=PCALePwAAAAJ&pagesize=100&sortby=pubdate&citation_for_view=PCALePwAAAAJ:ULOm3_A8WrAC",
       "citedByLink": "https://scholar.google.com/scholar?oi=bibs&hl=en&cites=5209992572254485614",
       "citationId": "PCALePwAAAAJ:ULOm3_A8WrAC",
@@ -719,8 +719,9 @@
       ],
       "publication": "International Work-Conference on Artificial Neural Networks, 265-276, 2021",
       "year": 2021,
-      "citedBy": 0,
+      "citedBy": 1,
       "link": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=PCALePwAAAAJ&pagesize=100&sortby=pubdate&citation_for_view=PCALePwAAAAJ:0EnyYjriUFMC",
+      "citedByLink": "https://scholar.google.com/scholar?oi=bibs&hl=en&cites=3841058601081638079",
       "citationId": "PCALePwAAAAJ:0EnyYjriUFMC",
       "type": "conference",
       "isFirstAuthor": true,
