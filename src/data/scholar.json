@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2025-12-16T06:24:49.043Z",
+  "lastUpdated": "2025-12-17T06:24:10.448Z",
   "scrapingMethod": "ultra-optimized-v3-robust-pagination",
   "paginationInfo": {
     "totalPages": 0,
@@ -39,7 +39,7 @@
     "scholarId": "PCALePwAAAAJ"
   },
   "metrics": {
-    "totalCitations": 669,
+    "totalCitations": 670,
     "hIndex": 13,
     "i10Index": 18,
     "citationsRecent": 0,
@@ -76,7 +76,7 @@
       ],
       "publication": "International Journal of Human–Computer Interaction 41 (16), 10143-10162, 2025",
       "year": 2025,
-      "citedBy": 4,
+      "citedBy": 5,
       "link": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=PCALePwAAAAJ&pagesize=100&sortby=pubdate&citation_for_view=PCALePwAAAAJ:blknAaTinKkC",
       "citedByLink": "https://scholar.google.com/scholar?oi=bibs&hl=en&cites=18012033131855912112",
       "citationId": "PCALePwAAAAJ:blknAaTinKkC",
