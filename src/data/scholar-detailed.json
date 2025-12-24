@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2025-12-23T06:25:06.237Z",
+  "lastUpdated": "2025-12-24T06:25:36.691Z",
   "scrapingMethod": "ultra-optimized-v3-robust-pagination",
   "paginationInfo": {
     "totalPages": 0,
@@ -39,7 +39,7 @@
     "scholarId": "PCALePwAAAAJ"
   },
   "metrics": {
-    "totalCitations": 677,
+    "totalCitations": 678,
     "hIndex": 13,
     "i10Index": 18,
     "citationsRecent": 0,
@@ -699,7 +699,7 @@
       ],
       "publication": "Applied Sciences 11 (20), 9508, 2021",
       "year": 2021,
-      "citedBy": 70,
+      "citedBy": 71,
       "link": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=PCALePwAAAAJ&pagesize=100&sortby=pubdate&citation_for_view=PCALePwAAAAJ:kNdYIx-mwKoC",
       "citedByLink": "https://scholar.google.com/scholar?oi=bibs&hl=en&cites=4485305786774461650",
       "citationId": "PCALePwAAAAJ:kNdYIx-mwKoC",
@@ -1014,7 +1014,7 @@
       "2018": 62,
       "2019": 35,
       "2020": 116,
-      "2021": 71,
+      "2021": 72,
       "2022": 277,
       "2023": 70,
       "2024": 29,
@@ -1027,7 +1027,7 @@
   },
   "summary": {
     "totalPublications": 49,
-    "totalCitations": 677,
+    "totalCitations": 678,
     "hIndex": 13,
     "i10Index": 18,
     "avgCitationsPerPaper": 14,
