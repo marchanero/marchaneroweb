@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2025-12-25T06:24:37.869Z",
+  "lastUpdated": "2025-12-26T06:24:19.246Z",
   "scrapingMethod": "ultra-optimized-v3-robust-pagination",
   "paginationInfo": {
     "totalPages": 0,
@@ -39,7 +39,7 @@
     "scholarId": "PCALePwAAAAJ"
   },
   "metrics": {
-    "totalCitations": 678,
+    "totalCitations": 679,
     "hIndex": 13,
     "i10Index": 18,
     "citationsRecent": 0,
@@ -211,7 +211,7 @@
       ],
       "publication": "Heliyon, 2024",
       "year": 2024,
-      "citedBy": 13,
+      "citedBy": 14,
       "link": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=PCALePwAAAAJ&pagesize=100&sortby=pubdate&citation_for_view=PCALePwAAAAJ:TFP_iSt0sucC",
       "citedByLink": "https://scholar.google.com/scholar?oi=bibs&hl=en&cites=6529929337580907042",
       "citationId": "PCALePwAAAAJ:TFP_iSt0sucC",
