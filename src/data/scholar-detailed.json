@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-01-04T06:05:25.946Z",
+  "lastUpdated": "2026-01-05T06:07:45.647Z",
   "scrapingMethod": "ultra-optimized-v3-robust-pagination",
   "paginationInfo": {
     "totalPages": 0,
@@ -39,9 +39,9 @@
     "scholarId": "PCALePwAAAAJ"
   },
   "metrics": {
-    "totalCitations": 684,
+    "totalCitations": 686,
     "hIndex": 13,
-    "i10Index": 18,
+    "i10Index": 19,
     "citationsRecent": 0,
     "hIndexRecent": 0,
     "i10IndexRecent": 0
@@ -271,7 +271,7 @@
       ],
       "publication": "Building and Environment 246, 110989, 2023",
       "year": 2023,
-      "citedBy": 13,
+      "citedBy": 14,
       "link": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=PCALePwAAAAJ&pagesize=100&sortby=pubdate&citation_for_view=PCALePwAAAAJ:j3f4tGmQtD8C",
       "citedByLink": "https://scholar.google.com/scholar?oi=bibs&hl=en&cites=10258129208146541189",
       "citationId": "PCALePwAAAAJ:j3f4tGmQtD8C",
@@ -390,7 +390,7 @@
       ],
       "publication": "Virtual Reality 27 (1), 217-232, 2023",
       "year": 2023,
-      "citedBy": 9,
+      "citedBy": 10,
       "link": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=PCALePwAAAAJ&pagesize=100&sortby=pubdate&citation_for_view=PCALePwAAAAJ:hqOjcs7Dif8C",
       "citedByLink": "https://scholar.google.com/scholar?oi=bibs&hl=en&cites=11181385404077964469",
       "citationId": "PCALePwAAAAJ:hqOjcs7Dif8C",
@@ -1016,7 +1016,7 @@
       "2020": 116,
       "2021": 72,
       "2022": 279,
-      "2023": 71,
+      "2023": 73,
       "2024": 32,
       "2025": 7
     },
@@ -1027,9 +1027,9 @@
   },
   "summary": {
     "totalPublications": 49,
-    "totalCitations": 684,
+    "totalCitations": 686,
     "hIndex": 13,
-    "i10Index": 18,
+    "i10Index": 19,
     "avgCitationsPerPaper": 14,
     "publicationsWithCitations": 39,
     "mostCitedPaper": {
