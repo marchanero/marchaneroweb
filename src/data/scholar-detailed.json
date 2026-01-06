@@ -1,11 +1,11 @@
 {
-  "lastUpdated": "2026-01-05T06:07:45.647Z",
+  "lastUpdated": "2026-01-06T06:05:29.568Z",
   "scrapingMethod": "ultra-optimized-v3-robust-pagination",
   "paginationInfo": {
     "totalPages": 0,
     "totalRequests": 1,
     "maxRequestsUsed": 5,
-    "totalPublications": 49,
+    "totalPublications": 50,
     "publicationsPerPage": 100,
     "completeness": "complete",
     "notes": "Todos los datos disponibles han sido obtenidos."
@@ -940,6 +940,25 @@
     },
     {
       "id": "pub_48",
+      "title": "A Digital Health Solution for Arterial Stiffness Evaluation Using Artificial Intelligence",
+      "authors": [
+        "A Martinez-Rodrigo",
+        "R Sanchez-Reolid",
+        "I Cavero-Redondo",
+        "JM Pastor¹",
+        "..."
+      ],
+      "publication": "Practical Applications of Computational Biology and Bioinformatics, 19th …, 0",
+      "year": null,
+      "citedBy": 0,
+      "link": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=PCALePwAAAAJ&pagesize=100&sortby=pubdate&citation_for_view=PCALePwAAAAJ:70eg2SAEIzsC",
+      "citationId": "PCALePwAAAAJ:70eg2SAEIzsC",
+      "type": "article",
+      "isFirstAuthor": false,
+      "isCorrespondingAuthor": false
+    },
+    {
+      "id": "pub_49",
       "title": "López de la Rosa F, López MT, Fernández-Caballero A (2022) One-dimensional convolutional neural networks for low/high arousal classification from electrodermal activity",
       "authors": [
         "R Sánchez-Reolid"
@@ -955,7 +974,7 @@
       "isCorrespondingAuthor": false
     },
     {
-      "id": "pub_49",
+      "id": "pub_50",
       "title": "Machine learning for stress detection from electrodermal activity: A scoping review, 2020",
       "authors": [
         "R Sánchez-Reolid",
@@ -976,12 +995,12 @@
   "paginationAnalysis": {
     "efficiency": {
       "requestsUsed": 1,
-      "publicationsPerRequest": 49,
-      "efficiency": 49
+      "publicationsPerRequest": 50,
+      "efficiency": 50
     },
     "coverage": {
-      "estimatedTotal": 49,
-      "obtainedTotal": 49,
+      "estimatedTotal": 50,
+      "obtainedTotal": 50,
       "coveragePercentage": 100
     },
     "recommendations": [
@@ -1026,7 +1045,7 @@
     "lastPublication": 2025
   },
   "summary": {
-    "totalPublications": 49,
+    "totalPublications": 50,
     "totalCitations": 686,
     "hIndex": 13,
     "i10Index": 19,
