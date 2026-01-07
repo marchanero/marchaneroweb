@@ -1,10 +1,10 @@
 {
-  "lastUpdated": "2026-01-06T06:05:29.571Z",
+  "lastUpdated": "2026-01-07T06:05:28.828Z",
   "paginationMethod": "robust-serpapi-v3",
   "execution": {
     "requestsUsed": 1,
     "pagesProcessed": 0,
-    "publicationsObtained": 50,
+    "publicationsObtained": 51,
     "completeness": "complete"
   },
   "optimization": {
