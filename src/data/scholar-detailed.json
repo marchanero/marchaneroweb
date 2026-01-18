@@ -1,11 +1,11 @@
 {
-  "lastUpdated": "2026-01-17T06:04:56.606Z",
+  "lastUpdated": "2026-01-18T06:05:06.926Z",
   "scrapingMethod": "ultra-optimized-v3-robust-pagination",
   "paginationInfo": {
     "totalPages": 0,
     "totalRequests": 1,
     "maxRequestsUsed": 5,
-    "totalPublications": 52,
+    "totalPublications": 54,
     "publicationsPerPage": 100,
     "completeness": "complete",
     "notes": "Todos los datos disponibles han sido obtenidos."
@@ -39,7 +39,7 @@
     "scholarId": "PCALePwAAAAJ"
   },
   "metrics": {
-    "totalCitations": 692,
+    "totalCitations": 693,
     "hIndex": 13,
     "i10Index": 19,
     "citationsRecent": 0,
@@ -541,7 +541,7 @@
       ],
       "publication": "Sensors 22 (22), 8886, 2022",
       "year": 2022,
-      "citedBy": 27,
+      "citedBy": 28,
       "link": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=PCALePwAAAAJ&pagesize=100&sortby=pubdate&citation_for_view=PCALePwAAAAJ:dhFuZR0502QC",
       "citedByLink": "https://scholar.google.com/scholar?oi=bibs&hl=en&cites=13609103185694218187",
       "citationId": "PCALePwAAAAJ:dhFuZR0502QC",
@@ -990,6 +990,40 @@
     },
     {
       "id": "pub_51",
+      "title": "Augmented Virtuality to Bridge the Gap",
+      "authors": [
+        "JL Gómez-Sirvent",
+        "FL de la Rosa",
+        "R Sánchez-Reolid",
+        "JP Molina¹"
+      ],
+      "publication": "Ambient Intelligence–Software and Applications–16th International Symposium …, 0",
+      "year": null,
+      "citedBy": 0,
+      "link": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=PCALePwAAAAJ&pagesize=100&sortby=pubdate&citation_for_view=PCALePwAAAAJ:pqnbT2bcN3wC",
+      "citationId": "PCALePwAAAAJ:pqnbT2bcN3wC",
+      "type": "article",
+      "isFirstAuthor": false,
+      "isCorrespondingAuthor": false
+    },
+    {
+      "id": "pub_52",
+      "title": "Clustering-Based Activity Monitoring Framework for Anomaly Detection",
+      "authors": [
+        "A Martinez-Rodrigo",
+        "R Sanchez-Reolid"
+      ],
+      "publication": "Ambient Intelligence–Software and Applications–16th International Symposium …, 0",
+      "year": null,
+      "citedBy": 0,
+      "link": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=PCALePwAAAAJ&pagesize=100&sortby=pubdate&citation_for_view=PCALePwAAAAJ:g5m5HwL7SMYC",
+      "citationId": "PCALePwAAAAJ:g5m5HwL7SMYC",
+      "type": "article",
+      "isFirstAuthor": false,
+      "isCorrespondingAuthor": false
+    },
+    {
+      "id": "pub_53",
       "title": "López de la Rosa F, López MT, Fernández-Caballero A (2022) One-dimensional convolutional neural networks for low/high arousal classification from electrodermal activity",
       "authors": [
         "R Sánchez-Reolid"
@@ -1005,7 +1039,7 @@
       "isCorrespondingAuthor": false
     },
     {
-      "id": "pub_52",
+      "id": "pub_54",
       "title": "Machine learning for stress detection from electrodermal activity: A scoping review, 2020",
       "authors": [
         "R Sánchez-Reolid",
@@ -1026,12 +1060,12 @@
   "paginationAnalysis": {
     "efficiency": {
       "requestsUsed": 1,
-      "publicationsPerRequest": 52,
-      "efficiency": 52
+      "publicationsPerRequest": 54,
+      "efficiency": 54
     },
     "coverage": {
-      "estimatedTotal": 52,
-      "obtainedTotal": 52,
+      "estimatedTotal": 54,
+      "obtainedTotal": 54,
       "coveragePercentage": 100
     },
     "recommendations": [
@@ -1066,7 +1100,7 @@
       "2019": 35,
       "2020": 117,
       "2021": 74,
-      "2022": 281,
+      "2022": 282,
       "2023": 74,
       "2024": 32,
       "2025": 7,
@@ -1078,8 +1112,8 @@
     "lastPublication": 2026
   },
   "summary": {
-    "totalPublications": 52,
-    "totalCitations": 692,
+    "totalPublications": 54,
+    "totalCitations": 693,
     "hIndex": 13,
     "i10Index": 19,
     "avgCitationsPerPaper": 13,
