@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-01-19T06:07:39.102Z",
+  "lastUpdated": "2026-01-20T06:06:24.086Z",
   "scrapingMethod": "ultra-optimized-v3-robust-pagination",
   "paginationInfo": {
     "totalPages": 0,
@@ -39,7 +39,7 @@
     "scholarId": "PCALePwAAAAJ"
   },
   "metrics": {
-    "totalCitations": 697,
+    "totalCitations": 698,
     "hIndex": 14,
     "i10Index": 19,
     "citationsRecent": 0,
@@ -222,7 +222,7 @@
       ],
       "publication": "International Work-Conference on the Interplay Between Natural and …, 2024",
       "year": 2024,
-      "citedBy": 3,
+      "citedBy": 4,
       "link": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=PCALePwAAAAJ&pagesize=100&sortby=pubdate&citation_for_view=PCALePwAAAAJ:maZDTaKrznsC",
       "citedByLink": "https://scholar.google.com/scholar?oi=bibs&hl=en&cites=16510292780035576111",
       "citationId": "PCALePwAAAAJ:maZDTaKrznsC",
@@ -1121,7 +1121,7 @@
       "2021": 75,
       "2022": 284,
       "2023": 75,
-      "2024": 32,
+      "2024": 33,
       "2025": 7,
       "2026": 0
     },
@@ -1132,7 +1132,7 @@
   },
   "summary": {
     "totalPublications": 55,
-    "totalCitations": 697,
+    "totalCitations": 698,
     "hIndex": 14,
     "i10Index": 19,
     "avgCitationsPerPaper": 13,
