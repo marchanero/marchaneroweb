@@ -1,11 +1,11 @@
 {
-  "lastUpdated": "2026-01-24T06:05:09.585Z",
+  "lastUpdated": "2026-01-25T06:05:11.415Z",
   "scrapingMethod": "ultra-optimized-v3-robust-pagination",
   "paginationInfo": {
     "totalPages": 0,
     "totalRequests": 1,
     "maxRequestsUsed": 5,
-    "totalPublications": 55,
+    "totalPublications": 54,
     "publicationsPerPage": 100,
     "completeness": "complete",
     "notes": "Todos los datos disponibles han sido obtenidos."
@@ -39,7 +39,7 @@
     "scholarId": "PCALePwAAAAJ"
   },
   "metrics": {
-    "totalCitations": 699,
+    "totalCitations": 701,
     "hIndex": 14,
     "i10Index": 19,
     "citationsRecent": 0,
@@ -126,7 +126,7 @@
       ],
       "publication": "International Journal of Human–Computer Interaction 41 (16), 10143-10162, 2025",
       "year": 2025,
-      "citedBy": 5,
+      "citedBy": 6,
       "link": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=PCALePwAAAAJ&pagesize=100&sortby=pubdate&citation_for_view=PCALePwAAAAJ:blknAaTinKkC",
       "citedByLink": "https://scholar.google.com/scholar?oi=bibs&hl=en&cites=18012033131855912112",
       "citationId": "PCALePwAAAAJ:blknAaTinKkC",
@@ -280,7 +280,7 @@
       ],
       "publication": "Heliyon, 2024",
       "year": 2024,
-      "citedBy": 14,
+      "citedBy": 15,
       "link": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=PCALePwAAAAJ&pagesize=100&sortby=pubdate&citation_for_view=PCALePwAAAAJ:TFP_iSt0sucC",
       "citedByLink": "https://scholar.google.com/scholar?oi=bibs&hl=en&cites=6529929337580907042",
       "citationId": "PCALePwAAAAJ:TFP_iSt0sucC",
@@ -340,7 +340,7 @@
       ],
       "publication": "Building and Environment 246, 110989, 2023",
       "year": 2023,
-      "citedBy": 15,
+      "citedBy": 16,
       "link": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=PCALePwAAAAJ&pagesize=100&sortby=pubdate&citation_for_view=PCALePwAAAAJ:j3f4tGmQtD8C",
       "citedByLink": "https://scholar.google.com/scholar?oi=bibs&hl=en&cites=10258129208146541189",
       "citationId": "PCALePwAAAAJ:j3f4tGmQtD8C",
@@ -580,7 +580,7 @@
       ],
       "publication": "Expert Systems with Applications 206, 117731, 2022",
       "year": 2022,
-      "citedBy": 89,
+      "citedBy": 90,
       "link": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=PCALePwAAAAJ&pagesize=100&sortby=pubdate&citation_for_view=PCALePwAAAAJ:_kc_bZDykSQC",
       "citedByLink": "https://scholar.google.com/scholar?oi=bibs&hl=en&cites=15620631313306549090",
       "citationId": "PCALePwAAAAJ:_kc_bZDykSQC",
@@ -676,7 +676,7 @@
       ],
       "publication": "Electronics, 2022",
       "year": 2022,
-      "citedBy": 13,
+      "citedBy": 14,
       "link": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=PCALePwAAAAJ&pagesize=100&sortby=pubdate&citation_for_view=PCALePwAAAAJ:ULOm3_A8WrAC",
       "citedByLink": "https://scholar.google.com/scholar?oi=bibs&hl=en&cites=5209992572254485614",
       "citationId": "PCALePwAAAAJ:ULOm3_A8WrAC",
@@ -748,9 +748,9 @@
       ],
       "publication": "Biomedical Signal Processing and Control 71, 103203, 2022",
       "year": 2022,
-      "citedBy": 55,
+      "citedBy": 59,
       "link": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=PCALePwAAAAJ&pagesize=100&sortby=pubdate&citation_for_view=PCALePwAAAAJ:3fE2CSJIrl8C",
-      "citedByLink": "https://scholar.google.com/scholar?oi=bibs&hl=en&cites=2059831707917929488",
+      "citedByLink": "https://scholar.google.com/scholar?oi=bibs&hl=en&cites=2059831707917929488,40396567857792415",
       "citationId": "PCALePwAAAAJ:3fE2CSJIrl8C",
       "type": "article",
       "isFirstAuthor": true,
@@ -1043,22 +1043,6 @@
     },
     {
       "id": "pub_54",
-      "title": "López de la Rosa F, López MT, Fernández-Caballero A (2022) One-dimensional convolutional neural networks for low/high arousal classification from electrodermal activity",
-      "authors": [
-        "R Sánchez-Reolid"
-      ],
-      "publication": "Biomed Signal Process Control 71, 103203, 0",
-      "year": null,
-      "citedBy": 7,
-      "link": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=PCALePwAAAAJ&pagesize=100&sortby=pubdate&citation_for_view=PCALePwAAAAJ:GnPB-g6toBAC",
-      "citedByLink": "https://scholar.google.com/scholar?oi=bibs&hl=en&cites=40396567857792415",
-      "citationId": "PCALePwAAAAJ:GnPB-g6toBAC",
-      "type": "article",
-      "isFirstAuthor": true,
-      "isCorrespondingAuthor": false
-    },
-    {
-      "id": "pub_55",
       "title": "Machine learning for stress detection from electrodermal activity: A scoping review, 2020",
       "authors": [
         "R Sánchez-Reolid",
@@ -1079,12 +1063,12 @@
   "paginationAnalysis": {
     "efficiency": {
       "requestsUsed": 1,
-      "publicationsPerRequest": 55,
-      "efficiency": 55
+      "publicationsPerRequest": 54,
+      "efficiency": 54
     },
     "coverage": {
-      "estimatedTotal": 55,
-      "obtainedTotal": 55,
+      "estimatedTotal": 54,
+      "obtainedTotal": 54,
       "coveragePercentage": 100
     },
     "recommendations": [
@@ -1119,10 +1103,10 @@
       "2019": 35,
       "2020": 117,
       "2021": 76,
-      "2022": 284,
-      "2023": 75,
-      "2024": 33,
-      "2025": 7,
+      "2022": 290,
+      "2023": 76,
+      "2024": 34,
+      "2025": 8,
       "2026": 0
     },
     "careerSpan": 9,
@@ -1131,12 +1115,12 @@
     "lastPublication": 2026
   },
   "summary": {
-    "totalPublications": 55,
-    "totalCitations": 699,
+    "totalPublications": 54,
+    "totalCitations": 701,
     "hIndex": 14,
     "i10Index": 19,
     "avgCitationsPerPaper": 13,
-    "publicationsWithCitations": 39,
+    "publicationsWithCitations": 38,
     "mostCitedPaper": {
       "id": "pub_29",
       "title": "Geometric transformation-based data augmentation on defect classification of segmented images of semiconductor materials using a ResNet50 convolutional neural network",
@@ -1149,7 +1133,7 @@
       ],
       "publication": "Expert Systems with Applications 206, 117731, 2022",
       "year": 2022,
-      "citedBy": 89,
+      "citedBy": 90,
       "link": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=PCALePwAAAAJ&pagesize=100&sortby=pubdate&citation_for_view=PCALePwAAAAJ:_kc_bZDykSQC",
       "citedByLink": "https://scholar.google.com/scholar?oi=bibs&hl=en&cites=15620631313306549090",
       "citationId": "PCALePwAAAAJ:_kc_bZDykSQC",
