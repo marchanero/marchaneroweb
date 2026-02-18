@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-02-17T06:19:58.583Z",
+  "lastUpdated": "2026-02-18T06:22:34.001Z",
   "scrapingMethod": "ultra-optimized-v3-robust-pagination",
   "paginationInfo": {
     "totalPages": 0,
@@ -39,7 +39,7 @@
     "scholarId": "PCALePwAAAAJ"
   },
   "metrics": {
-    "totalCitations": 709,
+    "totalCitations": 714,
     "hIndex": 14,
     "i10Index": 19,
     "citationsRecent": 0,
@@ -377,7 +377,7 @@
       ],
       "publication": "Building and Environment 246, 110989, 2023",
       "year": 2023,
-      "citedBy": 15,
+      "citedBy": 16,
       "link": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=PCALePwAAAAJ&pagesize=100&sortby=pubdate&citation_for_view=PCALePwAAAAJ:j3f4tGmQtD8C",
       "citedByLink": "https://scholar.google.com/scholar?oi=bibs&hl=en&cites=10258129208146541189",
       "citationId": "PCALePwAAAAJ:j3f4tGmQtD8C",
@@ -436,7 +436,7 @@
       ],
       "publication": "Computers & Industrial Engineering 183, 109549, 2023",
       "year": 2023,
-      "citedBy": 41,
+      "citedBy": 42,
       "link": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=PCALePwAAAAJ&pagesize=100&sortby=pubdate&citation_for_view=PCALePwAAAAJ:hFOr9nPyWt4C",
       "citedByLink": "https://scholar.google.com/scholar?oi=bibs&hl=en&cites=1095520988981170505",
       "citationId": "PCALePwAAAAJ:hFOr9nPyWt4C",
@@ -730,7 +730,7 @@
       ],
       "publication": "Electronics, 2022",
       "year": 2022,
-      "citedBy": 15,
+      "citedBy": 16,
       "link": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=PCALePwAAAAJ&pagesize=100&sortby=pubdate&citation_for_view=PCALePwAAAAJ:ULOm3_A8WrAC",
       "citedByLink": "https://scholar.google.com/scholar?oi=bibs&hl=en&cites=5209992572254485614",
       "citationId": "PCALePwAAAAJ:ULOm3_A8WrAC",
@@ -822,7 +822,7 @@
       ],
       "publication": "Applied Sciences 11 (20), 9508, 2021",
       "year": 2021,
-      "citedBy": 78,
+      "citedBy": 79,
       "link": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=PCALePwAAAAJ&pagesize=100&sortby=pubdate&citation_for_view=PCALePwAAAAJ:kNdYIx-mwKoC",
       "citedByLink": "https://scholar.google.com/scholar?oi=bibs&hl=en&cites=4485305786774461650",
       "citationId": "PCALePwAAAAJ:kNdYIx-mwKoC",
@@ -879,7 +879,7 @@
       ],
       "publication": "Sensors, 2020",
       "year": 2020,
-      "citedBy": 32,
+      "citedBy": 33,
       "link": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=PCALePwAAAAJ&pagesize=100&sortby=pubdate&citation_for_view=PCALePwAAAAJ:_FxGoFyzp5QC",
       "citedByLink": "https://scholar.google.com/scholar?oi=bibs&hl=en&cites=5277051289196934267",
       "citationId": "PCALePwAAAAJ:_FxGoFyzp5QC",
@@ -1155,10 +1155,10 @@
     "citationsByYear": {
       "2018": 61,
       "2019": 35,
-      "2020": 116,
-      "2021": 79,
-      "2022": 292,
-      "2023": 77,
+      "2020": 117,
+      "2021": 80,
+      "2022": 293,
+      "2023": 79,
       "2024": 35,
       "2025": 10,
       "2026": 0
@@ -1170,10 +1170,10 @@
   },
   "summary": {
     "totalPublications": 57,
-    "totalCitations": 709,
+    "totalCitations": 714,
     "hIndex": 14,
     "i10Index": 19,
-    "avgCitationsPerPaper": 12,
+    "avgCitationsPerPaper": 13,
     "publicationsWithCitations": 38,
     "mostCitedPaper": {
       "id": "pub_32",
