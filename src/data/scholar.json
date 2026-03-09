@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-03-08T06:12:16.123Z",
+  "lastUpdated": "2026-03-09T06:20:58.695Z",
   "scrapingMethod": "ultra-optimized-v3-robust-pagination",
   "paginationInfo": {
     "totalPages": 0,
@@ -39,7 +39,7 @@
     "scholarId": "PCALePwAAAAJ"
   },
   "metrics": {
-    "totalCitations": 730,
+    "totalCitations": 731,
     "hIndex": 15,
     "i10Index": 19,
     "citationsRecent": 0,
@@ -1040,7 +1040,7 @@
       ],
       "publication": "Electronics 7 (12), 384, 2018",
       "year": 2018,
-      "citedBy": 62,
+      "citedBy": 63,
       "link": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=PCALePwAAAAJ&pagesize=100&sortby=pubdate&citation_for_view=PCALePwAAAAJ:u5HHmVD_uO8C",
       "citedByLink": "https://scholar.google.com/scholar?oi=bibs&hl=en&cites=16788273922182433471",
       "citationId": "PCALePwAAAAJ:u5HHmVD_uO8C",
