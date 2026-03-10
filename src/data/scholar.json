@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-03-09T06:20:58.695Z",
+  "lastUpdated": "2026-03-10T06:13:49.489Z",
   "scrapingMethod": "ultra-optimized-v3-robust-pagination",
   "paginationInfo": {
     "totalPages": 0,
@@ -39,7 +39,7 @@
     "scholarId": "PCALePwAAAAJ"
   },
   "metrics": {
-    "totalCitations": 731,
+    "totalCitations": 734,
     "hIndex": 15,
     "i10Index": 19,
     "citationsRecent": 0,
@@ -364,7 +364,7 @@
       ],
       "publication": "Building and Environment 246, 110989, 2023",
       "year": 2023,
-      "citedBy": 16,
+      "citedBy": 17,
       "link": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=PCALePwAAAAJ&pagesize=100&sortby=pubdate&citation_for_view=PCALePwAAAAJ:j3f4tGmQtD8C",
       "citedByLink": "https://scholar.google.com/scholar?oi=bibs&hl=en&cites=10258129208146541189",
       "citationId": "PCALePwAAAAJ:j3f4tGmQtD8C",
@@ -581,7 +581,7 @@
       ],
       "publication": "Applied Soft Computing 131, 109743, 2022",
       "year": 2022,
-      "citedBy": 15,
+      "citedBy": 16,
       "link": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=PCALePwAAAAJ&pagesize=100&sortby=pubdate&citation_for_view=PCALePwAAAAJ:9ZlFYXVOiuMC",
       "citedByLink": "https://scholar.google.com/scholar?oi=bibs&hl=en&cites=4946338693445561389",
       "citationId": "PCALePwAAAAJ:9ZlFYXVOiuMC",
@@ -736,7 +736,7 @@
       ],
       "publication": "IEEE transactions on semiconductor manufacturing 35 (2), 324-331, 2022",
       "year": 2022,
-      "citedBy": 44,
+      "citedBy": 45,
       "link": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=PCALePwAAAAJ&pagesize=100&sortby=pubdate&citation_for_view=PCALePwAAAAJ:Zph67rFs4hoC",
       "citedByLink": "https://scholar.google.com/scholar?oi=bibs&hl=en&cites=3041118640241756035",
       "citationId": "PCALePwAAAAJ:Zph67rFs4hoC",
