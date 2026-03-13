@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-03-12T06:16:46.486Z",
+  "lastUpdated": "2026-03-13T06:15:58.395Z",
   "scrapingMethod": "ultra-optimized-v3-robust-pagination",
   "paginationInfo": {
     "totalPages": 0,
@@ -39,9 +39,9 @@
     "scholarId": "PCALePwAAAAJ"
   },
   "metrics": {
-    "totalCitations": 735,
+    "totalCitations": 738,
     "hIndex": 15,
-    "i10Index": 19,
+    "i10Index": 20,
     "citationsRecent": 0,
     "hIndexRecent": 0,
     "i10IndexRecent": 0
@@ -113,7 +113,7 @@
       ],
       "publication": "International Journal of Human–Computer Interaction 41 (16), 10143-10162, 2025",
       "year": 2025,
-      "citedBy": 9,
+      "citedBy": 10,
       "link": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=PCALePwAAAAJ&pagesize=100&sortby=pubdate&citation_for_view=PCALePwAAAAJ:blknAaTinKkC",
       "citedByLink": "https://scholar.google.com/scholar?oi=bibs&hl=en&cites=3662465721335290411",
       "citationId": "PCALePwAAAAJ:blknAaTinKkC",
@@ -601,7 +601,7 @@
       ],
       "publication": "Sensors 22 (22), 8886, 2022",
       "year": 2022,
-      "citedBy": 31,
+      "citedBy": 32,
       "link": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=PCALePwAAAAJ&pagesize=100&sortby=pubdate&citation_for_view=PCALePwAAAAJ:dhFuZR0502QC",
       "citedByLink": "https://scholar.google.com/scholar?oi=bibs&hl=en&cites=13609103185694218187",
       "citationId": "PCALePwAAAAJ:dhFuZR0502QC",
@@ -736,7 +736,7 @@
       ],
       "publication": "IEEE transactions on semiconductor manufacturing 35 (2), 324-331, 2022",
       "year": 2022,
-      "citedBy": 45,
+      "citedBy": 46,
       "link": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=PCALePwAAAAJ&pagesize=100&sortby=pubdate&citation_for_view=PCALePwAAAAJ:Zph67rFs4hoC",
       "citedByLink": "https://scholar.google.com/scholar?oi=bibs&hl=en&cites=3041118640241756035",
       "citationId": "PCALePwAAAAJ:Zph67rFs4hoC",
@@ -1144,10 +1144,10 @@
       "2019": 35,
       "2020": 120,
       "2021": 81,
-      "2022": 305,
+      "2022": 307,
       "2023": 80,
       "2024": 36,
-      "2025": 11,
+      "2025": 12,
       "2026": 0
     },
     "careerSpan": 9,
@@ -1157,9 +1157,9 @@
   },
   "summary": {
     "totalPublications": 56,
-    "totalCitations": 735,
+    "totalCitations": 738,
     "hIndex": 15,
-    "i10Index": 19,
+    "i10Index": 20,
     "avgCitationsPerPaper": 13,
     "publicationsWithCitations": 38,
     "mostCitedPaper": {
