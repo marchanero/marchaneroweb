@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-03-15T06:19:50.765Z",
+  "lastUpdated": "2026-03-16T06:31:06.043Z",
   "scrapingMethod": "ultra-optimized-v3-robust-pagination",
   "paginationInfo": {
     "totalPages": 0,
@@ -39,7 +39,7 @@
     "scholarId": "PCALePwAAAAJ"
   },
   "metrics": {
-    "totalCitations": 740,
+    "totalCitations": 743,
     "hIndex": 15,
     "i10Index": 20,
     "citationsRecent": 0,
@@ -423,7 +423,7 @@
       ],
       "publication": "Computers & Industrial Engineering 183, 109549, 2023",
       "year": 2023,
-      "citedBy": 42,
+      "citedBy": 43,
       "link": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=PCALePwAAAAJ&pagesize=100&sortby=pubdate&citation_for_view=PCALePwAAAAJ:hFOr9nPyWt4C",
       "citedByLink": "https://scholar.google.com/scholar?oi=bibs&hl=en&cites=1095520988981170505",
       "citationId": "PCALePwAAAAJ:hFOr9nPyWt4C",
@@ -621,7 +621,7 @@
       ],
       "publication": "Expert Systems with Applications 206, 117731, 2022",
       "year": 2022,
-      "citedBy": 91,
+      "citedBy": 92,
       "link": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=PCALePwAAAAJ&pagesize=100&sortby=pubdate&citation_for_view=PCALePwAAAAJ:_kc_bZDykSQC",
       "citedByLink": "https://scholar.google.com/scholar?oi=bibs&hl=en&cites=15620631313306549090",
       "citationId": "PCALePwAAAAJ:_kc_bZDykSQC",
@@ -1040,7 +1040,7 @@
       ],
       "publication": "Electronics 7 (12), 384, 2018",
       "year": 2018,
-      "citedBy": 62,
+      "citedBy": 63,
       "link": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=PCALePwAAAAJ&pagesize=100&sortby=pubdate&citation_for_view=PCALePwAAAAJ:u5HHmVD_uO8C",
       "citedByLink": "https://scholar.google.com/scholar?oi=bibs&hl=en&cites=16788273922182433471",
       "citationId": "PCALePwAAAAJ:u5HHmVD_uO8C",
