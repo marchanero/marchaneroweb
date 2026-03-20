@@ -1,11 +1,11 @@
 {
-  "lastUpdated": "2026-03-19T06:20:37.413Z",
+  "lastUpdated": "2026-03-20T06:17:15.066Z",
   "paginationMethod": "robust-serpapi-v3",
   "execution": {
     "requestsUsed": 1,
     "pagesProcessed": 0,
-    "publicationsObtained": 56,
-    "completeness": "complete"
+    "publicationsObtained": 0,
+    "completeness": "partial"
   },
   "optimization": {
     "method": "ultra-optimized-robust-pagination",
@@ -14,7 +14,9 @@
     "monthlyCapacity": 100
   },
   "nextExecution": {
-    "recommended": false,
-    "reason": "Todos los datos han sido obtenidos"
+    "recommended": true,
+    "startOffset": 0,
+    "estimatedAdditionalRequests": 2,
+    "instructions": "Ejecutar con parámetro start=0 para continuar"
   }
 }
