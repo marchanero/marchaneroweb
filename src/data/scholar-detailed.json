@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-03-29T06:23:51.500Z",
+  "lastUpdated": "2026-03-30T06:35:59.227Z",
   "scrapingMethod": "ultra-optimized-v3-robust-pagination",
   "paginationInfo": {
     "totalPages": 0,
@@ -39,7 +39,7 @@
     "scholarId": "PCALePwAAAAJ"
   },
   "metrics": {
-    "totalCitations": 751,
+    "totalCitations": 752,
     "hIndex": 15,
     "i10Index": 20,
     "citationsRecent": 0,
@@ -285,7 +285,7 @@
       ],
       "publication": "Building Research & Information, 1--16, 2024",
       "year": 2024,
-      "citedBy": 6,
+      "citedBy": 7,
       "link": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=PCALePwAAAAJ&pagesize=100&sortby=pubdate&citation_for_view=PCALePwAAAAJ:isC4tDSrTZIC",
       "citedByLink": "https://scholar.google.com/scholar?oi=bibs&hl=en&cites=883551334465790092",
       "citationId": "PCALePwAAAAJ:isC4tDSrTZIC",
@@ -1147,7 +1147,7 @@
       "2021": 81,
       "2022": 315,
       "2023": 82,
-      "2024": 36,
+      "2024": 37,
       "2025": 12,
       "2026": 1
     },
@@ -1158,7 +1158,7 @@
   },
   "summary": {
     "totalPublications": 56,
-    "totalCitations": 751,
+    "totalCitations": 752,
     "hIndex": 15,
     "i10Index": 20,
     "avgCitationsPerPaper": 13,
