@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-04-02T06:25:21.478Z",
+  "lastUpdated": "2026-04-03T06:24:53.918Z",
   "scrapingMethod": "ultra-optimized-v3-robust-pagination",
   "paginationInfo": {
     "totalPages": 0,
@@ -39,7 +39,7 @@
     "scholarId": "PCALePwAAAAJ"
   },
   "metrics": {
-    "totalCitations": 755,
+    "totalCitations": 756,
     "hIndex": 15,
     "i10Index": 20,
     "citationsRecent": 0,
@@ -384,7 +384,7 @@
       ],
       "publication": "Building and Environment 246, 110989, 2023",
       "year": 2023,
-      "citedBy": 17,
+      "citedBy": 18,
       "link": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=PCALePwAAAAJ&pagesize=100&sortby=pubdate&citation_for_view=PCALePwAAAAJ:j3f4tGmQtD8C",
       "citedByLink": "https://scholar.google.com/scholar?oi=bibs&hl=en&cites=10258129208146541189",
       "citationId": "PCALePwAAAAJ:j3f4tGmQtD8C",
