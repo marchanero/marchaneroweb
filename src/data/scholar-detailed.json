@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-04-04T06:21:10.099Z",
+  "lastUpdated": "2026-04-05T06:25:54.309Z",
   "scrapingMethod": "ultra-optimized-v3-robust-pagination",
   "paginationInfo": {
     "totalPages": 0,
@@ -39,7 +39,7 @@
     "scholarId": "PCALePwAAAAJ"
   },
   "metrics": {
-    "totalCitations": 756,
+    "totalCitations": 757,
     "hIndex": 15,
     "i10Index": 20,
     "citationsRecent": 0,
@@ -756,7 +756,7 @@
       ],
       "publication": "IEEE transactions on semiconductor manufacturing 35 (2), 324-331, 2022",
       "year": 2022,
-      "citedBy": 47,
+      "citedBy": 48,
       "link": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=PCALePwAAAAJ&pagesize=100&sortby=pubdate&citation_for_view=PCALePwAAAAJ:Zph67rFs4hoC",
       "citedByLink": "https://scholar.google.com/scholar?oi=bibs&hl=en&cites=3041118640241756035",
       "citationId": "PCALePwAAAAJ:Zph67rFs4hoC",
@@ -1164,7 +1164,7 @@
       "2019": 35,
       "2020": 122,
       "2021": 81,
-      "2022": 315,
+      "2022": 316,
       "2023": 84,
       "2024": 39,
       "2025": 12,
@@ -1177,7 +1177,7 @@
   },
   "summary": {
     "totalPublications": 57,
-    "totalCitations": 756,
+    "totalCitations": 757,
     "hIndex": 15,
     "i10Index": 20,
     "avgCitationsPerPaper": 13,
