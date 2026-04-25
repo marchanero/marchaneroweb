@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-04-24T06:38:08.622Z",
+  "lastUpdated": "2026-04-25T06:30:18.987Z",
   "scrapingMethod": "ultra-optimized-v3-robust-pagination",
   "paginationInfo": {
     "totalPages": 0,
@@ -39,7 +39,7 @@
     "scholarId": "PCALePwAAAAJ"
   },
   "metrics": {
-    "totalCitations": 780,
+    "totalCitations": 781,
     "hIndex": 15,
     "i10Index": 20,
     "citationsRecent": 0,
@@ -640,7 +640,7 @@
       ],
       "publication": "Sensors 22 (22), 8886, 2022",
       "year": 2022,
-      "citedBy": 34,
+      "citedBy": 33,
       "link": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=PCALePwAAAAJ&pagesize=100&sortby=pubdate&citation_for_view=PCALePwAAAAJ:dhFuZR0502QC",
       "citedByLink": "https://scholar.google.com/scholar?oi=bibs&hl=en&cites=13609103185694218187",
       "citationId": "PCALePwAAAAJ:dhFuZR0502QC",
@@ -775,7 +775,7 @@
       ],
       "publication": "IEEE transactions on semiconductor manufacturing 35 (2), 324-331, 2022",
       "year": 2022,
-      "citedBy": 48,
+      "citedBy": 49,
       "link": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=PCALePwAAAAJ&pagesize=100&sortby=pubdate&citation_for_view=PCALePwAAAAJ:Zph67rFs4hoC",
       "citedByLink": "https://scholar.google.com/scholar?oi=bibs&hl=en&cites=3041118640241756035",
       "citationId": "PCALePwAAAAJ:Zph67rFs4hoC",
@@ -809,7 +809,7 @@
       ],
       "publication": "Machine learning techniques for arousal classification from electrodermal …, 2022",
       "year": 2022,
-      "citedBy": 6,
+      "citedBy": 7,
       "link": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=PCALePwAAAAJ&pagesize=100&sortby=pubdate&citation_for_view=PCALePwAAAAJ:BqipwSGYUEgC",
       "citedByLink": "https://scholar.google.com/scholar?oi=bibs&hl=en&cites=12473849766804691489",
       "citationId": "PCALePwAAAAJ:BqipwSGYUEgC",
@@ -1183,7 +1183,7 @@
       "2019": 35,
       "2020": 122,
       "2021": 83,
-      "2022": 324,
+      "2022": 325,
       "2023": 89,
       "2024": 41,
       "2025": 17,
@@ -1196,7 +1196,7 @@
   },
   "summary": {
     "totalPublications": 58,
-    "totalCitations": 780,
+    "totalCitations": 781,
     "hIndex": 15,
     "i10Index": 20,
     "avgCitationsPerPaper": 13,
