@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-05-01T06:54:01.823Z",
+  "lastUpdated": "2026-05-02T06:38:09.667Z",
   "scrapingMethod": "ultra-optimized-v3-robust-pagination",
   "paginationInfo": {
     "totalPages": 0,
@@ -39,7 +39,7 @@
     "scholarId": "PCALePwAAAAJ"
   },
   "metrics": {
-    "totalCitations": 780,
+    "totalCitations": 781,
     "hIndex": 15,
     "i10Index": 20,
     "citationsRecent": 0,
@@ -49,6 +49,25 @@
   "publications": [
     {
       "id": "pub_1",
+      "title": "Safe Fall: Use of Predictive Modeling and Machine Vision Techniques for Fall Analysis and Fall Quality",
+      "authors": [
+        "O DelCastillo-Andrés",
+        "R Fernández-García",
+        "JC Pastor-Vicedo",
+        "MA Lira",
+        "..."
+      ],
+      "publication": "Sensors (Basel, Switzerland) 26 (8), 2491, 2026",
+      "year": 2026,
+      "citedBy": 0,
+      "link": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=PCALePwAAAAJ&pagesize=100&sortby=pubdate&citation_for_view=PCALePwAAAAJ:u_35RYKgDlwC",
+      "citationId": "PCALePwAAAAJ:u_35RYKgDlwC",
+      "type": "article",
+      "isFirstAuthor": false,
+      "isCorrespondingAuthor": false
+    },
+    {
+      "id": "pub_2",
       "title": "Model-Centric or Data-Centric Approach? A Case Study on the Classification of Surface Defects in Steel Hot Rolling Using Convolutional Neural Networks",
       "authors": [
         "F López de la Rosa",
@@ -63,25 +82,6 @@
       "link": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=PCALePwAAAAJ&pagesize=100&sortby=pubdate&citation_for_view=PCALePwAAAAJ:HoB7MX3m0LUC",
       "citedByLink": "https://scholar.google.com/scholar?oi=bibs&hl=en&cites=13999001170958427171",
       "citationId": "PCALePwAAAAJ:HoB7MX3m0LUC",
-      "type": "article",
-      "isFirstAuthor": false,
-      "isCorrespondingAuthor": false
-    },
-    {
-      "id": "pub_2",
-      "title": "Safe Fall: Use of Predictive Modeling and Machine Vision Techniques for Fall Analysis and Fall Quality",
-      "authors": [
-        "O DelCastillo-Andrés",
-        "R Fernández-García",
-        "JC Pastor-Vicedo",
-        "MA Lira",
-        "..."
-      ],
-      "publication": "Sensors, 2026",
-      "year": 2026,
-      "citedBy": 0,
-      "link": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=PCALePwAAAAJ&pagesize=100&sortby=pubdate&citation_for_view=PCALePwAAAAJ:u_35RYKgDlwC",
-      "citationId": "PCALePwAAAAJ:u_35RYKgDlwC",
       "type": "article",
       "isFirstAuthor": false,
       "isCorrespondingAuthor": false
@@ -640,7 +640,7 @@
       ],
       "publication": "Sensors 22 (22), 8886, 2022",
       "year": 2022,
-      "citedBy": 33,
+      "citedBy": 34,
       "link": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=PCALePwAAAAJ&pagesize=100&sortby=pubdate&citation_for_view=PCALePwAAAAJ:dhFuZR0502QC",
       "citedByLink": "https://scholar.google.com/scholar?oi=bibs&hl=en&cites=13609103185694218187",
       "citationId": "PCALePwAAAAJ:dhFuZR0502QC",
