@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-05-03T06:50:16.063Z",
+  "lastUpdated": "2026-05-04T07:00:46.360Z",
   "scrapingMethod": "ultra-optimized-v3-robust-pagination",
   "paginationInfo": {
     "totalPages": 0,
@@ -39,7 +39,7 @@
     "scholarId": "PCALePwAAAAJ"
   },
   "metrics": {
-    "totalCitations": 781,
+    "totalCitations": 784,
     "hIndex": 15,
     "i10Index": 20,
     "citationsRecent": 0,
@@ -363,7 +363,7 @@
       ],
       "publication": "International Clinical Psychopharmacology Decision, 2024",
       "year": 2024,
-      "citedBy": 3,
+      "citedBy": 4,
       "link": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=PCALePwAAAAJ&pagesize=100&sortby=pubdate&citation_for_view=PCALePwAAAAJ:JV2RwH3_ST0C",
       "citedByLink": "https://scholar.google.com/scholar?oi=bibs&hl=en&cites=10444393416380951705",
       "citationId": "PCALePwAAAAJ:JV2RwH3_ST0C",
@@ -640,7 +640,7 @@
       ],
       "publication": "Sensors 22 (22), 8886, 2022",
       "year": 2022,
-      "citedBy": 34,
+      "citedBy": 35,
       "link": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=PCALePwAAAAJ&pagesize=100&sortby=pubdate&citation_for_view=PCALePwAAAAJ:dhFuZR0502QC",
       "citedByLink": "https://scholar.google.com/scholar?oi=bibs&hl=en&cites=13609103185694218187",
       "citationId": "PCALePwAAAAJ:dhFuZR0502QC",
@@ -886,7 +886,7 @@
       ],
       "publication": "Preprints, 2020",
       "year": 2020,
-      "citedBy": 26,
+      "citedBy": 27,
       "link": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=PCALePwAAAAJ&pagesize=100&sortby=pubdate&citation_for_view=PCALePwAAAAJ:LkGwnXOMwfcC",
       "citedByLink": "https://scholar.google.com/scholar?oi=bibs&hl=en&cites=2219798727825377273",
       "citationId": "PCALePwAAAAJ:LkGwnXOMwfcC",
