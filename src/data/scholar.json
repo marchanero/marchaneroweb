@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-05-22T07:11:53.389Z",
+  "lastUpdated": "2026-05-23T06:53:38.970Z",
   "scrapingMethod": "ultra-optimized-v3-robust-pagination",
   "paginationInfo": {
     "totalPages": 0,
@@ -39,9 +39,9 @@
     "scholarId": "PCALePwAAAAJ"
   },
   "metrics": {
-    "totalCitations": 797,
+    "totalCitations": 800,
     "hIndex": 15,
-    "i10Index": 20,
+    "i10Index": 21,
     "citationsRecent": 0,
     "hIndexRecent": 0,
     "i10IndexRecent": 0
@@ -57,7 +57,7 @@
         "MA Lira",
         "..."
       ],
-      "publication": "Sensors (Basel, Switzerland) 26 (8), 2491, 2026",
+      "publication": "Sensors 26 (8), 2491, 2026",
       "year": 2026,
       "citedBy": 0,
       "link": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=PCALePwAAAAJ&pagesize=100&sortby=pubdate&citation_for_view=PCALePwAAAAJ:u_35RYKgDlwC",
@@ -640,7 +640,7 @@
       ],
       "publication": "Sensors 22 (22), 8886, 2022",
       "year": 2022,
-      "citedBy": 36,
+      "citedBy": 37,
       "link": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=PCALePwAAAAJ&pagesize=100&sortby=pubdate&citation_for_view=PCALePwAAAAJ:dhFuZR0502QC",
       "citedByLink": "https://scholar.google.com/scholar?oi=bibs&hl=en&cites=13609103185694218187",
       "citationId": "PCALePwAAAAJ:dhFuZR0502QC",
@@ -848,7 +848,7 @@
       ],
       "publication": "Applied Sciences 11 (20), 9508, 2021",
       "year": 2021,
-      "citedBy": 85,
+      "citedBy": 86,
       "link": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=PCALePwAAAAJ&pagesize=100&sortby=pubdate&citation_for_view=PCALePwAAAAJ:kNdYIx-mwKoC",
       "citedByLink": "https://scholar.google.com/scholar?oi=bibs&hl=en&cites=4485305786774461650",
       "citationId": "PCALePwAAAAJ:kNdYIx-mwKoC",
@@ -925,7 +925,7 @@
       ],
       "publication": "Trials 21 (1), 663, 2020",
       "year": 2020,
-      "citedBy": 9,
+      "citedBy": 10,
       "link": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=PCALePwAAAAJ&pagesize=100&sortby=pubdate&citation_for_view=PCALePwAAAAJ:eQOLeE2rZwMC",
       "citedByLink": "https://scholar.google.com/scholar?oi=bibs&hl=en&cites=10995399757381066961",
       "citationId": "PCALePwAAAAJ:eQOLeE2rZwMC",
