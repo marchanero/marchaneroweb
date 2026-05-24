@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-05-23T06:53:38.970Z",
+  "lastUpdated": "2026-05-24T07:05:04.086Z",
   "scrapingMethod": "ultra-optimized-v3-robust-pagination",
   "paginationInfo": {
     "totalPages": 0,
@@ -660,7 +660,7 @@
       ],
       "publication": "Expert Systems with Applications 206, 117731, 2022",
       "year": 2022,
-      "citedBy": 96,
+      "citedBy": 97,
       "link": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=PCALePwAAAAJ&pagesize=100&sortby=pubdate&citation_for_view=PCALePwAAAAJ:_kc_bZDykSQC",
       "citedByLink": "https://scholar.google.com/scholar?oi=bibs&hl=en&cites=15620631313306549090",
       "citationId": "PCALePwAAAAJ:_kc_bZDykSQC",
@@ -886,7 +886,7 @@
       ],
       "publication": "Preprints, 2020",
       "year": 2020,
-      "citedBy": 27,
+      "citedBy": 26,
       "link": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=PCALePwAAAAJ&pagesize=100&sortby=pubdate&citation_for_view=PCALePwAAAAJ:LkGwnXOMwfcC",
       "citedByLink": "https://scholar.google.com/scholar?oi=bibs&hl=en&cites=2219798727825377273",
       "citationId": "PCALePwAAAAJ:LkGwnXOMwfcC",
