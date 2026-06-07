@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-06-06T07:03:24.736Z",
+  "lastUpdated": "2026-06-07T07:22:45.363Z",
   "scrapingMethod": "ultra-optimized-v3-robust-pagination",
   "paginationInfo": {
     "totalPages": 0,
@@ -83,7 +83,7 @@
     },
     {
       "id": "pub_3",
-      "title": "Safe Fall: Use of Predictive Modeling and Machine Vision Techniques for Fall Analysis and Fall Quality",
+      "title": "Safe fall: use of predictive modeling and machine vision techniques for fall analysis and fall quality",
       "authors": [
         "O DelCastillo-Andrés",
         "R Fernández-García",
