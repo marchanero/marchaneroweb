@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-06-11T07:38:55.728Z",
+  "lastUpdated": "2026-06-12T07:35:55.346Z",
   "scrapingMethod": "ultra-optimized-v3-robust-pagination",
   "paginationInfo": {
     "totalPages": 0,
@@ -39,7 +39,7 @@
     "scholarId": "PCALePwAAAAJ"
   },
   "metrics": {
-    "totalCitations": 811,
+    "totalCitations": 814,
     "hIndex": 15,
     "i10Index": 21,
     "citationsRecent": 0,
@@ -224,7 +224,7 @@
       ],
       "publication": "Applied Sciences 15 (14), 7730, 2025",
       "year": 2025,
-      "citedBy": 4,
+      "citedBy": 5,
       "link": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=PCALePwAAAAJ&pagesize=100&sortby=pubdate&citation_for_view=PCALePwAAAAJ:RYcK_YlVTxYC",
       "citedByLink": "https://scholar.google.com/scholar?oi=bibs&hl=en&cites=14501834267374468220",
       "citationId": "PCALePwAAAAJ:RYcK_YlVTxYC",
@@ -693,7 +693,7 @@
       ],
       "publication": "Sensors 22 (22), 8886, 2022",
       "year": 2022,
-      "citedBy": 39,
+      "citedBy": 41,
       "link": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=PCALePwAAAAJ&pagesize=100&sortby=pubdate&citation_for_view=PCALePwAAAAJ:dhFuZR0502QC",
       "citedByLink": "https://scholar.google.com/scholar?oi=bibs&hl=en&cites=13609103185694218187",
       "citationId": "PCALePwAAAAJ:dhFuZR0502QC",
@@ -1236,10 +1236,10 @@
       "2019": 35,
       "2020": 125,
       "2021": 88,
-      "2022": 337,
+      "2022": 339,
       "2023": 93,
       "2024": 45,
-      "2025": 19,
+      "2025": 20,
       "2026": 1
     },
     "careerSpan": 9,
@@ -1249,7 +1249,7 @@
   },
   "summary": {
     "totalPublications": 61,
-    "totalCitations": 811,
+    "totalCitations": 814,
     "hIndex": 15,
     "i10Index": 21,
     "avgCitationsPerPaper": 13,
