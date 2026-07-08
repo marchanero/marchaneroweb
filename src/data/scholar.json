@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-07-07T09:30:06.022Z",
+  "lastUpdated": "2026-07-08T08:14:27.137Z",
   "scrapingMethod": "ultra-optimized-v3-robust-pagination",
   "paginationInfo": {
     "totalPages": 0,
@@ -39,8 +39,8 @@
     "scholarId": "PCALePwAAAAJ"
   },
   "metrics": {
-    "totalCitations": 825,
-    "hIndex": 15,
+    "totalCitations": 827,
+    "hIndex": 16,
     "i10Index": 21,
     "citationsRecent": 0,
     "hIndexRecent": 0,
@@ -96,7 +96,7 @@
       ],
       "publication": "Sensors 26 (2), 612, 2026",
       "year": 2026,
-      "citedBy": 1,
+      "citedBy": 2,
       "link": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=PCALePwAAAAJ&pagesize=100&sortby=pubdate&citation_for_view=PCALePwAAAAJ:HoB7MX3m0LUC",
       "citedByLink": "https://scholar.google.com/scholar?oi=bibs&hl=en&cites=13999001170958427171",
       "citationId": "PCALePwAAAAJ:HoB7MX3m0LUC",
@@ -189,7 +189,7 @@
       ],
       "publication": "International Journal of Human–Computer Interaction 41 (16), 10143-10162, 2025",
       "year": 2025,
-      "citedBy": 15,
+      "citedBy": 16,
       "link": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=PCALePwAAAAJ&pagesize=100&sortby=pubdate&citation_for_view=PCALePwAAAAJ:blknAaTinKkC",
       "citedByLink": "https://scholar.google.com/scholar?oi=bibs&hl=en&cites=3662465721335290411",
       "citationId": "PCALePwAAAAJ:blknAaTinKkC",
