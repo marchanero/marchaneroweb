@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-07-26T08:13:48.336Z",
+  "lastUpdated": "2026-07-27T09:37:57.040Z",
   "scrapingMethod": "ultra-optimized-v3-robust-pagination",
   "paginationInfo": {
     "totalPages": 0,
@@ -39,7 +39,7 @@
     "scholarId": "PCALePwAAAAJ"
   },
   "metrics": {
-    "totalCitations": 831,
+    "totalCitations": 832,
     "hIndex": 16,
     "i10Index": 21,
     "citationsRecent": 0,
@@ -67,25 +67,6 @@
     },
     {
       "id": "pub_2",
-      "title": "Safe fall: use of predictive modeling and machine vision techniques for fall analysis and fall quality",
-      "authors": [
-        "O DelCastillo-Andrés",
-        "R Fernández-García",
-        "JC Pastor-Vicedo",
-        "MA Lira",
-        "..."
-      ],
-      "publication": "Sensors 26 (8), 2491, 2026",
-      "year": 2026,
-      "citedBy": 0,
-      "link": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=PCALePwAAAAJ&pagesize=100&sortby=pubdate&citation_for_view=PCALePwAAAAJ:u_35RYKgDlwC",
-      "citationId": "PCALePwAAAAJ:u_35RYKgDlwC",
-      "type": "article",
-      "isFirstAuthor": false,
-      "isCorrespondingAuthor": false
-    },
-    {
-      "id": "pub_3",
       "title": "Model-Centric or Data-Centric Approach? A Case Study on the Classification of Surface Defects in Steel Hot Rolling Using Convolutional Neural Networks",
       "authors": [
         "F López de la Rosa",
@@ -105,7 +86,7 @@
       "isCorrespondingAuthor": false
     },
     {
-      "id": "pub_4",
+      "id": "pub_3",
       "title": "Facial emotion recognition with virtual avatars in schizophrenia and bipolar disorder",
       "authors": [
         "M Scala",
@@ -119,6 +100,25 @@
       "citedBy": 0,
       "link": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=PCALePwAAAAJ&pagesize=100&sortby=pubdate&citation_for_view=PCALePwAAAAJ:dfsIfKJdRG4C",
       "citationId": "PCALePwAAAAJ:dfsIfKJdRG4C",
+      "type": "article",
+      "isFirstAuthor": false,
+      "isCorrespondingAuthor": false
+    },
+    {
+      "id": "pub_4",
+      "title": "Safe fall: use of predictive modeling and machine vision techniques for fall analysis and fall quality",
+      "authors": [
+        "Ó Castillo Andrés",
+        "R Fernández-García",
+        "JC Pastor-Vicedo",
+        "MA Lira",
+        "..."
+      ],
+      "publication": "Mdpi, 2026",
+      "year": 2026,
+      "citedBy": 0,
+      "link": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=PCALePwAAAAJ&pagesize=100&sortby=pubdate&citation_for_view=PCALePwAAAAJ:u_35RYKgDlwC",
+      "citationId": "PCALePwAAAAJ:u_35RYKgDlwC",
       "type": "article",
       "isFirstAuthor": false,
       "isCorrespondingAuthor": false
@@ -1116,7 +1116,7 @@
       ],
       "publication": "Electronics 7 (12), 384, 2018",
       "year": 2018,
-      "citedBy": 64,
+      "citedBy": 65,
       "link": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=PCALePwAAAAJ&pagesize=100&sortby=pubdate&citation_for_view=PCALePwAAAAJ:u5HHmVD_uO8C",
       "citedByLink": "https://scholar.google.com/scholar?oi=bibs&hl=en&cites=16788273922182433471",
       "citationId": "PCALePwAAAAJ:u5HHmVD_uO8C",
