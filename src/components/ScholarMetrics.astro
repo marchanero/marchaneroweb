@@ -61,20 +61,20 @@ const peakPublicationYear = Object.keys(publicationsByYear).find(year =>
   publicationsByYear[year] === maxPublications
 );
 
-const citationsByYear: Record<string, number> = {};
-scholarData.publications.forEach(pub => {
-  if (pub.year && pub.citedBy) {
-    const year = pub.year.toString();
-    citationsByYear[year] = (citationsByYear[year] || 0) + pub.citedBy;
-  }
-});
-const citationData = yearRange.map(year => ({
-  year,
-  citations: citationsByYear[year.toString()] || 0
-}));
-
 const publicationTrend = calculateGrowthTrend(yearData.map(d => d.publications));
-const citationTrend = calculateGrowthTrend(citationData.map(d => d.citations));
+
+// Tendencia de citas: se calcula con las citas reales recibidas por año
+// (gráfico de Google Scholar). Si no hay datos, no se muestra tendencia:
+// usar las citas por año de publicación del artículo produce una "caída"
+// falsa, porque los artículos recientes aún no han acumulado citas.
+const metricsWithGraph = scholarData.metrics as typeof scholarData.metrics & {
+  citationsPerYear?: { year: number; citations: number }[];
+};
+const citationsPerYear: number[] = (metricsWithGraph.citationsPerYear || [])
+  .map((entry) => entry.citations);
+const citationTrend = citationsPerYear.length >= 2
+  ? calculateGrowthTrend(citationsPerYear)
+  : null;
 ---
 
 <div class:list={['spec-card h-full flex flex-col', compact ? 'p-6' : 'p-8']}>
@@ -101,7 +101,7 @@ const citationTrend = calculateGrowthTrend(citationData.map(d => d.citations));
         {formatNumber(scholarData.metrics.totalCitations)}
       </div>
       <div class="text-xs text-graphite-500 dark:text-graphite-400 mt-1">Citas totales</div>
-      {citationTrend.trend !== 'stable' && (
+      {citationTrend && citationTrend.trend !== 'stable' && (
         <div class:list={['font-mono text-xs mt-1', citationTrend.trend === 'up' ? 'text-signal-600 dark:text-signal-400' : 'text-pulse-500']}>
           {citationTrend.trend === 'up' ? '↑' : '↓'} {citationTrend.percentage}%
         </div>
@@ -113,7 +113,7 @@ const citationTrend = calculateGrowthTrend(citationData.map(d => d.citations));
         {scholarData.metrics.hIndex}
       </div>
       <div class="text-xs text-graphite-500 dark:text-graphite-400 mt-1">Índice h</div>
-      {showDetails && (
+      {showDetails && scholarData.metrics.hIndexRecent > 0 && (
         <div class="font-mono text-xs text-graphite-400 dark:text-graphite-500 mt-1">
           {scholarData.metrics.hIndexRecent} (5 años)
         </div>
@@ -125,7 +125,7 @@ const citationTrend = calculateGrowthTrend(citationData.map(d => d.citations));
         {scholarData.metrics.i10Index}
       </div>
       <div class="text-xs text-graphite-500 dark:text-graphite-400 mt-1">Índice i10</div>
-      {showDetails && (
+      {showDetails && scholarData.metrics.i10IndexRecent > 0 && (
         <div class="font-mono text-xs text-graphite-400 dark:text-graphite-500 mt-1">
           {scholarData.metrics.i10IndexRecent} (5 años)
         </div>

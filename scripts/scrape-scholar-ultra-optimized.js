@@ -173,10 +173,21 @@ async function scrapeScholarWithRobustPagination() {
 
         const authorMetrics = global.authorMetrics || {
             table: [
-                { citations: { all: 0, since_2019: 0 } },
-                { h_index: { all: 0, since_2019: 0 } },
-                { i10_index: { all: 0, since_2019: 0 } }
-            ]
+                { citations: { all: 0 } },
+                { h_index: { all: 0 } },
+                { i10_index: { all: 0 } }
+            ],
+            graph: []
+        };
+
+        // Google Scholar devuelve las métricas recientes con una clave dinámica
+        // "since_YYYY" que cambia cada año (p. ej. since_2021). Se busca cualquier
+        // clave que empiece por "since_" en lugar de usar un año fijo.
+        const getRecentMetric = (row, metric) => {
+            const entry = row?.[metric];
+            if (!entry) return 0;
+            const sinceKey = Object.keys(entry).find(key => key.startsWith('since_'));
+            return sinceKey ? entry[sinceKey] || 0 : 0;
         };
 
         // Procesar y estructurar los datos con paginación robusta
@@ -206,9 +217,15 @@ async function scrapeScholarWithRobustPagination() {
                 totalCitations: authorMetrics.table?.[0]?.citations?.all || 0,
                 hIndex: authorMetrics.table?.[1]?.h_index?.all || 0,
                 i10Index: authorMetrics.table?.[2]?.i10_index?.all || 0,
-                citationsRecent: authorMetrics.table?.[0]?.citations?.since_2019 || 0,
-                hIndexRecent: authorMetrics.table?.[1]?.h_index?.since_2019 || 0,
-                i10IndexRecent: authorMetrics.table?.[2]?.i10_index?.since_2019 || 0
+                // La clave "since_YYYY" de Google Scholar cambia cada año: se resuelve dinámicamente
+                citationsRecent: getRecentMetric(authorMetrics.table?.[0], 'citations'),
+                hIndexRecent: getRecentMetric(authorMetrics.table?.[1], 'h_index'),
+                i10IndexRecent: getRecentMetric(authorMetrics.table?.[2], 'i10_index'),
+                // Citas por año (gráfico real de Google Scholar) para calcular tendencias reales
+                citationsPerYear: (authorMetrics.graph || []).map(entry => ({
+                    year: entry.year,
+                    citations: entry.citations
+                }))
             },
             publications: allArticles.map((article, index) => {
                 const year = article.year ? parseInt(article.year) : null;
