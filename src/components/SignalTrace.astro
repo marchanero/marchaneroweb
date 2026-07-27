@@ -1,7 +1,9 @@
 ---
-// Elemento de firma del sitio: una traza tipo osciloscopio (ECG/EDA).
-// Se usa como separador de sección, marca junto al wordmark, medidor de
-// progreso y sustituto de imágenes de stock en tarjetas de proyectos/asignaturas.
+// Elemento de firma del sitio: una traza tipo osciloscopio (ECG/EDA) con
+// marcas de detección en los picos — la señal (procesamiento de señales) y
+// el método que la analiza (IA/ML) en un mismo trazo, en vez de dos motivos
+// separados. Se usa como separador de sección, marca junto al wordmark,
+// medidor de progreso y sustituto de imágenes de stock en tarjetas.
 interface Props {
 	variant?: 'ecg' | 'eda';
 	width?: number;
@@ -11,6 +13,7 @@ interface Props {
 	class?: string;
 	animate?: boolean;
 	pulseDot?: boolean;
+	showDetections?: boolean;
 }
 
 const {
@@ -22,16 +25,18 @@ const {
 	class: className = '',
 	animate = true,
 	pulseDot = animate,
+	showDetections = animate,
 } = Astro.props;
 
 const dotDuration = Math.max(2.5, Math.min(9, width / 90 + beats * 0.6));
 
-const mid = height / 2;
+type Peak = { x: number; y: number };
 
-function ecgPath(w: number, h: number, count: number) {
+function ecgPath(w: number, h: number, count: number): { d: string; peaks: Peak[] } {
 	const mid = h / 2;
 	const segment = w / count;
 	let d = `M0,${mid}`;
+	const peaks: Peak[] = [];
 	for (let i = 0; i < count; i++) {
 		const x0 = i * segment;
 		d += ` L${x0 + segment * 0.18},${mid}`;
@@ -39,20 +44,22 @@ function ecgPath(w: number, h: number, count: number) {
 		d += ` L${x0 + segment * 0.34},${mid}`;
 		d += ` L${x0 + segment * 0.4},${mid}`;
 		d += ` L${x0 + segment * 0.44},${mid + h * 0.15}`; // Q
-		d += ` L${x0 + segment * 0.48},${mid - h * 0.85}`; // R
+		d += ` L${x0 + segment * 0.48},${mid - h * 0.85}`; // R — el pico que un método detecta
 		d += ` L${x0 + segment * 0.52},${mid + h * 0.35}`; // S
 		d += ` L${x0 + segment * 0.58},${mid}`;
 		d += ` L${x0 + segment * 0.68},${mid - h * 0.2}`; // onda T
 		d += ` L${x0 + segment * 0.78},${mid}`;
 		d += ` L${x0 + segment},${mid}`;
+		peaks.push({ x: x0 + segment * 0.48, y: mid - h * 0.85 });
 	}
-	return d;
+	return { d, peaks };
 }
 
-function edaPath(w: number, h: number, count: number) {
+function edaPath(w: number, h: number, count: number): { d: string; peaks: Peak[] } {
 	const mid = h / 2 + h * 0.2;
 	const segment = w / count;
 	let d = `M0,${mid}`;
+	const peaks: Peak[] = [];
 	for (let i = 0; i < count; i++) {
 		const x0 = i * segment;
 		const peakY = mid - h * (0.35 + (i % 2) * 0.15);
@@ -60,11 +67,12 @@ function edaPath(w: number, h: number, count: number) {
 		d += ` C${x0 + segment * 0.08},${mid} ${x0 + segment * 0.14},${peakY} ${x0 + segment * 0.18},${peakY}`;
 		d += ` C${x0 + segment * 0.4},${peakY} ${x0 + segment * 0.55},${mid} ${x0 + segment * 0.72},${mid}`;
 		d += ` L${x0 + segment},${mid}`;
+		peaks.push({ x: x0 + segment * 0.18, y: peakY });
 	}
-	return d;
+	return { d, peaks };
 }
 
-const d = variant === 'ecg' ? ecgPath(width, height, beats) : edaPath(width, height, beats);
+const { d, peaks } = variant === 'ecg' ? ecgPath(width, height, beats) : edaPath(width, height, beats);
 ---
 
 <svg
@@ -83,10 +91,24 @@ const d = variant === 'ecg' ? ecgPath(width, height, beats) : edaPath(width, hei
 		pathLength={animate ? 1000 : undefined}
 		class:list={[animate && 'signal-trace-path']}
 	></path>
+
+	{showDetections && peaks.map((peak) => (
+		<circle
+			cx={peak.x}
+			cy={peak.y}
+			r={Math.max(3, strokeWidth * 1.6)}
+			class:list={['signal-peak', !animate && 'signal-peak-static']}
+			fill="none"
+			stroke="#FF5A36"
+			stroke-width={Math.max(1, strokeWidth * 0.55)}
+		></circle>
+	))}
+
 	{pulseDot && (
 		<circle
 			r={Math.max(2.5, strokeWidth * 1.4)}
 			class="signal-dot"
+			fill="#FF5A36"
 			style={{ offsetPath: `path('${d}')`, animationDuration: `${dotDuration}s` }}
 		></circle>
 	)}
@@ -105,9 +127,38 @@ const d = variant === 'ecg' ? ecgPath(width, height, beats) : edaPath(width, hei
 			stroke-dashoffset: 0;
 		}
 	}
+
+	/* Marcas de detección: aparecen tras dibujarse la traza, como si un
+	   método las hubiera identificado justo después de leer la señal. */
+	.signal-peak {
+		opacity: 0;
+		transform-box: fill-box;
+		transform-origin: center;
+		transform: scale(0.4);
+	}
+	.signal-trace-path.is-visible ~ .signal-peak {
+		animation: peak-in 0.4s ease-out forwards;
+		animation-delay: 1.5s;
+	}
+	.signal-peak-static {
+		opacity: 1;
+		transform: scale(1);
+	}
+	@keyframes peak-in {
+		to {
+			opacity: 1;
+			transform: scale(1);
+		}
+	}
+
 	@media (prefers-reduced-motion: reduce) {
 		.signal-trace-path {
 			stroke-dashoffset: 0;
+			animation: none !important;
+		}
+		.signal-peak {
+			opacity: 1;
+			transform: scale(1);
 			animation: none !important;
 		}
 	}
