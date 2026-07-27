@@ -9,17 +9,23 @@ describe('Accesibilidad (A11y)', () => {
   let projectRoot;
   let indexContent;
   let layoutContent;
-  
+  let globalCssContent;
+
   beforeAll(() => {
     projectRoot = path.join(__dirname, '..');
-    
+
     indexContent = fs.readFileSync(
-      path.join(projectRoot, 'src', 'pages', 'index.astro'), 
+      path.join(projectRoot, 'src', 'pages', 'index.astro'),
       'utf8'
     );
-    
+
     layoutContent = fs.readFileSync(
-      path.join(projectRoot, 'src', 'layouts', 'Layout.astro'), 
+      path.join(projectRoot, 'src', 'layouts', 'Layout.astro'),
+      'utf8'
+    );
+
+    globalCssContent = fs.readFileSync(
+      path.join(projectRoot, 'src', 'styles', 'global.css'),
       'utf8'
     );
   });
@@ -203,16 +209,11 @@ describe('Accesibilidad (A11y)', () => {
 
   describe('Animaciones y Movimiento', () => {
     it('verifica soporte para prefers-reduced-motion', () => {
-      // Verificar que existe la media query para reduced motion
-      expect(indexContent).toContain('@media (prefers-reduced-motion: reduce)');
-      
-      // Verificar que desactiva animaciones apropiadamente
-      const reducedMotionContent = indexContent.match(/@media \(prefers-reduced-motion: reduce\)[^}]*{[^}]*}/s);
-      
-      if (reducedMotionContent) {
-        expect(reducedMotionContent[0]).toContain('animation-duration: 0.01ms');
-        expect(reducedMotionContent[0]).toContain('transition-duration: 0.01ms');
-      }
+      // El soporte vive centralizado en el CSS global (aplica a todas las páginas)
+      // en lugar de duplicarse por página.
+      expect(globalCssContent).toContain('@media (prefers-reduced-motion: reduce)');
+      expect(globalCssContent).toContain('animation-duration: 0.01ms');
+      expect(globalCssContent).toContain('transition-duration: 0.01ms');
     });
 
     it('verifica que las animaciones no son excesivas', () => {

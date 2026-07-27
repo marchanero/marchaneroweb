@@ -1,0 +1,103 @@
+---
+// Elemento de firma del sitio: una traza tipo osciloscopio (ECG/EDA).
+// Se usa como separador de sección, marca junto al wordmark, medidor de
+// progreso y sustituto de imágenes de stock en tarjetas de proyectos/asignaturas.
+interface Props {
+	variant?: 'ecg' | 'eda';
+	width?: number;
+	height?: number;
+	strokeWidth?: number;
+	beats?: number;
+	class?: string;
+	animate?: boolean;
+}
+
+const {
+	variant = 'ecg',
+	width = 400,
+	height = 60,
+	strokeWidth = 2,
+	beats = 3,
+	class: className = '',
+	animate = true,
+} = Astro.props;
+
+const mid = height / 2;
+
+function ecgPath(w: number, h: number, count: number) {
+	const mid = h / 2;
+	const segment = w / count;
+	let d = `M0,${mid}`;
+	for (let i = 0; i < count; i++) {
+		const x0 = i * segment;
+		d += ` L${x0 + segment * 0.18},${mid}`;
+		d += ` L${x0 + segment * 0.26},${mid - h * 0.12}`; // onda P
+		d += ` L${x0 + segment * 0.34},${mid}`;
+		d += ` L${x0 + segment * 0.4},${mid}`;
+		d += ` L${x0 + segment * 0.44},${mid + h * 0.15}`; // Q
+		d += ` L${x0 + segment * 0.48},${mid - h * 0.85}`; // R
+		d += ` L${x0 + segment * 0.52},${mid + h * 0.35}`; // S
+		d += ` L${x0 + segment * 0.58},${mid}`;
+		d += ` L${x0 + segment * 0.68},${mid - h * 0.2}`; // onda T
+		d += ` L${x0 + segment * 0.78},${mid}`;
+		d += ` L${x0 + segment},${mid}`;
+	}
+	return d;
+}
+
+function edaPath(w: number, h: number, count: number) {
+	const mid = h / 2 + h * 0.2;
+	const segment = w / count;
+	let d = `M0,${mid}`;
+	for (let i = 0; i < count; i++) {
+		const x0 = i * segment;
+		const peakY = mid - h * (0.35 + (i % 2) * 0.15);
+		// subida rápida, bajada lenta — forma típica de una respuesta electrodermal
+		d += ` C${x0 + segment * 0.08},${mid} ${x0 + segment * 0.14},${peakY} ${x0 + segment * 0.18},${peakY}`;
+		d += ` C${x0 + segment * 0.4},${peakY} ${x0 + segment * 0.55},${mid} ${x0 + segment * 0.72},${mid}`;
+		d += ` L${x0 + segment},${mid}`;
+	}
+	return d;
+}
+
+const d = variant === 'ecg' ? ecgPath(width, height, beats) : edaPath(width, height, beats);
+---
+
+<svg
+	class:list={['signal-trace', 'block w-full h-auto overflow-visible', className]}
+	viewBox={`0 0 ${width} ${height}`}
+	preserveAspectRatio="none"
+	fill="none"
+	aria-hidden="true"
+>
+	<path
+		d={d}
+		stroke="currentColor"
+		stroke-width={strokeWidth}
+		stroke-linecap="round"
+		stroke-linejoin="round"
+		pathLength={animate ? 1000 : undefined}
+		class:list={[animate && 'signal-trace-path']}
+	></path>
+</svg>
+
+<style>
+	.signal-trace-path {
+		stroke-dasharray: 1000;
+		stroke-dashoffset: 1000;
+	}
+	.signal-trace-path.is-visible {
+		animation: trace-draw 1.6s ease-out forwards;
+	}
+	@keyframes trace-draw {
+		to {
+			stroke-dashoffset: 0;
+		}
+	}
+	@media (prefers-reduced-motion: reduce) {
+		.signal-trace-path {
+			stroke-dashoffset: 0;
+			animation: none !important;
+		}
+	}
+</style>

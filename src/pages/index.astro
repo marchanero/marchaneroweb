@@ -2,6 +2,7 @@
 import Layout from '../layouts/Layout.astro';
 import RecentPublications from '../components/RecentPublications.astro';
 import ScholarMetrics from '../components/ScholarMetrics.astro';
+import SignalTrace from '../components/SignalTrace.astro';
 import scholarData from '../data/scholar.json';
 import { Image } from 'astro:assets';
 import profileImage from '../assets/robert_ghibli.jpg';
@@ -21,758 +22,223 @@ const recentPublications = scholarData.publications.slice(0, 3).map(pub => ({
 	},
 	year: (pub.year || 0).toString()
 }));
+
+const researchLines = [
+	'Inteligencia Artificial',
+	'Señales Fisiológicas',
+	'Detección de Caídas',
+	'Aprendizaje Federado',
+	'IoT y Edge AI',
+	'IA Educativa',
+];
+
+const featuredProjects = [
+	{
+		tag: 'IA · EDUCACIÓN',
+		status: 'En curso',
+		title: 'Inteligencia Artificial Aplicada',
+		description:
+			'Sistemas de tutoría inteligente que adaptan el contenido educativo a partir de aplicaciones de IA en entornos de aprendizaje personalizado.',
+		period: '2022 — Actualidad',
+		budget: '150.000 €',
+		progress: 75,
+		href: '/proyectos',
+		variant: 'ecg' as const,
+	},
+	{
+		tag: 'SISTEMAS · EFICIENCIA',
+		status: 'Finalizado',
+		title: 'Sistemas Distribuidos Eficientes',
+		description:
+			'Nuevas arquitecturas para sistemas distribuidos con mayor eficiencia energética: 30% menos consumo con rendimiento optimizado.',
+		period: '2020 — 2023',
+		budget: '80.000 €',
+		progress: 100,
+		href: '/proyectos',
+		variant: 'eda' as const,
+	},
+];
 ---
 
-<style>
-	/* Animaciones y efectos personalizados */
-	@keyframes fadeInUp {
-		from {
-			opacity: 0;
-			transform: translateY(30px);
-		}
-		to {
-			opacity: 1;
-			transform: translateY(0);
-		}
-	}
-	
-	@keyframes fadeInLeft {
-		from {
-			opacity: 0;
-			transform: translateX(-30px);
-		}
-		to {
-			opacity: 1;
-			transform: translateX(0);
-		}
-	}
-	
-	@keyframes fadeInRight {
-		from {
-			opacity: 0;
-			transform: translateX(30px);
-		}
-		to {
-			opacity: 1;
-			transform: translateX(0);
-		}
-	}
-	
-	@keyframes pulse {
-		0%, 100% {
-			transform: scale(1);
-		}
-		50% {
-			transform: scale(1.05);
-		}
-	}
-	
-	@keyframes shimmer {
-		0% {
-			background-position: -200px 0;
-		}
-		100% {
-			background-position: calc(200px + 100%) 0;
-		}
-	}
-	
-	/* Clases de utilidad para animaciones */
-	.animate-fade-in-up {
-		animation: fadeInUp 0.6s ease-out forwards;
-	}
-	
-	.animate-fade-in-left {
-		animation: fadeInLeft 0.6s ease-out forwards;
-	}
-	
-	.animate-fade-in-right {
-		animation: fadeInRight 0.6s ease-out forwards;
-	}
-	
-	.animate-delay-100 {
-		animation-delay: 0.1s;
-	}
-	
-	.animate-delay-200 {
-		animation-delay: 0.2s;
-	}
-	
-	.animate-delay-250 {
-		animation-delay: 0.25s;
-	}
-	
-	.animate-delay-300 {
-		animation-delay: 0.3s;
-	}
-	
-	.animate-delay-400 {
-		animation-delay: 0.4s;
-	}
-	
-	/* Efectos especiales */
-	.hero-gradient {
-		background: linear-gradient(135deg, 
-			rgba(59, 130, 246, 0.1) 0%, 
-			rgba(147, 51, 234, 0.1) 50%, 
-			rgba(236, 72, 153, 0.1) 100%);
-	}
-	
-	.card-hover {
-		transition: all 0.3s ease;
-	}
-	
-	.card-hover:hover {
-		transform: translateY(-5px);
-		box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
-	}
-	
-	.btn-enhanced {
-		background: linear-gradient(135deg, #3b82f6, #8b5cf6);
-		background-size: 200% 200%;
-		animation: shimmer 2s infinite;
-		transition: all 0.3s ease;
-	}
-	
-	.btn-enhanced:hover {
-		background-position: right center;
-		transform: translateY(-2px);
-		box-shadow: 0 10px 20px rgba(59, 130, 246, 0.3);
-	}
-	
-	.profile-glow {
-		box-shadow: 0 0 40px rgba(59, 130, 246, 0.3);
-		transition: all 0.3s ease;
-	}
-	
-	.profile-glow:hover {
-		box-shadow: 0 0 60px rgba(59, 130, 246, 0.5);
-	}
-	
-	/* Sistema de partículas flotantes mejorado con JS */
-	.floating-particles {
-		position: relative;
-		overflow: hidden;
-	}
-	
-	.particle {
-		position: absolute;
-		border-radius: 50%;
-		pointer-events: none;
-		z-index: 1;
-		opacity: 0.8;
-		animation-timing-function: ease-in-out;
-		animation-iteration-count: infinite;
-		animation-fill-mode: both;
-	}
-	
-	.particle.size-xs {
-		width: 3px;
-		height: 3px;
-	}
-	
-	.particle.size-small {
-		width: 5px;
-		height: 5px;
-	}
-	
-	.particle.size-medium {
-		width: 7px;
-		height: 7px;
-	}
-	
-	.particle.size-large {
-		width: 10px;
-		height: 10px;
-	}
-	
-	.particle.type-blue {
-		background: #3b82f6;
-		box-shadow: 0 0 15px rgba(59, 130, 246, 0.5);
-	}
-	
-	.particle.type-purple {
-		background: #8b5cf6;
-		box-shadow: 0 0 15px rgba(139, 92, 246, 0.5);
-	}
-	
-	.particle.type-orange {
-		background: #f59e0b;
-		box-shadow: 0 0 15px rgba(245, 158, 11, 0.5);
-	}
-	
-	.particle.type-green {
-		background: #10b981;
-		box-shadow: 0 0 15px rgba(16, 185, 129, 0.5);
-	}
-	
-	.particle.type-pink {
-		background: #ec4899;
-		box-shadow: 0 0 15px rgba(236, 72, 153, 0.5);
-	}
-	
-	.particle.type-cyan {
-		background: #06b6d4;
-		box-shadow: 0 0 15px rgba(6, 182, 212, 0.5);
-	}
-	
-	/* Animaciones para las partículas - Simplificadas */
-	@keyframes float1 {
-		0%, 100% { transform: translateY(0px) translateX(0px); }
-		50% { transform: translateY(-20px) translateX(10px); }
-	}
-	
-	@keyframes float2 {
-		0%, 100% { transform: translateY(0px) translateX(0px); }
-		50% { transform: translateY(15px) translateX(-15px); }
-	}
-	
-	@keyframes float3 {
-		0%, 100% { transform: translateY(0px) translateX(0px); }
-		50% { transform: translateY(-15px) translateX(-10px); }
-	}
-	
-	@keyframes float4 {
-		0%, 100% { transform: translateY(0px) translateX(0px); }
-		50% { transform: translateY(20px) translateX(15px); }
-	}
-	
-	@keyframes float5 {
-		0%, 100% { transform: translateY(0px) translateX(0px); }
-		50% { transform: translateY(-10px) translateX(20px); }
-	}
-	/* Partículas para modo oscuro */
-	.dark .particle {
-		opacity: 0.7;
-	}
-	
-	/* Asegurar visibilidad en todos los temas */
-	.particle {
-		opacity: 0.8 !important;
-	}
-	
-	.particle.type-blue {
-		background: #3b82f6 !important;
-		box-shadow: 0 0 20px rgba(59, 130, 246, 0.7) !important;
-	}
-	
-	.particle.type-purple {
-		background: #8b5cf6 !important;
-		box-shadow: 0 0 20px rgba(139, 92, 246, 0.7) !important;
-	}
-	
-	.particle.type-orange {
-		background: #f59e0b !important;
-		box-shadow: 0 0 20px rgba(245, 158, 11, 0.7) !important;
-	}
-	
-	.particle.type-green {
-		background: #10b981 !important;
-		box-shadow: 0 0 20px rgba(16, 185, 129, 0.7) !important;
-	}
-	
-	.particle.type-pink {
-		background: #ec4899 !important;
-		box-shadow: 0 0 20px rgba(236, 72, 153, 0.7) !important;
-	}
-	
-	.particle.type-cyan {
-		background: #06b6d4 !important;
-		box-shadow: 0 0 20px rgba(6, 182, 212, 0.7) !important;
-	}
-	
-	/* Partículas de fallback con CSS puro */
-	.floating-particles::before,
-	.floating-particles::after {
-		content: '';
-		position: absolute;
-		width: 8px;
-		height: 8px;
-		background: #3b82f6;
-		border-radius: 50%;
-		opacity: 0.8;
-		pointer-events: none;
-		z-index: 1;
-		box-shadow: 0 0 15px rgba(59, 130, 246, 0.6);
-		animation: float1 5s ease-in-out infinite;
-	}
-	
-	.floating-particles::before {
-		top: 20%;
-		left: 15%;
-	}
-	
-	.floating-particles::after {
-		top: 70%;
-		right: 20%;
-		background: #8b5cf6;
-		box-shadow: 0 0 15px rgba(139, 92, 246, 0.6);
-		animation: float2 6s ease-in-out infinite;
-	}
-	
-	/* Partículas adicionales de fallback */
-	.floating-particles-subtle::before,
-	.floating-particles-subtle::after {
-		content: '';
-		position: absolute;
-		width: 6px;
-		height: 6px;
-		background: #10b981;
-		border-radius: 50%;
-		opacity: 0.7;
-		pointer-events: none;
-		z-index: 1;
-		box-shadow: 0 0 12px rgba(16, 185, 129, 0.5);
-		animation: float3 4s ease-in-out infinite;
-	}
-	
-	.floating-particles-subtle::before {
-		top: 30%;
-		left: 25%;
-	}
-	
-	.floating-particles-subtle::after {
-		top: 60%;
-		right: 30%;
-		background: #ec4899;
-		box-shadow: 0 0 12px rgba(236, 72, 153, 0.5);
-		animation: float4 5s ease-in-out infinite;
-	}
-	
-	/* Accesibilidad */
-	@media (prefers-reduced-motion: reduce) {
-		* {
-			animation-duration: 0.01ms !important;
-			animation-iteration-count: 1 !important;
-			transition-duration: 0.01ms !important;
-		}
-	}
-</style>
-
 <Layout title="Dr. Roberto Sánchez Reolid - Investigador en IA y Computación">
-	<!-- Hero Section mejorado -->
-	<section class="relative overflow-hidden">
-		<!-- Fondo animado -->
-		<div class="absolute inset-0 bg-gradient-to-br from-slate-50 via-indigo-50/40 to-white dark:from-gray-900 dark:to-gray-900"></div>
-		
-		<div class="relative max-w-7xl mx-auto px-4 py-4 sm:py-6 lg:py-8 flex flex-col lg:flex-row items-center min-h-[70vh]">
-			<!-- Imagen de perfil mejorada -->
-			<div class="lg:w-1/3 mb-4 sm:mb-6 lg:mb-0 animate-fade-in-left">
-				<div class="relative">
-					<div class="relative w-64 sm:w-80 h-80 sm:h-[480px] mx-auto overflow-hidden rounded-3xl profile-glow">
-						<Image 
-							src={profileImage} 
+	<!-- Hero -->
+	<section class="relative border-b border-line dark:border-line-dark overflow-hidden">
+		<div class="absolute inset-0 flex items-center opacity-[0.06] text-graphite-800 dark:text-signal-400 pointer-events-none">
+			<SignalTrace variant="ecg" width={1200} height={160} beats={6} strokeWidth={2} animate={false} class="w-full" />
+		</div>
+
+		<div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16 lg:py-20 flex flex-col lg:flex-row items-center gap-10 lg:gap-16">
+			<!-- Retrato -->
+			<div class="lg:w-1/3 reveal">
+				<div class="relative w-56 sm:w-72 mx-auto">
+					<div class="relative border border-line dark:border-line-dark rounded-md overflow-hidden">
+						<span class="spec-tick spec-tick-tl"></span>
+						<span class="spec-tick spec-tick-br"></span>
+						<Image
+							src={profileImage}
 							alt="Dr. Roberto Sánchez Reolid"
-							class="w-full h-full object-cover object-top transition-transform duration-700 hover:scale-105"
+							class="w-full h-auto aspect-[4/5] object-cover object-top"
 							widths={[400, 800]}
 							sizes="(max-width: 768px) 100vw, 320px"
 						/>
-						<div class="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
 					</div>
-					<!-- Indicador de estado -->
-					<div class="absolute -bottom-2 -right-2 bg-emerald-500 text-white px-2 sm:px-3 py-1 rounded-full text-xs font-medium shadow-lg">
-						🟢 Disponible
+					<div class="mt-3 inline-flex items-center gap-2 font-mono text-xs uppercase tracking-wide text-graphite-500 dark:text-graphite-400">
+						<span class="relative flex h-2 w-2">
+							<span class="absolute inline-flex h-full w-full rounded-full bg-signal-500 opacity-60 animate-ping"></span>
+							<span class="relative inline-flex rounded-full h-2 w-2 bg-signal-500"></span>
+						</span>
+						Disponible para colaboraciones
 					</div>
 				</div>
 			</div>
-			
-			<!-- Contenido principal mejorado -->
-			<div class="lg:w-2/3 text-center lg:text-left space-y-2 sm:space-y-3">
-				<div class="animate-fade-in-right">
-					<h1 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold bg-gradient-to-r from-slate-900 to-indigo-700 dark:from-white dark:to-indigo-200 bg-clip-text text-transparent mb-2 sm:mb-3 leading-tight">
-						Roberto Sánchez Reolid
-					</h1>
-					
-					<div class="flex items-center justify-center lg:justify-start space-x-3 sm:space-x-4 mb-2 sm:mb-3">
-						<div class="h-1 w-8 sm:w-12 bg-indigo-300 dark:bg-indigo-600 rounded-full"></div>
-						<p class="text-lg sm:text-xl md:text-2xl text-slate-600 dark:text-slate-300 font-light">
-							Doctor en Informática
-						</p>
-						<div class="h-1 w-8 sm:w-12 bg-indigo-300 dark:bg-indigo-600 rounded-full"></div>
-					</div>
-					
-					<p class="text-base sm:text-lg text-slate-600 dark:text-slate-300 max-w-2xl leading-relaxed mb-3 sm:mb-4">
-						Investigador especializado en <span class="font-semibold text-indigo-600 dark:text-indigo-400">Inteligencia Artificial</span> y
-						<span class="font-semibold text-emerald-600 dark:text-emerald-400">Sistemas Distribuidos</span> en la Universidad de Castilla-La Mancha.
-					</p>
+
+			<!-- Contenido -->
+			<div class="lg:w-2/3 text-center lg:text-left reveal">
+				<p class="eyebrow mb-3">Investigador · UCLM</p>
+				<h1 class="font-display text-4xl sm:text-5xl lg:text-6xl font-semibold text-graphite-900 dark:text-white leading-[1.05] mb-4">
+					Roberto Sánchez Reolid
+				</h1>
+				<p class="text-lg text-graphite-600 dark:text-graphite-300 mb-2">Doctor en Informática</p>
+				<p class="text-base sm:text-lg text-graphite-600 dark:text-graphite-300 max-w-2xl leading-relaxed mb-8 mx-auto lg:mx-0">
+					Investigo <span class="font-medium text-signal-600 dark:text-signal-400">Inteligencia Artificial</span> y
+					<span class="font-medium text-signal-600 dark:text-signal-400">procesamiento de señales fisiológicas</span>
+					en la Universidad de Castilla-La Mancha.
+				</p>
+
+				<div class="flex flex-col sm:flex-row gap-3 justify-center lg:justify-start mb-10">
+					<a href="/publicaciones" class="btn btn-primary">Ver publicaciones →</a>
+					<a href="/contacto" class="btn btn-outline">Contactar</a>
 				</div>
-				
-				<!-- Botones de acción mejorados -->
-				<div class="animate-fade-in-up animate-delay-200 flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center lg:justify-start">
-					<a href="/publicaciones" class="btn btn-primary group">
-						<span class="flex items-center space-x-2">
-							<span>📚 Ver Publicaciones</span>
-							<span class="transform transition-transform group-hover:translate-x-1">→</span>
-						</span>
-					</a>
-					<a href="/contacto" class="btn btn-outline group">
-						<span class="flex items-center space-x-2">
-							<span>Contactar</span>
-							<span class="transform transition-transform group-hover:translate-x-1">→</span>
-						</span>
-					</a>
-				</div>
-				
-				<!-- Título para las estadísticas -->
-				<div class="animate-fade-in-up animate-delay-250 text-center lg:text-left mt-4 sm:mt-5">
-					<h3 class="text-lg sm:text-xl font-semibold text-gray-800 dark:text-gray-200 mb-3 sm:mb-4 mt-2 sm:mt-3">
-						📊 Métricas de Investigación
-					</h3>
-				</div>
-				
-				<!-- Estadísticas rápidas -->
-				<div class="animate-fade-in-up animate-delay-300 grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4 max-w-2xl mx-auto lg:mx-0">
-					<div class="bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm rounded-2xl p-3 sm:p-4 text-center card-hover">
-						<div class="text-lg sm:text-2xl font-bold text-indigo-600 dark:text-indigo-400">{scholarData.metrics.totalCitations}</div>
-						<div class="text-xs sm:text-sm text-gray-600 dark:text-gray-400">Citas</div>
+
+				<div class="readout max-w-2xl mx-auto lg:mx-0">
+					<div class="readout-cell">
+						<div class="readout-value">{scholarData.metrics.totalCitations}</div>
+						<div class="readout-label">Citas</div>
 					</div>
-					<div class="bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm rounded-2xl p-3 sm:p-4 text-center card-hover">
-						<div class="text-lg sm:text-2xl font-bold text-blue-600 dark:text-blue-400">{scholarData.metrics.hIndex}</div>
-						<div class="text-xs sm:text-sm text-gray-600 dark:text-gray-400">h-index</div>
+					<div class="readout-cell">
+						<div class="readout-value">{scholarData.metrics.hIndex}</div>
+						<div class="readout-label">h-index</div>
 					</div>
-					<div class="bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm rounded-2xl p-3 sm:p-4 text-center card-hover">
-						<div class="text-lg sm:text-2xl font-bold text-emerald-600 dark:text-emerald-400">{scholarData.publications.length}</div>
-						<div class="text-xs sm:text-sm text-gray-600 dark:text-gray-400">Papers</div>
+					<div class="readout-cell">
+						<div class="readout-value">{scholarData.publications.length}</div>
+						<div class="readout-label">Papers</div>
 					</div>
-					<div class="bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm rounded-2xl p-3 sm:p-4 text-center card-hover">
-						<div class="text-lg sm:text-2xl font-bold text-orange-600 dark:text-orange-400">{scholarData.metrics.i10Index}</div>
-						<div class="text-xs sm:text-sm text-gray-600 dark:text-gray-400">i10-index</div>
+					<div class="readout-cell">
+						<div class="readout-value">{scholarData.metrics.i10Index}</div>
+						<div class="readout-label">i10-index</div>
 					</div>
 				</div>
 			</div>
 		</div>
 	</section>
 
-	<!-- Sección "Sobre mí" rediseñada -->
-	<section class="relative py-8 sm:py-12 lg:py-16 bg-gradient-to-b from-gray-50 to-white dark:from-gray-900 dark:to-gray-800 px-4">
-		<div class="max-w-7xl mx-auto">
-			<div class="grid grid-cols-1 lg:grid-cols-3 gap-8 lg:gap-12 items-stretch">
-				
-				<!-- Información de investigación -->
-				<div class="lg:col-span-2 flex">
-					<div class="bg-white/70 dark:bg-gray-800/70 backdrop-blur-sm rounded-2xl p-8 border border-gray-200/50 dark:border-gray-700/50 shadow-lg hover:shadow-xl transition-all duration-300 flex flex-col justify-between w-full">
-						<div class="flex-grow">
-							<div class="flex items-start space-x-4 mb-6">
-								<div class="flex-shrink-0 w-12 h-12 bg-gradient-to-br from-indigo-500 to-blue-600 rounded-xl flex items-center justify-center shadow-lg">
-									<span class="text-white text-2xl">🔬</span>
-								</div>
-								<div>
-									<h2 class="text-2xl sm:text-3xl font-bold text-gray-900 dark:text-white mb-2">
-										Mi investigación
-									</h2>
-									<div class="w-16 h-1 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full"></div>
-								</div>
-							</div>
-							
-							<p class="text-gray-700 dark:text-gray-300 text-lg leading-relaxed mb-6">
-								Mi trabajo se centra en el desarrollo de tecnologías innovadoras
-								y metodologías para resolver problemas complejos con aplicaciones prácticas.
-							</p>
-							
-							<div class="space-y-4 mb-8">
-								<!-- Fila superior -->
-								<div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-									<div class="flex items-center space-x-3 p-4 bg-indigo-50 dark:bg-indigo-900/20 rounded-xl border border-indigo-100 dark:border-indigo-800/30">
-										<div class="w-2 h-2 bg-indigo-500 rounded-full"></div>
-										<span class="text-sm sm:text-base text-slate-700 dark:text-slate-300 font-medium">Inteligencia Artificial</span>
-									</div>
-									<div class="flex items-center space-x-3 p-4 bg-emerald-50 dark:bg-emerald-900/20 rounded-xl border border-emerald-100 dark:border-emerald-800/30">
-										<div class="w-2 h-2 bg-emerald-500 rounded-full"></div>
-										<span class="text-sm sm:text-base text-gray-700 dark:text-gray-300 font-medium">Sistemas Distribuidos</span>
-									</div>
-								</div>
-								<!-- Fila inferior -->
-								<div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-									<div class="flex items-center space-x-3 p-4 bg-indigo-50 dark:bg-indigo-900/20 rounded-xl border border-indigo-100 dark:border-indigo-800/30">
-										<div class="w-2 h-2 bg-indigo-400 rounded-full"></div>
-										<span class="text-sm sm:text-base text-slate-700 dark:text-slate-300 font-medium">Procesamiento de Señales Fisiológicas</span>
-									</div>
-									<div class="flex items-center space-x-3 p-4 bg-orange-50 dark:bg-orange-900/20 rounded-xl border border-orange-100 dark:border-orange-800/30">
-										<div class="w-2 h-2 bg-orange-500 rounded-full"></div>
-										<span class="text-sm sm:text-base text-gray-700 dark:text-gray-300 font-medium">Desarrollo de Sensores Fisiológicos</span>
-									</div>
-								</div>
-							</div>
-						</div>
-						
-						<!-- Botones al final -->
-						<div class="flex flex-col sm:flex-row gap-4 mt-auto">
-							<a href="/sobre-mi" class="inline-flex items-center justify-center px-6 py-3 bg-gradient-to-r from-indigo-600 to-blue-600 hover:from-indigo-700 hover:to-blue-700 text-white font-medium rounded-xl transition-all duration-200 shadow-lg">
-								<span class="mr-2">🔍</span>
-								Conocer más
-							</a>
-							<a href="/publicaciones" class="inline-flex items-center justify-center px-6 py-3 bg-white dark:bg-gray-700 border-2 border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300 font-medium rounded-xl hover:bg-gray-50 dark:hover:bg-gray-600 transition-all duration-200">
-								<span class="mr-2">📚</span>
-								Ver publicaciones
-							</a>
-						</div>
+	<!-- Mi investigación -->
+	<section class="py-14 sm:py-20 px-4 border-b border-line dark:border-line-dark">
+		<div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-3 gap-8 lg:gap-12 items-stretch">
+			<div class="lg:col-span-2 reveal">
+				<div class="spec-card h-full flex flex-col justify-between">
+					<span class="spec-tick spec-tick-tl"></span>
+					<span class="spec-tick spec-tick-br"></span>
+					<div>
+						<p class="eyebrow mb-2">Líneas de investigación</p>
+						<h2 class="text-2xl sm:text-3xl font-display font-semibold text-graphite-900 dark:text-white mb-4">
+							Mi investigación
+						</h2>
+						<p class="text-graphite-600 dark:text-graphite-300 leading-relaxed mb-6">
+							Mi trabajo se centra en el desarrollo de tecnologías de IA y sensórica aplicadas a
+							problemas reales, desde la monitorización fisiológica hasta la educación adaptativa.
+						</p>
+						<ul class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+							{researchLines.map((line) => (
+								<li class="flex items-center gap-2.5 px-4 py-3 border border-line dark:border-line-dark rounded-md text-sm text-graphite-700 dark:text-graphite-200">
+									<span class="w-1.5 h-1.5 rounded-full bg-signal-500 shrink-0"></span>
+									{line}
+								</li>
+							))}
+						</ul>
+					</div>
+					<div class="flex flex-col sm:flex-row gap-3 mt-8">
+						<a href="/sobre-mi" class="btn btn-primary btn-sm">Conocer más</a>
+						<a href="/publicaciones" class="btn btn-outline btn-sm">Ver publicaciones</a>
 					</div>
 				</div>
-				
-				<!-- Métricas bibliométricas -->
-				<div class="lg:col-span-1 flex">
-					<div class="w-full">
-						<ScholarMetrics compact={true} />
-					</div>
-				</div>
+			</div>
+
+			<div class="lg:col-span-1 reveal">
+				<ScholarMetrics compact={true} />
 			</div>
 		</div>
 	</section>
 
 	<!-- Publicaciones recientes -->
-	<section class="relative py-8 sm:py-10 lg:py-12 bg-white dark:bg-gray-800 px-4">
-		<div class="max-w-7xl mx-auto">
-			<RecentPublications 
-				publications={recentPublications} 
-				limit={3} 
-				showTitle={true} 
-				title="Publicaciones recientes" 
+	<section class="py-14 sm:py-16 px-4 border-b border-line dark:border-line-dark">
+		<div class="max-w-7xl mx-auto reveal">
+			<RecentPublications
+				publications={recentPublications}
+				limit={3}
+				showTitle={true}
+				title="Publicaciones recientes"
 			/>
 		</div>
 	</section>
 
 	<!-- Investigaciones destacadas -->
-	<section class="relative py-4 sm:py-6 lg:py-8 bg-gray-50 dark:bg-gray-900 px-4">
+	<section class="py-14 sm:py-20 px-4">
 		<div class="max-w-7xl mx-auto">
-			<h2 class="text-2xl sm:text-3xl font-bold text-gray-900 dark:text-white mb-4 sm:mb-6 text-center">Investigaciones destacadas</h2>
-			
-			<div class="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6 mb-6 sm:mb-8">
-				<div class="bg-white dark:bg-gray-800 rounded-2xl shadow-xl overflow-hidden card-hover border border-gray-200/50 dark:border-gray-700/50">
-					<!-- Imagen/Visual -->
-					<div class="relative h-48 bg-gradient-to-br from-indigo-500 to-blue-600 flex items-center justify-center">
-						<div class="text-white text-6xl">🤖</div>
-						<div class="absolute inset-0 bg-black/10"></div>
-						<div class="absolute top-4 right-4 bg-white/20 backdrop-blur-sm rounded-full px-3 py-1">
-							<span class="text-white text-sm font-medium">En curso</span>
-						</div>
-					</div>
-					
-					<!-- Contenido -->
-					<div class="p-6">
-						<div class="flex items-center gap-2 mb-3">
-							<span class="bg-blue-100 dark:bg-blue-900/50 text-blue-700 dark:text-blue-300 px-3 py-1 rounded-full text-sm font-medium">IA</span>
-							<span class="bg-green-100 dark:bg-green-900/50 text-green-700 dark:text-green-300 px-3 py-1 rounded-full text-sm font-medium">Educación</span>
-						</div>
-						
-						<h3 class="text-xl font-bold text-gray-900 dark:text-white mb-3">Inteligencia Artificial Aplicada</h3>
-						<p class="text-gray-700 dark:text-gray-300 mb-4 leading-relaxed">
-							Investigación sobre aplicaciones de la IA en entornos educativos y su impacto en el aprendizaje personalizado. 
-							Desarrollo de sistemas de tutoría inteligente que adaptan el contenido educativo.
-						</p>
-						
-						<!-- Información adicional -->
-						<div class="flex items-center justify-between text-sm text-gray-600 dark:text-gray-400 mb-4">
-							<span>📅 2022 - Actualidad</span>
-							<span>💰 150,000€</span>
-						</div>
-						
-						<!-- Barra de progreso -->
-						<div class="mb-4">
-							<div class="flex items-center justify-between text-sm mb-1">
-								<span class="text-gray-700 dark:text-gray-300">Progreso</span>
-								<span class="text-indigo-600 dark:text-indigo-400 font-semibold">75%</span>
-							</div>
-							<div class="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2">
-								<div class="bg-gradient-to-r from-blue-500 to-purple-600 h-2 rounded-full transition-all duration-1000" style="width: 75%"></div>
-							</div>
-						</div>
-						
-						<a href="/proyectos/ia-educacion" class="w-full bg-gradient-to-r from-indigo-500 to-blue-600 hover:from-indigo-600 hover:to-blue-700 text-white py-3 px-4 rounded-lg text-center font-medium transition-all duration-200 block">
-							Ver detalles completos
-						</a>
-					</div>
-				</div>
-				
-				<div class="bg-white dark:bg-gray-800 rounded-2xl shadow-xl overflow-hidden card-hover border border-gray-200/50 dark:border-gray-700/50">
-					<!-- Imagen/Visual -->
-					<div class="relative h-48 bg-gradient-to-br from-emerald-500 to-teal-600 flex items-center justify-center">
-						<div class="text-white text-6xl">⚡</div>
-						<div class="absolute inset-0 bg-black/20"></div>
-						<div class="absolute top-4 right-4 bg-white/20 backdrop-blur-sm rounded-full px-3 py-1">
-							<span class="text-white text-sm font-medium">Finalizado</span>
-						</div>
-					</div>
-					
-					<!-- Contenido -->
-					<div class="p-6">
-						<div class="flex items-center gap-2 mb-3">
-							<span class="bg-emerald-100 dark:bg-emerald-900/50 text-emerald-700 dark:text-emerald-300 px-3 py-1 rounded-full text-sm font-medium">Sistemas</span>
-							<span class="bg-orange-100 dark:bg-orange-900/50 text-orange-700 dark:text-orange-300 px-3 py-1 rounded-full text-sm font-medium">Eficiencia</span>
-						</div>
-						
-						<h3 class="text-xl font-bold text-gray-900 dark:text-white mb-3">Sistemas Distribuidos Eficientes</h3>
-						<p class="text-gray-700 dark:text-gray-300 mb-4 leading-relaxed">
-							Desarrollo de nuevas arquitecturas para sistemas distribuidos con mayor eficiencia energética y rendimiento optimizado.
-							Reducción del 30% en consumo energético.
-						</p>
-						
-						<!-- Información adicional -->
-						<div class="flex items-center justify-between text-sm text-gray-600 dark:text-gray-400 mb-4">
-							<span>📅 2020 - 2023</span>
-							<span>💰 80,000€</span>
-						</div>
-						
-						<!-- Barra de progreso -->
-						<div class="mb-4">
-							<div class="flex items-center justify-between text-sm mb-1">
-								<span class="text-gray-700 dark:text-gray-300">Progreso</span>
-								<span class="text-emerald-600 dark:text-emerald-400 font-semibold">100%</span>
-							</div>
-							<div class="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2">
-								<div class="bg-gradient-to-r from-emerald-500 to-teal-600 h-2 rounded-full transition-all duration-1000" style="width: 100%"></div>
-							</div>
-						</div>
-						
-						<a href="/proyectos/sistemas-distribuidos" class="w-full bg-gradient-to-r from-emerald-500 to-teal-600 hover:from-emerald-600 hover:to-teal-700 text-white py-3 px-4 rounded-lg text-center font-medium transition-all duration-200 block transform hover:scale-105">
-							Ver detalles completos
-						</a>
-					</div>
-				</div>
+			<div class="mb-10 text-center reveal">
+				<p class="eyebrow mb-2">Proyectos</p>
+				<h2 class="text-2xl sm:text-3xl font-display font-semibold text-graphite-900 dark:text-white">
+					Investigaciones destacadas
+				</h2>
 			</div>
-			
-			<div class="text-center">
-				<a href="/proyectos" class="bg-white dark:bg-gray-800 border-2 border-indigo-500 dark:border-indigo-400 text-indigo-600 dark:text-indigo-400 hover:bg-indigo-50 dark:hover:bg-gray-700 px-6 py-3 rounded-lg font-medium transition-all duration-200 inline-flex items-center space-x-2">
-					<span>Ver todas las investigaciones</span>
-					<span>→</span>
-				</a>
+
+			<div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-10">
+				{featuredProjects.map((project) => (
+					<a href={project.href} class="spec-card block reveal">
+						<span class="spec-tick spec-tick-tl"></span>
+						<span class="spec-tick spec-tick-br"></span>
+
+						<div class="h-20 -mx-6 -mt-6 mb-6 px-6 border-b border-line dark:border-line-dark flex items-center text-signal-500 dark:text-signal-400 overflow-hidden">
+							<SignalTrace variant={project.variant} width={400} height={60} beats={4} class="w-full" />
+						</div>
+
+						<div class="flex items-center justify-between mb-3">
+							<span class="eyebrow">{project.tag}</span>
+							<span class="font-mono text-xs uppercase tracking-wide text-graphite-500 dark:text-graphite-400">
+								{project.status}
+							</span>
+						</div>
+
+						<h3 class="text-xl font-display font-semibold text-graphite-900 dark:text-white mb-2">
+							{project.title}
+						</h3>
+						<p class="text-graphite-600 dark:text-graphite-300 mb-5 leading-relaxed text-sm">
+							{project.description}
+						</p>
+
+						<div class="flex items-center justify-between text-xs font-mono text-graphite-500 dark:text-graphite-400 mb-4">
+							<span>{project.period}</span>
+							<span>{project.budget}</span>
+						</div>
+
+						<div class="mb-1">
+							<div class="flex items-center justify-between text-xs font-mono mb-1.5">
+								<span class="text-graphite-500 dark:text-graphite-400">Progreso</span>
+								<span class="text-signal-600 dark:text-signal-400">{project.progress}%</span>
+							</div>
+							<div class="signal-meter">
+								{Array.from({ length: 10 }).map((_, i) => (
+									<span class:list={['signal-meter-tick', i < project.progress / 10 && 'is-filled']}></span>
+								))}
+							</div>
+						</div>
+					</a>
+				))}
+			</div>
+
+			<div class="text-center reveal">
+				<a href="/proyectos" class="btn btn-outline">Ver todas las investigaciones →</a>
 			</div>
 		</div>
 	</section>
 </Layout>
-
-<script>
-// Sistema de partículas aleatorio avanzado
-document.addEventListener('DOMContentLoaded', function() {
-	
-	// Generar animaciones aleatorias dinámicamente
-	function createRandomAnimation(index) {
-		const animationName = 'randomFloat' + index;
-		const keyframes = `
-			@keyframes ${animationName} {
-				0%, 100% { 
-					transform: translateY(0px) translateX(0px) rotate(0deg) scale(1);
-				}
-				25% { 
-					transform: translateY(${-30 + Math.random() * 20}px) 
-							   translateX(${-20 + Math.random() * 40}px) 
-							   rotate(${Math.random() * 180}deg) 
-							   scale(${0.8 + Math.random() * 0.6});
-				}
-				50% { 
-					transform: translateY(${-10 + Math.random() * 40}px) 
-							   translateX(${-25 + Math.random() * 50}px) 
-							   rotate(${Math.random() * 360}deg) 
-							   scale(${0.7 + Math.random() * 0.8});
-				}
-				75% { 
-					transform: translateY(${-20 + Math.random() * 30}px) 
-							   translateX(${-15 + Math.random() * 30}px) 
-							   rotate(${Math.random() * 270}deg) 
-							   scale(${0.9 + Math.random() * 0.4});
-				}
-			}
-		`;
-		
-		// Añadir la animación al DOM
-		const style = document.createElement('style');
-		style.textContent = keyframes;
-		document.head.appendChild(style);
-		
-		return animationName;
-	}
-	
-	function createParticles() {
-		const containers = document.querySelectorAll('.floating-particles, .floating-particles-subtle');
-		
-		containers.forEach(function(container, containerIndex) {
-			// Limpiar partículas existentes
-			const existing = container.querySelectorAll('.particle');
-			existing.forEach(function(p) { p.remove(); });
-			
-			// Número aleatorio de partículas (siempre más de 2)
-			const minParticles = 3;
-			const maxParticles = container.classList.contains('floating-particles') ? 15 : 12;
-			const particleCount = minParticles + Math.floor(Math.random() * (maxParticles - minParticles + 1));
-			
-			console.log('🎯 Creando', particleCount, 'partículas en', container.className);
-			
-			for (let i = 0; i < particleCount; i++) {
-				const particle = document.createElement('div');
-				particle.className = 'particle';
-				
-				// Colores y tamaños aleatorios
-				const types = ['blue', 'purple', 'orange', 'green', 'pink', 'cyan'];
-				const sizes = ['xs', 'small', 'medium', 'large'];
-				
-				const randomType = types[Math.floor(Math.random() * types.length)];
-				const randomSize = sizes[Math.floor(Math.random() * sizes.length)];
-				
-				particle.classList.add('type-' + randomType, 'size-' + randomSize);
-				
-				// Posición completamente aleatoria
-				const left = 5 + Math.random() * 90; // Entre 5% y 95%
-				const top = 5 + Math.random() * 90;  // Entre 5% y 95%
-				
-				particle.style.left = left + '%';
-				particle.style.top = top + '%';
-				
-				// Crear animación única y aleatoria para cada partícula
-				const animationName = createRandomAnimation(containerIndex + '_' + i);
-				const duration = 3 + Math.random() * 8; // 3-11 segundos
-				const delay = Math.random() * 5; // Delay hasta 5 segundos
-				
-				// Aplicar animación con timing aleatorio
-				const timingFunctions = ['ease-in-out', 'ease-in', 'ease-out', 'linear'];
-				const randomTiming = timingFunctions[Math.floor(Math.random() * timingFunctions.length)];
-				
-				particle.style.animation = `${animationName} ${duration}s ${randomTiming} infinite`;
-				particle.style.animationDelay = delay + 's';
-				
-				// Opacidad aleatoria
-				particle.style.opacity = 0.4 + Math.random() * 0.5; // Entre 0.4 y 0.9
-				
-				container.appendChild(particle);
-			}
-		});
-	}
-
-	// Ejecutar inmediatamente
-	createParticles();
-	
-	// Recrear partículas periódicamente para mayor dinamismo
-	setInterval(createParticles, 30000); // Cada 30 segundos
-	
-	// Recrear al cambiar tamaño de ventana
-	let resizeTimer;
-	window.addEventListener('resize', function() {
-		clearTimeout(resizeTimer);
-		resizeTimer = setTimeout(createParticles, 300);
-	});
-	
-	// Añadir/quitar partículas al hacer hover (opcional)
-	const heroSection = document.querySelector('.floating-particles');
-	if (heroSection) {
-		heroSection.addEventListener('mouseenter', function() {
-			// Añadir algunas partículas extra temporalmente
-			const extraParticles = 2 + Math.floor(Math.random() * 3);
-			for (let i = 0; i < extraParticles; i++) {
-				setTimeout(function() {
-					const particle = document.createElement('div');
-					particle.className = 'particle type-cyan size-small';
-					particle.style.left = Math.random() * 100 + '%';
-					particle.style.top = Math.random() * 100 + '%';
-					particle.style.opacity = '0.6';
-					particle.style.animation = 'float1 2s ease-out forwards';
-					heroSection.appendChild(particle);
-					
-					// Remover después de 2 segundos
-					setTimeout(function() {
-						if (particle.parentNode) {
-							particle.remove();
-						}
-					}, 2000);
-				}, i * 200);
-			}
-		});
-	}
-});
-</script>

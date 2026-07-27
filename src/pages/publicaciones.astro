@@ -8,8 +8,7 @@ import scholarData from '../data/scholar.json';
 export const title = 'Publicaciones - Dr. Roberto Sánchez Reolid';
 export const description = 'Publicaciones científicas y métricas bibliométricas del Dr. Roberto Sánchez Reolid, Universidad de Castilla-La Mancha';
 
-// Función para formatear fecha
-function formatDate(dateString) {
+function formatDate(dateString: string) {
   return new Date(dateString).toLocaleDateString('es-ES', {
     year: 'numeric',
     month: 'long',
@@ -17,579 +16,218 @@ function formatDate(dateString) {
   });
 }
 
-// Función para determinar tipo de publicación basado en el venue
-function getPublicationType(publication) {
-  const venue = publication.publication.toLowerCase();
-  if (venue.includes('journal') || venue.includes('ieee') || venue.includes('acm')) {
-    return 'journal';
-  } else if (venue.includes('conference') || venue.includes('proceedings')) {
-    return 'conference';
-  } else if (venue.includes('book')) {
-    return 'book';
-  }
+function getPublicationType(publication: { publication?: string }) {
+  const venue = (publication.publication || '').toLowerCase();
+  if (venue.includes('journal') || venue.includes('ieee') || venue.includes('acm')) return 'journal';
+  if (venue.includes('conference') || venue.includes('proceedings')) return 'conference';
+  if (venue.includes('book')) return 'book';
   return 'article';
 }
 
-// Función para obtener icono según tipo de publicación
-function getPublicationIcon(type) {
+function getPublicationLabel(type: string) {
   switch (type) {
-    case 'journal':
-      return '📄';
-    case 'conference':
-      return '🎤';
-    case 'book':
-      return '📚';
-    case 'thesis':
-      return '🎓';
-    default:
-      return '📄';
+    case 'journal': return 'Revista';
+    case 'conference': return 'Conferencia';
+    case 'book': return 'Libro';
+    default: return 'Artículo';
   }
 }
 
-// Función para obtener color según tipo de publicación
-function getPublicationColor(type) {
-  switch (type) {
-    case 'journal':
-      return 'text-blue-600 dark:text-blue-400';
-    case 'conference':
-      return 'text-green-600 dark:text-green-400';
-    case 'book':
-      return 'text-purple-600 dark:text-purple-400';
-    case 'thesis':
-      return 'text-orange-600 dark:text-orange-400';
-    default:
-      return 'text-gray-600 dark:text-gray-400';
-  }
-}
-
-// Obtener años únicos para el filtro
-const uniqueYears = [...new Set(scholarData.publications.map(pub => pub.year).filter(Boolean))].sort((a, b) => parseInt(b) - parseInt(a));
+const uniqueYears = [...new Set(scholarData.publications.map(pub => pub.year).filter(Boolean))].sort((a, b) => parseInt(b as any) - parseInt(a as any));
 ---
 
 <Layout title={title} description={description}>
-  <main class="min-h-screen bg-white dark:bg-gray-900 transition-colors duration-300">
-    <!-- Header de publicaciones mejorado -->
-    <header class="relative bg-gradient-to-br from-indigo-800 via-indigo-700 to-blue-700 dark:from-indigo-900 dark:via-indigo-800 dark:to-blue-900 text-white py-20 overflow-hidden">
-      <!-- Fondo animado -->
-      <div class="absolute inset-0 bg-gradient-to-br from-indigo-50/5 to-transparent"></div>
-      
-      <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="animate-fade-in-up">
-          <h1 class="text-5xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-white to-indigo-100 bg-clip-text text-transparent">
-            📚 Publicaciones Científicas
-          </h1>
-          <p class="text-xl md:text-2xl text-blue-100 dark:text-blue-200 max-w-3xl leading-relaxed mb-6">
-            Investigación en <span class="font-semibold text-white">Inteligencia Artificial</span>, 
-            <span class="font-semibold text-white">Machine Learning</span> y 
-            <span class="font-semibold text-white">Computación Afectiva</span>
-          </p>
-          
-          <!-- Estadísticas rápidas en el header -->
-          <div class="animate-fade-in-up animate-delay-200 grid grid-cols-2 md:grid-cols-4 gap-4 max-w-2xl mt-8">
-            <div class="stats-card rounded-2xl p-4 text-center">
-              <div class="text-2xl font-bold text-white">{scholarData.metrics.totalCitations}</div>
-              <div class="text-sm text-blue-200">Total Citas</div>
-            </div>
-            <div class="stats-card rounded-2xl p-4 text-center">
-              <div class="text-2xl font-bold text-white">{scholarData.publications.length}</div>
-              <div class="text-sm text-blue-200">Publicaciones</div>
-            </div>
-            <div class="stats-card rounded-2xl p-4 text-center">
-              <div class="text-2xl font-bold text-white">{scholarData.metrics.hIndex}</div>
-              <div class="text-sm text-blue-200">h-index</div>
-            </div>
-            <div class="stats-card rounded-2xl p-4 text-center">
-              <div class="text-2xl font-bold text-white">{scholarData.metrics.i10Index}</div>
-              <div class="text-sm text-blue-200">i10-index</div>
-            </div>
-          </div>
-          
-          <div class="mt-6 text-sm text-blue-200 dark:text-blue-300 animate-fade-in-up animate-delay-300">
-            📅 Última actualización: {formatDate(scholarData.lastUpdated)}
-          </div>
+  <!-- Header -->
+  <header class="relative border-b border-line dark:border-line-dark py-14 sm:py-20 px-4">
+    <div class="max-w-7xl mx-auto reveal">
+      <p class="eyebrow mb-3">Google Scholar</p>
+      <h1 class="text-4xl sm:text-5xl font-display font-semibold text-graphite-900 dark:text-white mb-4">
+        Publicaciones científicas
+      </h1>
+      <p class="text-lg text-graphite-600 dark:text-graphite-300 max-w-2xl leading-relaxed mb-8">
+        Investigación en Inteligencia Artificial, Machine Learning y computación afectiva.
+      </p>
+
+      <div class="readout max-w-2xl">
+        <div class="readout-cell">
+          <div class="readout-value">{scholarData.metrics.totalCitations}</div>
+          <div class="readout-label">Citas</div>
+        </div>
+        <div class="readout-cell">
+          <div class="readout-value">{scholarData.publications.length}</div>
+          <div class="readout-label">Publicaciones</div>
+        </div>
+        <div class="readout-cell">
+          <div class="readout-value">{scholarData.metrics.hIndex}</div>
+          <div class="readout-label">h-index</div>
+        </div>
+        <div class="readout-cell">
+          <div class="readout-value">{scholarData.metrics.i10Index}</div>
+          <div class="readout-label">i10-index</div>
         </div>
       </div>
-    </header>
 
-    <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-      
-      <!-- Métricas bibliométricas -->
-      <section class="mb-12 animate-fade-in-up">
-        <ScholarMetrics showDetails={true} />
-      </section>
-
-      <!-- Información del perfil -->
-      <section class="mb-12 animate-fade-in-up animate-delay-100">
-        <div class="bg-white dark:bg-gray-800 rounded-xl p-8 shadow-lg card-hover">
-          <div class="flex flex-col md:flex-row md:items-center md:justify-between">
-            <div>
-              <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-2">
-                {scholarData.author.name}
-              </h2>
-              <p class="text-lg text-gray-600 dark:text-gray-300 mb-4">
-                {scholarData.author.affiliation}
-              </p>
-              <div class="flex flex-wrap gap-2">
-                {scholarData.author.interests.map((interest) => (
-                  <span class="bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 px-3 py-1 rounded-full text-sm font-medium">
-                    {interest.title}
-                  </span>
-                ))}
-              </div>
-            </div>
-            <div class="mt-6 md:mt-0">
-              <a 
-                href={`mailto:${scholarData.author.email}`}
-                class="inline-flex items-center px-6 py-3 bg-blue-600 hover:bg-blue-700 dark:bg-blue-700 dark:hover:bg-blue-600 text-white font-medium rounded-lg transition-colors duration-200"
-              >
-                ✉️ Contactar
-              </a>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- Lista de publicaciones -->
-      <section class="animate-fade-in-up animate-delay-200">
-        <div class="flex items-center justify-between mb-8">
-          <h2 class="text-3xl font-bold text-gray-900 dark:text-white">
-            Publicaciones ({scholarData.publications.length})
-          </h2>
-          
-          <!-- Filtros mejorados -->
-          <div class="flex gap-4">
-            <select 
-              id="yearFilter" 
-              class="px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:ring-2 focus:ring-blue-500 transition-all duration-200 hover:border-blue-400"
-            >
-              <option value="">Todos los años</option>
-              {uniqueYears.map(year => (
-                <option value={year}>{year}</option>
-              ))}
-            </select>
-          </div>
-        </div>
-
-        <div class="space-y-6" id="publicationsList">
-          {scholarData.publications.map((publication, index) => {
-            const pubType = getPublicationType(publication);
-            return (
-              <article 
-                class={`bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg card-hover publication-item animate-fade-in-up`}
-                style={`animation-delay: ${index * 0.1}s`}
-                data-year={publication.year}
-                data-type={pubType}
-              >
-                <div class="flex flex-col lg:flex-row lg:items-start lg:justify-between">
-                  <div class="flex-1">
-                    <!-- Título -->
-                    <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-3 leading-tight">
-                      {publication.link ? (
-                        <a 
-                          href={publication.link} 
-                          target="_blank" 
-                          rel="noopener noreferrer"
-                          class="text-blue-600 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-300 transition-colors duration-200"
-                        >
-                          {publication.title}
-                        </a>
-                      ) : (
-                        publication.title
-                      )}
-                    </h3>
-                    
-                    <!-- Autores -->
-                    <div class="mb-3">
-                      <p class="text-gray-700 dark:text-gray-300">
-                        {publication.authors}
-                      </p>
-                    </div>
-                    
-                    <!-- Información de la publicación -->
-                    <div class="flex flex-wrap items-center gap-4 mb-3">
-                      <span class={`inline-flex items-center px-3 py-1 rounded-full text-sm font-medium ${getPublicationColor(pubType)} bg-gray-100 dark:bg-gray-700`}>
-                        {getPublicationIcon(pubType)} {pubType === 'journal' ? 'Revista' : pubType === 'conference' ? 'Conferencia' : pubType === 'book' ? 'Libro' : 'Artículo'}
-                      </span>
-                      
-                      {publication.year && (
-                        <span class="text-gray-600 dark:text-gray-400 font-medium">
-                          📅 {publication.year}
-                        </span>
-                      )}
-                      
-                      {publication.citedBy && publication.citedBy > 0 && (
-                        <span class="text-gray-600 dark:text-gray-400">
-                          📝 {publication.citedBy} citas
-                        </span>
-                      )}
-                    </div>
-                    
-                    <!-- Publicación/Venue -->
-                    <p class="text-gray-600 dark:text-gray-400 italic mb-3">
-                      {publication.publication}
-                    </p>
-                  </div>
-                  
-                  <!-- Enlaces de acción -->
-                  <div class="mt-4 lg:mt-0 lg:ml-6 flex flex-col gap-2">
-                    {publication.link && (
-                      <a 
-                        href={publication.link} 
-                        target="_blank" 
-                        rel="noopener noreferrer"
-                        class="inline-flex items-center justify-center px-4 py-2 bg-blue-600 hover:bg-blue-700 dark:bg-blue-700 dark:hover:bg-blue-600 text-white text-sm font-medium rounded-lg transition-colors duration-200"
-                      >
-                        🔗 Ver publicación
-                      </a>
-                    )}
-                    {publication.citedByLink && (
-                      <a 
-                        href={publication.citedByLink} 
-                        target="_blank" 
-                        rel="noopener noreferrer"
-                        class="inline-flex items-center justify-center px-4 py-2 bg-gray-600 hover:bg-gray-700 dark:bg-gray-700 dark:hover:bg-gray-600 text-white text-sm font-medium rounded-lg transition-colors duration-200"
-                      >
-                        📊 Ver citas
-                      </a>
-                    )}
-                  </div>
-                </div>
-              </article>
-            );
-          })}
-        </div>
-      </section>
-
-      <!-- Enlaces adicionales mejorados -->
-      <section class="mt-12 text-center animate-fade-in-up animate-delay-300">
-        <div class="bg-gradient-to-r from-blue-50 to-indigo-50 dark:from-gray-800 dark:to-gray-700 rounded-xl p-8 card-hover">
-          <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-6 flex items-center justify-center space-x-2">
-            <span>📋</span>
-            <span>Perfiles Académicos</span>
-          </h3>
-          <div class="flex flex-wrap justify-center gap-4">
-            <a 
-              href="https://scholar.google.com" 
-              target="_blank" 
-              rel="noopener noreferrer"
-              class="btn-enhanced inline-flex items-center px-6 py-3 bg-red-600 hover:bg-red-700 text-white font-medium rounded-lg transition-all duration-200 transform hover:scale-105"
-            >
-              🎓 Google Scholar
-            </a>
-            <a 
-              href="https://orcid.org" 
-              target="_blank" 
-              rel="noopener noreferrer"
-              class="btn-enhanced inline-flex items-center px-6 py-3 bg-green-600 hover:bg-green-700 text-white font-medium rounded-lg transition-all duration-200 transform hover:scale-105"
-            >
-              🆔 ORCID
-            </a>
-            <a 
-              href="https://researchgate.net" 
-              target="_blank" 
-              rel="noopener noreferrer"
-              class="btn-enhanced inline-flex items-center px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white font-medium rounded-lg transition-all duration-200 transform hover:scale-105"
-            >
-              🔬 ResearchGate
-            </a>
-          </div>
-        </div>
-      </section>
+      <p class="mt-4 font-mono text-xs text-graphite-400 dark:text-graphite-500">
+        Última actualización: {formatDate(scholarData.lastUpdated)}
+      </p>
     </div>
-  </main>
+  </header>
+
+  <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-14 sm:py-20">
+    <!-- Métricas bibliométricas -->
+    <section class="mb-12 reveal">
+      <ScholarMetrics showDetails={true} />
+    </section>
+
+    <!-- Información del perfil -->
+    <section class="mb-12 reveal">
+      <div class="spec-card p-8">
+        <span class="spec-tick spec-tick-tl"></span>
+        <span class="spec-tick spec-tick-br"></span>
+        <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-6">
+          <div>
+            <h2 class="text-xl font-display font-semibold text-graphite-900 dark:text-white mb-1">
+              {scholarData.author.name}
+            </h2>
+            <p class="text-graphite-500 dark:text-graphite-400 mb-4">
+              {scholarData.author.affiliation}
+            </p>
+            <div class="flex flex-wrap gap-2">
+              {scholarData.author.interests.map((interest) => (
+                <span class="border border-line dark:border-line-dark text-graphite-600 dark:text-graphite-300 px-3 py-1 rounded-md text-xs font-mono">
+                  {interest.title}
+                </span>
+              ))}
+            </div>
+          </div>
+          <a href={`mailto:${scholarData.author.email}`} class="btn btn-primary shrink-0">
+            Contactar
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Lista de publicaciones -->
+    <section class="reveal">
+      <div class="flex flex-wrap items-center justify-between gap-4 mb-8">
+        <h2 class="text-2xl sm:text-3xl font-display font-semibold text-graphite-900 dark:text-white">
+          Publicaciones <span class="font-mono text-graphite-400 dark:text-graphite-500 text-xl">({scholarData.publications.length})</span>
+        </h2>
+
+        <select
+          id="yearFilter"
+          class="px-4 py-2 border border-line dark:border-line-dark rounded-md bg-transparent text-graphite-700 dark:text-graphite-200 font-mono text-sm focus:outline-none focus:border-signal-500"
+        >
+          <option value="">Todos los años</option>
+          {uniqueYears.map(year => (
+            <option value={year}>{year}</option>
+          ))}
+        </select>
+      </div>
+
+      <div class="space-y-4" id="publicationsList">
+        {scholarData.publications.map((publication) => {
+          const pubType = getPublicationType(publication);
+          return (
+            <article
+              class="spec-card publication-item"
+              data-year={publication.year}
+              data-type={pubType}
+            >
+              <span class="spec-tick spec-tick-tl"></span>
+              <span class="spec-tick spec-tick-br"></span>
+              <div class="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-4">
+                <div class="flex-1">
+                  <div class="flex flex-wrap items-center gap-3 mb-3 font-mono text-xs">
+                    <span class="text-graphite-500 dark:text-graphite-400">{publication.year}</span>
+                    <span class="text-graphite-300 dark:text-graphite-600">·</span>
+                    <span class="text-signal-600 dark:text-signal-400 uppercase tracking-wide">{getPublicationLabel(pubType)}</span>
+                    {publication.citedBy && publication.citedBy > 0 && (
+                      <>
+                        <span class="text-graphite-300 dark:text-graphite-600">·</span>
+                        <span class="text-graphite-500 dark:text-graphite-400">{publication.citedBy} citas</span>
+                      </>
+                    )}
+                  </div>
+
+                  <h3 class="text-lg font-semibold text-graphite-900 dark:text-white mb-2 leading-snug">
+                    {publication.link ? (
+                      <a href={publication.link} target="_blank" rel="noopener noreferrer" class="hover:text-signal-600 dark:hover:text-signal-400">
+                        {publication.title}
+                      </a>
+                    ) : (
+                      publication.title
+                    )}
+                  </h3>
+
+                  <p class="text-graphite-600 dark:text-graphite-300 text-sm mb-2">
+                    {publication.authors}
+                  </p>
+
+                  <p class="text-graphite-500 dark:text-graphite-400 text-sm italic">
+                    {publication.publication}
+                  </p>
+                </div>
+
+                <div class="flex lg:flex-col gap-2 shrink-0">
+                  {publication.link && (
+                    <a href={publication.link} target="_blank" rel="noopener noreferrer" class="btn btn-outline btn-sm">
+                      Ver publicación
+                    </a>
+                  )}
+                  {publication.citedByLink && (
+                    <a href={publication.citedByLink} target="_blank" rel="noopener noreferrer" class="btn btn-secondary btn-sm">
+                      Ver citas
+                    </a>
+                  )}
+                </div>
+              </div>
+            </article>
+          );
+        })}
+      </div>
+    </section>
+
+    <!-- Enlaces adicionales -->
+    <section class="mt-16 text-center reveal">
+      <div class="spec-card p-8">
+        <span class="spec-tick spec-tick-tl"></span>
+        <span class="spec-tick spec-tick-br"></span>
+        <p class="eyebrow mb-2">Enlaces</p>
+        <h3 class="text-xl font-display font-semibold text-graphite-900 dark:text-white mb-6">
+          Perfiles académicos
+        </h3>
+        <div class="flex flex-wrap justify-center gap-3">
+          <a href="https://scholar.google.com" target="_blank" rel="noopener noreferrer" class="btn btn-outline">
+            Google Scholar
+          </a>
+          <a href="https://orcid.org" target="_blank" rel="noopener noreferrer" class="btn btn-outline">
+            ORCID
+          </a>
+          <a href="https://researchgate.net" target="_blank" rel="noopener noreferrer" class="btn btn-outline">
+            ResearchGate
+          </a>
+        </div>
+      </div>
+    </section>
+  </div>
 </Layout>
 
 <script>
-  // Funcionalidad de filtros mejorada
   document.addEventListener('DOMContentLoaded', function() {
     const yearFilter = document.getElementById('yearFilter') as HTMLSelectElement;
     const publicationItems = document.querySelectorAll('.publication-item') as NodeListOf<HTMLElement>;
 
     function filterPublications() {
       if (!yearFilter) return;
-      
       const selectedYear = yearFilter.value;
 
       publicationItems.forEach((item: HTMLElement) => {
-        const itemYear = item.dataset.year;
-        
-        const yearMatch = !selectedYear || itemYear === selectedYear;
-        
-        if (yearMatch) {
-          item.style.display = 'block';
-          item.classList.add('animate-fade-in-up');
-        } else {
-          item.style.display = 'none';
-          item.classList.remove('animate-fade-in-up');
-        }
+        const match = !selectedYear || item.dataset.year === selectedYear;
+        item.classList.toggle('hidden', !match);
       });
     }
 
-    if (yearFilter) {
-      yearFilter.addEventListener('change', filterPublications);
-    }
+    yearFilter?.addEventListener('change', filterPublications);
   });
 </script>
-
-<style>
-	/* Animaciones y efectos personalizados */
-	@keyframes fadeInUp {
-		from {
-			opacity: 0;
-			transform: translateY(30px);
-		}
-		to {
-			opacity: 1;
-			transform: translateY(0);
-		}
-	}
-	
-	@keyframes fadeInLeft {
-		from {
-			opacity: 0;
-			transform: translateX(-30px);
-		}
-		to {
-			opacity: 1;
-			transform: translateX(0);
-		}
-	}
-	
-	@keyframes fadeInRight {
-		from {
-			opacity: 0;
-			transform: translateX(30px);
-		}
-		to {
-			opacity: 1;
-			transform: translateX(0);
-		}
-	}
-	
-	@keyframes shimmer {
-		0% {
-			background-position: -200px 0;
-		}
-		100% {
-			background-position: calc(200px + 100%) 0;
-		}
-	}
-	
-	@keyframes float {
-		0%, 100% {
-			transform: translateY(0px);
-		}
-		50% {
-			transform: translateY(-10px);
-		}
-	}
-	
-	/* Clases de utilidad para animaciones */
-	.animate-fade-in-up {
-		animation: fadeInUp 0.6s ease-out forwards;
-	}
-	
-	.animate-fade-in-left {
-		animation: fadeInLeft 0.6s ease-out forwards;
-	}
-	
-	.animate-fade-in-right {
-		animation: fadeInRight 0.6s ease-out forwards;
-	}
-	
-	.animate-delay-100 {
-		animation-delay: 0.1s;
-	}
-	
-	.animate-delay-200 {
-		animation-delay: 0.2s;
-	}
-	
-	.animate-delay-300 {
-		animation-delay: 0.3s;
-	}
-	
-	/* Efectos especiales */
-	.hero-gradient {
-		background: linear-gradient(135deg, 
-			rgba(59, 130, 246, 0.1) 0%, 
-			rgba(147, 51, 234, 0.1) 50%, 
-			rgba(236, 72, 153, 0.1) 100%);
-	}
-	
-	.card-hover {
-		transition: all 0.3s ease;
-		position: relative;
-		overflow: hidden;
-	}
-	
-	.card-hover::before {
-		content: '';
-		position: absolute;
-		top: 0;
-		left: -100%;
-		width: 100%;
-		height: 100%;
-		background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
-		transition: left 0.5s ease;
-	}
-	
-	.card-hover:hover::before {
-		left: 100%;
-	}
-	
-	.card-hover:hover {
-		transform: translateY(-5px);
-		box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
-	}
-	
-	.btn-enhanced {
-		background: linear-gradient(135deg, #3b82f6, #8b5cf6);
-		background-size: 200% 200%;
-		animation: shimmer 2s infinite;
-		transition: all 0.3s ease;
-		position: relative;
-		overflow: hidden;
-	}
-	
-	.btn-enhanced:hover {
-		background-position: right center;
-		transform: translateY(-2px);
-		box-shadow: 0 10px 20px rgba(59, 130, 246, 0.3);
-	}
-	
-	.publication-badge {
-		animation: float 3s ease-in-out infinite;
-	}
-	
-	.stats-card {
-		background: linear-gradient(135deg, rgba(255,255,255,0.1), rgba(255,255,255,0.05));
-		backdrop-filter: blur(10px);
-		border: 1px solid rgba(255,255,255,0.2);
-		transition: all 0.3s ease;
-	}
-	
-	.stats-card:hover {
-		transform: scale(1.05);
-		background: linear-gradient(135deg, rgba(255,255,255,0.15), rgba(255,255,255,0.1));
-	}
-	
-	/* Transiciones suaves para el filtrado mejoradas */
-	.publication-item {
-		transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-		transform-origin: center;
-	}
-	
-	.publication-item[style*="display: none"] {
-		opacity: 0;
-		transform: scale(0.8) translateY(-20px);
-	}
-	
-	.publication-item:not([style*="display: none"]) {
-		opacity: 1;
-		transform: scale(1) translateY(0);
-	}
-	
-	/* Efectos de partículas */
-	.floating-particles {
-		position: relative;
-		overflow: hidden;
-	}
-	
-	.floating-particles::before {
-		content: '';
-		position: absolute;
-		top: 20%;
-		left: 10%;
-		width: 4px;
-		height: 4px;
-		background: linear-gradient(45deg, #3b82f6, #8b5cf6);
-		border-radius: 50%;
-		animation: float 6s ease-in-out infinite;
-		opacity: 0.6;
-		z-index: 1;
-	}
-	
-	.floating-particles::after {
-		content: '';
-		position: absolute;
-		top: 60%;
-		right: 15%;
-		width: 6px;
-		height: 6px;
-		background: linear-gradient(45deg, #ec4899, #f59e0b);
-		border-radius: 50%;
-		animation: float 8s ease-in-out infinite reverse;
-		opacity: 0.5;
-		z-index: 1;
-	}
-	
-	/* Partículas sutiles para secciones adicionales */
-	.floating-particles-subtle {
-		position: relative;
-		overflow: hidden;
-	}
-	
-	.floating-particles-subtle::before {
-		content: '';
-		position: absolute;
-		top: 30%;
-		left: 20%;
-		width: 3px;
-		height: 3px;
-		background: linear-gradient(45deg, #10b981, #3b82f6);
-		border-radius: 50%;
-		animation: floatSubtle 10s ease-in-out infinite;
-		opacity: 0.3;
-		z-index: 1;
-	}
-	
-	.floating-particles-subtle::after {
-		content: '';
-		position: absolute;
-		top: 70%;
-		right: 25%;
-		width: 2px;
-		height: 2px;
-		background: linear-gradient(45deg, #8b5cf6, #ec4899);
-		border-radius: 50%;
-		animation: floatSubtle 12s ease-in-out infinite reverse;
-		opacity: 0.4;
-		z-index: 1;
-	}
-	
-	@keyframes floatSubtle {
-		0%, 100% {
-			transform: translateY(0px) translateX(0px) rotate(0deg);
-		}
-		25% {
-			transform: translateY(-10px) translateX(5px) rotate(90deg);
-		}
-		50% {
-			transform: translateY(5px) translateX(-3px) rotate(180deg);
-		}
-		75% {
-			transform: translateY(-5px) translateX(8px) rotate(270deg);
-		}
-	}
-	
-	/* Partículas para modo oscuro */
-	.dark .floating-particles::before,
-	.dark .floating-particles::after {
-		opacity: 0.4;
-	}
-	
-	.dark .floating-particles-subtle::before,
-	.dark .floating-particles-subtle::after {
-		opacity: 0.2;
-	}
-	
-	/* Accesibilidad */
-	@media (prefers-reduced-motion: reduce) {
-		* {
-			animation-duration: 0.01ms !important;
-			animation-iteration-count: 1 !important;
-			transition-duration: 0.01ms !important;
-		}
-	}
-</style>

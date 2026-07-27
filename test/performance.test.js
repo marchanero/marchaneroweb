@@ -12,43 +12,21 @@ describe('Performance y Optimización', () => {
     projectRoot = path.join(__dirname, '..');
   });
 
-  describe('Optimización del Sistema de Partículas', () => {
-    it('verifica que el sistema de partículas es eficiente', () => {
-      const indexPath = path.join(projectRoot, 'src', 'pages', 'index.astro');
-      const indexContent = fs.readFileSync(indexPath, 'utf8');
-      
-      // Verificar sistema híbrido (CSS fallback + JS)
-      expect(indexContent).toContain('floating-particles::before');
-      expect(indexContent).toContain('floating-particles::after');
-      expect(indexContent).toContain('createParticles');
-      
-      // Verificar límite razonable de partículas con minParticles y maxParticles
-      expect(indexContent).toContain('minParticles = 3');
-      expect(indexContent).toContain('maxParticles');
-      
-      // Verificar que usa CSS animations
-      expect(indexContent).toContain('@keyframes');
-      
-      // Verificar que hay control de rendimiento (intervalos controlados)
-      expect(indexContent).toContain('setInterval');
-    });
-
+  describe('Movimiento y accesibilidad', () => {
     it('verifica que las animaciones respetan reduced motion', () => {
-      const indexPath = path.join(projectRoot, 'src', 'pages', 'index.astro');
-      const indexContent = fs.readFileSync(indexPath, 'utf8');
-      
-      // Verificar soporte para usuarios con reduced motion
-      expect(indexContent).toContain('@media (prefers-reduced-motion: reduce)');
-      expect(indexContent).toContain('animation-duration: 0.01ms !important');
+      const globalCssPath = path.join(projectRoot, 'src', 'styles', 'global.css');
+      const globalCss = fs.readFileSync(globalCssPath, 'utf8');
+
+      expect(globalCss).toContain('@media (prefers-reduced-motion: reduce)');
+      expect(globalCss).toContain('animation-duration: 0.01ms !important');
     });
 
-    it('verifica que las partículas no bloquean la interacción', () => {
+    it('verifica que no queda código muerto del antiguo sistema de partículas', () => {
       const indexPath = path.join(projectRoot, 'src', 'pages', 'index.astro');
       const indexContent = fs.readFileSync(indexPath, 'utf8');
-      
-      // Verificar que las partículas están en un layer separado
-      expect(indexContent).toContain('z-index: 1');
-      expect(indexContent).toContain('pointer-events: none');
+
+      expect(indexContent).not.toContain('floating-particles');
+      expect(indexContent).not.toContain('createParticles');
     });
   });
 

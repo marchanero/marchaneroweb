@@ -108,334 +108,144 @@ const reconocimientos = [
 ---
 
 <Layout title={title} description={description}>
-  <style>
-    /* Animaciones */
-    @keyframes fadeInUp {
-      from {
-        opacity: 0;
-        transform: translateY(30px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-    
-    @keyframes fadeInLeft {
-      from {
-        opacity: 0;
-        transform: translateX(-30px);
-      }
-      to {
-        opacity: 1;
-        transform: translateX(0);
-      }
-    }
-    
-    @keyframes fadeInRight {
-      from {
-        opacity: 0;
-        transform: translateX(30px);
-      }
-      to {
-        opacity: 1;
-        transform: translateX(0);
-      }
-    }
-    
-    @keyframes float {
-      0%, 100% { transform: translateY(0px); }
-      50% { transform: translateY(-10px); }
-    }
-    
-    @keyframes slideIn {
-      from {
-        opacity: 0;
-        transform: translateY(20px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-    
-    /* Clases de animación */
-    .animate-fade-in-up {
-      animation: fadeInUp 0.8s ease-out forwards;
-    }
-    
-    .animate-fade-in-left {
-      animation: fadeInLeft 0.8s ease-out forwards;
-    }
-    
-    .animate-fade-in-right {
-      animation: fadeInRight 0.8s ease-out forwards;
-    }
-    
-    .animate-float {
-      animation: float 3s ease-in-out infinite;
-    }
-    
-    .animate-slide-in {
-      animation: slideIn 0.6s ease-out forwards;
-    }
-    
-    /* Delays */
-    .animate-delay-100 { animation-delay: 0.1s; }
-    .animate-delay-200 { animation-delay: 0.2s; }
-    .animate-delay-300 { animation-delay: 0.3s; }
-    .animate-delay-400 { animation-delay: 0.4s; }
-    .animate-delay-500 { animation-delay: 0.5s; }
-    
-    /* Efectos especiales */
-    .floating-particles {
-      position: relative;
-      overflow: hidden;
-    }
-    
-    .floating-particles::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      background: radial-gradient(circle at 20% 50%, rgba(120, 119, 198, 0.3) 0%, transparent 50%),
-                  radial-gradient(circle at 80% 20%, rgba(255, 119, 198, 0.3) 0%, transparent 50%),
-                  radial-gradient(circle at 40% 80%, rgba(120, 219, 255, 0.3) 0%, transparent 50%);
-      animation: float 6s ease-in-out infinite;
-    }
-    
-    .section-card {
-      transition: all 0.3s ease;
-      border: 1px solid transparent;
-    }
-    
-    .section-card:hover {
-      border-color: rgba(99, 102, 241, 0.2);
-      box-shadow: 0 10px 25px -5px rgba(59, 130, 246, 0.1), 0 8px 10px -6px rgba(59, 130, 246, 0.05);
-      transform: translateY(-2px);
-    }
-    
-    .skill-tag {
-      transition: all 0.2s ease;
-    }
-    
-    .skill-tag:hover {
-      background: linear-gradient(135deg, rgba(59, 130, 246, 0.2), rgba(147, 51, 234, 0.2));
-      transform: translateY(-1px);
-    }
-  </style>
+  <!-- Header -->
+  <header class="relative border-b border-line dark:border-line-dark py-14 sm:py-20 px-4">
+    <div class="max-w-4xl mx-auto text-center reveal">
+      <p class="eyebrow mb-3">Trayectoria</p>
+      <h1 class="text-4xl sm:text-5xl font-display font-semibold text-graphite-900 dark:text-white mb-4">
+        Currículum vitae
+      </h1>
+      <p class="text-lg text-graphite-600 dark:text-graphite-300 max-w-2xl mx-auto">
+        Profesor e investigador en Inteligencia Artificial, computación afectiva y aprendizaje automático
+      </p>
 
-  <!-- Header mejorado con gradientes -->
-  <header class="relative bg-gradient-to-br from-indigo-800 via-indigo-700 to-blue-700 text-white py-20 px-4">
-    <div class="max-w-5xl mx-auto text-center relative z-10">
-      <div class="animate-fade-in-up">
-        <div class="inline-flex items-center justify-center w-20 h-20 bg-white/10 backdrop-blur-sm rounded-2xl mb-6 animate-float">
-          <svg class="w-10 h-10 text-white" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
-          </svg>
-        </div>
-        <h1 class="text-4xl md:text-5xl font-bold mb-6">Currículum Vitae</h1>
-        <p class="text-xl md:text-2xl max-w-2xl mx-auto text-blue-50">Dr. Roberto Sánchez Reolid</p>
-        <p class="mt-4 text-blue-100 max-w-2xl mx-auto">Profesor e Investigador en Inteligencia Artificial, Computación Afectiva y Aprendizaje Automático</p>
-      </div>
-      
-      <div class="mt-10 flex flex-col sm:flex-row justify-center gap-4 animate-fade-in-up animate-delay-300">
-        <a href="/files/CV_RobertoSanchezReolid.pdf" class="bg-white text-blue-700 hover:bg-blue-50 px-4 py-2 rounded-lg font-medium flex items-center space-x-2 transition-colors">
-          <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+      <div class="mt-10 flex flex-col sm:flex-row justify-center gap-3">
+        <a href="/files/CV_RobertoSanchezReolid.pdf" class="btn btn-primary">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path>
           </svg>
-          <span>Descargar CV completo</span>
+          Descargar CV completo
         </a>
-        <a href="/contacto" class="bg-transparent border border-white text-white hover:bg-white/10 px-4 py-2 rounded-lg font-medium transition-colors">
-          Contacto
-        </a>
+        <a href="/contacto" class="btn btn-outline">Contacto</a>
       </div>
     </div>
   </header>
 
-  <main class="py-12">
+  <main class="py-14 sm:py-20">
     <!-- Educación -->
-    <section class="max-w-5xl mx-auto px-4 mb-16">
-      <div class="text-center mb-10 animate-fade-in-up">
-        <h2 class="text-3xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-indigo-600 dark:from-blue-400 dark:to-indigo-400 inline-block">Formación Académica</h2>
-        <div class="w-20 h-1 bg-gradient-to-r from-blue-600 to-indigo-600 mx-auto mt-2"></div>
-      </div>
-      
-      <div class="grid md:grid-cols-1 gap-6">
-        {educacion.map((item, index) => (
-          <div class={`bg-white dark:bg-gray-800 rounded-xl shadow-lg p-6 section-card animate-fade-in-up animate-delay-${(index+1)*100}`}>
-            <div class="flex items-start">
-              <div class="flex-shrink-0 bg-blue-100 dark:bg-blue-900/30 p-3 rounded-lg">
-                <svg class="w-6 h-6 text-blue-600 dark:text-blue-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" d="M12 14l9-5-9-5-9 5 9 5z"></path>
-                  <path stroke-linecap="round" stroke-linejoin="round" d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z"></path>
-                  <path stroke-linecap="round" stroke-linejoin="round" d="M12 14l9-5-9-5-9 5 9 5zm0 0l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z"></path>
-                </svg>
-              </div>
-              <div class="ml-4">
-                <h3 class="text-xl font-semibold text-gray-900 dark:text-white">{item.titulo}</h3>
-                <p class="text-indigo-600 dark:text-indigo-400">{item.institucion}</p>
-                <p class="text-sm text-gray-500 dark:text-gray-400 mt-1">{item.periodo}</p>
-                <p class="mt-2 text-gray-700 dark:text-gray-300">{item.descripcion}</p>
-              </div>
-            </div>
+    <section class="max-w-4xl mx-auto px-4 mb-16 reveal">
+      <p class="eyebrow mb-2">2008 — 2019</p>
+      <h2 class="text-2xl sm:text-3xl font-display font-semibold text-graphite-900 dark:text-white mb-8">Formación académica</h2>
+
+      <div class="relative border-l border-line dark:border-line-dark pl-6 space-y-8">
+        {educacion.map((item) => (
+          <div class="relative">
+            <span class="absolute -left-[29px] top-1.5 w-2.5 h-2.5 rounded-full bg-signal-500"></span>
+            <p class="font-mono text-xs text-graphite-500 dark:text-graphite-400 mb-1">{item.periodo}</p>
+            <h3 class="text-lg font-semibold text-graphite-900 dark:text-white">{item.titulo}</h3>
+            <p class="text-signal-600 dark:text-signal-400 text-sm mb-2">{item.institucion}</p>
+            <p class="text-graphite-600 dark:text-graphite-300 text-sm leading-relaxed">{item.descripcion}</p>
           </div>
         ))}
       </div>
     </section>
 
-    <div class="bg-gray-50 dark:bg-gray-900/50 py-16">
-      <!-- Experiencia Docente -->
-      <section class="max-w-5xl mx-auto px-4 mb-16">
-        <div class="text-center mb-10 animate-fade-in-up">
-          <h2 class="text-3xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-indigo-600 to-blue-600 dark:from-indigo-400 dark:to-blue-400 inline-block">Experiencia Docente</h2>
-          <div class="w-20 h-1 bg-gradient-to-r from-indigo-600 to-blue-600 mx-auto mt-2"></div>
-        </div>
-        
-        <div class="grid md:grid-cols-1 gap-6">
-          {experienciaDocente.map((item, index) => (
-            <div class={`bg-white dark:bg-gray-800 rounded-xl shadow-lg p-6 section-card animate-fade-in-right animate-delay-${(index+1)*100}`}>
-              <div class="flex items-start">
-                <div class="flex-shrink-0 bg-indigo-100 dark:bg-indigo-900/30 p-3 rounded-lg">
-                  <svg class="w-6 h-6 text-indigo-600 dark:text-indigo-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M8 14v3m4-3v3m4-3v3M3 21h18M3 10h18M3 7l9-4 9 4M4 10h16v11H4V10z"></path>
-                  </svg>
-                </div>
-                <div class="ml-4">
-                  <h3 class="text-xl font-semibold text-gray-900 dark:text-white">{item.puesto}</h3>
-                  <p class="text-indigo-600 dark:text-indigo-400">{item.departamento}, {item.universidad}</p>
-                  <p class="text-sm text-gray-500 dark:text-gray-400 mt-1">{item.periodo}</p>
-                  <div class="mt-3">
-                    <p class="font-medium text-gray-700 dark:text-gray-300 mb-1">Asignaturas impartidas:</p>
-                    <div class="flex flex-wrap gap-2 mt-2">
-                      {item.asignaturas.map(asignatura => (
-                        <span class="bg-indigo-50 dark:bg-indigo-900/30 text-indigo-700 dark:text-indigo-300 px-3 py-1 rounded-full text-sm skill-tag">{asignatura}</span>
-                      ))}
-                    </div>
-                  </div>
-                </div>
-              </div>
+    <!-- Experiencia Docente -->
+    <section class="max-w-4xl mx-auto px-4 mb-16 reveal">
+      <p class="eyebrow mb-2">2019 — Actualidad</p>
+      <h2 class="text-2xl sm:text-3xl font-display font-semibold text-graphite-900 dark:text-white mb-8">Experiencia docente</h2>
+
+      <div class="relative border-l border-line dark:border-line-dark pl-6 space-y-8">
+        {experienciaDocente.map((item) => (
+          <div class="relative">
+            <span class="absolute -left-[29px] top-1.5 w-2.5 h-2.5 rounded-full bg-signal-500"></span>
+            <p class="font-mono text-xs text-graphite-500 dark:text-graphite-400 mb-1">{item.periodo}</p>
+            <h3 class="text-lg font-semibold text-graphite-900 dark:text-white">{item.puesto}</h3>
+            <p class="text-signal-600 dark:text-signal-400 text-sm mb-3">{item.departamento}, {item.universidad}</p>
+            <p class="text-sm font-medium text-graphite-700 dark:text-graphite-200 mb-2">Asignaturas impartidas</p>
+            <div class="flex flex-wrap gap-2">
+              {item.asignaturas.map(asignatura => (
+                <span class="border border-line dark:border-line-dark text-graphite-600 dark:text-graphite-300 px-3 py-1 rounded-md text-xs font-mono">{asignatura}</span>
+              ))}
             </div>
-          ))}
-        </div>
-      </section>
-    </div>
+          </div>
+        ))}
+      </div>
+    </section>
 
     <!-- Experiencia Investigadora -->
-    <section class="max-w-5xl mx-auto px-4 py-16">
-      <div class="text-center mb-10 animate-fade-in-up">
-        <h2 class="text-3xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-indigo-700 to-indigo-500 dark:from-indigo-400 dark:to-blue-400 inline-block">Experiencia Investigadora</h2>
-        <div class="w-20 h-1 bg-gradient-to-r from-indigo-700 to-indigo-500 mx-auto mt-2"></div>
-      </div>
-      
-      <div class="grid md:grid-cols-1 gap-6">
-        {experienciaInvestigadora.map((item, index) => (
-          <div class={`bg-white dark:bg-gray-800 rounded-xl shadow-lg p-6 section-card animate-fade-in-left animate-delay-${(index+1)*100}`}>
-            <div class="flex items-start">
-              <div class="flex-shrink-0 bg-purple-100 dark:bg-purple-900/30 p-3 rounded-lg">
-                <svg class="w-6 h-6 text-indigo-600 dark:text-indigo-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
-                </svg>
-              </div>
-              <div class="ml-4">
-                <h3 class="text-xl font-semibold text-gray-900 dark:text-white">{item.proyecto}</h3>
-                <div class="flex items-center mt-1">
-                  <span class="text-indigo-600 dark:text-indigo-400">{item.puesto}</span>
-                  <span class="mx-2 text-gray-400">•</span>
-                  <span class="text-gray-500 dark:text-gray-400">{item.entidad}</span>
-                </div>
-                <p class="text-sm text-gray-500 dark:text-gray-400 mt-1">{item.periodo} | Código: {item.codigo}</p>
-                <p class="mt-2 text-gray-700 dark:text-gray-300">{item.descripcion}</p>
-              </div>
-            </div>
+    <section class="max-w-4xl mx-auto px-4 mb-16 reveal">
+      <p class="eyebrow mb-2">2020 — Actualidad</p>
+      <h2 class="text-2xl sm:text-3xl font-display font-semibold text-graphite-900 dark:text-white mb-8">Experiencia investigadora</h2>
+
+      <div class="relative border-l border-line dark:border-line-dark pl-6 space-y-8">
+        {experienciaInvestigadora.map((item) => (
+          <div class="relative">
+            <span class="absolute -left-[29px] top-1.5 w-2.5 h-2.5 rounded-full bg-signal-500"></span>
+            <p class="font-mono text-xs text-graphite-500 dark:text-graphite-400 mb-1">{item.periodo} · {item.codigo}</p>
+            <h3 class="text-lg font-semibold text-graphite-900 dark:text-white">{item.proyecto}</h3>
+            <p class="text-sm mb-2">
+              <span class="text-signal-600 dark:text-signal-400">{item.puesto}</span>
+              <span class="text-graphite-400 mx-2">·</span>
+              <span class="text-graphite-500 dark:text-graphite-400">{item.entidad}</span>
+            </p>
+            <p class="text-graphite-600 dark:text-graphite-300 text-sm leading-relaxed">{item.descripcion}</p>
           </div>
         ))}
       </div>
     </section>
 
-    <div class="bg-gray-50 dark:bg-gray-900/50 py-16">
-      <!-- Estancias de Investigación -->
-      <section class="max-w-5xl mx-auto px-4 mb-16">
-        <div class="text-center mb-10 animate-fade-in-up">
-          <h2 class="text-3xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-indigo-600 dark:from-blue-400 dark:to-indigo-400 inline-block">Estancias de Investigación</h2>
-          <div class="w-20 h-1 bg-gradient-to-r from-blue-600 to-indigo-600 mx-auto mt-2"></div>
-        </div>
-        
-        <div class="grid md:grid-cols-1 gap-6">
-          {estancias.map((item, index) => (
-            <div class={`bg-white dark:bg-gray-800 rounded-xl shadow-lg p-6 section-card animate-fade-in-up animate-delay-${(index+1)*100}`}>
-              <div class="flex items-start">
-                <div class="flex-shrink-0 bg-cyan-100 dark:bg-cyan-900/30 p-3 rounded-lg">
-                  <svg class="w-6 h-6 text-cyan-600 dark:text-cyan-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M8 2a15.3 15.3 0 0 0 4 10 15.3 15.3 0 0 0 4-10"></path>
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M22 12h-6"></path>
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M8 12H2"></path>
-                  </svg>
-                </div>
-                <div class="ml-4">
-                  <h3 class="text-xl font-semibold text-gray-900 dark:text-white">{item.centro}</h3>
-                  <p class="text-cyan-600 dark:text-cyan-400">{item.departamento}</p>
-                  <div class="flex items-center mt-1">
-                    <span class="text-gray-700 dark:text-gray-300">{item.pais}</span>
-                    <span class="mx-2 text-gray-400">•</span>
-                    <span class="text-gray-500 dark:text-gray-400">{item.periodo} ({item.duracion})</span>
-                  </div>
-                  <p class="mt-2 text-gray-700 dark:text-gray-300">{item.descripcion}</p>
-                </div>
-              </div>
-            </div>
-          ))}
-        </div>
-      </section>
+    <!-- Estancias de Investigación -->
+    <section class="max-w-4xl mx-auto px-4 mb-16 reveal">
+      <p class="eyebrow mb-2">2017 — 2018</p>
+      <h2 class="text-2xl sm:text-3xl font-display font-semibold text-graphite-900 dark:text-white mb-8">Estancias de investigación</h2>
 
-      <!-- Reconocimientos -->
-      <section class="max-w-5xl mx-auto px-4">
-        <div class="text-center mb-10 animate-fade-in-up">
-          <h2 class="text-3xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-amber-600 to-red-600 dark:from-amber-400 dark:to-red-400 inline-block">Reconocimientos</h2>
-          <div class="w-20 h-1 bg-gradient-to-r from-amber-600 to-red-600 mx-auto mt-2"></div>
-        </div>
-        
-        <div class="grid md:grid-cols-1 lg:grid-cols-3 gap-6">
-          {reconocimientos.map((item, index) => (
-            <div class={`bg-white dark:bg-gray-800 rounded-xl shadow-lg p-6 section-card animate-fade-in-right animate-delay-${(index+1)*100}`}>
-              <div class="flex items-start">
-                <div class="flex-shrink-0 bg-amber-100 dark:bg-amber-900/30 p-3 rounded-lg">
-                  <svg class="w-6 h-6 text-amber-600 dark:text-amber-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v13m0-13V6a2 2 0 112 2h-2zm0 0V5.5A2.5 2.5 0 109.5 8H12zm-7 4h14M5 12a2 2 0 110-4h14a2 2 0 110 4M5 12v7a2 2 0 002 2h10a2 2 0 002-2v-7"></path>
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M8.21 13.89 7 23l5-3 5 3-1.21-9.12"></path>
-                    <polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"></polyline>
-                  </svg>
-                </div>
-                <div class="ml-4">
-                  <h3 class="text-lg font-semibold text-gray-900 dark:text-white">{item.titulo}</h3>
-                  <p class="text-amber-600 dark:text-amber-400">{item.entidad}</p>
-                  <p class="text-sm text-gray-500 dark:text-gray-400 mt-1">{item.anio}</p>
-                </div>
-              </div>
-            </div>
-          ))}
-        </div>
-      </section>
-    </div>
+      <div class="relative border-l border-line dark:border-line-dark pl-6 space-y-8">
+        {estancias.map((item) => (
+          <div class="relative">
+            <span class="absolute -left-[29px] top-1.5 w-2.5 h-2.5 rounded-full bg-signal-500"></span>
+            <p class="font-mono text-xs text-graphite-500 dark:text-graphite-400 mb-1">{item.periodo} · {item.duracion}</p>
+            <h3 class="text-lg font-semibold text-graphite-900 dark:text-white">{item.centro}</h3>
+            <p class="text-signal-600 dark:text-signal-400 text-sm mb-2">{item.departamento} · {item.pais}</p>
+            <p class="text-graphite-600 dark:text-graphite-300 text-sm leading-relaxed">{item.descripcion}</p>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <!-- Reconocimientos -->
+    <section class="max-w-4xl mx-auto px-4 mb-16 reveal">
+      <p class="eyebrow mb-2">Distinciones</p>
+      <h2 class="text-2xl sm:text-3xl font-display font-semibold text-graphite-900 dark:text-white mb-8">Reconocimientos</h2>
+
+      <div class="grid sm:grid-cols-3 gap-4">
+        {reconocimientos.map((item) => (
+          <div class="spec-card">
+            <span class="spec-tick spec-tick-tl"></span>
+            <span class="spec-tick spec-tick-br"></span>
+            <p class="font-mono text-xs text-graphite-500 dark:text-graphite-400 mb-2">{item.anio}</p>
+            <h3 class="text-base font-semibold text-graphite-900 dark:text-white mb-1">{item.titulo}</h3>
+            <p class="text-sm text-graphite-500 dark:text-graphite-400">{item.entidad}</p>
+          </div>
+        ))}
+      </div>
+    </section>
 
     <!-- Llamada a la acción -->
-    <div class="max-w-5xl mx-auto px-4 py-16 text-center">
-      <div class="animate-fade-in-up">
-        <h2 class="text-3xl font-bold mb-4 text-gray-900 dark:text-white">¿Interesado en colaborar?</h2>
-        <p class="text-xl text-gray-700 dark:text-gray-300 mb-8">Estoy disponible para proyectos de investigación, consultoría o charlas</p>
-        <div class="flex flex-col sm:flex-row justify-center gap-4">
-          <a href="/files/CV_RobertoSanchezReolid.pdf" class="bg-indigo-600 hover:bg-indigo-700 text-white px-6 py-3 rounded-lg font-medium transition-colors duration-200 flex items-center">
-            <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+    <div class="max-w-4xl mx-auto px-4 text-center reveal">
+      <div class="spec-card p-8 sm:p-12">
+        <span class="spec-tick spec-tick-tl"></span>
+        <span class="spec-tick spec-tick-br"></span>
+        <h2 class="text-2xl sm:text-3xl font-display font-semibold text-graphite-900 dark:text-white mb-4">¿Interesado en colaborar?</h2>
+        <p class="text-graphite-600 dark:text-graphite-300 mb-8">Estoy disponible para proyectos de investigación, consultoría o charlas</p>
+        <div class="flex flex-col sm:flex-row justify-center gap-3">
+          <a href="/files/CV_RobertoSanchezReolid.pdf" class="btn btn-primary">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path>
             </svg>
             Descargar CV completo
           </a>
-          <a href="/contacto" class="bg-transparent border border-indigo-600 text-indigo-600 hover:bg-indigo-50 px-6 py-3 rounded-lg font-medium transition-colors duration-200">
-            Contactar
-          </a>
+          <a href="/contacto" class="btn btn-outline">Contactar</a>
         </div>
       </div>
     </div>

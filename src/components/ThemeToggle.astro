@@ -36,97 +36,32 @@ const { class: className = '' } = Astro.props;
 
 <style>
   .theme-toggle {
-    @apply relative p-2.5 rounded-xl border border-gray-300/60 dark:border-gray-600/60 
-           bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm
-           hover:bg-gray-50 dark:hover:bg-gray-700/90
-           text-gray-700 dark:text-gray-300 
-           transition-all duration-300 ease-in-out
-           focus:outline-none focus:ring-2 focus:ring-blue-500/50 focus:ring-offset-2
-           dark:focus:ring-offset-gray-900
-           transform hover:scale-105 active:scale-95
-           shadow-sm hover:shadow-md dark:shadow-gray-900/50;
+    @apply relative p-2 rounded-md border border-line dark:border-line-dark
+           text-graphite-600 dark:text-graphite-300
+           hover:border-signal-500 hover:text-signal-600 dark:hover:text-signal-400
+           transition-colors duration-200
+           focus:outline-none;
   }
-  
-  .theme-toggle::before {
-    content: '';
-    @apply absolute inset-0 rounded-xl bg-gradient-to-r from-blue-500/10 to-purple-500/10 
-           dark:from-blue-400/10 dark:to-purple-400/10
-           opacity-0 transition-opacity duration-300;
-  }
-  
-  .theme-toggle:hover::before {
-    @apply opacity-100;
-  }
-  
-  .theme-toggle svg {
-    @apply transition-all duration-500 ease-in-out;
-  }
-  
-  /* Animaciones para los iconos */
-  .sun-icon {
-    @apply transform transition-all duration-500 ease-in-out;
-  }
-  
+
+  .sun-icon,
   .moon-icon {
-    @apply transform transition-all duration-500 ease-in-out;
+    @apply transition-opacity duration-200;
   }
-  
+
   /* Mostrar sol en modo claro, ocultar luna */
   html:not(.dark) .theme-toggle .sun-icon {
-    @apply opacity-100 rotate-0 scale-100;
+    @apply opacity-100;
   }
-  
   html:not(.dark) .theme-toggle .moon-icon {
-    @apply opacity-0 rotate-180 scale-50;
+    @apply opacity-0;
   }
-  
+
   /* Mostrar luna en modo oscuro, ocultar sol */
   html.dark .theme-toggle .sun-icon {
-    @apply opacity-0 -rotate-180 scale-50;
+    @apply opacity-0;
   }
-  
   html.dark .theme-toggle .moon-icon {
-    @apply opacity-100 rotate-0 scale-100;
-  }
-  
-  /* Efectos adicionales mejorados para modo oscuro */
-  .theme-toggle:hover .sun-icon {
-    @apply text-yellow-500;
-    filter: drop-shadow(0 0 8px rgba(251, 191, 36, 0.4));
-  }
-  
-  .theme-toggle:hover .moon-icon {
-    @apply text-blue-400 dark:text-blue-300;
-    filter: drop-shadow(0 0 8px rgba(96, 165, 250, 0.5));
-  }
-  
-  /* Efecto de rotación en hover */
-  .theme-toggle:hover svg {
-    @apply rotate-12;
-  }
-  
-  /* Animación de pulsación para indicar interactividad */
-  @keyframes pulse-gentle {
-    0%, 100% {
-      transform: scale(1);
-    }
-    50% {
-      transform: scale(1.05);
-    }
-  }
-  
-  .theme-toggle:active {
-    animation: pulse-gentle 0.2s ease-in-out;
-  }
-  
-  /* Mejoras específicas para el modo oscuro */
-  .dark .theme-toggle {
-    @apply bg-gray-800/95 border-gray-600/70;
-  }
-  
-  .dark .theme-toggle:hover {
-    @apply bg-gray-700/95 shadow-lg;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    @apply opacity-100;
   }
 </style>
 

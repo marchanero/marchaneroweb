@@ -330,15 +330,14 @@ describe('Integración y Funcionalidad', () => {
       }
     });
 
-    it('verifica que los colores de las métricas son consistentes', () => {
+    it('verifica que las métricas del hero usan el panel de lectura unificado', () => {
       const indexPath = path.join(projectRoot, 'src', 'pages', 'index.astro');
       const indexContent = fs.readFileSync(indexPath, 'utf8');
 
-      // Verificar colores diferenciados para cada métrica (paleta indigo/blue/emerald/orange)
-      expect(indexContent).toContain('text-indigo-600 dark:text-indigo-400');
-      expect(indexContent).toContain('text-blue-600 dark:text-blue-400');
-      expect(indexContent).toContain('text-emerald-600 dark:text-emerald-400');
-      expect(indexContent).toContain('text-orange-600 dark:text-orange-400');
+      // Las 4 métricas (citas, h-index, papers, i10) comparten el mismo componente "readout"
+      expect(indexContent).toContain('class="readout');
+      expect(indexContent).toContain('readout-value');
+      expect(indexContent).toContain('readout-label');
     });
   });
 });

@@ -9,38 +9,31 @@ interface Props {
 
 const { showDetails = false, compact = false } = Astro.props;
 
-// Función para formatear números grandes con mejor escalado
 function formatNumber(num: number): string {
-  if (num >= 1000000) {
-    return (num / 1000000).toFixed(1) + 'M';
-  }
-  if (num >= 1000) {
-    return (num / 1000).toFixed(1) + 'k';
-  }
+  if (num >= 1000000) return (num / 1000000).toFixed(1) + 'M';
+  if (num >= 1000) return (num / 1000).toFixed(1) + 'k';
   return num.toString();
 }
 
-// Función para detectar tendencias de crecimiento
 function calculateGrowthTrend(data: number[]): { trend: 'up' | 'down' | 'stable', percentage: number } {
   if (data.length < 2) return { trend: 'stable', percentage: 0 };
-  
-  const recent = data.slice(-3); // Últimos 3 años
+
+  const recent = data.slice(-3);
   const earlier = data.slice(0, -3).length > 0 ? data.slice(0, -3) : [0];
-  
+
   const recentAvg = recent.reduce((a, b) => a + b, 0) / recent.length;
   const earlierAvg = earlier.reduce((a, b) => a + b, 0) / earlier.length;
-  
+
   if (earlierAvg === 0 && recentAvg > 0) return { trend: 'up', percentage: 100 };
   if (earlierAvg === 0) return { trend: 'stable', percentage: 0 };
-  
+
   const percentage = ((recentAvg - earlierAvg) / earlierAvg) * 100;
-  
+
   if (percentage > 10) return { trend: 'up', percentage: Math.round(percentage) };
   if (percentage < -10) return { trend: 'down', percentage: Math.round(Math.abs(percentage)) };
   return { trend: 'stable', percentage: Math.round(Math.abs(percentage)) };
 }
 
-// Calcular métricas usando los datos disponibles
 const years = scholarData.publications
   .map(pub => pub.year)
   .filter((year): year is number => year !== null && year !== undefined && typeof year === 'number' && !isNaN(year));
@@ -49,10 +42,6 @@ const minYear = Math.min(...years);
 const maxYear = Math.max(...years);
 const careerSpan = maxYear - minYear + 1;
 
-const avgPublicationsPerYear = Math.round(scholarData.publications.length / careerSpan) || 0;
-const avgCitationsPerPaper = Math.round(scholarData.metrics.totalCitations / scholarData.publications.length) || 0;
-
-// Calcular publicaciones por año
 const publicationsByYear: Record<string, number> = {};
 scholarData.publications.forEach(pub => {
   if (pub.year) {
@@ -61,19 +50,17 @@ scholarData.publications.forEach(pub => {
   }
 });
 
-// Preparar datos para la gráfica de progreso con escalado dinámico
-const yearRange = Array.from({length: careerSpan}, (_, i) => minYear + i);
+const yearRange = Array.from({ length: careerSpan }, (_, i) => minYear + i);
 const yearData = yearRange.map(year => ({
   year,
   publications: publicationsByYear[year.toString()] || 0
 }));
 
 const maxPublications = Math.max(...Object.values(publicationsByYear), 1);
-const peakPublicationYear = Object.keys(publicationsByYear).find(year => 
+const peakPublicationYear = Object.keys(publicationsByYear).find(year =>
   publicationsByYear[year] === maxPublications
 );
 
-// Calcular citas por año con datos reales
 const citationsByYear: Record<string, number> = {};
 scholarData.publications.forEach(pub => {
   if (pub.year && pub.citedBy) {
@@ -81,237 +68,107 @@ scholarData.publications.forEach(pub => {
     citationsByYear[year] = (citationsByYear[year] || 0) + pub.citedBy;
   }
 });
-
 const citationData = yearRange.map(year => ({
   year,
   citations: citationsByYear[year.toString()] || 0
 }));
 
-const maxCitations = Math.max(...Object.values(citationsByYear), 1);
-
-// Calcular tendencias de crecimiento
 const publicationTrend = calculateGrowthTrend(yearData.map(d => d.publications));
 const citationTrend = calculateGrowthTrend(citationData.map(d => d.citations));
-
-// Determinar el nivel de actividad para escalar dinámicamente
-const activityLevel = (() => {
-  const totalPubs = scholarData.publications.length;
-  const totalCites = scholarData.metrics.totalCitations;
-  
-  if (totalPubs >= 100 && totalCites >= 1000) return 'alta';
-  if (totalPubs >= 50 && totalCites >= 500) return 'media-alta';
-  if (totalPubs >= 20 && totalCites >= 100) return 'media';
-  return 'emergente';
-})();
-
-// Configuración dinámica de escalas basada en el nivel de actividad
-const chartConfig = {
-  'alta': { minBarHeight: 12, maxBarHeight: 80, gridLines: 5 },
-  'media-alta': { minBarHeight: 10, maxBarHeight: 70, gridLines: 4 },
-  'media': { minBarHeight: 8, maxBarHeight: 60, gridLines: 3 },
-  'emergente': { minBarHeight: 6, maxBarHeight: 50, gridLines: 3 }
-}[activityLevel];
 ---
 
-<style>
-  /* Animaciones sutiles y elegantes */
-  @keyframes fadeInUp {
-    from {
-      opacity: 0;
-      transform: translateY(20px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
-  
-  @keyframes subtleGlow {
-    0%, 100% { box-shadow: 0 0 10px rgba(59, 130, 246, 0.1); }
-    50% { box-shadow: 0 0 20px rgba(59, 130, 246, 0.2); }
-  }
-  
-  .fade-in-up {
-    animation: fadeInUp 0.6s ease-out forwards;
-  }
-  
-  .metric-card {
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  }
-  
-  .metric-card:hover {
-    transform: translateY(-2px);
-    animation: subtleGlow 2s ease-in-out infinite;
-  }
-  
-  .chart-bar {
-    transition: all 0.3s ease;
-  }
-  
-  .chart-bar:hover {
-    transform: scaleY(1.05);
-    filter: brightness(1.1);
-  }
-  
-  /* Indicador de estado más sutil */
-  .status-indicator {
-    animation: pulse 2s ease-in-out infinite;
-  }
-  
-  @keyframes pulse {
-    0%, 100% { opacity: 1; }
-    50% { opacity: 0.5; }
-  }
-  
-  /* Mejora de accesibilidad */
-  @media (prefers-reduced-motion: reduce) {
-    *, *::before, *::after {
-      animation-duration: 0.01ms !important;
-      animation-iteration-count: 1 !important;
-      transition-duration: 0.01ms !important;
-    }
-  }
-</style>
+<div class:list={['spec-card h-full flex flex-col', compact ? 'p-6' : 'p-8']}>
+  <span class="spec-tick spec-tick-tl"></span>
+  <span class="spec-tick spec-tick-br"></span>
 
-<div class={`${compact ? 'p-6' : 'p-8'} bg-white/70 dark:bg-gray-800/70 backdrop-blur-sm rounded-2xl shadow-lg border border-gray-200/50 dark:border-gray-700/50 hover:shadow-xl transition-all duration-300 flex flex-col h-full`}>
-  
   <div class="flex items-center justify-between mb-6">
-    <div class="flex items-center space-x-3">
-      <div class="w-10 h-10 bg-gradient-to-br from-blue-500 to-purple-600 rounded-xl flex items-center justify-center shadow-lg">
-        <span class="text-white text-xl">📊</span>
-      </div>
-      <div>
-        <h3 class="text-lg font-bold text-gray-900 dark:text-white">
-          Métricas Bibliométricas
-        </h3>
-        <div class="w-12 h-0.5 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full"></div>
-      </div>
+    <div>
+      <p class="eyebrow mb-1">Google Scholar</p>
+      <h3 class="text-lg font-display font-semibold text-graphite-900 dark:text-white">Métricas bibliométricas</h3>
     </div>
-    
-    <div class="flex items-center space-x-2 text-xs text-emerald-600 dark:text-emerald-400">
-      <div class="w-2 h-2 bg-emerald-500 rounded-full status-indicator"></div>
-      <span class="font-medium">En vivo</span>
+    <div class="flex items-center gap-1.5 font-mono text-xs text-signal-600 dark:text-signal-400">
+      <span class="relative flex h-1.5 w-1.5">
+        <span class="absolute inline-flex h-full w-full rounded-full bg-signal-500 opacity-60 animate-ping"></span>
+        <span class="relative inline-flex rounded-full h-1.5 w-1.5 bg-signal-500"></span>
+      </span>
+      En vivo
     </div>
   </div>
-  
-  <!-- Métricas principales simplificadas -->
-  <div class={`grid ${compact ? 'grid-cols-1 gap-4' : 'grid-cols-3 gap-6'} mb-6 flex-grow`}>
-    <div class="metric-card fade-in-up bg-gradient-to-br from-blue-50 to-blue-100 dark:from-blue-900/20 dark:to-blue-800/20 rounded-xl p-4 border border-blue-200/50 dark:border-blue-700/30">
-      <div class="flex items-center justify-between">
-        <div>
-          <div class="text-2xl font-bold text-blue-600 dark:text-blue-400">
-            {formatNumber(scholarData.metrics.totalCitations)}
-          </div>
-          <div class="text-sm text-gray-600 dark:text-gray-400 font-medium">Citas Totales</div>
-          {citationTrend.trend !== 'stable' && (
-            <div class={`text-xs mt-1 flex items-center space-x-1 ${
-              citationTrend.trend === 'up' ? 'text-green-600 dark:text-green-400' : 'text-red-600 dark:text-red-400'
-            }`}>
-              <span>{citationTrend.trend === 'up' ? '↗️' : '↘️'}</span>
-              <span>{citationTrend.percentage}%</span>
-            </div>
-          )}
-        </div>
-        <div class="text-3xl opacity-20">📈</div>
+
+  <div class:list={['grid gap-3 mb-2', compact ? 'grid-cols-1' : 'grid-cols-3']}>
+    <div class="border border-line dark:border-line-dark rounded-md p-4">
+      <div class="font-mono text-2xl font-medium text-graphite-800 dark:text-white">
+        {formatNumber(scholarData.metrics.totalCitations)}
       </div>
+      <div class="text-xs text-graphite-500 dark:text-graphite-400 mt-1">Citas totales</div>
+      {citationTrend.trend !== 'stable' && (
+        <div class:list={['font-mono text-xs mt-1', citationTrend.trend === 'up' ? 'text-signal-600 dark:text-signal-400' : 'text-pulse-500']}>
+          {citationTrend.trend === 'up' ? '↑' : '↓'} {citationTrend.percentage}%
+        </div>
+      )}
     </div>
-    
-    <div class="metric-card fade-in-up bg-gradient-to-br from-emerald-50 to-emerald-100 dark:from-emerald-900/20 dark:to-emerald-800/20 rounded-xl p-4 border border-emerald-200/50 dark:border-emerald-700/30" style="animation-delay: 0.1s;">
-      <div class="flex items-center justify-between">
-        <div>
-          <div class="text-2xl font-bold text-emerald-600 dark:text-emerald-400">
-            {scholarData.metrics.hIndex}
-          </div>
-          <div class="text-sm text-gray-600 dark:text-gray-400 font-medium">Índice h</div>
-          {showDetails && (
-            <div class="text-xs text-gray-500 dark:text-gray-500 mt-1">
-              {scholarData.metrics.hIndexRecent} (5 años)
-            </div>
-          )}
-        </div>
-        <div class="text-3xl opacity-20">🏆</div>
+
+    <div class="border border-line dark:border-line-dark rounded-md p-4">
+      <div class="font-mono text-2xl font-medium text-graphite-800 dark:text-white">
+        {scholarData.metrics.hIndex}
       </div>
+      <div class="text-xs text-graphite-500 dark:text-graphite-400 mt-1">Índice h</div>
+      {showDetails && (
+        <div class="font-mono text-xs text-graphite-400 dark:text-graphite-500 mt-1">
+          {scholarData.metrics.hIndexRecent} (5 años)
+        </div>
+      )}
     </div>
-    
-    <div class="metric-card fade-in-up bg-gradient-to-br from-purple-50 to-purple-100 dark:from-purple-900/20 dark:to-purple-800/20 rounded-xl p-4 border border-purple-200/50 dark:border-purple-700/30" style="animation-delay: 0.2s;">
-      <div class="flex items-center justify-between">
-        <div>
-          <div class="text-2xl font-bold text-purple-600 dark:text-purple-400">
-            {scholarData.metrics.i10Index}
-          </div>
-          <div class="text-sm text-gray-600 dark:text-gray-400 font-medium">Índice i10</div>
-          {showDetails && (
-            <div class="text-xs text-gray-500 dark:text-gray-500 mt-1">
-              {scholarData.metrics.i10IndexRecent} (5 años)
-            </div>
-          )}
-        </div>
-        <div class="text-3xl opacity-20">⭐</div>
+
+    <div class="border border-line dark:border-line-dark rounded-md p-4">
+      <div class="font-mono text-2xl font-medium text-graphite-800 dark:text-white">
+        {scholarData.metrics.i10Index}
       </div>
+      <div class="text-xs text-graphite-500 dark:text-graphite-400 mt-1">Índice i10</div>
+      {showDetails && (
+        <div class="font-mono text-xs text-graphite-400 dark:text-graphite-500 mt-1">
+          {scholarData.metrics.i10IndexRecent} (5 años)
+        </div>
+      )}
     </div>
   </div>
-  
-  <!-- Gráficas simplificadas solo en modo no compacto -->
+
   {!compact && (
-    <div class="mt-8 p-4 bg-gray-50 dark:bg-gray-700/30 rounded-xl flex-grow">
-      <h4 class="text-base font-semibold text-gray-900 dark:text-white mb-4 flex items-center">
-        <span class="mr-2">📈</span> 
-        Evolución Temporal ({minYear} - {maxYear})
-      </h4>
-      
-      <!-- Gráfica de publicaciones simplificada -->
-      <div class="mb-6">
-        <h5 class="text-sm font-medium text-gray-700 dark:text-gray-300 mb-3">
-          📚 Publicaciones por Año
-        </h5>
-        
-        <div class="flex items-end space-x-1 h-24 bg-white dark:bg-gray-800 rounded-lg p-3 border border-gray-200 dark:border-gray-600">
-          {yearData.map(({ year, publications }, index) => {
-            const height = maxPublications > 0 
-              ? Math.max((publications / maxPublications) * 60, publications > 0 ? 4 : 1)
-              : 1;
-            
-            const isRecentYear = year >= maxYear - 2;
-            const isPeakYear = publications === maxPublications && publications > 0;
-            
-            return (
-              <div class="flex-1 flex flex-col items-center group">
-                <div 
-                  class={`w-full chart-bar rounded-t cursor-pointer ${
-                    isPeakYear 
-                      ? 'bg-gradient-to-t from-blue-600 to-blue-400 shadow-lg' 
-                      : isRecentYear 
-                        ? 'bg-gradient-to-t from-blue-500 to-blue-300'
-                        : 'bg-gradient-to-t from-blue-400 to-blue-200 hover:from-blue-500 hover:to-blue-300'
-                  }`}
-                  style={`height: ${height}px`}
-                  title={`${year}: ${publications} publicaciones`}
-                />
-                <span class="text-xs mt-2 text-gray-600 dark:text-gray-400 font-medium">
-                  '{year.toString().slice(-2)}
-                </span>
-              </div>
-            );
-          })}
-        </div>
-        
-        <div class="text-xs text-gray-500 dark:text-gray-400 mt-3 text-center">
-          Máximo: <strong>{maxPublications}</strong> en <strong>{peakPublicationYear}</strong> • 
-          Total: <strong>{scholarData.publications.length}</strong> publicaciones
-        </div>
+    <div class="mt-6 pt-6 border-t border-line dark:border-line-dark flex-grow">
+      <p class="eyebrow mb-3">Publicaciones por año · {minYear}–{maxYear}</p>
+
+      <div class="flex items-end gap-1 h-20">
+        {yearData.map(({ year, publications }) => {
+          const height = maxPublications > 0
+            ? Math.max((publications / maxPublications) * 100, publications > 0 ? 8 : 2)
+            : 2;
+          const isPeakYear = publications === maxPublications && publications > 0;
+          return (
+            <div class="flex-1 flex flex-col items-center gap-1.5 group">
+              <div
+                class:list={['w-full rounded-sm transition-colors', isPeakYear ? 'bg-signal-500' : 'bg-graphite-200 dark:bg-graphite-700 group-hover:bg-signal-400']}
+                style={`height: ${height}%`}
+                title={`${year}: ${publications} publicaciones`}
+              />
+              <span class="font-mono text-[0.6rem] text-graphite-400 dark:text-graphite-500">
+                '{year.toString().slice(-2)}
+              </span>
+            </div>
+          );
+        })}
       </div>
+
+      <p class="font-mono text-xs text-graphite-400 dark:text-graphite-500 mt-3 text-center">
+        Máximo {maxPublications} en {peakPublicationYear} · {scholarData.publications.length} publicaciones en total
+      </p>
     </div>
   )}
-  
-  <div class="mt-auto pt-4 border-t border-gray-200 dark:border-gray-600 text-center">
-    <div class="text-xs text-gray-500 dark:text-gray-400">
-      <span class="font-medium">Última actualización:</span> {new Date(scholarData.lastUpdated).toLocaleDateString('es-ES', {
-        year: 'numeric',
-        month: 'long',
-        day: 'numeric',
-        hour: '2-digit',
-        minute: '2-digit'
+
+  <div class="mt-auto pt-4 border-t border-line dark:border-line-dark">
+    <p class="font-mono text-[0.65rem] text-graphite-400 dark:text-graphite-500 text-center">
+      Última actualización: {new Date(scholarData.lastUpdated).toLocaleDateString('es-ES', {
+        year: 'numeric', month: 'long', day: 'numeric', hour: '2-digit', minute: '2-digit'
       })}
-    </div>
+    </p>
   </div>
 </div>

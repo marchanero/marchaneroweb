@@ -1,666 +1,273 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import SignalTrace from '../components/SignalTrace.astro';
 
-// Datos de proyectos mejorados
+// Datos de proyectos
 const proyectos = [
-  {
-    id: 'ia-educacion',
-    titulo: 'Inteligencia Artificial Aplicada a la Educación',
-    imagen: 'https://images.unsplash.com/photo-1485827404703-89b55fcc595e?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400',
-    altImagen: 'Investigación sobre Inteligencia Artificial en Educación',
-    etiquetas: ['Machine Learning', 'Educational Tech', 'Data Analysis'],
-    descripcion: 'Investigación sobre sistemas de tutoría inteligente que adaptan el contenido educativo a las necesidades individuales de los estudiantes, utilizando algoritmos de machine learning para personalizar la experiencia de aprendizaje.',
-    descripcionCompleta: 'Este proyecto se centra en el desarrollo de sistemas adaptativos que pueden identificar patrones de aprendizaje, predecir dificultades académicas y proporcionar retroalimentación personalizada en tiempo real.',
-    fechaInicio: '2022',
-    fechaFin: 'Actualidad',
-    estado: 'En curso',
-    financiacion: 'Ministerio de Ciencia e Innovación',
-    presupuesto: '150,000€',
-    url: '/proyectos/ia-educacion',
-    github: '#',
-    pdf: '#',
-    destacado: true,
-    progreso: 75,
-    resultados: [
-      'Desarrollo de algoritmo adaptativo de personalización',
-      'Implementación de sistema de análisis de sentimientos',
-      '3 publicaciones en revistas Q1'
-    ]
-  },
-  {
-    id: 'sistemas-distribuidos',
-    titulo: 'Arquitecturas Eficientes para Sistemas Distribuidos',
-    imagen: 'https://images.unsplash.com/photo-1558494949-ef010cbdcc31?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400',
-    altImagen: 'Sistemas Distribuidos Energéticamente Eficientes',
-    etiquetas: ['Distributed Systems', 'Energy Efficiency', 'Cloud Computing'],
-    descripcion: 'Desarrollo de nuevas arquitecturas para sistemas distribuidos con mayor eficiencia energética y rendimiento optimizado para cargas de trabajo modernas.',
-    descripcionCompleta: 'El proyecto aborda los desafíos de escalabilidad y eficiencia energética en sistemas distribuidos masivos, proponiendo nuevas arquitecturas que reducen el consumo energético hasta en un 30%.',
-    fechaInicio: '2020',
-    fechaFin: '2023',
-    estado: 'Finalizado',
-    financiacion: 'Junta de Comunidades de Castilla-La Mancha',
-    presupuesto: '80,000€',
-    url: '/proyectos/sistemas-distribuidos',
-    github: '#',
-    pdf: '#',
-    destacado: false,
-    progreso: 100,
-    resultados: [
-      'Reducción del 30% en consumo energético',
-      'Prototipo desplegado en 3 centros de datos',
-      '2 publicaciones en revistas JCR'
-    ]
-  },
-  {
-    id: 'blockchain-seguridad',
-    titulo: 'Blockchain para Sistemas de Seguridad',
-    imagen: 'https://images.unsplash.com/photo-1639762681485-074b7f938ba0?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400',
-    altImagen: 'Investigación sobre Blockchain y Seguridad',
-    etiquetas: ['Blockchain', 'Cybersecurity', 'Cryptography'],
-    descripcion: 'Investigación sobre la aplicación de tecnologías blockchain para mejorar la seguridad en sistemas distribuidos y proteger la integridad de los datos.',
-    descripcionCompleta: 'Este proyecto explora nuevos protocolos de consenso y mecanismos criptográficos para crear sistemas blockchain más seguros y eficientes.',
-    fechaInicio: '2023',
-    fechaFin: 'Actualidad',
-    estado: 'En curso',
-    financiacion: 'Proyecto Regional I+D+i',
-    presupuesto: '65,000€',
-    url: '/proyectos/blockchain-seguridad',
-    github: '#',
-    pdf: '#',
-    destacado: false,
-    progreso: 45,
-    resultados: [
-      'Protocolo de consenso mejorado',
-      'Análisis de vulnerabilidades publicado'
-    ]
-  }
+	{
+		id: 'ia-educacion',
+		titulo: 'Inteligencia Artificial Aplicada a la Educación',
+		etiquetas: ['Machine Learning', 'Educational Tech', 'Data Analysis'],
+		descripcion: 'Investigación sobre sistemas de tutoría inteligente que adaptan el contenido educativo a las necesidades individuales de los estudiantes, utilizando algoritmos de machine learning para personalizar la experiencia de aprendizaje.',
+		fechaInicio: '2022',
+		fechaFin: 'Actualidad',
+		estado: 'En curso',
+		financiacion: 'Ministerio de Ciencia e Innovación',
+		presupuesto: '150.000 €',
+		url: '/proyectos/ia-educacion',
+		github: '#',
+		destacado: true,
+		progreso: 75,
+		resultados: [
+			'Desarrollo de algoritmo adaptativo de personalización',
+			'Implementación de sistema de análisis de sentimientos',
+			'3 publicaciones en revistas Q1'
+		]
+	},
+	{
+		id: 'sistemas-distribuidos',
+		titulo: 'Arquitecturas Eficientes para Sistemas Distribuidos',
+		etiquetas: ['Distributed Systems', 'Energy Efficiency', 'Cloud Computing'],
+		descripcion: 'Desarrollo de nuevas arquitecturas para sistemas distribuidos con mayor eficiencia energética y rendimiento optimizado para cargas de trabajo modernas.',
+		fechaInicio: '2020',
+		fechaFin: '2023',
+		estado: 'Finalizado',
+		financiacion: 'Junta de Comunidades de Castilla-La Mancha',
+		presupuesto: '80.000 €',
+		url: '/proyectos/sistemas-distribuidos',
+		github: '#',
+		destacado: false,
+		progreso: 100,
+		resultados: [
+			'Reducción del 30% en consumo energético',
+			'Prototipo desplegado en 3 centros de datos',
+			'2 publicaciones en revistas JCR'
+		]
+	},
+	{
+		id: 'blockchain-seguridad',
+		titulo: 'Blockchain para Sistemas de Seguridad',
+		etiquetas: ['Blockchain', 'Cybersecurity', 'Cryptography'],
+		descripcion: 'Investigación sobre la aplicación de tecnologías blockchain para mejorar la seguridad en sistemas distribuidos y proteger la integridad de los datos.',
+		fechaInicio: '2023',
+		fechaFin: 'Actualidad',
+		estado: 'En curso',
+		financiacion: 'Proyecto Regional I+D+i',
+		presupuesto: '65.000 €',
+		url: '/proyectos/blockchain-seguridad',
+		github: '#',
+		destacado: false,
+		progreso: 45,
+		resultados: [
+			'Protocolo de consenso mejorado',
+			'Análisis de vulnerabilidades publicado'
+		]
+	}
 ];
 
-// Ordenar proyectos: primero los destacados, luego por fecha de inicio (más recientes primero)
 const proyectosOrdenados = [...proyectos].sort((a, b) => {
-  if (a.destacado !== b.destacado) {
-    return b.destacado ? 1 : -1;
-  }
-  return parseInt(b.fechaInicio) - parseInt(a.fechaInicio);
+	if (a.destacado !== b.destacado) return b.destacado ? 1 : -1;
+	return parseInt(b.fechaInicio) - parseInt(a.fechaInicio);
 });
 
-// Estadísticas generales
 const totalProyectos = proyectos.length;
 const proyectosActivos = proyectos.filter(p => p.estado === 'En curso').length;
 const proyectosFinalizados = proyectos.filter(p => p.estado === 'Finalizado').length;
-const presupuestoTotal = proyectos.reduce((sum, p) => {
-  const presupuesto = parseInt(p.presupuesto.replace(/[€,]/g, ''));
-  return sum + presupuesto;
-}, 0);
+const presupuestoTotal = proyectos.reduce((sum, p) => sum + parseInt(p.presupuesto.replace(/[€.\s]/g, '')), 0);
+
+const trace = (i: number) => (i % 2 === 0 ? 'ecg' : 'eda') as 'ecg' | 'eda';
 ---
 
-<style>
-	/* Animaciones y efectos personalizados */
-	@keyframes fadeInUp {
-		from {
-			opacity: 0;
-			transform: translateY(30px);
-		}
-		to {
-			opacity: 1;
-			transform: translateY(0);
-		}
-	}
-	
-	@keyframes fadeInLeft {
-		from {
-			opacity: 0;
-			transform: translateX(-30px);
-		}
-		to {
-			opacity: 1;
-			transform: translateX(0);
-		}
-	}
-	
-	@keyframes fadeInRight {
-		from {
-			opacity: 0;
-			transform: translateX(30px);
-		}
-		to {
-			opacity: 1;
-			transform: translateX(0);
-		}
-	}
-	
-	@keyframes shimmer {
-		0% {
-			background-position: -200px 0;
-		}
-		100% {
-			background-position: calc(200px + 100%) 0;
-		}
-	}
-	
-	@keyframes float {
-		0%, 100% {
-			transform: translateY(0px);
-		}
-		50% {
-			transform: translateY(-10px);
-		}
-	}
-	
-	@keyframes progressBar {
-		from {
-			width: 0%;
-		}
-		to {
-			width: var(--progress-width);
-		}
-	}
-	
-	/* Clases de utilidad para animaciones */
-	.animate-fade-in-up {
-		animation: fadeInUp 0.6s ease-out forwards;
-	}
-	
-	.animate-fade-in-left {
-		animation: fadeInLeft 0.6s ease-out forwards;
-	}
-	
-	.animate-fade-in-right {
-		animation: fadeInRight 0.6s ease-out forwards;
-	}
-	
-	.animate-delay-100 {
-		animation-delay: 0.1s;
-	}
-	
-	.animate-delay-200 {
-		animation-delay: 0.2s;
-	}
-	
-	.animate-delay-300 {
-		animation-delay: 0.3s;
-	}
-	
-	.animate-delay-400 {
-		animation-delay: 0.4s;
-	}
-	
-	/* Efectos especiales */
-	.hero-gradient {
-		background: linear-gradient(135deg, 
-			rgba(59, 130, 246, 0.1) 0%, 
-			rgba(147, 51, 234, 0.1) 50%, 
-			rgba(236, 72, 153, 0.1) 100%);
-	}
-	
-	.card-hover {
-		transition: all 0.3s ease;
-		position: relative;
-		overflow: hidden;
-	}
-	
-	.card-hover::before {
-		content: '';
-		position: absolute;
-		top: 0;
-		left: -100%;
-		width: 100%;
-		height: 100%;
-		background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
-		transition: left 0.5s ease;
-	}
-	
-	.card-hover:hover::before {
-		left: 100%;
-	}
-	
-	.card-hover:hover {
-		transform: translateY(-8px);
-		box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
-	}
-	
-	.btn-enhanced {
-		background: linear-gradient(135deg, #3b82f6, #8b5cf6);
-		background-size: 200% 200%;
-		animation: shimmer 2s infinite;
-		transition: all 0.3s ease;
-		position: relative;
-		overflow: hidden;
-	}
-	
-	.btn-enhanced:hover {
-		background-position: right center;
-		transform: translateY(-2px);
-		box-shadow: 0 10px 20px rgba(59, 130, 246, 0.3);
-	}
-	
-	.project-badge {
-		animation: float 3s ease-in-out infinite;
-	}
-	
-	.stats-card {
-		background: linear-gradient(135deg, rgba(255,255,255,0.1), rgba(255,255,255,0.05));
-		backdrop-filter: blur(10px);
-		border: 1px solid rgba(255,255,255,0.2);
-		transition: all 0.3s ease;
-	}
-	
-	.stats-card:hover {
-		transform: scale(1.05);
-		background: linear-gradient(135deg, rgba(255,255,255,0.15), rgba(255,255,255,0.1));
-	}
-	
-	.progress-bar {
-		animation: progressBar 2s ease-out forwards;
-		animation-delay: 0.5s;
-	}
-	
-	.project-image-overlay {
-		background: linear-gradient(45deg, rgba(59, 130, 246, 0.8), rgba(147, 51, 234, 0.8));
-		opacity: 0;
-		transition: opacity 0.3s ease;
-	}
-	
-	.card-hover:hover .project-image-overlay {
-		opacity: 1;
-	}
-	
-	/* Efectos de partículas */
-	.floating-particles {
-		position: relative;
-		overflow: hidden;
-	}
-	
-	.floating-particles::before {
-		content: '';
-		position: absolute;
-		top: 20%;
-		left: 10%;
-		width: 4px;
-		height: 4px;
-		background: linear-gradient(45deg, #3b82f6, #8b5cf6);
-		border-radius: 50%;
-		animation: float 6s ease-in-out infinite;
-		opacity: 0.6;
-		z-index: 1;
-	}
-	
-	.floating-particles::after {
-		content: '';
-		position: absolute;
-		top: 60%;
-		right: 15%;
-		width: 6px;
-		height: 6px;
-		background: linear-gradient(45deg, #ec4899, #f59e0b);
-		border-radius: 50%;
-		animation: float 8s ease-in-out infinite reverse;
-		opacity: 0.5;
-		z-index: 1;
-	}
-	
-	/* Partículas sutiles para secciones adicionales */
-	.floating-particles-subtle {
-		position: relative;
-		overflow: hidden;
-	}
-	
-	.floating-particles-subtle::before {
-		content: '';
-		position: absolute;
-		top: 30%;
-		left: 20%;
-		width: 3px;
-		height: 3px;
-		background: linear-gradient(45deg, #10b981, #3b82f6);
-		border-radius: 50%;
-		animation: floatSubtle 10s ease-in-out infinite;
-		opacity: 0.3;
-		z-index: 1;
-	}
-	
-	.floating-particles-subtle::after {
-		content: '';
-		position: absolute;
-		top: 70%;
-		right: 25%;
-		width: 2px;
-		height: 2px;
-		background: linear-gradient(45deg, #8b5cf6, #ec4899);
-		border-radius: 50%;
-		animation: floatSubtle 12s ease-in-out infinite reverse;
-		opacity: 0.4;
-		z-index: 1;
-	}
-	
-	@keyframes floatSubtle {
-		0%, 100% {
-			transform: translateY(0px) translateX(0px) rotate(0deg);
-		}
-		25% {
-			transform: translateY(-10px) translateX(5px) rotate(90deg);
-		}
-		50% {
-			transform: translateY(5px) translateX(-3px) rotate(180deg);
-		}
-		75% {
-			transform: translateY(-5px) translateX(8px) rotate(270deg);
-		}
-	}
-	
-	/* Partículas para modo oscuro */
-	.dark .floating-particles::before,
-	.dark .floating-particles::after {
-		opacity: 0.4;
-	}
-	
-	.dark .floating-particles-subtle::before,
-	.dark .floating-particles-subtle::after {
-		opacity: 0.2;
-	}
-	
-	/* Accesibilidad */
-	@media (prefers-reduced-motion: reduce) {
-		* {
-			animation-duration: 0.01ms !important;
-			animation-iteration-count: 1 !important;
-			transition-duration: 0.01ms !important;
-		}
-	}
-</style>
-
 <Layout title="Proyectos de Investigación - Dr. Roberto Sánchez Reolid">
-	<main class="min-h-screen bg-white dark:bg-gray-900 transition-colors duration-300">
-		<!-- Header mejorado -->
-		<header class="relative bg-gradient-to-br from-indigo-800 via-indigo-700 to-blue-700 dark:from-indigo-900 dark:via-indigo-800 dark:to-blue-900 text-white py-8 sm:py-12 lg:py-20 overflow-hidden">
-			<!-- Fondo animado -->
-			<div class="absolute inset-0 bg-gradient-to-br from-indigo-50/5 to-transparent"></div>
-			
-			<div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-				<div class="animate-fade-in-up">
-					<h1 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-4 sm:mb-6 bg-gradient-to-r from-white to-indigo-100 bg-clip-text text-transparent">
-						🚀 Proyectos de Investigación
-					</h1>
-					<p class="text-lg sm:text-xl md:text-2xl text-indigo-100 dark:text-indigo-200 max-w-3xl leading-relaxed mb-4 sm:mb-6">
-						Desarrollando tecnologías innovadoras para resolver los desafíos del futuro en 
-						<span class="font-semibold text-white">IA</span> y 
-						<span class="font-semibold text-white">Sistemas Distribuidos</span>
-					</p>
-					
-					<!-- Estadísticas del portafolio -->
-					<div class="animate-fade-in-up animate-delay-200 grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4 max-w-2xl mt-6 sm:mt-8">
-						<div class="stats-card rounded-2xl p-3 sm:p-4 text-center">
-							<div class="text-lg sm:text-2xl font-bold text-white">{totalProyectos}</div>
-							<div class="text-xs sm:text-sm text-purple-200">Total Proyectos</div>
-						</div>
-						<div class="stats-card rounded-2xl p-3 sm:p-4 text-center">
-							<div class="text-lg sm:text-2xl font-bold text-white">{proyectosActivos}</div>
-							<div class="text-xs sm:text-sm text-purple-200">En Curso</div>
-						</div>
-						<div class="stats-card rounded-2xl p-3 sm:p-4 text-center">
-							<div class="text-lg sm:text-2xl font-bold text-white">{proyectosFinalizados}</div>
-							<div class="text-xs sm:text-sm text-purple-200">Finalizados</div>
-						</div>
-						<div class="stats-card rounded-2xl p-3 sm:p-4 text-center">
-							<div class="text-lg sm:text-2xl font-bold text-white">{(presupuestoTotal / 1000).toFixed(0)}k€</div>
-							<div class="text-xs sm:text-sm text-purple-200">Financiación</div>
-						</div>
-					</div>
+	<!-- Header -->
+	<header class="relative border-b border-line dark:border-line-dark py-14 sm:py-20 px-4">
+		<div class="max-w-7xl mx-auto reveal">
+			<p class="eyebrow mb-3">Investigación aplicada</p>
+			<h1 class="text-4xl sm:text-5xl font-display font-semibold text-graphite-900 dark:text-white mb-4">
+				Proyectos de investigación
+			</h1>
+			<p class="text-lg text-graphite-600 dark:text-graphite-300 max-w-2xl leading-relaxed mb-8">
+				Tecnologías aplicadas a problemas reales en IA y sistemas distribuidos.
+			</p>
+
+			<div class="readout max-w-2xl">
+				<div class="readout-cell">
+					<div class="readout-value">{totalProyectos}</div>
+					<div class="readout-label">Proyectos</div>
+				</div>
+				<div class="readout-cell">
+					<div class="readout-value">{proyectosActivos}</div>
+					<div class="readout-label">En curso</div>
+				</div>
+				<div class="readout-cell">
+					<div class="readout-value">{proyectosFinalizados}</div>
+					<div class="readout-label">Finalizados</div>
+				</div>
+				<div class="readout-cell">
+					<div class="readout-value">{(presupuestoTotal / 1000).toFixed(0)}k€</div>
+					<div class="readout-label">Financiación</div>
 				</div>
 			</div>
-		</header>
-
-		<div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12 lg:py-16">
-			
-			<!-- Proyectos destacados -->
-			<section class="mb-8 sm:mb-12 lg:mb-16">
-				<div class="animate-fade-in-up">
-					<h2 class="text-2xl sm:text-3xl font-bold text-gray-900 dark:text-white mb-2 flex items-center space-x-3">
-						<span>⭐</span>
-						<span>Proyectos Destacados</span>
-					</h2>
-					<p class="text-sm sm:text-base text-gray-600 dark:text-gray-400 mb-6 sm:mb-8">Investigaciones principales con mayor impacto e innovación</p>
-				</div>
-				
-				<div class="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8">
-					{proyectosOrdenados.filter(p => p.destacado).map((proyecto, index) => (
-						<article class={`card-hover bg-white dark:bg-gray-800 rounded-2xl shadow-xl overflow-hidden animate-fade-in-up`} style={`animation-delay: ${index * 0.2}s`}>
-							<!-- Imagen del proyecto -->
-							<div class="relative h-40 sm:h-48 overflow-hidden">
-								<img 
-									src={proyecto.imagen} 
-									alt={proyecto.altImagen}
-									class="w-full h-full object-cover transition-transform duration-500 hover:scale-110"
-								/>
-								<div class="project-image-overlay absolute inset-0 flex items-center justify-center">
-									<div class="text-white text-center">
-										<div class="text-2xl sm:text-3xl mb-2">🔍</div>
-										<p class="font-semibold text-sm sm:text-base">Ver detalles</p>
-									</div>
-								</div>
-								{proyecto.estado === 'En curso' && (
-									<div class="absolute top-2 sm:top-4 right-2 sm:right-4 bg-green-500 text-white px-2 sm:px-3 py-1 rounded-full text-xs sm:text-sm font-medium project-badge">
-										🟢 En curso
-									</div>
-								)}
-								{proyecto.estado === 'Finalizado' && (
-									<div class="absolute top-2 sm:top-4 right-2 sm:right-4 bg-blue-500 text-white px-2 sm:px-3 py-1 rounded-full text-xs sm:text-sm font-medium">
-										✅ Finalizado
-									</div>
-								)}
-							</div>
-							
-							<!-- Contenido del proyecto -->
-							<div class="p-4 sm:p-6">
-								<div class="flex flex-wrap gap-1 sm:gap-2 mb-3 sm:mb-4">
-									{proyecto.etiquetas.map(etiqueta => (
-										<span class="bg-gradient-to-r from-blue-100 to-purple-100 dark:from-blue-900 dark:to-purple-900 text-blue-800 dark:text-blue-200 px-2 sm:px-3 py-1 rounded-full text-xs sm:text-sm font-medium">
-											{etiqueta}
-										</span>
-									))}
-								</div>
-								
-								<h3 class="text-lg sm:text-xl font-bold text-gray-900 dark:text-white mb-2 sm:mb-3">
-									{proyecto.titulo}
-								</h3>
-								
-								<p class="text-sm sm:text-base text-gray-700 dark:text-gray-300 mb-3 sm:mb-4 leading-relaxed">
-									{proyecto.descripcion}
-								</p>
-								
-								<!-- Progreso -->
-								<div class="mb-3 sm:mb-4">
-									<div class="flex justify-between items-center mb-1 sm:mb-2">
-										<span class="text-xs sm:text-sm font-medium text-gray-700 dark:text-gray-300">Progreso</span>
-										<span class="text-xs sm:text-sm font-bold text-blue-600 dark:text-blue-400">{proyecto.progreso}%</span>
-									</div>
-									<div class="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2 sm:h-2.5">
-										<div 
-											class="bg-gradient-to-r from-indigo-500 to-blue-600 h-2 sm:h-2.5 rounded-full progress-bar"
-											style={`--progress-width: ${proyecto.progreso}%`}
-										></div>
-									</div>
-								</div>
-								
-								<!-- Información adicional -->
-								<div class="space-y-1 sm:space-y-2 mb-4 sm:mb-6 text-xs sm:text-sm">
-									<div class="flex justify-between">
-										<span class="text-gray-600 dark:text-gray-400">Período:</span>
-										<span class="font-medium text-gray-900 dark:text-white">{proyecto.fechaInicio} - {proyecto.fechaFin}</span>
-									</div>
-									<div class="flex justify-between">
-										<span class="text-gray-600 dark:text-gray-400">Financiación:</span>
-										<span class="font-medium text-gray-900 dark:text-white">{proyecto.presupuesto}</span>
-									</div>
-								</div>
-								
-								<!-- Botones de acción -->
-								<div class="flex flex-wrap gap-2 sm:gap-3">
-									<a 
-										href={proyecto.url} 
-										class="btn-enhanced flex-1 text-center py-2 px-3 sm:px-4 text-white font-medium rounded-lg transition-all duration-200 text-sm"
-									>
-										Ver detalles completos
-									</a>
-									{proyecto.github && (
-										<a 
-											href={proyecto.github} 
-											target="_blank" 
-											rel="noopener noreferrer"
-											class="bg-gray-800 hover:bg-gray-700 text-white py-2 px-3 sm:px-4 rounded-lg transition-colors duration-200 flex items-center space-x-1 sm:space-x-2 text-sm"
-										>
-											<span>💻</span>
-											<span>Código</span>
-										</a>
-									)}
-								</div>
-							</div>
-						</article>
-					))}
-				</div>
-			</section>
-
-			<!-- Todos los proyectos -->
-			<section class="animate-fade-in-up animate-delay-300">
-				<h2 class="text-2xl sm:text-3xl font-bold text-gray-900 dark:text-white mb-6 sm:mb-8 flex items-center space-x-3">
-					<span>📋</span>
-					<span>Portafolio Completo</span>
-				</h2>
-				
-				<div class="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8">
-					{proyectosOrdenados.map((proyecto, index) => (
-						<article class={`card-hover bg-white dark:bg-gray-800 rounded-xl shadow-lg overflow-hidden animate-fade-in-up border border-gray-200/50 dark:border-gray-700/50`} style={`animation-delay: ${index * 0.1}s`}>
-							<!-- Imagen con mejor tamaño -->
-							<div class="relative h-48 sm:h-56 overflow-hidden">
-								<img 
-									src={proyecto.imagen} 
-									alt={proyecto.altImagen}
-									class="w-full h-full object-cover transition-transform duration-500 hover:scale-110"
-								/>
-								<div class="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent"></div>
-								<div class="absolute top-4 right-4">
-									<span class={`px-3 py-1 rounded-full text-sm font-medium ${proyecto.estado === 'En curso' ? 'bg-green-500/90 text-white' : 'bg-blue-500/90 text-white'} backdrop-blur-sm`}>
-										{proyecto.estado === 'En curso' ? '🟢 En curso' : '✅ Finalizado'}
-									</span>
-								</div>
-								<div class="absolute bottom-4 left-4 right-4">
-									<h3 class="text-white font-bold text-lg sm:text-xl mb-2 line-clamp-2">
-										{proyecto.titulo}
-									</h3>
-								</div>
-							</div>
-							
-							<!-- Contenido expandido -->
-							<div class="p-5 sm:p-6">
-								<!-- Etiquetas -->
-								<div class="flex flex-wrap gap-2 mb-4">
-									{proyecto.etiquetas.map(etiqueta => (
-										<span class="bg-gradient-to-r from-blue-100 to-purple-100 dark:from-blue-900/50 dark:to-purple-900/50 text-blue-800 dark:text-blue-200 px-3 py-1 rounded-full text-sm font-medium border border-blue-200/50 dark:border-blue-700/50">
-											{etiqueta}
-										</span>
-									))}
-								</div>
-								
-								<!-- Descripción más completa -->
-								<p class="text-gray-700 dark:text-gray-300 text-base mb-4 leading-relaxed">
-									{proyecto.descripcion}
-								</p>
-								
-								<!-- Información adicional mejorada -->
-								<div class="space-y-3 mb-4">
-									<div class="flex justify-between items-center text-sm">
-										<span class="font-medium text-gray-600 dark:text-gray-400">Período:</span>
-										<span class="text-gray-900 dark:text-white font-semibold">{proyecto.fechaInicio} - {proyecto.fechaFin}</span>
-									</div>
-									<div class="flex justify-between items-center text-sm">
-										<span class="font-medium text-gray-600 dark:text-gray-400">Financiación:</span>
-										<span class="text-gray-900 dark:text-white font-semibold">{proyecto.presupuesto}</span>
-									</div>
-									<div class="flex justify-between items-center text-sm">
-										<span class="font-medium text-gray-600 dark:text-gray-400">Progreso:</span>
-										<span class="text-blue-600 dark:text-blue-400 font-bold">{proyecto.progreso}%</span>
-									</div>
-								</div>
-								
-								<!-- Barra de progreso visual -->
-								<div class="mb-4">
-									<div class="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2">
-										<div 
-											class="bg-gradient-to-r from-indigo-500 to-blue-600 h-2 rounded-full transition-all duration-1000 ease-out"
-											style={`width: ${proyecto.progreso}%`}
-										></div>
-									</div>
-								</div>
-								
-								<!-- Resultados destacados -->
-								{proyecto.resultados && proyecto.resultados.length > 0 && (
-									<div class="mb-4">
-										<h4 class="text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2">Resultados destacados:</h4>
-										<ul class="space-y-1">
-											{proyecto.resultados.slice(0, 2).map(resultado => (
-												<li class="text-sm text-gray-600 dark:text-gray-400 flex items-start">
-													<span class="text-green-500 mr-2 mt-0.5">•</span>
-													<span>{resultado}</span>
-												</li>
-											))}
-										</ul>
-									</div>
-								)}
-								
-								<!-- Botones de acción mejorados -->
-								<div class="flex gap-3">
-									<a 
-										href={proyecto.url} 
-										class="flex-1 bg-gradient-to-r from-indigo-500 to-blue-600 hover:from-indigo-600 hover:to-blue-700 text-white py-3 px-4 rounded-lg text-center text-sm font-medium transition-all duration-200"
-									>
-										Ver detalles completos
-									</a>
-									{proyecto.github && (
-										<a 
-											href={proyecto.github} 
-											target="_blank" 
-											rel="noopener noreferrer"
-											class="bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 text-gray-700 dark:text-gray-300 py-3 px-4 rounded-lg transition-all duration-200 transform hover:scale-105 flex items-center justify-center"
-											title="Ver código en GitHub"
-										>
-											<svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-												<path d="M12 0C5.374 0 0 5.373 0 12 0 17.302 3.438 21.8 8.207 23.387c.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/>
-											</svg>
-										</a>
-									)}
-								</div>
-							</div>
-						</article>
-					))}
-				</div>
-			</section>
-
-			<!-- Call to action -->
-			<section class="mt-8 sm:mt-12 lg:mt-16 text-center animate-fade-in-up animate-delay-400">
-				<div class="bg-gradient-to-r from-blue-50 to-purple-50 dark:from-gray-800 dark:to-gray-700 rounded-2xl p-6 sm:p-8 card-hover">
-					<h3 class="text-xl sm:text-2xl font-bold text-gray-900 dark:text-white mb-3 sm:mb-4">
-						¿Interesado en colaborar?
-					</h3>
-					<p class="text-sm sm:text-base text-gray-600 dark:text-gray-400 mb-4 sm:mb-6 max-w-2xl mx-auto">
-						Si tienes ideas para proyectos innovadores o quieres formar parte de nuestro equipo de investigación, 
-						no dudes en ponerte en contacto conmigo.
-					</p>
-					<div class="flex flex-wrap justify-center gap-3 sm:gap-4">
-						<a 
-							href="/contacto" 
-							class="btn-enhanced px-4 sm:px-6 py-2 sm:py-3 text-white font-medium rounded-lg transition-all duration-200 text-sm sm:text-base"
-						>
-							💬 Contactar
-						</a>
-						<a 
-							href="/publicaciones" 
-							class="bg-white dark:bg-gray-800 border-2 border-blue-500 text-blue-600 dark:text-blue-400 hover:bg-blue-50 dark:hover:bg-gray-700 px-4 sm:px-6 py-2 sm:py-3 font-medium rounded-lg transition-all duration-200 text-sm sm:text-base"
-						>
-							📚 Ver Publicaciones
-						</a>
-					</div>
-				</div>
-			</section>
 		</div>
-	</main>
+	</header>
+
+	<div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-14 sm:py-20">
+		<!-- Proyectos destacados -->
+		<section class="mb-16 reveal">
+			<p class="eyebrow mb-2">Destacados</p>
+			<h2 class="text-2xl sm:text-3xl font-display font-semibold text-graphite-900 dark:text-white mb-2">
+				Proyectos destacados
+			</h2>
+			<p class="text-graphite-500 dark:text-graphite-400 mb-8">Investigaciones principales con mayor impacto e innovación</p>
+
+			<div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+				{proyectosOrdenados.filter(p => p.destacado).map((proyecto, index) => (
+					<article class="spec-card">
+						<span class="spec-tick spec-tick-tl"></span>
+						<span class="spec-tick spec-tick-br"></span>
+
+						<div class="h-24 -mx-6 -mt-6 mb-6 px-6 border-b border-line dark:border-line-dark flex items-center justify-between text-signal-500 dark:text-signal-400 overflow-hidden">
+							<SignalTrace variant={trace(index)} width={400} height={70} beats={4} class="w-full" />
+							<span class="shrink-0 ml-4 font-mono text-xs uppercase tracking-wide px-2.5 py-1 border border-line dark:border-line-dark rounded-md text-graphite-600 dark:text-graphite-300">
+								{proyecto.estado}
+							</span>
+						</div>
+
+						<div class="flex flex-wrap gap-2 mb-4">
+							{proyecto.etiquetas.map(etiqueta => (
+								<span class="font-mono text-xs border border-line dark:border-line-dark text-graphite-600 dark:text-graphite-300 px-2.5 py-1 rounded-md">
+									{etiqueta}
+								</span>
+							))}
+						</div>
+
+						<h3 class="text-xl font-display font-semibold text-graphite-900 dark:text-white mb-3">
+							{proyecto.titulo}
+						</h3>
+						<p class="text-graphite-600 dark:text-graphite-300 mb-5 leading-relaxed text-sm">
+							{proyecto.descripcion}
+						</p>
+
+						<div class="mb-5">
+							<div class="flex items-center justify-between text-xs font-mono mb-1.5">
+								<span class="text-graphite-500 dark:text-graphite-400">Progreso</span>
+								<span class="text-signal-600 dark:text-signal-400">{proyecto.progreso}%</span>
+							</div>
+							<div class="signal-meter">
+								{Array.from({ length: 10 }).map((_, i) => (
+									<span class:list={['signal-meter-tick', i < proyecto.progreso / 10 && 'is-filled']}></span>
+								))}
+							</div>
+						</div>
+
+						<div class="flex items-center justify-between text-xs font-mono text-graphite-500 dark:text-graphite-400 mb-6">
+							<span>{proyecto.fechaInicio} — {proyecto.fechaFin}</span>
+							<span>{proyecto.presupuesto}</span>
+						</div>
+
+						<div class="flex flex-wrap gap-2">
+							<a href={proyecto.url} class="btn btn-primary btn-sm flex-1">Ver detalles completos</a>
+							{proyecto.github && (
+								<a href={proyecto.github} target="_blank" rel="noopener noreferrer" class="btn btn-outline btn-sm">Código</a>
+							)}
+						</div>
+					</article>
+				))}
+			</div>
+		</section>
+
+		<!-- Todos los proyectos -->
+		<section class="reveal">
+			<p class="eyebrow mb-2">Archivo</p>
+			<h2 class="text-2xl sm:text-3xl font-display font-semibold text-graphite-900 dark:text-white mb-8">
+				Portafolio completo
+			</h2>
+
+			<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+				{proyectosOrdenados.map((proyecto, index) => (
+					<article class="spec-card">
+						<span class="spec-tick spec-tick-tl"></span>
+						<span class="spec-tick spec-tick-br"></span>
+
+						<div class="flex items-center justify-between mb-4">
+							<span class="font-mono text-xs uppercase tracking-wide px-2.5 py-1 border border-line dark:border-line-dark rounded-md text-graphite-600 dark:text-graphite-300">
+								{proyecto.estado}
+							</span>
+							<span class="font-mono text-xs text-graphite-500 dark:text-graphite-400">{proyecto.fechaInicio}–{proyecto.fechaFin}</span>
+						</div>
+
+						<h3 class="text-lg font-display font-semibold text-graphite-900 dark:text-white mb-3">
+							{proyecto.titulo}
+						</h3>
+
+						<div class="flex flex-wrap gap-2 mb-4">
+							{proyecto.etiquetas.map(etiqueta => (
+								<span class="font-mono text-xs border border-line dark:border-line-dark text-graphite-600 dark:text-graphite-300 px-2.5 py-1 rounded-md">
+									{etiqueta}
+								</span>
+							))}
+						</div>
+
+						<p class="text-graphite-600 dark:text-graphite-300 text-sm mb-4 leading-relaxed">
+							{proyecto.descripcion}
+						</p>
+
+						<div class="flex items-center justify-between text-sm mb-4">
+							<span class="text-graphite-500 dark:text-graphite-400">Financiación</span>
+							<span class="font-mono text-graphite-800 dark:text-graphite-100">{proyecto.presupuesto}</span>
+						</div>
+
+						<div class="mb-5">
+							<div class="signal-meter">
+								{Array.from({ length: 10 }).map((_, i) => (
+									<span class:list={['signal-meter-tick', i < proyecto.progreso / 10 && 'is-filled']}></span>
+								))}
+							</div>
+						</div>
+
+						{proyecto.resultados && proyecto.resultados.length > 0 && (
+							<ul class="space-y-1.5 mb-5">
+								{proyecto.resultados.slice(0, 2).map(resultado => (
+									<li class="text-sm text-graphite-500 dark:text-graphite-400 flex items-start gap-2">
+										<span class="w-1 h-1 rounded-full bg-signal-500 mt-2 shrink-0"></span>
+										<span>{resultado}</span>
+									</li>
+								))}
+							</ul>
+						)}
+
+						<div class="flex gap-2">
+							<a href={proyecto.url} class="btn btn-primary btn-sm flex-1">Ver detalles completos</a>
+							{proyecto.github && (
+								<a href={proyecto.github} target="_blank" rel="noopener noreferrer" class="btn btn-outline btn-sm" title="Ver código en GitHub" aria-label="Ver código en GitHub">
+									<svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+										<path d="M12 0C5.374 0 0 5.373 0 12 0 17.302 3.438 21.8 8.207 23.387c.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/>
+									</svg>
+								</a>
+							)}
+						</div>
+					</article>
+				))}
+			</div>
+		</section>
+
+		<!-- Call to action -->
+		<section class="mt-16 text-center reveal">
+			<div class="spec-card p-8">
+				<span class="spec-tick spec-tick-tl"></span>
+				<span class="spec-tick spec-tick-br"></span>
+				<h3 class="text-xl sm:text-2xl font-display font-semibold text-graphite-900 dark:text-white mb-3">
+					¿Interesado en colaborar?
+				</h3>
+				<p class="text-graphite-600 dark:text-graphite-300 mb-6 max-w-2xl mx-auto">
+					Si tienes ideas para proyectos innovadores o quieres formar parte de nuestro equipo de investigación,
+					no dudes en ponerte en contacto conmigo.
+				</p>
+				<div class="flex flex-wrap justify-center gap-3">
+					<a href="/contacto" class="btn btn-primary">Contactar</a>
+					<a href="/publicaciones" class="btn btn-outline">Ver publicaciones</a>
+				</div>
+			</div>
+		</section>
+	</div>
 </Layout>

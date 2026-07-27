@@ -17,16 +17,7 @@ describe('Componentes', () => {
     expect(fs.existsSync(path.join(componentsDir, 'RecentPublications.astro'))).toBe(true);
     expect(fs.existsSync(path.join(componentsDir, 'ThemeToggle.astro'))).toBe(true);
     expect(fs.existsSync(path.join(componentsDir, 'ScholarMetrics.astro'))).toBe(true);
-    expect(fs.existsSync(path.join(componentsDir, 'ProyectoCard.astro'))).toBe(true);
-    
-    // Verificar nuevos componentes avanzados
-    expect(fs.existsSync(path.join(componentsDir, 'LazyImage.astro'))).toBe(true);
-    expect(fs.existsSync(path.join(componentsDir, 'SchemaMarkup.astro'))).toBe(true);
-    expect(fs.existsSync(path.join(componentsDir, 'Analytics.astro'))).toBe(true);
-    expect(fs.existsSync(path.join(componentsDir, 'ShareButtons.astro'))).toBe(true);
-    expect(fs.existsSync(path.join(componentsDir, 'ReadingProgress.astro'))).toBe(true);
-    expect(fs.existsSync(path.join(componentsDir, 'AcademicSearch.astro'))).toBe(true);
-    expect(fs.existsSync(path.join(componentsDir, 'AcademicComments.astro'))).toBe(true);
+    expect(fs.existsSync(path.join(componentsDir, 'SignalTrace.astro'))).toBe(true);
   });
 
   it('verifica la estructura del componente RecentPublications', () => {
@@ -87,114 +78,17 @@ describe('Componentes', () => {
     expect(content).toContain('tailwind');
   });
 
-  it('verifica la estructura de componentes avanzados', () => {
-    const projectRoot = path.join(__dirname, '..');
-    const componentsDir = path.join(projectRoot, 'src', 'components');
-    
-    // Verificar componente LazyImage
-    const lazyImagePath = path.join(componentsDir, 'LazyImage.astro');
-    if (fs.existsSync(lazyImagePath)) {
-      const content = fs.readFileSync(lazyImagePath, 'utf8');
-      expect(content).toContain('loading');
-      expect(content).toContain('decoding');
-      expect(content).toContain('view-transition-name');
-    }
-
-    // Verificar componente SchemaMarkup
-    const schemaMarkupPath = path.join(componentsDir, 'SchemaMarkup.astro');
-    if (fs.existsSync(schemaMarkupPath)) {
-      const content = fs.readFileSync(schemaMarkupPath, 'utf8');
-      expect(content).toContain('application/ld+json');
-      expect(content).toContain('@context');
-      expect(content).toContain('schema.org');
-    }
-
-    // Verificar componente Analytics
-    const analyticsPath = path.join(componentsDir, 'Analytics.astro');
-    if (fs.existsSync(analyticsPath)) {
-      const content = fs.readFileSync(analyticsPath, 'utf8');
-      expect(content).toContain('plausible');
-      expect(content).toContain('gtag');
-    }
-  });
-
-  it('verifica componentes de UX avanzados', () => {
+  it('verifica el componente de firma SignalTrace', () => {
     const projectRoot = path.join(__dirname, '..');
     const componentsDir = path.join(projectRoot, 'src', 'components');
 
-    // Verificar componente ShareButtons
-    const shareButtonsPath = path.join(componentsDir, 'ShareButtons.astro');
-    if (fs.existsSync(shareButtonsPath)) {
-      const content = fs.readFileSync(shareButtonsPath, 'utf8');
-      expect(content).toContain('twitter');
-      expect(content).toContain('linkedin');
-      expect(content).toContain('mendeley');
-      expect(content).toContain('researchgate');
-    }
+    const signalTracePath = path.join(componentsDir, 'SignalTrace.astro');
+    expect(fs.existsSync(signalTracePath)).toBe(true);
 
-    // Verificar componente ReadingProgress
-    const readingProgressPath = path.join(componentsDir, 'ReadingProgress.astro');
-    if (fs.existsSync(readingProgressPath)) {
-      const content = fs.readFileSync(readingProgressPath, 'utf8');
-      expect(content).toContain('reading-progress');
-      expect(content).toContain('progress-bar');
-      expect(content).toContain('scroll');
-    }
-
-    // Verificar componente AcademicSearch
-    const academicSearchPath = path.join(componentsDir, 'AcademicSearch.astro');
-    if (fs.existsSync(academicSearchPath)) {
-      const content = fs.readFileSync(academicSearchPath, 'utf8');
-      expect(content).toContain('search-container');
-      expect(content).toContain('search-results');
-      expect(content).toContain('publications');
-      expect(content).toContain('projects');
-    }
-  });
-
-  it('verifica componente de comentarios académicos', () => {
-    const projectRoot = path.join(__dirname, '..');
-    const componentsDir = path.join(projectRoot, 'src', 'components');
-    
-    const academicCommentsPath = path.join(componentsDir, 'AcademicComments.astro');
-    if (fs.existsSync(academicCommentsPath)) {
-      const content = fs.readFileSync(academicCommentsPath, 'utf8');
-      expect(content).toContain('academic-comments');
-      expect(content).toContain('comment-form');
-      expect(content).toContain('comment-guidelines');
-      expect(content).toContain('markdown');
-    }
-  });
-
-  it('verifica el sistema de partículas dinámico mejorado', () => {
-    const projectRoot = path.join(__dirname, '..');
-    const indexPath = path.join(projectRoot, 'src', 'pages', 'index.astro');
-    
-    const content = fs.readFileSync(indexPath, 'utf8');
-    
-    // Verificar sistema híbrido CSS + JavaScript
-    expect(content).toContain('.floating-particles');
-    expect(content).toContain('createParticles');
-    expect(content).toContain('floating-particles');
-    
-    // Verificar múltiples animaciones
-    expect(content).toContain('float1');
-    expect(content).toContain('float2');
-    expect(content).toContain('float3');
-    expect(content).toContain('float4');
-    expect(content).toContain('float5');
-    
-    // Verificar sistema de colores múltiples (6 colores principales)
-    expect(content).toContain('#3b82f6');
-    expect(content).toContain('#8b5cf6');
-    expect(content).toContain('#ec4899');
-    expect(content).toContain('#10b981');
-    expect(content).toContain('#f59e0b');
-    expect(content).toContain('#06b6d4'); // Cyan
-    
-    // Verificar efectos interactivos
-    expect(content).toContain('setInterval(createParticles');
-    expect(content).toContain('hover');
+    const content = fs.readFileSync(signalTracePath, 'utf8');
+    expect(content).toContain('variant');
+    expect(content).toContain('ecg');
+    expect(content).toContain('eda');
   });
 
   it('verifica archivos de documentación de mejoras', () => {

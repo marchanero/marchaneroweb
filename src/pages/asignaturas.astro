@@ -1,531 +1,386 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import SignalTrace from '../components/SignalTrace.astro';
 
 // Datos de asignaturas
 const asignaturas = [
-  {
-    id: 'sistemas-informacion-grado-primero',
-    codigo: 'SI1001',
-    titulo: 'Sistemas de Información',
-    grado: 'Grado en Ingeniería Informática',
-    curso: '1º',
-    cuatrimestre: '1º',
-    creditos: 6,
-    academicYear: '2024-2025',
-    descripcion: 'Introducción a los sistemas de información en el contexto de la Ingeniería Informática. Se imparte en la Facultad de Ciencias Sociales y Tecnologías de la Información del Campus de Talavera.',
-    competencias: [
-      'Comprender el papel de los sistemas de información en las organizaciones.',
-      'Analizar requisitos para el desarrollo de sistemas de información.',
-      'Conocer las tecnologías fundamentales de los sistemas de información.'
-    ],
-    temario: [
-      'Introducción a los Sistemas de Información',
-      'Hardware y Software en los SI',
-      'Bases de Datos y Gestión de la Información',
-      'Redes y Telecomunicaciones',
-      'Desarrollo de Sistemas de Información',
-      'SI en la Empresa y la Sociedad'
-    ],
-    imagen: 'https://via.placeholder.com/400x300',
-    horario: 'Por definir',
-    aula: 'Por definir',
-    enlaceMateriales: 'https://campus.uclm.es/course/view.php?id=SI1001',
-    destacada: true
-  },
-  {
-    id: 'arquitectura-empresarial-grado-cuarto',
-    codigo: 'AE4001',
-    titulo: 'Arquitectura Empresarial',
-    grado: 'Grado en Ingeniería Informática',
-    curso: '4º',
-    cuatrimestre: '1º',
-    creditos: 6,
-    academicYear: '2024-2025',
-    descripcion: 'Estudio de los principios y prácticas de la arquitectura empresarial para alinear las TI con los objetivos de negocio. Se imparte en la Facultad de Ciencias Sociales y Tecnologías de la Información del Campus de Talavera.',
-    competencias: [
-      'Comprender los marcos de trabajo de arquitectura empresarial (ej. TOGAF).',
-      'Diseñar y evaluar arquitecturas empresariales.',
-      'Gestionar la transformación del negocio a través de la arquitectura.'
-    ],
-    temario: [
-      'Introducción a la Arquitectura Empresarial',
-      'Marcos de Referencia (TOGAF, Zachman)',
-      'Arquitectura de Negocio',
-      'Arquitectura de Sistemas de Información (Datos, Aplicaciones, Tecnología)',
-      'Gobernanza de la Arquitectura Empresarial',
-      'Implantación y Casos Prácticos'
-    ],
-    imagen: 'https://via.placeholder.com/400x300',
-    horario: 'Por definir',
-    aula: 'Por definir',
-    enlaceMateriales: 'https://campus.uclm.es/course/view.php?id=AE4001',
-    destacada: true
-  },
-  {
-    id: 'transformacion-digital-empresa-grado-cuarto',
-    codigo: 'TD4003',
-    titulo: 'Transformación Digital de la Empresa',
-    grado: 'Grado en Ingeniería Informática',
-    curso: '4º',
-    cuatrimestre: '1º',
-    creditos: 6,
-    academicYear: '2024-2025',
-    descripcion: 'Análisis y aplicación de estrategias para la transformación digital de organizaciones. Estudio de tecnologías disruptivas, modelos de negocio digitales y gestión del cambio en entornos empresariales. Se imparte en la Facultad de Ciencias Sociales y Tecnologías de la Información del Campus de Talavera.',
-    competencias: [
-      'Desarrollar estrategias de transformación digital.',
-      'Evaluar el impacto de las tecnologías emergentes en la empresa.',
-      'Liderar procesos de cambio organizacional hacia la digitalización.'
-    ],
-    temario: [
-      'Fundamentos de la Transformación Digital',
-      'Tecnologías Clave (Cloud, Big Data, IA, IoT)',
-      'Nuevos Modelos de Negocio Digitales',
-      'Cultura Digital y Gestión del Cambio',
-      'Innovación y Estrategia Digital',
-      'Casos de Estudio y Aplicaciones Prácticas'
-    ],
-    imagen: 'https://via.placeholder.com/400x300',
-    horario: 'Por definir',
-    aula: 'Por definir',
-    enlaceMateriales: 'https://campus.uclm.es/course/view.php?id=TD4003',
-    destacada: true
-  }
+	{
+		id: 'sistemas-informacion-grado-primero',
+		codigo: 'SI1001',
+		titulo: 'Sistemas de Información',
+		grado: 'Grado en Ingeniería Informática',
+		nivel: 'grado',
+		curso: '1º',
+		cuatrimestre: '1º',
+		creditos: 6,
+		academicYear: '2024-2025',
+		descripcion: 'Introducción a los sistemas de información en el contexto de la Ingeniería Informática. Se imparte en la Facultad de Ciencias Sociales y Tecnologías de la Información del Campus de Talavera.',
+		temario: [
+			'Introducción a los Sistemas de Información',
+			'Hardware y Software en los SI',
+			'Bases de Datos y Gestión de la Información',
+			'Redes y Telecomunicaciones',
+			'Desarrollo de Sistemas de Información',
+			'SI en la Empresa y la Sociedad'
+		],
+		horario: 'Por definir',
+		enlaceMateriales: 'https://campus.uclm.es/course/view.php?id=SI1001',
+		destacada: true
+	},
+	{
+		id: 'arquitectura-empresarial-grado-cuarto',
+		codigo: 'AE4001',
+		titulo: 'Arquitectura Empresarial',
+		grado: 'Grado en Ingeniería Informática',
+		nivel: 'grado',
+		curso: '4º',
+		cuatrimestre: '1º',
+		creditos: 6,
+		academicYear: '2024-2025',
+		descripcion: 'Estudio de los principios y prácticas de la arquitectura empresarial para alinear las TI con los objetivos de negocio. Se imparte en la Facultad de Ciencias Sociales y Tecnologías de la Información del Campus de Talavera.',
+		temario: [
+			'Introducción a la Arquitectura Empresarial',
+			'Marcos de Referencia (TOGAF, Zachman)',
+			'Arquitectura de Negocio',
+			'Arquitectura de Sistemas de Información (Datos, Aplicaciones, Tecnología)',
+			'Gobernanza de la Arquitectura Empresarial',
+			'Implantación y Casos Prácticos'
+		],
+		horario: 'Por definir',
+		enlaceMateriales: 'https://campus.uclm.es/course/view.php?id=AE4001',
+		destacada: true
+	},
+	{
+		id: 'transformacion-digital-empresa-grado-cuarto',
+		codigo: 'TD4003',
+		titulo: 'Transformación Digital de la Empresa',
+		grado: 'Grado en Ingeniería Informática',
+		nivel: 'grado',
+		curso: '4º',
+		cuatrimestre: '1º',
+		creditos: 6,
+		academicYear: '2024-2025',
+		descripcion: 'Análisis y aplicación de estrategias para la transformación digital de organizaciones. Estudio de tecnologías disruptivas, modelos de negocio digitales y gestión del cambio en entornos empresariales. Se imparte en la Facultad de Ciencias Sociales y Tecnologías de la Información del Campus de Talavera.',
+		temario: [
+			'Fundamentos de la Transformación Digital',
+			'Tecnologías Clave (Cloud, Big Data, IA, IoT)',
+			'Nuevos Modelos de Negocio Digitales',
+			'Cultura Digital y Gestión del Cambio',
+			'Innovación y Estrategia Digital',
+			'Casos de Estudio y Aplicaciones Prácticas'
+		],
+		horario: 'Por definir',
+		enlaceMateriales: 'https://campus.uclm.es/course/view.php?id=TD4003',
+		destacada: true
+	}
 ];
 
-// Filtrado y ordenación de asignaturas
-const asignaturasPorNivel = {
-  grado: asignaturas.filter(a => a.grado.includes('Grado')),
-  master: asignaturas.filter(a => a.grado.includes('Máster')),
-  doctorado: asignaturas.filter(a => a.grado.includes('Doctorado'))
-};
-
-// Obtenemos los años académicos únicos
 const aniosAcademicos = [...new Set(asignaturas.map(a => a.academicYear))];
+const totalCreditos = asignaturas.reduce((sum, a) => sum + a.creditos, 0);
+
+const recursos = [
+	{
+		titulo: 'Guías de estudio',
+		desc: 'Material complementario para preparar exámenes',
+		icon: 'M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253',
+	},
+	{
+		titulo: 'Proyectos de ejemplo',
+		desc: 'Ejemplos prácticos para inspirar tus propios proyectos',
+		icon: 'M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z',
+	},
+	{
+		titulo: 'Videotutoriales',
+		desc: 'Explicaciones paso a paso en formato vídeo',
+		icon: 'M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z',
+	},
+	{
+		titulo: 'Notebooks y ejercicios',
+		desc: 'Cuadernos interactivos y ejercicios prácticos',
+		icon: 'M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2',
+	},
+];
 ---
 
 <Layout title="Docencia | Roberto Sánchez Reolid">
-	<!-- Header Section -->
-	<header class="relative bg-gradient-to-br from-emerald-600 via-teal-700 to-cyan-800 text-white py-20 px-4 floating-particles">
-		<div class="max-w-5xl mx-auto text-center">
-			<h1 class="text-5xl md:text-6xl font-bold mb-6 animate-fade-in-up">
+	<!-- Header -->
+	<header class="relative border-b border-line dark:border-line-dark py-14 sm:py-20 px-4">
+		<div class="max-w-5xl mx-auto text-center reveal">
+			<p class="eyebrow mb-3">Universidad de Castilla-La Mancha</p>
+			<h1 class="text-4xl sm:text-5xl font-display font-semibold text-graphite-900 dark:text-white mb-4">
 				Docencia
 			</h1>
-			<p class="text-xl md:text-2xl text-emerald-100 max-w-4xl mx-auto animate-fade-in-up animate-delay-200">
-				Asignaturas impartidas en la Universidad de Castilla-La Mancha
+			<p class="text-lg text-graphite-600 dark:text-graphite-300 max-w-2xl mx-auto mb-2">
+				Asignaturas impartidas en el Grado en Ingeniería Informática, campus de Talavera
 			</p>
-			<p class="text-lg text-emerald-200 max-w-3xl mx-auto mt-4 animate-fade-in-up animate-delay-300">
-				Mi labor docente se centra en materias relacionadas con la programación, 
-				la inteligencia artificial y el análisis de datos.
+			<p class="text-graphite-500 dark:text-graphite-400 max-w-2xl mx-auto">
+				Programación, inteligencia artificial y análisis de datos.
 			</p>
-			
-			<!-- Estadísticas rápidas -->
-			<div class="grid grid-cols-2 md:grid-cols-4 gap-6 mt-12 animate-fade-in-up animate-delay-400">
-				<div class="backdrop-blur-sm bg-white/10 rounded-xl p-4">
-					<div class="text-2xl font-bold">{asignaturas.length}</div>
-					<div class="text-sm text-emerald-100">Asignaturas</div>
+
+			<div class="readout max-w-2xl mx-auto mt-10">
+				<div class="readout-cell">
+					<div class="readout-value">{asignaturas.length}</div>
+					<div class="readout-label">Asignaturas</div>
 				</div>
-				<div class="backdrop-blur-sm bg-white/10 rounded-xl p-4">
-					<div class="text-2xl font-bold">3</div>
-					<div class="text-sm text-emerald-100">Niveles académicos</div>
+				<div class="readout-cell">
+					<div class="readout-value">{totalCreditos}</div>
+					<div class="readout-label">Créditos ECTS</div>
 				</div>
-				<div class="backdrop-blur-sm bg-white/10 rounded-xl p-4">
-					<div class="text-2xl font-bold">18</div>
-					<div class="text-sm text-emerald-100">Créditos ECTS</div>
+				<div class="readout-cell">
+					<div class="readout-value">4º</div>
+					<div class="readout-label">Curso más alto</div>
 				</div>
-				<div class="backdrop-blur-sm bg-white/10 rounded-xl p-4">
-					<div class="text-2xl font-bold">300+</div>
-					<div class="text-sm text-emerald-100">Estudiantes</div>
+				<div class="readout-cell">
+					<div class="readout-value">1º</div>
+					<div class="readout-label">Curso más bajo</div>
 				</div>
 			</div>
 		</div>
 	</header>
 
-	<main class="py-16 px-4">
+	<main class="py-14 sm:py-20 px-4">
 		<div class="max-w-6xl mx-auto">
-			<!-- Filtros para la búsqueda de asignaturas -->
-			<section class="mb-12 animate-fade-in-up animate-delay-100">
-				<div class="section-card p-8">
-					<h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-6 text-center bg-gradient-to-r from-emerald-600 to-teal-600 bg-clip-text text-transparent">
-						Filtrar asignaturas
-					</h2>
-					
+			<!-- Filtros -->
+			<section class="mb-12 reveal">
+				<div class="spec-card p-6 sm:p-8">
+					<span class="spec-tick spec-tick-tl"></span>
+					<span class="spec-tick spec-tick-br"></span>
+					<p class="eyebrow mb-6">Filtrar</p>
+
 					<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-						<!-- Filtro por nivel académico -->
-						<div class="filter-input-container">
-							<label for="nivel" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Nivel académico</label>
-							<select id="nivel" class="filter-input">
+						<div>
+							<label for="nivel" class="block text-xs font-mono uppercase tracking-wide text-graphite-500 dark:text-graphite-400 mb-2">Nivel académico</label>
+							<select id="nivel" class="w-full px-3 py-2 border border-line dark:border-line-dark rounded-md bg-transparent text-graphite-700 dark:text-graphite-200 text-sm focus:outline-none focus:border-signal-500">
 								<option value="todos">Todos los niveles</option>
 								<option value="grado">Grado</option>
 								<option value="master">Máster</option>
 								<option value="doctorado">Doctorado</option>
 							</select>
 						</div>
-						
-						<!-- Filtro por año académico -->
-						<div class="filter-input-container">
-							<label for="anioAcademico" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Año académico</label>
-							<select id="anioAcademico" class="filter-input">
+
+						<div>
+							<label for="anioAcademico" class="block text-xs font-mono uppercase tracking-wide text-graphite-500 dark:text-graphite-400 mb-2">Año académico</label>
+							<select id="anioAcademico" class="w-full px-3 py-2 border border-line dark:border-line-dark rounded-md bg-transparent text-graphite-700 dark:text-graphite-200 text-sm focus:outline-none focus:border-signal-500">
 								<option value="todos">Todos los años</option>
 								{aniosAcademicos.map(anio => (
 									<option value={anio}>{anio}</option>
 								))}
 							</select>
 						</div>
-						
-						<!-- Búsqueda por nombre -->
-						<div class="filter-input-container">
-							<label for="busqueda" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Búsqueda</label>
-							<input type="text" id="busqueda" placeholder="Buscar por nombre o código..." class="filter-input">
+
+						<div>
+							<label for="busqueda" class="block text-xs font-mono uppercase tracking-wide text-graphite-500 dark:text-graphite-400 mb-2">Búsqueda</label>
+							<input type="text" id="busqueda" placeholder="Nombre o código..." class="w-full px-3 py-2 border border-line dark:border-line-dark rounded-md bg-transparent text-graphite-700 dark:text-graphite-200 text-sm placeholder:text-graphite-400 focus:outline-none focus:border-signal-500" />
 						</div>
 					</div>
 				</div>
 			</section>
-			
+
 			<!-- Lista de asignaturas -->
-			<section id="todas-asignaturas" class="animate-fade-in-up animate-delay-200">
-				<h2 class="text-3xl font-bold text-center mb-12 bg-gradient-to-r from-emerald-600 to-teal-600 bg-clip-text text-transparent">Todas las asignaturas</h2>
-				
-				<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-					{asignaturas.map((asignatura, index) => (
-						<article class={`subject-card animate-fade-in-up animate-delay-${(index % 3 + 3) * 100}`}>
-							<div class="relative">
-								<img 
-									src={asignatura.imagen} 
-									alt={`Imagen de la asignatura ${asignatura.titulo}`} 
-									class="w-full h-48 object-cover"
-								/>
-								<div class="absolute top-0 right-0 bg-gradient-to-r from-emerald-600 to-teal-600 text-white px-4 py-2 m-3 rounded-xl text-sm font-medium shadow-lg">
-									{asignatura.creditos} ECTS
-								</div>
+			<section class="mb-16 reveal">
+				<h2 class="text-2xl sm:text-3xl font-display font-semibold text-graphite-900 dark:text-white mb-8">
+					Asignaturas <span id="resultCount" class="font-mono text-graphite-400 dark:text-graphite-500 text-xl">({asignaturas.length})</span>
+				</h2>
+
+				<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="subjectGrid">
+					{asignaturas.map((asignatura) => (
+						<article
+							class="subject-card spec-card"
+							data-nivel={asignatura.nivel}
+							data-anio={asignatura.academicYear}
+							data-search={`${asignatura.titulo} ${asignatura.codigo}`.toLowerCase()}
+						>
+							<span class="spec-tick spec-tick-tl"></span>
+							<span class="spec-tick spec-tick-br"></span>
+
+							<div class="h-16 -mx-6 -mt-6 mb-6 px-6 border-b border-line dark:border-line-dark flex items-center justify-between text-signal-500 dark:text-signal-400 overflow-hidden">
+								<SignalTrace variant="eda" width={300} height={40} beats={3} class="w-2/3" />
+								<span class="shrink-0 font-mono text-xs text-graphite-500 dark:text-graphite-400">{asignatura.creditos} ECTS</span>
+							</div>
+
+							<div class="flex items-center gap-2 mb-3">
+								<span class="font-mono text-xs text-graphite-500 dark:text-graphite-400">{asignatura.codigo}</span>
 								{asignatura.destacada && (
-									<div class="absolute top-0 left-0 bg-gradient-to-r from-amber-500 to-orange-500 text-white px-3 py-1 m-3 rounded-full text-xs font-bold shadow-lg">
-										Destacada
-									</div>
+									<span class="eyebrow">Destacada</span>
 								)}
 							</div>
-							
-							<div class="p-6">
-								<div class="flex items-center mb-4 gap-2">
-									<span class="inline-block bg-emerald-100 dark:bg-emerald-900/30 text-emerald-800 dark:text-emerald-200 rounded-full px-3 py-1 text-xs font-semibold">
-										{asignatura.grado}
-									</span>
-									<span class="inline-block bg-teal-100 dark:bg-teal-900/30 text-teal-800 dark:text-teal-200 rounded-full px-3 py-1 text-xs font-semibold">
-										{asignatura.curso}° curso
-									</span>
-								</div>
-								
-								<h3 class="text-xl font-bold text-gray-900 dark:text-white mb-2 group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition-colors">
-									{asignatura.titulo}
-								</h3>
-								
-								<p class="text-gray-500 dark:text-gray-400 text-sm mb-4 font-medium">
-									{asignatura.codigo} · {asignatura.cuatrimestre}° cuatrimestre
-								</p>
-								
-								<p class="text-gray-700 dark:text-gray-300 text-sm mb-6 line-clamp-3">
-									{asignatura.descripcion}
-								</p>
-								
-								<div class="flex flex-wrap items-center justify-between mt-auto">
-									<div class="flex items-center text-gray-600 dark:text-gray-400 text-sm mb-2">
-										<svg class="w-4 h-4 mr-2 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-											<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-										</svg>
-										<span>{asignatura.horario}</span>
-									</div>
-									
-									<a href={asignatura.enlaceMateriales} target="_blank" rel="noopener noreferrer" class="material-link group">
-										Materiales
-										<svg class="ml-1 w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-											<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
-										</svg>
-									</a>
-								</div>
-							</div>
-						</article>
-					))}
-				</div>
-			</section>
-			
-			<!-- Secciones por nivel académico (ocultas por defecto) -->
-			<div id="asignaturas-grado" class="mt-16 hidden">
-				<h2 class="text-3xl font-bold text-center mb-12 bg-gradient-to-r from-emerald-600 to-teal-600 bg-clip-text text-transparent">Grado</h2>
-				
-				<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-					{asignaturasPorNivel.grado.map((asignatura, index) => (
-						<article class={`subject-card animate-fade-in-up animate-delay-${(index % 3 + 1) * 200}`}>
-							<div class="relative">
-								<img 
-									src={asignatura.imagen} 
-									alt={`Imagen de la asignatura ${asignatura.titulo}`} 
-									class="w-full h-48 object-cover"
-								/>
-								<div class="absolute top-0 right-0 bg-gradient-to-r from-emerald-600 to-teal-600 text-white px-4 py-2 m-3 rounded-xl text-sm font-medium shadow-lg">
-									{asignatura.creditos} ECTS
-								</div>
-							</div>
-							
-							<div class="p-6">
-								<h3 class="text-xl font-bold text-gray-900 dark:text-white mb-2 group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition-colors">
-									{asignatura.titulo}
-								</h3>
-								
-								<p class="text-gray-500 dark:text-gray-400 text-sm mb-4 font-medium">
-									{asignatura.codigo} · {asignatura.cuatrimestre}° cuatrimestre
-								</p>
-								
-								<p class="text-gray-700 dark:text-gray-300 text-sm mb-4 line-clamp-3">
-									{asignatura.descripcion}
-								</p>
-							</div>
-						</article>
-					))}
-				</div>
-			</div>
-			
-			<!-- Sección de máster -->
-			<div id="asignaturas-master" class="mt-16 hidden">
-				<h2 class="text-3xl font-bold text-center mb-12 bg-gradient-to-r from-emerald-600 to-teal-600 bg-clip-text text-transparent">Máster</h2>
-				
-				<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-					{asignaturasPorNivel.master.map((asignatura, index) => (
-						<article class={`subject-card animate-fade-in-up animate-delay-${(index % 3 + 1) * 200}`}>
-							<div class="relative">
-								<img 
-									src={asignatura.imagen} 
-									alt={`Imagen de la asignatura ${asignatura.titulo}`} 
-									class="w-full h-48 object-cover"
-								/>
-								<div class="absolute top-0 right-0 bg-gradient-to-r from-emerald-600 to-teal-600 text-white px-4 py-2 m-3 rounded-xl text-sm font-medium shadow-lg">
-									{asignatura.creditos} ECTS
-								</div>
-							</div>
-							
-							<div class="p-6">
-								<h3 class="text-xl font-bold text-gray-900 dark:text-white mb-2 group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition-colors">
-									{asignatura.titulo}
-								</h3>
-								
-								<p class="text-gray-700 dark:text-gray-300 text-sm mb-4 line-clamp-3">
-									{asignatura.descripcion}
-								</p>
-							</div>
-						</article>
-					))}
-				</div>
-			</div>
 
-			<!-- Sección de materiales complementarios -->
-			<section class="mt-20 animate-fade-in-up animate-delay-600">
-				<div class="section-card p-8">
-					<h2 class="text-3xl font-bold text-center mb-8 bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
-						Materiales Complementarios
-					</h2>
-					
-					<p class="text-lg text-gray-700 dark:text-gray-300 mb-8 text-center max-w-3xl mx-auto">
-						Además de las asignaturas oficiales, pongo a disposición de los estudiantes materiales complementarios
-						y recursos adicionales que pueden ser útiles para profundizar en los temas tratados en clase.
-					</p>
-					
-					<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-						<div class="resource-card group">
-							<div class="flex-shrink-0 bg-gradient-to-br from-blue-500 to-blue-600 p-4 rounded-xl mr-6 group-hover:scale-110 transition-transform">
-								<svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-									<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
-								</svg>
+							<h3 class="text-lg font-semibold text-graphite-900 dark:text-white mb-2">
+								{asignatura.titulo}
+							</h3>
+
+							<p class="text-graphite-500 dark:text-graphite-400 text-xs font-mono mb-4">
+								{asignatura.curso} curso · {asignatura.cuatrimestre} cuatrimestre
+							</p>
+
+							<p class="text-graphite-600 dark:text-graphite-300 text-sm mb-6 line-clamp-3">
+								{asignatura.descripcion}
+							</p>
+
+							<div class="flex items-center justify-between pt-4 border-t border-line dark:border-line-dark">
+								<span class="text-xs text-graphite-500 dark:text-graphite-400">{asignatura.horario}</span>
+								<a href={asignatura.enlaceMateriales} target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 text-sm font-medium text-signal-600 dark:text-signal-400 hover:text-signal-700 dark:hover:text-signal-300">
+									Materiales
+									<svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+										<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+									</svg>
+								</a>
 							</div>
-							<div>
-								<h3 class="text-xl font-semibold text-gray-900 dark:text-white mb-2 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">Guías de estudio</h3>
-								<p class="text-gray-600 dark:text-gray-400">Material complementario para preparar exámenes</p>
+						</article>
+					))}
+				</div>
+
+				<p id="noResults" class="hidden text-center py-16 text-graphite-500 dark:text-graphite-400">
+					No hay asignaturas que coincidan con los filtros.
+				</p>
+			</section>
+
+			<!-- Materiales complementarios -->
+			<section class="mb-16 reveal">
+				<div class="spec-card p-6 sm:p-8">
+					<span class="spec-tick spec-tick-tl"></span>
+					<span class="spec-tick spec-tick-br"></span>
+					<div class="text-center mb-10">
+						<p class="eyebrow mb-2">Recursos</p>
+						<h2 class="text-2xl sm:text-3xl font-display font-semibold text-graphite-900 dark:text-white mb-3">
+							Materiales complementarios
+						</h2>
+						<p class="text-graphite-600 dark:text-graphite-300 max-w-2xl mx-auto">
+							Además de las asignaturas oficiales, pongo a disposición de los estudiantes materiales
+							complementarios y recursos adicionales para profundizar en los temas tratados en clase.
+						</p>
+					</div>
+
+					<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+						{recursos.map((recurso) => (
+							<div class="flex items-start gap-4 p-4 border border-line dark:border-line-dark rounded-md">
+								<div class="w-10 h-10 shrink-0 border border-line dark:border-line-dark rounded-md flex items-center justify-center text-signal-500 dark:text-signal-400">
+									<svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+										<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d={recurso.icon}></path>
+									</svg>
+								</div>
+								<div>
+									<h3 class="text-base font-semibold text-graphite-900 dark:text-white mb-1">{recurso.titulo}</h3>
+									<p class="text-sm text-graphite-500 dark:text-graphite-400">{recurso.desc}</p>
+								</div>
 							</div>
-						</div>
-						
-						<div class="resource-card group">
-							<div class="flex-shrink-0 bg-gradient-to-br from-green-500 to-green-600 p-4 rounded-xl mr-6 group-hover:scale-110 transition-transform">
-								<svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-									<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
-								</svg>
-							</div>
-							<div>
-								<h3 class="text-xl font-semibold text-gray-900 dark:text-white mb-2 group-hover:text-green-600 dark:group-hover:text-green-400 transition-colors">Proyectos de ejemplo</h3>
-								<p class="text-gray-600 dark:text-gray-400">Ejemplos prácticos para inspirar tus propios proyectos</p>
-							</div>
-						</div>
-						
-						<div class="resource-card group">
-							<div class="flex-shrink-0 bg-gradient-to-br from-purple-500 to-purple-600 p-4 rounded-xl mr-6 group-hover:scale-110 transition-transform">
-								<svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-									<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"></path>
-								</svg>
-							</div>
-							<div>
-								<h3 class="text-xl font-semibold text-gray-900 dark:text-white mb-2 group-hover:text-purple-600 dark:group-hover:text-purple-400 transition-colors">Videotutoriales</h3>
-								<p class="text-gray-600 dark:text-gray-400">Explicaciones paso a paso en formato vídeo</p>
-							</div>
-						</div>
-						
-						<div class="resource-card group">
-							<div class="flex-shrink-0 bg-gradient-to-br from-amber-500 to-orange-500 p-4 rounded-xl mr-6 group-hover:scale-110 transition-transform">
-								<svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-									<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"></path>
-								</svg>
-							</div>
-							<div>
-								<h3 class="text-xl font-semibold text-gray-900 dark:text-white mb-2 group-hover:text-amber-600 dark:group-hover:text-amber-400 transition-colors">Notebooks y ejercicios</h3>
-								<p class="text-gray-600 dark:text-gray-400">Cuadernos interactivos y ejercicios prácticos</p>
-							</div>
-						</div>
+						))}
 					</div>
 				</div>
 			</section>
-			
-			<!-- Sección de tutoría y atención al estudiante -->
-			<section class="mt-16 animate-fade-in-up animate-delay-700">
-				<div class="section-card p-8">
-					<h2 class="text-3xl font-bold text-center mb-8 bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent">
-						Tutoría y Atención al Estudiante
+
+			<!-- Tutoría -->
+			<section class="mb-16 reveal">
+				<div class="spec-card p-6 sm:p-8">
+					<span class="spec-tick spec-tick-tl"></span>
+					<span class="spec-tick spec-tick-br"></span>
+					<p class="eyebrow mb-2 text-center">Atención al estudiante</p>
+					<h2 class="text-2xl sm:text-3xl font-display font-semibold text-graphite-900 dark:text-white mb-10 text-center">
+						Tutoría
 					</h2>
-					
-					<div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
-						<div>
-							<h3 class="text-2xl font-semibold text-gray-900 dark:text-white mb-8 flex items-center">
-								<div class="w-10 h-10 bg-gradient-to-br from-emerald-500 to-teal-600 rounded-lg flex items-center justify-center mr-4">
-									<svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-										<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+
+					<div class="grid grid-cols-1 lg:grid-cols-2 gap-10">
+						<div class="space-y-5">
+							<div class="flex items-start gap-4">
+								<div class="w-10 h-10 shrink-0 border border-line dark:border-line-dark rounded-md flex items-center justify-center text-signal-500 dark:text-signal-400">
+									<svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+										<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
 									</svg>
 								</div>
-								Horario de tutorías
-							</h3>
-							
-							<div class="space-y-6">
-								<div class="tutoring-card">
-									<div class="flex-shrink-0 h-12 w-12 rounded-xl bg-gradient-to-br from-blue-500 to-blue-600 flex items-center justify-center mr-6">
-										<svg class="h-6 w-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-											<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-										</svg>
-									</div>
-									<div>
-										<h4 class="text-lg font-semibold text-gray-900 dark:text-white mb-1">Primer cuatrimestre</h4>
-										<p class="text-gray-600 dark:text-gray-400">Lunes y miércoles de 12:00 a 14:00</p>
-									</div>
+								<div>
+									<h4 class="font-semibold text-graphite-900 dark:text-white mb-1">Primer cuatrimestre</h4>
+									<p class="text-sm text-graphite-500 dark:text-graphite-400">Lunes y miércoles de 12:00 a 14:00</p>
 								</div>
-								
-								<div class="tutoring-card">
-									<div class="flex-shrink-0 h-12 w-12 rounded-xl bg-gradient-to-br from-indigo-500 to-indigo-600 flex items-center justify-center mr-6">
-										<svg class="h-6 w-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-											<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-										</svg>
-									</div>
-									<div>
-										<h4 class="text-lg font-semibold text-gray-900 dark:text-white mb-1">Segundo cuatrimestre</h4>
-										<p class="text-gray-600 dark:text-gray-400">Martes y jueves de 10:00 a 12:00</p>
-									</div>
+							</div>
+							<div class="flex items-start gap-4">
+								<div class="w-10 h-10 shrink-0 border border-line dark:border-line-dark rounded-md flex items-center justify-center text-signal-500 dark:text-signal-400">
+									<svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+										<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+									</svg>
 								</div>
-								
-								<div class="tutoring-card">
-									<div class="flex-shrink-0 h-12 w-12 rounded-xl bg-gradient-to-br from-purple-500 to-purple-600 flex items-center justify-center mr-6">
-										<svg class="h-6 w-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-											<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
-											<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
-										</svg>
-									</div>
-									<div>
-										<h4 class="text-lg font-semibold text-gray-900 dark:text-white mb-1">Ubicación</h4>
-										<p class="text-gray-600 dark:text-gray-400">Despacho 2.13, Edificio Politécnico</p>
-									</div>
+								<div>
+									<h4 class="font-semibold text-graphite-900 dark:text-white mb-1">Segundo cuatrimestre</h4>
+									<p class="text-sm text-graphite-500 dark:text-graphite-400">Martes y jueves de 10:00 a 12:00</p>
+								</div>
+							</div>
+							<div class="flex items-start gap-4">
+								<div class="w-10 h-10 shrink-0 border border-line dark:border-line-dark rounded-md flex items-center justify-center text-signal-500 dark:text-signal-400">
+									<svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+										<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
+										<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
+									</svg>
+								</div>
+								<div>
+									<h4 class="font-semibold text-graphite-900 dark:text-white mb-1">Ubicación</h4>
+									<p class="text-sm text-graphite-500 dark:text-graphite-400">Despacho 2.13, Edificio Politécnico</p>
 								</div>
 							</div>
 						</div>
-						
+
 						<div class="flex flex-col justify-center">
-							<h3 class="text-2xl font-semibold text-gray-900 dark:text-white mb-6">Solicitar tutoría</h3>
-							
-							<p class="text-gray-700 dark:text-gray-300 mb-8 text-lg">
+							<h3 class="text-lg font-semibold text-graphite-900 dark:text-white mb-3">Solicitar tutoría</h3>
+							<p class="text-graphite-600 dark:text-graphite-300 mb-6">
 								Puedes concertar una tutoría personalizada mediante el siguiente formulario.
 								Indícame el motivo de la consulta y tu disponibilidad horaria.
 							</p>
-							
-							<a href="/contacto?asunto=tutoria" class="btn-enhanced bg-gradient-to-r from-emerald-600 to-teal-600 text-white px-8 py-4 rounded-xl font-semibold hover:from-emerald-700 hover:to-teal-700 transform hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl inline-flex items-center justify-center">
-								Solicitar tutoría
-								<svg class="ml-3 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-									<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
-								</svg>
-							</a>
+							<a href="/contacto?asunto=tutoria" class="btn btn-primary self-start">Solicitar tutoría →</a>
 						</div>
 					</div>
 				</div>
 			</section>
 
-			<!-- Call to Action Final -->
-			<section class="text-center mt-16 animate-fade-in-up animate-delay-800">
-				<div class="section-card p-12 bg-gradient-to-br from-emerald-50 to-teal-50 dark:from-emerald-900/20 dark:to-teal-900/20">
-					<h2 class="text-3xl font-bold text-gray-900 dark:text-white mb-6">
+			<!-- Call to action -->
+			<section class="text-center reveal">
+				<div class="spec-card p-8 sm:p-12">
+					<span class="spec-tick spec-tick-tl"></span>
+					<span class="spec-tick spec-tick-br"></span>
+					<h2 class="text-2xl sm:text-3xl font-display font-semibold text-graphite-900 dark:text-white mb-4">
 						¿Quieres saber más sobre mis asignaturas?
 					</h2>
-					<p class="text-lg text-gray-700 dark:text-gray-300 mb-8 max-w-2xl mx-auto">
-						Si tienes alguna pregunta sobre el contenido de las asignaturas, metodología de enseñanza 
+					<p class="text-graphite-600 dark:text-graphite-300 mb-8 max-w-2xl mx-auto">
+						Si tienes alguna pregunta sobre el contenido de las asignaturas, metodología de enseñanza
 						o cualquier aspecto relacionado con mi labor docente, no dudes en contactarme.
 					</p>
-					<div class="flex flex-col sm:flex-row gap-4 justify-center">
-						<a href="/contacto" class="btn-enhanced bg-gradient-to-r from-emerald-600 to-teal-600 text-white px-8 py-4 rounded-xl font-semibold hover:from-emerald-700 hover:to-teal-700 transform hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl">
-							Contactar
-						</a>
-						<a href="/sobre-mi" class="btn-enhanced border-2 border-emerald-600 text-emerald-600 dark:text-emerald-400 dark:border-emerald-400 px-8 py-4 rounded-xl font-semibold hover:bg-emerald-600 hover:text-white dark:hover:bg-emerald-400 dark:hover:text-gray-900 transform hover:scale-105 transition-all duration-300">
-							Conoce más sobre mí
-						</a>
+					<div class="flex flex-col sm:flex-row gap-3 justify-center">
+						<a href="/contacto" class="btn btn-primary">Contactar</a>
+						<a href="/sobre-mi" class="btn btn-outline">Conoce más sobre mí</a>
 					</div>
 				</div>
 			</section>
 		</div>
 	</main>
 
-	<!-- JavaScript para la funcionalidad de filtrado -->
 	<script>
-		// Obtener referencias a los elementos de filtrado
-		const selectNivel = document.getElementById('nivel') as HTMLSelectElement;
-		const selectAnio = document.getElementById('anioAcademico') as HTMLSelectElement;
-		const inputBusqueda = document.getElementById('busqueda') as HTMLInputElement;
-		
-		// Obtener referencias a las secciones
-		const seccionTodas = document.getElementById('todas-asignaturas');
-		const seccionGrado = document.getElementById('asignaturas-grado');
-		const seccionMaster = document.getElementById('asignaturas-master');
-		
-		// Función para manejar el cambio de nivel
-		selectNivel?.addEventListener('change', function() {
-			const nivel = this.value;
-			
-			// Mostrar/ocultar secciones según el nivel seleccionado
-			if (nivel === 'todos') {
-				seccionTodas?.classList.remove('hidden');
-				seccionGrado?.classList.add('hidden');
-				seccionMaster?.classList.add('hidden');
-			} else if (nivel === 'grado') {
-				seccionTodas?.classList.add('hidden');
-				seccionGrado?.classList.remove('hidden');
-				seccionMaster?.classList.add('hidden');
-			} else if (nivel === 'master') {
-				seccionTodas?.classList.add('hidden');
-				seccionGrado?.classList.add('hidden');
-				seccionMaster?.classList.remove('hidden');
+		document.addEventListener('DOMContentLoaded', () => {
+			const selectNivel = document.getElementById('nivel') as HTMLSelectElement;
+			const selectAnio = document.getElementById('anioAcademico') as HTMLSelectElement;
+			const inputBusqueda = document.getElementById('busqueda') as HTMLInputElement;
+			const cards = document.querySelectorAll<HTMLElement>('.subject-card');
+			const noResults = document.getElementById('noResults');
+			const resultCount = document.getElementById('resultCount');
+
+			function applyFilters() {
+				const nivel = selectNivel?.value || 'todos';
+				const anio = selectAnio?.value || 'todos';
+				const busqueda = (inputBusqueda?.value || '').toLowerCase().trim();
+
+				let visible = 0;
+				cards.forEach((card) => {
+					const matchNivel = nivel === 'todos' || card.dataset.nivel === nivel;
+					const matchAnio = anio === 'todos' || card.dataset.anio === anio;
+					const matchBusqueda = !busqueda || (card.dataset.search || '').includes(busqueda);
+					const show = matchNivel && matchAnio && matchBusqueda;
+					card.classList.toggle('hidden', !show);
+					if (show) visible++;
+				});
+
+				if (resultCount) resultCount.textContent = `(${visible})`;
+				noResults?.classList.toggle('hidden', visible !== 0);
 			}
-		});
-		
-		// Función para filtrar por búsqueda
-		inputBusqueda?.addEventListener('input', function() {
-			const busqueda = this.value.toLowerCase();
-			const tarjetas = document.querySelectorAll('#todas-asignaturas article');
-			
-			tarjetas.forEach(tarjeta => {
-				const titulo = tarjeta.querySelector('h3')?.textContent?.toLowerCase() || '';
-				const codigo = tarjeta.querySelector('p')?.textContent?.toLowerCase() || '';
-				
-				if (titulo.includes(busqueda) || codigo.includes(busqueda)) {
-					(tarjeta as HTMLElement).style.display = '';
-				} else {
-					(tarjeta as HTMLElement).style.display = 'none';
-				}
-			});
+
+			selectNivel?.addEventListener('change', applyFilters);
+			selectAnio?.addEventListener('change', applyFilters);
+			inputBusqueda?.addEventListener('input', applyFilters);
 		});
 	</script>
 </Layout>
