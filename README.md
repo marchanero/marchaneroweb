@@ -85,7 +85,7 @@ Para más detalles, consulta [docs/GOOGLE-SCHOLAR-INTEGRATION.md](./docs/GOOGLE-
 
 El contenido del sitio (proyectos, asignaturas, textos de la home) vive en archivos Markdown/JSON dentro de `content/` y se puede editar de dos formas:
 
-1. **Desde el CMS** en `https://marchanero.netlify.app/admin` (Sveltia CMS, requiere activación única de Netlify Identity + Git Gateway)
+1. **Desde el CMS** en `https://marchanero.netlify.app/admin` (Sveltia CMS; login con token de GitHub, sin configuración adicional)
 2. **Directamente en GitHub**: editar los archivos de `content/` y hacer commit
 
 En ambos casos, el cambio dispara automáticamente un nuevo despliegue. Guía completa en [docs/CMS.md](./docs/CMS.md).

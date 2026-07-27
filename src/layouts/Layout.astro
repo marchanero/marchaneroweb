@@ -97,9 +97,6 @@ const navItems = [
 				document.documentElement.classList.remove('dark');
 			}
 		</script>
-
-		<!-- Netlify Identity: procesa invitaciones y login del CMS (/admin) -->
-		<script is:inline src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
 	</head>
 	<body class="bg-paper dark:bg-ink text-graphite-700 dark:text-graphite-100 min-h-screen flex flex-col">
 		<header class="bg-paper/95 dark:bg-ink/95 backdrop-blur-sm border-b border-line dark:border-line-dark sticky top-0 z-50">
@@ -280,19 +277,6 @@ const navItems = [
 
 				document.querySelectorAll('.reveal, .signal-trace').forEach((el) => observer.observe(el));
 			});
-		</script>
-
-		<script is:inline>
-			// Redirige al CMS tras iniciar sesión con Netlify Identity
-			if (window.netlifyIdentity) {
-				window.netlifyIdentity.on('init', function (user) {
-					if (!user) {
-						window.netlifyIdentity.on('login', function () {
-							document.location.href = '/admin/';
-						});
-					}
-				});
-			}
 		</script>
 	</body>
 </html>

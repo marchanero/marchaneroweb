@@ -1,8 +1,9 @@
 # Configuración de Sveltia CMS
-# Documentación: https://github.com/sveltia/sveltia-cms
+# Documentación: https://sveltiacms.app/en/docs
 
 backend:
-  name: git-gateway
+  name: github
+  repo: marchanero/marchaneroweb
   branch: main
   commit_messages:
     create: 'Create {{collection}} "{{slug}}" via CMS'

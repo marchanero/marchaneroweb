@@ -12,28 +12,19 @@ El sitio incluye un panel de administración ([Sveltia CMS](https://github.com/s
 
 Las **publicaciones y métricas** no se editan aquí: se actualizan solas desde Google Scholar (ver `docs/GOOGLE-SCHOLAR-INTEGRATION.md`).
 
-## Activación (una sola vez, ~5 minutos)
+## Acceso (sin configuración en el servidor)
 
-El CMS usa **Netlify Identity** para el login y **Git Gateway** para commitear al repo. Se activan desde el dashboard de Netlify:
+El CMS usa el **backend de GitHub**: los cambios se commitean al repo directamente a través de la API de GitHub. **No hay que activar nada en Netlify ni en GitHub** — solo necesitas un token de acceso personal (PAT) la primera vez que entres:
 
-1. **Activar Identity**
-   - Netlify → tu sitio → **Site configuration** → **Identity** → **Enable Identity**
+1. Ve a `https://marchanero.netlify.app/admin`
+2. Pulsa **"Sign In with Token"**
+3. El diálogo incluye un enlace a la página de GitHub para crear el token **con los permisos ya preseleccionados** (contenido del repo: lectura y escritura)
+4. Genera el token, cópialo y pégalo en el diálogo
+5. Ya está: edita, guarda y el cambio se commitea y despliega solo
 
-2. **Restringir registro (recomendado)**
-   - En **Identity** → **Settings and usage** → **Registration preferences** → selecciona **Invite only**
+El token se guarda en el `localStorage` de tu navegador (no sale de tu equipo). Si lo borras o caduca, simplemente repite el proceso.
 
-3. **Activar Git Gateway**
-   - En **Identity** → **Services** → **Git Gateway** → **Enable Git Gateway**
-   - Esto permite que el CMS escriba en el repositorio de GitHub en tu nombre
-
-4. **Invitarte a ti mismo**
-   - En la pestaña **Identity** (lista de usuarios) → **Invite users** → introduce tu email
-   - Recibirás un correo: ábrelo y acepta la invitación (te llevará a la web para crear tu contraseña)
-
-5. **Entrar al CMS**
-   - Ve a `https://marchanero.netlify.app/admin`
-   - Inicia sesión con tu email y contraseña de Identity
-   - Edita, guarda ("Save") y el cambio se despliega solo
+> **Nota**: si en el futuro editan personas no técnicas o varios usuarios, se puede montar el flujo OAuth con [Sveltia CMS Authenticator](https://github.com/sveltia/sveltia-cms-auth) (Cloudflare Workers) para tener botón de "Sign in with GitHub". Para uso personal, el PAT es suficiente.
 
 ## Alternativa sin CMS: editar Markdown directamente
 
@@ -48,8 +39,8 @@ En ambos casos el despliegue es automático tras el push a `main`. El CMS solo a
 
 ```
 public/admin/
-├── index.html    # Carga Sveltia CMS + Netlify Identity
-└── config.yml    # Definición de colecciones (campos editables)
+├── index.html    # Carga Sveltia CMS desde CDN
+└── config.yml    # Backend GitHub + definición de colecciones
 
 content/
 ├── home.json           # Textos de la home
@@ -76,6 +67,6 @@ Las imágenes subidas desde el CMS se guardan en `public/images/uploads/` y se s
 
 ## Solución de problemas
 
-- **"Error al iniciar sesión"** en `/admin`: Git Gateway no está activado (paso 3) o el usuario no está invitado (paso 4).
-- **El correo de invitación lleva a una página en blanco**: asegúrate de que la build desplegada incluye el widget de Identity (está en `Layout.astro`).
+- **El token no funciona**: verifica que se creó con permisos de contenido (lectura y escritura) sobre el repo `marchanero/marchaneroweb`. Si es un *fine-grained token*, debe incluir ese repositorio explícitamente.
 - **Los cambios no aparecen**: revisa en GitHub que el CMS creó el commit, y en Netlify que el deploy terminó. Recuerda que el navegador puede tener la página cacheada (Ctrl/Cmd+Shift+R).
+- **Errores de CSP en la consola**: las cabeceras de `/admin` están en `netlify.toml` siguiendo la [guía oficial de Sveltia](https://sveltiacms.app/en/docs/security).
