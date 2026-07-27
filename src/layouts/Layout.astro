@@ -259,6 +259,9 @@ const navItems = [
 				}
 
 				// Revelado suave al entrar en viewport (elementos .reveal y trazas .signal-trace)
+				// threshold: 0 — revela en cuanto entre cualquier parte del elemento.
+				// Un threshold > 0 impide revelar secciones más altas que el viewport
+				// (p. ej. la lista completa de publicaciones, de ~10.000 px).
 				const observer = new IntersectionObserver(
 					(entries) => {
 						entries.forEach((entry) => {
@@ -272,7 +275,7 @@ const navItems = [
 							}
 						});
 					},
-					{ threshold: 0.15, rootMargin: '0px 0px -10% 0px' }
+					{ threshold: 0, rootMargin: '0px 0px -10% 0px' }
 				);
 
 				document.querySelectorAll('.reveal, .signal-trace').forEach((el) => observer.observe(el));
