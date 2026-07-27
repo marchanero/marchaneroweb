@@ -372,16 +372,16 @@ const presupuestoTotal = proyectos.reduce((sum, p) => {
 <Layout title="Proyectos de Investigación - Dr. Roberto Sánchez Reolid">
 	<main class="min-h-screen bg-white dark:bg-gray-900 transition-colors duration-300">
 		<!-- Header mejorado -->
-		<header class="relative bg-gradient-to-br from-purple-600 via-blue-700 to-indigo-800 dark:from-purple-800 dark:via-blue-900 dark:to-indigo-900 text-white py-8 sm:py-12 lg:py-20 overflow-hidden hero-gradient floating-particles">
+		<header class="relative bg-gradient-to-br from-indigo-800 via-indigo-700 to-blue-700 dark:from-indigo-900 dark:via-indigo-800 dark:to-blue-900 text-white py-8 sm:py-12 lg:py-20 overflow-hidden">
 			<!-- Fondo animado -->
-			<div class="absolute inset-0 bg-gradient-to-br from-purple-50/10 via-blue-50/10 to-indigo-50/10"></div>
+			<div class="absolute inset-0 bg-gradient-to-br from-indigo-50/5 to-transparent"></div>
 			
 			<div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 				<div class="animate-fade-in-up">
-					<h1 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-4 sm:mb-6 bg-gradient-to-r from-white via-purple-100 to-blue-100 bg-clip-text text-transparent">
+					<h1 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-4 sm:mb-6 bg-gradient-to-r from-white to-indigo-100 bg-clip-text text-transparent">
 						🚀 Proyectos de Investigación
 					</h1>
-					<p class="text-lg sm:text-xl md:text-2xl text-purple-100 dark:text-purple-200 max-w-3xl leading-relaxed mb-4 sm:mb-6">
+					<p class="text-lg sm:text-xl md:text-2xl text-indigo-100 dark:text-indigo-200 max-w-3xl leading-relaxed mb-4 sm:mb-6">
 						Desarrollando tecnologías innovadoras para resolver los desafíos del futuro en 
 						<span class="font-semibold text-white">IA</span> y 
 						<span class="font-semibold text-white">Sistemas Distribuidos</span>
@@ -410,7 +410,7 @@ const presupuestoTotal = proyectos.reduce((sum, p) => {
 			</div>
 		</header>
 
-		<div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12 lg:py-16 floating-particles-subtle">
+		<div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12 lg:py-16">
 			
 			<!-- Proyectos destacados -->
 			<section class="mb-8 sm:mb-12 lg:mb-16">
@@ -476,7 +476,7 @@ const presupuestoTotal = proyectos.reduce((sum, p) => {
 									</div>
 									<div class="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2 sm:h-2.5">
 										<div 
-											class="bg-gradient-to-r from-blue-500 to-purple-600 h-2 sm:h-2.5 rounded-full progress-bar"
+											class="bg-gradient-to-r from-indigo-500 to-blue-600 h-2 sm:h-2.5 rounded-full progress-bar"
 											style={`--progress-width: ${proyecto.progreso}%`}
 										></div>
 									</div>
@@ -586,7 +586,7 @@ const presupuestoTotal = proyectos.reduce((sum, p) => {
 								<div class="mb-4">
 									<div class="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2">
 										<div 
-											class="bg-gradient-to-r from-blue-500 to-purple-600 h-2 rounded-full transition-all duration-1000 ease-out"
+											class="bg-gradient-to-r from-indigo-500 to-blue-600 h-2 rounded-full transition-all duration-1000 ease-out"
 											style={`width: ${proyecto.progreso}%`}
 										></div>
 									</div>
@@ -611,7 +611,7 @@ const presupuestoTotal = proyectos.reduce((sum, p) => {
 								<div class="flex gap-3">
 									<a 
 										href={proyecto.url} 
-										class="flex-1 bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-white py-3 px-4 rounded-lg text-center text-sm font-medium transition-all duration-200 transform hover:scale-105"
+										class="flex-1 bg-gradient-to-r from-indigo-500 to-blue-600 hover:from-indigo-600 hover:to-blue-700 text-white py-3 px-4 rounded-lg text-center text-sm font-medium transition-all duration-200"
 									>
 										Ver detalles completos
 									</a>

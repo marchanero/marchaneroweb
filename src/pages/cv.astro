@@ -228,7 +228,7 @@ const reconocimientos = [
   </style>
 
   <!-- Header mejorado con gradientes -->
-  <header class="relative bg-gradient-to-br from-blue-600 via-indigo-700 to-purple-800 text-white py-20 px-4 floating-particles">
+  <header class="relative bg-gradient-to-br from-indigo-800 via-indigo-700 to-blue-700 text-white py-20 px-4">
     <div class="max-w-5xl mx-auto text-center relative z-10">
       <div class="animate-fade-in-up">
         <div class="inline-flex items-center justify-center w-20 h-20 bg-white/10 backdrop-blur-sm rounded-2xl mb-6 animate-float">
@@ -290,8 +290,8 @@ const reconocimientos = [
       <!-- Experiencia Docente -->
       <section class="max-w-5xl mx-auto px-4 mb-16">
         <div class="text-center mb-10 animate-fade-in-up">
-          <h2 class="text-3xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-indigo-600 to-purple-600 dark:from-indigo-400 dark:to-purple-400 inline-block">Experiencia Docente</h2>
-          <div class="w-20 h-1 bg-gradient-to-r from-indigo-600 to-purple-600 mx-auto mt-2"></div>
+          <h2 class="text-3xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-indigo-600 to-blue-600 dark:from-indigo-400 dark:to-blue-400 inline-block">Experiencia Docente</h2>
+          <div class="w-20 h-1 bg-gradient-to-r from-indigo-600 to-blue-600 mx-auto mt-2"></div>
         </div>
         
         <div class="grid md:grid-cols-1 gap-6">
@@ -326,8 +326,8 @@ const reconocimientos = [
     <!-- Experiencia Investigadora -->
     <section class="max-w-5xl mx-auto px-4 py-16">
       <div class="text-center mb-10 animate-fade-in-up">
-        <h2 class="text-3xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-purple-600 to-pink-600 dark:from-purple-400 dark:to-pink-400 inline-block">Experiencia Investigadora</h2>
-        <div class="w-20 h-1 bg-gradient-to-r from-purple-600 to-pink-600 mx-auto mt-2"></div>
+        <h2 class="text-3xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-indigo-700 to-indigo-500 dark:from-indigo-400 dark:to-blue-400 inline-block">Experiencia Investigadora</h2>
+        <div class="w-20 h-1 bg-gradient-to-r from-indigo-700 to-indigo-500 mx-auto mt-2"></div>
       </div>
       
       <div class="grid md:grid-cols-1 gap-6">
@@ -335,14 +335,14 @@ const reconocimientos = [
           <div class={`bg-white dark:bg-gray-800 rounded-xl shadow-lg p-6 section-card animate-fade-in-left animate-delay-${(index+1)*100}`}>
             <div class="flex items-start">
               <div class="flex-shrink-0 bg-purple-100 dark:bg-purple-900/30 p-3 rounded-lg">
-                <svg class="w-6 h-6 text-purple-600 dark:text-purple-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <svg class="w-6 h-6 text-indigo-600 dark:text-indigo-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
                   <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
                 </svg>
               </div>
               <div class="ml-4">
                 <h3 class="text-xl font-semibold text-gray-900 dark:text-white">{item.proyecto}</h3>
                 <div class="flex items-center mt-1">
-                  <span class="text-purple-600 dark:text-purple-400">{item.puesto}</span>
+                  <span class="text-indigo-600 dark:text-indigo-400">{item.puesto}</span>
                   <span class="mx-2 text-gray-400">•</span>
                   <span class="text-gray-500 dark:text-gray-400">{item.entidad}</span>
                 </div>
@@ -359,8 +359,8 @@ const reconocimientos = [
       <!-- Estancias de Investigación -->
       <section class="max-w-5xl mx-auto px-4 mb-16">
         <div class="text-center mb-10 animate-fade-in-up">
-          <h2 class="text-3xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-cyan-600 to-blue-600 dark:from-cyan-400 dark:to-blue-400 inline-block">Estancias de Investigación</h2>
-          <div class="w-20 h-1 bg-gradient-to-r from-cyan-600 to-blue-600 mx-auto mt-2"></div>
+          <h2 class="text-3xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-indigo-600 dark:from-blue-400 dark:to-indigo-400 inline-block">Estancias de Investigación</h2>
+          <div class="w-20 h-1 bg-gradient-to-r from-blue-600 to-indigo-600 mx-auto mt-2"></div>
         </div>
         
         <div class="grid md:grid-cols-1 gap-6">
@@ -427,13 +427,13 @@ const reconocimientos = [
         <h2 class="text-3xl font-bold mb-4 text-gray-900 dark:text-white">¿Interesado en colaborar?</h2>
         <p class="text-xl text-gray-700 dark:text-gray-300 mb-8">Estoy disponible para proyectos de investigación, consultoría o charlas</p>
         <div class="flex flex-col sm:flex-row justify-center gap-4">
-          <a href="/files/CV_RobertoSanchezReolid.pdf" class="bg-purple-600 hover:bg-purple-700 text-white px-6 py-3 rounded-lg font-medium transition-colors duration-200 flex items-center">
+          <a href="/files/CV_RobertoSanchezReolid.pdf" class="bg-indigo-600 hover:bg-indigo-700 text-white px-6 py-3 rounded-lg font-medium transition-colors duration-200 flex items-center">
             <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path>
             </svg>
             Descargar CV completo
           </a>
-          <a href="/contacto" class="bg-transparent border border-purple-600 text-purple-600 hover:bg-purple-50 px-6 py-3 rounded-lg font-medium transition-colors duration-200">
+          <a href="/contacto" class="bg-transparent border border-indigo-600 text-indigo-600 hover:bg-indigo-50 px-6 py-3 rounded-lg font-medium transition-colors duration-200">
             Contactar
           </a>
         </div>
