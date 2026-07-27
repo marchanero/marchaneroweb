@@ -333,10 +333,10 @@ describe('Integración y Funcionalidad', () => {
     it('verifica que los colores de las métricas son consistentes', () => {
       const indexPath = path.join(projectRoot, 'src', 'pages', 'index.astro');
       const indexContent = fs.readFileSync(indexPath, 'utf8');
-      
-      // Verificar colores diferenciados para cada métrica
+
+      // Verificar colores diferenciados para cada métrica (paleta indigo/blue/emerald/orange)
+      expect(indexContent).toContain('text-indigo-600 dark:text-indigo-400');
       expect(indexContent).toContain('text-blue-600 dark:text-blue-400');
-      expect(indexContent).toContain('text-purple-600 dark:text-purple-400');
       expect(indexContent).toContain('text-emerald-600 dark:text-emerald-400');
       expect(indexContent).toContain('text-orange-600 dark:text-orange-400');
     });
