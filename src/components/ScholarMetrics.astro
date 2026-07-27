@@ -75,6 +75,13 @@ const citationsPerYear: number[] = (metricsWithGraph.citationsPerYear || [])
 const citationTrend = citationsPerYear.length >= 2
   ? calculateGrowthTrend(citationsPerYear)
   : null;
+
+// Datos para la gráfica de evolución de citas por año
+const citationsGraph = metricsWithGraph.citationsPerYear || [];
+const maxCitations = Math.max(...citationsGraph.map((e) => e.citations), 1);
+const peakCitationYear = citationsGraph.find((e) => e.citations === maxCitations)?.year;
+const citationsMinYear = citationsGraph.length > 0 ? Math.min(...citationsGraph.map((e) => e.year)) : null;
+const citationsMaxYear = citationsGraph.length > 0 ? Math.max(...citationsGraph.map((e) => e.year)) : null;
 ---
 
 <div class:list={['spec-card h-full flex flex-col', compact ? 'p-6' : 'p-8']}>
@@ -135,32 +142,73 @@ const citationTrend = citationsPerYear.length >= 2
 
   {!compact && (
     <div class="mt-6 pt-6 border-t border-line dark:border-line-dark flex-grow">
-      <p class="eyebrow mb-3">Publicaciones por año · {minYear}–{maxYear}</p>
+      <div class:list={['grid gap-8', citationsGraph.length > 0 ? 'sm:grid-cols-2' : 'grid-cols-1']}>
+        <!-- Publicaciones por año -->
+        <div>
+          <p class="eyebrow mb-3">Publicaciones por año · {minYear}–{maxYear}</p>
 
-      <div class="flex items-end gap-1 h-20">
-        {yearData.map(({ year, publications }) => {
-          const height = maxPublications > 0
-            ? Math.max((publications / maxPublications) * 100, publications > 0 ? 8 : 2)
-            : 2;
-          const isPeakYear = publications === maxPublications && publications > 0;
-          return (
-            <div class="flex-1 flex flex-col items-center gap-1.5 group">
-              <div
-                class:list={['w-full rounded-sm transition-colors', isPeakYear ? 'bg-pulse-500' : 'bg-graphite-200 dark:bg-graphite-700 group-hover:bg-pulse-400']}
-                style={`height: ${height}%`}
-                title={`${year}: ${publications} publicaciones`}
-              />
-              <span class="font-mono text-[0.6rem] text-graphite-400 dark:text-graphite-500">
-                '{year.toString().slice(-2)}
-              </span>
+          <div class="flex gap-1">
+            {yearData.map(({ year, publications }) => {
+              const height = maxPublications > 0
+                ? Math.max((publications / maxPublications) * 100, publications > 0 ? 8 : 2)
+                : 2;
+              const isPeakYear = publications === maxPublications && publications > 0;
+              return (
+                <div class="flex-1 flex flex-col items-center gap-1.5 group">
+                  <div class="w-full h-20 flex items-end">
+                    <div
+                      class:list={['w-full rounded-sm transition-colors', isPeakYear ? 'bg-pulse-500' : 'bg-graphite-200 dark:bg-graphite-700 group-hover:bg-pulse-400']}
+                      style={`height: ${height}%`}
+                      title={`${year}: ${publications} publicaciones`}
+                    />
+                  </div>
+                  <span class="font-mono text-[0.6rem] text-graphite-400 dark:text-graphite-500">
+                    '{year.toString().slice(-2)}
+                  </span>
+                </div>
+              );
+            })}
+          </div>
+
+          <p class="font-mono text-xs text-graphite-400 dark:text-graphite-500 mt-3 text-center">
+            Máximo {maxPublications} en {peakPublicationYear} · {scholarData.publications.length} en total
+          </p>
+        </div>
+
+        <!-- Evolución de citas por año -->
+        {citationsGraph.length > 0 && (
+          <div>
+            <p class="eyebrow mb-3">Evolución de citas · {citationsMinYear}–{citationsMaxYear}</p>
+
+            <div class="flex gap-1">
+              {citationsGraph.map(({ year, citations }) => {
+                const height = maxCitations > 0
+                  ? Math.max((citations / maxCitations) * 100, citations > 0 ? 4 : 2)
+                  : 2;
+                const isPeakYear = citations === maxCitations && citations > 0;
+                return (
+                  <div class="flex-1 flex flex-col items-center gap-1.5 group">
+                    <div class="w-full h-20 flex items-end">
+                      <div
+                        class:list={['w-full rounded-sm transition-colors', isPeakYear ? 'bg-pulse-500' : 'bg-graphite-200 dark:bg-graphite-700 group-hover:bg-pulse-400']}
+                        style={`height: ${height}%`}
+                        title={`${year}: ${citations} citas`}
+                      />
+                    </div>
+                    <span class="font-mono text-[0.6rem] text-graphite-400 dark:text-graphite-500">
+                      '{year.toString().slice(-2)}
+                    </span>
+                  </div>
+                );
+              })}
             </div>
-          );
-        })}
-      </div>
 
-      <p class="font-mono text-xs text-graphite-400 dark:text-graphite-500 mt-3 text-center">
-        Máximo {maxPublications} en {peakPublicationYear} · {scholarData.publications.length} publicaciones en total
-      </p>
+            <p class="font-mono text-xs text-graphite-400 dark:text-graphite-500 mt-3 text-center">
+              Máximo {maxCitations} citas en {peakCitationYear}
+            </p>
+          </div>
+        )}
+      </div>
     </div>
   )}
 
