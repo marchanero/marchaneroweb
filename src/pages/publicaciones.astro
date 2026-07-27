@@ -119,8 +119,8 @@ const uniqueYears = [...new Set(scholarData.publications.map(pub => pub.year).fi
             id="sortOrder"
             class="px-4 py-2 border border-line dark:border-line-dark rounded-md bg-transparent text-graphite-700 dark:text-graphite-200 font-mono text-sm focus:outline-none focus:border-pulse-500"
           >
-            <option value="year-desc">Más recientes</option>
             <option value="citations-desc">Más citadas</option>
+            <option value="year-desc">Más recientes</option>
           </select>
 
           <select
@@ -266,5 +266,8 @@ const uniqueYears = [...new Set(scholarData.publications.map(pub => pub.year).fi
 
     yearFilter?.addEventListener('change', filterPublications);
     sortOrder?.addEventListener('change', sortPublications);
+
+    // Orden inicial: más citadas, todos los años
+    sortPublications();
   });
 </script>
