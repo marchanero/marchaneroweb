@@ -1,96 +1,130 @@
 # Web Personal del Dr. Roberto Sánchez Reolid
 
-Este proyecto es un sitio web académico construido con [Astro](https://astro.build), un moderno framework para creación de sitios web estáticos. El sitio está diseñado para presentar el perfil de investigador, publicaciones y áreas de especialización del Dr. Roberto Sánchez Reolid, investigador en la Universidad de Castilla-La Mancha.
+Sitio web académico del Dr. Roberto Sánchez Reolid, investigador en la Universidad de Castilla-La Mancha (UCLM). Construido con [Astro](https://astro.build), presenta su perfil de investigador, publicaciones científicas, proyectos, asignaturas y CV.
 
-[![Netlify Status](https://api.netlify.com/api/v1/badges/badge-id/deploy-status)](https://app.netlify.com/)
-[![CI/CD Pipeline](https://github.com/tu-usuario/tu-repositorio/actions/workflows/ci-cd.yml/badge.svg)](https://github.com/tu-usuario/tu-repositorio/actions/workflows/ci-cd.yml)
+[![Deploy to Netlify](https://github.com/marchanero/marchaneroweb/actions/workflows/deploy-netlify.yml/badge.svg)](https://github.com/marchanero/marchaneroweb/actions/workflows/deploy-netlify.yml)
+[![Run Tests](https://github.com/marchanero/marchaneroweb/actions/workflows/run-tests.yml/badge.svg)](https://github.com/marchanero/marchaneroweb/actions/workflows/run-tests.yml)
+[![Update Scholar Data](https://github.com/marchanero/marchaneroweb/actions/workflows/update-scholar-data.yml/badge.svg)](https://github.com/marchanero/marchaneroweb/actions/workflows/update-scholar-data.yml)
+
+🌐 **Sitio en producción:** [https://marchanero.netlify.app](https://marchanero.netlify.app)
 
 ## 🚀 Características
 
-- Diseño responsive y moderno
-- Optimización SEO
-- Alto rendimiento (puntuación perfecta en Lighthouse)
-- Formulario de contacto funcional con Netlify Forms
-- Sección de proyectos destacados
-- CI/CD automatizado con GitHub Actions y Netlify
+- **Integración automática con Google Scholar**: las publicaciones y métricas bibliométricas (citas, índice h, i10) se actualizan automáticamente cada día mediante SerpAPI y GitHub Actions
+- **Diseño responsive y moderno** con Tailwind CSS y modo oscuro
+- **Optimización SEO** y alto rendimiento (generación de sitemap, HTML comprimido, assets optimizados)
+- **Formulario de contacto** funcional con Netlify Forms
+- **Accesibilidad verificada** con tests automatizados (pa11y)
+- **Suite completa de tests** con Jest: páginas, SEO, accesibilidad, rendimiento y responsive
+- **CI/CD automatizado** con GitHub Actions y despliegue en Netlify
 
-## 🧞 Comandos
+## 🛠️ Stack tecnológico
 
-| Comando                   | Acción                                             |
-| :------------------------ | :------------------------------------------------- |
-| `npm install`             | Instala las dependencias                           |
-| `npm run dev`             | Inicia el servidor de desarrollo en `localhost:4321`|
-| `npm run build`           | Construye el sitio para producción en `./dist/`    |
-| `npm run preview`         | Previsualiza la versión de producción localmente   |
-| `npm run test`            | Ejecuta las pruebas con Jest                       |
-| `npm run test:a11y`       | Ejecuta pruebas de accesibilidad                   |
-| `npm run deploy`          | Verificaciones previas y construcción para despliegue |
-| `npm run deploy:a11y`     | Igual que deploy pero incluye pruebas de accesibilidad |
-| `npm run astro ...`       | Ejecuta los comandos CLI de Astro                  |
+- [Astro 5](https://astro.build) — generador de sitios estáticos
+- [Tailwind CSS 3](https://tailwindcss.com) — estilos
+- [TypeScript](https://www.typescriptlang.org/) — tipado
+- [Jest](https://jestjs.io) — tests
+- [pa11y-ci](https://github.com/pa11y/pa11y-ci) — tests de accesibilidad
+- [SerpAPI](https://serpapi.com) — datos de Google Scholar
+- [Netlify](https://www.netlify.com) — hosting y funciones serverless
 
-## 🔄 CI/CD
-
-Este proyecto utiliza GitHub Actions para la integración y despliegue continuos:
-
-- **Validación de Pull Requests**: Cada PR es construida y verificada automáticamente.
-- **Despliegue Automático**: Los cambios en la rama principal se despliegan automáticamente en Netlify.
-- **Deploy Previews**: Cada Pull Request genera una previsualización del sitio para facilitar la revisión.
-- **Pruebas Automatizadas**: Se ejecutan tests para verificar la estructura, SEO y funcionalidad.
-- **Notificaciones**: Se envían notificaciones automáticas tras cada despliegue exitoso.
-
-### Flujos de trabajo configurados
-
-1. **CI/CD Pipeline** (`.github/workflows/ci-cd.yml`)
-   - Ejecuta pruebas, build y despliegue
-
-2. **Pull Request Validation** (`.github/workflows/pr-validation.yml`)
-   - Valida los Pull Requests y genera despliegues de vista previa
-
-3. **Quality Assurance** (`.github/workflows/quality-assurance.yml`)
-   - Verifica accesibilidad y validez del HTML
-
-4. **Deployment Notifications** (`.github/workflows/deployment-notifications.yml`)
-   - Envía notificaciones después de un despliegue exitoso
-
-Para más información, consulta los siguientes documentos:
-
-- [CONTRIBUTING.md](./CONTRIBUTING.md) - Guía para contribuir al proyecto
-- [DEPLOY.md](./DEPLOY.md) - Instrucciones detalladas de despliegue
-- [SECRETS_SETUP.md](./SECRETS_SETUP.md) - Configuración de secretos en GitHub
-- [ACCESSIBILITY.md](./docs/ACCESSIBILITY.md) - Solución de problemas de accesibilidad
-
-## 🚀 Project Structure
-
-Inside of your Astro project, you'll see the following folders and files:
+## 📁 Estructura del proyecto
 
 ```text
 /
-├── public/
+├── .github/workflows/       # CI/CD: deploy, tests, actualización de Scholar
+├── content/                 # Contenido en Markdown (secciones, tutoriales)
+├── docs/                    # Documentación adicional del proyecto
+├── netlify/functions/       # Funciones serverless (update-scholar)
+├── public/                  # Assets estáticos
+├── scripts/                 # Scripts de scraping, verificación y despliegue
 ├── src/
-│   └── pages/
-│       └── index.astro
-└── package.json
+│   ├── assets/              # Imágenes procesadas por Astro
+│   ├── components/          # Componentes Astro (ScholarMetrics, ThemeToggle...)
+│   ├── data/                # Datos de Google Scholar (JSON generados)
+│   ├── layouts/             # Layout base
+│   ├── lib/                 # Integraciones (Strapi)
+│   ├── pages/               # Páginas: index, publicaciones, proyectos, cv...
+│   ├── styles/              # Estilos globales
+│   └── types/               # Tipos TypeScript
+└── test/                    # Suite de tests Jest
 ```
 
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
+## 🧞 Comandos
 
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
+Todos los comandos se ejecutan desde la raíz del proyecto:
 
-Any static assets, like images, can be placed in the `public/` directory.
+| Comando                     | Acción                                                       |
+| :-------------------------- | :----------------------------------------------------------- |
+| `npm install`               | Instala las dependencias                                     |
+| `npm run dev`               | Inicia el servidor de desarrollo en `localhost:4321`         |
+| `npm run build`             | Construye el sitio para producción en `./dist/`              |
+| `npm run preview`           | Previsualiza la build de producción localmente               |
+| `npm run test`              | Ejecuta la suite de tests con Jest                           |
+| `npm run test:pages`        | Ejecuta solo los tests de páginas y SEO                      |
+| `npm run test:a11y`         | Ejecuta los tests de accesibilidad con pa11y                 |
+| `npm run check:performance` | Analiza el rendimiento con Lighthouse CI                     |
+| `npm run deploy`            | Verificaciones pre-despliegue + build de producción          |
+| `npm run update:scholar`    | Actualiza los datos de Google Scholar vía SerpAPI            |
+| `npm run scholar:verify`    | Verifica el sistema completo de integración Scholar          |
+| `npm run scholar:summary`   | Genera el resumen ejecutivo de métricas bibliométricas       |
 
-## 🧞 Commands
+## 🎓 Integración con Google Scholar
 
-All commands are run from the root of the project, from a terminal:
+El sitio obtiene y muestra automáticamente las publicaciones y métricas del perfil de Google Scholar del autor:
 
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
+- **Scraping optimizado** (`scripts/scrape-scholar-ultra-optimized.js`): obtiene todas las publicaciones en una sola petición a SerpAPI, minimizando el consumo de la cuota mensual de la API
+- **Actualización automática diaria**: el workflow `update-scholar-data.yml` se ejecuta cada día a las 6:00 UTC, actualiza `src/data/scholar.json` solo si hay cambios y dispara un nuevo despliegue
+- **Componentes**: `ScholarMetrics.astro` (métricas bibliométricas), `RecentPublications.astro` (últimas publicaciones en la home) y la página `publicaciones.astro` (lista completa con filtros)
 
-## 👀 Want to learn more?
+Para más detalles, consulta [docs/GOOGLE-SCHOLAR-INTEGRATION.md](./docs/GOOGLE-SCHOLAR-INTEGRATION.md).
 
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+## ⚙️ Variables de entorno
+
+Copia `.env.example` a `.env` y completa los valores. Las principales variables son:
+
+| Variable           | Descripción                                        |
+| :----------------- | :------------------------------------------------- |
+| `SERPAPI_API_KEY`  | Clave de SerpAPI para el scraping de Google Scholar |
+| `TELEGRAM_TOKEN`   | Token del bot de Telegram para notificaciones      |
+| `TELEGRAM_TO`      | Chat ID de Telegram para las notificaciones        |
+| `NETLIFY_AUTH_TOKEN` | Token de acceso a Netlify (para scripts)         |
+| `NETLIFY_SITE_ID`  | ID del sitio en Netlify                            |
+| `NETLIFY_HOOK_URL` | Webhook de build de Netlify                        |
+| `GITHUB_TOKEN`     | Token de GitHub para disparar workflows            |
+
+Consulta `.env.template` y [docs/VARIABLES-ENTORNO.md](./docs/VARIABLES-ENTORNO.md) para más información.
+
+## 🔄 CI/CD
+
+El proyecto utiliza GitHub Actions para la integración y el despliegue continuos:
+
+1. **Deploy to Netlify** (`.github/workflows/deploy-netlify.yml`)
+   - Push a `main`: validación, tests, build y despliegue en producción
+
+2. **Run Tests** (`.github/workflows/run-tests.yml`)
+   - Pull Requests y ramas `develop`/`feature/**`/`fix/**`/`hotfix/**`: ejecuta la suite de tests
+
+3. **Update Scholar Data** (`.github/workflows/update-scholar-data.yml`)
+   - Ejecución diaria programada (6:00 UTC): actualiza los datos de Google Scholar y redespliega si hay cambios
+
+## 🧪 Testing
+
+La suite de tests cubre:
+
+- **Estructura de páginas** y rutas (`pages.test.js`)
+- **SEO** y metadatos (`seo.test.js`, `advanced-seo.test.js`)
+- **Accesibilidad** (`accessibility.test.js` + pa11y-ci)
+- **Componentes** (`components.test.js`, `advanced-components.test.js`)
+- **Responsive** (`responsive.test.js`)
+- **Rendimiento** (`performance.test.js`)
+- **Contenido y datos** (`content.test.js`, `data.test.js`)
+
+## 📚 Documentación adicional
+
+- [DEPLOY.md](./DEPLOY.md) — Instrucciones detalladas de despliegue
+- [CONTRIBUTING.md](./CONTRIBUTING.md) — Guía para contribuir al proyecto
+- [docs/GOOGLE-SCHOLAR-INTEGRATION.md](./docs/GOOGLE-SCHOLAR-INTEGRATION.md) — Sistema de integración con Google Scholar
+- [docs/WORKFLOW-UNIFICADO.md](./docs/WORKFLOW-UNIFICADO.md) — Pipeline de CI/CD
+- [docs/ACCESSIBILITY.md](./docs/ACCESSIBILITY.md) — Accesibilidad
+- [docs/VARIABLES-ENTORNO.md](./docs/VARIABLES-ENTORNO.md) — Variables de entorno
