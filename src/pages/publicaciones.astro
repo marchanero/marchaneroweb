@@ -142,12 +142,6 @@ const uniqueYears = [...new Set(scholarData.publications.map(pub => pub.year).fi
                     <span class="text-graphite-500 dark:text-graphite-400">{publication.year}</span>
                     <span class="text-graphite-300 dark:text-graphite-600">·</span>
                     <span class="text-pulse-600 dark:text-pulse-400 uppercase tracking-wide">{getPublicationLabel(pubType)}</span>
-                    {publication.citedBy && publication.citedBy > 0 && (
-                      <>
-                        <span class="text-graphite-300 dark:text-graphite-600">·</span>
-                        <span class="text-graphite-500 dark:text-graphite-400">{publication.citedBy} citas</span>
-                      </>
-                    )}
                   </div>
 
                   <h3 class="text-lg font-semibold text-graphite-900 dark:text-white mb-2 leading-snug">
@@ -169,17 +163,28 @@ const uniqueYears = [...new Set(scholarData.publications.map(pub => pub.year).fi
                   </p>
                 </div>
 
-                <div class="flex lg:flex-col gap-2 shrink-0">
-                  {publication.link && (
-                    <a href={publication.link} target="_blank" rel="noopener noreferrer" class="btn btn-outline btn-sm">
-                      Ver publicación
-                    </a>
-                  )}
-                  {publication.citedByLink && (
-                    <a href={publication.citedByLink} target="_blank" rel="noopener noreferrer" class="btn btn-secondary btn-sm">
-                      Ver citas
-                    </a>
-                  )}
+                <div class="flex flex-row lg:flex-col items-center lg:items-stretch gap-4 shrink-0 lg:w-36">
+                  <div class="border border-line dark:border-line-dark rounded-md px-4 py-3 text-center lg:text-right">
+                    <div class="font-mono text-3xl font-medium leading-none text-graphite-800 dark:text-white">
+                      {publication.citedBy ?? 0}
+                    </div>
+                    <div class="font-mono text-[0.65rem] uppercase tracking-wide text-graphite-500 dark:text-graphite-400 mt-1.5">
+                      citas
+                    </div>
+                  </div>
+
+                  <div class="flex flex-col gap-2">
+                    {publication.link && (
+                      <a href={publication.link} target="_blank" rel="noopener noreferrer" class="btn btn-outline btn-sm">
+                        Ver publicación
+                      </a>
+                    )}
+                    {publication.citedByLink && (
+                      <a href={publication.citedByLink} target="_blank" rel="noopener noreferrer" class="btn btn-secondary btn-sm">
+                        Ver citas
+                      </a>
+                    )}
+                  </div>
                 </div>
               </div>
             </article>
