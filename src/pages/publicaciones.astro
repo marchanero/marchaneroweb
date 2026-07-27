@@ -38,10 +38,10 @@ const uniqueYears = [...new Set(scholarData.publications.map(pub => pub.year).fi
 
 <Layout title={title} description={description}>
   <!-- Header -->
-  <header class="relative border-b border-line dark:border-line-dark py-14 sm:py-20 px-4">
+  <header class="relative border-b border-line dark:border-line-dark py-14 sm:py-20 px-4 hero-wash overflow-hidden">
     <div class="max-w-7xl mx-auto reveal">
       <p class="eyebrow mb-3">Google Scholar</p>
-      <h1 class="text-4xl sm:text-5xl font-display font-semibold text-graphite-900 dark:text-white mb-4">
+      <h1 class="text-4xl sm:text-5xl lg:text-6xl font-display font-bold text-graphite-900 dark:text-white mb-4">
         Publicaciones científicas
       </h1>
       <p class="text-lg text-graphite-600 dark:text-graphite-300 max-w-2xl leading-relaxed mb-8">
@@ -86,7 +86,7 @@ const uniqueYears = [...new Set(scholarData.publications.map(pub => pub.year).fi
         <span class="spec-tick spec-tick-br"></span>
         <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-6">
           <div>
-            <h2 class="text-xl font-display font-semibold text-graphite-900 dark:text-white mb-1">
+            <h2 class="text-xl font-display font-bold text-graphite-900 dark:text-white mb-1">
               {scholarData.author.name}
             </h2>
             <p class="text-graphite-500 dark:text-graphite-400 mb-4">
@@ -110,7 +110,7 @@ const uniqueYears = [...new Set(scholarData.publications.map(pub => pub.year).fi
     <!-- Lista de publicaciones -->
     <section class="reveal">
       <div class="flex flex-wrap items-center justify-between gap-4 mb-8">
-        <h2 class="text-2xl sm:text-3xl font-display font-semibold text-graphite-900 dark:text-white">
+        <h2 class="text-2xl sm:text-3xl font-display font-bold text-graphite-900 dark:text-white">
           Publicaciones <span class="font-mono text-graphite-400 dark:text-graphite-500 text-xl">({scholarData.publications.length})</span>
         </h2>
 
@@ -194,7 +194,7 @@ const uniqueYears = [...new Set(scholarData.publications.map(pub => pub.year).fi
         <span class="spec-tick spec-tick-tl"></span>
         <span class="spec-tick spec-tick-br"></span>
         <p class="eyebrow mb-2">Enlaces</p>
-        <h3 class="text-xl font-display font-semibold text-graphite-900 dark:text-white mb-6">
+        <h3 class="text-xl font-display font-bold text-graphite-900 dark:text-white mb-6">
           Perfiles académicos
         </h3>
         <div class="flex flex-wrap justify-center gap-3">

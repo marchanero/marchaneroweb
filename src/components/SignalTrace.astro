@@ -10,17 +10,21 @@ interface Props {
 	beats?: number;
 	class?: string;
 	animate?: boolean;
+	pulseDot?: boolean;
 }
 
 const {
 	variant = 'ecg',
 	width = 400,
 	height = 60,
-	strokeWidth = 2,
+	strokeWidth = 2.5,
 	beats = 3,
 	class: className = '',
 	animate = true,
+	pulseDot = animate,
 } = Astro.props;
+
+const dotDuration = Math.max(2.5, Math.min(9, width / 90 + beats * 0.6));
 
 const mid = height / 2;
 
@@ -79,6 +83,13 @@ const d = variant === 'ecg' ? ecgPath(width, height, beats) : edaPath(width, hei
 		pathLength={animate ? 1000 : undefined}
 		class:list={[animate && 'signal-trace-path']}
 	></path>
+	{pulseDot && (
+		<circle
+			r={Math.max(2.5, strokeWidth * 1.4)}
+			class="signal-dot"
+			style={{ offsetPath: `path('${d}')`, animationDuration: `${dotDuration}s` }}
+		></circle>
+	)}
 </svg>
 
 <style>

@@ -62,7 +62,7 @@ describe('Responsive Design', () => {
 
     it('verifica tipografía responsive', () => {
       // Titular del hero con varios saltos de breakpoint
-      expect(indexContent).toMatch(/text-4xl\s+sm:text-5xl\s+lg:text-6xl/);
+      expect(indexContent).toMatch(/text-5xl\s+sm:text-6xl\s+lg:text-7xl/);
 
       [sobreMiContent, proyectosContent, publicacionesContent].forEach(content => {
         expect(content).toMatch(/text-\w+\s+sm:text-\w+/);
