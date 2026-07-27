@@ -30,12 +30,12 @@
   }
 
   ::selection {
-    @apply bg-signal-300/60 text-graphite-900;
+    @apply bg-pulse-300/60 text-graphite-900;
   }
 
   /* Foco visible y consistente en toda la web */
   :focus-visible {
-    outline: 2px solid theme('colors.signal.500');
+    outline: 2px solid theme('colors.pulse.500');
     outline-offset: 2px;
   }
 
@@ -54,7 +54,7 @@
   }
 
   blockquote {
-    @apply border-l-2 border-signal-500 pl-4 py-2 my-4 bg-graphite-50 dark:bg-graphite-800/60 italic;
+    @apply border-l-2 border-pulse-500 pl-4 py-2 my-4 bg-graphite-50 dark:bg-graphite-800/60 italic;
   }
 
   code {
@@ -98,13 +98,13 @@
     @apply inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-lg font-semibold text-sm transition-all duration-200;
   }
   .btn-primary {
-    @apply bg-signal-500 hover:bg-signal-600 text-white shadow-[0_4px_16px_-4px_rgba(0,191,166,0.5)] hover:shadow-[0_8px_24px_-6px_rgba(0,191,166,0.6)] hover:-translate-y-0.5;
+    @apply text-white bg-gradient-to-r from-pulse-500 to-pulse-600 hover:from-pulse-600 hover:to-pulse-700 shadow-[0_6px_20px_-4px_rgba(255,90,54,0.55)] hover:shadow-[0_10px_28px_-6px_rgba(255,90,54,0.65)] hover:-translate-y-0.5;
   }
   .btn-secondary {
     @apply bg-graphite-100 hover:bg-graphite-200 text-graphite-800 dark:bg-graphite-700 dark:hover:bg-graphite-600 dark:text-graphite-100;
   }
   .btn-outline {
-    @apply border-2 border-line dark:border-line-dark text-graphite-700 dark:text-graphite-200 hover:border-signal-500 hover:text-signal-600 dark:hover:text-signal-400 hover:-translate-y-0.5;
+    @apply border-2 border-line dark:border-line-dark text-graphite-700 dark:text-graphite-200 hover:border-pulse-500 hover:text-pulse-600 dark:hover:text-pulse-400 hover:-translate-y-0.5;
   }
   .btn-sm {
     @apply px-3 py-1.5 text-xs;
@@ -112,17 +112,17 @@
 
   /* Eyebrow: etiqueta mono en mayúsculas usada como identificador/kicker */
   .eyebrow {
-    @apply inline-flex items-center gap-1.5 font-mono text-xs uppercase tracking-[0.14em] text-signal-600 dark:text-signal-400;
+    @apply inline-flex items-center gap-1.5 font-mono text-xs uppercase tracking-[0.14em] text-pulse-600 dark:text-pulse-400;
   }
   .eyebrow::before {
     content: '';
-    @apply w-1.5 h-1.5 rounded-full bg-pulse-500 shrink-0;
+    @apply w-1.5 h-1.5 rounded-full bg-signal-500 shrink-0;
   }
-  .eyebrow-pulse {
-    @apply text-pulse-600 dark:text-pulse-400;
+  .eyebrow-signal {
+    @apply text-signal-600 dark:text-signal-400;
   }
-  .eyebrow-pulse::before {
-    @apply bg-signal-500;
+  .eyebrow-signal::before {
+    @apply bg-pulse-500;
   }
 
   /* Tarjeta "spec-sheet": esquinas en escuadra + profundidad de color al interactuar */
@@ -130,7 +130,7 @@
     @apply relative border border-line dark:border-line-dark bg-white/70 dark:bg-graphite-800/40 rounded-2xl p-6 shadow-sm transition-all duration-300;
   }
   .spec-card:hover {
-    @apply border-signal-500/70 -translate-y-1 shadow-[0_20px_40px_-16px_rgba(0,191,166,0.35)];
+    @apply border-pulse-500/70 -translate-y-1 shadow-[0_20px_40px_-16px_rgba(255,90,54,0.3)];
   }
   .spec-tick {
     @apply pointer-events-none absolute w-3.5 h-3.5 border-signal-400/70 dark:border-signal-500/70;
@@ -143,10 +143,10 @@
     @apply flex divide-x divide-line dark:divide-line-dark border border-line dark:border-line-dark rounded-2xl overflow-hidden shadow-sm;
   }
   .readout-cell {
-    @apply flex-1 px-4 py-4 text-center transition-colors hover:bg-signal-50 dark:hover:bg-signal-500/5;
+    @apply flex-1 px-4 py-4 text-center transition-colors hover:bg-pulse-50 dark:hover:bg-pulse-500/5;
   }
   .readout-value {
-    @apply font-mono text-2xl sm:text-3xl font-semibold text-signal-600 dark:text-signal-400;
+    @apply font-mono text-2xl sm:text-3xl font-semibold text-pulse-600 dark:text-pulse-400;
   }
   .readout-label {
     @apply font-mono text-[0.65rem] uppercase tracking-wide text-graphite-500 dark:text-graphite-400 mt-1;
@@ -172,7 +172,7 @@
     @apply flex-1 rounded-sm bg-graphite-200 dark:bg-graphite-700;
   }
   .signal-meter-tick.is-filled {
-    @apply bg-signal-500;
+    @apply bg-pulse-500;
   }
 
   /* Aparición suave al entrar en viewport */

@@ -86,10 +86,10 @@ const citationTrend = calculateGrowthTrend(citationData.map(d => d.citations));
       <p class="eyebrow mb-1">Google Scholar</p>
       <h3 class="text-lg font-display font-bold text-graphite-900 dark:text-white">Métricas bibliométricas</h3>
     </div>
-    <div class="flex items-center gap-1.5 font-mono text-xs text-signal-600 dark:text-signal-400">
+    <div class="flex items-center gap-1.5 font-mono text-xs text-pulse-600 dark:text-pulse-400">
       <span class="relative flex h-1.5 w-1.5">
-        <span class="absolute inline-flex h-full w-full rounded-full bg-signal-500 opacity-60 animate-ping"></span>
-        <span class="relative inline-flex rounded-full h-1.5 w-1.5 bg-signal-500"></span>
+        <span class="absolute inline-flex h-full w-full rounded-full bg-pulse-500 opacity-60 animate-ping"></span>
+        <span class="relative inline-flex rounded-full h-1.5 w-1.5 bg-pulse-500"></span>
       </span>
       En vivo
     </div>
@@ -146,7 +146,7 @@ const citationTrend = calculateGrowthTrend(citationData.map(d => d.citations));
           return (
             <div class="flex-1 flex flex-col items-center gap-1.5 group">
               <div
-                class:list={['w-full rounded-sm transition-colors', isPeakYear ? 'bg-signal-500' : 'bg-graphite-200 dark:bg-graphite-700 group-hover:bg-signal-400']}
+                class:list={['w-full rounded-sm transition-colors', isPeakYear ? 'bg-pulse-500' : 'bg-graphite-200 dark:bg-graphite-700 group-hover:bg-pulse-400']}
                 style={`height: ${height}%`}
                 title={`${year}: ${publications} publicaciones`}
               />

@@ -151,7 +151,7 @@ const trace = (i: number) => (i % 2 === 0 ? 'ecg' : 'eda') as 'ecg' | 'eda';
 						<div class="mb-5">
 							<div class="flex items-center justify-between text-xs font-mono mb-1.5">
 								<span class="text-graphite-500 dark:text-graphite-400">Progreso</span>
-								<span class="text-signal-600 dark:text-signal-400">{proyecto.progreso}%</span>
+								<span class="text-pulse-600 dark:text-pulse-400">{proyecto.progreso}%</span>
 							</div>
 							<div class="signal-meter">
 								{Array.from({ length: 10 }).map((_, i) => (

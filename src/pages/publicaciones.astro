@@ -116,7 +116,7 @@ const uniqueYears = [...new Set(scholarData.publications.map(pub => pub.year).fi
 
         <select
           id="yearFilter"
-          class="px-4 py-2 border border-line dark:border-line-dark rounded-md bg-transparent text-graphite-700 dark:text-graphite-200 font-mono text-sm focus:outline-none focus:border-signal-500"
+          class="px-4 py-2 border border-line dark:border-line-dark rounded-md bg-transparent text-graphite-700 dark:text-graphite-200 font-mono text-sm focus:outline-none focus:border-pulse-500"
         >
           <option value="">Todos los años</option>
           {uniqueYears.map(year => (
@@ -141,7 +141,7 @@ const uniqueYears = [...new Set(scholarData.publications.map(pub => pub.year).fi
                   <div class="flex flex-wrap items-center gap-3 mb-3 font-mono text-xs">
                     <span class="text-graphite-500 dark:text-graphite-400">{publication.year}</span>
                     <span class="text-graphite-300 dark:text-graphite-600">·</span>
-                    <span class="text-signal-600 dark:text-signal-400 uppercase tracking-wide">{getPublicationLabel(pubType)}</span>
+                    <span class="text-pulse-600 dark:text-pulse-400 uppercase tracking-wide">{getPublicationLabel(pubType)}</span>
                     {publication.citedBy && publication.citedBy > 0 && (
                       <>
                         <span class="text-graphite-300 dark:text-graphite-600">·</span>
@@ -152,7 +152,7 @@ const uniqueYears = [...new Set(scholarData.publications.map(pub => pub.year).fi
 
                   <h3 class="text-lg font-semibold text-graphite-900 dark:text-white mb-2 leading-snug">
                     {publication.link ? (
-                      <a href={publication.link} target="_blank" rel="noopener noreferrer" class="hover:text-signal-600 dark:hover:text-signal-400">
+                      <a href={publication.link} target="_blank" rel="noopener noreferrer" class="hover:text-pulse-600 dark:hover:text-pulse-400">
                         {publication.title}
                       </a>
                     ) : (
