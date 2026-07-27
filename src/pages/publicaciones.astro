@@ -114,15 +114,25 @@ const uniqueYears = [...new Set(scholarData.publications.map(pub => pub.year).fi
           Publicaciones <span class="font-mono text-graphite-400 dark:text-graphite-500 text-xl">({scholarData.publications.length})</span>
         </h2>
 
-        <select
-          id="yearFilter"
-          class="px-4 py-2 border border-line dark:border-line-dark rounded-md bg-transparent text-graphite-700 dark:text-graphite-200 font-mono text-sm focus:outline-none focus:border-pulse-500"
-        >
-          <option value="">Todos los años</option>
-          {uniqueYears.map(year => (
-            <option value={year}>{year}</option>
-          ))}
-        </select>
+        <div class="flex flex-wrap gap-3">
+          <select
+            id="sortOrder"
+            class="px-4 py-2 border border-line dark:border-line-dark rounded-md bg-transparent text-graphite-700 dark:text-graphite-200 font-mono text-sm focus:outline-none focus:border-pulse-500"
+          >
+            <option value="year-desc">Más recientes</option>
+            <option value="citations-desc">Más citadas</option>
+          </select>
+
+          <select
+            id="yearFilter"
+            class="px-4 py-2 border border-line dark:border-line-dark rounded-md bg-transparent text-graphite-700 dark:text-graphite-200 font-mono text-sm focus:outline-none focus:border-pulse-500"
+          >
+            <option value="">Todos los años</option>
+            {uniqueYears.map(year => (
+              <option value={year}>{year}</option>
+            ))}
+          </select>
+        </div>
       </div>
 
       <div class="space-y-4" id="publicationsList">
@@ -133,6 +143,7 @@ const uniqueYears = [...new Set(scholarData.publications.map(pub => pub.year).fi
               class="spec-card publication-item"
               data-year={publication.year}
               data-type={pubType}
+              data-citations={publication.citedBy ?? 0}
             >
               <span class="spec-tick spec-tick-tl"></span>
               <span class="spec-tick spec-tick-br"></span>
@@ -221,6 +232,8 @@ const uniqueYears = [...new Set(scholarData.publications.map(pub => pub.year).fi
 <script>
   document.addEventListener('DOMContentLoaded', function() {
     const yearFilter = document.getElementById('yearFilter') as HTMLSelectElement;
+    const sortOrder = document.getElementById('sortOrder') as HTMLSelectElement;
+    const publicationsList = document.getElementById('publicationsList');
     const publicationItems = document.querySelectorAll('.publication-item') as NodeListOf<HTMLElement>;
 
     function filterPublications() {
@@ -233,6 +246,25 @@ const uniqueYears = [...new Set(scholarData.publications.map(pub => pub.year).fi
       });
     }
 
+    function sortPublications() {
+      if (!sortOrder || !publicationsList) return;
+
+      const items = Array.from(publicationItems);
+      if (sortOrder.value === 'citations-desc') {
+        items.sort((a, b) =>
+          parseInt(b.dataset.citations || '0') - parseInt(a.dataset.citations || '0')
+        );
+      } else {
+        // Orden original del JSON (Scholar: fecha de publicación descendente)
+        items.sort((a, b) =>
+          parseInt(b.dataset.year || '0') - parseInt(a.dataset.year || '0')
+        );
+      }
+
+      items.forEach((item) => publicationsList.appendChild(item));
+    }
+
     yearFilter?.addEventListener('change', filterPublications);
+    sortOrder?.addEventListener('change', sortPublications);
   });
 </script>
