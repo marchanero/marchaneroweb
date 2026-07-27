@@ -11,6 +11,7 @@ Sitio web académico del Dr. Roberto Sánchez Reolid, investigador en la Univers
 ## 🚀 Características
 
 - **Integración automática con Google Scholar**: las publicaciones y métricas bibliométricas (citas, índice h, i10) se actualizan automáticamente cada día mediante SerpAPI y GitHub Actions
+- **CMS integrado (Sveltia)**: edición de proyectos, asignaturas y textos de la home desde `/admin`, sin tocar código — los cambios se guardan como commits y se despliegan solos
 - **Diseño responsive y moderno** con Tailwind CSS y modo oscuro
 - **Optimización SEO** y alto rendimiento (generación de sitemap, HTML comprimido, assets optimizados)
 - **Formulario de contacto** funcional con Netlify Forms
@@ -33,17 +34,18 @@ Sitio web académico del Dr. Roberto Sánchez Reolid, investigador en la Univers
 ```text
 /
 ├── .github/workflows/       # CI/CD: deploy, tests, actualización de Scholar
-├── content/                 # Contenido en Markdown (secciones, tutoriales)
+├── content/                 # Contenido editable (CMS): home.json, proyectos/, asignaturas/
 ├── docs/                    # Documentación adicional del proyecto
 ├── netlify/functions/       # Funciones serverless (update-scholar)
-├── public/                  # Assets estáticos
+├── public/
+│   └── admin/               # Panel del CMS (Sveltia)
 ├── scripts/                 # Scripts de scraping, verificación y despliegue
 ├── src/
 │   ├── assets/              # Imágenes procesadas por Astro
 │   ├── components/          # Componentes Astro (ScholarMetrics, ThemeToggle...)
+│   ├── content.config.ts    # Esquemas de las Content Collections
 │   ├── data/                # Datos de Google Scholar (JSON generados)
 │   ├── layouts/             # Layout base
-│   ├── lib/                 # Integraciones (Strapi)
 │   ├── pages/               # Páginas: index, publicaciones, proyectos, cv...
 │   ├── styles/              # Estilos globales
 │   └── types/               # Tipos TypeScript
@@ -78,6 +80,15 @@ El sitio obtiene y muestra automáticamente las publicaciones y métricas del pe
 - **Componentes**: `ScholarMetrics.astro` (métricas bibliométricas), `RecentPublications.astro` (últimas publicaciones en la home) y la página `publicaciones.astro` (lista completa con filtros)
 
 Para más detalles, consulta [docs/GOOGLE-SCHOLAR-INTEGRATION.md](./docs/GOOGLE-SCHOLAR-INTEGRATION.md).
+
+## ✏️ Edición de contenido (CMS)
+
+El contenido del sitio (proyectos, asignaturas, textos de la home) vive en archivos Markdown/JSON dentro de `content/` y se puede editar de dos formas:
+
+1. **Desde el CMS** en `https://marchanero.netlify.app/admin` (Sveltia CMS, requiere activación única de Netlify Identity + Git Gateway)
+2. **Directamente en GitHub**: editar los archivos de `content/` y hacer commit
+
+En ambos casos, el cambio dispara automáticamente un nuevo despliegue. Guía completa en [docs/CMS.md](./docs/CMS.md).
 
 ## ⚙️ Variables de entorno
 
@@ -122,6 +133,7 @@ La suite de tests cubre:
 
 ## 📚 Documentación adicional
 
+- [docs/CMS.md](./docs/CMS.md) — Edición de contenido con el CMS (Sveltia)
 - [DEPLOY.md](./DEPLOY.md) — Instrucciones detalladas de despliegue
 - [CONTRIBUTING.md](./CONTRIBUTING.md) — Guía para contribuir al proyecto
 - [docs/GOOGLE-SCHOLAR-INTEGRATION.md](./docs/GOOGLE-SCHOLAR-INTEGRATION.md) — Sistema de integración con Google Scholar

@@ -1,0 +1,113 @@
+# Configuración de Sveltia CMS
+# Documentación: https://github.com/sveltia/sveltia-cms
+
+backend:
+  name: git-gateway
+  branch: main
+  commit_messages:
+    create: 'Create {{collection}} "{{slug}}" via CMS'
+    update: 'Update {{collection}} "{{slug}}" via CMS'
+    delete: 'Delete {{collection}} "{{slug}}" via CMS'
+
+# Imágenes subidas desde el CMS
+media_folder: public/images/uploads
+public_folder: /images/uploads
+
+locale: es
+
+site_url: https://marchanero.netlify.app
+logo_url: https://marchanero.netlify.app/favicon.svg
+
+collections:
+  # -----------------------------------------------------------
+  # Página de inicio (archivo único JSON)
+  # -----------------------------------------------------------
+  - name: 'home'
+    label: 'Página de inicio'
+    files:
+      - name: 'home'
+        label: 'Contenido de la home'
+        file: 'content/home.json'
+        fields:
+          - { label: 'Título de la sección', name: 'introTitulo', widget: 'string' }
+          - { label: 'Texto de presentación', name: 'introTexto', widget: 'text' }
+          - label: 'Líneas de investigación'
+            name: 'researchLines'
+            widget: 'list'
+            field: { label: 'Línea', name: 'linea', widget: 'string' }
+
+  # -----------------------------------------------------------
+  # Proyectos de investigación (un .md por proyecto)
+  # -----------------------------------------------------------
+  - name: 'proyectos'
+    label: 'Proyectos'
+    label_singular: 'Proyecto'
+    folder: 'content/proyectos'
+    create: true
+    delete: true
+    slug: '{{slug}}'
+    summary: '{{titulo}} · {{estado}}'
+    sortable_fields: ['titulo', 'fechaInicio', 'estado']
+    fields:
+      - { label: 'Título', name: 'titulo', widget: 'string' }
+      - { label: 'Etiqueta para la home (p. ej. IA · EDUCACIÓN)', name: 'tag', widget: 'string', required: false }
+      - label: 'Etiquetas'
+        name: 'etiquetas'
+        widget: 'list'
+        field: { label: 'Etiqueta', name: 'etiqueta', widget: 'string' }
+      - { label: 'Descripción', name: 'descripcion', widget: 'text' }
+      - { label: 'Año de inicio', name: 'fechaInicio', widget: 'string' }
+      - { label: 'Año de fin (o "Actualidad")', name: 'fechaFin', widget: 'string' }
+      - label: 'Estado'
+        name: 'estado'
+        widget: 'select'
+        options: ['En curso', 'Finalizado']
+        default: 'En curso'
+      - { label: 'Financiación', name: 'financiacion', widget: 'string', required: false }
+      - { label: 'Presupuesto', name: 'presupuesto', widget: 'string', required: false }
+      - { label: 'URL de detalle', name: 'url', widget: 'string', required: false }
+      - { label: 'Repositorio GitHub', name: 'github', widget: 'string', required: false }
+      - { label: 'Destacado en página Proyectos', name: 'destacado', widget: 'boolean', default: false }
+      - { label: 'Destacado en la home', name: 'destacadoHome', widget: 'boolean', default: false }
+      - { label: 'Progreso (%)', name: 'progreso', widget: 'number', min: 0, max: 100, default: 0, value_type: 'int' }
+      - label: 'Resultados'
+        name: 'resultados'
+        widget: 'list'
+        required: false
+        field: { label: 'Resultado', name: 'resultado', widget: 'string' }
+      - { label: 'Contenido adicional', name: 'body', widget: 'markdown', required: false }
+
+  # -----------------------------------------------------------
+  # Asignaturas (un .md por asignatura)
+  # -----------------------------------------------------------
+  - name: 'asignaturas'
+    label: 'Asignaturas'
+    label_singular: 'Asignatura'
+    folder: 'content/asignaturas'
+    create: true
+    delete: true
+    slug: '{{slug}}'
+    summary: '{{titulo}} · {{codigo}}'
+    sortable_fields: ['titulo', 'codigo', 'curso']
+    fields:
+      - { label: 'Código', name: 'codigo', widget: 'string' }
+      - { label: 'Título', name: 'titulo', widget: 'string' }
+      - { label: 'Grado', name: 'grado', widget: 'string' }
+      - label: 'Nivel'
+        name: 'nivel'
+        widget: 'select'
+        options: ['grado', 'master', 'doctorado']
+        default: 'grado'
+      - { label: 'Curso (p. ej. 1º)', name: 'curso', widget: 'string' }
+      - { label: 'Cuatrimestre (p. ej. 1º)', name: 'cuatrimestre', widget: 'string' }
+      - { label: 'Créditos ECTS', name: 'creditos', widget: 'number', default: 6, value_type: 'int' }
+      - { label: 'Año académico (p. ej. 2024-2025)', name: 'academicYear', widget: 'string' }
+      - { label: 'Descripción', name: 'descripcion', widget: 'text' }
+      - label: 'Temario'
+        name: 'temario'
+        widget: 'list'
+        field: { label: 'Tema', name: 'tema', widget: 'string' }
+      - { label: 'Horario', name: 'horario', widget: 'string', default: 'Por definir', required: false }
+      - { label: 'Enlace a materiales', name: 'enlaceMateriales', widget: 'string', required: false }
+      - { label: 'Destacada', name: 'destacada', widget: 'boolean', default: false }
+      - { label: 'Contenido adicional', name: 'body', widget: 'markdown', required: false }

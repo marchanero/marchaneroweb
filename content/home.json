@@ -1,0 +1,12 @@
+{
+  "introTitulo": "Mi investigación",
+  "introTexto": "Mi trabajo se centra en el desarrollo de tecnologías de IA y sensórica aplicadas a problemas reales, desde la monitorización fisiológica hasta la educación adaptativa.",
+  "researchLines": [
+    "Inteligencia Artificial",
+    "Señales Fisiológicas",
+    "Detección de Caídas",
+    "Aprendizaje Federado",
+    "IoT y Edge AI",
+    "IA Educativa"
+  ]
+}

@@ -4,6 +4,8 @@ import RecentPublications from '../components/RecentPublications.astro';
 import ScholarMetrics from '../components/ScholarMetrics.astro';
 import SignalTrace from '../components/SignalTrace.astro';
 import scholarData from '../data/scholar.json';
+import home from '../../content/home.json';
+import { getCollection } from 'astro:content';
 import { Image } from 'astro:assets';
 import profileImage from '../assets/robert_ghibli.jpg';
 
@@ -23,41 +25,23 @@ const recentPublications = scholarData.publications.slice(0, 3).map(pub => ({
 	year: (pub.year || 0).toString()
 }));
 
-const researchLines = [
-	'Inteligencia Artificial',
-	'Señales Fisiológicas',
-	'Detección de Caídas',
-	'Aprendizaje Federado',
-	'IoT y Edge AI',
-	'IA Educativa',
-];
+// Contenido editable desde content/home.json y content/proyectos/ (CMS)
+const researchLines: string[] = home.researchLines;
 
-const featuredProjects = [
-	{
-		tag: 'IA · EDUCACIÓN',
-		status: 'En curso',
-		title: 'Inteligencia Artificial Aplicada',
-		description:
-			'Sistemas de tutoría inteligente que adaptan el contenido educativo a partir de aplicaciones de IA en entornos de aprendizaje personalizado.',
-		period: '2022 — Actualidad',
-		budget: '150.000 €',
-		progress: 75,
+const featuredProjects = (await getCollection('proyectos'))
+	.filter((p) => p.data.destacadoHome)
+	.sort((a, b) => parseInt(b.data.fechaInicio) - parseInt(a.data.fechaInicio))
+	.map((p, index) => ({
+		tag: p.data.tag,
+		status: p.data.estado,
+		title: p.data.titulo,
+		description: p.data.descripcion,
+		period: `${p.data.fechaInicio} — ${p.data.fechaFin}`,
+		budget: p.data.presupuesto,
+		progress: p.data.progreso,
 		href: '/proyectos',
-		variant: 'ecg' as const,
-	},
-	{
-		tag: 'SISTEMAS · EFICIENCIA',
-		status: 'Finalizado',
-		title: 'Sistemas Distribuidos Eficientes',
-		description:
-			'Nuevas arquitecturas para sistemas distribuidos con mayor eficiencia energética: 30% menos consumo con rendimiento optimizado.',
-		period: '2020 — 2023',
-		budget: '80.000 €',
-		progress: 100,
-		href: '/proyectos',
-		variant: 'eda' as const,
-	},
-];
+		variant: (index % 2 === 0 ? 'ecg' : 'eda') as 'ecg' | 'eda',
+	}));
 ---
 
 <Layout title="Dr. Roberto Sánchez Reolid - Investigador en IA y Computación">
@@ -142,11 +126,10 @@ const featuredProjects = [
 					<div>
 						<p class="eyebrow mb-2">Líneas de investigación</p>
 						<h2 class="text-2xl sm:text-3xl font-display font-bold text-graphite-900 dark:text-white mb-4">
-							Mi investigación
+							{home.introTitulo}
 						</h2>
 						<p class="text-graphite-600 dark:text-graphite-300 leading-relaxed mb-6">
-							Mi trabajo se centra en el desarrollo de tecnologías de IA y sensórica aplicadas a
-							problemas reales, desde la monitorización fisiológica hasta la educación adaptativa.
+							{home.introTexto}
 						</p>
 						<ul class="grid grid-cols-1 sm:grid-cols-2 gap-3">
 							{researchLines.map((line) => (

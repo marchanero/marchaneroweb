@@ -1,69 +1,13 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import SignalTrace from '../components/SignalTrace.astro';
+import { getCollection } from 'astro:content';
 
-// Datos de proyectos
-const proyectos = [
-	{
-		id: 'ia-educacion',
-		titulo: 'Inteligencia Artificial Aplicada a la Educación',
-		etiquetas: ['Machine Learning', 'Educational Tech', 'Data Analysis'],
-		descripcion: 'Investigación sobre sistemas de tutoría inteligente que adaptan el contenido educativo a las necesidades individuales de los estudiantes, utilizando algoritmos de machine learning para personalizar la experiencia de aprendizaje.',
-		fechaInicio: '2022',
-		fechaFin: 'Actualidad',
-		estado: 'En curso',
-		financiacion: 'Ministerio de Ciencia e Innovación',
-		presupuesto: '150.000 €',
-		url: '/proyectos/ia-educacion',
-		github: '#',
-		destacado: true,
-		progreso: 75,
-		resultados: [
-			'Desarrollo de algoritmo adaptativo de personalización',
-			'Implementación de sistema de análisis de sentimientos',
-			'3 publicaciones en revistas Q1'
-		]
-	},
-	{
-		id: 'sistemas-distribuidos',
-		titulo: 'Arquitecturas Eficientes para Sistemas Distribuidos',
-		etiquetas: ['Distributed Systems', 'Energy Efficiency', 'Cloud Computing'],
-		descripcion: 'Desarrollo de nuevas arquitecturas para sistemas distribuidos con mayor eficiencia energética y rendimiento optimizado para cargas de trabajo modernas.',
-		fechaInicio: '2020',
-		fechaFin: '2023',
-		estado: 'Finalizado',
-		financiacion: 'Junta de Comunidades de Castilla-La Mancha',
-		presupuesto: '80.000 €',
-		url: '/proyectos/sistemas-distribuidos',
-		github: '#',
-		destacado: false,
-		progreso: 100,
-		resultados: [
-			'Reducción del 30% en consumo energético',
-			'Prototipo desplegado en 3 centros de datos',
-			'2 publicaciones en revistas JCR'
-		]
-	},
-	{
-		id: 'blockchain-seguridad',
-		titulo: 'Blockchain para Sistemas de Seguridad',
-		etiquetas: ['Blockchain', 'Cybersecurity', 'Cryptography'],
-		descripcion: 'Investigación sobre la aplicación de tecnologías blockchain para mejorar la seguridad en sistemas distribuidos y proteger la integridad de los datos.',
-		fechaInicio: '2023',
-		fechaFin: 'Actualidad',
-		estado: 'En curso',
-		financiacion: 'Proyecto Regional I+D+i',
-		presupuesto: '65.000 €',
-		url: '/proyectos/blockchain-seguridad',
-		github: '#',
-		destacado: false,
-		progreso: 45,
-		resultados: [
-			'Protocolo de consenso mejorado',
-			'Análisis de vulnerabilidades publicado'
-		]
-	}
-];
+// Datos de proyectos: editables en content/proyectos/ (manualmente o vía CMS /admin)
+const proyectos = (await getCollection('proyectos')).map((p) => ({
+	id: p.id,
+	...p.data,
+}));
 
 const proyectosOrdenados = [...proyectos].sort((a, b) => {
 	if (a.destacado !== b.destacado) return b.destacado ? 1 : -1;

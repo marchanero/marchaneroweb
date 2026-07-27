@@ -1,79 +1,15 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import SignalTrace from '../components/SignalTrace.astro';
+import { getCollection } from 'astro:content';
 
-// Datos de asignaturas
-const asignaturas = [
-	{
-		id: 'sistemas-informacion-grado-primero',
-		codigo: 'SI1001',
-		titulo: 'Sistemas de Información',
-		grado: 'Grado en Ingeniería Informática',
-		nivel: 'grado',
-		curso: '1º',
-		cuatrimestre: '1º',
-		creditos: 6,
-		academicYear: '2024-2025',
-		descripcion: 'Introducción a los sistemas de información en el contexto de la Ingeniería Informática. Se imparte en la Facultad de Ciencias Sociales y Tecnologías de la Información del Campus de Talavera.',
-		temario: [
-			'Introducción a los Sistemas de Información',
-			'Hardware y Software en los SI',
-			'Bases de Datos y Gestión de la Información',
-			'Redes y Telecomunicaciones',
-			'Desarrollo de Sistemas de Información',
-			'SI en la Empresa y la Sociedad'
-		],
-		horario: 'Por definir',
-		enlaceMateriales: 'https://campus.uclm.es/course/view.php?id=SI1001',
-		destacada: true
-	},
-	{
-		id: 'arquitectura-empresarial-grado-cuarto',
-		codigo: 'AE4001',
-		titulo: 'Arquitectura Empresarial',
-		grado: 'Grado en Ingeniería Informática',
-		nivel: 'grado',
-		curso: '4º',
-		cuatrimestre: '1º',
-		creditos: 6,
-		academicYear: '2024-2025',
-		descripcion: 'Estudio de los principios y prácticas de la arquitectura empresarial para alinear las TI con los objetivos de negocio. Se imparte en la Facultad de Ciencias Sociales y Tecnologías de la Información del Campus de Talavera.',
-		temario: [
-			'Introducción a la Arquitectura Empresarial',
-			'Marcos de Referencia (TOGAF, Zachman)',
-			'Arquitectura de Negocio',
-			'Arquitectura de Sistemas de Información (Datos, Aplicaciones, Tecnología)',
-			'Gobernanza de la Arquitectura Empresarial',
-			'Implantación y Casos Prácticos'
-		],
-		horario: 'Por definir',
-		enlaceMateriales: 'https://campus.uclm.es/course/view.php?id=AE4001',
-		destacada: true
-	},
-	{
-		id: 'transformacion-digital-empresa-grado-cuarto',
-		codigo: 'TD4003',
-		titulo: 'Transformación Digital de la Empresa',
-		grado: 'Grado en Ingeniería Informática',
-		nivel: 'grado',
-		curso: '4º',
-		cuatrimestre: '1º',
-		creditos: 6,
-		academicYear: '2024-2025',
-		descripcion: 'Análisis y aplicación de estrategias para la transformación digital de organizaciones. Estudio de tecnologías disruptivas, modelos de negocio digitales y gestión del cambio en entornos empresariales. Se imparte en la Facultad de Ciencias Sociales y Tecnologías de la Información del Campus de Talavera.',
-		temario: [
-			'Fundamentos de la Transformación Digital',
-			'Tecnologías Clave (Cloud, Big Data, IA, IoT)',
-			'Nuevos Modelos de Negocio Digitales',
-			'Cultura Digital y Gestión del Cambio',
-			'Innovación y Estrategia Digital',
-			'Casos de Estudio y Aplicaciones Prácticas'
-		],
-		horario: 'Por definir',
-		enlaceMateriales: 'https://campus.uclm.es/course/view.php?id=TD4003',
-		destacada: true
-	}
-];
+// Datos de asignaturas: editables en content/asignaturas/ (manualmente o vía CMS /admin)
+const asignaturas = (await getCollection('asignaturas'))
+	.map((a) => ({
+		id: a.id,
+		...a.data,
+	}))
+	.sort((a, b) => parseInt(a.curso) - parseInt(b.curso) || a.codigo.localeCompare(b.codigo));
 
 const aniosAcademicos = [...new Set(asignaturas.map(a => a.academicYear))];
 const totalCreditos = asignaturas.reduce((sum, a) => sum + a.creditos, 0);
