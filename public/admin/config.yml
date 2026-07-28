@@ -79,6 +79,29 @@ collections:
       - { label: 'Contenido adicional', name: 'body', widget: 'markdown', required: false }
 
   # -----------------------------------------------------------
+  # Cuartiles JCR/SJR de publicaciones (archivo único JSON)
+  # No hay API pública gratuita de Clarivate/FECYT: se mantiene a mano,
+  # emparejado por título con las publicaciones sincronizadas de Google Scholar.
+  # -----------------------------------------------------------
+  - name: 'publicaciones-cuartiles'
+    label: 'Cuartiles de publicaciones'
+    files:
+      - name: 'cuartiles'
+        label: 'Cuartiles JCR/SJR'
+        file: 'content/publicaciones-cuartiles.json'
+        fields:
+          - label: 'Publicaciones'
+            name: 'cuartiles'
+            widget: 'list'
+            summary: '{{cuartil}} · {{titulo}}'
+            fields:
+              - { label: 'Título exacto (tal cual en Google Scholar)', name: 'titulo', widget: 'string' }
+              - { label: 'Cuartil (p. ej. Q1, D1/Q1)', name: 'cuartil', widget: 'string' }
+              - { label: 'Posición (p. ej. 21/145)', name: 'posicion', widget: 'string', required: false }
+              - { label: 'Categoría JCR/SJR', name: 'categoria', widget: 'string', required: false }
+              - { label: 'Factor de impacto', name: 'impactFactor', widget: 'number', required: false }
+
+  # -----------------------------------------------------------
   # Currículum vitae (archivo único JSON)
   # -----------------------------------------------------------
   - name: 'cv'

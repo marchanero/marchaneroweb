@@ -91,7 +91,11 @@
     }
   }
 
-  /* Impresión / "Guardar como PDF": legible en blanco y negro, sin nav/footer/CTAs */
+  /*
+    Impresión / "Guardar como PDF": reutiliza la paleta real del sitio (el modo
+    oscuro se desactiva por JS en beforeprint, ver Layout.astro), solo se retiran
+    sombras/gradientes decorativos y se evita que .reveal quede invisible.
+  */
   @media print {
     header.sticky,
     footer {
@@ -104,11 +108,17 @@
     }
 
     *, *::before, *::after {
-      color: black !important;
-      background: transparent !important;
-      border-color: #999 !important;
       box-shadow: none !important;
       text-shadow: none !important;
+    }
+
+    .hero-wash {
+      background: none !important;
+    }
+
+    .spec-card,
+    .spec-card:hover {
+      transform: none !important;
     }
 
     body {
@@ -117,6 +127,7 @@
 
     a {
       text-decoration: none !important;
+      color: inherit !important;
     }
   }
 }

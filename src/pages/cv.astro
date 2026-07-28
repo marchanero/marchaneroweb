@@ -2,6 +2,7 @@
 import Layout from '../layouts/Layout.astro';
 import cv from '../../content/cv.json';
 import scholarData from '../data/scholar.json';
+import cuartilesData from '../../content/publicaciones-cuartiles.json';
 
 const title = "Currículum - Dr. Roberto Sánchez Reolid";
 const description = "Currículum vitae académico y profesional del Dr. Roberto Sánchez Reolid, con formación, experiencia docente e investigadora";
@@ -15,10 +16,61 @@ const estancias = cv.estancias ?? [];
 const gestionAcademica = cv.gestionAcademica ?? [];
 const reconocimientos = cv.reconocimientos ?? [];
 
+// Cuartiles JCR/SJR (content/publicaciones-cuartiles.json, mantenido a mano — sin API pública
+// de Clarivate/FECYT) emparejados por título con las publicaciones sincronizadas de Scholar.
+// Google Scholar trunca los títulos largos con "…", de ahí la comparación por prefijo.
+function normalizarTitulo(str: string) {
+  return str
+    .toLowerCase()
+    .normalize('NFD').replace(/[̀-ͯ]/g, '')
+    .replace(/…$/, '')
+    .replace(/[^a-z0-9]+/g, ' ')
+    .trim();
+}
+
+// Compara dos títulos normalizados: iguales, uno prefijo del otro (truncamiento de Scholar),
+// o con un prefijo común muy largo (variantes con alguna palabra distinta, p. ej. "pilot study
+// protocol" vs. "study protocol" del mismo artículo).
+function tituloSimilar(a: string, b: string) {
+  if (a === b || a.startsWith(b) || b.startsWith(a)) return true;
+  const minLen = Math.min(a.length, b.length);
+  let comun = 0;
+  while (comun < minLen && a[comun] === b[comun]) comun++;
+  return comun / minLen >= 0.75;
+}
+
+const cuartilesPorTitulo = (cuartilesData.cuartiles ?? []).map((c) => ({
+  ...c,
+  _norm: normalizarTitulo(c.titulo),
+}));
+
+function buscarCuartil(tituloPublicacion: string) {
+  const norm = normalizarTitulo(tituloPublicacion);
+  return cuartilesPorTitulo.find((c) => tituloSimilar(c._norm, norm));
+}
+
+// Google Scholar indexa algunos artículos por duplicado (título truncado distinto,
+// preprint vs. versión final...). Se deduplican quedándose con la entrada de más citas.
+function deduplicarPorTitulo(pubs: any[]) {
+  const grupos: { norm: string; pub: any }[] = [];
+  for (const pub of pubs) {
+    const norm = normalizarTitulo(pub.title);
+    const grupo = grupos.find((g) => tituloSimilar(g.norm, norm));
+    if (!grupo) {
+      grupos.push({ norm, pub });
+    } else if ((pub.citedBy ?? 0) > (grupo.pub.citedBy ?? 0)) {
+      grupo.pub = pub;
+    }
+  }
+  return grupos.map((g) => g.pub);
+}
+
 // Publicaciones (artículos y revistas, sin ponencias) para la versión imprimible, ordenadas por citas
-const publicacionesImpresion = (scholarData.publications ?? [])
-  .filter((pub) => pub.type !== 'conference')
-  .sort((a, b) => (b.citedBy ?? 0) - (a.citedBy ?? 0));
+const publicacionesImpresion = deduplicarPorTitulo(
+  (scholarData.publications ?? []).filter((pub) => pub.type !== 'conference')
+)
+  .sort((a, b) => (b.citedBy ?? 0) - (a.citedBy ?? 0))
+  .map((pub) => ({ ...pub, cuartil: buscarCuartil(pub.title) }));
 ---
 
 <Layout title={title} description={description}>
@@ -184,15 +236,28 @@ const publicacionesImpresion = (scholarData.publications ?? [])
     <!-- Publicaciones: solo en la versión imprimible/PDF; en pantalla ya están en /publicaciones -->
     {publicacionesImpresion.length > 0 && (
       <section class="hidden print:block max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 mb-16">
-        <p class="eyebrow mb-2">Producción científica</p>
-        <h2 class="text-2xl sm:text-3xl font-display font-bold text-graphite-900 dark:text-white mb-8">Publicaciones (por número de citas)</h2>
+        <p class="eyebrow mb-1">Producción científica</p>
+        <h2 class="text-2xl sm:text-3xl font-display font-bold text-graphite-900 mb-1">Publicaciones</h2>
+        <p class="font-mono text-xs text-graphite-500 mb-6">{publicacionesImpresion.length} artículos y revistas · ordenados por número de citas</p>
 
-        <ol class="space-y-3 text-sm list-decimal list-inside marker:font-mono marker:text-xs marker:text-graphite-500">
-          {publicacionesImpresion.map((pub) => (
-            <li class="pl-1">
-              <span class="font-semibold text-graphite-900 dark:text-white">{pub.title}.</span>{' '}
-              <span class="text-graphite-600 dark:text-graphite-300">{pub.authors?.join(', ')}. {pub.publication}.</span>{' '}
-              <span class="font-mono text-xs text-graphite-500 dark:text-graphite-400">[{pub.citedBy ?? 0} citas]</span>
+        <ol class="divide-y divide-line">
+          {publicacionesImpresion.map((pub, i) => (
+            <li class="flex items-start gap-3 py-3 [break-inside:avoid]">
+              <span class="shrink-0 w-6 text-right font-mono text-xs text-graphite-400 pt-0.5">{i + 1}</span>
+              <div class="flex-1 min-w-0">
+                <p class="font-semibold text-graphite-900 leading-snug">{pub.title}.</p>
+                <p class="text-graphite-500 text-xs mt-0.5">{pub.authors?.join(', ')} — {pub.publication}.</p>
+                {pub.cuartil && (
+                  <p class="mt-1 flex flex-wrap items-center gap-x-1.5 font-mono text-[0.65rem]">
+                    <span class="border border-signal-500 text-signal-700 rounded px-1.5 py-0.5 font-semibold">{pub.cuartil.cuartil}</span>
+                    {pub.cuartil.categoria && (
+                      <span class="text-graphite-400">{pub.cuartil.categoria}{pub.cuartil.posicion ? ` (${pub.cuartil.posicion})` : ''}</span>
+                    )}
+                    {pub.cuartil.impactFactor && <span class="text-graphite-400">· IF {pub.cuartil.impactFactor}</span>}
+                  </p>
+                )}
+              </div>
+              <span class="shrink-0 font-mono text-xs font-semibold text-pulse-600 pt-0.5 tabular-nums" title="Citas">{pub.citedBy ?? 0}</span>
             </li>
           ))}
         </ol>

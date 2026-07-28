@@ -1,0 +1,151 @@
+{
+  "cuartiles": [
+    {
+      "titulo": "A deep residual neural network for semiconductor defect classification in imbalanced scanning electron microscope datasets",
+      "cuartil": "Q1",
+      "posicion": "21/145",
+      "categoria": "Computer Science, Artificial Intelligence",
+      "impactFactor": 8.7
+    },
+    {
+      "titulo": "Emotion classification from EEG with a low-cost BCI versus a high-end equipment",
+      "cuartil": "D1/Q1",
+      "posicion": "36/144",
+      "categoria": "Computer Science, Artificial Intelligence",
+      "impactFactor": 6.325
+    },
+    {
+      "titulo": "One-dimensional convolutional neural networks for low/high arousal classification from electrodermal activity",
+      "cuartil": "Q2",
+      "posicion": "30/98",
+      "categoria": "Engineering, Biomedical",
+      "impactFactor": 5.076
+    },
+    {
+      "titulo": "Machine learning techniques for arousal classification from electrodermal activity: A systematic review",
+      "cuartil": "Q2",
+      "posicion": "95/276",
+      "categoria": "Engineering, Electrical & Electronic",
+      "impactFactor": 3.847
+    },
+    {
+      "titulo": "Geometric transformation-based data augmentation on defect classification of segmented images of semiconductor materials using a ResNet50 convolutional neural network",
+      "cuartil": "D1/Q1",
+      "posicion": "23/276",
+      "categoria": "Computer Science, Artificial Intelligence",
+      "impactFactor": 8.665
+    },
+    {
+      "titulo": "Optimal feature selection for defect classification in semiconductor wafers",
+      "cuartil": "Q3",
+      "posicion": "130/276",
+      "categoria": "Engineering, Electrical & Electronic",
+      "impactFactor": 2.796
+    },
+    {
+      "titulo": "A review on machine and deep learning for semiconductor defect classification in scanning electron microscope images",
+      "cuartil": "Q2",
+      "posicion": "39/92",
+      "categoria": "Engineering, Multidisciplinary",
+      "impactFactor": 2.838
+    },
+    {
+      "titulo": "Co-design of avatars to embody auditory hallucinations of patients with schizophrenia",
+      "cuartil": "Q1",
+      "posicion": "14/110",
+      "categoria": "Computer Science, Software Engineering",
+      "impactFactor": 4.697
+    },
+    {
+      "titulo": "Deep support vector machines for the identification of stress condition from electrodermal activity",
+      "cuartil": "D1/Q1",
+      "posicion": "36/144",
+      "categoria": "Computer Science, Artificial Intelligence",
+      "impactFactor": 6.325
+    },
+    {
+      "titulo": "Effectiveness of the level of personal relevance of visual autobiographical stimuli in the induction of positive emotions in young and older adults: pilot study protocol for a randomized controlled trial",
+      "cuartil": "Q4",
+      "posicion": "108/140",
+      "categoria": "Medicine, Research & Experimental",
+      "impactFactor": 2.279
+    },
+    {
+      "titulo": "Arousal detection in elderly people from electrodermal activity using musical stimuli",
+      "cuartil": "Q1",
+      "posicion": "10/56",
+      "categoria": "Instruments & Instrumentation",
+      "impactFactor": 3.576
+    },
+    {
+      "titulo": "Exploring the impact of windows on musicians' experience: a neuroarchitecture perspective",
+      "cuartil": "Q1",
+      "posicion": "20/91",
+      "categoria": "Construction & Building Technology",
+      "impactFactor": 3.7
+    },
+    {
+      "titulo": "Inter-hospital Moderate and Advanced Alzheimer's Disease Detection Through Convolutional Neural Networks",
+      "cuartil": "Q1",
+      "posicion": "28/134",
+      "categoria": "Multidisciplinary Sciences",
+      "impactFactor": 3.4
+    },
+    {
+      "titulo": "Detection of auditory hallucinations from electroencephalographic brain–computer interface signals",
+      "cuartil": "Q2",
+      "posicion": "154/310",
+      "categoria": "Computer Science, Artificial Intelligence",
+      "impactFactor": 2.7
+    },
+    {
+      "titulo": "Pre-occupancy evaluation of a virtual music school classroom: Influence of color and type of lighting on music performers",
+      "cuartil": "D1/Q1",
+      "posicion": "7/91",
+      "categoria": "Construction and Building Technology",
+      "impactFactor": 7.1
+    },
+    {
+      "titulo": "Defect detection and classification on semiconductor wafers using two-stage geometric transformation-based data augmentation and SqueezeNet lightweight convolutional neural network",
+      "cuartil": "D1/Q1",
+      "posicion": "20/169",
+      "categoria": "Computer Science, Interdisciplinary Applications",
+      "impactFactor": 6.7
+    },
+    {
+      "titulo": "Defect classification on semiconductor wafers using Fisher vector and visual vocabularies coding",
+      "cuartil": "Q1",
+      "posicion": "16/90",
+      "categoria": "Computer Science, Interdisciplinary Applications",
+      "impactFactor": 5.2
+    },
+    {
+      "titulo": "Model-Centric or Data-Centric Approach? A Case Study on the Classification of Surface Defects in Steel Hot Rolling Using Convolutional Neural Networks",
+      "cuartil": "Q2",
+      "posicion": "134/368",
+      "categoria": "Instruments & Instrumentation",
+      "impactFactor": 3.7
+    },
+    {
+      "titulo": "EEG Signal Processing Pipelines in the Study of Neurophysiological Characteristics of Gifted Primary School Children: A Scoping Review",
+      "cuartil": "Q2",
+      "posicion": "174/368",
+      "categoria": "Computer Science, Information Systems",
+      "impactFactor": null
+    },
+    {
+      "titulo": "Musical instruments in extended reality: A systematic review",
+      "cuartil": "Q1",
+      "posicion": "16/90",
+      "categoria": "Computer Sciences, Information Systems",
+      "impactFactor": 5.5
+    },
+    {
+      "titulo": "EEG and fNIRS Signal-Based Emotion Identification by Means of Machine Learning Algorithms During Visual Stimuli Exposure",
+      "cuartil": "Q2",
+      "posicion": "174/368",
+      "categoria": "Computer Science, Information Systems",
+      "impactFactor": null
+    }
+  ]
+}
