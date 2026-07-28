@@ -32,6 +32,9 @@
     "scholar:setup": "node scripts/setup-env-vars.js"
   },
   "dependencies": {
+    "@fontsource/ibm-plex-mono": "^5.3.0",
+    "@fontsource/ibm-plex-sans": "^5.3.0",
+    "@fontsource/space-grotesk": "^5.3.0",
     "dotenv": "^16.5.0",
     "js-yaml": "^4.1.0",
     "serpapi": "^2.1.0"

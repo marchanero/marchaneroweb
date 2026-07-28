@@ -129,4 +129,28 @@ describe('Pruebas avanzadas de SEO y estructura para perfil académico', () => {
     expect(nav.textContent).toContain('Publicaciones');
     expect(nav.textContent).toContain('Contacto');
   });
+
+  // El PDF del CV se genera en el postbuild (scripts/generate-cv-pdf.js) y debe
+  // quedar en A4, ya que es lo que se ofrece para descarga directa en /cv.
+  test('El PDF del CV se genera en el build y tiene formato A4', () => {
+    const pdfPath = path.join(__dirname, '..', 'dist', 'files', 'CV_RobertoSanchezReolid.pdf');
+    expect(fs.existsSync(pdfPath)).toBe(true);
+
+    const pdfBuffer = fs.readFileSync(pdfPath);
+    expect(pdfBuffer.length).toBeGreaterThan(10 * 1024); // no es un PDF vacío/corrupto
+
+    const pdfText = pdfBuffer.toString('latin1');
+    const mediaBoxMatch = pdfText.match(/\/MediaBox\s*\[\s*([\d.]+)\s+([\d.]+)\s+([\d.]+)\s+([\d.]+)\s*\]/);
+    expect(mediaBoxMatch).not.toBeNull();
+
+    const [, x0, y0, x1, y1] = mediaBoxMatch.map(Number);
+    const widthMm = ((x1 - x0) / 72) * 25.4;
+    const heightMm = ((y1 - y0) / 72) * 25.4;
+
+    // A4 = 210 x 297 mm (con un margen de tolerancia por redondeo de puntos)
+    expect(widthMm).toBeGreaterThan(205);
+    expect(widthMm).toBeLessThan(215);
+    expect(heightMm).toBeGreaterThan(292);
+    expect(heightMm).toBeLessThan(302);
+  });
 });

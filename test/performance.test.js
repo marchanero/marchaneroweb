@@ -67,13 +67,23 @@ describe('Performance y Optimización', () => {
     it('verifica que se utiliza el componente Image de Astro', () => {
       const indexPath = path.join(projectRoot, 'src', 'pages', 'index.astro');
       const indexContent = fs.readFileSync(indexPath, 'utf8');
-      
+
       // Verificar import del componente Image
       expect(indexContent).toContain("import { Image } from 'astro:assets'");
-      
+
       // Verificar uso con propiedades de optimización
       expect(indexContent).toContain('widths={[400, 800]}');
       expect(indexContent).toContain('sizes="');
+    });
+
+    it('verifica que la imagen del hero (candidata a LCP) tiene prioridad alta', () => {
+      const indexPath = path.join(projectRoot, 'src', 'pages', 'index.astro');
+      const indexContent = fs.readFileSync(indexPath, 'utf8');
+
+      // El retrato del hero es lo primero visible sin scroll: no debe cargarse
+      // lazy (retrasaría el Largest Contentful Paint).
+      expect(indexContent).toContain('loading="eager"');
+      expect(indexContent).toContain('fetchpriority="high"');
     });
 
     it('verifica la existencia de favicon optimizado', () => {
@@ -107,6 +117,77 @@ describe('Performance y Optimización', () => {
           expect(stats.size).toBeGreaterThan(0);
         });
       }
+    });
+  });
+
+  describe('Optimización de Fuentes', () => {
+    it('verifica que las fuentes están autoalojadas (@fontsource), sin @import a Google Fonts', () => {
+      const globalCssPath = path.join(projectRoot, 'src', 'styles', 'global.css');
+      const globalCss = fs.readFileSync(globalCssPath, 'utf8');
+
+      // El @import a fonts.googleapis.com forzaba 2 orígenes externos adicionales
+      // y bloqueaba el renderizado del texto hasta resolverlos.
+      expect(globalCss).not.toContain('fonts.googleapis.com');
+      expect(globalCss).not.toContain('fonts.gstatic.com');
+
+      const layoutPath = path.join(projectRoot, 'src', 'layouts', 'Layout.astro');
+      const layoutContent = fs.readFileSync(layoutPath, 'utf8');
+
+      expect(layoutContent).toContain("@fontsource/space-grotesk");
+      expect(layoutContent).toContain("@fontsource/ibm-plex-sans");
+      expect(layoutContent).toContain("@fontsource/ibm-plex-mono");
+    });
+
+    it('verifica que los paquetes @fontsource están declarados como dependencias', () => {
+      const packageJsonPath = path.join(projectRoot, 'package.json');
+      const packageJson = JSON.parse(fs.readFileSync(packageJsonPath, 'utf8'));
+
+      expect(packageJson.dependencies).toHaveProperty('@fontsource/space-grotesk');
+      expect(packageJson.dependencies).toHaveProperty('@fontsource/ibm-plex-sans');
+      expect(packageJson.dependencies).toHaveProperty('@fontsource/ibm-plex-mono');
+    });
+  });
+
+  describe('Reveal-on-scroll y LCP', () => {
+    it('verifica que la cabecera (contenido visible sin scroll) no usa la clase "reveal"', () => {
+      // La animación .reveal parte de opacity:0 hasta que un IntersectionObserver
+      // la activa; aplicarla a contenido ya visible en la carga retrasa el LCP
+      // en vez de mejorar la experiencia (no hay "scroll" que revelarlo).
+      const pages = [
+        'index.astro',
+        'asignaturas.astro',
+        'contacto.astro',
+        'cv.astro',
+        'proyectos.astro',
+        'publicaciones.astro',
+        'sobre-mi.astro',
+      ];
+
+      pages.forEach((page) => {
+        const pagePath = path.join(projectRoot, 'src', 'pages', page);
+        const content = fs.readFileSync(pagePath, 'utf8');
+
+        // Todas las cabeceras usan la clase decorativa "hero-wash"; index.astro
+        // la envuelve en un <section> (no tiene <header>), el resto en <header>.
+        const heroWashIndex = content.indexOf('hero-wash');
+        expect(heroWashIndex).toBeGreaterThan(-1);
+
+        const headerClose = content.indexOf('</header>', heroWashIndex);
+        const sectionClose = content.indexOf('</section>', heroWashIndex);
+        const boundary = headerClose !== -1 ? headerClose : sectionClose;
+        expect(boundary).toBeGreaterThan(-1);
+
+        const heroSnippet = content.slice(heroWashIndex, boundary);
+        expect(heroSnippet).not.toMatch(/class="[^"]*\breveal\b/);
+      });
+    });
+
+    it('verifica que el resto de secciones conservan el efecto reveal-on-scroll', () => {
+      // No debe haberse eliminado la clase por completo: solo del contenido above-the-fold.
+      const indexPath = path.join(projectRoot, 'src', 'pages', 'index.astro');
+      const indexContent = fs.readFileSync(indexPath, 'utf8');
+
+      expect(indexContent).toMatch(/class="[^"]*\breveal\b/);
     });
   });
 
@@ -279,6 +360,16 @@ describe('Performance y Optimización', () => {
       expect(netlifyConfig).toContain('publish');
     });
 
+    it('verifica caché inmutable de larga duración para los assets con hash (_astro)', () => {
+      const netlifyConfigPath = path.join(projectRoot, 'netlify.toml');
+      const netlifyConfig = fs.readFileSync(netlifyConfigPath, 'utf8');
+
+      const match = netlifyConfig.match(/for = "\/_astro\/\*"[\s\S]*?Cache-Control = "([^"]+)"/);
+      expect(match).not.toBeNull();
+      expect(match[1]).toContain('immutable');
+      expect(match[1]).toMatch(/max-age=31536000/);
+    });
+
     it('verifica configuración de funciones Netlify', () => {
       const functionsDir = path.join(projectRoot, 'netlify', 'functions');
       
@@ -315,6 +406,21 @@ describe('Performance y Optimización', () => {
         
         expect(verificationScripts.length).toBeGreaterThan(0);
       }
+    });
+
+    it('verifica que la generación del PDF del CV está enganchada al build (postbuild)', () => {
+      const packageJsonPath = path.join(projectRoot, 'package.json');
+      const packageJson = JSON.parse(fs.readFileSync(packageJsonPath, 'utf8'));
+
+      expect(packageJson.scripts).toHaveProperty('postbuild');
+      expect(packageJson.scripts.postbuild).toContain('generate-cv-pdf.js');
+
+      const scriptPath = path.join(projectRoot, 'scripts', 'generate-cv-pdf.js');
+      expect(fs.existsSync(scriptPath)).toBe(true);
+
+      const scriptContent = fs.readFileSync(scriptPath, 'utf8');
+      // Debe ser best-effort: si Chromium falla en CI, no debe romper el despliegue.
+      expect(scriptContent).toContain('process.exitCode = 0');
     });
   });
 });
