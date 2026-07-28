@@ -83,4 +83,4 @@ El proyecto utiliza GitHub Actions para CI/CD. Los flujos de trabajo incluyen:
 
 ## Despliegue
 
-El despliegue en Netlify se realiza automáticamente cuando se fusionan cambios en la rama `main`. Para más detalles, consulta el archivo `DEPLOY.md`.
+El despliegue en Netlify se realiza automáticamente cuando se fusionan cambios en la rama `main`. Para más detalles, consulta el archivo `docs/DEPLOY.md`.

@@ -134,7 +134,7 @@ La suite de tests cubre:
 ## 📚 Documentación adicional
 
 - [docs/CMS.md](./docs/CMS.md) — Edición de contenido con el CMS (Sveltia)
-- [DEPLOY.md](./DEPLOY.md) — Instrucciones detalladas de despliegue
+- [docs/DEPLOY.md](./docs/DEPLOY.md) — Instrucciones detalladas de despliegue
 - [CONTRIBUTING.md](./CONTRIBUTING.md) — Guía para contribuir al proyecto
 - [docs/GOOGLE-SCHOLAR-INTEGRATION.md](./docs/GOOGLE-SCHOLAR-INTEGRATION.md) — Sistema de integración con Google Scholar
 - [docs/WORKFLOW-UNIFICADO.md](./docs/WORKFLOW-UNIFICADO.md) — Pipeline de CI/CD

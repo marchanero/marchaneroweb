@@ -354,7 +354,7 @@ class SystemVerification {
   }
 
   saveResults() {
-    const reportPath = './verification-report.json';
+    const reportPath = './docs/archive/verification-report.json';
     const report = {
       timestamp: new Date().toISOString(),
       summary: this.results.analysis,

@@ -142,7 +142,7 @@ import ShareButtons from '../components/ShareButtons.astro';
 - Artículos de divulgación
 - Reflexiones sobre investigación
 - Actualizaciones de proyectos
-- Integración con CMS (Strapi configurado)
+- Integración con CMS
 ```
 
 ## ⚡ Optimizaciones Técnicas

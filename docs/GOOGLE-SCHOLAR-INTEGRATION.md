@@ -44,9 +44,9 @@ El sistema de integración de Google Scholar para el sitio web del Dr. Roberto S
 - `src/data/scholar-executive-summary.json` - Resumen ejecutivo con recomendaciones
 
 ### Reportes del Sistema
-- `verification-report.json` - Estado de salud del sistema
+- `docs/archive/verification-report.json` - Estado de salud del sistema
 - `integration-test-report.json` - Resultados de pruebas de integración
-- `integration-completion-report.json` - Reporte final de implementación
+- `docs/archive/integration-completion-report.json` - Reporte final de implementación
 
 ## 🔧 Configuración Pendiente
 

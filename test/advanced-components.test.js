@@ -16,7 +16,7 @@ describe('Componentes Avanzados y Mejoras', () => {
 
   describe('Documentación y Configuración', () => {
     it('verifica que existe el plan de mejoras prioritarias', () => {
-      const planPath = path.join(projectRoot, 'PLAN_MEJORAS_PRIORITARIAS.md');
+      const planPath = path.join(projectRoot, 'docs', 'archive', 'PLAN_MEJORAS_PRIORITARIAS.md');
       expect(fs.existsSync(planPath)).toBe(true);
       
       if (fs.existsSync(planPath)) {

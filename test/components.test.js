@@ -95,13 +95,13 @@ describe('Componentes', () => {
     const projectRoot = path.join(__dirname, '..');
     
     // Verificar que existe el plan de mejoras
-    expect(fs.existsSync(path.join(projectRoot, 'PLAN_MEJORAS_PRIORITARIAS.md'))).toBe(true);
-    
+    expect(fs.existsSync(path.join(projectRoot, 'docs', 'archive', 'PLAN_MEJORAS_PRIORITARIAS.md'))).toBe(true);
+
     // Verificar que existe la documentación de mejoras implementadas
     expect(fs.existsSync(path.join(projectRoot, 'docs', 'MEJORAS-IMPLEMENTADAS.md'))).toBe(true);
-    
+
     // Verificar checklist final
-    expect(fs.existsSync(path.join(projectRoot, 'CHECKLIST-FINAL.md'))).toBe(true);
+    expect(fs.existsSync(path.join(projectRoot, 'docs', 'archive', 'CHECKLIST-FINAL.md'))).toBe(true);
   });
 
   it('verifica estructura de scripts y configuración', () => {

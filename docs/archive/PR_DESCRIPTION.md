@@ -50,12 +50,6 @@ Esta PR introduce **8 componentes avanzados** y mejoras significativas para conv
 
 ## 🎯 Mejoras Adicionales
 
-### **Integración Strapi**
-- `StrapiContent.astro`: Componente para CMS
-- `strapi.js`: Librería de utilidades
-- Tipos TypeScript completos
-- Páginas de prueba y documentación
-
 ### **Componentes Utilitarios**
 - `ProyectoCard.astro`: Card reutilizable para proyectos
 - Tests adicionales para contenido y responsive
@@ -152,7 +146,6 @@ npm run dev        # Desarrollo funcional
 
 ### **Archivos Nuevos**
 - `PLAN_MEJORAS_PRIORITARIAS.md`: Hoja de ruta completa
-- `docs/STRAPI-INTEGRATION.md`: Guía de CMS
 - Comentarios inline completos en todos los componentes
 
 ### **Ejemplos de Uso**
