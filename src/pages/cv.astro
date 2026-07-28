@@ -1,110 +1,16 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import cv from '../../content/cv.json';
 
 const title = "Currículum - Dr. Roberto Sánchez Reolid";
 const description = "Currículum vitae académico y profesional del Dr. Roberto Sánchez Reolid, con formación, experiencia docente e investigadora";
 
-// Datos del CV (en producción podrían venir de un CMS o archivo JSON)
-const educacion = [
-  {
-    titulo: "Doctorado en Informática",
-    institucion: "Universidad de Castilla-La Mancha",
-    periodo: "2015 - 2019",
-    descripcion: "Tesis: 'Modelos de aprendizaje automático para la detección de emociones mediante señales fisiológicas'."
-  },
-  {
-    titulo: "Máster en Tecnologías de la Información",
-    institucion: "Universidad de Castilla-La Mancha",
-    periodo: "2013 - 2015",
-    descripcion: "Especialización en Inteligencia Artificial y Computación Avanzada."
-  },
-  {
-    titulo: "Ingeniería Informática",
-    institucion: "Universidad de Castilla-La Mancha",
-    periodo: "2008 - 2013",
-    descripcion: "Premio Extraordinario Fin de Carrera."
-  }
-];
-
-const experienciaDocente = [
-  {
-    puesto: "Profesor Ayudante Doctor",
-    departamento: "Departamento de Sistemas Informáticos",
-    universidad: "Universidad de Castilla-La Mancha",
-    periodo: "2021 - Actualidad",
-    asignaturas: [
-      "Inteligencia Artificial",
-      "Aprendizaje Automático",
-      "Sistemas Inteligentes"
-    ]
-  },
-  {
-    puesto: "Profesor Asociado",
-    departamento: "Departamento de Sistemas Informáticos",
-    universidad: "Universidad de Castilla-La Mancha",
-    periodo: "2019 - 2021",
-    asignaturas: [
-      "Fundamentos de Programación",
-      "Inteligencia Artificial"
-    ]
-  }
-];
-
-const experienciaInvestigadora = [
-  {
-    puesto: "Investigador Principal",
-    proyecto: "Sistemas de reconocimiento emocional para entornos educativos",
-    entidad: "Ministerio de Ciencia e Innovación",
-    periodo: "2022 - Actualidad",
-    codigo: "TIN2022-12345",
-    descripcion: "Desarrollo de sistemas basados en IA para la detección de estados emocionales en el aula."
-  },
-  {
-    puesto: "Investigador",
-    proyecto: "Computación afectiva para mejora de interfaces hombre-máquina",
-    entidad: "Proyecto Europeo H2020",
-    periodo: "2020 - 2022",
-    codigo: "H2020-ICT-2020-1",
-    descripcion: "Diseño de interfaces adaptativas basadas en el estado emocional del usuario."
-  }
-];
-
-const estancias = [
-  {
-    centro: "Massachusetts Institute of Technology (MIT)",
-    departamento: "Computer Science and Artificial Intelligence Laboratory",
-    pais: "Estados Unidos",
-    periodo: "2018",
-    duracion: "6 meses",
-    descripcion: "Investigación en algoritmos de aprendizaje por refuerzo para interfaces adaptativas."
-  },
-  {
-    centro: "Universidad de Cambridge",
-    departamento: "Department of Computer Science and Technology",
-    pais: "Reino Unido",
-    periodo: "2017",
-    duracion: "3 meses",
-    descripcion: "Análisis de señales fisiológicas para reconocimiento emocional."
-  }
-];
-
-const reconocimientos = [
-  {
-    titulo: "Premio de Investigación en IA",
-    entidad: "Fundación Española para la Ciencia y la Tecnología",
-    anio: 2021
-  },
-  {
-    titulo: "Mejor Tesis Doctoral en Informática",
-    entidad: "Asociación de Ingeniería Informática",
-    anio: 2020
-  },
-  {
-    titulo: "Mejor Artículo",
-    entidad: "International Conference on Affective Computing",
-    anio: 2020
-  }
-];
+// Contenido editable desde content/cv.json (CMS)
+const educacion = cv.educacion ?? [];
+const experienciaDocente = cv.experienciaDocente ?? [];
+const experienciaInvestigadora = cv.experienciaInvestigadora ?? [];
+const estancias = cv.estancias ?? [];
+const reconocimientos = cv.reconocimientos ?? [];
 ---
 
 <Layout title={title} description={description}>
@@ -133,103 +39,113 @@ const reconocimientos = [
 
   <main class="py-14 sm:py-20">
     <!-- Educación -->
-    <section class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 mb-16 reveal">
-      <p class="eyebrow mb-2">2008 — 2019</p>
-      <h2 class="text-2xl sm:text-3xl font-display font-bold text-graphite-900 dark:text-white mb-8">Formación académica</h2>
+    {educacion.length > 0 && (
+      <section class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 mb-16 reveal">
+        <p class="eyebrow mb-2">Trayectoria</p>
+        <h2 class="text-2xl sm:text-3xl font-display font-bold text-graphite-900 dark:text-white mb-8">Formación académica</h2>
 
-      <div class="relative border-l border-line dark:border-line-dark pl-6 space-y-8">
-        {educacion.map((item) => (
-          <div class="relative">
-            <span class="absolute -left-[29px] top-1.5 w-2.5 h-2.5 rounded-full bg-signal-500"></span>
-            <p class="font-mono text-xs text-graphite-500 dark:text-graphite-400 mb-1">{item.periodo}</p>
-            <h3 class="text-lg font-semibold text-graphite-900 dark:text-white">{item.titulo}</h3>
-            <p class="text-pulse-600 dark:text-pulse-400 text-sm mb-2">{item.institucion}</p>
-            <p class="text-graphite-600 dark:text-graphite-300 text-sm leading-relaxed">{item.descripcion}</p>
-          </div>
-        ))}
-      </div>
-    </section>
+        <div class="relative border-l border-line dark:border-line-dark pl-6 space-y-8">
+          {educacion.map((item) => (
+            <div class="relative">
+              <span class="absolute -left-[29px] top-1.5 w-2.5 h-2.5 rounded-full bg-signal-500"></span>
+              {item.periodo && <p class="font-mono text-xs text-graphite-500 dark:text-graphite-400 mb-1">{item.periodo}</p>}
+              <h3 class="text-lg font-semibold text-graphite-900 dark:text-white">{item.titulo}</h3>
+              <p class="text-pulse-600 dark:text-pulse-400 text-sm mb-2">{item.institucion}</p>
+              {item.descripcion && <p class="text-graphite-600 dark:text-graphite-300 text-sm leading-relaxed">{item.descripcion}</p>}
+            </div>
+          ))}
+        </div>
+      </section>
+    )}
 
     <!-- Experiencia Docente -->
-    <section class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 mb-16 reveal">
-      <p class="eyebrow mb-2">2019 — Actualidad</p>
-      <h2 class="text-2xl sm:text-3xl font-display font-bold text-graphite-900 dark:text-white mb-8">Experiencia docente</h2>
+    {experienciaDocente.length > 0 && (
+      <section class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 mb-16 reveal">
+        <p class="eyebrow mb-2">Docencia</p>
+        <h2 class="text-2xl sm:text-3xl font-display font-bold text-graphite-900 dark:text-white mb-8">Experiencia docente</h2>
 
-      <div class="relative border-l border-line dark:border-line-dark pl-6 space-y-8">
-        {experienciaDocente.map((item) => (
-          <div class="relative">
-            <span class="absolute -left-[29px] top-1.5 w-2.5 h-2.5 rounded-full bg-signal-500"></span>
-            <p class="font-mono text-xs text-graphite-500 dark:text-graphite-400 mb-1">{item.periodo}</p>
-            <h3 class="text-lg font-semibold text-graphite-900 dark:text-white">{item.puesto}</h3>
-            <p class="text-pulse-600 dark:text-pulse-400 text-sm mb-3">{item.departamento}, {item.universidad}</p>
-            <p class="text-sm font-medium text-graphite-700 dark:text-graphite-200 mb-2">Asignaturas impartidas</p>
-            <div class="flex flex-wrap gap-2">
-              {item.asignaturas.map(asignatura => (
-                <span class="border border-line dark:border-line-dark text-graphite-600 dark:text-graphite-300 px-3 py-1 rounded-md text-xs font-mono">{asignatura}</span>
-              ))}
+        <div class="relative border-l border-line dark:border-line-dark pl-6 space-y-8">
+          {experienciaDocente.map((item) => (
+            <div class="relative">
+              <span class="absolute -left-[29px] top-1.5 w-2.5 h-2.5 rounded-full bg-signal-500"></span>
+              <p class="font-mono text-xs text-graphite-500 dark:text-graphite-400 mb-1">{item.periodo}</p>
+              <h3 class="text-lg font-semibold text-graphite-900 dark:text-white">{item.puesto}</h3>
+              <p class="text-pulse-600 dark:text-pulse-400 text-sm mb-3">{item.departamento}, {item.universidad}</p>
+              <p class="text-sm font-medium text-graphite-700 dark:text-graphite-200 mb-2">Asignaturas impartidas</p>
+              <div class="flex flex-wrap gap-2">
+                {item.asignaturas.map(asignatura => (
+                  <span class="border border-line dark:border-line-dark text-graphite-600 dark:text-graphite-300 px-3 py-1 rounded-md text-xs font-mono">{asignatura}</span>
+                ))}
+              </div>
             </div>
-          </div>
-        ))}
-      </div>
-    </section>
+          ))}
+        </div>
+      </section>
+    )}
 
     <!-- Experiencia Investigadora -->
-    <section class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 mb-16 reveal">
-      <p class="eyebrow mb-2">2020 — Actualidad</p>
-      <h2 class="text-2xl sm:text-3xl font-display font-bold text-graphite-900 dark:text-white mb-8">Experiencia investigadora</h2>
+    {experienciaInvestigadora.length > 0 && (
+      <section class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 mb-16 reveal">
+        <p class="eyebrow mb-2">Investigación</p>
+        <h2 class="text-2xl sm:text-3xl font-display font-bold text-graphite-900 dark:text-white mb-8">Experiencia investigadora</h2>
 
-      <div class="relative border-l border-line dark:border-line-dark pl-6 space-y-8">
-        {experienciaInvestigadora.map((item) => (
-          <div class="relative">
-            <span class="absolute -left-[29px] top-1.5 w-2.5 h-2.5 rounded-full bg-signal-500"></span>
-            <p class="font-mono text-xs text-graphite-500 dark:text-graphite-400 mb-1">{item.periodo} · {item.codigo}</p>
-            <h3 class="text-lg font-semibold text-graphite-900 dark:text-white">{item.proyecto}</h3>
-            <p class="text-sm mb-2">
-              <span class="text-pulse-600 dark:text-pulse-400">{item.puesto}</span>
-              <span class="text-graphite-400 mx-2">·</span>
-              <span class="text-graphite-500 dark:text-graphite-400">{item.entidad}</span>
-            </p>
-            <p class="text-graphite-600 dark:text-graphite-300 text-sm leading-relaxed">{item.descripcion}</p>
-          </div>
-        ))}
-      </div>
-    </section>
+        <div class="relative border-l border-line dark:border-line-dark pl-6 space-y-8">
+          {experienciaInvestigadora.map((item) => (
+            <div class="relative">
+              <span class="absolute -left-[29px] top-1.5 w-2.5 h-2.5 rounded-full bg-signal-500"></span>
+              <p class="font-mono text-xs text-graphite-500 dark:text-graphite-400 mb-1">{item.periodo}{item.codigo && ` · ${item.codigo}`}</p>
+              <h3 class="text-lg font-semibold text-graphite-900 dark:text-white">{item.proyecto}</h3>
+              <p class="text-sm mb-2">
+                <span class="text-pulse-600 dark:text-pulse-400">{item.puesto}</span>
+                <span class="text-graphite-400 mx-2">·</span>
+                <span class="text-graphite-500 dark:text-graphite-400">{item.entidad}</span>
+              </p>
+              {item.descripcion && <p class="text-graphite-600 dark:text-graphite-300 text-sm leading-relaxed">{item.descripcion}</p>}
+            </div>
+          ))}
+        </div>
+      </section>
+    )}
 
     <!-- Estancias de Investigación -->
-    <section class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 mb-16 reveal">
-      <p class="eyebrow mb-2">2017 — 2018</p>
-      <h2 class="text-2xl sm:text-3xl font-display font-bold text-graphite-900 dark:text-white mb-8">Estancias de investigación</h2>
+    {estancias.length > 0 && (
+      <section class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 mb-16 reveal">
+        <p class="eyebrow mb-2">Movilidad</p>
+        <h2 class="text-2xl sm:text-3xl font-display font-bold text-graphite-900 dark:text-white mb-8">Estancias de investigación</h2>
 
-      <div class="relative border-l border-line dark:border-line-dark pl-6 space-y-8">
-        {estancias.map((item) => (
-          <div class="relative">
-            <span class="absolute -left-[29px] top-1.5 w-2.5 h-2.5 rounded-full bg-signal-500"></span>
-            <p class="font-mono text-xs text-graphite-500 dark:text-graphite-400 mb-1">{item.periodo} · {item.duracion}</p>
-            <h3 class="text-lg font-semibold text-graphite-900 dark:text-white">{item.centro}</h3>
-            <p class="text-pulse-600 dark:text-pulse-400 text-sm mb-2">{item.departamento} · {item.pais}</p>
-            <p class="text-graphite-600 dark:text-graphite-300 text-sm leading-relaxed">{item.descripcion}</p>
-          </div>
-        ))}
-      </div>
-    </section>
+        <div class="relative border-l border-line dark:border-line-dark pl-6 space-y-8">
+          {estancias.map((item) => (
+            <div class="relative">
+              <span class="absolute -left-[29px] top-1.5 w-2.5 h-2.5 rounded-full bg-signal-500"></span>
+              <p class="font-mono text-xs text-graphite-500 dark:text-graphite-400 mb-1">{item.periodo}{item.duracion && ` · ${item.duracion}`}</p>
+              <h3 class="text-lg font-semibold text-graphite-900 dark:text-white">{item.centro}</h3>
+              <p class="text-pulse-600 dark:text-pulse-400 text-sm mb-2">{item.departamento}{item.departamento && item.pais && ' · '}{item.pais}</p>
+              {item.descripcion && <p class="text-graphite-600 dark:text-graphite-300 text-sm leading-relaxed">{item.descripcion}</p>}
+            </div>
+          ))}
+        </div>
+      </section>
+    )}
 
     <!-- Reconocimientos -->
-    <section class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 mb-16 reveal">
-      <p class="eyebrow mb-2">Distinciones</p>
-      <h2 class="text-2xl sm:text-3xl font-display font-bold text-graphite-900 dark:text-white mb-8">Reconocimientos</h2>
+    {reconocimientos.length > 0 && (
+      <section class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 mb-16 reveal">
+        <p class="eyebrow mb-2">Distinciones</p>
+        <h2 class="text-2xl sm:text-3xl font-display font-bold text-graphite-900 dark:text-white mb-8">Reconocimientos</h2>
 
-      <div class="grid sm:grid-cols-3 gap-4">
-        {reconocimientos.map((item) => (
-          <div class="spec-card">
-            <span class="spec-tick spec-tick-tl"></span>
-            <span class="spec-tick spec-tick-br"></span>
-            <p class="font-mono text-xs text-graphite-500 dark:text-graphite-400 mb-2">{item.anio}</p>
-            <h3 class="text-base font-semibold text-graphite-900 dark:text-white mb-1">{item.titulo}</h3>
-            <p class="text-sm text-graphite-500 dark:text-graphite-400">{item.entidad}</p>
-          </div>
-        ))}
-      </div>
-    </section>
+        <div class="grid sm:grid-cols-3 gap-4">
+          {reconocimientos.map((item) => (
+            <div class="spec-card">
+              <span class="spec-tick spec-tick-tl"></span>
+              <span class="spec-tick spec-tick-br"></span>
+              <p class="font-mono text-xs text-graphite-500 dark:text-graphite-400 mb-2">{item.anio}</p>
+              <h3 class="text-base font-semibold text-graphite-900 dark:text-white mb-1">{item.titulo}</h3>
+              <p class="text-sm text-graphite-500 dark:text-graphite-400">{item.entidad}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+    )}
 
     <!-- Llamada a la acción -->
     <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center reveal">

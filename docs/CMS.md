@@ -9,6 +9,7 @@ El sitio incluye un panel de administración ([Sveltia CMS](https://github.com/s
 | Textos y líneas de investigación de la home | `content/home.json` | `/` |
 | Proyectos de investigación | `content/proyectos/*.md` | `/proyectos` y destacados en `/` |
 | Asignaturas | `content/asignaturas/*.md` | `/asignaturas` |
+| Currículum (formación, docencia, investigación, estancias, premios) | `content/cv.json` | `/cv` |
 
 Las **publicaciones y métricas** no se editan aquí: se actualizan solas desde Google Scholar (ver `docs/GOOGLE-SCHOLAR-INTEGRATION.md`).
 

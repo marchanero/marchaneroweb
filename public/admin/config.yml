@@ -79,6 +79,73 @@ collections:
       - { label: 'Contenido adicional', name: 'body', widget: 'markdown', required: false }
 
   # -----------------------------------------------------------
+  # Currículum vitae (archivo único JSON)
+  # -----------------------------------------------------------
+  - name: 'cv'
+    label: 'Currículum vitae'
+    files:
+      - name: 'cv'
+        label: 'Contenido del CV'
+        file: 'content/cv.json'
+        fields:
+          - label: 'Formación académica'
+            name: 'educacion'
+            widget: 'list'
+            summary: '{{titulo}}'
+            fields:
+              - { label: 'Título', name: 'titulo', widget: 'string' }
+              - { label: 'Institución', name: 'institucion', widget: 'string' }
+              - { label: 'Periodo (p. ej. 2015 - 2019)', name: 'periodo', widget: 'string', required: false }
+              - { label: 'Descripción', name: 'descripcion', widget: 'text', required: false }
+          - label: 'Experiencia docente'
+            name: 'experienciaDocente'
+            widget: 'list'
+            required: false
+            summary: '{{puesto}}'
+            fields:
+              - { label: 'Puesto', name: 'puesto', widget: 'string' }
+              - { label: 'Departamento', name: 'departamento', widget: 'string' }
+              - { label: 'Universidad', name: 'universidad', widget: 'string' }
+              - { label: 'Periodo (p. ej. 2021 - Actualidad)', name: 'periodo', widget: 'string' }
+              - label: 'Asignaturas impartidas'
+                name: 'asignaturas'
+                widget: 'list'
+                field: { label: 'Asignatura', name: 'asignatura', widget: 'string' }
+          - label: 'Experiencia investigadora'
+            name: 'experienciaInvestigadora'
+            widget: 'list'
+            required: false
+            summary: '{{proyecto}}'
+            fields:
+              - { label: 'Puesto (p. ej. Investigador Principal)', name: 'puesto', widget: 'string' }
+              - { label: 'Proyecto', name: 'proyecto', widget: 'string' }
+              - { label: 'Entidad financiadora', name: 'entidad', widget: 'string' }
+              - { label: 'Periodo', name: 'periodo', widget: 'string' }
+              - { label: 'Código de proyecto', name: 'codigo', widget: 'string', required: false }
+              - { label: 'Descripción', name: 'descripcion', widget: 'text', required: false }
+          - label: 'Estancias de investigación'
+            name: 'estancias'
+            widget: 'list'
+            required: false
+            summary: '{{centro}}'
+            fields:
+              - { label: 'Centro', name: 'centro', widget: 'string' }
+              - { label: 'Departamento', name: 'departamento', widget: 'string', required: false }
+              - { label: 'País', name: 'pais', widget: 'string' }
+              - { label: 'Periodo (año)', name: 'periodo', widget: 'string' }
+              - { label: 'Duración', name: 'duracion', widget: 'string', required: false }
+              - { label: 'Descripción', name: 'descripcion', widget: 'text', required: false }
+          - label: 'Reconocimientos'
+            name: 'reconocimientos'
+            widget: 'list'
+            required: false
+            summary: '{{titulo}}'
+            fields:
+              - { label: 'Título', name: 'titulo', widget: 'string' }
+              - { label: 'Entidad', name: 'entidad', widget: 'string' }
+              - { label: 'Año', name: 'anio', widget: 'number', value_type: 'int' }
+
+  # -----------------------------------------------------------
   # Asignaturas (un .md por asignatura)
   # -----------------------------------------------------------
   - name: 'asignaturas'

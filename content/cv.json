@@ -1,0 +1,32 @@
+{
+  "educacion": [
+    {
+      "titulo": "Doctor en Informática, especialidad en Sistemas Informáticos Avanzados",
+      "institucion": "Universidad de Castilla-La Mancha",
+      "periodo": "",
+      "descripcion": ""
+    },
+    {
+      "titulo": "Máster en Ingeniería Industrial",
+      "institucion": "Universidad de Castilla-La Mancha",
+      "periodo": "",
+      "descripcion": ""
+    },
+    {
+      "titulo": "Graduado en Ingeniería Electrónica y Automática",
+      "institucion": "Universidad de Castilla-La Mancha",
+      "periodo": "",
+      "descripcion": ""
+    },
+    {
+      "titulo": "Ingeniero Técnico Industrial, especialidad en Instalaciones Eléctricas de Baja Tensión",
+      "institucion": "Universidad de Castilla-La Mancha",
+      "periodo": "",
+      "descripcion": ""
+    }
+  ],
+  "experienciaDocente": [],
+  "experienciaInvestigadora": [],
+  "estancias": [],
+  "reconocimientos": []
+}
