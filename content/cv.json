@@ -1,22 +1,22 @@
 {
   "educacion": [
     {
-      "titulo": "Doctor en Informática, especialidad en Sistemas Informáticos Avanzados",
+      "titulo": "Doctorado en Sistemas Informáticos Avanzados",
       "institucion": "Universidad de Castilla-La Mancha",
-      "periodo": "",
-      "descripcion": ""
+      "periodo": "2022",
+      "descripcion": "Título expedido el 29/11/2022."
     },
     {
-      "titulo": "Máster en Ingeniería Industrial",
+      "titulo": "Máster Universitario en Ingeniería Industrial",
       "institucion": "Universidad de Castilla-La Mancha",
-      "periodo": "",
-      "descripcion": ""
+      "periodo": "2017",
+      "descripcion": "Escuela Técnica Superior de Ingeniería Industrial de Albacete. Título expedido el 23/10/2017."
     },
     {
-      "titulo": "Graduado en Ingeniería Electrónica y Automática",
+      "titulo": "Graduado en Ingeniería Electrónica Industrial y Automática",
       "institucion": "Universidad de Castilla-La Mancha",
-      "periodo": "",
-      "descripcion": ""
+      "periodo": "2014",
+      "descripcion": "Escuela Técnica Superior de Ingeniería Industrial de Albacete. Título expedido el 13/06/2014."
     },
     {
       "titulo": "Ingeniero Técnico Industrial, especialidad en Instalaciones Eléctricas de Baja Tensión",
@@ -25,8 +25,81 @@
       "descripcion": ""
     }
   ],
-  "experienciaDocente": [],
-  "experienciaInvestigadora": [],
-  "estancias": [],
+  "experienciaProfesional": [
+    {
+      "puesto": "Actividad profesional en proyectos e instalaciones eléctricas de baja tensión",
+      "entidad": "SAVIALBA GLOBAL S.L.",
+      "periodo": "2017 - 2018",
+      "descripcion": ""
+    }
+  ],
+  "experienciaDocente": [
+    {
+      "puesto": "Profesor Ayudante Doctor",
+      "departamento": "Grado en Ingeniería Informática, Facultad de Ciencias Sociales y Tecnologías de la Información (Talavera de la Reina)",
+      "universidad": "Universidad de Castilla-La Mancha",
+      "periodo": "2024 - Actualidad",
+      "asignaturas": ["Arquitectura Empresarial", "Sistemas de Información", "Transformación Digital de la Empresa"]
+    },
+    {
+      "puesto": "Personal Docente e Investigador (PDI)",
+      "departamento": "Grado en Ingeniería Informática y Grado en Ingeniería Industrial",
+      "universidad": "Universidad de Castilla-La Mancha",
+      "periodo": "2018 - 2024",
+      "asignaturas": ["Informática", "Diseño de Sistemas Interactivos", "Videojuegos y Realidad Virtual", "Sistemas de Información", "Nuevas Tecnologías en la Investigación en Psicología Aplicada"]
+    }
+  ],
+  "experienciaInvestigadora": [
+    {
+      "puesto": "Co-investigador Principal",
+      "proyecto": "Aulas inteligentes para la mejora de la atención del estudiantado mediante algoritmos de Inteligencia Artificial integrados con visión artificial y tecnologías embebidas",
+      "entidad": "Universidad de Castilla-La Mancha",
+      "periodo": "2025 - 2027",
+      "codigo": "",
+      "descripcion": ""
+    },
+    {
+      "puesto": "Investigador",
+      "proyecto": "Realidad extendida para detectar y aliviar el miedo y la ansiedad basadas en respuestas neurofisiológicas",
+      "entidad": "Ministerio de Ciencia e Innovación",
+      "periodo": "2024 - 2027",
+      "codigo": "PID2023-149753OB-C21",
+      "descripcion": ""
+    },
+    {
+      "puesto": "Investigador",
+      "proyecto": "Intervenciones basadas en la realidad extendida para paliar déficits de reconocimiento de emociones",
+      "entidad": "Ministerio de Economía, Industria y Competitividad (MINECO)",
+      "periodo": "2021 - 2024",
+      "codigo": "PID2020-115220RB-C21",
+      "descripcion": ""
+    },
+    {
+      "puesto": "Investigador",
+      "proyecto": "Intelligent Reliability 4.0",
+      "entidad": "Comisión Europea (H2020-ECSEL, Fondos FEDER)",
+      "periodo": "2020 - 2023",
+      "codigo": "H2020-ECSEL-2019-1-IA 876659",
+      "descripcion": ""
+    },
+    {
+      "puesto": "Investigador Predoctoral (Contrato FPI)",
+      "proyecto": "Formación de Personal Investigador (FPI)",
+      "entidad": "Ministerio de Economía, Industria y Competitividad (MINECO)",
+      "periodo": "2018 - 2022",
+      "codigo": "",
+      "descripcion": ""
+    }
+  ],
+  "estancias": [
+    {
+      "centro": "Instituto Politécnico de Leiria",
+      "departamento": "",
+      "pais": "Portugal",
+      "periodo": "",
+      "duracion": "",
+      "descripcion": "Estancia de investigación predoctoral."
+    }
+  ],
   "reconocimientos": []
 }

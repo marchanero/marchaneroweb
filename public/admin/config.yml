@@ -97,6 +97,16 @@ collections:
               - { label: 'Institución', name: 'institucion', widget: 'string' }
               - { label: 'Periodo (p. ej. 2015 - 2019)', name: 'periodo', widget: 'string', required: false }
               - { label: 'Descripción', name: 'descripcion', widget: 'text', required: false }
+          - label: 'Experiencia profesional'
+            name: 'experienciaProfesional'
+            widget: 'list'
+            required: false
+            summary: '{{puesto}}'
+            fields:
+              - { label: 'Puesto / actividad', name: 'puesto', widget: 'string' }
+              - { label: 'Entidad', name: 'entidad', widget: 'string' }
+              - { label: 'Periodo (p. ej. 2017 - 2018)', name: 'periodo', widget: 'string' }
+              - { label: 'Descripción', name: 'descripcion', widget: 'text', required: false }
           - label: 'Experiencia docente'
             name: 'experienciaDocente'
             widget: 'list'
