@@ -145,6 +145,16 @@ collections:
               - { label: 'Periodo (año)', name: 'periodo', widget: 'string' }
               - { label: 'Duración', name: 'duracion', widget: 'string', required: false }
               - { label: 'Descripción', name: 'descripcion', widget: 'text', required: false }
+          - label: 'Gestión académica'
+            name: 'gestionAcademica'
+            widget: 'list'
+            required: false
+            summary: '{{cargo}}'
+            fields:
+              - { label: 'Cargo', name: 'cargo', widget: 'string' }
+              - { label: 'Institución', name: 'institucion', widget: 'string' }
+              - { label: 'Periodo (p. ej. 2025 - Actualidad)', name: 'periodo', widget: 'string' }
+              - { label: 'Descripción', name: 'descripcion', widget: 'text', required: false }
           - label: 'Reconocimientos'
             name: 'reconocimientos'
             widget: 'list'

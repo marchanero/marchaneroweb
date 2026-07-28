@@ -101,5 +101,36 @@
       "descripcion": "Estancia de investigación predoctoral."
     }
   ],
-  "reconocimientos": []
+  "gestionAcademica": [
+    {
+      "cargo": "Miembro de la Comisión de Investigación",
+      "institucion": "Instituto de Investigación en Informática de Albacete (I3A), Universidad de Castilla-La Mancha",
+      "periodo": "2026 - Actualidad",
+      "descripcion": ""
+    },
+    {
+      "cargo": "Coordinador de Trabajos Fin de Grado (TFG)",
+      "institucion": "Grado en Ingeniería Informática, Universidad de Castilla-La Mancha (Talavera de la Reina)",
+      "periodo": "2025 - Actualidad",
+      "descripcion": ""
+    },
+    {
+      "cargo": "Coordinador de Trabajos Fin de Máster (TFM)",
+      "institucion": "Máster en Dirección Estratégica y Tecnologías de la Información (MuDeTI), Universidad de Castilla-La Mancha",
+      "periodo": "2025 - Actualidad",
+      "descripcion": ""
+    }
+  ],
+  "reconocimientos": [
+    {
+      "titulo": "Comisión Científica del International Conference on Affective Computing and Intelligent Interaction (ACII)",
+      "entidad": "iCORE B",
+      "anio": 2023
+    },
+    {
+      "titulo": "Póster en las Jornadas Doctorales UCLM",
+      "entidad": "Universidad de Castilla-La Mancha",
+      "anio": 2018
+    }
+  ]
 }
