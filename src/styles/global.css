@@ -8,6 +8,12 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Formato de página al imprimir/exportar a PDF: A4 con márgenes cómodos para lectura */
+@page {
+  size: A4;
+  margin: 1.5cm;
+}
+
 @layer base {
   html {
     scroll-behavior: smooth;
@@ -119,6 +125,17 @@
     .spec-card,
     .spec-card:hover {
       transform: none !important;
+    }
+
+    /* Evita que una entrada del CV (educación, docencia, investigación...) quede cortada entre páginas */
+    .space-y-8 > div,
+    .spec-card {
+      break-inside: avoid;
+    }
+
+    /* Evita que un título de sección quede huérfano al final de una página */
+    h2 {
+      break-after: avoid;
     }
 
     body {

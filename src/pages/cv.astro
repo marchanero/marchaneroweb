@@ -92,12 +92,12 @@ const publicacionesImpresion = deduplicarPorTitulo(
       </p>
 
       <div class="mt-10 flex flex-col sm:flex-row justify-center gap-3 print:hidden">
-        <button type="button" class="btn btn-primary print-cv-btn">
+        <a href="/files/CV_RobertoSanchezReolid.pdf" download class="btn btn-primary">
           <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path>
           </svg>
           Descargar CV en PDF
-        </button>
+        </a>
         <a href="/contacto" class="btn btn-outline">Contacto</a>
       </div>
     </div>
@@ -292,21 +292,15 @@ const publicacionesImpresion = deduplicarPorTitulo(
         <h2 class="text-2xl sm:text-3xl font-display font-bold text-graphite-900 dark:text-white mb-4">¿Interesado en colaborar?</h2>
         <p class="text-graphite-600 dark:text-graphite-300 mb-8">Estoy disponible para proyectos de investigación, consultoría o charlas</p>
         <div class="flex flex-col sm:flex-row justify-center gap-3">
-          <button type="button" class="btn btn-primary print-cv-btn">
+          <a href="/files/CV_RobertoSanchezReolid.pdf" download class="btn btn-primary">
             <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path>
             </svg>
             Descargar CV en PDF
-          </button>
+          </a>
           <a href="/contacto" class="btn btn-outline">Contactar</a>
         </div>
       </div>
     </div>
   </main>
 </Layout>
-
-<script>
-  document.querySelectorAll('.print-cv-btn').forEach((btn) => {
-    btn.addEventListener('click', () => window.print());
-  });
-</script>
