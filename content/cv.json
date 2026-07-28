@@ -60,6 +60,14 @@
     },
     {
       "puesto": "Investigador",
+      "proyecto": "Una propuesta integral para el desarrollo independiente de dominio de gemelos digitales",
+      "entidad": "Universidad de Castilla-La Mancha (Plan Propio)",
+      "periodo": "2025 - 2028",
+      "codigo": "",
+      "descripcion": ""
+    },
+    {
+      "puesto": "Investigador",
       "proyecto": "Realidad extendida para detectar y aliviar el miedo y la ansiedad basadas en respuestas neurofisiológicas",
       "entidad": "Ministerio de Ciencia e Innovación",
       "periodo": "2024 - 2027",
@@ -76,10 +84,26 @@
     },
     {
       "puesto": "Investigador",
+      "proyecto": "El uso de estímulos autobiográficos positivos en la regulación emocional y el bienestar en la vejez",
+      "entidad": "Junta de Comunidades de Castilla-La Mancha (JCCM)",
+      "periodo": "2020 - 2023",
+      "codigo": "SBPLY/19/180501/000181",
+      "descripcion": ""
+    },
+    {
+      "puesto": "Investigador",
       "proyecto": "Intelligent Reliability 4.0",
       "entidad": "Comisión Europea (H2020-ECSEL, Fondos FEDER)",
       "periodo": "2020 - 2023",
       "codigo": "H2020-ECSEL-2019-1-IA 876659",
+      "descripcion": ""
+    },
+    {
+      "puesto": "Investigador",
+      "proyecto": "NEUX: Evaluando la experiencia de usuario en personas mayores con técnicas de neuroevaluación",
+      "entidad": "Junta de Comunidades de Castilla-La Mancha (JCCM)",
+      "periodo": "2019 - 2021",
+      "codigo": "SBPLY/17/180501/000192",
       "descripcion": ""
     },
     {
@@ -88,6 +112,22 @@
       "entidad": "Ministerio de Economía, Industria y Competitividad (MINECO)",
       "periodo": "2018 - 2022",
       "codigo": "",
+      "descripcion": ""
+    },
+    {
+      "puesto": "Investigador",
+      "proyecto": "Entornos inteligentes controlados por respuestas fisiológicas, perceptuales y conductuales ante experiencias emocionales",
+      "entidad": "Ministerio de Economía, Industria y Competitividad (MINECO)",
+      "periodo": "2017 - 2019",
+      "codigo": "DPI2016-80894-R",
+      "descripcion": ""
+    },
+    {
+      "puesto": "Investigador",
+      "proyecto": "Simbiosis humano-avatar en ciberterapias cognitivas: prueba de concepto para alucinaciones auditivas",
+      "entidad": "Ministerio de Economía, Industria y Competitividad (MINECO)",
+      "periodo": "2016 - 2019",
+      "codigo": "TIN2015-72931-EXP",
       "descripcion": ""
     }
   ],

@@ -90,6 +90,35 @@
       transition-duration: 0.01ms !important;
     }
   }
+
+  /* Impresión / "Guardar como PDF": legible en blanco y negro, sin nav/footer/CTAs */
+  @media print {
+    header.sticky,
+    footer {
+      display: none !important;
+    }
+
+    .reveal {
+      opacity: 1 !important;
+      animation: none !important;
+    }
+
+    *, *::before, *::after {
+      color: black !important;
+      background: transparent !important;
+      border-color: #999 !important;
+      box-shadow: none !important;
+      text-shadow: none !important;
+    }
+
+    body {
+      background: white !important;
+    }
+
+    a {
+      text-decoration: none !important;
+    }
+  }
 }
 
 @layer components {
