@@ -64,7 +64,7 @@ describe('Componentes Avanzados y Mejoras', () => {
       expect(packageJson.scripts).toHaveProperty('scholar:summary');
       
       // Verificar dependencias clave
-      expect(packageJson.dependencies).toHaveProperty('dotenv');
+      expect(packageJson.devDependencies).toHaveProperty('dotenv');
       expect(packageJson.dependencies).toHaveProperty('serpapi');
       expect(packageJson.devDependencies).toHaveProperty('astro');
       expect(packageJson.devDependencies).toHaveProperty('@astrojs/tailwind');

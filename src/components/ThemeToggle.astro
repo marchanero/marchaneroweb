@@ -66,57 +66,19 @@ const { class: className = '' } = Astro.props;
 </style>
 
 <script>
-  // Script para manejar el toggle del tema
-  function initThemeToggle() {
-    const toggle = document.getElementById('theme-toggle');
-    const html = document.documentElement;
-    
-    // Función para obtener el tema guardado o el preferido del sistema
-    function getTheme(): string {
-      if (typeof localStorage !== 'undefined' && localStorage.getItem('theme')) {
-        return localStorage.getItem('theme')!;
-      }
-      if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
-        return 'dark';
-      }
-      return 'light';
+  // Solo toggle — la lectura inicial y aplicación de tema la hace el inline script de Layout.astro
+  const toggle = document.getElementById('theme-toggle');
+  const html = document.documentElement;
+
+  toggle?.addEventListener('click', () => {
+    const next = html.classList.contains('dark') ? 'light' : 'dark';
+    html.classList.toggle('dark');
+    localStorage.setItem('theme', next);
+  });
+
+  window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
+    if (!localStorage.getItem('theme')) {
+      html.classList.toggle('dark', e.matches);
     }
-    
-    // Función para aplicar el tema
-    function applyTheme(theme: string) {
-      if (theme === 'dark') {
-        html.classList.add('dark');
-      } else {
-        html.classList.remove('dark');
-      }
-      localStorage.setItem('theme', theme);
-    }
-    
-    // Función para cambiar el tema
-    function toggleTheme() {
-      const currentTheme = html.classList.contains('dark') ? 'dark' : 'light';
-      const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
-      applyTheme(newTheme);
-    }
-    
-    // Aplicar tema inicial
-    applyTheme(getTheme());
-    
-    // Event listener para el botón
-    toggle?.addEventListener('click', toggleTheme);
-    
-    // Escuchar cambios en las preferencias del sistema
-    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
-      if (!localStorage.getItem('theme')) {
-        applyTheme(e.matches ? 'dark' : 'light');
-      }
-    });
-  }
-  
-  // Inicializar cuando el DOM esté listo
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', initThemeToggle);
-  } else {
-    initThemeToggle();
-  }
+  });
 </script>

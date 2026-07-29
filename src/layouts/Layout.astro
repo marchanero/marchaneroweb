@@ -2,6 +2,7 @@
 // Importaciones
 import ThemeToggle from '../components/ThemeToggle.astro';
 import SignalTrace from '../components/SignalTrace.astro';
+import JsonLd from '../components/JsonLd.astro';
 // Fuentes autoalojadas (@fontsource): evita el @import a fonts.googleapis.com,
 // que forzaba 2 orígenes externos adicionales bloqueando el renderizado del texto.
 import '@fontsource/space-grotesk/500.css';
@@ -89,6 +90,8 @@ const navItems = [
 		<meta property="og:type" content="website" />
 		<meta property="og:locale" content="es_ES" />
 		<meta name="twitter:card" content="summary_large_image" />
+
+		<JsonLd />
 
 		<!-- Script para asegurar que no haya flash de modo incorrecto -->
 		<script is:inline>
@@ -204,28 +207,28 @@ const navItems = [
 						</div>
 
 						<div class="flex gap-4">
-							<a href="https://scholar.google.com" target="_blank" rel="noopener noreferrer"
+							<a href="https://scholar.google.com/citations?user=PCALePwAAAAJ" target="_blank" rel="noopener noreferrer"
 							   class="text-graphite-400 hover:text-pulse-500 transition-colors"
 							   title="Google Scholar">
 								<svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
 									<path d="M12 24a7 7 0 1 1 0-14 7 7 0 0 1 0 14zm0-24L0 9.5l4.838 3.94A8 8 0 0 1 12 9a8 8 0 0 1 7.162 4.44L24 9.5 12 0z"/>
 								</svg>
 							</a>
-							<a href="https://orcid.org" target="_blank" rel="noopener noreferrer"
+							<a href="https://orcid.org/0000-0003-4455-370X" target="_blank" rel="noopener noreferrer"
 							   class="text-graphite-400 hover:text-pulse-500 transition-colors"
 							   title="ORCID">
 								<svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
 									<path d="M12 0C5.372 0 0 5.372 0 12s5.372 12 12 12 12-5.372 12-12S18.628 0 12 0zM7.369 4.378c.525 0 .947.431.947.947 0 .525-.422.947-.947.947A.95.95 0 0 1 6.422 5.325c0-.516.422-.947.947-.947zm-.722 3.038h1.444v10.041H6.647V7.416zm3.562 0h3.9c3.712 0 5.344 2.653 5.344 5.025 0 2.578-2.016 5.016-5.325 5.016h-3.919V7.416zm1.444 1.303v7.444h2.297c2.359 0 3.588-1.444 3.588-3.722 0-2.016-1.091-3.722-3.588-3.722h-2.297z"/>
 								</svg>
 							</a>
-							<a href="https://www.researchgate.net" target="_blank" rel="noopener noreferrer"
+							<a href="https://www.researchgate.net/profile/Roberto-Sanchez-Reolid" target="_blank" rel="noopener noreferrer"
 							   class="text-graphite-400 hover:text-pulse-500 transition-colors"
 							   title="ResearchGate">
 								<svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
 									<path d="M19.586 0c-.818 0-1.508.19-2.073.565-.563.377-.97.936-1.213 1.68a3.193 3.193 0 0 0-.112.437 8.365 8.365 0 0 0-.078.53 9.284 9.284 0 0 0-.05.727c-.01.282-.013.621-.013 1.016a31.121 31.121 0 0 0 .014 1.017 9.289 9.289 0 0 0 .05.727 7.946 7.946 0 0 0 .078.53 3.995 3.995 0 0 0 .112.437c.244.744.65 1.303 1.213 1.68.565.375 1.255.565 2.073.565.818 0 1.508-.19 2.073-.565.563-.377.97-.936 1.213-1.68a3.193 3.193 0 0 0 .112-.437 8.365 8.365 0 0 0 .078-.53 9.284 9.284 0 0 0 .05-.727c.01-.282.013-.621.013-1.016a31.121 31.121 0 0 0-.014-1.017 9.289 9.289 0 0 0-.05-.727 7.946 7.946 0 0 0-.078-.53 3.995 3.995 0 0 0-.112-.437c-.244-.744-.65-1.303-1.213-1.68C21.094.19 20.404 0 19.586 0z"/>
 								</svg>
 							</a>
-							<a href="https://linkedin.com" target="_blank" rel="noopener noreferrer"
+							<a href="https://linkedin.com/in/roberto-sanchez-reolid" target="_blank" rel="noopener noreferrer"
 							   class="text-graphite-400 hover:text-pulse-500 transition-colors"
 							   title="LinkedIn">
 								<svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">

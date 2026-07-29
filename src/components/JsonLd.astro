@@ -1,0 +1,54 @@
+---
+export interface Props {
+	name?: string;
+	givenName?: string;
+	familyName?: string;
+	affiliation?: string;
+	email?: string;
+	url?: string;
+	sameAs?: string[];
+	jobTitle?: string;
+	knowsAbout?: string[];
+}
+
+const {
+	name = "Roberto Sánchez Reolid",
+	givenName = "Roberto",
+	familyName = "Sánchez Reolid",
+	affiliation = "Universidad de Castilla-La Mancha",
+	email = "roberto.sreolid@uclm.es",
+	url = "https://marchanero.netlify.app",
+	sameAs = [
+		"https://scholar.google.com/citations?user=PCALePwAAAAJ",
+		"https://orcid.org/0000-0003-4455-370X",
+		"https://www.researchgate.net/profile/Roberto-Sanchez-Reolid",
+		"https://linkedin.com/in/roberto-sanchez-reolid",
+	],
+	jobTitle = "Investigador y Profesor",
+	knowsAbout = [
+		"Inteligencia Artificial",
+		"Machine Learning",
+		"Procesamiento de Señales Fisiológicas",
+		"Computación Afectiva",
+		"Deep Learning",
+		"IoT",
+	],
+} = Astro.props;
+---
+
+<script type="application/ld+json" set:html={JSON.stringify({
+	"@context": "https://schema.org",
+	"@type": "Person",
+	name,
+	givenName,
+	familyName,
+	email,
+	url,
+	jobTitle,
+	sameAs,
+	affiliation: {
+		"@type": "Organization",
+		name: affiliation,
+	},
+	knowsAbout,
+})} />
