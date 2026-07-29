@@ -6,7 +6,7 @@ nivel: "grado"
 curso: "1º"
 cuatrimestre: "1º"
 creditos: 6
-academicYear: "2024-2025"
+academicYear: "2026-2027"
 descripcion: "Introducción a los sistemas de información en el contexto de la Ingeniería Informática. Se imparte en la Facultad de Ciencias Sociales y Tecnologías de la Información del Campus de Talavera."
 temario:
   - "Introducción a los Sistemas de Información"

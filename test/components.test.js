@@ -91,6 +91,18 @@ describe('Componentes', () => {
     expect(content).toContain('eda');
   });
 
+  it('verifica el componente BackToTop', () => {
+    const projectRoot = path.join(__dirname, '..');
+    const backToTopPath = path.join(projectRoot, 'src', 'components', 'BackToTop.astro');
+
+    expect(fs.existsSync(backToTopPath)).toBe(true);
+
+    const content = fs.readFileSync(backToTopPath, 'utf8');
+    expect(content).toContain('id="back-to-top"');
+    expect(content).toContain('aria-label');
+    expect(content).toContain('window.scrollTo');
+  });
+
   it('verifica archivos de documentación de mejoras', () => {
     const projectRoot = path.join(__dirname, '..');
     
