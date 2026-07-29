@@ -1,6 +1,15 @@
 import rss from '@astrojs/rss';
 import scholarData from '../data/scholar.json';
 
+// customData se inserta como XML crudo (astrojs/rss lo parsea con fast-xml-parser),
+// así que cualquier '&', '<' o '>' sin escapar en los datos de Scholar rompe el feed.
+function escapeXml(value) {
+	return String(value ?? '')
+		.replace(/&/g, '&amp;')
+		.replace(/</g, '&lt;')
+		.replace(/>/g, '&gt;');
+}
+
 export async function GET() {
 	const publications = (scholarData.publications ?? [])
 		.filter((p) => p.year && p.title)
@@ -8,6 +17,7 @@ export async function GET() {
 		.slice(0, 30);
 
 	return rss({
+		xmlns: { dc: 'http://purl.org/dc/elements/1.1/' },
 		title: 'Publicaciones - Dr. Roberto Sánchez Reolid',
 		description:
 			'Investigación en Inteligencia Artificial, Machine Learning y procesamiento de señales fisiológicas. Universidad de Castilla-La Mancha.',
@@ -21,7 +31,7 @@ export async function GET() {
 				description: `${authorList} — ${pub.publication || 'Sin revista especificada'} (${pub.year}). Citas: ${pub.citedBy ?? 0}.`,
 				link: pub.link || 'https://marchanero.netlify.app/publicaciones',
 				pubDate: new Date(`${pub.year}-01-01`).toUTCString(),
-				customData: `<dc:creator>${pub.authors}</dc:creator>`,
+				customData: `<dc:creator>${escapeXml(authorList)}</dc:creator>`,
 			};
 		}),
 		customData: `<language>es</language>

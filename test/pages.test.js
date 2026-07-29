@@ -25,6 +25,17 @@ describe('Páginas', () => {
     expect(fs.existsSync(path.join(projectRoot, 'src', 'pages', 'index.astro'))).toBe(true);
   });
 
+  it('verifica la página 404', () => {
+    const projectRoot = path.join(__dirname, '..');
+    const notFoundPath = path.join(projectRoot, 'src', 'pages', '404.astro');
+
+    expect(fs.existsSync(notFoundPath)).toBe(true);
+
+    const content = fs.readFileSync(notFoundPath, 'utf8');
+    expect(content).toContain('404');
+    expect(content).toContain('href="/"');
+  });
+
   it('verifica que existen los datos de scholar', () => {
     const projectRoot = path.join(__dirname, '..');
     const scholarPath = path.join(projectRoot, 'src', 'data', 'scholar.json');

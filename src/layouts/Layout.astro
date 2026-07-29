@@ -10,6 +10,7 @@ import '@fontsource/space-grotesk/500.css';
 import '@fontsource/space-grotesk/600.css';
 import '@fontsource/space-grotesk/700.css';
 import '@fontsource/ibm-plex-sans/400.css';
+import ibmPlexSans400Woff2 from '@fontsource/ibm-plex-sans/files/ibm-plex-sans-latin-400-normal.woff2?url';
 import '@fontsource/ibm-plex-sans/500.css';
 import '@fontsource/ibm-plex-sans/600.css';
 import '@fontsource/ibm-plex-mono/400.css';
@@ -82,6 +83,9 @@ const navItems = [
 		<meta name="viewport" content="width=device-width" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="generator" content={Astro.generator} />
+		<!-- Preload de la fuente de texto principal para evitar FOUT/CLS en el primer render -->
+		<link rel="preload" as="font" type="font/woff2" href={ibmPlexSans400Woff2} crossorigin />
+		<link rel="canonical" href={new URL(currentPath, Astro.site)} />
 		<title>{title}</title>
 		<!-- SEO y Social Media -->
 		<meta name="author" content="Roberto Sánchez Reolid" />
