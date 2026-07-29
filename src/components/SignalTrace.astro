@@ -109,7 +109,8 @@ const { d, peaks } = variant === 'ecg' ? ecgPath(width, height, beats) : edaPath
 			r={Math.max(2.5, strokeWidth * 1.4)}
 			class="signal-dot"
 			fill="#FF5A36"
-			style={{ offsetPath: `path('${d}')`, animationDuration: `${dotDuration}s` }}
+			data-offset-path={d}
+			data-dot-duration={dotDuration}
 		></circle>
 	)}
 </svg>

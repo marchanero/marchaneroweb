@@ -94,13 +94,19 @@ describe('Componentes', () => {
   it('verifica el componente BackToTop', () => {
     const projectRoot = path.join(__dirname, '..');
     const backToTopPath = path.join(projectRoot, 'src', 'components', 'BackToTop.astro');
+    // El comportamiento (scroll listener + click) vive en public/scripts/site.js
+    // (script externo, no inline) para poder quitar 'unsafe-inline' de la CSP.
+    const siteScriptPath = path.join(projectRoot, 'public', 'scripts', 'site.js');
 
     expect(fs.existsSync(backToTopPath)).toBe(true);
+    expect(fs.existsSync(siteScriptPath)).toBe(true);
 
     const content = fs.readFileSync(backToTopPath, 'utf8');
     expect(content).toContain('id="back-to-top"');
     expect(content).toContain('aria-label');
-    expect(content).toContain('window.scrollTo');
+
+    const siteScript = fs.readFileSync(siteScriptPath, 'utf8');
+    expect(siteScript).toContain('window.scrollTo');
   });
 
   it('verifica archivos de documentación de mejoras', () => {

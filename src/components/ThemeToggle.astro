@@ -8,7 +8,6 @@ const { class: className = '' } = Astro.props;
 ---
 
 <button
-  id="theme-toggle"
   class={`theme-toggle ${className}`}
   aria-label="Cambiar tema"
   title="Cambiar entre modo claro y oscuro"
@@ -64,21 +63,3 @@ const { class: className = '' } = Astro.props;
     @apply opacity-100;
   }
 </style>
-
-<script>
-  // Solo toggle — la lectura inicial y aplicación de tema la hace el inline script de Layout.astro
-  const toggle = document.getElementById('theme-toggle');
-  const html = document.documentElement;
-
-  toggle?.addEventListener('click', () => {
-    const next = html.classList.contains('dark') ? 'light' : 'dark';
-    html.classList.toggle('dark');
-    localStorage.setItem('theme', next);
-  });
-
-  window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
-    if (!localStorage.getItem('theme')) {
-      html.classList.toggle('dark', e.matches);
-    }
-  });
-</script>
