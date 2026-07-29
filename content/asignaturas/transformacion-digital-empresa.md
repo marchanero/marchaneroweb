@@ -6,7 +6,7 @@ nivel: "grado"
 curso: "4º"
 cuatrimestre: "1º"
 creditos: 6
-academicYear: "2026-2027"
+academicYear: "2024-2025"
 descripcion: "Análisis y aplicación de estrategias para la transformación digital de organizaciones. Estudio de tecnologías disruptivas, modelos de negocio digitales y gestión del cambio en entornos empresariales. Se imparte en la Facultad de Ciencias Sociales y Tecnologías de la Información del Campus de Talavera."
 temario:
   - "Fundamentos de la Transformación Digital"

@@ -58,7 +58,7 @@ const featuredProjects = (await getCollection('proyectos'))
 		<div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16 lg:py-20 flex flex-col lg:flex-row items-center gap-10 lg:gap-16">
 			<!-- Retrato -->
 			<div class="lg:w-1/3">
-				<div class="relative w-56 sm:w-72 mx-auto">
+				<div class="relative w-64 sm:w-80 mx-auto">
 					<div class="relative border border-line dark:border-line-dark rounded-md overflow-hidden">
 						<span class="spec-tick spec-tick-tl"></span>
 						<span class="spec-tick spec-tick-br"></span>
@@ -123,7 +123,7 @@ const featuredProjects = (await getCollection('proyectos'))
 	</section>
 
 	<!-- Mi investigación -->
-	<section class="py-14 sm:py-20 px-4 sm:px-6 lg:px-8 border-b border-line dark:border-line-dark">
+	<section class="py-10 sm:py-16 px-4 sm:px-6 lg:px-8 border-b border-line dark:border-line-dark">
 		<div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-3 gap-8 lg:gap-12 items-stretch">
 			<div class="lg:col-span-2 reveal">
 				<div class="spec-card h-full flex flex-col justify-between">
@@ -138,9 +138,17 @@ const featuredProjects = (await getCollection('proyectos'))
 							{homeData.introTexto}
 						</p>
 						<ul class="grid grid-cols-1 sm:grid-cols-2 gap-3">
-							{researchLines.map((line) => (
-								<li class="flex items-center gap-2.5 px-4 py-3 border border-line dark:border-line-dark rounded-md text-sm text-graphite-700 dark:text-graphite-200">
-									<span class="w-1.5 h-1.5 rounded-full bg-signal-500 shrink-0"></span>
+							{researchLines.map((line, index) => (
+								<li class:list={[
+									'flex items-center gap-3 px-4 py-3 border border-l-[3px] rounded-md text-sm text-graphite-700 dark:text-graphite-200 transition-colors',
+									index % 2 === 0
+										? 'border-line dark:border-line-dark border-l-signal-500'
+										: 'border-line dark:border-line-dark border-l-pulse-500',
+								]}>
+									<span class:list={[
+										'w-2 h-2 rounded-full shrink-0',
+										index % 2 === 0 ? 'bg-signal-500' : 'bg-pulse-500',
+									]}></span>
 									{line}
 								</li>
 							))}
@@ -172,7 +180,7 @@ const featuredProjects = (await getCollection('proyectos'))
 	</section>
 
 	<!-- Investigaciones destacadas -->
-	<section class="py-14 sm:py-20 px-4 sm:px-6 lg:px-8">
+	<section class="py-10 sm:py-16 px-4 sm:px-6 lg:px-8">
 		<div class="max-w-7xl mx-auto">
 			<div class="mb-10 text-center reveal">
 				<p class="eyebrow mb-2">Proyectos</p>

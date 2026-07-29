@@ -105,7 +105,7 @@ describe('Responsive Design', () => {
 
   describe('Imágenes Responsive', () => {
     it('verifica configuración responsive de imágenes', () => {
-      expect(indexContent).toContain('w-56 sm:w-72');
+      expect(indexContent).toContain('w-64 sm:w-80');
       expect(indexContent).toContain('widths={[400, 800]}');
       expect(indexContent).toContain('sizes="(max-width: 768px) 100vw, 320px"');
     });
