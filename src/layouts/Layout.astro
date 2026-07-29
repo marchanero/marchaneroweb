@@ -3,6 +3,7 @@
 import ThemeToggle from '../components/ThemeToggle.astro';
 import SignalTrace from '../components/SignalTrace.astro';
 import JsonLd from '../components/JsonLd.astro';
+import BackToTop from '../components/BackToTop.astro';
 // Fuentes autoalojadas (@fontsource): evita el @import a fonts.googleapis.com,
 // que forzaba 2 orígenes externos adicionales bloqueando el renderizado del texto.
 import '@fontsource/space-grotesk/500.css';
@@ -90,6 +91,10 @@ const navItems = [
 		<meta property="og:type" content="website" />
 		<meta property="og:locale" content="es_ES" />
 		<meta name="twitter:card" content="summary_large_image" />
+		<meta name="twitter:image" content="https://marchanero.netlify.app/og-default.png" />
+		<meta property="og:image" content="https://marchanero.netlify.app/og-default.png" />
+		<meta property="og:image:width" content="1200" />
+		<meta property="og:image:height" content="630" />
 
 		<JsonLd />
 
@@ -187,6 +192,7 @@ const navItems = [
 		</main>
 
 		<footer class="mt-auto bg-paper dark:bg-ink border-t border-line dark:border-line-dark">
+			<BackToTop />
 			<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
 				<div class="flex flex-col md:flex-row justify-between items-center gap-4">
 					<div class="text-center md:text-left">
