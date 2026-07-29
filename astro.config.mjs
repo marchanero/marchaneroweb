@@ -13,8 +13,10 @@ export default defineConfig({
       filter: (page) => !page.includes('/admin'),
     }),
   ],
-  // Optimización para producción
+  // 'never' (en vez de 'auto'): ningún <style> inline en el HTML, todo el CSS
+  // como <link> externo — permite quitar 'unsafe-inline' de style-src en la CSP
+  // (netlify.toml) sin depender de hashes por página.
   build: {
-    inlineStylesheets: 'auto',
+    inlineStylesheets: 'never',
   },
 });

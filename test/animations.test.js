@@ -9,6 +9,7 @@ describe('Sistema de diseño "traza de señal" y movimiento', () => {
   let projectRoot;
   let globalCss;
   let layoutContent;
+  let siteScriptContent;
   let signalTraceContent;
   let indexContent;
 
@@ -17,6 +18,9 @@ describe('Sistema de diseño "traza de señal" y movimiento', () => {
 
     globalCss = fs.readFileSync(path.join(projectRoot, 'src', 'styles', 'global.css'), 'utf8');
     layoutContent = fs.readFileSync(path.join(projectRoot, 'src', 'layouts', 'Layout.astro'), 'utf8');
+    // Los scripts de comportamiento viven en public/scripts/ (externos, no
+    // inline) para poder quitar 'unsafe-inline' de script-src en la CSP.
+    siteScriptContent = fs.readFileSync(path.join(projectRoot, 'public', 'scripts', 'site.js'), 'utf8');
     signalTraceContent = fs.readFileSync(path.join(projectRoot, 'src', 'components', 'SignalTrace.astro'), 'utf8');
     indexContent = fs.readFileSync(path.join(projectRoot, 'src', 'pages', 'index.astro'), 'utf8');
   });
@@ -39,9 +43,10 @@ describe('Sistema de diseño "traza de señal" y movimiento', () => {
   });
 
   describe('Revelado al hacer scroll', () => {
-    it('Layout observa los elementos .reveal y .signal-trace con IntersectionObserver', () => {
-      expect(layoutContent).toContain('IntersectionObserver');
-      expect(layoutContent).toContain("'.reveal, .signal-trace'");
+    it('Layout carga el script externo que observa .reveal y .signal-trace con IntersectionObserver', () => {
+      expect(layoutContent).toContain('src="/scripts/site.js"');
+      expect(siteScriptContent).toContain('IntersectionObserver');
+      expect(siteScriptContent).toContain("'.reveal, .signal-trace'");
     });
 
     it('la clase .reveal está definida como utilidad global', () => {
