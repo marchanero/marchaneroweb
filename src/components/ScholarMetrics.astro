@@ -93,7 +93,7 @@ const citationsMaxYear = citationsGraph.length > 0 ? Math.max(...citationsGraph.
       <p class="eyebrow mb-1">Google Scholar</p>
       <h3 class="text-lg font-display font-bold text-graphite-900 dark:text-white">Métricas bibliométricas</h3>
     </div>
-    <div class="flex items-center gap-1.5 font-mono text-xs text-pulse-600 dark:text-pulse-400">
+    <div class="flex items-center gap-1.5 font-mono text-xs text-pulse-700 dark:text-pulse-400">
       <span class="relative flex h-1.5 w-1.5">
         <span class="absolute inline-flex h-full w-full rounded-full bg-pulse-500 opacity-60 animate-ping"></span>
         <span class="relative inline-flex rounded-full h-1.5 w-1.5 bg-pulse-500"></span>
@@ -109,7 +109,7 @@ const citationsMaxYear = citationsGraph.length > 0 ? Math.max(...citationsGraph.
       </div>
       <div class="text-xs text-graphite-500 dark:text-graphite-400 mt-1">Citas totales</div>
       {citationTrend && citationTrend.trend !== 'stable' && (
-        <div class:list={['font-mono text-xs mt-1', citationTrend.trend === 'up' ? 'text-signal-600 dark:text-signal-400' : 'text-pulse-500']}>
+        <div class:list={['font-mono text-xs mt-1', citationTrend.trend === 'up' ? 'text-signal-700 dark:text-signal-400' : 'text-pulse-700']}>
           {citationTrend.trend === 'up' ? '↑' : '↓'} {citationTrend.percentage}%
         </div>
       )}

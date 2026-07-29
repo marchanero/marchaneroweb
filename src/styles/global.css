@@ -54,6 +54,14 @@
     outline-offset: 2px;
   }
 
+  /* Enlace "saltar al contenido" para teclado/lectores de pantalla:
+     oculto hasta que recibe foco, entonces aparece sobre la cabecera. */
+  .skip-link {
+    @apply fixed top-2 left-2 z-[100] -translate-y-24 focus:translate-y-0
+      bg-ink text-white dark:bg-white dark:text-ink px-4 py-2 rounded-md text-sm font-medium
+      transition-transform duration-150;
+  }
+
   /* Tablas para datos científicos */
   table {
     @apply w-full border-collapse my-4 text-sm;

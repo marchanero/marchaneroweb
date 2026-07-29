@@ -41,13 +41,13 @@ const limitedPublications = publications.slice(0, limit);
         <div class="flex items-center justify-between mb-4 font-mono text-xs">
           <span class="text-graphite-500 dark:text-graphite-400">{publication.year}</span>
           {publication.cited_by?.value > 0 && (
-            <span class="text-pulse-600 dark:text-pulse-400">{publication.cited_by.value} citas</span>
+            <span class="text-pulse-700 dark:text-pulse-400">{publication.cited_by.value} citas</span>
           )}
         </div>
 
         <h3 class="text-base font-semibold text-graphite-900 dark:text-white mb-3 leading-snug line-clamp-3">
           {publication.link ? (
-            <a href={publication.link} target="_blank" rel="noopener noreferrer" class="hover:text-pulse-600 dark:hover:text-pulse-400">
+            <a href={publication.link} target="_blank" rel="noopener noreferrer" class="hover:text-pulse-700 dark:hover:text-pulse-400">
               {publication.title}
             </a>
           ) : (
@@ -72,7 +72,7 @@ const limitedPublications = publications.slice(0, limit);
               href={publication.link}
               target="_blank"
               rel="noopener noreferrer"
-              class="inline-flex items-center gap-1.5 text-sm font-medium text-pulse-600 dark:text-pulse-400 hover:text-pulse-700 dark:hover:text-pulse-300"
+              class="inline-flex items-center gap-1.5 text-sm font-medium text-pulse-700 dark:text-pulse-400 dark:hover:text-pulse-300"
             >
               Leer publicación
               <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
