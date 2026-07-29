@@ -1,20 +1,24 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import cv from '../../content/cv.json';
+import type { CvData, CuartilesData, CuartilItem } from '../types/Content';
 import scholarData from '../data/scholar.json';
 import cuartilesData from '../../content/publicaciones-cuartiles.json';
+
+const cvData = cv as CvData;
+const cuartilesRaw = cuartilesData as CuartilesData;
 
 const title = "Currículum - Dr. Roberto Sánchez Reolid";
 const description = "Currículum vitae académico y profesional del Dr. Roberto Sánchez Reolid, con formación, experiencia docente e investigadora";
 
 // Contenido editable desde content/cv.json (CMS)
-const educacion = cv.educacion ?? [];
-const experienciaProfesional = cv.experienciaProfesional ?? [];
-const experienciaDocente = cv.experienciaDocente ?? [];
-const experienciaInvestigadora = cv.experienciaInvestigadora ?? [];
-const estancias = cv.estancias ?? [];
-const gestionAcademica = cv.gestionAcademica ?? [];
-const reconocimientos = cv.reconocimientos ?? [];
+const educacion = cvData.educacion ?? [];
+const experienciaProfesional = cvData.experienciaProfesional ?? [];
+const experienciaDocente = cvData.experienciaDocente ?? [];
+const experienciaInvestigadora = cvData.experienciaInvestigadora ?? [];
+const estancias = cvData.estancias ?? [];
+const gestionAcademica = cvData.gestionAcademica ?? [];
+const reconocimientos = cvData.reconocimientos ?? [];
 
 // Cuartiles JCR/SJR (content/publicaciones-cuartiles.json, mantenido a mano — sin API pública
 // de Clarivate/FECYT) emparejados por título con las publicaciones sincronizadas de Scholar.
@@ -39,7 +43,7 @@ function tituloSimilar(a: string, b: string) {
   return comun / minLen >= 0.75;
 }
 
-const cuartilesPorTitulo = (cuartilesData.cuartiles ?? []).map((c) => ({
+const cuartilesPorTitulo = (cuartilesRaw.cuartiles ?? []).map((c) => ({
   ...c,
   _norm: normalizarTitulo(c.titulo),
 }));

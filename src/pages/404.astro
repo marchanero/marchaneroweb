@@ -1,0 +1,46 @@
+---
+import Layout from '../layouts/Layout.astro';
+import SignalTrace from '../components/SignalTrace.astro';
+
+const title = "404 - Página no encontrada";
+const description = "La página que buscas no existe o ha sido movida.";
+---
+
+<Layout title={title} description={description}>
+	<section class="relative border-b border-line dark:border-line-dark py-20 sm:py-28 px-4 sm:px-6 lg:px-8 hero-wash overflow-hidden">
+		<div class="absolute inset-0 flex items-center opacity-[0.08] text-pulse-500 dark:text-pulse-400 pointer-events-none">
+			<SignalTrace variant="ecg" width={1200} height={160} beats={1} strokeWidth={3} animate={false} class="w-full" />
+		</div>
+
+		<div class="relative max-w-2xl mx-auto text-center">
+			<p class="font-mono text-8xl sm:text-9xl font-bold text-pulse-600 dark:text-pulse-400 mb-4">404</p>
+			<h1 class="text-3xl sm:text-4xl font-display font-bold text-graphite-900 dark:text-white mb-4">
+				Página no encontrada
+			</h1>
+			<p class="text-lg text-graphite-600 dark:text-graphite-300 max-w-lg mx-auto mb-10 leading-relaxed">
+				La ruta que buscas no existe o ha sido movida. Puedes volver al inicio o explorar las secciones principales.
+			</p>
+
+			<div class="flex flex-col sm:flex-row gap-3 justify-center mb-12">
+				<a href="/" class="btn btn-primary">Volver al inicio</a>
+				<a href="/publicaciones" class="btn btn-outline">Ver publicaciones</a>
+			</div>
+
+			<div class="grid grid-cols-2 sm:grid-cols-4 gap-3 max-w-lg mx-auto">
+				{[
+					{ href: '/sobre-mi', label: 'Sobre mí' },
+					{ href: '/cv', label: 'CV' },
+					{ href: '/publicaciones', label: 'Papers' },
+					{ href: '/contacto', label: 'Contacto' },
+				].map((item) => (
+					<a
+						href={item.href}
+						class="border border-line dark:border-line-dark rounded-md px-3 py-2 text-sm text-graphite-600 dark:text-graphite-300 hover:border-pulse-500 hover:text-pulse-600 dark:hover:text-pulse-400 transition-colors text-center"
+					>
+						{item.label}
+					</a>
+				))}
+			</div>
+		</div>
+	</section>
+</Layout>
