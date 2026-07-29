@@ -4,12 +4,37 @@ import SignalTrace from '../components/SignalTrace.astro';
 import { getCollection } from 'astro:content';
 
 // Datos de asignaturas: editables en content/asignaturas/ (manualmente o vía CMS /admin)
-const asignaturas = (await getCollection('asignaturas'))
-	.map((a) => ({
-		id: a.id,
-		...a.data,
-	}))
-	.sort((a, b) => parseInt(a.curso) - parseInt(b.curso) || a.codigo.localeCompare(b.codigo));
+function ordenarPorCurso(a, b) {
+	return parseInt(a.curso) - parseInt(b.curso) || a.codigo.localeCompare(b.codigo);
+}
+
+const asignaturasAll = (await getCollection('asignaturas')).map((a) => ({
+	id: a.id,
+	...a.data,
+}));
+
+// Últimos 3 cursos académicos con docencia activa (más reciente primero).
+// Todo lo anterior se agrupa en un único bloque "Cursos anteriores".
+const ANIOS_RECIENTES = ['2026-2027', '2025-2026', '2024-2025'];
+
+const gruposRecientes = ANIOS_RECIENTES.map((anio) => ({
+	anio,
+	asignaturas: asignaturasAll.filter((a) => a.academicYear === anio).sort(ordenarPorCurso),
+})).filter((g) => g.asignaturas.length > 0);
+
+const asignaturasAnteriores = asignaturasAll
+	.filter((a) => !ANIOS_RECIENTES.includes(a.academicYear))
+	.sort(ordenarPorCurso);
+
+// Lista plana (todos los años) para los filtros y las estadísticas del readout.
+const asignaturas = [...gruposRecientes.flatMap((g) => g.asignaturas), ...asignaturasAnteriores];
+
+// Secciones para el listado: una por cada curso académico reciente con docencia,
+// más un bloque final "Cursos anteriores" con todo lo que quede fuera de esos años.
+const seccionesAsignaturas = [
+	...gruposRecientes.map((g) => ({ label: `Curso ${g.anio}`, items: g.asignaturas })),
+	...(asignaturasAnteriores.length > 0 ? [{ label: 'Cursos anteriores', items: asignaturasAnteriores }] : []),
+];
 
 const aniosAcademicos = [...new Set(asignaturas.map(a => a.academicYear))];
 const totalCreditos = asignaturas.reduce((sum, a) => sum + a.creditos, 0);
@@ -118,51 +143,58 @@ const recursos = [
 					Asignaturas <span id="resultCount" class="font-mono text-graphite-400 dark:text-graphite-500 text-xl">({asignaturas.length})</span>
 				</h2>
 
-				<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="subjectGrid">
-					{asignaturas.map((asignatura) => (
-						<article
-							class="subject-card spec-card"
-							data-nivel={asignatura.nivel}
-							data-anio={asignatura.academicYear}
-							data-search={`${asignatura.titulo} ${asignatura.codigo}`.toLowerCase()}
-						>
-							<span class="spec-tick spec-tick-tl"></span>
-							<span class="spec-tick spec-tick-br"></span>
+				<div id="subjectGrid">
+					{seccionesAsignaturas.map((seccion) => (
+						<div class="subject-section mb-10 last:mb-0">
+							<h3 class="eyebrow mb-4">{seccion.label}</h3>
+							<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+								{seccion.items.map((asignatura) => (
+									<article
+										class="subject-card spec-card"
+										data-nivel={asignatura.nivel}
+										data-anio={asignatura.academicYear}
+										data-search={`${asignatura.titulo} ${asignatura.codigo}`.toLowerCase()}
+									>
+										<span class="spec-tick spec-tick-tl"></span>
+										<span class="spec-tick spec-tick-br"></span>
 
-							<div class="h-16 -mx-6 -mt-6 mb-6 px-6 border-b border-line dark:border-line-dark flex items-center justify-between text-signal-500 dark:text-signal-400 overflow-hidden">
-								<SignalTrace variant="eda" width={300} height={40} beats={3} class="w-2/3" />
-								<span class="shrink-0 font-mono text-xs text-graphite-500 dark:text-graphite-400">{asignatura.creditos} ECTS</span>
+										<div class="h-16 -mx-6 -mt-6 mb-6 px-6 border-b border-line dark:border-line-dark flex items-center justify-between text-signal-500 dark:text-signal-400 overflow-hidden">
+											<SignalTrace variant="eda" width={300} height={40} beats={3} class="w-2/3" />
+											<span class="shrink-0 font-mono text-xs text-graphite-500 dark:text-graphite-400">{asignatura.creditos} ECTS</span>
+										</div>
+
+										<div class="flex items-center gap-2 mb-3">
+											<span class="font-mono text-xs text-graphite-500 dark:text-graphite-400">{asignatura.codigo}</span>
+											{asignatura.destacada && (
+												<span class="eyebrow">Destacada</span>
+											)}
+										</div>
+
+										<h3 class="text-lg font-semibold text-graphite-900 dark:text-white mb-2">
+											{asignatura.titulo}
+										</h3>
+
+										<p class="text-graphite-500 dark:text-graphite-400 text-xs font-mono mb-4">
+											{asignatura.curso} curso · {asignatura.cuatrimestre} cuatrimestre
+										</p>
+
+										<p class="text-graphite-600 dark:text-graphite-300 text-sm mb-6 line-clamp-3">
+											{asignatura.descripcion}
+										</p>
+
+										<div class="flex items-center justify-between pt-4 border-t border-line dark:border-line-dark">
+											<span class="text-xs text-graphite-500 dark:text-graphite-400">{asignatura.horario}</span>
+											<a href={asignatura.enlaceMateriales} target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 text-sm font-medium text-pulse-600 dark:text-pulse-400 hover:text-pulse-700 dark:hover:text-pulse-300">
+												Materiales
+												<svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+													<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+												</svg>
+											</a>
+										</div>
+									</article>
+								))}
 							</div>
-
-							<div class="flex items-center gap-2 mb-3">
-								<span class="font-mono text-xs text-graphite-500 dark:text-graphite-400">{asignatura.codigo}</span>
-								{asignatura.destacada && (
-									<span class="eyebrow">Destacada</span>
-								)}
-							</div>
-
-							<h3 class="text-lg font-semibold text-graphite-900 dark:text-white mb-2">
-								{asignatura.titulo}
-							</h3>
-
-							<p class="text-graphite-500 dark:text-graphite-400 text-xs font-mono mb-4">
-								{asignatura.curso} curso · {asignatura.cuatrimestre} cuatrimestre
-							</p>
-
-							<p class="text-graphite-600 dark:text-graphite-300 text-sm mb-6 line-clamp-3">
-								{asignatura.descripcion}
-							</p>
-
-							<div class="flex items-center justify-between pt-4 border-t border-line dark:border-line-dark">
-								<span class="text-xs text-graphite-500 dark:text-graphite-400">{asignatura.horario}</span>
-								<a href={asignatura.enlaceMateriales} target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 text-sm font-medium text-pulse-600 dark:text-pulse-400 hover:text-pulse-700 dark:hover:text-pulse-300">
-									Materiales
-									<svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-										<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
-									</svg>
-								</a>
-							</div>
-						</article>
+						</div>
 					))}
 				</div>
 
@@ -295,6 +327,8 @@ const recursos = [
 			const noResults = document.getElementById('noResults');
 			const resultCount = document.getElementById('resultCount');
 
+			const sections = document.querySelectorAll<HTMLElement>('.subject-section');
+
 			function applyFilters() {
 				const nivel = selectNivel?.value || 'todos';
 				const anio = selectAnio?.value || 'todos';
@@ -308,6 +342,12 @@ const recursos = [
 					const show = matchNivel && matchAnio && matchBusqueda;
 					card.classList.toggle('hidden', !show);
 					if (show) visible++;
+				});
+
+				// Oculta también la cabecera de un curso si ningún resultado suyo pasa el filtro.
+				sections.forEach((section) => {
+					const hasVisible = !!section.querySelector('.subject-card:not(.hidden)');
+					section.classList.toggle('hidden', !hasVisible);
 				});
 
 				if (resultCount) resultCount.textContent = `(${visible})`;
