@@ -38,7 +38,7 @@ const uniqueYears = [...new Set(scholarData.publications.map(pub => pub.year).fi
 
 <Layout title={title} description={description}>
   <!-- Header -->
-  <header class="relative border-b border-line dark:border-line-dark py-14 sm:py-20 hero-wash overflow-hidden">
+  <header class="relative border-b border-line dark:border-line-dark py-10 sm:py-16 hero-wash overflow-hidden">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <p class="eyebrow mb-3">Google Scholar</p>
       <h1 class="text-4xl sm:text-5xl lg:text-6xl font-display font-bold text-graphite-900 dark:text-white mb-4">
@@ -73,7 +73,7 @@ const uniqueYears = [...new Set(scholarData.publications.map(pub => pub.year).fi
     </div>
   </header>
 
-  <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-14 sm:py-20">
+  <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-16">
     <!-- Métricas bibliométricas -->
     <section class="mb-12 reveal">
       <ScholarMetrics showDetails={true} />
