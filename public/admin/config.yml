@@ -212,7 +212,10 @@ collections:
       - { label: 'Curso (p. ej. 1º)', name: 'curso', widget: 'string' }
       - { label: 'Cuatrimestre (p. ej. 1º)', name: 'cuatrimestre', widget: 'string' }
       - { label: 'Créditos ECTS', name: 'creditos', widget: 'number', default: 6, value_type: 'int' }
-      - { label: 'Año académico (p. ej. 2024-2025)', name: 'academicYear', widget: 'string' }
+      - label: 'Cursos académicos impartidos (p. ej. 2024-2025) — uno por cada curso en que se ha dado, más reciente primero'
+        name: 'academicYear'
+        widget: 'list'
+        field: { label: 'Curso académico', name: 'anio', widget: 'string' }
       - { label: 'Descripción', name: 'descripcion', widget: 'text' }
       - label: 'Temario'
         name: 'temario'

@@ -15,28 +15,38 @@ const asignaturasAll = (await getCollection('asignaturas')).map((a) => ({
 
 // Últimos 3 cursos académicos con docencia activa (más reciente primero).
 // Todo lo anterior se agrupa en un único bloque "Cursos anteriores".
+// Una asignatura puede repetirse en varios cursos (p. ej. Arquitectura
+// Empresarial en 2024-25, 2025-26 y 2026-27): academicYear es un array y
+// aparece una vez por cada curso en el que se impartió.
 const ANIOS_RECIENTES = ['2026-2027', '2025-2026', '2024-2025'];
 
 const gruposRecientes = ANIOS_RECIENTES.map((anio) => ({
 	anio,
-	asignaturas: asignaturasAll.filter((a) => a.academicYear === anio).sort(ordenarPorCurso),
+	asignaturas: asignaturasAll.filter((a) => a.academicYear.includes(anio)).sort(ordenarPorCurso),
 })).filter((g) => g.asignaturas.length > 0);
 
 const asignaturasAnteriores = asignaturasAll
-	.filter((a) => !ANIOS_RECIENTES.includes(a.academicYear))
+	.filter((a) => !a.academicYear.some((anio) => ANIOS_RECIENTES.includes(anio)))
 	.sort(ordenarPorCurso);
 
-// Lista plana (todos los años) para los filtros y las estadísticas del readout.
-const asignaturas = [...gruposRecientes.flatMap((g) => g.asignaturas), ...asignaturasAnteriores];
+// Lista plana de asignaturas ÚNICAS (una por curso académico del grado, sin
+// repetir por año impartido) para las estadísticas del readout.
+const asignaturas = asignaturasAll;
 
 // Secciones para el listado: una por cada curso académico reciente con docencia,
 // más un bloque final "Cursos anteriores" con todo lo que quede fuera de esos años.
+// `anio` es el valor usado en data-anio para que el filtro de la página
+// seleccione exactamente las tarjetas de esa sección (no todos los años de
+// esa asignatura).
 const seccionesAsignaturas = [
-	...gruposRecientes.map((g) => ({ label: `Curso ${g.anio}`, items: g.asignaturas })),
-	...(asignaturasAnteriores.length > 0 ? [{ label: 'Cursos anteriores', items: asignaturasAnteriores }] : []),
+	...gruposRecientes.map((g) => ({ label: `Curso ${g.anio}`, anio: g.anio, items: g.asignaturas })),
+	...(asignaturasAnteriores.length > 0 ? [{ label: 'Cursos anteriores', anio: null, items: asignaturasAnteriores }] : []),
 ];
 
-const aniosAcademicos = [...new Set(asignaturas.map(a => a.academicYear))];
+const aniosAcademicos = [
+	...gruposRecientes.map((g) => g.anio),
+	...new Set(asignaturasAnteriores.map((a) => a.academicYear.join(' '))),
+];
 const totalCreditos = asignaturas.reduce((sum, a) => sum + a.creditos, 0);
 
 // Datos estructurados (schema.org Course) para que buscadores asocien estas
@@ -176,7 +186,7 @@ const recursos = [
 									<article
 										class="subject-card spec-card"
 										data-nivel={asignatura.nivel}
-										data-anio={asignatura.academicYear}
+										data-anio={seccion.anio ?? asignatura.academicYear.join(' ')}
 										data-search={`${asignatura.titulo} ${asignatura.codigo}`.toLowerCase()}
 									>
 										<span class="spec-tick spec-tick-tl"></span>

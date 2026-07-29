@@ -38,7 +38,9 @@ const asignaturas = defineCollection({
 		curso: z.string(),
 		cuatrimestre: z.string(),
 		creditos: z.number(),
-		academicYear: z.string(),
+		// Lista de cursos académicos en los que se ha impartido (más reciente
+		// primero) — la misma asignatura puede repetirse varios años.
+		academicYear: z.array(z.string()),
 		descripcion: z.string(),
 		temario: z.array(z.string()).default([]),
 		horario: z.string().default('Por definir'),

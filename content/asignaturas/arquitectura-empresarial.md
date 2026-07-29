@@ -6,7 +6,7 @@ nivel: "grado"
 curso: "4º"
 cuatrimestre: "1º"
 creditos: 6
-academicYear: "2026-2027"
+academicYear: ["2026-2027", "2025-2026", "2024-2025"]
 descripcion: "Estudio de los principios y prácticas de la arquitectura empresarial para alinear las TI con los objetivos de negocio. Se imparte en la Facultad de Ciencias Sociales y Tecnologías de la Información del Campus de Talavera."
 temario:
   - "Introducción a la Arquitectura Empresarial"

@@ -6,7 +6,7 @@ nivel: "grado"
 curso: "1º"
 cuatrimestre: "1º"
 creditos: 6
-academicYear: "2026-2027"
+academicYear: ["2026-2027"]
 descripcion: "Asignatura básica de introducción a la programación: resolución de problemas mediante algoritmos, diseño de programas estructurados y primer contacto con un lenguaje de programación. Se imparte en la Facultad de Ciencias Sociales y Tecnologías de la Información del Campus de Talavera."
 temario:
   - "Introducción a la Programación y Algoritmos"

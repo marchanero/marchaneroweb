@@ -6,7 +6,7 @@ nivel: "master"
 curso: "1º"
 cuatrimestre: "1º"
 creditos: 3
-academicYear: "2018-2024"
+academicYear: ["2018-2024"]
 descripcion: "Módulo del Máster Universitario en Investigación en Psicología Aplicada centrado en el uso de nuevas tecnologías (sensórica, computación afectiva, herramientas digitales) aplicadas a la investigación psicológica. Impartida como Personal Docente e Investigador (PDI) en la Universidad de Castilla-La Mancha entre 2018 y 2024."
 temario:
   - "Tecnologías Emergentes Aplicadas a la Investigación Psicológica"
