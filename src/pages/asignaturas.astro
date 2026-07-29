@@ -39,6 +39,27 @@ const seccionesAsignaturas = [
 const aniosAcademicos = [...new Set(asignaturas.map(a => a.academicYear))];
 const totalCreditos = asignaturas.reduce((sum, a) => sum + a.creditos, 0);
 
+// Datos estructurados (schema.org Course) para que buscadores asocien estas
+// asignaturas a la docencia del autor. No usa JsonLd.astro (esquema Person
+// fijo, global en Layout.astro) para no acoplar ambos tipos de dato.
+const cursosJsonLd = asignaturasAll.map((a) => ({
+	'@context': 'https://schema.org',
+	'@type': 'Course',
+	courseCode: a.codigo || undefined,
+	name: a.titulo,
+	description: a.descripcion,
+	educationalCredentialAwarded: a.nivel,
+	provider: {
+		'@type': 'CollegeOrUniversity',
+		name: 'Universidad de Castilla-La Mancha',
+	},
+	hasCourseInstance: {
+		'@type': 'CourseInstance',
+		courseMode: 'onsite',
+		courseWorkload: `PT${a.creditos * 25}H`,
+	},
+}));
+
 const recursos = [
 	{
 		titulo: 'Guías de estudio',
@@ -64,6 +85,9 @@ const recursos = [
 ---
 
 <Layout title="Docencia | Roberto Sánchez Reolid">
+	{cursosJsonLd.map((curso) => (
+		<script type="application/ld+json" set:html={JSON.stringify(curso)} />
+	))}
 	<!-- Header -->
 	<header class="relative border-b border-line dark:border-line-dark py-10 sm:py-16 px-4 sm:px-6 lg:px-8 hero-wash overflow-hidden">
 		<div class="max-w-5xl mx-auto text-center">
@@ -184,7 +208,7 @@ const recursos = [
 
 										<div class="flex items-center justify-between pt-4 border-t border-line dark:border-line-dark">
 											<span class="text-xs text-graphite-500 dark:text-graphite-400">{asignatura.horario}</span>
-											<a href={asignatura.enlaceMateriales} target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 text-sm font-medium text-pulse-600 dark:text-pulse-400 hover:text-pulse-700 dark:hover:text-pulse-300">
+											<a href={asignatura.enlaceMateriales} target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 text-sm font-medium text-pulse-700 dark:text-pulse-400 dark:hover:text-pulse-300">
 												Materiales
 												<svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
 													<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>

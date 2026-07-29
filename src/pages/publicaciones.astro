@@ -152,12 +152,12 @@ const uniqueYears = [...new Set(scholarData.publications.map(pub => pub.year).fi
                   <div class="flex flex-wrap items-center gap-3 mb-3 font-mono text-xs">
                     <span class="text-graphite-500 dark:text-graphite-400">{publication.year}</span>
                     <span class="text-graphite-300 dark:text-graphite-600">·</span>
-                    <span class="text-pulse-600 dark:text-pulse-400 uppercase tracking-wide">{getPublicationLabel(pubType)}</span>
+                    <span class="text-pulse-700 dark:text-pulse-400 uppercase tracking-wide">{getPublicationLabel(pubType)}</span>
                   </div>
 
                   <h3 class="text-lg font-semibold text-graphite-900 dark:text-white mb-2 leading-snug">
                     {publication.link ? (
-                      <a href={publication.link} target="_blank" rel="noopener noreferrer" class="hover:text-pulse-600 dark:hover:text-pulse-400">
+                      <a href={publication.link} target="_blank" rel="noopener noreferrer" class="hover:text-pulse-700 dark:hover:text-pulse-400">
                         {publication.title}
                       </a>
                     ) : (

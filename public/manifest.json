@@ -1,0 +1,13 @@
+{
+  "name": "Dr. Roberto Sánchez Reolid",
+  "short_name": "R. Sánchez Reolid",
+  "description": "Web personal de Roberto Sánchez Reolid, investigador en IA y procesamiento de señales fisiológicas en la UCLM.",
+  "start_url": "/",
+  "display": "browser",
+  "background_color": "#F5F6F4",
+  "theme_color": "#0B1220",
+  "icons": [
+    { "src": "/icon-192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "/icon-512.png", "sizes": "512x512", "type": "image/png" }
+  ]
+}
