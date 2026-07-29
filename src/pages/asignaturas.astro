@@ -47,7 +47,11 @@ const aniosAcademicos = [
 	...gruposRecientes.map((g) => g.anio),
 	...new Set(asignaturasAnteriores.map((a) => a.academicYear.join(' '))),
 ];
-const totalCreditos = asignaturas.reduce((sum, a) => sum + a.creditos, 0);
+// Total real de créditos ECTS impartidos a lo largo de la carrera docente:
+// no se calcula a partir de `asignaturas` porque ese listado solo recoge
+// los últimos cursos con detalle (no todo el histórico). Cifra a mantener
+// manualmente: 79 hasta el curso 2025-2026, +15 en 2026-2027.
+const totalCreditos = 94;
 
 // Datos estructurados (schema.org Course) para que buscadores asocien estas
 // asignaturas a la docencia del autor. No usa JsonLd.astro (esquema Person
