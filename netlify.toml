@@ -37,7 +37,7 @@
     X-XSS-Protection = "1; mode=block"
     X-Content-Type-Options = "nosniff"
     Referrer-Policy = "strict-origin-when-cross-origin"
-    Content-Security-Policy = "default-src 'self'; img-src 'self' data: https:; style-src 'self'; script-src 'self'"
+    Content-Security-Policy = "default-src 'self'; img-src 'self' data: https:; style-src 'self'; script-src 'self'; frame-src https://www.openstreetmap.org"
 
 # Assets con hash en el nombre (JS/CSS/fuentes/imágenes de _astro): son
 # inmutables, cualquier cambio de contenido genera un fichero nuevo.

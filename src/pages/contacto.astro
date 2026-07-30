@@ -2,7 +2,10 @@
 import Layout from '../layouts/Layout.astro';
 ---
 
-<Layout title="Contacto | Roberto Sánchez Reolid">
+<Layout
+	title="Contacto | Roberto Sánchez Reolid"
+	description="Contacta con el Dr. Roberto Sánchez Reolid para colaboraciones de investigación, consultas académicas o proyectos en Inteligencia Artificial."
+>
 	<!-- Header -->
 	<header class="relative border-b border-line dark:border-line-dark py-10 sm:py-16 px-4 sm:px-6 lg:px-8 hero-wash overflow-hidden">
 		<div class="max-w-4xl mx-auto text-center">
@@ -17,7 +20,7 @@ import Layout from '../layouts/Layout.astro';
 		</div>
 	</header>
 
-	<main class="py-10 sm:py-16 px-4 sm:px-6 lg:px-8">
+	<div class="py-10 sm:py-16 px-4 sm:px-6 lg:px-8">
 		<div class="max-w-5xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-8">
 			<!-- Columna izquierda: información de contacto -->
 			<div class="reveal space-y-6">
@@ -74,13 +77,37 @@ import Layout from '../layouts/Layout.astro';
 							<div>
 								<h3 class="font-semibold text-graphite-900 dark:text-white mb-1">Ubicación</h3>
 								<p class="text-sm text-graphite-500 dark:text-graphite-400 leading-relaxed">
-									Escuela Superior de Informática<br />
+									Facultad de Ciencias Sociales y Tecnologías de la Información<br />
 									Universidad de Castilla-La Mancha<br />
-									Paseo de la Universidad, 4 · 13071 Ciudad Real
+									Edificio Margarita Salas · Despacho 3.3<br />
+									Avda. Real Fábrica de Sedas, s/n · 45600 Talavera de la Reina (Toledo)
 								</p>
 							</div>
 						</div>
 					</div>
+				</div>
+
+				<div class="spec-card p-8">
+					<span class="spec-tick spec-tick-tl"></span>
+					<span class="spec-tick spec-tick-br"></span>
+					<p class="eyebrow mb-4">Cómo llegar</p>
+					<div class="rounded-md overflow-hidden border border-line dark:border-line-dark">
+						<iframe
+							src="https://www.openstreetmap.org/export/embed.html?bbox=-4.8458%2C39.9511%2C-4.8378%2C39.9551&amp;layer=mapnik&amp;marker=39.9531%2C-4.8418"
+							title="Mapa de ubicación de la Facultad de Ciencias Sociales y Tecnologías de la Información, Talavera de la Reina"
+							class="w-full h-64 sm:h-72"
+							loading="lazy"
+							referrerpolicy="no-referrer-when-downgrade"
+						></iframe>
+					</div>
+					<a
+						href="https://www.openstreetmap.org/?mlat=39.9531&mlon=-4.8418#map=17/39.9531/-4.8418"
+						target="_blank"
+						rel="noopener noreferrer"
+						class="mt-3 inline-block text-sm text-pulse-700 dark:text-pulse-400 dark:hover:text-pulse-300"
+					>
+						Ver mapa más grande ↗
+					</a>
 				</div>
 
 				<div class="spec-card p-8">
@@ -175,7 +202,7 @@ import Layout from '../layouts/Layout.astro';
 				</div>
 			</div>
 		</div>
-	</main>
+	</div>
 </Layout>
 
 <div id="form-feedback" class="hidden mt-6 p-4 border border-signal-500 rounded-md text-center" role="alert">
