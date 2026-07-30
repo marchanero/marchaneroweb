@@ -13,7 +13,8 @@
 import http from 'node:http';
 import fs from 'node:fs';
 import path from 'node:path';
-import puppeteer from 'puppeteer';
+import os from 'node:os';
+import puppeteer from 'puppeteer-core';
 
 const DIST_DIR = path.resolve('dist');
 const OUTPUT_PATH = path.join(DIST_DIR, 'files', 'CV_RobertoSanchezReolid.pdf');
@@ -65,6 +66,26 @@ function startServer() {
   });
 }
 
+// En Linux (Netlify, GitHub Actions) usamos @sparticuz/chromium: un binario de
+// Chromium mínimo pensado para entornos restringidos, sin las librerías
+// compartidas (libnss3, libatk...) que un Chromium completo necesita y que
+// estos entornos de build no siempre tienen instaladas. En el resto de
+// plataformas (desarrollo local) usamos el Chrome ya instalado en el sistema,
+// sin depender de "puppeteer" ni de su descarga de ~200 MB.
+async function launchBrowser() {
+  if (os.platform() === 'linux') {
+    const chromium = (await import('@sparticuz/chromium')).default;
+
+    return puppeteer.launch({
+      headless: true,
+      args: chromium.args,
+      executablePath: await chromium.executablePath(),
+    });
+  }
+
+  return puppeteer.launch({ headless: true, channel: 'chrome' });
+}
+
 async function main() {
   if (!fs.existsSync(DIST_DIR)) {
     console.warn('[cv-pdf] dist/ no existe (¿se ejecutó "astro build" antes?). Se omite la generación del PDF.');
@@ -78,10 +99,7 @@ async function main() {
   let browser;
 
   try {
-    browser = await puppeteer.launch({
-      headless: true,
-      args: ['--no-sandbox', '--disable-setuid-sandbox'],
-    });
+    browser = await launchBrowser();
 
     const page = await browser.newPage();
     // Fuerza modo claro independientemente del prefers-color-scheme del entorno de build
