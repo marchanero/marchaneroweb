@@ -10,6 +10,35 @@ const { class: className = '' } = Astro.props;
 	title="Volver al inicio de la página"
 >
 	<svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-		<path stroke-linecap="round" stroke-linejoin="round" d="M5 10l7-7m0 0l7 7m-7-7v18" />
+		<g class="arrow-group">
+			<path stroke-linecap="round" stroke-linejoin="round" d="M12 5v14" />
+			<path stroke-linecap="round" stroke-linejoin="round" d="M16 9l-4-4" />
+			<path stroke-linecap="round" stroke-linejoin="round" d="M8 9l4-4" />
+		</g>
 	</svg>
 </button>
+
+<style>
+	#back-to-top .arrow-group {
+		transform-box: fill-box;
+	}
+	#back-to-top:hover .arrow-group,
+	#back-to-top:focus-visible .arrow-group {
+		animation: arrow-bounce-up 0.5s ease-in-out;
+	}
+	@keyframes arrow-bounce-up {
+		0%,
+		100% {
+			transform: translateY(0);
+		}
+		50% {
+			transform: translateY(-3px);
+		}
+	}
+	@media (prefers-reduced-motion: reduce) {
+		#back-to-top:hover .arrow-group,
+		#back-to-top:focus-visible .arrow-group {
+			animation: none;
+		}
+	}
+</style>
