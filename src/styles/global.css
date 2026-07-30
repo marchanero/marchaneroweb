@@ -185,15 +185,16 @@
   }
 
   /* Eyebrow: etiqueta mono en mayúsculas usada como identificador/kicker */
+  /* text-pulse-700/text-signal-700 en claro (no 600): a 4.5:1 mínimo WCAG AA sobre fondo paper/blanco (pa11y-ci) */
   .eyebrow {
-    @apply inline-flex items-center gap-1.5 font-mono text-xs uppercase tracking-[0.14em] text-pulse-600 dark:text-pulse-400;
+    @apply inline-flex items-center gap-1.5 font-mono text-xs uppercase tracking-[0.14em] text-pulse-700 dark:text-pulse-400;
   }
   .eyebrow::before {
     content: '';
     @apply w-1.5 h-1.5 rounded-full bg-signal-500 shrink-0;
   }
   .eyebrow-signal {
-    @apply text-signal-600 dark:text-signal-400;
+    @apply text-signal-700 dark:text-signal-400;
   }
   .eyebrow-signal::before {
     @apply bg-pulse-500;

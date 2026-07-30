@@ -121,7 +121,7 @@ const citationsMaxYear = citationsGraph.length > 0 ? Math.max(...citationsGraph.
       </div>
       <div class="text-xs text-graphite-500 dark:text-graphite-400 mt-1">Índice h</div>
       {showDetails && scholarData.metrics.hIndexRecent > 0 && (
-        <div class="font-mono text-xs text-graphite-400 dark:text-graphite-500 mt-1">
+        <div class="font-mono text-xs text-graphite-500 dark:text-graphite-400 mt-1">
           {scholarData.metrics.hIndexRecent} (5 años)
         </div>
       )}
@@ -133,7 +133,7 @@ const citationsMaxYear = citationsGraph.length > 0 ? Math.max(...citationsGraph.
       </div>
       <div class="text-xs text-graphite-500 dark:text-graphite-400 mt-1">Índice i10</div>
       {showDetails && scholarData.metrics.i10IndexRecent > 0 && (
-        <div class="font-mono text-xs text-graphite-400 dark:text-graphite-500 mt-1">
+        <div class="font-mono text-xs text-graphite-500 dark:text-graphite-400 mt-1">
           {scholarData.metrics.i10IndexRecent} (5 años)
         </div>
       )}
@@ -165,7 +165,7 @@ const citationsMaxYear = citationsGraph.length > 0 ? Math.max(...citationsGraph.
                         <span
                           class:list={[
                             'absolute -top-4 left-1/2 -translate-x-1/2 font-mono text-[0.6rem] leading-none',
-                            isPeakYear ? 'text-pulse-600 dark:text-pulse-400' : 'text-graphite-400 dark:text-graphite-500',
+                            isPeakYear ? 'text-pulse-700 dark:text-pulse-400' : 'text-graphite-500 dark:text-graphite-400',
                           ]}
                         >
                           {publications}
@@ -173,7 +173,7 @@ const citationsMaxYear = citationsGraph.length > 0 ? Math.max(...citationsGraph.
                       )}
                     </div>
                   </div>
-                  <span class="font-mono text-[0.6rem] text-graphite-400 dark:text-graphite-500">
+                  <span class="font-mono text-[0.6rem] text-graphite-500 dark:text-graphite-400">
                     '{year.toString().slice(-2)}
                   </span>
                 </div>
@@ -181,7 +181,7 @@ const citationsMaxYear = citationsGraph.length > 0 ? Math.max(...citationsGraph.
             })}
           </div>
 
-          <p class="font-mono text-xs text-graphite-400 dark:text-graphite-500 mt-3 text-center">
+          <p class="font-mono text-xs text-graphite-500 dark:text-graphite-400 mt-3 text-center">
             Máximo {maxPublications} en {peakPublicationYear} · {scholarData.publications.length} en total
           </p>
         </div>
@@ -209,7 +209,7 @@ const citationsMaxYear = citationsGraph.length > 0 ? Math.max(...citationsGraph.
                           <span
                             class:list={[
                               'absolute -top-4 left-1/2 -translate-x-1/2 font-mono text-[0.6rem] leading-none',
-                              isPeakYear ? 'text-pulse-600 dark:text-pulse-400' : 'text-graphite-400 dark:text-graphite-500',
+                              isPeakYear ? 'text-pulse-700 dark:text-pulse-400' : 'text-graphite-500 dark:text-graphite-400',
                             ]}
                           >
                             {citations}
@@ -217,7 +217,7 @@ const citationsMaxYear = citationsGraph.length > 0 ? Math.max(...citationsGraph.
                         )}
                       </div>
                     </div>
-                    <span class="font-mono text-[0.6rem] text-graphite-400 dark:text-graphite-500">
+                    <span class="font-mono text-[0.6rem] text-graphite-500 dark:text-graphite-400">
                       '{year.toString().slice(-2)}
                     </span>
                   </div>
@@ -225,7 +225,7 @@ const citationsMaxYear = citationsGraph.length > 0 ? Math.max(...citationsGraph.
               })}
             </div>
 
-            <p class="font-mono text-xs text-graphite-400 dark:text-graphite-500 mt-3 text-center">
+            <p class="font-mono text-xs text-graphite-500 dark:text-graphite-400 mt-3 text-center">
               Máximo {maxCitations} citas en {peakCitationYear}
             </p>
           </div>
@@ -235,7 +235,7 @@ const citationsMaxYear = citationsGraph.length > 0 ? Math.max(...citationsGraph.
   )}
 
   <div class="mt-auto pt-4 border-t border-line dark:border-line-dark">
-    <p class="font-mono text-[0.65rem] text-graphite-400 dark:text-graphite-500 text-center">
+    <p class="font-mono text-[0.65rem] text-graphite-500 dark:text-graphite-400 text-center">
       Última actualización: {new Date(scholarData.lastUpdated).toLocaleDateString('es-ES', {
         year: 'numeric', month: 'long', day: 'numeric', hour: '2-digit', minute: '2-digit'
       })}

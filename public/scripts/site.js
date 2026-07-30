@@ -26,6 +26,9 @@ document.addEventListener('DOMContentLoaded', () => {
 			backToTop.classList.toggle('!opacity-100', show);
 			backToTop.classList.toggle('!translate-y-0', show);
 			backToTop.classList.toggle('!pointer-events-auto', show);
+			// Evita que el botón reciba foco por teclado mientras está oculto
+			// (opacity-0 no lo saca del orden de tabulación por sí solo).
+			backToTop.tabIndex = show ? 0 : -1;
 		};
 		window.addEventListener('scroll', toggleBackToTop, { passive: true });
 		backToTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
