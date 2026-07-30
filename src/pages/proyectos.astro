@@ -26,7 +26,10 @@ const trace = (i: number) => (i % 2 === 0 ? 'ecg' : 'eda') as 'ecg' | 'eda';
 const repoName = (url: string) => url.replace(/\/$/, '').split('/').pop() || 'Código';
 ---
 
-<Layout title="Proyectos de Investigación - Dr. Roberto Sánchez Reolid">
+<Layout
+	title="Proyectos de Investigación - Dr. Roberto Sánchez Reolid"
+	description="Proyectos de investigación del Dr. Roberto Sánchez Reolid: Inteligencia Artificial, computación afectiva y sistemas distribuidos aplicados a problemas reales."
+>
 	<!-- Header -->
 	<header class="relative border-b border-line dark:border-line-dark py-10 sm:py-16 hero-wash overflow-hidden">
 		<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

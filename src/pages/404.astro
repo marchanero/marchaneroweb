@@ -6,7 +6,7 @@ const title = "404 - Página no encontrada";
 const description = "La página que buscas no existe o ha sido movida.";
 ---
 
-<Layout title={title} description={description}>
+<Layout title={title} description={description} noindex={true}>
 	<section class="relative border-b border-line dark:border-line-dark py-20 sm:py-28 px-4 sm:px-6 lg:px-8 hero-wash overflow-hidden">
 		<div class="absolute inset-0 flex items-center opacity-[0.08] text-pulse-500 dark:text-pulse-400 pointer-events-none">
 			<SignalTrace variant="ecg" width={1200} height={160} beats={1} strokeWidth={3} animate={false} class="w-full" />

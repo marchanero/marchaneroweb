@@ -97,7 +97,10 @@ const recursos = [
 ];
 ---
 
-<Layout title="Docencia | Roberto Sánchez Reolid">
+<Layout
+	title="Docencia | Roberto Sánchez Reolid"
+	description="Asignaturas impartidas por el Dr. Roberto Sánchez Reolid en el Grado en Ingeniería Informática de la UCLM, campus de Talavera de la Reina."
+>
 	{cursosJsonLd.map((curso) => (
 		<script type="application/ld+json" set:html={JSON.stringify(curso)} />
 	))}
@@ -136,7 +139,7 @@ const recursos = [
 		</div>
 	</header>
 
-	<main class="py-10 sm:py-16 px-4 sm:px-6 lg:px-8">
+	<div class="py-10 sm:py-16 px-4 sm:px-6 lg:px-8">
 		<div class="max-w-6xl mx-auto">
 			<!-- Filtros -->
 			<section class="mb-12 reveal">
@@ -177,7 +180,7 @@ const recursos = [
 			<!-- Lista de asignaturas -->
 			<section class="mb-16 reveal">
 				<h2 class="text-2xl sm:text-3xl font-display font-bold text-graphite-900 dark:text-white mb-8">
-					Asignaturas <span id="resultCount" class="font-mono text-graphite-400 dark:text-graphite-500 text-xl">({asignaturas.length})</span>
+					Asignaturas <span id="resultCount" class="font-mono text-graphite-500 dark:text-graphite-400 text-xl">({asignaturas.length})</span>
 				</h2>
 
 				<div id="subjectGrid">
@@ -197,7 +200,7 @@ const recursos = [
 
 										<div class="h-16 -mx-6 -mt-6 mb-6 px-6 border-b border-line dark:border-line-dark flex items-center justify-between overflow-hidden">
 											<div class="flex items-center gap-1" role="img" aria-label={`Curso ${asignatura.curso} de 4 del grado`}>
-												<span class="font-mono text-[11px] text-graphite-400 dark:text-graphite-500">1º</span>
+												<span class="font-mono text-[11px] text-graphite-500 dark:text-graphite-400">1º</span>
 												{[1, 2, 3, 4].map((n, i) => (
 													<>
 														{i > 0 && <span class="w-2 sm:w-3 h-px bg-line dark:bg-line-dark"></span>}
@@ -211,7 +214,7 @@ const recursos = [
 														></span>
 													</>
 												))}
-												<span class="font-mono text-[11px] text-graphite-400 dark:text-graphite-500">4º</span>
+												<span class="font-mono text-[11px] text-graphite-500 dark:text-graphite-400">4º</span>
 											</div>
 											<span class="shrink-0 font-mono text-xs text-graphite-500 dark:text-graphite-400">{asignatura.creditos} ECTS</span>
 										</div>
@@ -369,7 +372,7 @@ const recursos = [
 				</div>
 			</section>
 		</div>
-	</main>
+	</div>
 
 	<script is:inline src="/scripts/asignaturas.js"></script>
 </Layout>
