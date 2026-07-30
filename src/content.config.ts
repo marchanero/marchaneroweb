@@ -16,8 +16,11 @@ const proyectos = defineCollection({
 		estado: z.enum(['En curso', 'Finalizado']),
 		financiacion: z.string().default(''),
 		presupuesto: z.string().default(''),
+		// Código oficial de la convocatoria/proyecto (p. ej. "PID2023-149753OB-C21")
+		codigo: z.string().default(''),
 		url: z.string().default(''),
-		github: z.string().default(''),
+		// Repos de código relacionados con el proyecto (puede haber varios)
+		github: z.array(z.string()).default([]),
 		// Aparece en la sección "Proyectos destacados" de /proyectos
 		destacado: z.boolean().default(false),
 		// Aparece en "Investigaciones destacadas" de la home

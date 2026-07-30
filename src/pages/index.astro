@@ -41,7 +41,7 @@ const featuredProjects = (await getCollection('proyectos'))
 		title: p.data.titulo,
 		description: p.data.descripcion,
 		period: `${p.data.fechaInicio} — ${p.data.fechaFin}`,
-		budget: p.data.presupuesto,
+		budget: p.data.presupuesto || p.data.codigo,
 		progress: p.data.progreso,
 		href: '/proyectos',
 		variant: (index % 2 === 0 ? 'ecg' : 'eda') as 'ecg' | 'eda',

@@ -66,8 +66,13 @@ collections:
         default: 'En curso'
       - { label: 'Financiación', name: 'financiacion', widget: 'string', required: false }
       - { label: 'Presupuesto', name: 'presupuesto', widget: 'string', required: false }
+      - { label: 'Código de convocatoria (p. ej. PID2023-149753OB-C21)', name: 'codigo', widget: 'string', required: false }
       - { label: 'URL de detalle', name: 'url', widget: 'string', required: false }
-      - { label: 'Repositorio GitHub', name: 'github', widget: 'string', required: false }
+      - label: 'Repositorios GitHub'
+        name: 'github'
+        widget: 'list'
+        required: false
+        field: { label: 'URL del repo', name: 'url', widget: 'string' }
       - { label: 'Destacado en página Proyectos', name: 'destacado', widget: 'boolean', default: false }
       - { label: 'Destacado en la home', name: 'destacadoHome', widget: 'boolean', default: false }
       - { label: 'Progreso (%)', name: 'progreso', widget: 'number', min: 0, max: 100, default: 0, value_type: 'int' }
