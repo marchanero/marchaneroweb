@@ -49,6 +49,7 @@ collections:
     slug: '{{slug}}'
     summary: '{{titulo}} · {{estado}}'
     sortable_fields: ['titulo', 'fechaInicio', 'estado']
+    preview_path: 'proyectos/{{slug}}'
     fields:
       - { label: 'Título', name: 'titulo', widget: 'string' }
       - { label: 'Etiqueta para la home (p. ej. IA · EDUCACIÓN)', name: 'tag', widget: 'string', required: false }
@@ -67,7 +68,7 @@ collections:
       - { label: 'Financiación', name: 'financiacion', widget: 'string', required: false }
       - { label: 'Presupuesto', name: 'presupuesto', widget: 'string', required: false }
       - { label: 'Código de convocatoria (p. ej. PID2023-149753OB-C21)', name: 'codigo', widget: 'string', required: false }
-      - { label: 'URL de detalle', name: 'url', widget: 'string', required: false }
+      - { label: 'Página oficial (enlace externo, opcional — cada proyecto ya tiene ficha propia autogenerada en /proyectos/[slug])', name: 'url', widget: 'string', required: false }
       - label: 'Repositorios GitHub'
         name: 'github'
         widget: 'list'

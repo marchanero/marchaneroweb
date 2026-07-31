@@ -117,9 +117,7 @@ const repoName = (url: string) => url.replace(/\/$/, '').split('/').pop() || 'CÃ
 						</div>
 
 						<div class="flex flex-wrap gap-2">
-							{proyecto.url && (
-								<a href={proyecto.url} class="btn btn-primary btn-sm flex-1">Ver detalles completos</a>
-							)}
+							<a href={`/proyectos/${proyecto.id}`} class="btn btn-primary btn-sm flex-1">Ver ficha completa</a>
 							{proyecto.github.map((repo) => (
 								<a href={repo} target="_blank" rel="noopener noreferrer" class="btn btn-outline btn-sm">{repoName(repo)}</a>
 							))}
@@ -194,9 +192,7 @@ const repoName = (url: string) => url.replace(/\/$/, '').split('/').pop() || 'CÃ
 						)}
 
 						<div class="flex gap-2 flex-wrap">
-							{proyecto.url && (
-								<a href={proyecto.url} class="btn btn-primary btn-sm flex-1">Ver detalles completos</a>
-							)}
+							<a href={`/proyectos/${proyecto.id}`} class="btn btn-primary btn-sm flex-1">Ver ficha completa</a>
 							{proyecto.github.map((repo) => (
 								<a href={repo} target="_blank" rel="noopener noreferrer" class="btn btn-outline btn-sm" title={`Ver ${repoName(repo)} en GitHub`} aria-label={`Ver ${repoName(repo)} en GitHub`}>
 									<svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
