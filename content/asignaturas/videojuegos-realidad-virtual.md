@@ -1,5 +1,5 @@
 ---
-codigo: ""
+codigo: "42379"
 titulo: "Videojuegos y Realidad Virtual"
 grado: "Grado en Ingeniería Informática"
 nivel: "grado"
