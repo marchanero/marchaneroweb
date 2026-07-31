@@ -206,6 +206,7 @@ collections:
     slug: '{{slug}}'
     summary: '{{titulo}} · {{codigo}}'
     sortable_fields: ['titulo', 'codigo', 'curso']
+    preview_path: 'asignaturas/{{slug}}'
     fields:
       - { label: 'Código', name: 'codigo', widget: 'string' }
       - { label: 'Título', name: 'titulo', widget: 'string' }
