@@ -1,24 +1,25 @@
-name: Deploy to Netlify
+name: CI - Validación en main
+
+# El despliegue real lo hace la integración nativa de Netlify con GitHub
+# (build automático en cada push a main, usando netlify.toml) — no este
+# workflow. Antes había jobs "deploy-preview"/"deploy-production" con
+# nwtgck/actions-netlify, pero requerían los secrets NETLIFY_AUTH_TOKEN y
+# NETLIFY_SITE_ID, que nunca se configuraron en este repo: fallaban en
+# silencio y el job se marcaba en verde igualmente, dando una falsa
+# sensación de que protegían el despliegue. Se eliminaron para no inducir
+# a error. Este workflow ahora solo valida que main compila, pasa los
+# tests y no introduce regresiones de accesibilidad.
 
 on:
   push:
     branches: [ main ]
-  # No ejecutar en pull_request a main directamente, se gestionará por el workflow de tests
-  # pull_request:
-  #   branches: [ main ]
-  #   types: [opened, synchronize, reopened, ready_for_review]
   workflow_dispatch:
 
 jobs:
-  # FASE 1: VALIDACIÓN Y CONSTRUCCIÓN (Solo para la rama main)
-  # =================================
-  
   # Paso 1: Validación inicial del código
   validate:
     name: Validación y Lint
     runs-on: ubuntu-latest
-    # No ejecutar en PRs marcados como draft
-    if: github.event_name != 'pull_request' || github.event.pull_request.draft == false
 
     steps:
       - name: Checkout código
@@ -32,7 +33,7 @@ jobs:
 
       - name: Instalar dependencias
         run: npm ci
-      
+
       - name: Cargar variables de entorno
         run: |
           if [ -f "./scripts/load-env-vars.js" ]; then
@@ -40,7 +41,7 @@ jobs:
           else
             echo "Script de carga de variables no encontrado, continuando..."
           fi
-        
+
       - name: Verificar configuración de Telegram
         run: |
           if [ -f "./scripts/verify-telegram-config-simple.js" ]; then
@@ -48,7 +49,7 @@ jobs:
           else
             echo "Script de verificación de Telegram no encontrado, continuando..."
           fi
-        
+
       - name: Verificación previa al despliegue
         run: |
           if [ -f "./scripts/pre-deploy-check.js" ]; then
@@ -59,7 +60,7 @@ jobs:
 
       - name: Build inicial para validación
         run: npm run build
-        
+
   # Paso 2: Ejecución de tests
   test:
     name: Ejecutar Tests
@@ -90,7 +91,7 @@ jobs:
           else
             npm test
           fi
-        
+
       - name: Ejecutar tests específicos
         run: |
           # Ejecutar tests específicos si están disponibles
@@ -100,7 +101,7 @@ jobs:
           if npm run test:seo > /dev/null 2>&1; then
             npm run test:seo
           fi
-        
+
       - name: Guardar resultados de tests
         if: always()
         uses: actions/upload-artifact@v4
@@ -110,17 +111,14 @@ jobs:
             junit.xml
             coverage/
           retention-days: 7
-          
-  # FASE 2: BUILD Y OPTIMIZACIÓN
-  # ============================
-  
-  # Paso 3: Build optimizado para producción
+
+  # Paso 3: Build optimizado para producción (validación, no se publica)
   build:
     name: Build para Producción
     needs: test
     runs-on: ubuntu-latest
     if: success()
-    
+
     steps:
       - name: Checkout código
         uses: actions/checkout@v4
@@ -133,29 +131,29 @@ jobs:
 
       - name: Instalar dependencias
         run: npm ci
-        
+
       - name: Cargar variables de entorno
         run: |
           if [ -f "./scripts/load-env-vars.js" ]; then
             node ./scripts/load-env-vars.js
           fi
-        
+
       - name: Build para producción
         run: npm run build
-        
+
       - name: Generar sitemap.xml
         run: |
           if [ ! -f "./dist/sitemap.xml" ]; then
             echo '<?xml version="1.0" encoding="UTF-8"?>' > ./dist/sitemap.xml
             echo '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">' >> ./dist/sitemap.xml
-            
+
             # Página principal
             echo '  <url>' >> ./dist/sitemap.xml
             echo '    <loc>https://roberto-sreolid.netlify.app/</loc>' >> ./dist/sitemap.xml
             echo '    <lastmod>'$(date +%Y-%m-%d)'</lastmod>' >> ./dist/sitemap.xml
             echo '    <priority>1.00</priority>' >> ./dist/sitemap.xml
             echo '  </url>' >> ./dist/sitemap.xml
-            
+
             # Otras páginas
             for page in sobre-mi proyectos contacto asignaturas; do
               if [ -f "./src/pages/${page}.astro" ]; then
@@ -166,13 +164,13 @@ jobs:
                 echo '  </url>' >> ./dist/sitemap.xml
               fi
             done
-            
+
             echo '</urlset>' >> ./dist/sitemap.xml
             echo "✅ Sitemap generado en ./dist/sitemap.xml"
           else
             echo "✅ Sitemap ya existe"
           fi
-          
+
       - name: Generar robots.txt
         run: |
           if [ ! -f "./dist/robots.txt" ]; then
@@ -183,7 +181,7 @@ jobs:
           else
             echo "✅ Robots.txt ya existe"
           fi
-        
+
       - name: Optimizar assets
         run: |
           # Instalar herramientas de optimización si están disponibles
@@ -192,31 +190,28 @@ jobs:
             if npm list html-minifier-terser >/dev/null 2>&1 || npm install --no-save html-minifier-terser; then
               find ./dist -type f -name "*.html" -exec npx html-minifier-terser --collapse-whitespace --remove-comments --remove-optional-tags --remove-redundant-attributes --remove-script-type-attributes --remove-tag-whitespace --use-short-doctype -o {} {} \; 2>/dev/null || echo "HTML minification skipped"
             fi
-            
+
             # Comprimir archivos para mejor rendimiento
             find ./dist -type f -name "*.js" -exec gzip -9 -k {} \; 2>/dev/null || echo "JS compression skipped"
             find ./dist -type f -name "*.css" -exec gzip -9 -k {} \; 2>/dev/null || echo "CSS compression skipped"
             find ./dist -type f -name "*.html" -exec gzip -9 -k {} \; 2>/dev/null || echo "HTML compression skipped"
           fi
-          
+
           echo "✅ Optimización de assets completada"
-      
+
       - name: Subir artefacto de build
         uses: actions/upload-artifact@v4
         with:
           name: production-build
           path: ./dist
           retention-days: 1
-          
-  # FASE 3: CONTROL DE CALIDAD (Solo en push a main)
-  # ================================================
-  
-  # Paso 4: Validación de accesibilidad (opcional)
+
+  # Paso 4: Validación de accesibilidad (opcional, no bloquea)
   accessibility:
     name: Validación de Accesibilidad
     runs-on: ubuntu-latest
     needs: build
-    if: github.event_name == 'push' && github.ref == 'refs/heads/main' && success()
+    if: success()
 
     steps:
       - name: Checkout código
@@ -244,7 +239,7 @@ jobs:
           else
             echo "Script de accesibilidad no disponible, continuando..."
           fi
-          
+
       - name: Guardar reporte de accesibilidad
         if: always()
         uses: actions/upload-artifact@v4
@@ -254,257 +249,3 @@ jobs:
             accessibility-report.md
             .pa11yci-results.json
           retention-days: 7
-  
-  # FASE 4: DESPLIEGUES
-  # ===================
-  
-  # Paso 5a: Deploy de vista previa (solo en PRs)
-  deploy-preview:
-    name: Deploy Preview
-    runs-on: ubuntu-latest
-    needs: build
-    if: github.event_name == 'pull_request' && success()
-    
-    steps:
-      - name: Checkout código
-        uses: actions/checkout@v4
-
-      - name: Descargar artefacto de build
-        uses: actions/download-artifact@v4
-        with:
-          name: production-build
-          path: ./dist
-      
-      - name: Deploy Preview a Netlify
-        uses: nwtgck/actions-netlify@v3
-        with:
-          publish-dir: './dist'
-          github-token: ${{ secrets.GITHUB_TOKEN }}
-          deploy-message: "Vista previa desde PR #${{ github.event.number }}"
-          enable-pull-request-comment: true
-          enable-commit-comment: false
-          overwrites-pull-request-comment: true
-          alias: preview-web-${{ github.event.number }}
-        env:
-          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
-          NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
-        timeout-minutes: 5
-        
-      - name: Comentario con resumen (PR)
-        if: success()
-        uses: actions/github-script@v7
-        with:
-          script: |
-            const fs = require('fs');
-            try {
-              github.rest.issues.createComment({
-                issue_number: context.issue.number,
-                owner: context.repo.owner,
-                repo: context.repo.repo,
-                body: `## 🚀 Vista previa desplegada ✅
-                
-                La vista previa del sitio web está lista para su revisión.
-                
-                ### Proceso completado secuencialmente:
-                1. ✅ Validación y lint
-                2. ✅ Tests ejecutados correctamente
-                3. ✅ Build optimizado para producción
-                4. ✅ Preview desplegado en Netlify
-                
-                ### Enlaces útiles:
-                - 🌐 **Vista previa**: https://preview-web-${{ github.event.number }}--roberto-sreolid.netlify.app
-                - 📊 **Detalles del workflow**: https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}
-                
-                ### Checklist de revisión:
-                - [ ] Verificar que todas las páginas se cargan correctamente
-                - [ ] Revisar la información académica y de contacto
-                - [ ] Comprobar la visualización en dispositivos móviles
-                - [ ] Verificar que los enlaces funcionan correctamente
-                
-                **Dr. Roberto Sánchez Reolid - Universidad de Castilla-La Mancha**`
-              });
-            } catch (error) {
-              console.error(\`Error en el comentario: \${error.message}\`);
-            }
-
-  # Paso 5b: Deploy a producción (solo en main)
-  deploy-production:
-    name: Deploy a Producción
-    runs-on: ubuntu-latest
-    needs: [build, accessibility]
-    # Solo ejecutamos el despliegue en rama principal
-    if: github.event_name == 'push' && github.ref == 'refs/heads/main' && (success() || needs.accessibility.result == 'skipped')
-    
-    steps:
-      - name: Checkout código
-        uses: actions/checkout@v4
-
-      - name: Configurar Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: 20
-          cache: 'npm'
-
-      - name: Instalar dependencias
-        run: npm ci
-        
-      - name: Cargar variables de entorno
-        run: |
-          if [ -f "./scripts/load-env-vars.js" ]; then
-            node ./scripts/load-env-vars.js
-          fi
-        
-      - name: Importar variables de entorno a Netlify
-        run: |
-          if [ -f "./scripts/import-env-to-netlify.js" ]; then
-            node ./scripts/import-env-to-netlify.js || echo "Import de variables falló, continuando..."
-          fi
-
-      - name: Descargar artefacto de build
-        uses: actions/download-artifact@v4
-        with:
-          name: production-build
-          path: ./dist
-
-      - name: Deploy a Netlify
-        uses: nwtgck/actions-netlify@v3
-        with:
-          publish-dir: './dist'
-          production-branch: main
-          github-token: ${{ secrets.GITHUB_TOKEN }}
-          deploy-message: "Deploy desde GitHub Actions - ${{ github.event.head_commit.message }}"
-          enable-pull-request-comment: false
-          enable-commit-comment: true
-          overwrites-pull-request-comment: false
-          functions-dir: './netlify/functions'
-        env:
-          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
-          NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
-        timeout-minutes: 5
-  
-  # FASE 5: NOTIFICACIONES
-  # ======================
-  
-  # Paso 6: Notificar resultados
-  notify:
-    name: Notificar Resultados
-    runs-on: ubuntu-latest
-    needs: [deploy-production, deploy-preview]
-    if: always() && (needs.deploy-production.result != 'skipped' || needs.deploy-preview.result != 'skipped')
-    
-    steps:
-      - name: Checkout código
-        uses: actions/checkout@v4
-        
-      - name: Configurar Node.js para scripts
-        uses: actions/setup-node@v4
-        with:
-          node-version: 20
-          
-      - name: Instalar dependencias
-        run: npm ci
-        
-      - name: Cargar variables de entorno
-        run: |
-          if [ -f "./scripts/load-env-vars.js" ]; then
-            node ./scripts/load-env-vars.js
-          fi
-      
-      # Notificación para despliegue exitoso a producción
-      # TEMPORALMENTE DESHABILITADO - Variables de notificación comentadas en .env
-      # - name: Notificar por Telegram (Deploy Producción)
-      #   if: needs.deploy-production.result == 'success'
-      #   uses: appleboy/telegram-action@v0.1.1
-      #   with:
-      #     to: ${{ secrets.TELEGRAM_TO }}
-      #     token: ${{ secrets.TELEGRAM_TOKEN }}
-      #     message: |
-      #       🚀 *Sitio web desplegado correctamente*
-      #       
-      #       *Dr. Roberto Sánchez Reolid - UCLM*
-      #       
-      #       📝 Commit: ${{ github.event.head_commit.message }}
-      #       👨‍💻 Autor: ${{ github.event.head_commit.author.name }}
-      #       🕒 Fecha: ${{ github.event.head_commit.timestamp }}
-      #       
-      #       🌐 Ver sitio: https://roberto-sreolid.netlify.app
-      #       
-      #       📊 *Estado de validaciones*
-      #       ✅ Tests: Aprobados
-      #       ✅ Build: Completado
-      #       ✅ Deploy: Exitoso
-      #       
-      #       _Universidad de Castilla-La Mancha_
-      #     format: markdown
-      #     disable_web_page_preview: true
-          
-      # Notificación para vista previa
-      # TEMPORALMENTE DESHABILITADO - Variables de notificación comentadas en .env
-      # - name: Notificar por Telegram (Preview)
-      #   if: needs.deploy-preview.result == 'success'
-      #   uses: appleboy/telegram-action@v0.1.1
-      #   with:
-      #     to: ${{ secrets.TELEGRAM_TO }}
-      #     token: ${{ secrets.TELEGRAM_TOKEN }}
-      #     message: |
-      #       🔍 *Vista previa generada*
-      #       
-      #       *Dr. Roberto Sánchez Reolid - UCLM*
-      #       
-      #       📌 PR #${{ github.event.pull_request.number }}: ${{ github.event.pull_request.title }}
-      #       👨‍💻 Autor: ${{ github.event.pull_request.user.login }}
-      #       
-      #       🌐 Ver vista previa: https://preview-web-${{ github.event.pull_request.number }}--roberto-sreolid.netlify.app
-      #       
-      #       _Universidad de Castilla-La Mancha_
-      #     format: markdown
-      #     disable_web_page_preview: true
-
-      # Notificación para fallos
-      # TEMPORALMENTE DESHABILITADO - Variables de notificación comentadas en .env
-      # - name: Notificar fallos por Telegram
-      #   if: failure() || needs.deploy-preview.result == 'failure' || needs.deploy-production.result == 'failure'
-      #   uses: appleboy/telegram-action@v0.1.1
-      #   with:
-      #     to: ${{ secrets.TELEGRAM_TO }}
-      #     token: ${{ secrets.TELEGRAM_TOKEN }}
-      #     message: |
-      #       ❌ *Error en el despliegue*
-      #       
-      #       *Dr. Roberto Sánchez Reolid - UCLM*
-      #       
-      #       ${{ github.event_name == 'pull_request' && format('📌 PR #{0}: {1}', github.event.pull_request.number, github.event.pull_request.title) || format('📝 Commit: {0}', github.event.head_commit.message) }}
-      #       
-      #       ⚠️ Ver detalles del error en GitHub Actions:
-      #       https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}
-      #       
-      #       _Universidad de Castilla-La Mancha_
-      #     format: markdown
-      #     disable_web_page_preview: true
-      
-      # Notificación por correo electrónico (solo para producción exitosa)
-      # TEMPORALMENTE DESHABILITADO - Variables de notificación comentadas en .env
-      # - name: Enviar notificación por correo
-      #   if: needs.deploy-production.result == 'success' && secrets.MAIL_SERVER != ''
-      #   uses: dawidd6/action-send-mail@v3
-      #   with:
-      #     server_address: ${{ secrets.MAIL_SERVER }}
-      #     server_port: ${{ secrets.MAIL_PORT }}
-      #     username: ${{ secrets.MAIL_USERNAME }}
-      #     password: ${{ secrets.MAIL_PASSWORD }}
-      #     subject: Actualización del sitio web - Dr. Roberto Sánchez Reolid
-      #     body: |
-      #       ¡Se ha realizado un nuevo despliegue del sitio web!
-      #       
-      #       Commit: ${{ github.event.head_commit.message }}
-      #       Autor: ${{ github.event.head_commit.author.name }}
-      #       Fecha: ${{ github.event.head_commit.timestamp }}
-      #       
-      #       Ver sitio: https://roberto-sreolid.netlify.app
-      #       
-      #       Todos los tests han pasado correctamente.
-      #       
-      #       Este es un mensaje automático del sistema de CI/CD.
-      #       Universidad de Castilla-La Mancha
-      #     to: roberto.sreolid@uclm.es
-      #     from: Despliegue Web UCLM <noreply@uclm.es>
