@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-08-02T08:11:09.880Z",
+  "lastUpdated": "2026-08-03T09:31:38.646Z",
   "scrapingMethod": "ultra-optimized-v3-robust-pagination",
   "paginationInfo": {
     "totalPages": 0,
@@ -39,32 +39,32 @@
     "scholarId": "PCALePwAAAAJ"
   },
   "metrics": {
-    "totalCitations": 832,
-    "hIndex": 16,
-    "i10Index": 21,
-    "citationsRecent": 795,
-    "hIndexRecent": 16,
+    "totalCitations": 825,
+    "hIndex": 15,
+    "i10Index": 20,
+    "citationsRecent": 790,
+    "hIndexRecent": 15,
     "i10IndexRecent": 18,
     "citationsPerYear": [
       {
         "year": 2019,
-        "citations": 12
+        "citations": 11
       },
       {
         "year": 2020,
-        "citations": 23
+        "citations": 22
       },
       {
         "year": 2021,
-        "citations": 30
+        "citations": 32
       },
       {
         "year": 2022,
-        "citations": 102
+        "citations": 95
       },
       {
         "year": 2023,
-        "citations": 131
+        "citations": 130
       },
       {
         "year": 2024,
@@ -72,11 +72,11 @@
       },
       {
         "year": 2025,
-        "citations": 244
+        "citations": 242
       },
       {
         "year": 2026,
-        "citations": 123
+        "citations": 126
       }
     ]
   },
@@ -101,6 +101,25 @@
     },
     {
       "id": "pub_2",
+      "title": "Safe fall: use of predictive modeling and machine vision techniques for fall analysis and fall quality",
+      "authors": [
+        "O DelCastillo-Andrés",
+        "R Fernández-García",
+        "JC Pastor-Vicedo",
+        "MA Lira",
+        "..."
+      ],
+      "publication": "Sensors 26 (8), 2491, 2026",
+      "year": 2026,
+      "citedBy": 0,
+      "link": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=PCALePwAAAAJ&pagesize=100&sortby=pubdate&citation_for_view=PCALePwAAAAJ:u_35RYKgDlwC",
+      "citationId": "PCALePwAAAAJ:u_35RYKgDlwC",
+      "type": "article",
+      "isFirstAuthor": false,
+      "isCorrespondingAuthor": false
+    },
+    {
+      "id": "pub_3",
       "title": "Model-Centric or Data-Centric Approach? A Case Study on the Classification of Surface Defects in Steel Hot Rolling Using Convolutional Neural Networks",
       "authors": [
         "F López de la Rosa",
@@ -120,7 +139,41 @@
       "isCorrespondingAuthor": false
     },
     {
-      "id": "pub_3",
+      "id": "pub_4",
+      "title": "Augmented Virtuality to Bridge the Gap",
+      "authors": [
+        "JL Gómez-Sirvent",
+        "FL de la Rosa",
+        "R Sánchez-Reolid",
+        "JP Molina¹"
+      ],
+      "publication": "Ambient Intelligence–Software and Applications–16th International Symposium …, 2026",
+      "year": 2026,
+      "citedBy": 0,
+      "link": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=PCALePwAAAAJ&pagesize=100&sortby=pubdate&citation_for_view=PCALePwAAAAJ:pqnbT2bcN3wC",
+      "citationId": "PCALePwAAAAJ:pqnbT2bcN3wC",
+      "type": "article",
+      "isFirstAuthor": false,
+      "isCorrespondingAuthor": false
+    },
+    {
+      "id": "pub_5",
+      "title": "Clustering-Based Activity Monitoring Framework for Anomaly Detection",
+      "authors": [
+        "A Martinez-Rodrigo",
+        "R Sanchez-Reolid"
+      ],
+      "publication": "Ambient Intelligence–Software and Applications–16th International Symposium …, 2026",
+      "year": 2026,
+      "citedBy": 0,
+      "link": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=PCALePwAAAAJ&pagesize=100&sortby=pubdate&citation_for_view=PCALePwAAAAJ:g5m5HwL7SMYC",
+      "citationId": "PCALePwAAAAJ:g5m5HwL7SMYC",
+      "type": "article",
+      "isFirstAuthor": false,
+      "isCorrespondingAuthor": false
+    },
+    {
+      "id": "pub_6",
       "title": "Facial emotion recognition with virtual avatars in schizophrenia and bipolar disorder",
       "authors": [
         "M Scala",
@@ -139,26 +192,7 @@
       "isCorrespondingAuthor": false
     },
     {
-      "id": "pub_4",
-      "title": "Safe fall: use of predictive modeling and machine vision techniques for fall analysis and fall quality",
-      "authors": [
-        "Ó Castillo Andrés",
-        "R Fernández-García",
-        "JC Pastor-Vicedo",
-        "MA Lira",
-        "..."
-      ],
-      "publication": "Mdpi, 2026",
-      "year": 2026,
-      "citedBy": 0,
-      "link": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=PCALePwAAAAJ&pagesize=100&sortby=pubdate&citation_for_view=PCALePwAAAAJ:u_35RYKgDlwC",
-      "citationId": "PCALePwAAAAJ:u_35RYKgDlwC",
-      "type": "article",
-      "isFirstAuthor": false,
-      "isCorrespondingAuthor": false
-    },
-    {
-      "id": "pub_5",
+      "id": "pub_7",
       "title": "Emotion recognition using human avatars in schizophrenia: sex differences between non-immersive and immersive virtual reality",
       "authors": [
         "M Scala",
@@ -177,7 +211,7 @@
       "isCorrespondingAuthor": false
     },
     {
-      "id": "pub_6",
+      "id": "pub_8",
       "title": "EEG Signal Processing Pipelines in the Study of Neurophysiological Characteristics of Gifted Primary School Children: A Scoping Review",
       "authors": [
         "E García-Pérez",
@@ -195,7 +229,7 @@
       "isCorrespondingAuthor": false
     },
     {
-      "id": "pub_7",
+      "id": "pub_9",
       "title": "OA2075. Teaching safe falling: An AI-based educational approach to injury prevention",
       "authors": [
         "Ó DelCastillo-Andrés",
@@ -213,7 +247,7 @@
       "isCorrespondingAuthor": false
     },
     {
-      "id": "pub_8",
+      "id": "pub_10",
       "title": "Musical instruments in extended reality: A systematic review",
       "authors": [
         "JL Gómez-Sirvent",
@@ -223,7 +257,7 @@
       ],
       "publication": "International Journal of Human–Computer Interaction 41 (16), 10143-10162, 2025",
       "year": 2025,
-      "citedBy": 16,
+      "citedBy": 15,
       "link": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=PCALePwAAAAJ&pagesize=100&sortby=pubdate&citation_for_view=PCALePwAAAAJ:blknAaTinKkC",
       "citedByLink": "https://scholar.google.com/scholar?oi=bibs&hl=en&cites=3662465721335290411",
       "citationId": "PCALePwAAAAJ:blknAaTinKkC",
@@ -232,7 +266,7 @@
       "isCorrespondingAuthor": false
     },
     {
-      "id": "pub_9",
+      "id": "pub_11",
       "title": "Small language models for speech emotion recognition in text and audio modalities",
       "authors": [
         "JL Gómez-Sirvent",
@@ -251,7 +285,7 @@
       "isCorrespondingAuthor": false
     },
     {
-      "id": "pub_10",
+      "id": "pub_12",
       "title": "Clustering-Based Activity Monitoring Framework for Anomaly Detection in Wearable Data",
       "authors": [
         "A Martinez-Rodrigo",
@@ -269,7 +303,7 @@
       "isCorrespondingAuthor": false
     },
     {
-      "id": "pub_11",
+      "id": "pub_13",
       "title": "Augmented Virtuality to Bridge the Gap Between the Real and Virtual Worlds in Neuroarchitecture",
       "authors": [
         "JL Gómez-Sirvent",
@@ -288,7 +322,7 @@
       "isCorrespondingAuthor": false
     },
     {
-      "id": "pub_12",
+      "id": "pub_14",
       "title": "A Digital Health Solution for Arterial Stiffness Evaluation Using Artificial Intelligence",
       "authors": [
         "A Martinez-Rodrigo",
@@ -307,7 +341,7 @@
       "isCorrespondingAuthor": false
     },
     {
-      "id": "pub_13",
+      "id": "pub_15",
       "title": "Expression Recognition in Faces Partially Occluded by Head-Mounted Displays",
       "authors": [
         "JL Gómez-Sirvent",
@@ -325,7 +359,7 @@
       "isCorrespondingAuthor": false
     },
     {
-      "id": "pub_14",
+      "id": "pub_16",
       "title": "Eeg and fnirs signal-based emotion identification by means of machine learning algorithms during visual stimuli exposure",
       "authors": [
         "D Sánchez-Reolid",
@@ -345,7 +379,7 @@
       "isCorrespondingAuthor": false
     },
     {
-      "id": "pub_15",
+      "id": "pub_17",
       "title": "Improved surface defect classification from a simple convolutional neural network by image preprocessing and data augmentation",
       "authors": [
         "FL de la Rosa",
@@ -365,7 +399,7 @@
       "isCorrespondingAuthor": false
     },
     {
-      "id": "pub_16",
+      "id": "pub_18",
       "title": "Binary Classification Methods for Movement Analysis from Functional Near-Infrared Spectroscopy Signals",
       "authors": [
         "D Sánchez-Reolid",
@@ -384,7 +418,7 @@
       "isCorrespondingAuthor": false
     },
     {
-      "id": "pub_17",
+      "id": "pub_19",
       "title": "Exploring the impact of windows on musicians’ experience: a neuroarchitecture perspective",
       "authors": [
         "JL Gómez-Sirvent",
@@ -403,7 +437,7 @@
       "isCorrespondingAuthor": false
     },
     {
-      "id": "pub_18",
+      "id": "pub_20",
       "title": "Inter-hospital Moderate and Advanced Alzheimer's Disease Detection Through Convolutional Neural Networks",
       "authors": [
         "C Roncero-Parra",
@@ -423,7 +457,7 @@
       "isCorrespondingAuthor": false
     },
     {
-      "id": "pub_19",
+      "id": "pub_21",
       "title": "Differences in emotion recognition between non-immersive vs. immersive virtual reality: preliminary findings in schizophrenia and bipolar disorder",
       "authors": [
         "M Scala",
@@ -436,14 +470,14 @@
       "year": 2024,
       "citedBy": 4,
       "link": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=PCALePwAAAAJ&pagesize=100&sortby=pubdate&citation_for_view=PCALePwAAAAJ:JV2RwH3_ST0C",
-      "citedByLink": "https://scholar.google.com/scholar?oi=bibs&hl=en&cites=10444393416380951705",
+      "citedByLink": "https://scholar.google.com/scholar?oi=bibs&hl=en&cites=14691130935049618203",
       "citationId": "PCALePwAAAAJ:JV2RwH3_ST0C",
       "type": "article",
       "isFirstAuthor": false,
       "isCorrespondingAuthor": false
     },
     {
-      "id": "pub_20",
+      "id": "pub_22",
       "title": "Detection of auditory hallucinations from electroencephalographic brain–computer interface signals",
       "authors": [
         "B García-Martínez",
@@ -463,7 +497,7 @@
       "isCorrespondingAuthor": false
     },
     {
-      "id": "pub_21",
+      "id": "pub_23",
       "title": "Pre-occupancy evaluation of a virtual music school classroom: Influence of color and type of lighting on music performers",
       "authors": [
         "JLG Sirvent",
@@ -483,7 +517,7 @@
       "isCorrespondingAuthor": false
     },
     {
-      "id": "pub_22",
+      "id": "pub_24",
       "title": "A framework for managing the experimental evaluation of ambient assisted living systems",
       "authors": [
         "J Jiménez-Ruescas",
@@ -503,7 +537,7 @@
       "isCorrespondingAuthor": false
     },
     {
-      "id": "pub_23",
+      "id": "pub_25",
       "title": "Inter-hospital advanced and mild Alzheimer’s disease classification based on electroencephalogram measurements via classical machine learning algorithms",
       "authors": [
         "A Parreno Torres",
@@ -522,7 +556,7 @@
       "isCorrespondingAuthor": false
     },
     {
-      "id": "pub_24",
+      "id": "pub_26",
       "title": "Defect detection and classification on semiconductor wafers using two-stage geometric transformation-based data augmentation and SqueezeNet lightweight convolutional neural network",
       "authors": [
         "FL de la Rosa",
@@ -542,7 +576,7 @@
       "isCorrespondingAuthor": false
     },
     {
-      "id": "pub_25",
+      "id": "pub_27",
       "title": "Physiological Signal Acquisition",
       "authors": [
         "R Sánchez-Reolid",
@@ -559,7 +593,7 @@
       "isCorrespondingAuthor": false
     },
     {
-      "id": "pub_26",
+      "id": "pub_28",
       "title": "Pleasure and displeasure identification from fNIRS signals",
       "authors": [
         "D Sánchez-Reolid",
@@ -578,7 +612,7 @@
       "isCorrespondingAuthor": false
     },
     {
-      "id": "pub_27",
+      "id": "pub_29",
       "title": "Generic Architecture for Multisource Physiological Signal Acquisition, Processing and Classification Based on Microservices",
       "authors": [
         "R Sánchez-Reolid",
@@ -599,7 +633,7 @@
       "isCorrespondingAuthor": false
     },
     {
-      "id": "pub_28",
+      "id": "pub_30",
       "title": "Co-design of avatars to embody auditory hallucinations of patients with schizophrenia: A study on patients’ feeling of satisfaction and psychiatrists’ intention to adopt the …",
       "authors": [
         "AS García",
@@ -619,7 +653,7 @@
       "isCorrespondingAuthor": false
     },
     {
-      "id": "pub_29",
+      "id": "pub_31",
       "title": "Co-design of avatars to embody auditory hallucinations of patients with schizophrenia",
       "authors": [
         "P Fernández Sotos",
@@ -637,7 +671,7 @@
       "isCorrespondingAuthor": false
     },
     {
-      "id": "pub_30",
+      "id": "pub_32",
       "title": "Intelligent environments controlled by physiological, perceptual and behavioural responses to emotional experiences",
       "authors": [
         "R Sánchez Reolid"
@@ -652,7 +686,7 @@
       "isCorrespondingAuthor": false
     },
     {
-      "id": "pub_31",
+      "id": "pub_33",
       "title": "A Framework for Managing the Experimental Evaluation of Ambient Assisted Living Systems",
       "authors": [
         "P González"
@@ -667,7 +701,7 @@
       "isCorrespondingAuthor": false
     },
     {
-      "id": "pub_32",
+      "id": "pub_34",
       "title": "Inter-hospital Moderate and Advanced Alzheimer’s Disease Detection Through Convolutional Neural Networks",
       "authors": [],
       "publication": "Publicación no especificada",
@@ -680,7 +714,7 @@
       "isCorrespondingAuthor": false
     },
     {
-      "id": "pub_33",
+      "id": "pub_35",
       "title": "A deep residual neural network for semiconductor defect classification in imbalanced scanning electron microscope datasets",
       "authors": [
         "FL de la Rosa",
@@ -700,18 +734,18 @@
       "isCorrespondingAuthor": false
     },
     {
-      "id": "pub_34",
+      "id": "pub_36",
       "title": "Machine learning techniques for arousal classification from electrodermal activity: A systematic review",
       "authors": [
         "R Sánchez-Reolid",
-        "F López de la Rosa",
+        "F Lopez de la Rosa",
         "D Sánchez-Reolid",
         "MT López",
         "..."
       ],
       "publication": "Sensors 22 (22), 8886, 2022",
       "year": 2022,
-      "citedBy": 39,
+      "citedBy": 38,
       "link": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=PCALePwAAAAJ&pagesize=100&sortby=pubdate&citation_for_view=PCALePwAAAAJ:dhFuZR0502QC",
       "citedByLink": "https://scholar.google.com/scholar?oi=bibs&hl=en&cites=13609103185694218187",
       "citationId": "PCALePwAAAAJ:dhFuZR0502QC",
@@ -720,7 +754,7 @@
       "isCorrespondingAuthor": false
     },
     {
-      "id": "pub_35",
+      "id": "pub_37",
       "title": "Geometric transformation-based data augmentation on defect classification of segmented images of semiconductor materials using a ResNet50 convolutional neural network",
       "authors": [
         "FL de la Rosa",
@@ -740,7 +774,7 @@
       "isCorrespondingAuthor": false
     },
     {
-      "id": "pub_36",
+      "id": "pub_38",
       "title": "Emotion classification from EEG with a low-cost BCI versus a high-end equipment",
       "authors": [
         "R Sánchez-Reolid",
@@ -759,7 +793,7 @@
       "isCorrespondingAuthor": false
     },
     {
-      "id": "pub_37",
+      "id": "pub_39",
       "title": "Defect classification on semiconductor wafers using Fisher vector and visual vocabularies coding",
       "authors": [
         "JL Gómez-Sirvent",
@@ -779,7 +813,7 @@
       "isCorrespondingAuthor": false
     },
     {
-      "id": "pub_38",
+      "id": "pub_40",
       "title": "Electroencephalographic signal processing from brain-computer-interface following image-based emotion induction",
       "authors": [
         "E García-Pérez",
@@ -798,7 +832,7 @@
       "isCorrespondingAuthor": false
     },
     {
-      "id": "pub_39",
+      "id": "pub_41",
       "title": "Acquisition and synchronisation of multi-source physiological data using microservices and event-driven architecture",
       "authors": [
         "R Sánchez-Reolid",
@@ -817,7 +851,7 @@
       "isCorrespondingAuthor": false
     },
     {
-      "id": "pub_40",
+      "id": "pub_42",
       "title": "Physical Exercise Effects on University Students’ Attention: An EEG Analysis Approach",
       "authors": [
         "OR Contreras-Jordán",
@@ -836,7 +870,7 @@
       "isCorrespondingAuthor": false
     },
     {
-      "id": "pub_41",
+      "id": "pub_43",
       "title": "Optimal feature selection for defect classification in semiconductor wafers",
       "authors": [
         "JL Gómez-Sirvent",
@@ -855,7 +889,7 @@
       "isCorrespondingAuthor": false
     },
     {
-      "id": "pub_42",
+      "id": "pub_44",
       "title": "Physical exercise effects on university students’ attention: An EEG analysis approach",
       "authors": [
         "R Sánchez Reolid",
@@ -873,8 +907,8 @@
       "isCorrespondingAuthor": false
     },
     {
-      "id": "pub_43",
-      "title": "López de la Rosa F., Sánchez-Reolid D., López MT, and Fernández-Caballero A.,“",
+      "id": "pub_45",
+      "title": "López de la Rosa F., Sánchez-Reolid D., López MT, Fernández-Caballero A",
       "authors": [
         "R Sánchez-Reolid"
       ],
@@ -889,7 +923,7 @@
       "isCorrespondingAuthor": false
     },
     {
-      "id": "pub_44",
+      "id": "pub_46",
       "title": "One-dimensional convolutional neural networks for low/high arousal classification from electrodermal activity",
       "authors": [
         "R Sánchez-Reolid",
@@ -899,7 +933,7 @@
       ],
       "publication": "Biomedical Signal Processing and Control 71, 103203, 2022",
       "year": 2022,
-      "citedBy": 71,
+      "citedBy": 72,
       "link": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=PCALePwAAAAJ&pagesize=100&sortby=pubdate&citation_for_view=PCALePwAAAAJ:3fE2CSJIrl8C",
       "citedByLink": "https://scholar.google.com/scholar?oi=bibs&hl=en&cites=2059831707917929488,40396567857792415",
       "citationId": "PCALePwAAAAJ:3fE2CSJIrl8C",
@@ -908,10 +942,10 @@
       "isCorrespondingAuthor": false
     },
     {
-      "id": "pub_45",
+      "id": "pub_47",
       "title": "A review on machine and deep learning for semiconductor defect classification in scanning electron microscope images",
       "authors": [
-        "F Lopez de la Rosa",
+        "F López de la Rosa",
         "R Sanchez-Reolid",
         "JL Gomez-Sirvent",
         "R Morales",
@@ -919,7 +953,7 @@
       ],
       "publication": "Applied Sciences 11 (20), 9508, 2021",
       "year": 2021,
-      "citedBy": 92,
+      "citedBy": 91,
       "link": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=PCALePwAAAAJ&pagesize=100&sortby=pubdate&citation_for_view=PCALePwAAAAJ:kNdYIx-mwKoC",
       "citedByLink": "https://scholar.google.com/scholar?oi=bibs&hl=en&cites=4485305786774461650",
       "citationId": "PCALePwAAAAJ:kNdYIx-mwKoC",
@@ -928,7 +962,7 @@
       "isCorrespondingAuthor": false
     },
     {
-      "id": "pub_46",
+      "id": "pub_48",
       "title": "Feature and Time Series Extraction in Artificial Neural Networks for Arousal Detection from Electrodermal Activity",
       "authors": [
         "R Sánchez-Reolid",
@@ -948,7 +982,7 @@
       "isCorrespondingAuthor": false
     },
     {
-      "id": "pub_47",
+      "id": "pub_49",
       "title": "Machine learning for stress detection from electrodermal activity: A scoping review",
       "authors": [
         "R Sánchez-Reolid",
@@ -957,7 +991,7 @@
       ],
       "publication": "Preprints, 2020",
       "year": 2020,
-      "citedBy": 27,
+      "citedBy": 26,
       "link": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=PCALePwAAAAJ&pagesize=100&sortby=pubdate&citation_for_view=PCALePwAAAAJ:LkGwnXOMwfcC",
       "citedByLink": "https://scholar.google.com/scholar?oi=bibs&hl=en&cites=2219798727825377273",
       "citationId": "PCALePwAAAAJ:LkGwnXOMwfcC",
@@ -966,7 +1000,7 @@
       "isCorrespondingAuthor": false
     },
     {
-      "id": "pub_48",
+      "id": "pub_50",
       "title": "Arousal Detection in Elderly People from Electrodermal Activity using Musical Stimuli",
       "authors": [
         "A Bartolomé-Tomás",
@@ -976,7 +1010,7 @@
       ],
       "publication": "Sensors, 2020",
       "year": 2020,
-      "citedBy": 34,
+      "citedBy": 33,
       "link": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=PCALePwAAAAJ&pagesize=100&sortby=pubdate&citation_for_view=PCALePwAAAAJ:_FxGoFyzp5QC",
       "citedByLink": "https://scholar.google.com/scholar?oi=bibs&hl=en&cites=5277051289196934267",
       "citationId": "PCALePwAAAAJ:_FxGoFyzp5QC",
@@ -985,7 +1019,7 @@
       "isCorrespondingAuthor": false
     },
     {
-      "id": "pub_49",
+      "id": "pub_51",
       "title": "Effectiveness of the level of personal relevance of visual autobiographical stimuli in the induction of positive emotions in young and older adults: pilot study protocol for a …",
       "authors": [
         "D Fernández",
@@ -996,7 +1030,7 @@
       ],
       "publication": "Trials 21 (1), 663, 2020",
       "year": 2020,
-      "citedBy": 10,
+      "citedBy": 9,
       "link": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=PCALePwAAAAJ&pagesize=100&sortby=pubdate&citation_for_view=PCALePwAAAAJ:eQOLeE2rZwMC",
       "citedByLink": "https://scholar.google.com/scholar?oi=bibs&hl=en&cites=10995399757381066961",
       "citationId": "PCALePwAAAAJ:eQOLeE2rZwMC",
@@ -1005,7 +1039,7 @@
       "isCorrespondingAuthor": false
     },
     {
-      "id": "pub_50",
+      "id": "pub_52",
       "title": "Effectiveness of the level of personal relevance of visual autobiographical stimuli in the induction of positive emotions in young and older adults: Study protocol for a …",
       "authors": [
         "D Fernández Pérez",
@@ -1024,7 +1058,7 @@
       "isCorrespondingAuthor": false
     },
     {
-      "id": "pub_51",
+      "id": "pub_53",
       "title": "Deep support vector machines for the identification of stress condition from electrodermal activity",
       "authors": [
         "R Sánchez-Reolid",
@@ -1034,7 +1068,7 @@
       ],
       "publication": "International Journal of Neural Systems 30, 1-13, 2020",
       "year": 2020,
-      "citedBy": 54,
+      "citedBy": 55,
       "link": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=PCALePwAAAAJ&pagesize=100&sortby=pubdate&citation_for_view=PCALePwAAAAJ:Y0pCki6q_DkC",
       "citedByLink": "https://scholar.google.com/scholar?oi=bibs&hl=en&cites=13333015477496612136",
       "citationId": "PCALePwAAAAJ:Y0pCki6q_DkC",
@@ -1043,7 +1077,7 @@
       "isCorrespondingAuthor": false
     },
     {
-      "id": "pub_52",
+      "id": "pub_54",
       "title": "Distributed Architecture for Acquisition and Processing of Physiological Signals",
       "authors": [
         "R Sánchez-Reolid",
@@ -1062,8 +1096,8 @@
       "isCorrespondingAuthor": false
     },
     {
-      "id": "pub_53",
-      "title": "Memory retrieval in ageing adults through traditional music genres—an experiment based on electroencephalography signals",
+      "id": "pub_55",
+      "title": "Memory Retrieval in Ageing Adults through Traditional Music Genres—An Experiment Based on Electroencephalography Signals",
       "authors": [
         "A Bartolomé-Tomás",
         "R Sánchez-Reolid",
@@ -1081,7 +1115,7 @@
       "isCorrespondingAuthor": false
     },
     {
-      "id": "pub_54",
+      "id": "pub_56",
       "title": "Stress identification from electrodermal activity by support vector machines",
       "authors": [
         "R Sánchez-Reolid",
@@ -1090,7 +1124,7 @@
       ],
       "publication": "International Work-Conference on the Interplay Between Natural and …, 2019",
       "year": 2019,
-      "citedBy": 13,
+      "citedBy": 12,
       "link": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=PCALePwAAAAJ&pagesize=100&sortby=pubdate&citation_for_view=PCALePwAAAAJ:u-x6o8ySG0sC",
       "citedByLink": "https://scholar.google.com/scholar?oi=bibs&hl=en&cites=352660594049292708",
       "citationId": "PCALePwAAAAJ:u-x6o8ySG0sC",
@@ -1099,7 +1133,7 @@
       "isCorrespondingAuthor": false
     },
     {
-      "id": "pub_55",
+      "id": "pub_57",
       "title": "Understanding the Brain Function and Emotions: 8th International Work-Conference on the Interplay Between Natural and Artificial Computation, IWINAC 2019, Almería, Spain, June …",
       "authors": [
         "JMF Vicente",
@@ -1119,7 +1153,7 @@
       "isCorrespondingAuthor": false
     },
     {
-      "id": "pub_56",
+      "id": "pub_58",
       "title": "From Bioinspired Systems and Biomedical Applications to Machine Learning: 8th International Work-Conference on the Interplay Between Natural and Artificial Computation, IWINAC …",
       "authors": [
         "JMF Vicente",
@@ -1139,7 +1173,7 @@
       "isCorrespondingAuthor": false
     },
     {
-      "id": "pub_57",
+      "id": "pub_59",
       "title": "Artificial Neural Networks to Assess Emotional States from Brain-Computer Interface",
       "authors": [
         "R Sánchez-Reolid",
@@ -1150,46 +1184,12 @@
       ],
       "publication": "Electronics 7 (12), 384, 2018",
       "year": 2018,
-      "citedBy": 65,
+      "citedBy": 63,
       "link": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=PCALePwAAAAJ&pagesize=100&sortby=pubdate&citation_for_view=PCALePwAAAAJ:u5HHmVD_uO8C",
       "citedByLink": "https://scholar.google.com/scholar?oi=bibs&hl=en&cites=16788273922182433471",
       "citationId": "PCALePwAAAAJ:u5HHmVD_uO8C",
       "type": "article",
       "isFirstAuthor": true,
-      "isCorrespondingAuthor": false
-    },
-    {
-      "id": "pub_58",
-      "title": "Augmented Virtuality to Bridge the Gap",
-      "authors": [
-        "JL Gómez-Sirvent",
-        "FL de la Rosa",
-        "R Sánchez-Reolid",
-        "JP Molina¹"
-      ],
-      "publication": "Ambient Intelligence–Software and Applications–16th International Symposium …, 0",
-      "year": null,
-      "citedBy": 0,
-      "link": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=PCALePwAAAAJ&pagesize=100&sortby=pubdate&citation_for_view=PCALePwAAAAJ:pqnbT2bcN3wC",
-      "citationId": "PCALePwAAAAJ:pqnbT2bcN3wC",
-      "type": "article",
-      "isFirstAuthor": false,
-      "isCorrespondingAuthor": false
-    },
-    {
-      "id": "pub_59",
-      "title": "Clustering-Based Activity Monitoring Framework for Anomaly Detection",
-      "authors": [
-        "A Martinez-Rodrigo",
-        "R Sanchez-Reolid"
-      ],
-      "publication": "Ambient Intelligence–Software and Applications–16th International Symposium …, 0",
-      "year": null,
-      "citedBy": 0,
-      "link": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=PCALePwAAAAJ&pagesize=100&sortby=pubdate&citation_for_view=PCALePwAAAAJ:g5m5HwL7SMYC",
-      "citationId": "PCALePwAAAAJ:g5m5HwL7SMYC",
-      "type": "article",
-      "isFirstAuthor": false,
       "isCorrespondingAuthor": false
     },
     {
@@ -1247,17 +1247,17 @@
       "2023": 12,
       "2024": 7,
       "2025": 8,
-      "2026": 5
+      "2026": 7
     },
     "citationsByYear": {
-      "2018": 65,
-      "2019": 35,
-      "2020": 125,
-      "2021": 93,
+      "2018": 63,
+      "2019": 34,
+      "2020": 123,
+      "2021": 92,
       "2022": 346,
       "2023": 97,
       "2024": 44,
-      "2025": 21,
+      "2025": 20,
       "2026": 2
     },
     "careerSpan": 9,
@@ -1267,13 +1267,13 @@
   },
   "summary": {
     "totalPublications": 60,
-    "totalCitations": 832,
-    "hIndex": 16,
-    "i10Index": 21,
+    "totalCitations": 825,
+    "hIndex": 15,
+    "i10Index": 20,
     "avgCitationsPerPaper": 14,
     "publicationsWithCitations": 39,
     "mostCitedPaper": {
-      "id": "pub_35",
+      "id": "pub_37",
       "title": "Geometric transformation-based data augmentation on defect classification of segmented images of semiconductor materials using a ResNet50 convolutional neural network",
       "authors": [
         "FL de la Rosa",
