@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-08-03T09:31:38.646Z",
+  "lastUpdated": "2026-08-04T08:26:25.677Z",
   "scrapingMethod": "ultra-optimized-v3-robust-pagination",
   "paginationInfo": {
     "totalPages": 0,
@@ -39,10 +39,10 @@
     "scholarId": "PCALePwAAAAJ"
   },
   "metrics": {
-    "totalCitations": 825,
+    "totalCitations": 829,
     "hIndex": 15,
     "i10Index": 20,
-    "citationsRecent": 790,
+    "citationsRecent": 794,
     "hIndexRecent": 15,
     "i10IndexRecent": 18,
     "citationsPerYear": [
@@ -72,11 +72,11 @@
       },
       {
         "year": 2025,
-        "citations": 242
+        "citations": 241
       },
       {
         "year": 2026,
-        "citations": 126
+        "citations": 131
       }
     ]
   },
@@ -370,7 +370,7 @@
       ],
       "publication": "Electronics 13 (23), 4797, 2024",
       "year": 2024,
-      "citedBy": 4,
+      "citedBy": 5,
       "link": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=PCALePwAAAAJ&pagesize=100&sortby=pubdate&citation_for_view=PCALePwAAAAJ:hMod-77fHWUC",
       "citedByLink": "https://scholar.google.com/scholar?oi=bibs&hl=en&cites=12036340440394209408",
       "citationId": "PCALePwAAAAJ:hMod-77fHWUC",
@@ -644,7 +644,7 @@
       ],
       "publication": "Virtual Reality 27 (1), 217-232, 2023",
       "year": 2023,
-      "citedBy": 11,
+      "citedBy": 13,
       "link": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=PCALePwAAAAJ&pagesize=100&sortby=pubdate&citation_for_view=PCALePwAAAAJ:hqOjcs7Dif8C",
       "citedByLink": "https://scholar.google.com/scholar?oi=bibs&hl=en&cites=11181385404077964469",
       "citationId": "PCALePwAAAAJ:hqOjcs7Dif8C",
@@ -784,7 +784,7 @@
       ],
       "publication": "International journal of neural systems 32 (10), 2250041, 2022",
       "year": 2022,
-      "citedBy": 20,
+      "citedBy": 21,
       "link": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=PCALePwAAAAJ&pagesize=100&sortby=pubdate&citation_for_view=PCALePwAAAAJ:M3ejUd6NZC8C",
       "citedByLink": "https://scholar.google.com/scholar?oi=bibs&hl=en&cites=3685228035292091442",
       "citationId": "PCALePwAAAAJ:M3ejUd6NZC8C",
@@ -1254,9 +1254,9 @@
       "2019": 34,
       "2020": 123,
       "2021": 92,
-      "2022": 346,
-      "2023": 97,
-      "2024": 44,
+      "2022": 347,
+      "2023": 99,
+      "2024": 45,
       "2025": 20,
       "2026": 2
     },
@@ -1267,7 +1267,7 @@
   },
   "summary": {
     "totalPublications": 60,
-    "totalCitations": 825,
+    "totalCitations": 829,
     "hIndex": 15,
     "i10Index": 20,
     "avgCitationsPerPaper": 14,
