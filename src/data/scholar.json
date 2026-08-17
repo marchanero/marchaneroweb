@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-08-16T06:28:04.046Z",
+  "lastUpdated": "2026-08-17T06:39:49.201Z",
   "scrapingMethod": "ultra-optimized-v3-robust-pagination",
   "paginationInfo": {
     "totalPages": 0,
@@ -39,10 +39,10 @@
     "scholarId": "PCALePwAAAAJ"
   },
   "metrics": {
-    "totalCitations": 835,
+    "totalCitations": 838,
     "hIndex": 15,
     "i10Index": 20,
-    "citationsRecent": 800,
+    "citationsRecent": 803,
     "hIndexRecent": 15,
     "i10IndexRecent": 18,
     "citationsPerYear": [
@@ -72,11 +72,11 @@
       },
       {
         "year": 2025,
-        "citations": 243
+        "citations": 244
       },
       {
         "year": 2026,
-        "citations": 134
+        "citations": 136
       }
     ]
   },
@@ -370,7 +370,7 @@
       ],
       "publication": "Electronics 13 (23), 4797, 2024",
       "year": 2024,
-      "citedBy": 5,
+      "citedBy": 6,
       "link": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=PCALePwAAAAJ&pagesize=100&sortby=pubdate&citation_for_view=PCALePwAAAAJ:hMod-77fHWUC",
       "citedByLink": "https://scholar.google.com/scholar?oi=bibs&hl=en&cites=12036340440394209408",
       "citationId": "PCALePwAAAAJ:hMod-77fHWUC",
@@ -765,7 +765,7 @@
       ],
       "publication": "Expert Systems with Applications 206, 117731, 2022",
       "year": 2022,
-      "citedBy": 104,
+      "citedBy": 105,
       "link": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=PCALePwAAAAJ&pagesize=100&sortby=pubdate&citation_for_view=PCALePwAAAAJ:_kc_bZDykSQC",
       "citedByLink": "https://scholar.google.com/scholar?oi=bibs&hl=en&cites=15620631313306549090",
       "citationId": "PCALePwAAAAJ:_kc_bZDykSQC",
@@ -1184,7 +1184,7 @@
       ],
       "publication": "Electronics 7 (12), 384, 2018",
       "year": 2018,
-      "citedBy": 64,
+      "citedBy": 65,
       "link": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=PCALePwAAAAJ&pagesize=100&sortby=pubdate&citation_for_view=PCALePwAAAAJ:u5HHmVD_uO8C",
       "citedByLink": "https://scholar.google.com/scholar?oi=bibs&hl=en&cites=16788273922182433471",
       "citationId": "PCALePwAAAAJ:u5HHmVD_uO8C",
