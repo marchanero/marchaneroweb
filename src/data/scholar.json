@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-08-17T06:39:49.201Z",
+  "lastUpdated": "2026-08-18T06:31:21.931Z",
   "scrapingMethod": "ultra-optimized-v3-robust-pagination",
   "paginationInfo": {
     "totalPages": 0,
@@ -39,10 +39,10 @@
     "scholarId": "PCALePwAAAAJ"
   },
   "metrics": {
-    "totalCitations": 838,
+    "totalCitations": 839,
     "hIndex": 15,
     "i10Index": 20,
-    "citationsRecent": 803,
+    "citationsRecent": 804,
     "hIndexRecent": 15,
     "i10IndexRecent": 18,
     "citationsPerYear": [
@@ -72,7 +72,7 @@
       },
       {
         "year": 2025,
-        "citations": 244
+        "citations": 245
       },
       {
         "year": 2026,
@@ -745,7 +745,7 @@
       ],
       "publication": "Sensors 22 (22), 8886, 2022",
       "year": 2022,
-      "citedBy": 39,
+      "citedBy": 40,
       "link": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=PCALePwAAAAJ&pagesize=100&sortby=pubdate&citation_for_view=PCALePwAAAAJ:dhFuZR0502QC",
       "citedByLink": "https://scholar.google.com/scholar?oi=bibs&hl=en&cites=13609103185694218187",
       "citationId": "PCALePwAAAAJ:dhFuZR0502QC",
