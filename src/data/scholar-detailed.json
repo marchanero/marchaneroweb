@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-08-22T06:28:06.462Z",
+  "lastUpdated": "2026-08-23T06:29:23.209Z",
   "scrapingMethod": "ultra-optimized-v3-robust-pagination",
   "paginationInfo": {
     "totalPages": 0,
@@ -39,10 +39,10 @@
     "scholarId": "PCALePwAAAAJ"
   },
   "metrics": {
-    "totalCitations": 840,
+    "totalCitations": 841,
     "hIndex": 15,
     "i10Index": 20,
-    "citationsRecent": 805,
+    "citationsRecent": 806,
     "hIndexRecent": 15,
     "i10IndexRecent": 18,
     "citationsPerYear": [
@@ -72,11 +72,11 @@
       },
       {
         "year": 2025,
-        "citations": 245
+        "citations": 243
       },
       {
         "year": 2026,
-        "citations": 137
+        "citations": 140
       }
     ]
   },
@@ -370,7 +370,7 @@
       ],
       "publication": "Electronics 13 (23), 4797, 2024",
       "year": 2024,
-      "citedBy": 6,
+      "citedBy": 7,
       "link": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=PCALePwAAAAJ&pagesize=100&sortby=pubdate&citation_for_view=PCALePwAAAAJ:hMod-77fHWUC",
       "citedByLink": "https://scholar.google.com/scholar?oi=bibs&hl=en&cites=12036340440394209408",
       "citationId": "PCALePwAAAAJ:hMod-77fHWUC",
@@ -1256,7 +1256,7 @@
       "2021": 94,
       "2022": 353,
       "2023": 99,
-      "2024": 46,
+      "2024": 47,
       "2025": 20,
       "2026": 2
     },
@@ -1267,7 +1267,7 @@
   },
   "summary": {
     "totalPublications": 60,
-    "totalCitations": 840,
+    "totalCitations": 841,
     "hIndex": 15,
     "i10Index": 20,
     "avgCitationsPerPaper": 14,
