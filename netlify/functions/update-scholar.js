@@ -10,11 +10,21 @@ exports.handler = async (event, context) => {
   }
 
   try {
-    // Verificar autenticación básica (opcional)
+    // Verificar autenticación: sin WEBHOOK_SECRET configurada, el endpoint
+    // se deniega por completo (fail-closed) en vez de quedar abierto a
+    // cualquiera que descubra la URL de la función.
     const authHeader = event.headers.authorization;
     const expectedAuth = process.env.WEBHOOK_SECRET;
-    
-    if (expectedAuth && authHeader !== `Bearer ${expectedAuth}`) {
+
+    if (!expectedAuth) {
+      console.error('WEBHOOK_SECRET no está configurada: rechazando la petición.');
+      return {
+        statusCode: 500,
+        body: JSON.stringify({ error: 'Server misconfigured' })
+      };
+    }
+
+    if (authHeader !== `Bearer ${expectedAuth}`) {
       return {
         statusCode: 401,
         body: JSON.stringify({ error: 'Unauthorized' })
@@ -58,8 +68,7 @@ exports.handler = async (event, context) => {
     return {
       statusCode: 200,
       headers: {
-        'Content-Type': 'application/json',
-        'Access-Control-Allow-Origin': '*'
+        'Content-Type': 'application/json'
       },
       body: JSON.stringify({
         success: true,
