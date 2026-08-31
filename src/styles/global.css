@@ -167,6 +167,21 @@
 }
 
 @layer components {
+  /* Punto de estado "en vivo / disponible": 3 pulsos y para. Un animate-ping
+     infinito por encima del pliegue impide que el Speed Index se estabilice
+     (se medía ~10 s) y gasta CPU en un elemento decorativo. El bloque global
+     de prefers-reduced-motion ya lo neutraliza. */
+  .status-ping {
+    animation: status-ping 1s cubic-bezier(0, 0, 0.2, 1) 3;
+  }
+  @keyframes status-ping {
+    75%,
+    100% {
+      transform: scale(2);
+      opacity: 0;
+    }
+  }
+
   /* Botones */
   .btn {
     @apply inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-lg font-semibold text-sm transition-all duration-200;

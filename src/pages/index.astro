@@ -66,15 +66,15 @@ const featuredProjects = (await getCollection('proyectos'))
 							src={profileImage}
 							alt="Dr. Roberto Sánchez Reolid"
 							class="w-full h-auto aspect-[4/5] object-cover object-top"
-							widths={[400, 800]}
-							sizes="(max-width: 768px) 100vw, 320px"
+							widths={[256, 384, 512, 640, 768]}
+							sizes="(min-width: 640px) 320px, 256px"
 							loading="eager"
 							fetchpriority="high"
 						/>
 					</div>
 					<div class="mt-3 inline-flex items-center gap-2 font-mono text-xs uppercase tracking-wide text-graphite-500 dark:text-graphite-400">
 						<span class="relative flex h-2 w-2">
-							<span class="absolute inline-flex h-full w-full rounded-full bg-pulse-500 opacity-60 animate-ping"></span>
+							<span class="absolute inline-flex h-full w-full rounded-full bg-pulse-500 opacity-60 status-ping"></span>
 							<span class="relative inline-flex rounded-full h-2 w-2 bg-pulse-500"></span>
 						</span>
 						Disponible para colaboraciones
