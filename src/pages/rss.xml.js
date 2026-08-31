@@ -10,7 +10,8 @@ function escapeXml(value) {
 		.replace(/>/g, '&gt;');
 }
 
-export async function GET() {
+export async function GET(context) {
+	const site = context?.site ?? 'https://robertosanchezreolid.netlify.app';
 	const publications = (scholarData.publications ?? [])
 		.filter((p) => p.year && p.title)
 		.sort((a, b) => (b.year ?? 0) - (a.year ?? 0))
@@ -21,7 +22,7 @@ export async function GET() {
 		title: 'Publicaciones - Dr. Roberto Sánchez Reolid',
 		description:
 			'Investigación en Inteligencia Artificial, Machine Learning y procesamiento de señales fisiológicas. Universidad de Castilla-La Mancha.',
-		site: 'https://marchanero.netlify.app',
+		site,
 		items: publications.map((pub) => {
 			const authorsArray = Array.isArray(pub.authors) ? pub.authors : (pub.authors || '').split(',').map((s) => s.trim());
 			const authorList = authorsArray.join(', ');
@@ -29,7 +30,7 @@ export async function GET() {
 			return {
 				title: pub.title,
 				description: `${authorList} — ${pub.publication || 'Sin revista especificada'} (${pub.year}). Citas: ${pub.citedBy ?? 0}.`,
-				link: pub.link || 'https://marchanero.netlify.app/publicaciones',
+				link: pub.link || new URL('/publicaciones', site).href,
 				pubDate: new Date(`${pub.year}-01-01`).toUTCString(),
 				customData: `<dc:creator>${escapeXml(authorList)}</dc:creator>`,
 			};

@@ -6,29 +6,16 @@
 [build.environment]
   NODE_VERSION = "20"
 
-# Para habilitar el procesamiento de formularios
-[build.processing.html]
-  pretty_urls = true
-
-# Optimizaciones de caché y rendimiento
+# Astro ya empaqueta, minifica y versiona (hash) CSS/JS, y procesa las imágenes
+# vía <Image>. El post-procesado legacy de Netlify es redundante y además
+# reescribe el Cache-Control de los assets a "max-age=0, must-revalidate",
+# ignorando la cabecera immutable de más abajo. Se desactiva por completo.
 [build.processing]
-  skip_processing = false
+  skip_processing = true
 
-[build.processing.css]
-  bundle = true
-  minify = true
-
-[build.processing.js]
-  bundle = true
-  minify = true
-
-[build.processing.images]
-  compress = true
-
-[[redirects]]
-  from = "/*"
-  to = "/index.html"
-  status = 200
+# Nota: no hay redirect catch-all a /index.html. Es un sitio multipágina de
+# Astro (build.format 'directory'); Netlify sirve cada /ruta/ y devuelve el
+# 404.html generado para lo que no exista.
 
 [[headers]]
   for = "/*"
