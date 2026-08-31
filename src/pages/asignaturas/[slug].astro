@@ -2,6 +2,7 @@
 import Layout from '../../layouts/Layout.astro';
 import SignalTrace from '../../components/SignalTrace.astro';
 import { getCollection, render } from 'astro:content';
+import '../../styles/prose.css';
 
 export async function getStaticPaths() {
 	const asignaturas = await getCollection('asignaturas');
@@ -120,7 +121,7 @@ const cursoJsonLd = {
 			</div>
 
 			{asignatura.body && asignatura.body.trim().length > 0 && (
-				<div class="prose dark:prose-invert max-w-none mb-8">
+				<div class="rich-text mb-8">
 					<Content />
 				</div>
 			)}

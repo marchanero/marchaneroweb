@@ -6,14 +6,12 @@ import JsonLd from '../components/JsonLd.astro';
 import BackToTop from '../components/BackToTop.astro';
 // Fuentes autoalojadas (@fontsource): evita el @import a fonts.googleapis.com,
 // que forzaba 2 orígenes externos adicionales bloqueando el renderizado del texto.
-// Solo subconjuntos latin / latin-ext: el sitio es en español y los nombres de
-// coautores europeos caben en latin-ext. Importar el CSS por peso completo
-// arrastraba subconjuntos cyrillic/greek/vietnamese que nunca se usan (43 reglas
-// @font-face en el bundle crítico y ~70 assets de fuente en dist/_astro).
-import '@fontsource/space-grotesk/latin-500.css';
-import '@fontsource/space-grotesk/latin-ext-500.css';
-import '@fontsource/space-grotesk/latin-600.css';
-import '@fontsource/space-grotesk/latin-ext-600.css';
+// Solo los subconjuntos y pesos que se usan de verdad:
+//  - Space Grotesk: solo 700 (todos los títulos y el wordmark van en bold).
+//  - IBM Plex Sans: 400/500/600 latin + latin-ext (texto y nombres de coautores).
+//  - IBM Plex Mono: 400/500, solo latin (cifras, fechas y etiquetas ASCII).
+// Importar el CSS por peso completo arrastraba cyrillic/greek/vietnamese, que no
+// se usan nunca.
 import '@fontsource/space-grotesk/latin-700.css';
 import '@fontsource/space-grotesk/latin-ext-700.css';
 import spaceGrotesk700Woff2 from '@fontsource/space-grotesk/files/space-grotesk-latin-700-normal.woff2?url';
@@ -25,11 +23,7 @@ import '@fontsource/ibm-plex-sans/latin-ext-500.css';
 import '@fontsource/ibm-plex-sans/latin-600.css';
 import '@fontsource/ibm-plex-sans/latin-ext-600.css';
 import '@fontsource/ibm-plex-mono/latin-400.css';
-import '@fontsource/ibm-plex-mono/latin-ext-400.css';
 import '@fontsource/ibm-plex-mono/latin-500.css';
-import '@fontsource/ibm-plex-mono/latin-ext-500.css';
-import '@fontsource/ibm-plex-mono/latin-600.css';
-import '@fontsource/ibm-plex-mono/latin-ext-600.css';
 import '../styles/global.css';
 
 // Props
@@ -95,7 +89,7 @@ const navItems = [
 ---
 
 <!doctype html>
-<html lang="es">
+<html lang="es" class="no-js">
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="description" content={description} />
@@ -127,12 +121,12 @@ const navItems = [
 
 		<JsonLd />
 
-		<!-- Anti-FOUC de tema: inline para no meter una petición render-blocking en
-		     cada carga. Al ir en línea con CSP "script-src 'self'" (sin unsafe-inline),
-		     su hash sha256 está en la cabecera Content-Security-Policy de netlify.toml.
-		     Si cambias este script, actualiza también ese hash. -->
-		<script is:inline>try{var t=localStorage.getItem("theme")}catch(e){}document.documentElement.classList.toggle("dark",t==="dark"||(!t&&matchMedia("(prefers-color-scheme: dark)").matches))</script>
-		<noscript><style>.reveal { opacity: 1 !important; }</style></noscript>
+		<!-- Anti-FOUC de tema + marca "hay JS" (quita .no-js, que en global.css deja
+		     visible el contenido .reveal cuando no hay JS). Inline para no meter una
+		     petición render-blocking en cada carga. Con CSP "script-src 'self'" (sin
+		     unsafe-inline), su hash sha256 está en la cabecera Content-Security-Policy
+		     de netlify.toml. Si cambias este script, actualiza también ese hash. -->
+		<script is:inline>document.documentElement.classList.remove("no-js");try{var t=localStorage.getItem("theme")}catch(e){}document.documentElement.classList.toggle("dark",t==="dark"||(!t&&matchMedia("(prefers-color-scheme: dark)").matches))</script>
 	</head>
 	<body class="bg-paper dark:bg-ink text-graphite-700 dark:text-graphite-100 min-h-screen flex flex-col">
 		<a href="#main-content" class="skip-link">Saltar al contenido principal</a>
@@ -214,7 +208,7 @@ const navItems = [
 			<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
 				<div class="flex flex-col md:flex-row justify-between items-center gap-4">
 					<div class="text-center md:text-left">
-						<p class="font-display font-medium text-graphite-800 dark:text-white">
+						<p class="font-display font-bold text-graphite-800 dark:text-white">
 							Dr. Roberto Sánchez Reolid
 						</p>
 						<p class="text-sm text-graphite-500 dark:text-graphite-400 mt-0.5">

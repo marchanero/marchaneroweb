@@ -26,7 +26,7 @@
     Referrer-Policy = "strict-origin-when-cross-origin"
     # El hash sha256 autoriza el único <script> inline: el anti-FOUC de tema en
     # Layout.astro. Si cambias ese script, recalcula el hash.
-    Content-Security-Policy = "default-src 'self'; img-src 'self' data: https:; style-src 'self'; script-src 'self' 'sha256-bsed567imVaqE/ieW0FhkWoWFup2YfOFta4KNCz4daU='; frame-src 'none'"
+    Content-Security-Policy = "default-src 'self'; img-src 'self' data: https:; style-src 'self'; script-src 'self' 'sha256-kvlC848+HS8zPtVgryV3eH1ZI6EF/U3/evNIT/1VKPg='; frame-src 'none'"
 
 # Assets con hash en el nombre (JS/CSS/fuentes/imágenes de _astro): son
 # inmutables, cualquier cambio de contenido genera un fichero nuevo.

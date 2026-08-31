@@ -1,0 +1,13 @@
+/*
+  Estilos de contenido enriquecido (markdown de asignaturas/[slug] y
+  proyectos/[slug]). El plugin @tailwindcss/typography solo se usa en esas dos
+  rutas: al aplicarlo con @apply desde este .css (que Tailwind NO escanea en
+  busca de clases) en vez de con `class="prose"` en el HTML, sus ~25 KB de
+  reglas dejan de emitirse en el bundle CSS compartido que carga toda la web y
+  quedan solo en el chunk de estas rutas.
+
+  Importar solo desde las dos páginas [slug].
+*/
+.rich-text {
+  @apply prose dark:prose-invert max-w-none;
+}
