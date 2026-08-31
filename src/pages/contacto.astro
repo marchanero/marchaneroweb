@@ -1,5 +1,6 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import 'leaflet/dist/leaflet.css';
 ---
 
 <Layout
@@ -113,30 +114,29 @@ import Layout from '../layouts/Layout.astro';
 					</a>
 				</div>
 
-				<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
-				<script is:inline src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
-				<script is:inline>
-					(function () {
-						function initMap() {
-							var el = document.getElementById('location-map');
-							if (!el || typeof L === 'undefined') return;
-							el.removeAttribute('role');
-							el.removeAttribute('aria-label');
-							var map = L.map(el, { scrollWheelZoom: false }).setView([39.9531, -4.8418], 16);
-							L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-								attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>',
-								maxZoom: 19,
-							}).addTo(map);
-							L.marker([39.9531, -4.8418])
-								.addTo(map)
-								.bindPopup('Facultad de Ciencias Sociales y Tecnologías de la Información');
-						}
-						if (document.readyState === 'loading') {
-							document.addEventListener('DOMContentLoaded', initMap);
-						} else {
-							initMap();
-						}
-					})();
+				<script>
+					import L from 'leaflet';
+
+					function initMap() {
+						const el = document.getElementById('location-map');
+						if (!el) return;
+						el.removeAttribute('role');
+						el.removeAttribute('aria-label');
+						const map = L.map(el, { scrollWheelZoom: false }).setView([39.9531, -4.8418], 16);
+						L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+							attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>',
+							maxZoom: 19,
+						}).addTo(map);
+						L.marker([39.9531, -4.8418])
+							.addTo(map)
+							.bindPopup('Facultad de Ciencias Sociales y Tecnologías de la Información');
+					}
+
+					if (document.readyState === 'loading') {
+						document.addEventListener('DOMContentLoaded', initMap);
+					} else {
+						initMap();
+					}
 				</script>
 
 				<div class="spec-card p-8">

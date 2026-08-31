@@ -58,7 +58,7 @@ https://github.com/rsanchezreolid/marchaneroweb/settings/secrets/actions
 1. **SERPAPI_API_KEY** ✅ - Ya configurada
 2. **GITHUB_TOKEN** ❌ - Pendiente (necesario para workflows)
 3. **NETLIFY_HOOK_URL** ❌ - Pendiente (necesario para deploys)
-4. **WEBHOOK_SECRET** ⚪ - Opcional (seguridad adicional)
+4. **WEBHOOK_SECRET** ✅ - Obligatoria: sin ella, la función `update-scholar` rechaza toda petición
 
 ### Netlify Environment Variables (Requeridos)
 ```bash
@@ -67,7 +67,7 @@ Dashboard → Site settings → Environment variables
 
 1. **SERPAPI_API_KEY** ❌ - Mismo valor que GitHub Secrets
 2. **GITHUB_TOKEN** ❌ - Mismo valor que GitHub Secrets  
-3. **WEBHOOK_SECRET** ❌ - Mismo valor que GitHub Secrets (opcional)
+3. **WEBHOOK_SECRET** ❌ - Mismo valor que GitHub Secrets (obligatoria)
 
 ## 🎯 Próximos Pasos para Activación
 
