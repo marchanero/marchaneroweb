@@ -127,8 +127,11 @@ const navItems = [
 
 		<JsonLd />
 
-		<!-- Script para asegurar que no haya flash de modo incorrecto -->
-		<script is:inline src="/scripts/theme-init.js"></script>
+		<!-- Anti-FOUC de tema: inline para no meter una petición render-blocking en
+		     cada carga. Al ir en línea con CSP "script-src 'self'" (sin unsafe-inline),
+		     su hash sha256 está en la cabecera Content-Security-Policy de netlify.toml.
+		     Si cambias este script, actualiza también ese hash. -->
+		<script is:inline>try{var t=localStorage.getItem("theme")}catch(e){}document.documentElement.classList.toggle("dark",t==="dark"||(!t&&matchMedia("(prefers-color-scheme: dark)").matches))</script>
 		<noscript><style>.reveal { opacity: 1 !important; }</style></noscript>
 	</head>
 	<body class="bg-paper dark:bg-ink text-graphite-700 dark:text-graphite-100 min-h-screen flex flex-col">
