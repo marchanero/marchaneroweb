@@ -1,11 +1,11 @@
 {
-  "lastUpdated": "2026-08-30T11:01:46.415Z",
+  "lastUpdated": "2026-08-31T12:23:42.869Z",
   "scrapingMethod": "ultra-optimized-v3-robust-pagination",
   "paginationInfo": {
     "totalPages": 0,
     "totalRequests": 1,
     "maxRequestsUsed": 5,
-    "totalPublications": 60,
+    "totalPublications": 61,
     "publicationsPerPage": 100,
     "completeness": "complete",
     "notes": "Todos los datos disponibles han sido obtenidos."
@@ -39,10 +39,10 @@
     "scholarId": "PCALePwAAAAJ"
   },
   "metrics": {
-    "totalCitations": 848,
+    "totalCitations": 849,
     "hIndex": 15,
     "i10Index": 20,
-    "citationsRecent": 813,
+    "citationsRecent": 814,
     "hIndexRecent": 15,
     "i10IndexRecent": 18,
     "citationsPerYear": [
@@ -76,7 +76,7 @@
       },
       {
         "year": 2026,
-        "citations": 144
+        "citations": 145
       }
     ]
   },
@@ -276,7 +276,7 @@
       ],
       "publication": "Applied Sciences 15 (14), 7730, 2025",
       "year": 2025,
-      "citedBy": 5,
+      "citedBy": 6,
       "link": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=PCALePwAAAAJ&pagesize=100&sortby=pubdate&citation_for_view=PCALePwAAAAJ:RYcK_YlVTxYC",
       "citedByLink": "https://scholar.google.com/scholar?oi=bibs&hl=en&cites=14501834267374468220",
       "citationId": "PCALePwAAAAJ:RYcK_YlVTxYC",
@@ -1194,6 +1194,19 @@
     },
     {
       "id": "pub_60",
+      "title": "EEG Activity During a Vigilance Task Reveals Distinct Frequency Band Patterns in Gifted Children",
+      "authors": [],
+      "publication": "Publicación no especificada",
+      "year": null,
+      "citedBy": 0,
+      "link": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=PCALePwAAAAJ&pagesize=100&sortby=pubdate&citation_for_view=PCALePwAAAAJ:yD5IFk8b50cC",
+      "citationId": "PCALePwAAAAJ:yD5IFk8b50cC",
+      "type": "article",
+      "isFirstAuthor": false,
+      "isCorrespondingAuthor": false
+    },
+    {
+      "id": "pub_61",
       "title": "Machine learning for stress detection from electrodermal activity: A scoping review, 2020",
       "authors": [
         "R Sánchez-Reolid",
