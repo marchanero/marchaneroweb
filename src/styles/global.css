@@ -236,7 +236,7 @@
     @apply flex-1 px-4 py-4 text-center transition-colors hover:bg-pulse-50 dark:hover:bg-pulse-500/5;
   }
   .readout-value {
-    @apply font-mono text-2xl sm:text-3xl font-semibold text-pulse-600 dark:text-pulse-400;
+    @apply font-mono text-2xl sm:text-3xl font-medium text-pulse-600 dark:text-pulse-400;
   }
   .readout-label {
     @apply font-mono text-[0.65rem] uppercase tracking-wide text-graphite-500 dark:text-graphite-400 mt-1;
@@ -271,6 +271,20 @@
   }
   .reveal.is-visible {
     @apply animate-slide-up;
+  }
+
+  /* Sin JS no hay IntersectionObserver que añada .is-visible: se muestra todo
+     el contenido revelable y se dibujan las trazas de señal. El <script> inline
+     del <head> quita .no-js en cuanto hay JS. */
+  .no-js .reveal {
+    opacity: 1;
+  }
+  .no-js .signal-trace-path {
+    stroke-dashoffset: 0;
+  }
+  .no-js .signal-peak {
+    opacity: 1;
+    transform: scale(1);
   }
 
   /* Punto que recorre la traza de señal — el detalle vivo de la marca */
