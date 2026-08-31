@@ -6,17 +6,30 @@ import JsonLd from '../components/JsonLd.astro';
 import BackToTop from '../components/BackToTop.astro';
 // Fuentes autoalojadas (@fontsource): evita el @import a fonts.googleapis.com,
 // que forzaba 2 orígenes externos adicionales bloqueando el renderizado del texto.
-import '@fontsource/space-grotesk/500.css';
-import '@fontsource/space-grotesk/600.css';
-import '@fontsource/space-grotesk/700.css';
+// Solo subconjuntos latin / latin-ext: el sitio es en español y los nombres de
+// coautores europeos caben en latin-ext. Importar el CSS por peso completo
+// arrastraba subconjuntos cyrillic/greek/vietnamese que nunca se usan (43 reglas
+// @font-face en el bundle crítico y ~70 assets de fuente en dist/_astro).
+import '@fontsource/space-grotesk/latin-500.css';
+import '@fontsource/space-grotesk/latin-ext-500.css';
+import '@fontsource/space-grotesk/latin-600.css';
+import '@fontsource/space-grotesk/latin-ext-600.css';
+import '@fontsource/space-grotesk/latin-700.css';
+import '@fontsource/space-grotesk/latin-ext-700.css';
 import spaceGrotesk700Woff2 from '@fontsource/space-grotesk/files/space-grotesk-latin-700-normal.woff2?url';
-import '@fontsource/ibm-plex-sans/400.css';
+import '@fontsource/ibm-plex-sans/latin-400.css';
+import '@fontsource/ibm-plex-sans/latin-ext-400.css';
 import ibmPlexSans400Woff2 from '@fontsource/ibm-plex-sans/files/ibm-plex-sans-latin-400-normal.woff2?url';
-import '@fontsource/ibm-plex-sans/500.css';
-import '@fontsource/ibm-plex-sans/600.css';
-import '@fontsource/ibm-plex-mono/400.css';
-import '@fontsource/ibm-plex-mono/500.css';
-import '@fontsource/ibm-plex-mono/600.css';
+import '@fontsource/ibm-plex-sans/latin-500.css';
+import '@fontsource/ibm-plex-sans/latin-ext-500.css';
+import '@fontsource/ibm-plex-sans/latin-600.css';
+import '@fontsource/ibm-plex-sans/latin-ext-600.css';
+import '@fontsource/ibm-plex-mono/latin-400.css';
+import '@fontsource/ibm-plex-mono/latin-ext-400.css';
+import '@fontsource/ibm-plex-mono/latin-500.css';
+import '@fontsource/ibm-plex-mono/latin-ext-500.css';
+import '@fontsource/ibm-plex-mono/latin-600.css';
+import '@fontsource/ibm-plex-mono/latin-ext-600.css';
 import '../styles/global.css';
 
 // Props
@@ -107,8 +120,8 @@ const navItems = [
 		<meta property="og:type" content="website" />
 		<meta property="og:locale" content="es_ES" />
 		<meta name="twitter:card" content="summary_large_image" />
-		<meta name="twitter:image" content="https://marchanero.netlify.app/og-default.png" />
-		<meta property="og:image" content="https://marchanero.netlify.app/og-default.png" />
+		<meta name="twitter:image" content={new URL('/og-default.png', Astro.site)} />
+		<meta property="og:image" content={new URL('/og-default.png', Astro.site)} />
 		<meta property="og:image:width" content="1200" />
 		<meta property="og:image:height" content="630" />
 
