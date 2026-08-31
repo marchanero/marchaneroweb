@@ -72,7 +72,7 @@ describe('Performance y Optimización', () => {
       expect(indexContent).toContain("import { Image } from 'astro:assets'");
 
       // Verificar uso con propiedades de optimización
-      expect(indexContent).toContain('widths={[400, 800]}');
+      expect(indexContent).toContain('widths={[256, 384, 512, 640, 768]}');
       expect(indexContent).toContain('sizes="');
     });
 
