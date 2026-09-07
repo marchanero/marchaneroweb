@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-09-06T10:04:26.899Z",
+  "lastUpdated": "2026-09-07T11:17:57.177Z",
   "scrapingMethod": "ultra-optimized-v3-robust-pagination",
   "paginationInfo": {
     "totalPages": 0,
@@ -39,10 +39,10 @@
     "scholarId": "PCALePwAAAAJ"
   },
   "metrics": {
-    "totalCitations": 851,
+    "totalCitations": 854,
     "hIndex": 15,
     "i10Index": 20,
-    "citationsRecent": 816,
+    "citationsRecent": 819,
     "hIndexRecent": 15,
     "i10IndexRecent": 18,
     "citationsPerYear": [
@@ -72,11 +72,11 @@
       },
       {
         "year": 2025,
-        "citations": 244
+        "citations": 245
       },
       {
         "year": 2026,
-        "citations": 147
+        "citations": 149
       }
     ]
   },
@@ -567,7 +567,7 @@
       ],
       "publication": "Computers & Industrial Engineering 183, 109549, 2023",
       "year": 2023,
-      "citedBy": 53,
+      "citedBy": 54,
       "link": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=PCALePwAAAAJ&pagesize=100&sortby=pubdate&citation_for_view=PCALePwAAAAJ:hFOr9nPyWt4C",
       "citedByLink": "https://scholar.google.com/scholar?oi=bibs&hl=en&cites=1095520988981170505",
       "citationId": "PCALePwAAAAJ:hFOr9nPyWt4C",
@@ -953,7 +953,7 @@
       ],
       "publication": "Applied Sciences 11 (20), 9508, 2021",
       "year": 2021,
-      "citedBy": 94,
+      "citedBy": 95,
       "link": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=PCALePwAAAAJ&pagesize=100&sortby=pubdate&citation_for_view=PCALePwAAAAJ:kNdYIx-mwKoC",
       "citedByLink": "https://scholar.google.com/scholar?oi=bibs&hl=en&cites=4485305786774461650",
       "citationId": "PCALePwAAAAJ:kNdYIx-mwKoC",
@@ -1184,7 +1184,7 @@
       ],
       "publication": "Electronics 7 (12), 384, 2018",
       "year": 2018,
-      "citedBy": 66,
+      "citedBy": 67,
       "link": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=PCALePwAAAAJ&pagesize=100&sortby=pubdate&citation_for_view=PCALePwAAAAJ:u5HHmVD_uO8C",
       "citedByLink": "https://scholar.google.com/scholar?oi=bibs&hl=en&cites=16788273922182433471",
       "citationId": "PCALePwAAAAJ:u5HHmVD_uO8C",
@@ -1263,12 +1263,12 @@
       "2026": 7
     },
     "citationsByYear": {
-      "2018": 66,
+      "2018": 67,
       "2019": 34,
       "2020": 123,
-      "2021": 95,
+      "2021": 96,
       "2022": 356,
-      "2023": 101,
+      "2023": 102,
       "2024": 48,
       "2025": 22,
       "2026": 2
@@ -1280,7 +1280,7 @@
   },
   "summary": {
     "totalPublications": 61,
-    "totalCitations": 851,
+    "totalCitations": 854,
     "hIndex": 15,
     "i10Index": 20,
     "avgCitationsPerPaper": 14,
