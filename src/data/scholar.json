@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-09-11T10:24:34.412Z",
+  "lastUpdated": "2026-09-12T09:54:53.494Z",
   "scrapingMethod": "ultra-optimized-v3-robust-pagination",
   "paginationInfo": {
     "totalPages": 0,
@@ -39,10 +39,10 @@
     "scholarId": "PCALePwAAAAJ"
   },
   "metrics": {
-    "totalCitations": 855,
+    "totalCitations": 857,
     "hIndex": 15,
     "i10Index": 20,
-    "citationsRecent": 820,
+    "citationsRecent": 822,
     "hIndexRecent": 15,
     "i10IndexRecent": 18,
     "citationsPerYear": [
@@ -72,7 +72,7 @@
       },
       {
         "year": 2025,
-        "citations": 245
+        "citations": 247
       },
       {
         "year": 2026,
@@ -933,7 +933,7 @@
       ],
       "publication": "Biomedical Signal Processing and Control 71, 103203, 2022",
       "year": 2022,
-      "citedBy": 73,
+      "citedBy": 74,
       "link": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=PCALePwAAAAJ&pagesize=100&sortby=pubdate&citation_for_view=PCALePwAAAAJ:3fE2CSJIrl8C",
       "citedByLink": "https://scholar.google.com/scholar?oi=bibs&hl=en&cites=2059831707917929488,40396567857792415",
       "citationId": "PCALePwAAAAJ:3fE2CSJIrl8C",
@@ -1124,7 +1124,7 @@
       ],
       "publication": "International Work-Conference on the Interplay Between Natural and …, 2019",
       "year": 2019,
-      "citedBy": 12,
+      "citedBy": 13,
       "link": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=PCALePwAAAAJ&pagesize=100&sortby=pubdate&citation_for_view=PCALePwAAAAJ:u-x6o8ySG0sC",
       "citedByLink": "https://scholar.google.com/scholar?oi=bibs&hl=en&cites=352660594049292708",
       "citationId": "PCALePwAAAAJ:u-x6o8ySG0sC",
