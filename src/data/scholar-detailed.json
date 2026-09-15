@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-09-14T11:27:41.619Z",
+  "lastUpdated": "2026-09-15T10:50:01.496Z",
   "scrapingMethod": "ultra-optimized-v3-robust-pagination",
   "paginationInfo": {
     "totalPages": 0,
@@ -39,11 +39,11 @@
     "scholarId": "PCALePwAAAAJ"
   },
   "metrics": {
-    "totalCitations": 857,
-    "hIndex": 15,
+    "totalCitations": 858,
+    "hIndex": 16,
     "i10Index": 20,
-    "citationsRecent": 822,
-    "hIndexRecent": 15,
+    "citationsRecent": 823,
+    "hIndexRecent": 16,
     "i10IndexRecent": 18,
     "citationsPerYear": [
       {
@@ -72,7 +72,7 @@
       },
       {
         "year": 2025,
-        "citations": 247
+        "citations": 248
       },
       {
         "year": 2026,
@@ -257,7 +257,7 @@
       ],
       "publication": "International Journal of Human–Computer Interaction 41 (16), 10143-10162, 2025",
       "year": 2025,
-      "citedBy": 15,
+      "citedBy": 16,
       "link": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=PCALePwAAAAJ&pagesize=100&sortby=pubdate&citation_for_view=PCALePwAAAAJ:blknAaTinKkC",
       "citedByLink": "https://scholar.google.com/scholar?oi=bibs&hl=en&cites=3662465721335290411",
       "citationId": "PCALePwAAAAJ:blknAaTinKkC",
@@ -1270,7 +1270,7 @@
       "2022": 357,
       "2023": 102,
       "2024": 49,
-      "2025": 22,
+      "2025": 23,
       "2026": 2
     },
     "careerSpan": 9,
@@ -1280,8 +1280,8 @@
   },
   "summary": {
     "totalPublications": 61,
-    "totalCitations": 857,
-    "hIndex": 15,
+    "totalCitations": 858,
+    "hIndex": 16,
     "i10Index": 20,
     "avgCitationsPerPaper": 14,
     "publicationsWithCitations": 39,
