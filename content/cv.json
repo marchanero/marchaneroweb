@@ -25,6 +25,11 @@
       "descripcion": ""
     }
   ],
+  "acreditaciones": [
+    { "titulo": "Profesor Ayudante Doctor", "entidad": "ANECA", "anio": 2023 },
+    { "titulo": "Profesor Contratado Doctor", "entidad": "ANECA", "anio": 2023 },
+    { "titulo": "Profesor de Universidad Privada", "entidad": "ANECA", "anio": 2023 }
+  ],
   "experienciaProfesional": [
     {
       "puesto": "Actividad profesional en proyectos e instalaciones eléctricas de baja tensión",

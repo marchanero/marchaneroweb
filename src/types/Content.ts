@@ -59,6 +59,7 @@ export interface ReconocimientoItem {
 
 export interface CvData {
 	educacion: EducacionItem[];
+	acreditaciones: ReconocimientoItem[];
 	experienciaProfesional: ExperienciaProfesionalItem[];
 	experienciaDocente: ExperienciaDocenteItem[];
 	experienciaInvestigadora: ExperienciaInvestigadoraItem[];
