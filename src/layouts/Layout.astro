@@ -41,6 +41,7 @@ const {
 
 // Obtener la URL actual para marcar el enlace activo en la navegación
 const currentPath = Astro.url.pathname;
+const canonicalURL = new URL(currentPath.endsWith('/') || currentPath.endsWith('.html') ? currentPath : `${currentPath}/`, Astro.site);
 
 const navItems = [
 	{
@@ -94,7 +95,7 @@ const navItems = [
 		<meta charset="UTF-8" />
 		<meta name="description" content={description} />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
-		{noindex && <meta name="robots" content="noindex, nofollow" />}
+		<meta name="robots" content={noindex ? 'noindex, nofollow' : 'index, follow, max-image-preview:large'} />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<link rel="apple-touch-icon" href="/apple-touch-icon.png" />
 		<link rel="manifest" href="/manifest.json" />
@@ -104,7 +105,8 @@ const navItems = [
 		     en el primer render: texto de cuerpo (IBM Plex Sans 400) y titular (Space Grotesk 700) -->
 		<link rel="preload" as="font" type="font/woff2" href={ibmPlexSans400Woff2} crossorigin />
 		<link rel="preload" as="font" type="font/woff2" href={spaceGrotesk700Woff2} crossorigin />
-		<link rel="canonical" href={new URL(currentPath, Astro.site)} />
+		<link rel="canonical" href={canonicalURL} />
+		<link rel="alternate" type="application/rss+xml" title="Publicaciones de Roberto Sánchez Reolid" href={new URL('/rss.xml', Astro.site)} />
 		<title>{title}</title>
 		<!-- SEO y Social Media -->
 		<meta name="author" content="Roberto Sánchez Reolid" />
@@ -113,13 +115,19 @@ const navItems = [
 		<meta property="og:description" content={description} />
 		<meta property="og:type" content="website" />
 		<meta property="og:locale" content="es_ES" />
+		<meta property="og:url" content={canonicalURL} />
+		<meta property="og:site_name" content="Roberto Sánchez Reolid" />
 		<meta name="twitter:card" content="summary_large_image" />
+		<meta name="twitter:title" content={title} />
+		<meta name="twitter:description" content={description} />
+		<meta name="twitter:image:alt" content="Roberto Sánchez Reolid — investigador en la Universidad de Castilla-La Mancha" />
 		<meta name="twitter:image" content={new URL('/og-default.png', Astro.site)} />
 		<meta property="og:image" content={new URL('/og-default.png', Astro.site)} />
 		<meta property="og:image:width" content="1200" />
 		<meta property="og:image:height" content="630" />
+		<meta property="og:image:alt" content="Roberto Sánchez Reolid — investigador en la Universidad de Castilla-La Mancha" />
 
-		<JsonLd />
+		{!noindex && <JsonLd title={title} description={description} canonicalURL={canonicalURL.href} />}
 
 		<!-- Anti-FOUC de tema + marca "hay JS" (quita .no-js, que en global.css deja
 		     visible el contenido .reveal cuando no hay JS). Inline para no meter una

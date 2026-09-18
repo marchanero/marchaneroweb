@@ -10,7 +10,7 @@ export default defineConfig({
   integrations: [
     tailwind(),
     sitemap({
-      filter: (page) => !page.includes('/admin'),
+      filter: (page) => !/^\/(admin(?:\/|$)|404(?:\/|\.html|$))/.test(new URL(page).pathname),
     }),
   ],
   // 'never' (en vez de 'auto'): ningún <style> inline en el HTML, todo el CSS

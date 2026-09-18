@@ -1,5 +1,8 @@
 ---
 export interface Props {
+	title: string;
+	description: string;
+	canonicalURL: string;
 	name?: string;
 	givenName?: string;
 	familyName?: string;
@@ -12,6 +15,9 @@ export interface Props {
 }
 
 const {
+	title,
+	description,
+	canonicalURL,
 	name = "Roberto Sánchez Reolid",
 	givenName = "Roberto",
 	familyName = "Sánchez Reolid",
@@ -34,11 +40,31 @@ const {
 		"IoT",
 	],
 } = Astro.props;
----
-
-<script type="application/ld+json" set:html={JSON.stringify({
-	"@context": "https://schema.org",
+const personId = new URL('#person', url).href;
+const websiteId = new URL('#website', url).href;
+const pageId = `${canonicalURL}#webpage`;
+const pathname = new URL(canonicalURL).pathname;
+const isProfile = pathname === '/' || pathname === '/sobre-mi/';
+const sectionNames: Record<string, string> = {
+	'asignaturas': 'Docencia',
+	'proyectos': 'Proyectos de investigación',
+	'publicaciones': 'Publicaciones científicas',
+	'cv': 'Currículum académico',
+	'sobre-mi': 'Sobre mí',
+	'contacto': 'Contacto',
+	'privacidad': 'Política de privacidad',
+};
+const segments = pathname.split('/').filter(Boolean);
+const breadcrumbs = [
+	{ name: 'Inicio', item: new URL('/', url).href },
+	...segments.map((segment, index) => ({
+		name: sectionNames[segment] ?? title.replace(/\s+(?:-|\|)\s+(?:Dr\. )?Roberto Sánchez Reolid.*$/, ''),
+		item: new URL(`/${segments.slice(0, index + 1).join('/')}/`, url).href,
+	})),
+];
+const graph = [{
 	"@type": "Person",
+	"@id": personId,
 	name,
 	givenName,
 	familyName,
@@ -51,4 +77,35 @@ const {
 		name: affiliation,
 	},
 	knowsAbout,
-})} />
+}, {
+	'@type': 'WebSite',
+	'@id': websiteId,
+	url,
+	name,
+	inLanguage: 'es',
+	publisher: { '@id': personId },
+}, {
+	'@type': isProfile ? 'ProfilePage' : pathname === '/contacto/' ? 'ContactPage' : 'WebPage',
+	'@id': pageId,
+	url: canonicalURL,
+	name: title,
+	description,
+	inLanguage: 'es',
+	isPartOf: { '@id': websiteId },
+	about: { '@id': personId },
+	...(isProfile ? { mainEntity: { '@id': personId } } : {}),
+	...(segments.length ? { breadcrumb: { '@id': `${canonicalURL}#breadcrumb` } } : {}),
+}, ...(segments.length ? [{
+	'@type': 'BreadcrumbList',
+	'@id': `${canonicalURL}#breadcrumb`,
+	itemListElement: breadcrumbs.map((crumb, index) => ({
+		'@type': 'ListItem',
+		position: index + 1,
+		...crumb,
+	})),
+}] : [])];
+// El contenido editorial nunca debe poder cerrar la etiqueta script.
+const json = JSON.stringify({ '@context': 'https://schema.org', '@graph': graph }).replace(/</g, '\\u003c');
+---
+
+<script type="application/ld+json" set:html={json} />
