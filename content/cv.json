@@ -80,6 +80,22 @@
       "descripcion": ""
     },
     {
+      "puesto": "Personal de Apoyo a la Investigación (Investigador)",
+      "proyecto": "",
+      "entidad": "Universidad de Castilla-La Mancha",
+      "periodo": "2023 - 2024",
+      "codigo": "2021-COB-10836",
+      "descripcion": ""
+    },
+    {
+      "puesto": "Personal de Apoyo a la Investigación (Técnico)",
+      "proyecto": "",
+      "entidad": "Universidad de Castilla-La Mancha",
+      "periodo": "2022 - 2023",
+      "codigo": "2022-COB-10897",
+      "descripcion": ""
+    },
+    {
       "puesto": "Investigador",
       "proyecto": "Intervenciones basadas en la realidad extendida para paliar déficits de reconocimiento de emociones",
       "entidad": "Ministerio de Economía, Industria y Competitividad (MINECO)",
@@ -167,6 +183,16 @@
     }
   ],
   "reconocimientos": [
+    {
+      "titulo": "Sexenio de investigación (2020 - 2025)",
+      "entidad": "ANECA-CNEAI",
+      "anio": 2026
+    },
+    {
+      "titulo": "Quinquenio docente (2018 - 2023)",
+      "entidad": "Universidad de Castilla-La Mancha",
+      "anio": 2026
+    },
     {
       "titulo": "Comisión Científica del International Conference on Affective Computing and Intelligent Interaction (ACII)",
       "entidad": "iCORE B",
