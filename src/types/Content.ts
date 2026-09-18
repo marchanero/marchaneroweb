@@ -57,6 +57,22 @@ export interface ReconocimientoItem {
 	anio: number;
 }
 
+export interface CursoItem {
+	titulo: string;
+	horas: number;
+	fecha: string;
+	centro: string;
+	tipo: string;
+}
+
+export interface IdiomaItem {
+	idioma: string;
+	certificado: string;
+	nivel: string;
+	fecha: string;
+	organismo: string;
+}
+
 export interface CvData {
 	educacion: EducacionItem[];
 	acreditaciones: ReconocimientoItem[];
@@ -66,6 +82,8 @@ export interface CvData {
 	estancias: EstanciaItem[];
 	gestionAcademica: GestionAcademicaItem[];
 	reconocimientos: ReconocimientoItem[];
+	cursos: CursoItem[];
+	idiomas: IdiomaItem[];
 }
 
 export interface CuartilItem {

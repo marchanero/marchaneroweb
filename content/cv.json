@@ -203,5 +203,79 @@
       "entidad": "Universidad de Castilla-La Mancha",
       "anio": 2018
     }
+  ],
+  "cursos": [
+    {
+      "titulo": "Prevención de Riesgos Laborales I+D",
+      "horas": 50,
+      "fecha": "26/06/2026",
+      "centro": "Universidad de Castilla-La Mancha",
+      "tipo": "Formación interna"
+    },
+    {
+      "titulo": "Acreditación Competencias Digitales DIGCOMP 2.2 C1",
+      "horas": 0,
+      "fecha": "30/06/2026",
+      "centro": "Universidad de Castilla-La Mancha",
+      "tipo": "Formación externa"
+    },
+    {
+      "titulo": "Acreditación Competencias Digitales DIGCOMP 2.2 C2",
+      "horas": 0,
+      "fecha": "30/06/2026",
+      "centro": "Universidad de Castilla-La Mancha",
+      "tipo": "Formación externa"
+    },
+    {
+      "titulo": "Competencias digitales para el profesorado universitario",
+      "horas": 20,
+      "fecha": "27/03/2026",
+      "centro": "Universidad de Castilla-La Mancha",
+      "tipo": "Formación interna"
+    },
+    {
+      "titulo": "Acreditación Competencias Digitales DIGCOMP 2.2 C2",
+      "horas": 0,
+      "fecha": "29/04/2026",
+      "centro": "Universidad de Castilla-La Mancha",
+      "tipo": "Formación externa"
+    },
+    {
+      "titulo": "Acreditación Competencias Digitales DIGCOMP 2.2 C1",
+      "horas": 0,
+      "fecha": "15/04/2026",
+      "centro": "Universidad de Castilla-La Mancha",
+      "tipo": "Formación externa"
+    },
+    {
+      "titulo": "Criptomonedas y activos digitales",
+      "horas": 20,
+      "fecha": "28/11/2025",
+      "centro": "Universidad de Castilla-La Mancha",
+      "tipo": "Formación interna"
+    },
+    {
+      "titulo": "Estructura y funcionamiento de la UCLM 2025",
+      "horas": 20,
+      "fecha": "09/05/2025",
+      "centro": "Universidad de Castilla-La Mancha",
+      "tipo": "Formación interna"
+    },
+    {
+      "titulo": "Introducción a la Ciberseguridad",
+      "horas": 15,
+      "fecha": "31/08/2019",
+      "centro": "Universidad de Castilla-La Mancha",
+      "tipo": "Formación interna"
+    }
+  ],
+  "idiomas": [
+    {
+      "idioma": "Inglés",
+      "certificado": "Intermedio",
+      "nivel": "B2 - Avanzado",
+      "fecha": "18/04/2026",
+      "organismo": "British Council"
+    }
   ]
 }
