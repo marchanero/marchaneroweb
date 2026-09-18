@@ -20,6 +20,8 @@ const experienciaInvestigadora = cvData.experienciaInvestigadora ?? [];
 const estancias = cvData.estancias ?? [];
 const gestionAcademica = cvData.gestionAcademica ?? [];
 const reconocimientos = cvData.reconocimientos ?? [];
+const cursos = cvData.cursos ?? [];
+const idiomas = cvData.idiomas ?? [];
 
 // Cuartiles JCR/SJR (content/publicaciones-cuartiles.json, mantenido a mano — sin API pública
 // de Clarivate/FECYT) emparejados por título con las publicaciones sincronizadas de Scholar.
@@ -303,6 +305,48 @@ const publicacionesImpresion = deduplicarPorTitulo(
               <p class="font-mono text-xs text-graphite-500 dark:text-graphite-400 mb-2">{item.anio}</p>
               <h3 class="text-base font-semibold text-graphite-900 dark:text-white mb-1">{item.titulo}</h3>
               <p class="text-sm text-graphite-500 dark:text-graphite-400">{item.entidad}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+    )}
+
+    <!-- Cursos de formación -->
+    {cursos.length > 0 && (
+      <section class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 mb-16 reveal">
+        <p class="eyebrow mb-2">Formación continua</p>
+        <h2 class="text-2xl sm:text-3xl font-display font-bold text-graphite-900 dark:text-white mb-8">Cursos</h2>
+
+        <div class="grid sm:grid-cols-2 gap-4">
+          {cursos.map((item) => (
+            <div class="spec-card">
+              <span class="spec-tick spec-tick-tl"></span>
+              <span class="spec-tick spec-tick-br"></span>
+              <p class="font-mono text-xs text-graphite-500 dark:text-graphite-400 mb-2">
+                {item.fecha}{item.horas > 0 && <> · {item.horas}h</>}
+              </p>
+              <h3 class="text-base font-semibold text-graphite-900 dark:text-white mb-1">{item.titulo}</h3>
+              <p class="text-sm text-graphite-500 dark:text-graphite-400">{item.centro} · {item.tipo}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+    )}
+
+    <!-- Idiomas -->
+    {idiomas.length > 0 && (
+      <section class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 mb-16 reveal">
+        <p class="eyebrow mb-2">Formación continua</p>
+        <h2 class="text-2xl sm:text-3xl font-display font-bold text-graphite-900 dark:text-white mb-8">Idiomas</h2>
+
+        <div class="grid sm:grid-cols-3 gap-4">
+          {idiomas.map((item) => (
+            <div class="spec-card">
+              <span class="spec-tick spec-tick-tl"></span>
+              <span class="spec-tick spec-tick-br"></span>
+              <p class="font-mono text-xs text-graphite-500 dark:text-graphite-400 mb-2">{item.fecha}</p>
+              <h3 class="text-base font-semibold text-graphite-900 dark:text-white mb-1">{item.idioma} · {item.nivel}</h3>
+              <p class="text-sm text-graphite-500 dark:text-graphite-400">{item.certificado} · {item.organismo}</p>
             </div>
           ))}
         </div>
