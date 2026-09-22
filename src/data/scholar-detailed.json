@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-09-21T11:41:59.950Z",
+  "lastUpdated": "2026-09-22T10:45:39.254Z",
   "scrapingMethod": "ultra-optimized-v3-robust-pagination",
   "paginationInfo": {
     "totalPages": 0,
@@ -39,10 +39,10 @@
     "scholarId": "PCALePwAAAAJ"
   },
   "metrics": {
-    "totalCitations": 861,
+    "totalCitations": 863,
     "hIndex": 16,
     "i10Index": 20,
-    "citationsRecent": 826,
+    "citationsRecent": 828,
     "hIndexRecent": 16,
     "i10IndexRecent": 18,
     "citationsPerYear": [
@@ -76,7 +76,7 @@
       },
       {
         "year": 2026,
-        "citations": 154
+        "citations": 156
       }
     ]
   },
@@ -295,7 +295,7 @@
       ],
       "publication": "Applied Sciences 15 (14), 7730, 2025",
       "year": 2025,
-      "citedBy": 7,
+      "citedBy": 8,
       "link": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=PCALePwAAAAJ&pagesize=100&sortby=pubdate&citation_for_view=PCALePwAAAAJ:RYcK_YlVTxYC",
       "citedByLink": "https://scholar.google.com/scholar?oi=bibs&hl=en&cites=14501834267374468220",
       "citationId": "PCALePwAAAAJ:RYcK_YlVTxYC",
@@ -861,7 +861,7 @@
       ],
       "publication": "International Symposium on Ambient Intelligence, 13-23, 2022",
       "year": 2022,
-      "citedBy": 4,
+      "citedBy": 5,
       "link": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=PCALePwAAAAJ&pagesize=100&sortby=pubdate&citation_for_view=PCALePwAAAAJ:7PzlFSSx8tAC",
       "citedByLink": "https://scholar.google.com/scholar?oi=bibs&hl=en&cites=13356121356385112746",
       "citationId": "PCALePwAAAAJ:7PzlFSSx8tAC",
@@ -1286,10 +1286,10 @@
       "2019": 35,
       "2020": 124,
       "2021": 96,
-      "2022": 358,
+      "2022": 359,
       "2023": 102,
       "2024": 49,
-      "2025": 24,
+      "2025": 25,
       "2026": 2
     },
     "careerSpan": 9,
@@ -1299,7 +1299,7 @@
   },
   "summary": {
     "totalPublications": 62,
-    "totalCitations": 861,
+    "totalCitations": 863,
     "hIndex": 16,
     "i10Index": 20,
     "avgCitationsPerPaper": 14,
