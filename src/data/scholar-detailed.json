@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-09-26T10:37:26.342Z",
+  "lastUpdated": "2026-09-27T11:10:31.317Z",
   "scrapingMethod": "ultra-optimized-v3-robust-pagination",
   "paginationInfo": {
     "totalPages": 0,
@@ -39,10 +39,10 @@
     "scholarId": "PCALePwAAAAJ"
   },
   "metrics": {
-    "totalCitations": 863,
+    "totalCitations": 869,
     "hIndex": 16,
     "i10Index": 20,
-    "citationsRecent": 828,
+    "citationsRecent": 834,
     "hIndexRecent": 16,
     "i10IndexRecent": 18,
     "citationsPerYear": [
@@ -76,7 +76,7 @@
       },
       {
         "year": 2026,
-        "citations": 156
+        "citations": 162
       }
     ]
   },
@@ -110,8 +110,9 @@
       ],
       "publication": "International Work-Conference on the Interplay Between Natural and …, 2026",
       "year": 2026,
-      "citedBy": 0,
+      "citedBy": 1,
       "link": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=PCALePwAAAAJ&pagesize=100&sortby=pubdate&citation_for_view=PCALePwAAAAJ:4OULZ7Gr8RgC",
+      "citedByLink": "https://scholar.google.com/scholar?oi=bibs&hl=en&cites=7319159638342206315,14865120844290074558",
       "citationId": "PCALePwAAAAJ:4OULZ7Gr8RgC",
       "type": "conference",
       "isFirstAuthor": true,
@@ -295,7 +296,7 @@
       ],
       "publication": "Applied Sciences 15 (14), 7730, 2025",
       "year": 2025,
-      "citedBy": 8,
+      "citedBy": 9,
       "link": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=PCALePwAAAAJ&pagesize=100&sortby=pubdate&citation_for_view=PCALePwAAAAJ:RYcK_YlVTxYC",
       "citedByLink": "https://scholar.google.com/scholar?oi=bibs&hl=en&cites=14501834267374468220",
       "citationId": "PCALePwAAAAJ:RYcK_YlVTxYC",
@@ -467,7 +468,7 @@
       ],
       "publication": "Heliyon, 2024",
       "year": 2024,
-      "citedBy": 19,
+      "citedBy": 20,
       "link": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=PCALePwAAAAJ&pagesize=100&sortby=pubdate&citation_for_view=PCALePwAAAAJ:TFP_iSt0sucC",
       "citedByLink": "https://scholar.google.com/scholar?oi=bibs&hl=en&cites=6529929337580907042",
       "citationId": "PCALePwAAAAJ:TFP_iSt0sucC",
@@ -1010,7 +1011,7 @@
       ],
       "publication": "Preprints, 2020",
       "year": 2020,
-      "citedBy": 26,
+      "citedBy": 28,
       "link": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=PCALePwAAAAJ&pagesize=100&sortby=pubdate&citation_for_view=PCALePwAAAAJ:LkGwnXOMwfcC",
       "citedByLink": "https://scholar.google.com/scholar?oi=bibs&hl=en&cites=2219798727825377273",
       "citationId": "PCALePwAAAAJ:LkGwnXOMwfcC",
@@ -1087,7 +1088,7 @@
       ],
       "publication": "International Journal of Neural Systems 30, 1-13, 2020",
       "year": 2020,
-      "citedBy": 56,
+      "citedBy": 57,
       "link": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=PCALePwAAAAJ&pagesize=100&sortby=pubdate&citation_for_view=PCALePwAAAAJ:Y0pCki6q_DkC",
       "citedByLink": "https://scholar.google.com/scholar?oi=bibs&hl=en&cites=13333015477496612136",
       "citationId": "PCALePwAAAAJ:Y0pCki6q_DkC",
@@ -1284,13 +1285,13 @@
     "citationsByYear": {
       "2018": 67,
       "2019": 35,
-      "2020": 124,
+      "2020": 127,
       "2021": 96,
       "2022": 359,
       "2023": 102,
-      "2024": 49,
-      "2025": 25,
-      "2026": 2
+      "2024": 50,
+      "2025": 26,
+      "2026": 3
     },
     "careerSpan": 9,
     "activeYears": 9,
@@ -1299,11 +1300,11 @@
   },
   "summary": {
     "totalPublications": 62,
-    "totalCitations": 863,
+    "totalCitations": 869,
     "hIndex": 16,
     "i10Index": 20,
     "avgCitationsPerPaper": 14,
-    "publicationsWithCitations": 40,
+    "publicationsWithCitations": 41,
     "mostCitedPaper": {
       "id": "pub_38",
       "title": "Geometric transformation-based data augmentation on defect classification of segmented images of semiconductor materials using a ResNet50 convolutional neural network",
