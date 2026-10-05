@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-10-04T11:38:35.085Z",
+  "lastUpdated": "2026-10-05T13:17:34.531Z",
   "scrapingMethod": "ultra-optimized-v3-robust-pagination",
   "paginationInfo": {
     "totalPages": 0,
@@ -39,10 +39,10 @@
     "scholarId": "PCALePwAAAAJ"
   },
   "metrics": {
-    "totalCitations": 876,
+    "totalCitations": 878,
     "hIndex": 16,
     "i10Index": 20,
-    "citationsRecent": 841,
+    "citationsRecent": 843,
     "hIndexRecent": 16,
     "i10IndexRecent": 18,
     "citationsPerYear": [
@@ -76,7 +76,7 @@
       },
       {
         "year": 2026,
-        "citations": 169
+        "citations": 171
       }
     ]
   },
@@ -448,7 +448,7 @@
       ],
       "publication": "Building Research & Information, 1--16, 2024",
       "year": 2024,
-      "citedBy": 7,
+      "citedBy": 8,
       "link": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=PCALePwAAAAJ&pagesize=100&sortby=pubdate&citation_for_view=PCALePwAAAAJ:isC4tDSrTZIC",
       "citedByLink": "https://scholar.google.com/scholar?oi=bibs&hl=en&cites=883551334465790092",
       "citationId": "PCALePwAAAAJ:isC4tDSrTZIC",
@@ -953,7 +953,7 @@
       ],
       "publication": "Biomedical Signal Processing and Control 71, 103203, 2022",
       "year": 2022,
-      "citedBy": 76,
+      "citedBy": 77,
       "link": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=PCALePwAAAAJ&pagesize=100&sortby=pubdate&citation_for_view=PCALePwAAAAJ:3fE2CSJIrl8C",
       "citedByLink": "https://scholar.google.com/scholar?oi=bibs&hl=en&cites=2059831707917929488,40396567857792415",
       "citationId": "PCALePwAAAAJ:3fE2CSJIrl8C",
@@ -1287,9 +1287,9 @@
       "2019": 35,
       "2020": 127,
       "2021": 99,
-      "2022": 360,
+      "2022": 361,
       "2023": 104,
-      "2024": 50,
+      "2024": 51,
       "2025": 27,
       "2026": 3
     },
@@ -1300,7 +1300,7 @@
   },
   "summary": {
     "totalPublications": 62,
-    "totalCitations": 876,
+    "totalCitations": 878,
     "hIndex": 16,
     "i10Index": 20,
     "avgCitationsPerPaper": 14,
