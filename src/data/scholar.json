@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-10-05T13:17:34.531Z",
+  "lastUpdated": "2026-10-06T12:34:28.829Z",
   "scrapingMethod": "ultra-optimized-v3-robust-pagination",
   "paginationInfo": {
     "totalPages": 0,
@@ -39,10 +39,10 @@
     "scholarId": "PCALePwAAAAJ"
   },
   "metrics": {
-    "totalCitations": 878,
+    "totalCitations": 880,
     "hIndex": 16,
     "i10Index": 20,
-    "citationsRecent": 843,
+    "citationsRecent": 845,
     "hIndexRecent": 16,
     "i10IndexRecent": 18,
     "citationsPerYear": [
@@ -76,7 +76,7 @@
       },
       {
         "year": 2026,
-        "citations": 171
+        "citations": 173
       }
     ]
   },
@@ -765,7 +765,7 @@
       ],
       "publication": "Sensors 22 (22), 8886, 2022",
       "year": 2022,
-      "citedBy": 41,
+      "citedBy": 42,
       "link": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=PCALePwAAAAJ&pagesize=100&sortby=pubdate&citation_for_view=PCALePwAAAAJ:dhFuZR0502QC",
       "citedByLink": "https://scholar.google.com/scholar?oi=bibs&hl=en&cites=13609103185694218187",
       "citationId": "PCALePwAAAAJ:dhFuZR0502QC",
@@ -973,7 +973,7 @@
       ],
       "publication": "Applied Sciences 11 (20), 9508, 2021",
       "year": 2021,
-      "citedBy": 98,
+      "citedBy": 99,
       "link": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=PCALePwAAAAJ&pagesize=100&sortby=pubdate&citation_for_view=PCALePwAAAAJ:kNdYIx-mwKoC",
       "citedByLink": "https://scholar.google.com/scholar?oi=bibs&hl=en&cites=4485305786774461650",
       "citationId": "PCALePwAAAAJ:kNdYIx-mwKoC",
