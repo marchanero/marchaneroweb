@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-10-21T10:59:11.131Z",
+  "lastUpdated": "2026-10-22T10:58:08.871Z",
   "scrapingMethod": "ultra-optimized-v3-robust-pagination",
   "paginationInfo": {
     "totalPages": 0,
@@ -39,10 +39,10 @@
     "scholarId": "PCALePwAAAAJ"
   },
   "metrics": {
-    "totalCitations": 888,
+    "totalCitations": 889,
     "hIndex": 16,
     "i10Index": 22,
-    "citationsRecent": 853,
+    "citationsRecent": 854,
     "hIndexRecent": 16,
     "i10IndexRecent": 20,
     "citationsPerYear": [
@@ -76,7 +76,7 @@
       },
       {
         "year": 2026,
-        "citations": 182
+        "citations": 183
       }
     ]
   },
@@ -665,7 +665,7 @@
       ],
       "publication": "Virtual Reality 27 (1), 217-232, 2023",
       "year": 2023,
-      "citedBy": 13,
+      "citedBy": 14,
       "link": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=PCALePwAAAAJ&pagesize=100&sortby=pubdate&citation_for_view=PCALePwAAAAJ:hqOjcs7Dif8C",
       "citedByLink": "https://scholar.google.com/scholar?oi=bibs&hl=en&cites=11181385404077964469",
       "citationId": "PCALePwAAAAJ:hqOjcs7Dif8C",
