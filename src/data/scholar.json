@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-10-27T11:23:58.994Z",
+  "lastUpdated": "2026-10-28T11:56:47.882Z",
   "scrapingMethod": "ultra-optimized-v3-robust-pagination",
   "paginationInfo": {
     "totalPages": 0,
@@ -39,10 +39,10 @@
     "scholarId": "PCALePwAAAAJ"
   },
   "metrics": {
-    "totalCitations": 891,
+    "totalCitations": 893,
     "hIndex": 16,
     "i10Index": 22,
-    "citationsRecent": 856,
+    "citationsRecent": 858,
     "hIndexRecent": 16,
     "i10IndexRecent": 20,
     "citationsPerYear": [
@@ -76,7 +76,7 @@
       },
       {
         "year": 2026,
-        "citations": 184
+        "citations": 186
       }
     ]
   },
@@ -588,7 +588,7 @@
       ],
       "publication": "Computers & Industrial Engineering 183, 109549, 2023",
       "year": 2023,
-      "citedBy": 54,
+      "citedBy": 55,
       "link": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=PCALePwAAAAJ&pagesize=100&sortby=pubdate&citation_for_view=PCALePwAAAAJ:hFOr9nPyWt4C",
       "citedByLink": "https://scholar.google.com/scholar?oi=bibs&hl=en&cites=1095520988981170505",
       "citationId": "PCALePwAAAAJ:hFOr9nPyWt4C",
@@ -746,7 +746,7 @@
       ],
       "publication": "Applied Soft Computing 131, 109743, 2022",
       "year": 2022,
-      "citedBy": 19,
+      "citedBy": 20,
       "link": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=PCALePwAAAAJ&pagesize=100&sortby=pubdate&citation_for_view=PCALePwAAAAJ:9ZlFYXVOiuMC",
       "citedByLink": "https://scholar.google.com/scholar?oi=bibs&hl=en&cites=4946338693445561389",
       "citationId": "PCALePwAAAAJ:9ZlFYXVOiuMC",
