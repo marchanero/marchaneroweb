@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-10-30T11:58:06.571Z",
+  "lastUpdated": "2026-10-31T11:31:14.086Z",
   "scrapingMethod": "ultra-optimized-v3-robust-pagination",
   "paginationInfo": {
     "totalPages": 0,
@@ -39,10 +39,10 @@
     "scholarId": "PCALePwAAAAJ"
   },
   "metrics": {
-    "totalCitations": 894,
+    "totalCitations": 896,
     "hIndex": 16,
     "i10Index": 22,
-    "citationsRecent": 859,
+    "citationsRecent": 861,
     "hIndexRecent": 16,
     "i10IndexRecent": 20,
     "citationsPerYear": [
@@ -76,7 +76,7 @@
       },
       {
         "year": 2026,
-        "citations": 186
+        "citations": 187
       }
     ]
   },
@@ -469,7 +469,7 @@
       ],
       "publication": "Heliyon, 2024",
       "year": 2024,
-      "citedBy": 21,
+      "citedBy": 22,
       "link": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=PCALePwAAAAJ&pagesize=100&sortby=pubdate&citation_for_view=PCALePwAAAAJ:TFP_iSt0sucC",
       "citedByLink": "https://scholar.google.com/scholar?oi=bibs&hl=en&cites=6529929337580907042",
       "citationId": "PCALePwAAAAJ:TFP_iSt0sucC",
@@ -786,7 +786,7 @@
       ],
       "publication": "Expert Systems with Applications 206, 117731, 2022",
       "year": 2022,
-      "citedBy": 105,
+      "citedBy": 106,
       "link": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=PCALePwAAAAJ&pagesize=100&sortby=pubdate&citation_for_view=PCALePwAAAAJ:_kc_bZDykSQC",
       "citedByLink": "https://scholar.google.com/scholar?oi=bibs&hl=en&cites=15620631313306549090",
       "citationId": "PCALePwAAAAJ:_kc_bZDykSQC",
@@ -1288,9 +1288,9 @@
       "2019": 35,
       "2020": 128,
       "2021": 101,
-      "2022": 367,
+      "2022": 368,
       "2023": 106,
-      "2024": 54,
+      "2024": 55,
       "2025": 28,
       "2026": 4
     },
@@ -1301,7 +1301,7 @@
   },
   "summary": {
     "totalPublications": 62,
-    "totalCitations": 894,
+    "totalCitations": 896,
     "hIndex": 16,
     "i10Index": 22,
     "avgCitationsPerPaper": 14,
@@ -1318,7 +1318,7 @@
       ],
       "publication": "Expert Systems with Applications 206, 117731, 2022",
       "year": 2022,
-      "citedBy": 105,
+      "citedBy": 106,
       "link": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=PCALePwAAAAJ&pagesize=100&sortby=pubdate&citation_for_view=PCALePwAAAAJ:_kc_bZDykSQC",
       "citedByLink": "https://scholar.google.com/scholar?oi=bibs&hl=en&cites=15620631313306549090",
       "citationId": "PCALePwAAAAJ:_kc_bZDykSQC",
