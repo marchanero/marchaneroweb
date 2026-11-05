@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-11-04T13:37:23.970Z",
+  "lastUpdated": "2026-11-05T13:50:16.299Z",
   "scrapingMethod": "ultra-optimized-v3-robust-pagination",
   "paginationInfo": {
     "totalPages": 0,
@@ -39,10 +39,10 @@
     "scholarId": "PCALePwAAAAJ"
   },
   "metrics": {
-    "totalCitations": 899,
+    "totalCitations": 898,
     "hIndex": 16,
     "i10Index": 22,
-    "citationsRecent": 864,
+    "citationsRecent": 863,
     "hIndexRecent": 16,
     "i10IndexRecent": 20,
     "citationsPerYear": [
@@ -72,7 +72,7 @@
       },
       {
         "year": 2025,
-        "citations": 247
+        "citations": 246
       },
       {
         "year": 2026,
@@ -805,7 +805,7 @@
       ],
       "publication": "International journal of neural systems 32 (10), 2250041, 2022",
       "year": 2022,
-      "citedBy": 23,
+      "citedBy": 22,
       "link": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=PCALePwAAAAJ&pagesize=100&sortby=pubdate&citation_for_view=PCALePwAAAAJ:M3ejUd6NZC8C",
       "citedByLink": "https://scholar.google.com/scholar?oi=bibs&hl=en&cites=3685228035292091442",
       "citationId": "PCALePwAAAAJ:M3ejUd6NZC8C",
