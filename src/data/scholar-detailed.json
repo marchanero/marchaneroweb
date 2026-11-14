@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-11-13T13:45:32.839Z",
+  "lastUpdated": "2026-11-14T12:50:01.451Z",
   "scrapingMethod": "ultra-optimized-v3-robust-pagination",
   "paginationInfo": {
     "totalPages": 0,
@@ -39,10 +39,10 @@
     "scholarId": "PCALePwAAAAJ"
   },
   "metrics": {
-    "totalCitations": 906,
+    "totalCitations": 907,
     "hIndex": 16,
     "i10Index": 23,
-    "citationsRecent": 871,
+    "citationsRecent": 872,
     "hIndexRecent": 16,
     "i10IndexRecent": 20,
     "citationsPerYear": [
@@ -76,7 +76,7 @@
       },
       {
         "year": 2026,
-        "citations": 196
+        "citations": 197
       }
     ]
   },
@@ -588,7 +588,7 @@
       ],
       "publication": "Computers & Industrial Engineering 183, 109549, 2023",
       "year": 2023,
-      "citedBy": 55,
+      "citedBy": 56,
       "link": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=PCALePwAAAAJ&pagesize=100&sortby=pubdate&citation_for_view=PCALePwAAAAJ:hFOr9nPyWt4C",
       "citedByLink": "https://scholar.google.com/scholar?oi=bibs&hl=en&cites=1095520988981170505",
       "citationId": "PCALePwAAAAJ:hFOr9nPyWt4C",
@@ -1289,7 +1289,7 @@
       "2020": 129,
       "2021": 102,
       "2022": 369,
-      "2023": 109,
+      "2023": 110,
       "2024": 56,
       "2025": 29,
       "2026": 4
@@ -1301,7 +1301,7 @@
   },
   "summary": {
     "totalPublications": 62,
-    "totalCitations": 906,
+    "totalCitations": 907,
     "hIndex": 16,
     "i10Index": 23,
     "avgCitationsPerPaper": 15,
