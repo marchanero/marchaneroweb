@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-11-19T15:01:24.274Z",
+  "lastUpdated": "2026-11-20T14:44:05.527Z",
   "scrapingMethod": "ultra-optimized-v3-robust-pagination",
   "paginationInfo": {
     "totalPages": 0,
@@ -39,10 +39,10 @@
     "scholarId": "PCALePwAAAAJ"
   },
   "metrics": {
-    "totalCitations": 908,
+    "totalCitations": 911,
     "hIndex": 16,
     "i10Index": 23,
-    "citationsRecent": 873,
+    "citationsRecent": 876,
     "hIndexRecent": 16,
     "i10IndexRecent": 20,
     "citationsPerYear": [
@@ -64,11 +64,11 @@
       },
       {
         "year": 2023,
-        "citations": 130
+        "citations": 129
       },
       {
         "year": 2024,
-        "citations": 165
+        "citations": 166
       },
       {
         "year": 2025,
@@ -76,7 +76,7 @@
       },
       {
         "year": 2026,
-        "citations": 198
+        "citations": 201
       }
     ]
   },
@@ -489,7 +489,7 @@
       ],
       "publication": "International Clinical Psychopharmacology Decision, 2024",
       "year": 2024,
-      "citedBy": 5,
+      "citedBy": 6,
       "link": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=PCALePwAAAAJ&pagesize=100&sortby=pubdate&citation_for_view=PCALePwAAAAJ:JV2RwH3_ST0C",
       "citedByLink": "https://scholar.google.com/scholar?oi=bibs&hl=en&cites=14691130935049618203",
       "citationId": "PCALePwAAAAJ:JV2RwH3_ST0C",
@@ -786,7 +786,7 @@
       ],
       "publication": "Expert Systems with Applications 206, 117731, 2022",
       "year": 2022,
-      "citedBy": 107,
+      "citedBy": 108,
       "link": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=PCALePwAAAAJ&pagesize=100&sortby=pubdate&citation_for_view=PCALePwAAAAJ:_kc_bZDykSQC",
       "citedByLink": "https://scholar.google.com/scholar?oi=bibs&hl=en&cites=15620631313306549090",
       "citationId": "PCALePwAAAAJ:_kc_bZDykSQC",
@@ -954,7 +954,7 @@
       ],
       "publication": "Biomedical Signal Processing and Control 71, 103203, 2022",
       "year": 2022,
-      "citedBy": 77,
+      "citedBy": 78,
       "link": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=PCALePwAAAAJ&pagesize=100&sortby=pubdate&citation_for_view=PCALePwAAAAJ:3fE2CSJIrl8C",
       "citedByLink": "https://scholar.google.com/scholar?oi=bibs&hl=en&cites=2059831707917929488,40396567857792415",
       "citationId": "PCALePwAAAAJ:3fE2CSJIrl8C",
