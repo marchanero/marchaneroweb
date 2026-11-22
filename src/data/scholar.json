@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-11-21T13:59:49.453Z",
+  "lastUpdated": "2026-11-22T13:53:51.071Z",
   "scrapingMethod": "ultra-optimized-v3-robust-pagination",
   "paginationInfo": {
     "totalPages": 0,
@@ -39,10 +39,10 @@
     "scholarId": "PCALePwAAAAJ"
   },
   "metrics": {
-    "totalCitations": 911,
+    "totalCitations": 912,
     "hIndex": 16,
     "i10Index": 23,
-    "citationsRecent": 876,
+    "citationsRecent": 877,
     "hIndexRecent": 16,
     "i10IndexRecent": 20,
     "citationsPerYear": [
@@ -64,11 +64,11 @@
       },
       {
         "year": 2023,
-        "citations": 129
+        "citations": 130
       },
       {
         "year": 2024,
-        "citations": 166
+        "citations": 165
       },
       {
         "year": 2025,
@@ -76,7 +76,7 @@
       },
       {
         "year": 2026,
-        "citations": 201
+        "citations": 202
       }
     ]
   },
@@ -469,7 +469,7 @@
       ],
       "publication": "Heliyon, 2024",
       "year": 2024,
-      "citedBy": 22,
+      "citedBy": 23,
       "link": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=PCALePwAAAAJ&pagesize=100&sortby=pubdate&citation_for_view=PCALePwAAAAJ:TFP_iSt0sucC",
       "citedByLink": "https://scholar.google.com/scholar?oi=bibs&hl=en&cites=6529929337580907042",
       "citationId": "PCALePwAAAAJ:TFP_iSt0sucC",
