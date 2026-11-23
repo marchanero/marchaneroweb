@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-11-22T13:53:51.071Z",
+  "lastUpdated": "2026-11-23T17:03:38.637Z",
   "scrapingMethod": "ultra-optimized-v3-robust-pagination",
   "paginationInfo": {
     "totalPages": 0,
@@ -64,11 +64,11 @@
       },
       {
         "year": 2023,
-        "citations": 130
+        "citations": 129
       },
       {
         "year": 2024,
-        "citations": 165
+        "citations": 166
       },
       {
         "year": 2025,
