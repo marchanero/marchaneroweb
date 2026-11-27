@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-11-26T16:10:45.267Z",
+  "lastUpdated": "2026-11-27T15:57:16.318Z",
   "scrapingMethod": "ultra-optimized-v3-robust-pagination",
   "paginationInfo": {
     "totalPages": 0,
@@ -39,10 +39,10 @@
     "scholarId": "PCALePwAAAAJ"
   },
   "metrics": {
-    "totalCitations": 912,
+    "totalCitations": 913,
     "hIndex": 16,
     "i10Index": 23,
-    "citationsRecent": 877,
+    "citationsRecent": 878,
     "hIndexRecent": 16,
     "i10IndexRecent": 20,
     "citationsPerYear": [
@@ -64,19 +64,19 @@
       },
       {
         "year": 2023,
-        "citations": 130
+        "citations": 129
       },
       {
         "year": 2024,
-        "citations": 165
+        "citations": 166
       },
       {
         "year": 2025,
-        "citations": 246
+        "citations": 245
       },
       {
         "year": 2026,
-        "citations": 202
+        "citations": 204
       }
     ]
   },
@@ -786,7 +786,7 @@
       ],
       "publication": "Expert Systems with Applications 206, 117731, 2022",
       "year": 2022,
-      "citedBy": 108,
+      "citedBy": 109,
       "link": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=PCALePwAAAAJ&pagesize=100&sortby=pubdate&citation_for_view=PCALePwAAAAJ:_kc_bZDykSQC",
       "citedByLink": "https://scholar.google.com/scholar?oi=bibs&hl=en&cites=15620631313306549090",
       "citationId": "PCALePwAAAAJ:_kc_bZDykSQC",
@@ -1288,7 +1288,7 @@
       "2019": 37,
       "2020": 129,
       "2021": 102,
-      "2022": 372,
+      "2022": 373,
       "2023": 110,
       "2024": 58,
       "2025": 29,
@@ -1301,7 +1301,7 @@
   },
   "summary": {
     "totalPublications": 62,
-    "totalCitations": 912,
+    "totalCitations": 913,
     "hIndex": 16,
     "i10Index": 23,
     "avgCitationsPerPaper": 15,
@@ -1318,7 +1318,7 @@
       ],
       "publication": "Expert Systems with Applications 206, 117731, 2022",
       "year": 2022,
-      "citedBy": 108,
+      "citedBy": 109,
       "link": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=PCALePwAAAAJ&pagesize=100&sortby=pubdate&citation_for_view=PCALePwAAAAJ:_kc_bZDykSQC",
       "citedByLink": "https://scholar.google.com/scholar?oi=bibs&hl=en&cites=15620631313306549090",
       "citationId": "PCALePwAAAAJ:_kc_bZDykSQC",
